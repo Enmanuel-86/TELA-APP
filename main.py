@@ -239,7 +239,7 @@ class MainWindow(QMainWindow):
         
 
 
-        self.stacked_widget.setCurrentIndex(2)
+        self.stacked_widget.setCurrentIndex(0)
         
 
 
