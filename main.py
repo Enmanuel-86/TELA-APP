@@ -1,0 +1,387 @@
+import sys
+import os
+import random
+from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
+                             QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
+from PyQt5.QtGui import QIcon, QPixmap
+
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
+
+
+from PyQt5 import QtGui
+from elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login)
+
+
+from pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+                                        PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
+                                        PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal)
+
+
+##################################
+# importaciones de base de datos #
+##################################
+
+from configuraciones.configuracion import app_configuracion
+from excepciones.base_datos_error import BaseDatosError
+
+# repositorios
+from repositorios.usuarios.usuario_repositorio import UsuarioRepositorio
+from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
+
+from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+
+# servicios
+from servicios.usuarios.usuario_servicio import UsuarioServicio
+from servicios.usuarios.permiso_servicio import PermisoServicio
+
+from servicios.empleados.empleado_servicio import EmpleadoServicio
+
+
+
+##################################
+# importaciones de base de datos #
+##################################
+
+
+# instancias de los repositorios
+usuario_repositorio = UsuarioRepositorio()
+permisos_repositorio = PermisoRepositorio()
+empleado_repositorio = EmpleadoRepositorio()
+
+
+
+# instancia de los servicios
+usuario_servicio = UsuarioServicio(usuario_repositorio)
+permisos_servicio = PermisoServicio(permisos_repositorio)
+empleado_servicio = EmpleadoServicio(empleado_repositorio)
+
+
+
+ruta_del_icono = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.ico")
+icono_reloj_azul = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "reloj_azul.png")
+icono_reloj = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "reloj.png")
+
+
+
+mensajes_bienvenida = [
+    "¡Hola! Es un placer tenerte aquí. ¿Cómo estás hoy?",
+    "¡Bienvenido/a de nuevo! Esperamos que tu día sea tan eficiente como este sistema.",
+    "¡Hola, explorador/a! El conocimiento te espera. ¿Listo/a para comenzar?",
+    "¡Qué gusto verte por aquí! ¿En qué puedo ayudarte hoy?",
+    "¡Hola, amigo/a! Bienvenido/a a tu sistema de confianza.",
+    "¡Saludos! Hoy es un gran día para aprender algo nuevo. ¿Verdad?",
+    "¡Bienvenido/a! Tu presencia alegra nuestro sistema. :)",
+    "¡Hola! Sabías que eres el usuario más importante hoy. ¡Gracias por estar aquí!",
+    "¡Hey, tú! Sí, tú. ¡Es genial verte de nuevo por aquí!",
+    "¡Buenos días/tardes/noches! Esperamos que disfrutes tu experiencia.",
+    "¡Hola! Aquí estamos, listos para acompañarte en lo que necesites.",
+    "¡Bienvenido/a a tu segunda casa digital! Siéntete como en casa.",
+    "¡Hola, campeón/a! Hoy vas a lograr grandes cosas con este sistema.",
+    "¡Qué emoción verte aquí! ¿Listo/a para sumergirte en la información?",
+    "¡Hola, mente curiosa! El sistema está listo para satisfacer tu curiosidad.",
+    "¡Bienvenido/a de vuelta! Extrañábamos tu energía en el sistema.",
+    "¡Hola! Sabemos que tienes cosas importantes que hacer, ¡así que empecemos!",
+    "¡Saludos, usuario/a brillante! Hoy es tu día para brillar aún más.",
+    "¡Hola! El sistema está feliz de verte. Nosotros también. B)",
+    "¡Bienvenido/a! Porque mereces la mejor experiencia, hoy nos esforzamos el doble por ti."
+]
+
+def aplicar_sombra(widget, n_blurradio, n_opacidad):
+        sombra = QGraphicsDropShadowEffect()
+        sombra.setBlurRadius(n_blurradio)
+        sombra.setOffset(2, 2)
+        sombra.setColor(QColor(0, 0, 0, n_opacidad))
+        widget.setGraphicsEffect(sombra)     
+
+
+
+
+    
+## cintillo ##
+class Cintillo(QWidget, Ui_CintilloV2):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        ## Rutas relativas de la imagenes ##
+        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "logo_zona_educativa.png")))
+        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "membrete.png")))
+        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.png")))
+        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "logo_juventud.png")))
+
+
+## Login del sistema
+class Login(QWidget, Ui_Login):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        # Rutas de las imagenes
+        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.png")))
+        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
+        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "icono_contraseña.png")))
+        self.ojo_abierto = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz","ver_contraseña.png")
+        self.ojo_cerrado = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz","no_ver_contraseña.png")
+
+        aplicar_sombra(self.espacio_login, 50, 255)
+
+        self.mensajes_usuario()
+        
+        #self.input_usuario.setText("Enmanuel86")
+        #self.input_contrasena.setText("1212")
+        
+
+        self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
+
+        # Estado inicial: contraseña oculta
+        self.password_visible = False
+        
+    # metodo para cambiar el boton de ver contraseña
+    def cambiar_ver_contrasena(self):
+        if self.password_visible:
+            # Ocultar la contraseña
+            self.input_contrasena.setEchoMode(QLineEdit.Password)
+            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_cerrado))
+            self.password_visible = False
+        else:
+            # Mostrar la contraseña
+            self.input_contrasena.setEchoMode(QLineEdit.Normal)
+            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_abierto))
+            self.password_visible = True
+            
+    def mensajes_usuario(self):
+        self.label_mensaje_usuario.setText(random.choice(mensajes_bienvenida))
+    
+
+## Clase principal donde esta toda la apliacion ##
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        ## Colocamos el icono a la aplicacion ##
+        self.setWindowTitle("T.E.L.A APP")
+        self.setWindowIcon(QIcon(ruta_del_icono))
+        
+        self.setGeometry(0,0,700,650)
+        # Establecer tamaño mínimo y máximo
+        self.setMinimumSize(700, 650)  # Mínimo: 300x300 px
+        #self.setMaximumSize(1080, 800)  # Máximo: 600x600 px
+
+        ## Mostrar ventana emergente a traves de esta funcion ##
+        ## Procurar activarlo al final ##
+        #self.mostrar_advertencia()
+        
+        # Barra de estado, esto es para ver que tal
+        
+        
+        
+
+        # instancia del login y el cintillo
+        self.stacked_widget = QStackedWidget()
+        self.login = Login()
+        self.cintillo = Cintillo()
+
+        self.login.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.login.ojo_cerrado))
+
+        # Configurar widget central
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+
+        # Crear layout
+        layout = QVBoxLayout()
+
+        # Agregar widgets al layout
+        layout.addWidget(self.cintillo)
+        layout.addWidget(self.stacked_widget)
+        layout.setContentsMargins(0, 0, 0, 0)  # ❌ Quitar márgenes
+        layout.setSpacing(0)
+
+        # Asignar layout al widget central
+        central_widget.setLayout(layout)
+
+        self.stacked_widget.addWidget(self.login)
+
+
+     
+
+        ## Instanacias de las primeras pantallas ##
+        self.menu_opciones = PantallaDeOpciones(self.stacked_widget) # Menu de opciones
+        self.pantalla_vista_general_del_personal = PantallaDeVistaGeneralDelPersonal(self.stacked_widget) # pantalla vista general del personal
+        self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
+        self.pantalla_formulario_nuevo_registro_empleado = PantallaDeFormularioNuevoRegistroEmpleado(self.stacked_widget) # pantalla del formulario para el nuevo registro del personal
+        self.pantalla_control_de_llegada = PantallaControlDeLlegada(self.stacked_widget) # pantalla de control de llegada del personal
+        self.pantalla_formulario_nuevo_registro_de_alumnos = PantallaDeFormularioNuevoRegistroAlumnos(self.stacked_widget) # pantalla del formulario para el nuevo registro de los alumnos
+        
+        
+        self.pantalla_admin_opciones = PantallaAdminOpciones(self.stacked_widget) # pantalla de opciones del admin
+        self.pantalla_admin_crear_usuario = PantallaAdminCrearUsuario(self.stacked_widget) # pantalla del admin para crear usuario 
+        self.pantalla_admin_crear_respaldo = PantallaAdminCrearRespaldo(self.stacked_widget) # pantalla del admin para crear respaldo
+        
+        self.pantalla_perfil_empleado = PantallaPerfilEmpleado(self.stacked_widget)
+        self.pantalla_perfil_alumno = PantallaPerfilAlumno(self.stacked_widget)
+        self.pantalla_control_de_reposos = PantallaControlRepososPersonal(self.stacked_widget)
+
+        self.stacked_widget.addWidget(self.menu_opciones)  # indice 1
+        self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 2
+        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 3
+        self.stacked_widget.addWidget(self.pantalla_control_de_llegada)  # indice 4
+        self.stacked_widget.addWidget(self.pantalla_vista_general_de_alumnos)  # indice 5
+        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_de_alumnos)  # indice 6
+        
+        self.stacked_widget.addWidget(self.pantalla_admin_opciones) # indice 7
+        self.stacked_widget.addWidget(self.pantalla_admin_crear_usuario) # indice 8
+        self.stacked_widget.addWidget(self.pantalla_admin_crear_respaldo) #indice 9
+        
+        self.stacked_widget.addWidget(self.pantalla_perfil_empleado) # indice 10
+        self.stacked_widget.addWidget(self.pantalla_perfil_alumno) # indice 11
+        self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 12
+        
+        
+
+
+        self.stacked_widget.setCurrentIndex(2)
+        
+
+
+
+        self.msg = QMessageBox()
+        self.msg.setWindowTitle("Error de inicio de sesión")
+        self.msg.setText("")
+        # Usar un icono del sistema (predeterminado de PyQt5)
+        self.msg.setIcon(QMessageBox.Warning)
+        self.msg.setWindowIcon(QIcon(ruta_del_icono))
+
+        # self.msg.exec_()
+
+        self.login.boton_ingresar.clicked.connect(self.validar_credenciales)
+        
+        
+
+   
+  
+      
+
+    def validar_credenciales(self):
+        nombre_usuario = self.login.input_usuario.text()
+        contrasena_usuario = self.login.input_contrasena.text()
+
+        try:
+            
+            global usuario_id_autenticado
+            usuario_id_autenticado = usuario_servicio.autenticar_usuario(nombre_usuario, contrasena_usuario)
+
+
+        except BaseDatosError as error:
+
+            self.msg.setWindowTitle("Error de inicio de sesión")
+            self.msg.setText(f"{error}")
+            # Usar un icono del sistema (predeterminado de PyQt5)
+            self.msg.setIcon(QMessageBox.Warning)
+
+            self.msg.exec_()
+
+
+        else:
+            
+            print("Usuario ID: ",usuario_id_autenticado)
+            self.setMinimumSize(1200, 650)
+            #self.showMaximized()
+
+            if (usuario_id_autenticado):
+
+                usuario = usuario_servicio.obtener_usuario_por_id(usuario_id_autenticado)
+                
+                app_configuracion.actualizar_usuario_id(usuario_id_autenticado)
+                
+                
+            
+
+                if usuario[5] == "DIRECTOR":
+                    self.login.input_usuario.clear()
+                    self.login.input_contrasena.clear()
+                    self.stacked_widget.setCurrentIndex(7)
+                    
+                    
+                    vista_personal = self.pantalla_vista_general_del_personal
+                    vista_alumnos = self.pantalla_vista_general_de_alumnos
+                    
+                    vista_personal.boton_de_regreso.clicked.connect(vista_personal.volver_pantalla_opciones_admin)
+                    vista_alumnos.boton_de_regreso.clicked.connect(vista_alumnos.volver_pantalla_opciones_admin)
+
+                    
+
+                elif usuario[5] == "SUB-DIRECTOR":
+
+                    # eventos
+                    
+                    pass
+
+                elif usuario[5] == "SECRETARIO":
+
+                    self.login.input_usuario.clear() #limpia el input de nombre de usuario
+                    self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
+                    self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
+                    
+                    
+
+
+            crear_nuevo_empleado = permisos_servicio.verificar_permiso_usuario(usuario_id_autenticado,"CREAR EMPLEADOS")
+
+            if not(crear_nuevo_empleado):
+                self.pantalla_vista_general_del_personal.boton_crear_nuevo_registro.setDisabled(True)
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    ## Metodo para mostrar advertencia de actualizar la fecha y hora ##
+    def mostrar_advertencia(self):
+        # Crear el QMessageBox
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+
+        msg.setWindowTitle("Verificación de hora del sistema")
+        msg.setText("La hora de su PC debe estar actualizada")
+
+
+        msg.setInformativeText(
+            """
+            <p style='text-align: justify;'>
+            Para realizar los registros de manera coherente, verifique que la fecha y hora de su computadora
+            sean correctas al dia de hoy.
+            </p>
+            """
+        )
+        msg.setIconPixmap(QPixmap(icono_reloj_azul))
+        msg.setWindowIcon(QIcon(icono_reloj))
+
+
+
+        # Añadir botón OK
+        msg.setStandardButtons(QMessageBox.Ok)
+
+        # Mostrar el messagebox
+        msg.exec_()
+
+
+
+
+
+# Ejecutar la aplicación
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    window.showMaximized()
+
+    sys.exit(app.exec_())

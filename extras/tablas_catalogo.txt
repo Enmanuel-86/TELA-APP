@@ -1,0 +1,12 @@
+las tablas catálogo son:
+
+- tb_diagnosticos
+- tb_enfermedades_cronicas
+- tb_cargos_empleados (corrige eso de que se pone el código de cargo a mano, ya que eso viene incluido en cada registro de esa tabla, solo se pone a mano si quieren registrar un nuevo cargo)
+- tb_funciones_cargo
+- tb_tipos_cargo
+- tb_especialidades
+
+- tb_roles (cuando se le asigne un rol a un empleado que será usuario, este solo mostrar los roles)
+- tb_permisos (este tambien solo mostrar, pero no se crearán nuevos permisos, si acaso asignarle a un rol pero por el momento eso se deja pal final xd)
+- tb_permisos_x_rol (y esta tambien solo mostrar pq solo sirve para que sepan que permisos tiene cada rol xd)

@@ -1,0 +1,12 @@
+
+## login ################################################################################################
+pyuic5 .\Elementos_graficos_ui\pantalla_de_login.ui -o .\elementos_graficos_a_py\pantalla_de_login_gui.py
+#########################################################################################################
+
+## Cintillo ################################################################################################
+pyuic5 .\Elementos_graficos_ui\cintillo.ui -o .\elementos_graficos_a_py\cintillo_gui.py
+#########################################################################################################
+
+## Control de llegada ################################################################################################
+pyuic5 .\Elementos_graficos_ui\pantalla_de_control_de_llegada_del_personal.ui -o .\elementos_graficos_a_py\pantalla_de_control_de_llegada_del_personal_gui.py
+#########################################################################################################
