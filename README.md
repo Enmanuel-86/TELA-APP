@@ -37,7 +37,7 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
 
 
 ## ¿De que se trata el sistema de información?
-Es un sistema de información que se encargar de registar y consultar de información de los alumnos y del personal docente, obrero, administrativo y directivo.
+Es un sistema de información que se encargar de registar y consultar información de los alumnos y del personal docente, obrero, administrativo y directivo.
 
 
 ## Herramientas Utilizadas para el desarrollo del sistema de información
