@@ -66,7 +66,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 <img src="https://learnbatta.com/assets/images/sqlalchemy/logo.png"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
 
 
-
+# 
 ## ¿Como funciona TELA-APP?
 
 **ya me dio flojera seguir escribiendo aqui XD**
