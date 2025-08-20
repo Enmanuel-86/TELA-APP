@@ -14,6 +14,10 @@ El código se comparte solo con fines demostrativos.
 
 # 🟢TELA APP 💻🟢
 
+
+**ingresar screenshot del login**
+
+
 ### ¿Qué es el TELA APP?
 Este es un proyecto universitario de la **Universidad Politécnica Territorial José Antonio Anzoátegui (UPTJAA)** para el **Taller de Educación laboral Anzoátegui (TELA)**, como requisito para optar por el titulo de ingenieria en informática.
 
@@ -69,7 +73,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 # 
 ## ¿Como funciona TELA-APP?
 
-**ya me dio flojera seguir escribiendo aqui XD**
+***descripción para mas tarde***
 
 
 
