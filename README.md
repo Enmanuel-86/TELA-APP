@@ -3,7 +3,7 @@
 Este repositorio es de **solo consulta pública**.
 Está prohibido:
 
-- ❌ Descargar el código
+- ❌ Descargar el código 
 - ❌ Hacer fork del proyecto  
 - ❌ Usar comercialmente
 - ❌ Modificar/distribuir
