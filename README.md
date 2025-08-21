@@ -79,7 +79,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 # 
 ## ¿Como funciona TELA-APP?
 
-***descripción para más tarde***
+***descripción para más tarde*** 
 
 
 
