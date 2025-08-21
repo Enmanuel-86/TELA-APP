@@ -47,27 +47,33 @@ Es un sistema de información que se encargar de registar y consultar informaci�
 ## Herramientas Utilizadas para el desarrollo del sistema de información
 Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 
-### 1) Para la logica y control de todo el sistema:
+<br>
 
-  - Python
-  <img src="https://1000logos.net/wp-content/uploads/2020/08/Python-Logo-500x313.png" style="width: 200px; height: auto;" alt="Logo del Python">
+### 1️⃣ Para la logica y control de todo el sistema:
 
-### 2) Para las interfaces graficas:
-  
-  - PyQt5
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Python_and_Qt.svg" style="width: 150px; height: auto;" alt="Logo del PyQt5">
+|Python|
+|------|
+|<img src="https://1000logos.net/wp-content/uploads/2020/08/Python-Logo-500x313.png" style="width: 200px; height: auto;" alt="Logo del Python">|
 
-  - QtDesigner
-<img src="https://flathub.org/_next/image?url=https%3A%2F%2Fdl.flathub.org%2Fmedia%2Fio%2Fqt%2FDesigner%2F256e688f981e073bb67f8847eba5316c%2Ficons%2F128x128%2Fio.qt.Designer.png&w=128&q=100"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
+<br>
+
+### 2️⃣ Para el desarrollo de las interfaces gráficas:
+
+| PyQt5 | QtDegigner |                                            
+|-------|------------|
+| <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Python_and_Qt.svg" style="width: 150px; height: auto;" alt="Logo del PyQt5">| <img src="https://flathub.org/_next/image?url=https%3A%2F%2Fdl.flathub.org%2Fmedia%2Fio%2Fqt%2FDesigner%2F256e688f981e073bb67f8847eba5316c%2Ficons%2F128x128%2Fio.qt.Designer.png&w=128&q=100"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">|
+
+<br>
+
+### 3️⃣ Para la base de datos:
 
 
-### 3) Para la base de datos:
+|SQlite|AQLAlchemy|
+|------|----------|
+|<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">| <img src="https://learnbatta.com/assets/images/sqlalchemy/logo.png"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
 
-  - SQLite
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
 
-  - SQLAlchemy
-<img src="https://learnbatta.com/assets/images/sqlalchemy/logo.png"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
+
 
 
 # 
