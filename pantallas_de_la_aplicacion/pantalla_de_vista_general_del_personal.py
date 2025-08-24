@@ -1,8 +1,7 @@
 from PyQt5.QtCore import Qt,QPoint
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtSql import QSqlTableModel
-from PyQt5.QtWidgets import (QWidget, QHeaderView, QLineEdit, QHBoxLayout, 
-                             QTableView,QMessageBox, QListWidget, QListWidgetItem, QPushButton)
+from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout, 
+                             QMessageBox, QListWidget, QListWidgetItem, QPushButton)
 from PyQt5 import QtGui
 import os
 from elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
@@ -238,6 +237,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         # Conectar señal de doble click
         self.tabla_ver_personal.doubleClicked.connect(self.on_double_click)
+        
         self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
         
         
@@ -670,6 +670,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
     #Metodos para la tabla de base de datos
     
+    # Metodo para buscar al empleado por su id
     def buscar_id_empleado(self, cedula):
         
         for empleado in self.lista_empleados_actual:

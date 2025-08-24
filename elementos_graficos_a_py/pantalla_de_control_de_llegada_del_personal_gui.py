@@ -174,7 +174,7 @@ class Ui_PantallaControlDeLlegada(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_el_formulario.sizePolicy().hasHeightForWidth())
         self.espacio_para_el_formulario.setSizePolicy(sizePolicy)
-        self.espacio_para_el_formulario.setMinimumSize(QtCore.QSize(450, 0))
+        self.espacio_para_el_formulario.setMinimumSize(QtCore.QSize(500, 0))
         self.espacio_para_el_formulario.setStyleSheet("QFrame {\n"
 "    background-color: white;\n"
 "    border-radius: 0px;\n"
@@ -188,6 +188,7 @@ class Ui_PantallaControlDeLlegada(object):
         self.gridLayout.setContentsMargins(20, 20, 20, 10)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.label_cedula_empleado = QtWidgets.QLabel(self.espacio_para_el_formulario)
         font = QtGui.QFont()
