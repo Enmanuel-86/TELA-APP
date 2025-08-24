@@ -320,9 +320,31 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         cedula = modelo.item(row, 0).text()
         
         # Establecer el texto en el QLineEdit
-        self.barra_de_busqueda.setText(cedula)
+        # iterar cada tupla de la lista
+        for empleado in self.lista_empleados_actual:
+            
+            # si la busqueda de la cedula esta en la posicion 5 de la tupla que es donde esta la cedula
+            
+            if cedula in empleado:
+                
+                # id del empleado
+                empleado_id = empleado[0]
+                
+                
+                print(f"el empleado es: \n\nNombre:{empleado[1]}\nID:{empleado[0]}")
+                
+                self.stacked_widget.setCurrentIndex(10)
+                
+                self.mostra_info_empleado(empleado_id)
+                
+                self.barra_de_busqueda.clear()
+                
+                break
+            
+            
+                    
         
-    
+    # esto accede al perfil del empleado desde la barra de busqueda
     def acceder_perfil_empleado(self):
         
         
