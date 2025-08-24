@@ -40,3 +40,6 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
 
         self.mostrar_enfermedades.clear()
         self.mostrar_diagnosticos.clear()
+        
+        
+        
