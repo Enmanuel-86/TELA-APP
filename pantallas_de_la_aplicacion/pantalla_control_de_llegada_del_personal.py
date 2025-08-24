@@ -141,6 +141,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     ########################################################################################################
 
     
+    
     # Metodo para suministrar la informacion a la lista de asistencias
     def suministrar_info(self):
         
