@@ -18,6 +18,8 @@ from pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpcione
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal)
 
 
+# Cambio insignificante hecho por el Base-datos-developer xd
+
 ##################################
 # importaciones de base de datos #
 ##################################
