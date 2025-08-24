@@ -6,6 +6,9 @@ from elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
 from datetime import datetime
 
 
+today = datetime.now()
+dia_de_hoy = today.strftime("%Y-%d-%m")
+
 class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     def __init__(self, stacked_widget):
         super().__init__()
@@ -25,8 +28,6 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         self.boton_de_regreso.clicked.connect(self.volver)
 
-        today = datetime.now()
-        dia_de_hoy = today.strftime("%Y-%d-%m")
         self.label_mostrar_fecha.setText(dia_de_hoy)
 
 
@@ -38,6 +39,9 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.input_inasistente.toggled.connect(self.cuando_no_asiste_el_personal)
         self.boton_de_suministrar.clicked.connect(self.suministrar_info)
 
+
+
+    # Metodo para habilitar los inputs si asistio
     def cuando_asiste_el_personal(self, ):
             self.input_motivo_de_inasistencia.setDisabled(True)
             self.label_motivo_de_inasistencia.setDisabled(True)
@@ -50,7 +54,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             self.input_motivo_de_retraso.setDisabled(False)
 
 
-
+    # Metodo para deshabilitar los inputs si no asistio
     def cuando_no_asiste_el_personal(self):
         self.label_hora_de_llegada.setDisabled(True)
         self.input_hora_de_llegada.setDisabled(True)
@@ -117,6 +121,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         elif self.msg_box.clickedButton() == self.boton_no:
             pass
 
+    def limpiar_inputs(self):
 
     def suministrar_info(self):
 

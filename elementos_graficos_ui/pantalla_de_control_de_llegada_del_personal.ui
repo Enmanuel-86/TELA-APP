@@ -823,7 +823,7 @@ QLineEdit:focus{
 }</string>
                     </property>
                     <property name="text">
-                     <string>sdaskdjas</string>
+                     <string/>
                     </property>
                     <property name="placeholderText">
                      <string>.....</string>
