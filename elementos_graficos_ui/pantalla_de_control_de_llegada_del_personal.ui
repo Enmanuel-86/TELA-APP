@@ -820,7 +820,17 @@ QLineEdit:focus{
 
 
 
-}</string>
+}
+
+
+
+
+QLineEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+ </string>
                     </property>
                     <property name="text">
                      <string/>
@@ -906,7 +916,17 @@ QLineEdit:focus{
 
 
 
-}</string>
+}
+
+
+
+
+QLineEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+ </string>
                     </property>
                     <property name="text">
                      <string/>

@@ -16,6 +16,12 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
 
+        self.lista_qlineedits = [self.input_cedula_empleado, self.input_motivo_de_retraso, self.input_motivo_de_inasistencia]
+        self.lista_radiobuttons = [self.input_asistente, self.input_inasistente]
+        self.lista_timeedits = [self.input_hora_de_llegada, self.input_hora_de_salida]
+        
+        
+        # Ruta relativa de las imagenes ##
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
 
 
@@ -43,28 +49,26 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
     # Metodo para habilitar los inputs si asistio
     def cuando_asiste_el_personal(self, ):
+        
+        
             self.input_motivo_de_inasistencia.setDisabled(True)
-            self.label_motivo_de_inasistencia.setDisabled(True)
+            self.input_motivo_de_inasistencia.clear()
 
-            self.label_hora_de_llegada.setDisabled(False)
             self.input_hora_de_llegada.setDisabled(False)
-            self.label_hora_de_salida.setDisabled(False)
             self.input_hora_de_salida.setDisabled(False)
-            self.label_motivo_de_retraso.setDisabled(False)
             self.input_motivo_de_retraso.setDisabled(False)
+            
 
 
     # Metodo para deshabilitar los inputs si no asistio
     def cuando_no_asiste_el_personal(self):
-        self.label_hora_de_llegada.setDisabled(True)
+        
         self.input_hora_de_llegada.setDisabled(True)
         self.input_hora_de_llegada.setTime(QTime(7,0))
 
-        self.label_hora_de_salida.setDisabled(True)
         self.input_hora_de_salida.setDisabled(True)
         self.input_hora_de_salida.setTime(QTime(12,0))
 
-        self.label_motivo_de_retraso.setDisabled(True)
         self.input_motivo_de_retraso.setDisabled(True)
         self.input_motivo_de_retraso.clear()
 
@@ -86,42 +90,47 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         if self.msg_box.clickedButton() == self.boton_si:
 
-
-            self.input_cedula_empleado.clear()
-            self.input_motivo_de_retraso.clear()
-            self.input_motivo_de_inasistencia.clear()
-
-            self.input_asistente.setAutoExclusive(False)
-            self.input_inasistente.setAutoExclusive(False)
-
-            self.input_asistente.setChecked(False)
-            self.input_inasistente.setChecked(False)
-
-            self.input_asistente.setAutoExclusive(True)
-            self.input_inasistente.setAutoExclusive(True)
-
-            self.input_motivo_de_inasistencia.setDisabled(False)
-            self.label_motivo_de_inasistencia.setDisabled(False)
-
-            self.label_hora_de_llegada.setDisabled(False)
-            self.input_hora_de_llegada.setDisabled(False)
-            self.input_hora_de_llegada.setTime(QTime(7, 0))
-
-            self.label_hora_de_salida.setDisabled(False)
-            self.input_hora_de_salida.setDisabled(False)
-            self.input_hora_de_salida.setTime(QTime(12, 0))
-
-            self.label_motivo_de_retraso.setDisabled(False)
-            self.input_motivo_de_retraso.setDisabled(False)
-
-
-
-            self.stacked_widget.setCurrentIndex(2)
+            try: 
+                
+                self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                self.stacked_widget.setCurrentIndex(2)
+                
+                
+            except Exception as e:
+                print(f"Error al limpiar los inputs: {e}")
+            
 
         elif self.msg_box.clickedButton() == self.boton_no:
             pass
+        
+        
+        
 
-    #def limpiar_inputs(self):
+    def limpiar_inputs(self, lista_de_qlineedits, lista_de_radiobuttons, lista_de_timeedits):
+        
+        try:
+            # Limpiamos los QlineEdits
+            for qlineedit in lista_de_qlineedits:
+                qlineedit.clear()
+                qlineedit.setEnabled(True)
+                
+            # Limpiamos los RadioButtons
+            for radiobutton in lista_de_radiobuttons:
+                radiobutton.setAutoExclusive(False)
+                radiobutton.setChecked(False)
+                radiobutton.setAutoExclusive(True)
+                
+            # Limpiamos los TimeEdits
+            for timeedit in lista_de_timeedits:
+                timeedit.setTime(QTime(7,0) if "llegada" in timeedit.objectName() else QTime(12,0))
+                
+        except Exception as e:
+            print(f"Error al limpiar los inputs: {e}")    
+            
+        
+    
+        
+    
 
     def suministrar_info(self):
 
