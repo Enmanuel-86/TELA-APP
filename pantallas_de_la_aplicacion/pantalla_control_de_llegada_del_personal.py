@@ -121,7 +121,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         elif self.msg_box.clickedButton() == self.boton_no:
             pass
 
-    def limpiar_inputs(self):
+    #def limpiar_inputs(self):
 
     def suministrar_info(self):
 
