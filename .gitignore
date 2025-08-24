@@ -1,0 +1,10 @@
+# Estos archivos no quiero que los envie
+
+main_bd.py
+main_bd2.py
+main_bd3.py
+
+
+# carpetas
+extras/
+pruebas_con_ia/

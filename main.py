@@ -65,26 +65,26 @@ icono_reloj = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "i
 
 
 mensajes_bienvenida = [
-    "¡Hola! Es un placer tenerte aquí. ¿Cómo estás hoy?",
-    "¡Bienvenido/a de nuevo! Esperamos que tu día sea tan eficiente como este sistema.",
-    "¡Hola, explorador/a! El conocimiento te espera. ¿Listo/a para comenzar?",
-    "¡Qué gusto verte por aquí! ¿En qué puedo ayudarte hoy?",
-    "¡Hola, amigo/a! Bienvenido/a a tu sistema de confianza.",
-    "¡Saludos! Hoy es un gran día para aprender algo nuevo. ¿Verdad?",
-    "¡Bienvenido/a! Tu presencia alegra nuestro sistema. :)",
-    "¡Hola! Sabías que eres el usuario más importante hoy. ¡Gracias por estar aquí!",
-    "¡Hey, tú! Sí, tú. ¡Es genial verte de nuevo por aquí!",
-    "¡Buenos días/tardes/noches! Esperamos que disfrutes tu experiencia.",
-    "¡Hola! Aquí estamos, listos para acompañarte en lo que necesites.",
-    "¡Bienvenido/a a tu segunda casa digital! Siéntete como en casa.",
-    "¡Hola, campeón/a! Hoy vas a lograr grandes cosas con este sistema.",
-    "¡Qué emoción verte aquí! ¿Listo/a para sumergirte en la información?",
-    "¡Hola, mente curiosa! El sistema está listo para satisfacer tu curiosidad.",
-    "¡Bienvenido/a de vuelta! Extrañábamos tu energía en el sistema.",
-    "¡Hola! Sabemos que tienes cosas importantes que hacer, ¡así que empecemos!",
-    "¡Saludos, usuario/a brillante! Hoy es tu día para brillar aún más.",
-    "¡Hola! El sistema está feliz de verte. Nosotros también. B)",
-    "¡Bienvenido/a! Porque mereces la mejor experiencia, hoy nos esforzamos el doble por ti."
+    "¡Bienvenido/a! Esperamos que tengas una excelente experiencia.",
+    "Hola, nos alegra tenerte con nosotros. ¡Disfruta tu estancia!",
+    "¡Hola! Qué gusto verte por aquí. ¿En qué podemos ayudarte hoy?",
+    "Bienvenido/a a nuestra plataforma. Estamos aquí para servirte.",
+    "¡Hola! Te damos la más cordial bienvenida. ¡Empecemos!",
+    "Bienvenido/a de nuevo. Nos encanta verte por aquí.",
+    "¡Hola! Qué bueno tenerte con nosotros. ¿Listo para comenzar?",
+    "Bienvenido/a a la comunidad. Estamos felices de tenerte aquí.",
+    "¡Hola! Tu aventura comienza ahora. ¡Bienvenido/a!",
+    "Te damos la bienvenida. Esperamos que encuentres todo lo que necesitas.",
+    "¡Hola! Gracias por unirte a nosotros. ¡Comencemos este viaje juntos!",
+    "Bienvenido/a. Estamos aquí para hacer tu experiencia increíble.",
+    "¡Hola! Nos alegra mucho verte. ¿En qué podemos asistirte hoy?",
+    "Bienvenido/a a bordo. Prepárate para una experiencia única.",
+    "¡Hola! Qué emoción tenerte aquí. ¡Bienvenido/a a la familia!",
+    "Te damos la más cálida bienvenida. ¡Esperamos que disfrutes!",
+    "¡Hola! Estamos encantados de tenerte con nosotros.",
+    "Bienvenido/a. Tu viaje comienza ahora mismo. ¡Aprovecha al máximo!",
+    "¡Hola! Nos llena de alegría recibirte. ¡Bienvenido/a!",
+    "Bienvenido/a a tu nuevo espacio. Esperamos que te sientas como en casa."
 ]
 
 def aplicar_sombra(widget, n_blurradio, n_opacidad):
