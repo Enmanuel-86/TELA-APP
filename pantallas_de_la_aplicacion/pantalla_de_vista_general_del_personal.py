@@ -238,7 +238,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         # Conectar señal de doble click
         self.tabla_ver_personal.doubleClicked.connect(self.on_double_click)
-        
+        self.tabla_ver_personal.clicked.connect(self.one_click)
         self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
         
         
@@ -307,7 +307,19 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.resultados.hide()
         
         
+    
+    
+    def one_click(self, index):
         
+        # Obtener la fila donde se hizo doble click
+        row = index.row()
+        
+        # Obtener el texto de la primera columna (nombre)
+        cedula = modelo.item(row, 0).text()
+        
+        
+    
+    
         
     # esta funcion es para que el usuario le de dobleclick a la fila del empleado
     # ponga la cedula en la barra de busqueda    
