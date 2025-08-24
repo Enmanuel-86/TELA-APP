@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt,QPoint
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtSql import QSqlTableModel
-from PyQt5.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QHBoxLayout, 
+from PyQt5.QtWidgets import (QWidget, QHeaderView, QLineEdit, QHBoxLayout, 
                              QTableView,QMessageBox, QListWidget, QListWidgetItem, QPushButton)
 from PyQt5 import QtGui
 import os
@@ -238,7 +238,6 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         # Conectar señal de doble click
         self.tabla_ver_personal.doubleClicked.connect(self.on_double_click)
-        
         self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
         
         
@@ -307,7 +306,32 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.resultados.hide()
         
         
+    
+
         
+        
+        
+        
+    def funcion_editar(self, fila):
+        
+        try:
+            cedula = modelo.item(fila, 0).text()
+            
+            empleado_id = self.buscar_id_empleado(cedula)
+            
+            self.stacked_widget.setCurrentIndex(10)
+            self.mostra_info_empleado(empleado_id)
+            
+            self.habilitar_inputs(lista_qlineedits)
+            
+            
+        except Exception as e:
+            print(f"Algo paso: {e}")
+            
+        
+        
+    
+    
         
     # esta funcion es para que el usuario le de dobleclick a la fila del empleado
     # ponga la cedula en la barra de busqueda    
@@ -320,9 +344,31 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         cedula = modelo.item(row, 0).text()
         
         # Establecer el texto en el QLineEdit
-        self.barra_de_busqueda.setText(cedula)
+        # iterar cada tupla de la lista
+        for empleado in self.lista_empleados_actual:
+            
+            # si la busqueda de la cedula esta en la posicion 5 de la tupla que es donde esta la cedula
+            
+            if cedula in empleado:
+                
+                # id del empleado
+                empleado_id = empleado[0]
+                
+                
+                print(f"el empleado es: \n\nNombre:{empleado[1]}\nID:{empleado[0]}")
+                
+                self.stacked_widget.setCurrentIndex(10)
+                
+                self.mostra_info_empleado(empleado_id)
+                
+                self.barra_de_busqueda.clear()
+                
+                break
+            
+            
+                    
         
-    
+    # esto accede al perfil del empleado desde la barra de busqueda
     def acceder_perfil_empleado(self):
         
         
@@ -358,11 +404,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         break
                     
                     
-                    
-                    
-                    
-                    
-                    
+                        
             else:
                 #print(f"el empleado es: \nNombre:{empleado[2]}\n ID:{empleado[0]}")
                 QMessageBox.critical(self, "Error", "Campo vacio")
@@ -381,10 +423,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         ## info basica del empleado
         
         try:
+            global pantalla_perfil_empleado
             
             info_basica = empleado_servicio.obtener_empleado_por_id(empleado_id)
         
             pantalla_perfil_empleado = self.stacked_widget.widget(10)
+            
+            
         
             pantalla_perfil_empleado.input_mostrar_primer_nombre.setText(info_basica[1])
             pantalla_perfil_empleado.input_mostrar_segundo_nombre.setText(info_basica[2])
@@ -515,6 +560,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 pantalla_perfil_empleado.label_especialidad.show()
                 pantalla_perfil_empleado.input_mostrar_especialidad.show()
             
+            global lista_qlineedits
             
             lista_qlineedits = [
                 
@@ -526,9 +572,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     pantalla_perfil_empleado.input_mostrar_fecha_nacimiento,
                     pantalla_perfil_empleado.input_mostrar_edad,
                     
+                    pantalla_perfil_empleado.input_mostrar_numero_telefono,
+                    pantalla_perfil_empleado.input_mostrar_correo,
+                    
                     pantalla_perfil_empleado.input_mostrar_estado_residente,
                     pantalla_perfil_empleado.input_mostrar_municipio,
                     pantalla_perfil_empleado.input_mostrar_direccion_residente,
+                    
+                    pantalla_perfil_empleado.input_mostrar_talla_camisa,
+                    pantalla_perfil_empleado.input_mostrar_talla_pantalon,
+                    pantalla_perfil_empleado.input_mostrar_talla_zapatos,
                     
                     pantalla_perfil_empleado.input_mostrar_codigo_cargo,
                     pantalla_perfil_empleado.input_mostrar_cargo,
@@ -541,6 +594,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     pantalla_perfil_empleado.input_mostrar_tiempo_servicio,
                     pantalla_perfil_empleado.input_mostrar_especialidad,
             ]
+            
             
             self.ver_cursor_posicion_cero(lista_qlineedits)
         
@@ -599,7 +653,11 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             qlineedit.setCursorPosition(0)
             
             
-
+    def habilitar_inputs(self, lista_qlineedit:list):
+        
+        for qlineedit in lista_qlineedit:
+            
+            qlineedit.setReadOnly(False)
         
     # Metodo para la busqueda dinamica
     ##########################################################################################################################
@@ -608,7 +666,26 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
     ################################################################################################################33
     ################################################################################################################33
+    
+    
     #Metodos para la tabla de base de datos
+    
+    def buscar_id_empleado(self, cedula):
+        
+        for empleado in self.lista_empleados_actual:
+            
+            if cedula in empleado:
+                
+                empleado_id = empleado[0]
+                
+                return empleado_id
+                
+                break
+            
+            else:
+                
+                pass
+    
     def cargar_tipos_cargos(self):
         
         
@@ -627,12 +704,10 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
             self.boton_especialidades.addItem(especialidad[1])
     
-    
+    #Metodo para filtrar por tipo de cargo
     def filtrar_por_tipo_cargo(self):
     
         tipo_cargo_selec = self.boton_de_opciones.currentText()
-        
-        
         
         # si el boton esta pulsado
         if self.boton_de_opciones.currentText() :
@@ -665,8 +740,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     #self.label_contador.setText(str(len(empleados)))
                     
                     
-    # print(f"\ncargo: {tipo_cargo_selec} id del cargo {tipo_cargo[0]}")
-                    
+    # Metodo para filtrar por especialidad           
     def filtrar_por_especialidad(self):
         
         # guardamos la seleccion
@@ -731,7 +805,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             self.label_contador.setText("0")
             QMessageBox.information(self, "Error", f"{e}")
         
-    # metodo para habilitar el boton de especialidades    
+    # Metodo para habilitar el boton de especialidades    
     def habilitar_boton_especialidades(self):
         
         if self.boton_de_opciones.currentText() == "DOCENTE":
@@ -744,7 +818,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
 
-    # metodo para actualizar la tabla
+    # Metodo para actualizar la tabla
     def actualizar_tabla(self,  indice_cedula = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
         
             empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id)
@@ -756,7 +830,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
         
 
-
+    # Metodo para cargar los empleados en la tabla
     def cargar_empleados_en_tabla(self, tabla, empleados, indice_cedula, indice_1er_nombre, indice_2do_nombre, indice_1er_apellido, indice_2do_apellido, indice_estado):
         columnas = ["Cédula", "Primer Nombre", "Segundo Nombre", "Apellido Paterno", "Apellido Materno", "Estado", "Opciones"]
         
@@ -841,7 +915,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
             # Conectar botones
-            #btn_edit.clicked.connect(lambda _, r=fila: self.editar_alumno(r))
+            boton_editar.clicked.connect(lambda _, r=fila: self.funcion_editar(r))
             #btn_delete.clicked.connect(lambda _, r=fila: self.borrar_alumno(r))
 
             layout.addWidget(boton_editar)
@@ -859,17 +933,20 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     ################################################################################################################33
     ################################################################################################################33
 
+    
+    # Metodo para ir pantalla va a la pantalla de crear nuevo registro
     def ir_a_crear_nuevo_registro(self):
         self.stacked_widget.setCurrentIndex(3)
 
+    # Metodo para ir  a la pantalla de control de llegadaq
     def ir_a_control_de_llegada(self):
         self.stacked_widget.setCurrentIndex(4)
         
-        
+    # Metodo para ir  a la pantalla de control de reposos
     def ir_a_control_de_reposos(self):
         self.stacked_widget.setCurrentIndex(12)
         
-
+    # Metodo para volver a la pantalla de opciones
     def volver_pantalla_opciones(self):
         
         self.stacked_widget.setCurrentIndex(1)
@@ -878,6 +955,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
         self.barra_de_busqueda.clear()        
 
+
+    # Metodo para volver a la pantalla de opciones del admin
     def volver_pantalla_opciones_admin(self):
         
         self.stacked_widget.setCurrentIndex(7)

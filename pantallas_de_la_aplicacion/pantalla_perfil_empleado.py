@@ -1,5 +1,5 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import  QWidget
+from PyQt5.QtWidgets import  QWidget, QLineEdit
 from PyQt5 import QtGui
 import os
 from elementos_graficos_a_py import Ui_PantallaInfoCompletaDelEmpleado
@@ -41,5 +41,11 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
         self.mostrar_enfermedades.clear()
         self.mostrar_diagnosticos.clear()
         
+        self.deshabilitar_inputs()
         
         
+    def deshabilitar_inputs(self):
+        
+        for child in self.findChildren(QLineEdit):
+            if not child.isReadOnly():
+                child.setReadOnly(True)

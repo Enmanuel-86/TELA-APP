@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui/pantalla_de_control_de_llegada_del_personal.ui'
+# Form implementation generated from reading ui file 'C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui/pantalla_de_control_de_llegada_del_personal.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,25 +14,33 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_PantallaControlDeLlegada(object):
     def setupUi(self, PantallaControlDeLlegada):
         PantallaControlDeLlegada.setObjectName("PantallaControlDeLlegada")
-        PantallaControlDeLlegada.resize(1116, 687)
+        PantallaControlDeLlegada.resize(1137, 687)
         self.verticalLayout = QtWidgets.QVBoxLayout(PantallaControlDeLlegada)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.area_de_scroll = QtWidgets.QScrollArea(PantallaControlDeLlegada)
         self.area_de_scroll.setStyleSheet("")
+        self.area_de_scroll.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.area_de_scroll.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1097, 685))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1120, 687))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.espacio_principal = QtWidgets.QFrame(self.scrollAreaWidgetContents_2)
-        self.espacio_principal.setStyleSheet("background-color: rgb(0, 183, 72);")
-        self.espacio_principal.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_principal.setStyleSheet("QFrame{\n"
+"\n"
+"    \n"
+"    background: qlineargradient(\n"
+"        x1:0, y1:0, x2:1, y2:1,\n"
+"        stop:0 #3fea87, stop:1 #00770e)\n"
+"   \n"
+"}")
+        self.espacio_principal.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_principal.setObjectName("espacio_principal")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.espacio_principal)
@@ -46,12 +54,15 @@ class Ui_PantallaControlDeLlegada(object):
         self.espacio_superior.setSizePolicy(sizePolicy)
         self.espacio_superior.setMinimumSize(QtCore.QSize(500, 100))
         self.espacio_superior.setMaximumSize(QtCore.QSize(16777214, 80))
+        self.espacio_superior.setStyleSheet("background:none ; ")
         self.espacio_superior.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_superior.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_superior.setObjectName("espacio_superior")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_superior)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.espacio_a = QtWidgets.QFrame(self.espacio_superior)
+        self.espacio_a.setMinimumSize(QtCore.QSize(400, 0))
+        self.espacio_a.setStyleSheet("background:none ; ")
         self.espacio_a.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_a.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_a.setObjectName("espacio_a")
@@ -72,37 +83,52 @@ class Ui_PantallaControlDeLlegada(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
         self.label_control_de_llegada = QtWidgets.QLabel(self.espacio_a)
         self.label_control_de_llegada.setGeometry(QtCore.QRect(70, 10, 261, 61))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(17)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_control_de_llegada.setFont(font)
         self.label_control_de_llegada.setStyleSheet("QLabel{\n"
 "    \n"
-"    background-color: rgb(0, 112, 21);\n"
-"    font: 75 18pt \"Arial\";\n"
+"    background-color: rgb(0, 138, 71);\n"
+"    \n"
 "    color: rgb(255, 255, 255);\n"
-"    border-radius:20px;\n"
+"    border-radius:12px;\n"
 "\n"
 "}")
         self.label_control_de_llegada.setAlignment(QtCore.Qt.AlignCenter)
         self.label_control_de_llegada.setObjectName("label_control_de_llegada")
         self.horizontalLayout.addWidget(self.espacio_a)
+        spacerItem = QtWidgets.QSpacerItem(285, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.espacio_b = QtWidgets.QFrame(self.espacio_superior)
         self.espacio_b.setMinimumSize(QtCore.QSize(400, 0))
+        self.espacio_b.setStyleSheet("background:none ; ")
         self.espacio_b.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_b.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_b.setObjectName("espacio_b")
         self.label_fecha_actual = QtWidgets.QLabel(self.espacio_b)
-        self.label_fecha_actual.setGeometry(QtCore.QRect(50, 10, 131, 61))
+        self.label_fecha_actual.setGeometry(QtCore.QRect(40, 10, 141, 61))
         self.label_fecha_actual.setMinimumSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_actual.setFont(font)
         self.label_fecha_actual.setStyleSheet("QLabel{\n"
 "    \n"
-"    background-color: rgb(0, 112, 21);\n"
-"    font: 75 14pt \"Arial\";\n"
+"    background-color: rgb(0, 138, 71);\n"
+"    \n"
 "    color: rgb(255, 255, 255);\n"
-"    border-radius:20px;\n"
+"    border-radius:12px;\n"
 "\n"
 "}")
         self.label_fecha_actual.setAlignment(QtCore.Qt.AlignCenter)
@@ -116,127 +142,114 @@ class Ui_PantallaControlDeLlegada(object):
         self.label_mostrar_fecha.setSizePolicy(sizePolicy)
         self.label_mostrar_fecha.setMinimumSize(QtCore.QSize(0, 40))
         self.label_mostrar_fecha.setMaximumSize(QtCore.QSize(16777215, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(17)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_mostrar_fecha.setFont(font)
         self.label_mostrar_fecha.setStyleSheet("QLabel{\n"
 "    \n"
 "    background-color: white;\n"
-"    font: 75 14pt \"Arial\";\n"
-"    border-radius:20px;\n"
+"    \n"
+"    border-radius:12px;\n"
 "    border:1px solid black;\n"
 "\n"
 "}")
         self.label_mostrar_fecha.setText("")
         self.label_mostrar_fecha.setAlignment(QtCore.Qt.AlignCenter)
         self.label_mostrar_fecha.setObjectName("label_mostrar_fecha")
-        self.horizontalLayout.addWidget(self.espacio_b, 0, QtCore.Qt.AlignRight)
+        self.horizontalLayout.addWidget(self.espacio_b)
         self.verticalLayout_5.addWidget(self.espacio_superior)
         self.espacio_para_tabla_empleados = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_para_tabla_empleados.setStyleSheet("background-color: rgb(0, 183, 72);")
-        self.espacio_para_tabla_empleados.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_para_tabla_empleados.setStyleSheet("background:none ; ")
+        self.espacio_para_tabla_empleados.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_para_tabla_empleados.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_tabla_empleados.setObjectName("espacio_para_tabla_empleados")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.espacio_para_tabla_empleados)
-        self.horizontalLayout_2.setSpacing(70)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.tableView = QtWidgets.QTableView(self.espacio_para_tabla_empleados)
-        self.tableView.setMaximumSize(QtCore.QSize(450, 16777215))
-        self.tableView.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.tableView.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
-        self.tableView.setObjectName("tableView")
-        self.tableView.horizontalHeader().setCascadingSectionResizes(False)
-        self.horizontalLayout_2.addWidget(self.tableView)
-        self.sombra = QtWidgets.QFrame(self.espacio_para_tabla_empleados)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
-        sizePolicy.setHeightForWidth(self.sombra.sizePolicy().hasHeightForWidth())
-        self.sombra.setSizePolicy(sizePolicy)
-        self.sombra.setMinimumSize(QtCore.QSize(470, 420))
-        self.sombra.setMaximumSize(QtCore.QSize(470, 210))
-        self.sombra.setStyleSheet("QFrame {\n"
-"    background-color: rgb(0, 112, 21);\n"
-"    border-radius: 30px;\n"
-"   \n"
-"}")
-        self.sombra.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.sombra.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.sombra.setObjectName("sombra")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.sombra)
-        self.verticalLayout_3.setContentsMargins(-1, 0, 0, -1)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.espacio_para_el_formulario = QtWidgets.QFrame(self.sombra)
+        self.espacio_para_el_formulario = QtWidgets.QFrame(self.espacio_para_tabla_empleados)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_el_formulario.sizePolicy().hasHeightForWidth())
         self.espacio_para_el_formulario.setSizePolicy(sizePolicy)
+        self.espacio_para_el_formulario.setMinimumSize(QtCore.QSize(450, 0))
         self.espacio_para_el_formulario.setStyleSheet("QFrame {\n"
 "    background-color: white;\n"
-"    border-radius: 30px;\n"
-"   \n"
+"    border-radius: 0px;\n"
+"    border-left:10px solid rgb(0, 112, 21);\n"
+"    border-bottom:10px solid rgb(0, 112, 21);\n"
 "}")
-        self.espacio_para_el_formulario.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_para_el_formulario.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_para_el_formulario.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_el_formulario.setObjectName("espacio_para_el_formulario")
-        self.boton_de_suministrar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
-        self.boton_de_suministrar.setGeometry(QtCore.QRect(170, 340, 121, 41))
-        self.boton_de_suministrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_suministrar.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(0, 183, 72);\n"
-"    font: 75 14pt \"Arial\";\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:20px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        self.boton_de_suministrar.setObjectName("boton_de_suministrar")
-        self.input_cedula_empleado = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
-        self.input_cedula_empleado.setGeometry(QtCore.QRect(30, 40, 181, 41))
-        self.input_cedula_empleado.setStyleSheet("QLineEdit {\n"
-"        background-color: white;\n"
-"        border: 1px solid #e0e0e0;\n"
-"        border-bottom: 2px solid black ;\n"
-"        border-radius:3px;\n"
-"        padding-left: 12px;\n"
-"        font-size: 15px;\n"
-"        padding-top:5px;\n"
-"        \n"
-"    }\n"
-"    \n"
-" \n"
-"    QLineEdit:focus {\n"
-"        border: 2px solid #00648e\n"
-"    }\n"
-"    \n"
-" \n"
-"")
-        self.input_cedula_empleado.setObjectName("input_cedula_empleado")
+        self.gridLayout = QtWidgets.QGridLayout(self.espacio_para_el_formulario)
+        self.gridLayout.setContentsMargins(20, 20, 20, 10)
+        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.label_cedula_empleado = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_cedula_empleado.setGeometry(QtCore.QRect(40, 30, 131, 21))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_cedula_empleado.setFont(font)
         self.label_cedula_empleado.setStyleSheet("QLabel{\n"
-"    font: 75 10pt \"Arial\";\n"
+"\n"
 "    \n"
 "    color: rgb(80, 80, 80);\n"
 "\n"
 "    border-color: #ffffff;\n"
+"    border:none;\n"
 "\n"
 "\n"
 "}\n"
 "")
         self.label_cedula_empleado.setScaledContents(False)
         self.label_cedula_empleado.setObjectName("label_cedula_empleado")
+        self.verticalLayout_3.addWidget(self.label_cedula_empleado)
+        self.input_cedula_empleado = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
+        self.input_cedula_empleado.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.input_cedula_empleado.setFont(font)
+        self.input_cedula_empleado.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}")
+        self.input_cedula_empleado.setObjectName("input_cedula_empleado")
+        self.verticalLayout_3.addWidget(self.input_cedula_empleado)
+        self.gridLayout.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
         self.estado_de_asistencia = QtWidgets.QGroupBox(self.espacio_para_el_formulario)
-        self.estado_de_asistencia.setGeometry(QtCore.QRect(250, 30, 171, 81))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.estado_de_asistencia.setFont(font)
         self.estado_de_asistencia.setStyleSheet("QGroupBox{\n"
 "\n"
 "    background-color: rgb(255, 255, 255);\n"
-"    font: 10pt \"Arial\";\n"
 "\n"
 "\n"
 "}")
@@ -265,9 +278,34 @@ class Ui_PantallaControlDeLlegada(object):
 "}")
         self.input_inasistente.setObjectName("input_inasistente")
         self.verticalLayout_2.addWidget(self.input_inasistente)
+        self.gridLayout.addWidget(self.estado_de_asistencia, 0, 1, 1, 1)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.label_hora_de_llegada = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        self.label_hora_de_llegada.setEnabled(True)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_hora_de_llegada.setFont(font)
+        self.label_hora_de_llegada.setStyleSheet("QLabel{\n"
+"\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_hora_de_llegada.setScaledContents(False)
+        self.label_hora_de_llegada.setObjectName("label_hora_de_llegada")
+        self.verticalLayout_8.addWidget(self.label_hora_de_llegada)
         self.input_hora_de_llegada = QtWidgets.QTimeEdit(self.espacio_para_el_formulario)
         self.input_hora_de_llegada.setEnabled(True)
-        self.input_hora_de_llegada.setGeometry(QtCore.QRect(30, 130, 171, 41))
+        self.input_hora_de_llegada.setMinimumSize(QtCore.QSize(0, 40))
         self.input_hora_de_llegada.setStyleSheet("QTimeEdit{\n"
 "\n"
 "    background-color: rgb(255, 255, 255);\n"
@@ -289,29 +327,34 @@ class Ui_PantallaControlDeLlegada(object):
         self.input_hora_de_llegada.setTimeSpec(QtCore.Qt.LocalTime)
         self.input_hora_de_llegada.setTime(QtCore.QTime(7, 0, 0))
         self.input_hora_de_llegada.setObjectName("input_hora_de_llegada")
-        self.label_hora_de_llegada = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_hora_de_llegada.setEnabled(True)
-        self.label_hora_de_llegada.setGeometry(QtCore.QRect(40, 120, 101, 21))
-        self.label_hora_de_llegada.setStyleSheet("QLabel{\n"
-"    font: 75 10pt \"Arial\";\n"
+        self.verticalLayout_8.addWidget(self.input_hora_de_llegada)
+        self.gridLayout.addLayout(self.verticalLayout_8, 1, 0, 1, 1)
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.label_hora_de_salida = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        self.label_hora_de_salida.setEnabled(True)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_hora_de_salida.setFont(font)
+        self.label_hora_de_salida.setStyleSheet("QLabel{\n"
+"\n"
 "    \n"
 "    color: rgb(80, 80, 80);\n"
 "\n"
 "    border-color: #ffffff;\n"
+"    border:none;\n"
 "\n"
 "\n"
 "}\n"
-"\n"
-"QLabel:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
 "")
-        self.label_hora_de_llegada.setScaledContents(False)
-        self.label_hora_de_llegada.setObjectName("label_hora_de_llegada")
+        self.label_hora_de_salida.setScaledContents(False)
+        self.label_hora_de_salida.setObjectName("label_hora_de_salida")
+        self.verticalLayout_9.addWidget(self.label_hora_de_salida)
         self.input_hora_de_salida = QtWidgets.QTimeEdit(self.espacio_para_el_formulario)
-        self.input_hora_de_salida.setGeometry(QtCore.QRect(250, 130, 171, 41))
+        self.input_hora_de_salida.setMinimumSize(QtCore.QSize(0, 40))
         self.input_hora_de_salida.setStyleSheet("QTimeEdit{\n"
 "\n"
 "    background-color: rgb(255, 255, 255);\n"
@@ -333,141 +376,193 @@ class Ui_PantallaControlDeLlegada(object):
         self.input_hora_de_salida.setMinimumTime(QtCore.QTime(0, 0, 0))
         self.input_hora_de_salida.setTime(QtCore.QTime(12, 0, 0))
         self.input_hora_de_salida.setObjectName("input_hora_de_salida")
-        self.label_hora_de_salida = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_hora_de_salida.setEnabled(True)
-        self.label_hora_de_salida.setGeometry(QtCore.QRect(260, 120, 91, 21))
-        self.label_hora_de_salida.setStyleSheet("QLabel{\n"
-"    font: 75 10pt \"Arial\";\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"QLabel:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"")
-        self.label_hora_de_salida.setScaledContents(False)
-        self.label_hora_de_salida.setObjectName("label_hora_de_salida")
+        self.verticalLayout_9.addWidget(self.input_hora_de_salida)
+        self.gridLayout.addLayout(self.verticalLayout_9, 1, 1, 1, 1)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.label_motivo_de_retraso = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_motivo_de_retraso.setGeometry(QtCore.QRect(40, 190, 111, 21))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_motivo_de_retraso.setFont(font)
         self.label_motivo_de_retraso.setStyleSheet("QLabel{\n"
-"    font: 75 10pt \"Arial\";\n"
+"\n"
 "    \n"
 "    color: rgb(80, 80, 80);\n"
 "\n"
 "    border-color: #ffffff;\n"
+"    border:none;\n"
 "\n"
 "\n"
 "}\n"
-"\n"
-"QLabel:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-" \n"
 "")
         self.label_motivo_de_retraso.setScaledContents(False)
         self.label_motivo_de_retraso.setObjectName("label_motivo_de_retraso")
+        self.verticalLayout_6.addWidget(self.label_motivo_de_retraso)
         self.input_motivo_de_retraso = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
         self.input_motivo_de_retraso.setEnabled(True)
-        self.input_motivo_de_retraso.setGeometry(QtCore.QRect(30, 200, 401, 41))
-        self.input_motivo_de_retraso.setStyleSheet("QLineEdit {\n"
-"        background-color: white;\n"
-"        border: 1px solid #e0e0e0;\n"
-"        border-bottom: 2px solid black ;\n"
-"        border-radius:3px;\n"
-"        padding-left: 12px;\n"
-"        font-size: 15px;\n"
-"        padding-top:5px;\n"
-"        \n"
-"    }\n"
+        self.input_motivo_de_retraso.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.input_motivo_de_retraso.setFont(font)
+        self.input_motivo_de_retraso.setStyleSheet("QLineEdit{\n"
 "    \n"
-" \n"
-"    QLineEdit:focus {\n"
-"        border: 2px solid #00648e\n"
-"    }\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
 "\n"
+"}\n"
 "\n"
-"QLineEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-" \n"
-"    \n"
-" \n"
-"")
-        self.input_motivo_de_retraso.setObjectName("input_motivo_de_retraso")
-        self.input_motivo_de_inasistencia = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
-        self.input_motivo_de_inasistencia.setEnabled(True)
-        self.input_motivo_de_inasistencia.setGeometry(QtCore.QRect(30, 270, 401, 41))
-        self.input_motivo_de_inasistencia.setStyleSheet("QLineEdit {\n"
-"        background-color: white;\n"
-"        border: 1px solid #e0e0e0;\n"
-"        border-bottom: 2px solid black ;\n"
-"        border-radius:3px;\n"
-"        padding-left: 12px;\n"
-"        font-size: 15px;\n"
-"        padding-top:5px;\n"
-"        \n"
-"    }\n"
-"    \n"
-" \n"
-"    QLineEdit:focus {\n"
-"        border: 2px solid #00648e\n"
-"    }\n"
-"    \n"
-"QLineEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-" \n"
-"")
-        self.input_motivo_de_inasistencia.setText("")
-        self.input_motivo_de_inasistencia.setObjectName("input_motivo_de_inasistencia")
-        self.label_motivo_de_inasistencia = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_motivo_de_inasistencia.setEnabled(True)
-        self.label_motivo_de_inasistencia.setGeometry(QtCore.QRect(40, 260, 151, 21))
-        self.label_motivo_de_inasistencia.setStyleSheet("QLabel{\n"
-"    font: 75 10pt \"Arial\";\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
+"QLineEdit:focus{\n"
 "\n"
-"    border-color: #ffffff;\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
 "\n"
 "\n"
 "}\n"
 "\n"
-"QLabel:disabled {\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit:disabled {\n"
 "        background-color:rgb(189, 189, 189);\n"
 "        color: #808080;\n"
 "        border: 1px solid rgb(127, 127, 127);\n"
 "    }\n"
 " ")
+        self.input_motivo_de_retraso.setText("")
+        self.input_motivo_de_retraso.setObjectName("input_motivo_de_retraso")
+        self.verticalLayout_6.addWidget(self.input_motivo_de_retraso)
+        self.gridLayout.addLayout(self.verticalLayout_6, 2, 0, 1, 2)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.label_motivo_de_inasistencia = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        self.label_motivo_de_inasistencia.setEnabled(True)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_motivo_de_inasistencia.setFont(font)
+        self.label_motivo_de_inasistencia.setStyleSheet("QLabel{\n"
+"\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
         self.label_motivo_de_inasistencia.setScaledContents(False)
         self.label_motivo_de_inasistencia.setObjectName("label_motivo_de_inasistencia")
-        self.boton_de_suministrar.raise_()
-        self.input_cedula_empleado.raise_()
-        self.label_cedula_empleado.raise_()
-        self.estado_de_asistencia.raise_()
-        self.input_hora_de_llegada.raise_()
-        self.label_hora_de_llegada.raise_()
-        self.input_hora_de_salida.raise_()
-        self.label_hora_de_salida.raise_()
-        self.input_motivo_de_retraso.raise_()
-        self.label_motivo_de_retraso.raise_()
-        self.input_motivo_de_inasistencia.raise_()
-        self.label_motivo_de_inasistencia.raise_()
-        self.verticalLayout_3.addWidget(self.espacio_para_el_formulario)
-        self.horizontalLayout_2.addWidget(self.sombra, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.verticalLayout_7.addWidget(self.label_motivo_de_inasistencia)
+        self.input_motivo_de_inasistencia = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
+        self.input_motivo_de_inasistencia.setEnabled(True)
+        self.input_motivo_de_inasistencia.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.input_motivo_de_inasistencia.setFont(font)
+        self.input_motivo_de_inasistencia.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit:disabled {\n"
+"        background-color:rgb(189, 189, 189);\n"
+"        color: #808080;\n"
+"        border: 1px solid rgb(127, 127, 127);\n"
+"    }\n"
+" ")
+        self.input_motivo_de_inasistencia.setText("")
+        self.input_motivo_de_inasistencia.setObjectName("input_motivo_de_inasistencia")
+        self.verticalLayout_7.addWidget(self.input_motivo_de_inasistencia)
+        self.gridLayout.addLayout(self.verticalLayout_7, 3, 0, 1, 2)
+        self.boton_de_suministrar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
+        self.boton_de_suministrar.setMinimumSize(QtCore.QSize(120, 40))
+        self.boton_de_suministrar.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_de_suministrar.setFont(font)
+        self.boton_de_suministrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_de_suministrar.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: rgb(0, 183, 72);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        self.boton_de_suministrar.setObjectName("boton_de_suministrar")
+        self.gridLayout.addWidget(self.boton_de_suministrar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
+        self.gridLayout.setRowMinimumHeight(4, 60)
+        self.gridLayout.setColumnStretch(0, 10)
+        self.gridLayout.setColumnStretch(1, 10)
+        self.gridLayout.setRowStretch(0, 30)
+        self.gridLayout.setRowStretch(1, 30)
+        self.gridLayout.setRowStretch(2, 30)
+        self.gridLayout.setRowStretch(3, 30)
+        self.gridLayout.setRowStretch(4, 30)
+        self.horizontalLayout_2.addWidget(self.espacio_para_el_formulario, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
+        self.lista_asistencia = QtWidgets.QListWidget(self.espacio_para_tabla_empleados)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lista_asistencia.sizePolicy().hasHeightForWidth())
+        self.lista_asistencia.setSizePolicy(sizePolicy)
+        self.lista_asistencia.setMinimumSize(QtCore.QSize(450, 0))
+        self.lista_asistencia.setMaximumSize(QtCore.QSize(400, 500))
+        self.lista_asistencia.setStyleSheet("QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    border-radius:0px;\n"
+"    background:#ffffff;\n"
+"\n"
+"}")
+        self.lista_asistencia.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.lista_asistencia.setObjectName("lista_asistencia")
+        self.horizontalLayout_2.addWidget(self.lista_asistencia, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_5.addWidget(self.espacio_para_tabla_empleados)
         self.verticalLayout_4.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.scrollAreaWidgetContents_2)
@@ -481,17 +576,17 @@ class Ui_PantallaControlDeLlegada(object):
         PantallaControlDeLlegada.setWindowTitle(_translate("PantallaControlDeLlegada", "Form"))
         self.label_control_de_llegada.setText(_translate("PantallaControlDeLlegada", "Control de llegada"))
         self.label_fecha_actual.setText(_translate("PantallaControlDeLlegada", "Fecha actual"))
-        self.boton_de_suministrar.setText(_translate("PantallaControlDeLlegada", "Suministrar"))
+        self.label_cedula_empleado.setText(_translate("PantallaControlDeLlegada", "Cédula del empleado"))
         self.input_cedula_empleado.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
-        self.label_cedula_empleado.setText(_translate("PantallaControlDeLlegada", " Cédula del empleado "))
         self.estado_de_asistencia.setTitle(_translate("PantallaControlDeLlegada", "Estado de asistencia"))
         self.input_asistente.setText(_translate("PantallaControlDeLlegada", "Asistente"))
         self.input_inasistente.setText(_translate("PantallaControlDeLlegada", "Inasistente"))
-        self.input_hora_de_llegada.setDisplayFormat(_translate("PantallaControlDeLlegada", "HH:mm"))
         self.label_hora_de_llegada.setText(_translate("PantallaControlDeLlegada", " Hora de llegada "))
-        self.input_hora_de_salida.setDisplayFormat(_translate("PantallaControlDeLlegada", "HH:mm"))
+        self.input_hora_de_llegada.setDisplayFormat(_translate("PantallaControlDeLlegada", "HH:mm"))
         self.label_hora_de_salida.setText(_translate("PantallaControlDeLlegada", " Hora de salida "))
+        self.input_hora_de_salida.setDisplayFormat(_translate("PantallaControlDeLlegada", "HH:mm"))
         self.label_motivo_de_retraso.setText(_translate("PantallaControlDeLlegada", " Motivo del retraso "))
         self.input_motivo_de_retraso.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
-        self.input_motivo_de_inasistencia.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
         self.label_motivo_de_inasistencia.setText(_translate("PantallaControlDeLlegada", " Motivo de la inasistencia "))
+        self.input_motivo_de_inasistencia.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
+        self.boton_de_suministrar.setText(_translate("PantallaControlDeLlegada", "Suministrar"))
