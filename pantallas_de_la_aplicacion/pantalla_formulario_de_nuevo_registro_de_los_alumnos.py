@@ -514,9 +514,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 
                 
-                if self.input_medicacion.text():
+                if self.input_medicacion.text().strip():
                     
-                    medicacion = self.input_medicacion.text()
+                    medicacion = self.input_medicacion.text().strip()
                     
                 else: 
                     
@@ -526,7 +526,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 
                 
-                if  self.input_observacion_adicional.text():
+                if  self.input_observacion_adicional.text().strip():
                     
                     observacion_adicional = self.input_observacion_adicional.text().strip()
                     
@@ -574,12 +574,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     # agregamos todos los elementos a la lista
                     lista_diagnostico.append(diagnostico_id)
                     lista_diagnostico.append(self.boton_diagnostico.currentText())
-                    lista_diagnostico.append(self.input_medico_tratante.text())
+                    lista_diagnostico.append(medico_tratante)
                     lista_diagnostico.append(fecha_diagnostico)
                     lista_diagnostico.append(fecha_vencimiento_certif)
-                    lista_diagnostico.append(self.input_medicacion.text())
-                    lista_diagnostico.append(self.input_certificado_discapacidad.text().strip())
-                    lista_diagnostico.append(self.input_observacion_adicional.text().strip())
+                    lista_diagnostico.append(medicacion)
+                    lista_diagnostico.append(certificacion_discap)
+                    lista_diagnostico.append(observacion_adicional)
                     
                     
                     # usamos el metodo para que se vea en la vista previa de cuantos
@@ -587,6 +587,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_diagnostico_regitrados, self.boton_diagnostico, lista_diagnostico[1])
                     
                     lista_diagnostico = tuple(lista_diagnostico)
+                    
+                    
                     
                     self.lista_diagnostico_regitrados.append(lista_diagnostico)
                     
