@@ -237,11 +237,9 @@ class MainWindow(QMainWindow):
         self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 12
         
         
-
-
         self.stacked_widget.setCurrentIndex(0)
         
-
+        
         self.msg = QMessageBox()
         self.msg.setWindowTitle("Error de inicio de sesión")
         self.msg.setText("")
