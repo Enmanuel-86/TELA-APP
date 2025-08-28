@@ -39,7 +39,14 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         self.stacked_widget = stacked_widget
         self.setupUi(self)
+        
+        # variable para contar las asistencias
+        self.contador_de_asistencias = 0
+        
+        # Label que muestra el conteo de asistencias
+        self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
 
+        # lista para almacenar los empleados que se van agregando a la lista de asistencias
         self.lista_de_asistencias = []
 
         self.lista_qlineedits = [self.input_cedula_empleado, self.input_motivo_de_retraso, self.input_motivo_de_inasistencia]
@@ -67,7 +74,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         self.input_asistente.toggled.connect(self.cuando_asiste_el_personal)
         self.input_inasistente.toggled.connect(self.cuando_no_asiste_el_personal)
-        self.boton_de_suministrar.clicked.connect(self.suministrar_info)
+        self.boton_agregar.clicked.connect(self.agregar_info)
         
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
 
@@ -142,90 +149,105 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
     
     
-    # Metodo para suministrar la informacion a la lista de asistencias
-    def suministrar_info(self):
+    # Metodo para agregar la informacion a la lista de asistencias
+    def agregar_info(self):
         
-        
-        empleado_n = []
-        
-        cedula = self.input_cedula_empleado.text().strip()
-        empleado_id = self.buscar_id_empleado(cedula)
-        
-        empleado = empleado_servicio.obtener_empleado_por_id(empleado_id)
-        
-        
-        
-        # la lista se compone de: id_empleado, fecha_asistencia, hora_entrada, hora_salida,
-        # estado_asistencia, motivo_retraso, motivo_inasistencia, nombre y apellido del empleado 
-        # (estas ultimas son para mostrar nada mas)
-        
-        # 0) Empleado ID
-        empleado_n.append(empleado_id)
-        
-        # 1) Fecha de asistencia
-        empleado_n.append(dia_de_hoy)
-        
-        # 2) Hora de entrada
-        hora_entrada = self.input_hora_de_llegada.time().toString("HH:mm")
-        empleado_n.append(hora_entrada)
-        
-        # 3) Hora de salida
-        hora_salida = self.input_hora_de_salida.time().toString("HH:mm")
-        empleado_n.append(hora_salida)
-        
-        # 4) Estado de asistencia
-        if self.input_asistente.isChecked():
-            estado_asistencia = "PRESENTE"
-            empleado_n.append(estado_asistencia)
-        
-        elif self.input_inasistente.isChecked():
-            estado_asistencia = "AUSENTE"
-            empleado_n.append(estado_asistencia)
+        try: 
             
+            if self.input_asistente.isChecked() == False and self.input_inasistente.isChecked() == False:
+                
+                QMessageBox.warning(self, "Error", "Por favor, seleccione si el empleado asistió o no.")
+                
+                
+                return
             
-        # 5) Motivo de retraso
-        if self.input_motivo_de_retraso.text().strip():
-            motivo_retraso = self.input_motivo_de_retraso.text().strip()
-            empleado_n.append(motivo_retraso)
-        else:
-            empleado_n.append(None)
-            
-            
-        # 6) Motivo de inasistencia
-        if self.input_motivo_de_inasistencia.text().strip():
-            motivo_inasistencia = self.input_motivo_de_inasistencia.text().strip()
-            empleado_n.append(motivo_inasistencia)
-        else:
-            empleado_n.append(None)
-        
-        # 7) cedula
-        empleado_n.append(cedula)
-        
-        #8) nombre
-        empleado_n.append(empleado[1])
-        
-        #9) apellido
-        empleado_n.append(empleado[3])
-        
-        
-        
-        texto_a_mostrar = f"{empleado_n[7]} - {empleado_n[8]} {empleado_n[9]}"
-        
-        
-        empleado_n = tuple(empleado_n)
-        
-        self.lista_de_asistencias.append(empleado_n)
-        print(empleado_n)
-        
-        # Agregamos los elementos al "carrito"
-        self.agg_empleado_a_lista(self.lista_asistencia, self.lista_de_asistencias, self.input_cedula_empleado, texto_a_mostrar)
-        
-        
-        
-        # Limpiamos los inputs
-        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+            else:
+                empleado_n = []
+                
+                cedula = self.input_cedula_empleado.text().strip()
+                empleado_id = self.buscar_id_empleado(cedula)
+                
+                empleado = empleado_servicio.obtener_empleado_por_id(empleado_id)
+                
+                
+                
+                # la lista se compone de: id_empleado, fecha_asistencia, hora_entrada, hora_salida,
+                # estado_asistencia, motivo_retraso, motivo_inasistencia, nombre y apellido del empleado 
+                # (estas ultimas son para mostrar nada mas)
+                
+                # 0) Empleado ID
+                empleado_n.append(empleado_id)
+                
+                # 1) Fecha de asistencia
+                empleado_n.append(dia_de_hoy)
+                
+                # 2) Hora de entrada
+                hora_entrada = self.input_hora_de_llegada.time().toString("HH:mm")
+                empleado_n.append(hora_entrada)
+                
+                # 3) Hora de salida
+                hora_salida = self.input_hora_de_salida.time().toString("HH:mm")
+                empleado_n.append(hora_salida)
+                
+                # 4) Estado de asistencia
+                if self.input_asistente.isChecked():
+                    estado_asistencia = "PRESENTE"
+                    empleado_n.append(estado_asistencia)
+                
+                elif self.input_inasistente.isChecked():
+                    estado_asistencia = "AUSENTE"
+                    empleado_n.append(estado_asistencia)
+                    
+                    
+                # 5) Motivo de retraso
+                if self.input_motivo_de_retraso.text().strip():
+                    motivo_retraso = self.input_motivo_de_retraso.text().strip()
+                    empleado_n.append(motivo_retraso)
+                else:
+                    empleado_n.append(None)
+                    
+                    
+                # 6) Motivo de inasistencia
+                if self.input_motivo_de_inasistencia.text().strip():
+                    motivo_inasistencia = self.input_motivo_de_inasistencia.text().strip()
+                    empleado_n.append(motivo_inasistencia)
+                else:
+                    empleado_n.append(None)
+                
+                # 7) cedula
+                empleado_n.append(cedula)
+                
+                #8) nombre
+                empleado_n.append(empleado[1])
+                
+                #9) apellido
+                empleado_n.append(empleado[3])
+                
+                
+                # el texto que quiero mostrar en la lista de asistencias es : Cedula - Nombre Apellido
+                texto_a_mostrar = f"{empleado_n[7]} - {empleado_n[8]} {empleado_n[9]}"
+                
+                
+                empleado_n = tuple(empleado_n)
+                
+                self.lista_de_asistencias.append(empleado_n)
+                print(empleado_n)
+                
+                # Agregamos los elementos al "carrito"
+                self.agg_empleado_a_lista(self.lista_asistencia, self.lista_de_asistencias, self.input_cedula_empleado, texto_a_mostrar)
+                
+                self.contador_de_asistencias += 1
+                self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                
+                # Limpiamos los inputs
+                self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
 
-
+        except Exception as e:
+            print(f"Error al agregar la informacion: {e}")
+            
+            
+            
+            
     
     # Metodo "carrito" para agregar a los empleados a la lista de asistencia
     def agg_empleado_a_lista(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
@@ -252,7 +274,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                                     
                                     background:#b5ffb0;
                                     font-family: 'Arial';
-                                    font-size: 14pt;
+                                    font-weight: bold;
+                                    font-size: 10pt;
                                     padding-left:5px;
                                     
                                     
@@ -260,6 +283,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                                 
                                 """)
             row_layout.addWidget(label)
+            
+            
         
         elif self.input_inasistente.isChecked():
             
@@ -270,8 +295,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                                     
                                     background:#ffacac;
                                     font-family: 'Arial';
-                                    font-size: 14pt;
+                                    font-weight: bold;
+                                    font-size: 10pt;
                                     padding-left:5px;
+                                    
                                     
                                     
                                 }
@@ -283,12 +310,12 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         delete_button = QPushButton()
         delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
         delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        delete_button.setFixedSize(40,40)
+        delete_button.setFixedSize(35,35)
         delete_button.setStyleSheet("""
                                     
                                     QPushButton{
                                         background:red;
-                                        border-radius:20px;
+                                        border-radius:12px;
                                         icon-size:28px;
                                     
                                     }
@@ -327,6 +354,9 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         
         
         enfoca_input.setFocus()
+        
+        self.contador_de_asistencias -= 1
+        self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
         
         
         
