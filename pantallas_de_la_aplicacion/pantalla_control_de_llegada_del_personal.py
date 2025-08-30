@@ -74,6 +74,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
 
 
+
         self.msg_box = QMessageBox(self)
         
         # Crear botones personalizados
