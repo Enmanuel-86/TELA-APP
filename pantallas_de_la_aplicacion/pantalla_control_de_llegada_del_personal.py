@@ -5,7 +5,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
 from elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
-from datetime import datetime
+from datetime import datetime, time
 
 ##################################
 # importaciones de base de datos #
@@ -13,9 +13,11 @@ from datetime import datetime
 
 # Repositorios
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
 
 # Servicios
 from servicios.empleados.empleado_servicio import EmpleadoServicio
+from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
 
 ##################################
 # importaciones de base de datos #
@@ -23,15 +25,17 @@ from servicios.empleados.empleado_servicio import EmpleadoServicio
 
 # Instancia del repositorio
 empleado_repositorio = EmpleadoRepositorio()
+asistetencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
 
 # Instancia del servicio
 empleado_servicio = EmpleadoServicio(empleado_repositorio)
+asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistetencia_empleado_repositorio)
 
 
 
 # Dia actual
 today = datetime.now()
-dia_de_hoy = today.strftime("%Y-%d-%m")
+dia_de_hoy = today.strftime("%Y-%m-%d")
 
 
 
@@ -214,14 +218,18 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 empleado_n.append(empleado_id)
                 
                 # 1) Fecha de asistencia
-                empleado_n.append(dia_de_hoy)
+                dia_actual = self.fecha_de_str_a_date(dia_de_hoy)
+                empleado_n.append(dia_actual)
                 
                 # 2) Hora de entrada
-                hora_entrada = self.input_hora_de_llegada.time().toString("HH:mm")
+                
+                
+                hora_entrada = self.de_str_a_time(self.input_hora_de_llegada.text().strip())
+
                 empleado_n.append(hora_entrada)
                 
                 # 3) Hora de salida
-                hora_salida = self.input_hora_de_salida.time().toString("HH:mm")
+                hora_salida = self.de_str_a_time(self.input_hora_de_salida.text().strip())
                 empleado_n.append(hora_salida)
                 
                 # 4) Estado de asistencia
@@ -283,7 +291,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                         
                         self.eliminar_empleado_de_lista(empleado)
                         
-                        
+                        print(empleado_n)
                         # si no esta los agrega a la lista de asistencia
                         self.lista_de_asistencias.append(empleado_n)
                         
@@ -662,11 +670,95 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         
         
-"""
-
-Esto no se borra, lo usare luego
-
-
-
-
-"""
+    # Metodo para suministrar las asistencias a la base de datos
+    def suministrar_asistencias(self):
+        
+        # Indice solo para ver el numero de iteraciones
+        indice = 0
+        
+        
+        
+        # Iteramos cada empleado que esta en la lista de asistencia
+        for empleado in self.lista_de_asistencias:
+            
+            # esto es para ver en la consola
+            print(f"Empleado {indice} ID:{empleado[0]} Nombre:{empleado[7]}")
+            indice += 1
+            
+            
+            # la lista se compone de: id_empleado, fecha_asistencia, hora_entrada, hora_salida,
+                # estado_asistencia, motivo_retraso, motivo_inasistencia, nombre y apellido del empleado 
+                # (estas ultimas son para mostrar nada mas)
+                
+                
+            empleado_id = empleado[0]
+            
+            fecha_asistencia = empleado[1]
+            
+            hora_entrada = empleado[2]
+            
+            hora_salida = empleado[3]
+            
+            estado_asistencia = empleado[4]
+            
+            motivo_retraso = empleado[5]
+            
+            motivo_inasistencia = empleado[6]
+            
+            
+            
+            
+            campos_asistencia_empleados = {
+                        "empleado_id": empleado_id,
+                        "fecha_asistencia": fecha_asistencia,
+                        "hora_entrada": hora_entrada,
+                        "hora_salida": hora_salida,
+                        "estado_asistencia": estado_asistencia,
+                        "motivo_retraso": motivo_retraso,
+                        "motivo_inasistencia": motivo_inasistencia
+                    }
+            
+            errores_totales = asistencia_empleado_servicio.validar_asistencia_empleado(
+                                campos_asistencia_empleados.get("empleado_id"), 
+                                campos_asistencia_empleados.get("fecha_asistencia"),
+                                campos_asistencia_empleados.get("estado_asistencia"),
+                                campos_asistencia_empleados.get("motivo_retraso"),
+                                campos_asistencia_empleados.get("motivo_inasistencia")
+                                )
+            
+            
+            if errores_totales:
+                print("\n".join(errores_totales))
+                return
+            else:
+                print("Registro de la asistencia exitoso")
+                
+                
+                
+                                    
+    # Metodo para colocar la hora que esta en tipo string a time
+    def de_str_a_time(self, acomodar_hora):
+        
+        try:
+            
+            horas, minutos = map(int, acomodar_hora.split(':'))
+        
+            hora_arreglada= time(horas, minutos)  # segundos=0 por defecto
+            
+            return hora_arreglada
+            
+        except Exception as e:
+            print(f"algo salio mal {e}")
+            
+            
+    # Metodo para agregar elementos a la vista previa de los diagnosticos
+    def fecha_de_str_a_date(self, fecha_string):
+        
+        # Convertir el string a objeto date
+        try:
+            fecha_date = datetime.strptime(fecha_string, "%Y-%m-%d").date()
+            
+            return fecha_date
+            #print(type(fecha_nacimiento))
+        except ValueError as e:
+            print(f"Error al convertir la fecha: {e}")
