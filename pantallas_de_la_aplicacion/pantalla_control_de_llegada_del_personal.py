@@ -33,6 +33,8 @@ empleado_servicio = EmpleadoServicio(empleado_repositorio)
 today = datetime.now()
 dia_de_hoy = today.strftime("%Y-%d-%m")
 
+
+
 class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     def __init__(self, stacked_widget):
         super().__init__()
@@ -48,6 +50,15 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         # lista para almacenar los empleados que se van agregando a la lista de asistencias
         self.lista_de_asistencias = []
+        
+        # lista de empleados actuales en la bd
+        self.lista_empleados_actual = []
+        
+        # esta lista guardara los empleados que se agreguen a la lista de asistencias
+        self.lista_agregados = []
+        
+        # esto es para el metodo de agregar al empleado a la lista 
+        self.indice = 0
 
         self.lista_qlineedits = [self.input_cedula_empleado, self.input_motivo_de_retraso, self.input_motivo_de_inasistencia]
         self.lista_radiobuttons = [self.input_asistente, self.input_inasistente]
@@ -96,6 +107,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     def actualizar_lista_busqueda(self):
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+        
     
     
     def filtrar_resultados(self, texto):
@@ -143,6 +155,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         cedula = item.text().split(" - ")[0]
         self.input_cedula_empleado.setText(cedula)
         self.resultados.hide()
+        
+        
 
     ########################################################################################################
     ########################################################################################################
@@ -167,9 +181,17 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 cedula = self.input_cedula_empleado.text().strip()
                 empleado_id = self.buscar_id_empleado(cedula)
                 
+                
+                if not any(cedula in empleado[5] for empleado in self.lista_empleados_actual):
+                    
+                    QMessageBox.warning(self, "Error", "La persona ya esta agregada o no existe")
+                    return
+                
+                
                 empleado = empleado_servicio.obtener_empleado_por_id(empleado_id)
                 
                 
+                            
                 
                 # la lista se compone de: id_empleado, fecha_asistencia, hora_entrada, hora_salida,
                 # estado_asistencia, motivo_retraso, motivo_inasistencia, nombre y apellido del empleado 
@@ -230,27 +252,116 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 
                 empleado_n = tuple(empleado_n)
                 
-                self.lista_de_asistencias.append(empleado_n)
-                print(empleado_n)
+                empleado = empleado_servicio.obtener_empleado_por_id(empleado_n[0])
                 
-                # Agregamos los elementos al "carrito"
-                self.agg_empleado_a_lista(self.lista_asistencia, self.lista_de_asistencias, self.input_cedula_empleado, texto_a_mostrar)
+                #print(empleado_n)
                 
+                
+                    
+                
+                
+                
+                if not len(self.lista_de_asistencias) > 0:
+                
+                    # Agregamos los elementos al "carrito"
+                    if not empleado_n in self.lista_de_asistencias:
+                        
+                        
+                        
+                        self.eliminar_empleado_de_lista(empleado)
+                        
+                        
+                        # si no esta los agrega a la lista de asistencia
+                        self.lista_de_asistencias.append(empleado_n)
+                        
+                        
+                        # lo agrega al "carrito"
+                        self.agg_empleado_a_lista(self.lista_asistencia, self.lista_de_asistencias, self.input_cedula_empleado, texto_a_mostrar)
+
+                        # Limpiamos los inputs
+                        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                        
+                        
+                        
+                        
+                        
+                    
+                    else:
+                        
+                        QMessageBox.warning(self, "Error", "Persona ya agregada")
+                        # Limpiamos los inputs
+                        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                        
+                        return
+                    
+                else:
+                    
+                    # Agregamos los elementos al "carrito"
+                    if not empleado_n[7] in self.lista_de_asistencias[self.indice][7] or not empleado_n[7] == self.lista_de_asistencias[self.indice][7]:
+                        
+                        # si no esta los agrega a la lista de asistencia
+                        self.lista_de_asistencias.append(empleado_n)
+                        
+                        
+                        self.eliminar_empleado_de_lista(empleado)
+                        
+                        # lo agrega al "carrito"
+                        self.agg_empleado_a_lista(self.lista_asistencia, self.lista_de_asistencias, self.input_cedula_empleado, texto_a_mostrar)
+
+                        # Limpiamos los inputs
+                        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                        
+                        # y le sumamos uno al indice para saber la posicion actual
+                        self.indice += 1
+                        
+                    
+                    else:
+                        
+                        QMessageBox.warning(self, "Error", "Persona ya agregada")
+                        # Limpiamos los inputs
+                        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                        
+                        return
+                    
+                    
+                    
+                
+                    
+                
+                # esto es para actualizar cuantas personas hay 
                 self.contador_de_asistencias += 1
                 self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
                 
-                # Limpiamos los inputs
-                self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                
 
         except Exception as e:
             print(f"Error al agregar la informacion: {e}")
             
+            
+    # Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
+    # esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
+    # empleado que ya fue agregado a la lista de asistencias
+    def eliminar_empleado_de_lista(self, empleado):
+        
+        if empleado in self.lista_empleados_actual:
+                            
+            self.lista_agregados.append(empleado)
+            
+            self.lista_empleados_actual.remove(empleado)
+            
+    
+    # Metodo para restaurar al empleado a la lista de empleados actuales
+    # esto es lo contrario del metodo elminar_empleado_de_lista
+    def restaurar_empleado_a_lista(self, empleado):
+            pass
             
             
             
     
     # Metodo "carrito" para agregar a los empleados a la lista de asistencia
     def agg_empleado_a_lista(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
+        
+        
         
         # Crear un QListWidgetItem
         item = QListWidgetItem()
@@ -336,6 +447,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         # Asignar el widget al QListWidgetItem
         item.setSizeHint(widget.sizeHint())
         nombre_qlistwidget.setItemWidget(item, widget)
+        
+        
 
     
     def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item):
@@ -348,19 +461,27 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         
         # borramos el elemento de la lista segun el indice del listwidget
         del nombre_lista[indice_vista_previa]
+        self.indice -= 1
         
         # darle foco al input del segmento
         # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
-        
-        
         enfoca_input.setFocus()
         
+        if not self.lista_agregados[indice_vista_previa] in self.lista_empleados_actual:
+            
+            empleado_restaurar = self.lista_agregados[indice_vista_previa]
+            
+            self.lista_empleados_actual.append(empleado_restaurar)
+            
+            self.lista_agregados.remove(empleado_restaurar)
+        
+        
+        # actualizar el contador de asistencias
         self.contador_de_asistencias -= 1
         self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
         
         
-        
-        
+    
         
         
         ##########################################################################
@@ -453,6 +574,12 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 # Limpiamos la lista de asistencias
                 self.lista_asistencia.clear()
                 
+                self.lista_de_asistencias.clear()
+                
+                self.lista_agregados.clear()
+                
+                self.actualizar_lista_busqueda()
+                
                 self.stacked_widget.setCurrentIndex(2)
                 
                 
@@ -467,7 +594,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     
 
 
-    # Metodo para buscar al empleado por su id
+    # Metodo para buscar el id del empleado 
     def buscar_id_empleado(self, cedula):
         
         for empleado in self.lista_empleados_actual:
