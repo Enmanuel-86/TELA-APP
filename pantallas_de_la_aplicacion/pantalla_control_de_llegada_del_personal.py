@@ -732,7 +732,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 
                 return
             else:
-                #hola
+                
                 print("Registro de la asistencia exitoso")
                 
                 
