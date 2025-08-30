@@ -67,6 +67,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         
         # Ruta relativa de las imagenes ##
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
+        self.boton_limpiar_lista.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","brocha.png")))
+        self.boton_agregar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+        self.boton_suministrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","exportar.png")))
+
 
 
 
@@ -86,6 +90,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.input_asistente.toggled.connect(self.cuando_asiste_el_personal)
         self.input_inasistente.toggled.connect(self.cuando_no_asiste_el_personal)
         self.boton_agregar.clicked.connect(self.agregar_info)
+        self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias)
         
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
 
@@ -116,6 +121,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         if not texto:
             self.resultados.hide()
+            self.label_nombre_empleado_guia.clear()
             return
         
     
@@ -131,6 +137,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
         for persona in coincidencias:
             item = f'{persona[5]} - {persona[1]} {persona[3]}'
+            
+            global nombre_guia
+            nombre_guia = f" {persona[1].capitalize()} {persona[3].capitalize()}"
+            
             self.resultados.addItem(QListWidgetItem(item))
 
         # Ocultar si hay una coincidencia exacta por cédula
@@ -138,6 +148,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             self.resultados.hide()
         else:
             self.mostrar_lista()
+            self.label_nombre_empleado_guia.clear()
 
 
 
@@ -154,6 +165,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     def seleccionar_item(self, item):
         cedula = item.text().split(" - ")[0]
         self.input_cedula_empleado.setText(cedula)
+        self.label_nombre_empleado_guia.setText(nombre_guia)
         self.resultados.hide()
         
         
@@ -349,11 +361,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
             self.lista_empleados_actual.remove(empleado)
             
-    
-    # Metodo para restaurar al empleado a la lista de empleados actuales
-    # esto es lo contrario del metodo elminar_empleado_de_lista
-    def restaurar_empleado_a_lista(self, empleado):
-            pass
+
             
             
             
@@ -569,9 +577,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
 
             try: 
                 
+                # Limpiamos los inputs
                 self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
                 
-                # Limpiamos la lista de asistencias
+                # Limpiamos las lista de asistencias
                 self.lista_asistencia.clear()
                 
                 self.lista_de_asistencias.clear()
@@ -580,11 +589,17 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 
                 self.actualizar_lista_busqueda()
                 
+                
+                self.indice = 0
+                self.contador_de_asistencias = 0
+                self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                
+                # nos devolvemos a la pantalla anterior
                 self.stacked_widget.setCurrentIndex(2)
                 
                 
             except Exception as e:
-                print(f"Error al limpiar los inputs: {e}")
+                print(f"Error al salir en esta pantalla: {e}")
             
 
         elif self.msg_box.clickedButton() == self.boton_no:
@@ -611,12 +626,12 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 
                 pass
 
-"""
 
-Esto no se borra, lo usare luego
-
-self.msg_box.setWindowTitle("Confirmar información")
-        self.msg_box.setText("¿Seguro que quiere registrar?")
+    # Metodo para limpiar la lista de asistencias con el boton limpiar lista
+    def limpiar_lista_de_asistencias(self):
+        
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText("¿Seguro que quiere borrar la lista y empezar de nuevo?")
         QApplication.beep()
         self.msg_box.exec_()
 
@@ -625,11 +640,30 @@ self.msg_box.setWindowTitle("Confirmar información")
         if self.msg_box.clickedButton() == self.boton_si:
             
 
-            pass
+            # Limpiamos las listas y los contadores
+            self.lista_asistencia.clear()
+            self.lista_de_asistencias.clear()
+            self.lista_agregados.clear()
+            self.indice = 0
+            self.contador_de_asistencias = 0
+            
+            # restablecemos el contador de asistencias
+            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+            
+            # restablecemos la lista de empleados actuales de la bd
+            self.actualizar_lista_busqueda()
+
         
 
         elif self.msg_box.clickedButton() == self.boton_no:
             pass
+
+
+        
+        
+"""
+
+Esto no se borra, lo usare luego
 
 
 

@@ -448,6 +448,33 @@ QPushButton:hover{
                    </widget>
                   </item>
                   <item>
+                   <widget class="QLabel" name="label_nombre_empleado_guia">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>10</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>15</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border:none;</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QLineEdit" name="input_cedula_empleado">
                     <property name="minimumSize">
                      <size>
@@ -1032,13 +1059,13 @@ QPushButton:hover{
 
 </string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_11">
+               <layout class="QVBoxLayout" name="verticalLayout_10">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_10">
-                  <property name="spacing">
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <property name="verticalSpacing">
                    <number>0</number>
                   </property>
-                  <item alignment="Qt::AlignTop">
+                  <item row="0" column="0">
                    <widget class="QLabel" name="label_titulo_asistencia">
                     <property name="minimumSize">
                      <size>
@@ -1082,7 +1109,63 @@ QPushButton:hover{
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignBottom">
+                   <widget class="QPushButton" name="boton_limpiar_lista">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>10</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>400</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>9</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+
+	background-color: rgb(85, 85, 255);
+	
+	color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(34, 26, 143);
+
+}</string>
+                    </property>
+                    <property name="text">
+                     <string comment="hola" extracomment="sd">Limpiar lista</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>../recursos_de_imagenes/iconos_de_interfaz/brocha.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/brocha.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="2">
                    <widget class="QListWidget" name="lista_asistencia">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
