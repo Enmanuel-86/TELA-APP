@@ -729,8 +729,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
             if errores_totales:
                 print("\n".join(errores_totales))
+                
                 return
             else:
+                #hola
                 print("Registro de la asistencia exitoso")
                 
                 
