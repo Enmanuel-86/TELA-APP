@@ -6,7 +6,7 @@ from PyQt5 import QtGui, QtCore
 import os
 from elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
 from datetime import datetime, time
-
+hola
 ##################################
 # importaciones de base de datos #
 ##################################
