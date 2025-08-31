@@ -96,6 +96,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.input_inasistente.toggled.connect(self.cuando_no_asiste_el_personal)
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias)
+        self.boton_suministrar.clicked.connect(self.suministrar_asistencias)
         
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
 
@@ -224,12 +225,12 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 # 2) Hora de entrada
                 
                 
-                hora_entrada = self.de_str_a_time(self.input_hora_de_llegada.text().strip())
+                hora_entrada = self.de_str_a_time(self.input_hora_de_llegada.time().toString("HH:mm") )
 
                 empleado_n.append(hora_entrada)
                 
                 # 3) Hora de salida
-                hora_salida = self.de_str_a_time(self.input_hora_de_salida.text().strip())
+                hora_salida = self.de_str_a_time(self.input_hora_de_salida.time().toString("HH:mm") )
                 empleado_n.append(hora_salida)
                 
                 # 4) Estado de asistencia
@@ -673,70 +674,100 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
     # Metodo para suministrar las asistencias a la base de datos
     def suministrar_asistencias(self):
         
-        # Indice solo para ver el numero de iteraciones
-        indice = 0
-        
-        
-        
-        # Iteramos cada empleado que esta en la lista de asistencia
-        for empleado in self.lista_de_asistencias:
+        try:
             
-            # esto es para ver en la consola
-            print(f"Empleado {indice} ID:{empleado[0]} Nombre:{empleado[7]}")
-            indice += 1
+             # Indice solo para ver el numero de iteraciones
+            indice = 0
             
             
-            # la lista se compone de: id_empleado, fecha_asistencia, hora_entrada, hora_salida,
-                # estado_asistencia, motivo_retraso, motivo_inasistencia, nombre y apellido del empleado 
-                # (estas ultimas son para mostrar nada mas)
+            self.msg_box.setWindowTitle("Confirmar registro")
+            self.msg_box.setText("¿Seguro que quiere registrar esta lista de asistencia?")
+            self.msg_box.setIcon(QMessageBox.Question)
+            QApplication.beep()
+
+
+
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+
+            if self.msg_box.clickedButton() == self.boton_si:
                 
                 
-            empleado_id = empleado[0]
-            
-            fecha_asistencia = empleado[1]
-            
-            hora_entrada = empleado[2]
-            
-            hora_salida = empleado[3]
-            
-            estado_asistencia = empleado[4]
-            
-            motivo_retraso = empleado[5]
-            
-            motivo_inasistencia = empleado[6]
-            
-            
-            
-            
-            campos_asistencia_empleados = {
-                        "empleado_id": empleado_id,
-                        "fecha_asistencia": fecha_asistencia,
-                        "hora_entrada": hora_entrada,
-                        "hora_salida": hora_salida,
-                        "estado_asistencia": estado_asistencia,
-                        "motivo_retraso": motivo_retraso,
-                        "motivo_inasistencia": motivo_inasistencia
-                    }
-            
-            errores_totales = asistencia_empleado_servicio.validar_asistencia_empleado(
-                                campos_asistencia_empleados.get("empleado_id"), 
-                                campos_asistencia_empleados.get("fecha_asistencia"),
-                                campos_asistencia_empleados.get("estado_asistencia"),
-                                campos_asistencia_empleados.get("motivo_retraso"),
-                                campos_asistencia_empleados.get("motivo_inasistencia")
-                                )
-            
-            
-            if errores_totales:
-                print("\n".join(errores_totales))
+                
+                
+                # Iteramos cada empleado que esta en la lista de asistencia
+                for empleado in self.lista_de_asistencias:
+                    
+                    # esto es para ver en la consola
+                    print(f"Empleado {indice} ID:{empleado[0]} Nombre:{empleado[8]}")
+                    indice += 1
+                    
+                        
+                        
+                    empleado_id = empleado[0]
+                    
+                    fecha_asistencia = empleado[1]
+                    
+                    hora_entrada = empleado[2]
+                    
+                    
+                    hora_salida = empleado[3]
+                    
+                    estado_asistencia = empleado[4]
+                    
+                    motivo_retraso = empleado[5]
+                    
+                    motivo_inasistencia = empleado[6]
+                    
+                    
+                    
+                    
+                    campos_asistencia_empleados = {
+                                "empleado_id": empleado_id,
+                                "fecha_asistencia": fecha_asistencia,
+                                "hora_entrada": hora_entrada,
+                                "hora_salida": hora_salida,
+                                "estado_asistencia": estado_asistencia,
+                                "motivo_retraso": motivo_retraso,
+                                "motivo_inasistencia": motivo_inasistencia
+                            }
+                    
+                    errores_totales = asistencia_empleado_servicio.validar_asistencia_empleado(
+                                        campos_asistencia_empleados.get("empleado_id"), 
+                                        campos_asistencia_empleados.get("fecha_asistencia"),
+                                        campos_asistencia_empleados.get("estado_asistencia"),
+                                        campos_asistencia_empleados.get("motivo_retraso"),
+                                        campos_asistencia_empleados.get("motivo_inasistencia")
+                                        )
+                    
+                    
+                    if errores_totales:
+                        
+                        QMessageBox.information(self, "Error", "Tu registro de asistencia a tenido un error. ")
+                        return
+                    else:
+                        asistencia_empleado_servicio.registrar_asistencia_empleado(campos_asistencia_empleados)
+                        todo_bien = True
+                        
+                        
+                if todo_bien:
+                    
+                    QMessageBox.information(self, "Registro exitoso", "Tu registro de asistencia a sido exitoso 👍. ")
+                    
+                    
+                        
+            elif self.msg_box.clickedButton() == self.boton_no:
                 
                 return
-            else:
-                
-                print("Registro de la asistencia exitoso")
-                
-                
-                
+                    
+                    
+            
+        except Exception as e:
+            
+            print(f"algo malo paso: {e}")
+                                    
+                                    
+                                    
                                     
     # Metodo para colocar la hora que esta en tipo string a time
     def de_str_a_time(self, acomodar_hora):
@@ -751,6 +782,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
         except Exception as e:
             print(f"algo salio mal {e}")
+            
+            
             
             
     # Metodo para agregar elementos a la vista previa de los diagnosticos
