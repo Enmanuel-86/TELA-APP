@@ -79,8 +79,40 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 # 
 ## ¿Como funciona TELA-APP?
 
-***descripción para más tarde*** 
+<ol>
+  <li>
+    <b>Registra Informacion:</b> este sistema registra toda la informacion requerida del taller de educacion laboral anzoategui, registra la informacion de los alumnos y del personal.</li>
+  [insertar imagen relacionada a registrar]
 
+  <li>
+    <b>Consulta la informacion que se registro:</b> se puede consultar toda la informacion que se registro en el sistema.
+    [insertar imagenes de como se consulta ]
+  </li>
+
+  <li>
+    <b>Genera el encabezado de los informes integrales de los alumnos:</b>a partir de los datos registrados se puede generar los encabezado de los informes que se le realizan a los alumnos. (parte actualmente en desarrollo)
+    [insertar imagen de el encabezado pero censurado]
+  </li>
+
+  <li>
+    <b>Genera reportes de todas las acciones realizadas en el sistema:</b> el sistema genera reportes de todos las       acciones realizadas para ver quien hizo tal cosa.
+    [insertar imagen de ese reporte]
+    este reporte solo lo puede generar y ver el usuario con rol administrador 
+    
+  </li>
+
+
+  <li>
+    <b>Genera respaldos:</b>el sistema genera respaldos para resguardar la informacion y de exportar en caso de  instalar el sistema en otro equipo.
+    [insertar imagen de la pantalla de respaldo]
+  
+  </li>  
+
+  
+</ol>
+
+
+### mas descripcion para luego ###
 
 
 
