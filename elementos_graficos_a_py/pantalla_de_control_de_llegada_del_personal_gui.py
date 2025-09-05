@@ -25,7 +25,7 @@ class Ui_PantallaControlDeLlegada(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1120, 687))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 1120, 700))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -162,11 +162,18 @@ class Ui_PantallaControlDeLlegada(object):
         self.horizontalLayout.addWidget(self.espacio_b)
         self.verticalLayout_5.addWidget(self.espacio_superior)
         self.espacio_para_tabla_empleados = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.espacio_para_tabla_empleados.sizePolicy().hasHeightForWidth())
+        self.espacio_para_tabla_empleados.setSizePolicy(sizePolicy)
         self.espacio_para_tabla_empleados.setStyleSheet("background:none ; ")
         self.espacio_para_tabla_empleados.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_para_tabla_empleados.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_tabla_empleados.setObjectName("espacio_para_tabla_empleados")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.espacio_para_tabla_empleados)
+        self.horizontalLayout_2.setContentsMargins(50, -1, -1, -1)
+        self.horizontalLayout_2.setSpacing(50)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.espacio_para_el_formulario = QtWidgets.QFrame(self.espacio_para_tabla_empleados)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -211,6 +218,16 @@ class Ui_PantallaControlDeLlegada(object):
         self.label_cedula_empleado.setScaledContents(False)
         self.label_cedula_empleado.setObjectName("label_cedula_empleado")
         self.verticalLayout_3.addWidget(self.label_cedula_empleado)
+        self.label_nombre_empleado_guia = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        self.label_nombre_empleado_guia.setMinimumSize(QtCore.QSize(0, 10))
+        self.label_nombre_empleado_guia.setMaximumSize(QtCore.QSize(16777215, 15))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.label_nombre_empleado_guia.setFont(font)
+        self.label_nombre_empleado_guia.setStyleSheet("border:none;")
+        self.label_nombre_empleado_guia.setText("")
+        self.label_nombre_empleado_guia.setObjectName("label_nombre_empleado_guia")
+        self.verticalLayout_3.addWidget(self.label_nombre_empleado_guia)
         self.input_cedula_empleado = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
         self.input_cedula_empleado.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
@@ -510,17 +527,17 @@ class Ui_PantallaControlDeLlegada(object):
         self.input_motivo_de_inasistencia.setObjectName("input_motivo_de_inasistencia")
         self.verticalLayout_7.addWidget(self.input_motivo_de_inasistencia)
         self.gridLayout.addLayout(self.verticalLayout_7, 3, 0, 1, 2)
-        self.boton_de_suministrar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
-        self.boton_de_suministrar.setMinimumSize(QtCore.QSize(120, 40))
-        self.boton_de_suministrar.setMaximumSize(QtCore.QSize(120, 40))
+        self.boton_agregar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
+        self.boton_agregar.setMinimumSize(QtCore.QSize(120, 40))
+        self.boton_agregar.setMaximumSize(QtCore.QSize(120, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(13)
         font.setBold(True)
         font.setWeight(75)
-        self.boton_de_suministrar.setFont(font)
-        self.boton_de_suministrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_suministrar.setStyleSheet("QPushButton{\n"
+        self.boton_agregar.setFont(font)
+        self.boton_agregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_agregar.setStyleSheet("QPushButton{\n"
 "\n"
 "    background-color: rgb(0, 183, 72);\n"
 "    \n"
@@ -535,8 +552,12 @@ class Ui_PantallaControlDeLlegada(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_de_suministrar.setObjectName("boton_de_suministrar")
-        self.gridLayout.addWidget(self.boton_de_suministrar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_agregar.setIcon(icon1)
+        self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
+        self.boton_agregar.setObjectName("boton_agregar")
+        self.gridLayout.addWidget(self.boton_agregar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
         self.gridLayout.setRowMinimumHeight(4, 60)
         self.gridLayout.setColumnStretch(0, 10)
         self.gridLayout.setColumnStretch(1, 10)
@@ -545,15 +566,93 @@ class Ui_PantallaControlDeLlegada(object):
         self.gridLayout.setRowStretch(2, 30)
         self.gridLayout.setRowStretch(3, 30)
         self.gridLayout.setRowStretch(4, 30)
-        self.horizontalLayout_2.addWidget(self.espacio_para_el_formulario, 0, QtCore.Qt.AlignRight|QtCore.Qt.AlignVCenter)
-        self.lista_asistencia = QtWidgets.QListWidget(self.espacio_para_tabla_empleados)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.horizontalLayout_2.addWidget(self.espacio_para_el_formulario, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.espacio_lista_asistencia = QtWidgets.QFrame(self.espacio_para_tabla_empleados)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.espacio_lista_asistencia.setFont(font)
+        self.espacio_lista_asistencia.setStyleSheet("QFrame{\n"
+"\n"
+"    border:none;\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.espacio_lista_asistencia.setObjectName("espacio_lista_asistencia")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.espacio_lista_asistencia)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.gridLayout_2 = QtWidgets.QGridLayout()
+        self.gridLayout_2.setVerticalSpacing(0)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label_titulo_asistencia = QtWidgets.QLabel(self.espacio_lista_asistencia)
+        self.label_titulo_asistencia.setMinimumSize(QtCore.QSize(0, 30))
+        self.label_titulo_asistencia.setMaximumSize(QtCore.QSize(285, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_titulo_asistencia.setFont(font)
+        self.label_titulo_asistencia.setStyleSheet("QLabel{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 112, 21);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    \n"
+"    padding-left:5px;\n"
+"\n"
+"    border:1px solid black;\n"
+"\n"
+"}")
+        self.label_titulo_asistencia.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_titulo_asistencia.setObjectName("label_titulo_asistencia")
+        self.gridLayout_2.addWidget(self.label_titulo_asistencia, 0, 0, 1, 1)
+        self.boton_limpiar_lista = QtWidgets.QPushButton(self.espacio_lista_asistencia)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.boton_limpiar_lista.sizePolicy().hasHeightForWidth())
+        self.boton_limpiar_lista.setSizePolicy(sizePolicy)
+        self.boton_limpiar_lista.setMinimumSize(QtCore.QSize(120, 20))
+        self.boton_limpiar_lista.setMaximumSize(QtCore.QSize(400, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_limpiar_lista.setFont(font)
+        self.boton_limpiar_lista.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_limpiar_lista.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: rgb(85, 85, 255);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(34, 26, 143);\n"
+"\n"
+"}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/brocha.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_limpiar_lista.setIcon(icon2)
+        self.boton_limpiar_lista.setObjectName("boton_limpiar_lista")
+        self.gridLayout_2.addWidget(self.boton_limpiar_lista, 0, 1, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
+        self.lista_asistencia = QtWidgets.QListWidget(self.espacio_lista_asistencia)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.lista_asistencia.sizePolicy().hasHeightForWidth())
         self.lista_asistencia.setSizePolicy(sizePolicy)
-        self.lista_asistencia.setMinimumSize(QtCore.QSize(450, 0))
-        self.lista_asistencia.setMaximumSize(QtCore.QSize(400, 500))
+        self.lista_asistencia.setMinimumSize(QtCore.QSize(450, 480))
+        self.lista_asistencia.setMaximumSize(QtCore.QSize(100, 16777215))
         self.lista_asistencia.setStyleSheet("QListWidget{\n"
 "\n"
 "    border:1px solid black;\n"
@@ -563,8 +662,46 @@ class Ui_PantallaControlDeLlegada(object):
 "}")
         self.lista_asistencia.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.lista_asistencia.setObjectName("lista_asistencia")
-        self.horizontalLayout_2.addWidget(self.lista_asistencia, 0, QtCore.Qt.AlignHCenter)
-        self.verticalLayout_5.addWidget(self.espacio_para_tabla_empleados)
+        self.gridLayout_2.addWidget(self.lista_asistencia, 1, 0, 1, 2)
+        self.verticalLayout_10.addLayout(self.gridLayout_2)
+        self.boton_suministrar = QtWidgets.QPushButton(self.espacio_lista_asistencia)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_suministrar.sizePolicy().hasHeightForWidth())
+        self.boton_suministrar.setSizePolicy(sizePolicy)
+        self.boton_suministrar.setMinimumSize(QtCore.QSize(150, 40))
+        self.boton_suministrar.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_suministrar.setFont(font)
+        self.boton_suministrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_suministrar.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: rgb(0, 183, 72);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/exportar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_suministrar.setIcon(icon3)
+        self.boton_suministrar.setIconSize(QtCore.QSize(26, 26))
+        self.boton_suministrar.setObjectName("boton_suministrar")
+        self.verticalLayout_10.addWidget(self.boton_suministrar, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.espacio_lista_asistencia, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_5.addWidget(self.espacio_para_tabla_empleados, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_4.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.scrollAreaWidgetContents_2)
         self.verticalLayout.addWidget(self.area_de_scroll)
@@ -590,4 +727,7 @@ class Ui_PantallaControlDeLlegada(object):
         self.input_motivo_de_retraso.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
         self.label_motivo_de_inasistencia.setText(_translate("PantallaControlDeLlegada", " Motivo de la inasistencia "))
         self.input_motivo_de_inasistencia.setPlaceholderText(_translate("PantallaControlDeLlegada", "....."))
-        self.boton_de_suministrar.setText(_translate("PantallaControlDeLlegada", "Suministrar"))
+        self.boton_agregar.setText(_translate("PantallaControlDeLlegada", " Agregar"))
+        self.label_titulo_asistencia.setText(_translate("PantallaControlDeLlegada", "Lista de asistencia actual: n personas"))
+        self.boton_limpiar_lista.setText(_translate("PantallaControlDeLlegada", "Limpiar lista", "hola"))
+        self.boton_suministrar.setText(_translate("PantallaControlDeLlegada", "Suministrar"))
