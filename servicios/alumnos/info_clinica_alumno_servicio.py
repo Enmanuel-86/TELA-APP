@@ -181,7 +181,7 @@ if __name__ == "__main__":
     except BaseDatosError as error:
         print(error)"""
     
-    """campos_info_clinica_alumno = {
+    campos_info_clinica_alumno = {
         "diagnostico_id": 1,
         "fecha_diagnostico": date(2008, 5, 13),
         "medico_tratante": "DR. ALEJANDRO",
@@ -204,4 +204,4 @@ if __name__ == "__main__":
     if errores_totales:
         print("\n".join(errores_totales))
     else:
-        print("Se registró la info clínica de alumno con éxito")"""
+        print("Se registró la info clínica de alumno con éxito")

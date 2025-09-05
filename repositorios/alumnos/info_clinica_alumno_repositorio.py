@@ -37,7 +37,8 @@ class InfoClinicaAlumnoRepositorio(RepositorioBase):
                     InfoClinicaAlumno.medico_tratante,
                     InfoClinicaAlumno.certificacion_discap,
                     InfoClinicaAlumno.fecha_vencimiento_certif,
-                    InfoClinicaAlumno.medicacion
+                    InfoClinicaAlumno.medicacion,
+                    InfoClinicaAlumno.observacion_adicional
                 ).join(InfoClinicaAlumno.alumno).join(InfoClinicaAlumno.diagnostico).all()
                 
                 return info_clinica_alumnos
@@ -55,7 +56,8 @@ class InfoClinicaAlumnoRepositorio(RepositorioBase):
                     InfoClinicaAlumno.medico_tratante,
                     InfoClinicaAlumno.certificacion_discap,
                     InfoClinicaAlumno.fecha_vencimiento_certif,
-                    InfoClinicaAlumno.medicacion
+                    InfoClinicaAlumno.medicacion,
+                    InfoClinicaAlumno.observacion_adicional
                 ).join(InfoClinicaAlumno.alumno).join(InfoClinicaAlumno.diagnostico).filter(InfoClinicaAlumno.info_clin_alumno_id == info_clin_alumno_id).first()
                 
                 return info_clinica_alumno
@@ -73,7 +75,8 @@ class InfoClinicaAlumnoRepositorio(RepositorioBase):
                     InfoClinicaAlumno.medico_tratante,
                     InfoClinicaAlumno.certificacion_discap,
                     InfoClinicaAlumno.fecha_vencimiento_certif,
-                    InfoClinicaAlumno.medicacion
+                    InfoClinicaAlumno.medicacion,
+                    InfoClinicaAlumno.observacion_adicional
                 ).join(InfoClinicaAlumno.alumno).join(InfoClinicaAlumno.diagnostico).filter(Alumno.alumno_id == alumno_id).all()
                 
                 return info_clinica_alumno

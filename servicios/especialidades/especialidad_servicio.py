@@ -1,11 +1,12 @@
 from typing import Tuple, List, Optional, Dict
 from excepciones.base_datos_error import BaseDatosError
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
+from repositorios.repositorio_base import RepositorioBase
 
 
 class EspecialidadServicio:
-    def __init__(self, especialidad_repositorio: EspecialidadRepositorio):
-        self.especialidad_repositorio = especialidad_repositorio
+    def __init__(self, repositorio: RepositorioBase):
+        self.repositorio = repositorio
     
     def validar_especialidad(self, especialidad: str) -> List[str]:
         errores = []
@@ -29,23 +30,23 @@ class EspecialidadServicio:
         return errores_totales
     
     def registrar_especialidad(self, campos: Dict) -> None:
-        self.especialidad_repositorio.registrar(campos)
+        self.repositorio.registrar(campos)
     
     def obtener_todos_especialidades(self) -> List[Tuple]:
-        return self.especialidad_repositorio.obtener_todos()
+        return self.repositorio.obtener_todos()
     
     def obtener_especialidad_por_id(self, especialidad_id: int) -> Optional[Tuple]:
         try:
-            return self.especialidad_repositorio.obtener_por_id(especialidad_id)
+            return self.repositorio.obtener_por_id(especialidad_id)
         except BaseDatosError as error:
             raise error
     
     def actualizar_especialidad(self, especialidad_id: int, campos_especialidad: Dict) -> None:
-        self.especialidad_repositorio.actualizar(especialidad_id, campos_especialidad)
+        self.repositorio.actualizar(especialidad_id, campos_especialidad)
     
     def eliminar_especialidad(self, especialidad_id: int) -> None:
         try:
-            self.especialidad_repositorio.eliminar(especialidad_id)
+            self.repositorio.eliminar(especialidad_id)
         except BaseDatosError as error:
             raise error
 

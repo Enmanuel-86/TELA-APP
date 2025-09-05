@@ -15,16 +15,10 @@ class InfoClinicaEmpleadoServicio:
         return self.repositorio.obtener_todos()
     
     def obtener_info_clinica_por_id(self, info_clin_empleado_id: int) -> Optional[Tuple]:
-        try:
-            return self.repositorio.obtener_por_id(info_clin_empleado_id)
-        except BaseDatosError as error:
-            raise error
+        return self.repositorio.obtener_por_id(info_clin_empleado_id)
     
     def obtener_info_clinica_por_empleado_id(self, empleado_id: int) -> List[Tuple]:
-        try:
-            return self.repositorio.obtener_por_empleado_id(empleado_id)
-        except BaseDatosError as error:
-            raise error
+        return self.repositorio.obtener_por_empleado_id(empleado_id)
     
     def actualizar_info_clinica(self, info_clin_empleado_id: int, campos_info_clinica_empleado: Dict) -> None:
         self.repositorio.actualizar(info_clin_empleado_id, campos_info_clinica_empleado)

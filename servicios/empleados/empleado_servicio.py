@@ -43,6 +43,19 @@ class EmpleadoServicio:
         
         return errores
     
+    def validar_tercer_nombre(self, tercer_nombre: str) -> List[str]:
+        errores = []
+        
+        if (tercer_nombre):
+            estructura_tercer_nombre = re.match(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", tercer_nombre)
+            if (not(estructura_tercer_nombre)):
+                errores.append("Tercer nombre: No debe contener números o caracteres especiales.")
+            
+            if (len(tercer_nombre) > 15):
+                errores.append("Tercer nombre: No puede contener más de 15 caracteres.")
+        
+        return errores
+    
     def validar_apellido_paterno(self, apellido_paterno: str) -> List[str]:
         errores = []
         
@@ -245,18 +258,19 @@ class EmpleadoServicio:
     
     def validar_info_basica_empleado(
         self, primer_nombre: str,
-        segundo_nombre: str, apellido_paterno: str,
+        segundo_nombre: str, tercer_nombre: str, apellido_paterno: str,
         apellido_materno: str, cedula: str, 
         fecha_nacimiento: date
     ) -> List[str]:
         error_primer_nombre = self.validar_primer_nombre(primer_nombre)
         error_segundo_nombre = self.validar_segundo_nombre(segundo_nombre)
+        error_tercer_nombre = self.validar_tercer_nombre(tercer_nombre)
         error_apellido_paterno = self.validar_apellido_paterno(apellido_paterno)
         error_apellido_materno = self.validar_apellido_materno(apellido_materno)
         error_cedula = self.validar_cedula(cedula)
         error_fecha_nacimiento = self.validar_fecha_nacimiento(fecha_nacimiento)
         
-        errores_totales = error_primer_nombre + error_segundo_nombre + error_apellido_paterno + error_apellido_materno + error_cedula + error_fecha_nacimiento
+        errores_totales = error_primer_nombre + error_segundo_nombre + error_tercer_nombre + error_apellido_paterno + error_apellido_materno + error_cedula + error_fecha_nacimiento
         
         return errores_totales
     

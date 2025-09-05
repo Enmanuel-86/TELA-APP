@@ -60,12 +60,7 @@ class InfoClinicaEmpleadoRepositorio(RepositorioBase):
                     """
                 ), {"info_clin_empleado_id": info_clin_empleado_id}).fetchone()
                 
-                if not(info_clinica_empleado):
-                    raise BaseDatosError("INFO_CLINICA_EMPLEADO_NO_EXISTE", "Esta info clínica no existe")
-                
                 return info_clinica_empleado
-        except BaseDatosError as error:
-            raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA INFO CLÍNICA DEL EMPLEADO: {error}")
     
@@ -85,12 +80,7 @@ class InfoClinicaEmpleadoRepositorio(RepositorioBase):
                     """
                 ), {"empleado_id": empleado_id}).fetchall()
                 
-                if not(info_clinica_empleado):
-                    raise BaseDatosError("INFO_CLINICA_EMPLEADO_NO_EXISTE", "Esta info clínica no existe")
-                
                 return info_clinica_empleado
-        except BaseDatosError as error:
-            raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA INFO CLÍNICA DEL EMPLEADO: {error}")
     

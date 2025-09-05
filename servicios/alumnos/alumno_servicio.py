@@ -64,6 +64,19 @@ class AlumnoServicio:
         
         return errores
     
+    def validar_tercer_nombre(self, tercer_nombre: str) -> List[str]:
+        errores = []
+        
+        if (tercer_nombre):
+            estructura_tercer_nombre = re.match(r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$", tercer_nombre)
+            if (not(estructura_tercer_nombre)):
+                errores.append("Tercer nombre: No debe contener números o caracteres especiales.")
+            
+            if (len(tercer_nombre) > 15):
+                errores.append("Tercer nombre: No puede contener más de 15 caracteres.")
+        
+        return errores
+    
     def validar_apellido_paterno(self, apellido_paterno: str) -> List[str]:
         errores = []
         
@@ -162,19 +175,20 @@ class AlumnoServicio:
     
     def validar_campos_primera_info_alumno(
         self, cedula: str,
-        primer_nombre: str, segundo_nombre: str,
+        primer_nombre: str, segundo_nombre: str, tercer_nombre: str,
         apellido_paterno: str, apellido_materno: str,
         relacion_con_rep: str, fecha_ingreso_institucion: date
     ) -> List[str]:
         error_cedula = self.validar_cedula(cedula)
         error_primer_nombre = self.validar_primer_nombre(primer_nombre)
         error_segundo_nombre = self.validar_segundo_nombre(segundo_nombre)
+        error_tercer_nombre = self.validar_tercer_nombre(tercer_nombre)
         error_apellido_paterno = self.validar_apellido_paterno(apellido_paterno)
         error_apellido_materno = self.validar_apellido_materno(apellido_materno)
         error_relacion_con_rep = self.validar_relacion_con_rep(relacion_con_rep)
         error_fecha_ingreso_institucion = self.validar_fecha_ingreso_institucion(fecha_ingreso_institucion)
         
-        errores_totales = error_cedula + error_primer_nombre + error_segundo_nombre + error_apellido_paterno + error_apellido_materno + error_relacion_con_rep + error_fecha_ingreso_institucion
+        errores_totales = error_cedula + error_primer_nombre + error_segundo_nombre + error_tercer_nombre + error_apellido_paterno + error_apellido_materno + error_relacion_con_rep + error_fecha_ingreso_institucion
         
         return errores_totales
     
@@ -257,7 +271,6 @@ if __name__ == "__main__":
     #print(alumno_servicio.obtener_alumno_por_cedula("30932925"))
     #print(alumno_servicio.obtener_datos_representante(7))
     #print(alumno_servicio.obtener_info_academica_alumno(10))
-    #print(alumno_servicio.obtener_alumno_por_id(1))
     
     """campos_alumno = {
         "representante_id": 2,

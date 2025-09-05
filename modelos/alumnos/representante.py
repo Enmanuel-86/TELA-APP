@@ -11,7 +11,8 @@ class Representante(Base):
     nombre = Column(String(15), nullable = False)
     apellido = Column(String(15), nullable = False)
     direccion_residencia = Column(String(100), nullable = False)
-    num_telefono = Column(String(15), default = "No tiene")
+    num_telefono = Column(String(15), nullable = False)
+    num_telefono_adicional = Column(String(15))
     carga_familiar = Column(Integer, nullable = False)
     estado_civil = Column(String(15), default = "Soltero/a")
     

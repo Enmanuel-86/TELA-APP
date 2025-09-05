@@ -97,6 +97,18 @@ class DetalleCargoServicio:
     def obtener_todos_detalles_cargo(self) -> List[Tuple]:
         return self.repositorio.obtener_todos()
     
+    def obtener_detalles_cargo_por_id(self, empleado_id: int) -> Tuple:
+        return self.repositorio.obtener_por_id(empleado_id)
+    
+    def obtener_detalles_cargo_empleados(self) -> List[Tuple]:
+        return self.repositorio.obtener_detalles_cargo_empleados()
+    
+    def obtener_detalles_cargo_por_especialidad(self, especialidad_id: int) -> List[Tuple]:
+        try:
+            return self.repositorio.obtener_por_especialidad(especialidad_id)
+        except BaseDatosError as error:
+            raise error
+    
     def obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None) -> Union[List[Tuple], Tuple]:
         try:
             return self.repositorio.obtener_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id, especialidad_id, cedula)
@@ -105,6 +117,12 @@ class DetalleCargoServicio:
     
     def obtener_detalles_cargo(self, empleado_id: int) -> Tuple:
         return self.repositorio.obtener_detalles_cargo(empleado_id)
+    
+    def conteo_empleados_por_funcion_cargo(self) -> List[Tuple]:
+        return self.repositorio.conteo_empleados_por_funcion_cargo()
+    
+    def conteo_matricula_empleados(self) -> List[Tuple]:
+        return self.repositorio.conteo_matricula_empleados()
     
     def actualizar_detalle_cargo(self, empleado_id: int, campos_detalle_cargo: Dict) -> None:
         self.repositorio.actualizar(empleado_id, campos_detalle_cargo)
