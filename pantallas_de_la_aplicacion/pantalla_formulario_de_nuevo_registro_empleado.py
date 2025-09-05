@@ -434,9 +434,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             diagnostico = self.boton_diagnostico.currentText()
             
             self.lista_de_diagnosticos.append(diagnostico)
+
         
             
-        elif self.input_otro_diagnostico.text():
+        elif self.input_otro_diagnostico.text().strip():
             
             diagnostico = self.input_otro_diagnostico.text()
             self.lista_de_diagnosticos.append(diagnostico)
@@ -455,106 +456,110 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             return
         
     
-        # Crear un QHBoxLayout para el label y su botón
-        h_layout = QHBoxLayout()
-
-        # Crear el QLabel y el botón de borrar
-        label = QLabel(diagnostico.capitalize(), self)
-        label.setStyleSheet("font-family: Arial; font-size: 12px;")
-
-        boton_borrar = QPushButton("X", self)
-        boton_borrar.setFixedSize(20, 20)  # Tamaño pequeño para el botón
-        boton_borrar.setStyleSheet("""
-                    QPushButton {
-                        font-family: Arial;
-                        font-weight: bold;
-                        color:#ffffff;
-                        background-color:#ff0000;
-                        border: 1px solid black;
-                        padding: 2px;
-                        width: 20px;
-                        height: 20px;
-                        border-radius:10px;
-                    }
-                    QPushButton:hover {
-                        background-color: #840000;
-                    }
-                """)
-
-        boton_borrar.clicked.connect(
-            lambda _, lbl=label, txt=diagnostico, ly=h_layout:
-            self.eliminar_diagnostico(lbl, txt, ly))
-
-
-        # Añadir al layout horizontal
-        h_layout.addWidget(label)
-        h_layout.addWidget(boton_borrar)
-        h_layout.addStretch()  # Empuja los elementos a la izquierda
-
-        # Insertar el nuevo layout al inicio (antes del spacer)
-        self.espacio_para_diagnostico.insertLayout(self.espacio_para_diagnostico.count() - 1, h_layout)
-
-        self.boton_diagnostico.clear()
+       
         
-        self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
-        
-        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
 
+       
+        
         # Limpiar el QLineEdit después de añadir
         self.input_otro_diagnostico.clear()
         self.boton_diagnostico.setCurrentIndex(0)
         print(self.lista_de_diagnosticos)
 
 
-
-    ## Metodo para eleminiar un diagnostico del "carrito"
-    def eliminar_diagnostico(self, label, texto_diagnostico, layout):
-        # Eliminar de la lista en memoria
-        if texto_diagnostico in self.lista_de_diagnostico:
-            self.lista_de_diagnosticos.remove(texto_diagnostico)
-            print("Lista actualizada de diagnostico:", self.lista_de_diagnosticos)  # Para depuración
-
-        # Eliminar widgets y layout de la interfaz
-        label.deleteLater()
-        while layout.count():  # Eliminar todos los widgets del layout
-            item = layout.takeAt(0)
-            widget = item.widget()
-            if widget:
-                widget.deleteLater()
-        layout.parent().removeItem(layout)  # Eliminar el layout padre
-
-
-
-    def limpiar_diagnosticos(self):
-        # Limpiar la lista de diagnósticos
-        self.lista_de_diagnosticos.clear()
+    # Metodo para agregar elementos a la vista previa
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
+        # Crear un QListWidgetItem
+        item = QListWidgetItem()
+        nombre_qlistwidget.addItem(item)
         
-        # Limpiar todos los layouts y widgets del espacio_para_diagnostico
-        while self.espacio_para_diagnostico.count():
-            item = self.espacio_para_diagnostico.takeAt(0)
-            
-            if item.layout():  # Si es un layout (como tus QHBoxLayout)
-                # Eliminar todos los widgets del sub-layout
-                sub_layout = item.layout()
-                while sub_layout.count():
-                    sub_item = sub_layout.takeAt(0)
-                    widget = sub_item.widget()
-                    if widget:
-                        widget.deleteLater()
-                sub_layout.deleteLater()
-            elif item.widget():  # Si es un widget directamente
-                widget = item.widget()
-                widget.deleteLater()
         
-        # Restablecer los controles de entrada
-        self.boton_diagnostico.setCurrentIndex(0)
-        self.input_otro_diagnostico.clear()
+
+        # Crear un widget personalizado para la fila
+        widget = QWidget()
+        row_layout = QHBoxLayout()
+        widget.setLayout(row_layout)
+
+        # Label para el texto
+        label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
+        label.setStyleSheet("""
+                            
+                            QLabel{
+                                
+                                background:none;
+                                font-family: 'Arial';
+                                font-size: 14pt;
+                                
+                                
+                            }
+                            
+                            """)
+        row_layout.addWidget(label)
+
+        # Botón para eliminar
+        delete_button = QPushButton()
+        delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
+        delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        delete_button.setFixedSize(40,40)
+        delete_button.setStyleSheet("""
+                                    
+                                    QPushButton{
+                                        background:red;
+                                        border-radius:20px;
+                                        icon-size:28px;
+                                    
+                                    }
+                                    
+                                    QPushButton:hover{
+                                        
+                                        background:#9e0000
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    """)
         
-        # Recargar la lista en el combobox si es necesario
-        self.boton_diagnostico.clear()
+        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        row_layout.addWidget(delete_button)
+
+        # Asignar el widget al QListWidgetItem
+        item.setSizeHint(widget.sizeHint())
+        nombre_qlistwidget.setItemWidget(item, widget)
+
+    
+    
+
+    # Metodo para borrar elemento a la vista previa
+    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item):
         
-        #actualizamos la lista
-        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
+        
+        # Logica para borrar el registro del diagnostico de la lista
+        
+        # indice del listwidget
+        indice_vista_previa = nombre_qlistwidget.row(item)
+        
+        # borramos el elemento de la lista segun el indice del listwidget
+        del nombre_lista[indice_vista_previa]
+        
+        # darle foco al input del segmento
+        # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
+        
+        
+        enfoca_input.setFocus()
+        
+        
+        
+        
+        
+        
+        ##########################################################################
+        # Obtener la fila del item y eliminarlo
+        row = nombre_qlistwidget.row(item)
+        nombre_qlistwidget.takeItem(row)
+    
+        print(f"lista actualizada: {nombre_lista}")
+    
 
 
 
