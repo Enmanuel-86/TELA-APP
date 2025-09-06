@@ -1024,8 +1024,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # si el boton pulsado es "si" se regresa y borra todo el registro
         if msg_box.clickedButton() == boton_si:
             
-            self.limpiar_diagnosticos()
-            self.limpiar_enfermedades()
+            self.ver_lista_diagnostico.clear()
+            self.ver_lista_enfermedades.clear()
+            
             ## Borrar todo lo que esta en el formulario 1 info basica ##
             self.input_primer_nombre.clear()
             self.input_segundo_nombre.clear()

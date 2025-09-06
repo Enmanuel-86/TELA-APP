@@ -372,8 +372,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Primero cargamos los datos
         for indice, alumno in enumerate(alumnos):
             datos_visibles = [
-                alumno[5], alumno[6], alumno[7],
-                alumno[8], alumno[9], alumno[12]
+                alumno[1], alumno[2], alumno[3],
+                alumno[5], alumno[6], alumno[14]
             ]
 
             items = []
