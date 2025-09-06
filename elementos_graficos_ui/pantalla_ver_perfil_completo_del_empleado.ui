@@ -101,7 +101,7 @@
           <widget class="QFrame" name="espacio_personal">
            <property name="minimumSize">
             <size>
-             <width>370</width>
+             <width>410</width>
              <height>580</height>
             </size>
            </property>
@@ -129,7 +129,7 @@
            <widget class="QLabel" name="label_imagen_del_personal">
             <property name="geometry">
              <rect>
-              <x>120</x>
+              <x>130</x>
               <y>25</y>
               <width>141</width>
               <height>131</height>
@@ -200,99 +200,23 @@ QPushButton:hover{
              </size>
             </property>
            </widget>
-           <widget class="QWidget" name="layoutWidget">
+           <widget class="QWidget" name="">
             <property name="geometry">
              <rect>
               <x>20</x>
               <y>160</y>
               <width>361</width>
-              <height>341</height>
+              <height>381</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
              <property name="horizontalSpacing">
               <number>20</number>
              </property>
-             <item row="0" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_9">
-               <item alignment="Qt::AlignLeft">
-                <widget class="QLabel" name="label_primer_nombre">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Primer nombre</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="input_mostrar_primer_nombre">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>13</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="2" column="0">
+             <property name="verticalSpacing">
+              <number>10</number>
+             </property>
+             <item row="2" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_14">
                <item alignment="Qt::AlignLeft">
                 <widget class="QLabel" name="label_cedula">
@@ -389,318 +313,7 @@ QLineEdit:focus{
                </item>
               </layout>
              </item>
-             <item row="3" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_16">
-               <item alignment="Qt::AlignLeft">
-                <widget class="QLabel" name="label_edad">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Edad</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="input_mostrar_edad">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>13</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="3" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_3">
-               <item alignment="Qt::AlignLeft|Qt::AlignTop">
-                <widget class="QLabel" name="label_estado">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Estado:</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item alignment="Qt::AlignLeft|Qt::AlignTop">
-                <widget class="QLabel" name="label_mostrar_estado">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>10</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>80</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
              <item row="1" column="0">
-              <layout class="QVBoxLayout" name="verticalLayout_12">
-               <item alignment="Qt::AlignLeft">
-                <widget class="QLabel" name="label_apellido_paterno">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Apellido paterno</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="input_mostrar_apellido_paterno">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>13</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="1" column="1">
-              <layout class="QVBoxLayout" name="verticalLayout_13">
-               <item alignment="Qt::AlignLeft">
-                <widget class="QLabel" name="label_apellido_materno">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Apellido materno</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="input_mostrar_apellido_materno">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>13</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item row="0" column="1">
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <item alignment="Qt::AlignLeft">
                 <widget class="QLabel" name="label_segundo_nombre">
@@ -779,7 +392,7 @@ QLineEdit:focus{
                </item>
               </layout>
              </item>
-             <item row="4" column="0" alignment="Qt::AlignTop">
+             <item row="4" column="1">
               <widget class="QFrame" name="espacio_sexo">
                <property name="styleSheet">
                 <string notr="true">border:none;
@@ -947,52 +560,20 @@ QRadioButton::indicator:checked:disabled {
                </layout>
               </widget>
              </item>
-             <item row="4" column="1" alignment="Qt::AlignTop">
-              <widget class="QFrame" name="frame">
-               <property name="styleSheet">
-                <string notr="true">border:none;
-background:none;</string>
-               </property>
-               <layout class="QVBoxLayout" name="espacio_para_inputs_cuantos_hijos_tiene">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item alignment="Qt::AlignTop">
-                 <widget class="QLabel" name="label_tiene_hijos">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
+             <item row="1" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_apellido_materno">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
 	
 	color: rgb(80, 80, 80);
 
@@ -1001,151 +582,143 @@ background:none;</string>
 
 }
 </string>
-                  </property>
-                  <property name="text">
-                   <string>¿Tiene hijos menores de edad?</string>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>false</bool>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignTop">
-                 <widget class="QRadioButton" name="input_si">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-
+                 </property>
+                 <property name="text">
+                  <string>Apellido materno</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="input_mostrar_apellido_materno">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>13</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
 	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
 
 }
 
-/* Estilo para RadioButtons deshabilitados que parezcan habilitados */
-QRadioButton:disabled {
-    color: palette(text);  /* Mantiene el color de texto normal */
-}
+QLineEdit:focus{
 
-QRadioButton::indicator:disabled {
-    /* Estilo igual que el indicador normal */
-    border: 4px solid #A0A0A0;
-    border-radius: 9px;
-    background-color: #FFFFFF;
-	width: 10px;   /* Tamaño del círculo */
-    height:10px;  /* Tamaño del círculo */
-	
+	border: 2px solid rgb(17, 192, 255)
+
+
 
 }
-
-QRadioButton::indicator:checked:disabled {
-    border: 5px solid #0078D7;
-    background-color: #FFFFFF;
-    image: url(:/qss_icons/rc/radio_checked.png);  /* Mantiene el punto de selección */
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Si</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                  <property name="autoRepeat">
-                   <bool>false</bool>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignTop">
-                 <widget class="QRadioButton" name="input_no">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>45</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}
-
-/* Estilo para RadioButtons deshabilitados que parezcan habilitados */
-QRadioButton:disabled {
-    color: palette(text);  /* Mantiene el color de texto normal */
-}
-
-QRadioButton::indicator:disabled {
-    /* Estilo igual que el indicador normal */
-    border: 4px solid #A0A0A0;
-    border-radius: 9px;
-    background-color: #FFFFFF;
-	width: 10px;   /* Tamaño del círculo */
-    height:10px;  /* Tamaño del círculo */
-	
-
-}
-
-QRadioButton::indicator:checked:disabled {
-    border: 5px solid #0078D7;
-    background-color: #FFFFFF;
-    image: url(:/qss_icons/rc/radio_checked.png);  /* Mantiene el punto de selección */
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>No</string>
-                  </property>
-                  <property name="checkable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                  <property name="autoRepeat">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
+</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
-             <item row="2" column="1">
+             <item row="2" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout_39">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_tercer_nombre">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Tercer nombre</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="input_mostrar_tercer_nombre">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>13</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="0">
               <widget class="QStackedWidget" name="stackedwidget_fecha_nacimiento">
                <property name="styleSheet">
                 <string notr="true">border:none;</string>
@@ -1401,6 +974,515 @@ QPushButton:hover{
                </widget>
               </widget>
              </item>
+             <item row="3" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_16">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_edad">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Edad</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="input_mostrar_edad">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>13</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <widget class="QFrame" name="frame">
+               <property name="styleSheet">
+                <string notr="true">border:none;
+background:none;</string>
+               </property>
+               <layout class="QVBoxLayout" name="espacio_para_inputs_cuantos_hijos_tiene">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_tiene_hijos">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>¿Tiene hijos menores de edad?</string>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignTop">
+                 <widget class="QRadioButton" name="input_si">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QRadioButton{
+
+	
+	font: 75 10pt &quot;Arial&quot;;
+	border-color:#ffffff;
+
+}
+
+/* Estilo para RadioButtons deshabilitados que parezcan habilitados */
+QRadioButton:disabled {
+    color: palette(text);  /* Mantiene el color de texto normal */
+}
+
+QRadioButton::indicator:disabled {
+    /* Estilo igual que el indicador normal */
+    border: 4px solid #A0A0A0;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+	width: 10px;   /* Tamaño del círculo */
+    height:10px;  /* Tamaño del círculo */
+	
+
+}
+
+QRadioButton::indicator:checked:disabled {
+    border: 5px solid #0078D7;
+    background-color: #FFFFFF;
+    image: url(:/qss_icons/rc/radio_checked.png);  /* Mantiene el punto de selección */
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Si</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoRepeat">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignTop">
+                 <widget class="QRadioButton" name="input_no">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>45</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QRadioButton{
+
+	
+	font: 75 10pt &quot;Arial&quot;;
+	border-color:#ffffff;
+
+}
+
+/* Estilo para RadioButtons deshabilitados que parezcan habilitados */
+QRadioButton:disabled {
+    color: palette(text);  /* Mantiene el color de texto normal */
+}
+
+QRadioButton::indicator:disabled {
+    /* Estilo igual que el indicador normal */
+    border: 4px solid #A0A0A0;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+	width: 10px;   /* Tamaño del círculo */
+    height:10px;  /* Tamaño del círculo */
+	
+
+}
+
+QRadioButton::indicator:checked:disabled {
+    border: 5px solid #0078D7;
+    background-color: #FFFFFF;
+    image: url(:/qss_icons/rc/radio_checked.png);  /* Mantiene el punto de selección */
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>No</string>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoRepeat">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_apellido_paterno">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Apellido paterno</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="input_mostrar_apellido_paterno">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>13</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_primer_nombre">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Primer nombre</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="input_mostrar_primer_nombre">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>13</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="5" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                <widget class="QLabel" name="label_estado">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Estado:</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                <widget class="QLabel" name="label_mostrar_estado">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>10</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
             </layout>
            </widget>
           </widget>
@@ -1428,7 +1510,7 @@ QPushButton:hover{
            <x>0</x>
            <y>0</y>
            <width>727</width>
-           <height>1712</height>
+           <height>1812</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -1485,13 +1567,13 @@ QPushButton:hover{
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>200</height>
+                 <height>300</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>200</height>
+                 <height>300</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -1565,13 +1647,7 @@ border:none;	border-color: #ffffff;
                   <property name="minimumSize">
                    <size>
                     <width>600</width>
-                    <height>50</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>600</width>
-                    <height>500</height>
+                    <height>200</height>
                    </size>
                   </property>
                   <property name="styleSheet">
@@ -1580,6 +1656,9 @@ border:none;	border-color: #ffffff;
                   <layout class="QGridLayout" name="gridLayout">
                    <property name="horizontalSpacing">
                     <number>20</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
                    </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -1775,6 +1854,97 @@ QLineEdit:focus{
                      </item>
                     </layout>
                    </item>
+                   <item row="1" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_40">
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLabel" name="label_numero_telefono_adicional">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Número de teléfono adicional</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="input_mostrar_numero_telefono_adicional">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -1881,6 +2051,9 @@ border:none;	border-color: #ffffff;
                   <layout class="QGridLayout" name="gridLayout_3">
                    <property name="horizontalSpacing">
                     <number>20</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
                    </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_19">
@@ -2671,6 +2844,9 @@ border:none;	border-color: #ffffff;
                   <layout class="QGridLayout" name="gridLayout_2">
                    <property name="horizontalSpacing">
                     <number>20</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
                    </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_25">
