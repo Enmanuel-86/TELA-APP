@@ -361,8 +361,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     # Método para cargar los alumnos en la tabla
     def cargar_alumnos_en_tabla(self, tabla, alumnos):
         columnas = [
-            "Cédula", "Primer Nombre", "Segundo Nombre",
-            "Apellido Paterno", "Apellido Materno", "Estado", "Opciones"
+            "Cédula", "Primer Nombre",
+            "Apellido Paterno", "Matricula", "Fecha de inscrip","Estado", "Opciones"
         ]
 
         global modelo
@@ -373,7 +373,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         for indice, alumno in enumerate(alumnos):
             datos_visibles = [
                 alumno[1], alumno[2], alumno[3],
-                alumno[5], alumno[6], alumno[14]
+                alumno[5], alumno[6], alumno[9], 
             ]
 
             items = []
