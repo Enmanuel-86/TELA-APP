@@ -6,7 +6,7 @@ from PyQt5.QtGui import QIcon
 import traceback
 import os
 from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
-                             QStackedWidget, QMessageBox,
+                             QStackedWidget, QMessageBox,QListWidgetItem,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 
@@ -168,8 +168,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.lista_de_enfermedades = []
         self.lista_de_diagnosticos = []
 
-        self.espacio_para_enfermedades.setAlignment(Qt.AlignTop)
-        self.espacio_para_diagnostico.setAlignment(Qt.AlignTop)
+        
 
         self.boton_anadir_enfermedad.clicked.connect(self.anadir_enfermedad)
         self.boton_anadir_diagnostico.clicked.connect(self.anadir_diagnostico)
@@ -328,99 +327,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             return
         
         
-        # Crear un QHBoxLayout para el label y su botón
-        h_layout = QHBoxLayout()
-
-        # Crear el QLabel y el botón de borrar
-        label = QLabel(enfermedad.capitalize(), self)
-        label.setStyleSheet("font-family: Arial; font-size: 12px;")
-
-        boton_borrar = QPushButton("X", self)
-        boton_borrar.setFixedSize(20, 20)  # Tamaño pequeño para el botón
-        boton_borrar.setStyleSheet("""
-                    QPushButton {
-                        font-family: Arial;
-                        font-weight: bold;
-                        color:#ffffff;
-                        background-color:#ff0000;
-                        border: 1px solid black;
-                        padding: 2px;
-                        width: 20px;
-                        height: 20px;
-                        border-radius:10px;
-                    }
-                    QPushButton:hover {
-                        background-color: #840000;
-                    }
-                """)
-
-        boton_borrar.clicked.connect(
-            lambda _, lbl=label, txt=enfermedad, ly=h_layout:
-            self.eliminar_enfermedad(lbl, txt, ly))
-
-
-        # Añadir al layout horizontal
-        h_layout.addWidget(label)
-        h_layout.addWidget(boton_borrar)
-        h_layout.addStretch()  # Empuja los elementos a la izquierda
-
-        # Insertar el nuevo layout al inicio (antes del spacer)
-        
-        self.espacio_para_enfermedades.insertLayout(self.espacio_para_enfermedades.count() - 1, h_layout)
-        
-        self.boton_enfermedades.clear()
-        
-        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
-        
-        self.cargar_lista_para_el_combobox(self.lista_enfermedades, self.boton_enfermedades, 1)
-
-
-
-        # Limpiar el QLineEdit después de añadir
-        self.input_otra_enfermedad.clear()
-        self.boton_enfermedades.setCurrentIndex(0)
-        print(self.lista_de_enfermedades)
-
-    ## Metodo Elimina la enfermedad del "Carrito" 
-    def eliminar_enfermedad(self, label, texto_enfermedad, layout):
-        # Eliminar de la lista en memoria
-        if texto_enfermedad in self.lista_de_enfermedades:
-            self.lista_de_enfermedades.remove(texto_enfermedad)
-            #print("Lista actualizada de enfer:", self.lista_de_enfermedades)  # Para depuración
-
-        # Eliminar widgets y layout de la interfaz
-        label.deleteLater()
-        while layout.count():  # Eliminar todos los widgets del layout
-            item = layout.takeAt(0)
-            widget = item.widget()
-            if widget:
-                widget.deleteLater()
-        layout.parent().removeItem(layout)  # Eliminar el layout padre
-
-    def limpiar_enfermedades(self):
-        # Limpiar la lista de enfermedades
-        self.lista_de_enfermedades.clear()
-        
-        # Limpiar todos los layouts y widgets del espacio_para_enfermedades
-        while self.espacio_para_enfermedades.count():
-            item = self.espacio_para_enfermedades.takeAt(0)
-            
-            if item.layout():  # Si es un layout (como tus QHBoxLayout)
-                # Eliminar todos los widgets del sub-layout
-                sub_layout = item.layout()
-                while sub_layout.count():
-                    sub_item = sub_layout.takeAt(0)
-                    widget = sub_item.widget()
-                    if widget:
-                        widget.deleteLater()
-                sub_layout.deleteLater()
-            elif item.widget():  # Si es un widget directamente
-                widget = item.widget()
-                widget.deleteLater()
-        
-        # Opcional: Restablecer el combobox si es necesario
-        self.boton_enfermedades.setCurrentIndex(0)
-        self.input_otra_enfermedad.clear()
 
 
     ## Metodo para añadir un diagnostico al "carrito"
@@ -428,20 +334,24 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
         diagnostico = None
         
-            
+        # si el combo box tiene texto y no el indice del mismo no el 0
         if self.boton_diagnostico.currentText() and not self.boton_diagnostico.currentIndex() == 0:
             
             diagnostico = self.boton_diagnostico.currentText()
             
             self.lista_de_diagnosticos.append(diagnostico)
 
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos)
+
         
             
         elif self.input_otro_diagnostico.text().strip():
             
-            diagnostico = self.input_otro_diagnostico.text()
+            diagnostico = self.input_otro_diagnostico.text().strip()
             self.lista_de_diagnosticos.append(diagnostico)
-            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos, self.boton_diagnostico ,diagnostico)
+
+        
             nuevo_diagnostico = {"diagnostico": diagnostico}
             
             diagnostico_servicio.registrar_diagnostico(nuevo_diagnostico)
@@ -468,7 +378,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
 
     # Metodo para agregar elementos a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input = None, texto_a_mostrar=None):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)

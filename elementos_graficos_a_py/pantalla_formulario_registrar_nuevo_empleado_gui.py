@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui/pantalla_formulario_registrar_nuevo_empleado.ui'
+# Form implementation generated from reading ui file 'C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui/pantalla_formulario_registrar_nuevo_empleado.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_PantallaFormularioEmpleado(object):
     def setupUi(self, PantallaFormularioEmpleado):
         PantallaFormularioEmpleado.setObjectName("PantallaFormularioEmpleado")
-        PantallaFormularioEmpleado.resize(1096, 579)
+        PantallaFormularioEmpleado.resize(1096, 661)
         self.gridLayout_6 = QtWidgets.QGridLayout(PantallaFormularioEmpleado)
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_6.setObjectName("gridLayout_6")
@@ -24,7 +24,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -1655, 1079, 2234))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -766, 1079, 2145))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -65,7 +65,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -112,7 +112,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.foto_anadir_personal.setMaximumSize(QtCore.QSize(170, 150))
         self.foto_anadir_personal.setStyleSheet("border:none;")
         self.foto_anadir_personal.setText("")
-        self.foto_anadir_personal.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui\\../recursos_de_imagenes/registro_personal.png"))
+        self.foto_anadir_personal.setPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/registro_personal.png"))
         self.foto_anadir_personal.setScaledContents(True)
         self.foto_anadir_personal.setObjectName("foto_anadir_personal")
         self.horizontalLayout_2.addWidget(self.foto_anadir_personal)
@@ -145,7 +145,7 @@ class Ui_PantallaFormularioEmpleado(object):
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_basica.sizePolicy().hasHeightForWidth())
         self.info_basica.setSizePolicy(sizePolicy)
-        self.info_basica.setMinimumSize(QtCore.QSize(1000, 280))
+        self.info_basica.setMinimumSize(QtCore.QSize(1000, 330))
         self.info_basica.setStyleSheet("QFrame{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
@@ -183,11 +183,12 @@ class Ui_PantallaFormularioEmpleado(object):
         self.preguntas_info_basica.setFrameShadow(QtWidgets.QFrame.Plain)
         self.preguntas_info_basica.setObjectName("preguntas_info_basica")
         self.gridLayout = QtWidgets.QGridLayout(self.preguntas_info_basica)
-        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
-        self.gridLayout.setContentsMargins(10, 30, -1, 30)
-        self.gridLayout.setHorizontalSpacing(20)
-        self.gridLayout.setVerticalSpacing(0)
+        self.gridLayout.setHorizontalSpacing(9)
+        self.gridLayout.setVerticalSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_12.setSpacing(0)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.label_primer_nombre = QtWidgets.QLabel(self.preguntas_info_basica)
         self.label_primer_nombre.setMinimumSize(QtCore.QSize(0, 0))
         self.label_primer_nombre.setMaximumSize(QtCore.QSize(16777215, 20))
@@ -208,73 +209,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_primer_nombre.setScaledContents(True)
         self.label_primer_nombre.setObjectName("label_primer_nombre")
-        self.gridLayout.addWidget(self.label_primer_nombre, 0, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.label_segundo_nombre = QtWidgets.QLabel(self.preguntas_info_basica)
-        self.label_segundo_nombre.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_segundo_nombre.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_segundo_nombre.setFont(font)
-        self.label_segundo_nombre.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_segundo_nombre.setTextFormat(QtCore.Qt.PlainText)
-        self.label_segundo_nombre.setScaledContents(True)
-        self.label_segundo_nombre.setObjectName("label_segundo_nombre")
-        self.gridLayout.addWidget(self.label_segundo_nombre, 0, 1, 1, 1, QtCore.Qt.AlignTop)
-        self.label_apellido_paterno = QtWidgets.QLabel(self.preguntas_info_basica)
-        self.label_apellido_paterno.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_apellido_paterno.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_apellido_paterno.setFont(font)
-        self.label_apellido_paterno.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_apellido_paterno.setTextFormat(QtCore.Qt.PlainText)
-        self.label_apellido_paterno.setScaledContents(True)
-        self.label_apellido_paterno.setObjectName("label_apellido_paterno")
-        self.gridLayout.addWidget(self.label_apellido_paterno, 0, 2, 1, 1, QtCore.Qt.AlignTop)
-        self.label_apellido_materno = QtWidgets.QLabel(self.preguntas_info_basica)
-        self.label_apellido_materno.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_apellido_materno.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_apellido_materno.setFont(font)
-        self.label_apellido_materno.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_apellido_materno.setTextFormat(QtCore.Qt.PlainText)
-        self.label_apellido_materno.setScaledContents(True)
-        self.label_apellido_materno.setObjectName("label_apellido_materno")
-        self.gridLayout.addWidget(self.label_apellido_materno, 0, 3, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_12.addWidget(self.label_primer_nombre)
         self.input_primer_nombre = QtWidgets.QLineEdit(self.preguntas_info_basica)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -309,7 +244,33 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_primer_nombre.setObjectName("input_primer_nombre")
-        self.gridLayout.addWidget(self.input_primer_nombre, 1, 0, 1, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.verticalLayout_12.addWidget(self.input_primer_nombre)
+        self.gridLayout.addLayout(self.verticalLayout_12, 0, 0, 1, 1)
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.label_segundo_nombre = QtWidgets.QLabel(self.preguntas_info_basica)
+        self.label_segundo_nombre.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_segundo_nombre.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_segundo_nombre.setFont(font)
+        self.label_segundo_nombre.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_segundo_nombre.setTextFormat(QtCore.Qt.PlainText)
+        self.label_segundo_nombre.setScaledContents(True)
+        self.label_segundo_nombre.setObjectName("label_segundo_nombre")
+        self.verticalLayout_13.addWidget(self.label_segundo_nombre, 0, QtCore.Qt.AlignLeft)
         self.input_segundo_nombre = QtWidgets.QLineEdit(self.preguntas_info_basica)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -344,7 +305,94 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_segundo_nombre.setObjectName("input_segundo_nombre")
-        self.gridLayout.addWidget(self.input_segundo_nombre, 1, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_13.addWidget(self.input_segundo_nombre)
+        self.gridLayout.addLayout(self.verticalLayout_13, 0, 1, 1, 1)
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_17.setSpacing(0)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.label_tercer_nombre = QtWidgets.QLabel(self.preguntas_info_basica)
+        self.label_tercer_nombre.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_tercer_nombre.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_tercer_nombre.setFont(font)
+        self.label_tercer_nombre.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_tercer_nombre.setTextFormat(QtCore.Qt.PlainText)
+        self.label_tercer_nombre.setScaledContents(True)
+        self.label_tercer_nombre.setObjectName("label_tercer_nombre")
+        self.verticalLayout_17.addWidget(self.label_tercer_nombre, 0, QtCore.Qt.AlignLeft)
+        self.input_tercer_nombre = QtWidgets.QLineEdit(self.preguntas_info_basica)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_tercer_nombre.sizePolicy().hasHeightForWidth())
+        self.input_tercer_nombre.setSizePolicy(sizePolicy)
+        self.input_tercer_nombre.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_tercer_nombre.setFont(font)
+        self.input_tercer_nombre.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_tercer_nombre.setObjectName("input_tercer_nombre")
+        self.verticalLayout_17.addWidget(self.input_tercer_nombre)
+        self.gridLayout.addLayout(self.verticalLayout_17, 0, 2, 1, 1)
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.label_apellido_paterno = QtWidgets.QLabel(self.preguntas_info_basica)
+        self.label_apellido_paterno.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_apellido_paterno.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_apellido_paterno.setFont(font)
+        self.label_apellido_paterno.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_apellido_paterno.setTextFormat(QtCore.Qt.PlainText)
+        self.label_apellido_paterno.setScaledContents(True)
+        self.label_apellido_paterno.setObjectName("label_apellido_paterno")
+        self.verticalLayout_14.addWidget(self.label_apellido_paterno, 0, QtCore.Qt.AlignLeft)
         self.input_apellido_paterno = QtWidgets.QLineEdit(self.preguntas_info_basica)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -379,7 +427,33 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_apellido_paterno.setObjectName("input_apellido_paterno")
-        self.gridLayout.addWidget(self.input_apellido_paterno, 1, 2, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_14.addWidget(self.input_apellido_paterno)
+        self.gridLayout.addLayout(self.verticalLayout_14, 0, 3, 1, 1)
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_16.setSpacing(0)
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.label_apellido_materno = QtWidgets.QLabel(self.preguntas_info_basica)
+        self.label_apellido_materno.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_apellido_materno.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_apellido_materno.setFont(font)
+        self.label_apellido_materno.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_apellido_materno.setTextFormat(QtCore.Qt.PlainText)
+        self.label_apellido_materno.setScaledContents(True)
+        self.label_apellido_materno.setObjectName("label_apellido_materno")
+        self.verticalLayout_16.addWidget(self.label_apellido_materno, 0, QtCore.Qt.AlignLeft)
         self.input_apellido_materno = QtWidgets.QLineEdit(self.preguntas_info_basica)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -414,7 +488,11 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_apellido_materno.setObjectName("input_apellido_materno")
-        self.gridLayout.addWidget(self.input_apellido_materno, 1, 3, 1, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.verticalLayout_16.addWidget(self.input_apellido_materno)
+        self.gridLayout.addLayout(self.verticalLayout_16, 1, 0, 1, 1)
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_15.setSpacing(0)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.label_cedula = QtWidgets.QLabel(self.preguntas_info_basica)
         self.label_cedula.setMinimumSize(QtCore.QSize(0, 0))
         self.label_cedula.setMaximumSize(QtCore.QSize(16777215, 20))
@@ -436,69 +514,43 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_cedula.setTextFormat(QtCore.Qt.PlainText)
         self.label_cedula.setScaledContents(True)
         self.label_cedula.setObjectName("label_cedula")
-        self.gridLayout.addWidget(self.label_cedula, 2, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.espacio_fecha_nacimiento = QtWidgets.QFrame(self.preguntas_info_basica)
-        self.espacio_fecha_nacimiento.setMaximumSize(QtCore.QSize(16777215, 100))
-        self.espacio_fecha_nacimiento.setStyleSheet("border:none;")
-        self.espacio_fecha_nacimiento.setObjectName("espacio_fecha_nacimiento")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.espacio_fecha_nacimiento)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label_fecha_de_nacimiento = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
+        self.verticalLayout_15.addWidget(self.label_cedula, 0, QtCore.Qt.AlignLeft)
+        self.input_cedula = QtWidgets.QLineEdit(self.preguntas_info_basica)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(20)
+        sizePolicy.setHeightForWidth(self.input_cedula.sizePolicy().hasHeightForWidth())
+        self.input_cedula.setSizePolicy(sizePolicy)
+        self.input_cedula.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_fecha_de_nacimiento.setFont(font)
-        self.label_fecha_de_nacimiento.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
+        font.setPointSize(15)
+        self.input_cedula.setFont(font)
+        self.input_cedula.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
 "\n"
-"    border-color: #ffffff;\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
 "\n"
 "\n"
 "}\n"
 "")
-        self.label_fecha_de_nacimiento.setScaledContents(False)
-        self.label_fecha_de_nacimiento.setObjectName("label_fecha_de_nacimiento")
-        self.gridLayout_2.addWidget(self.label_fecha_de_nacimiento, 0, 0, 1, 2)
-        self.boton_para_agregar_fecha = QtWidgets.QPushButton(self.espacio_fecha_nacimiento)
-        self.boton_para_agregar_fecha.setMinimumSize(QtCore.QSize(110, 35))
-        self.boton_para_agregar_fecha.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_para_agregar_fecha.setStyleSheet("QPushButton{\n"
-"\n"
-"    border: 1px solid black;\n"
-"    border-radius:12px;\n"
-"    background-color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_para_agregar_fecha.setIcon(icon1)
-        self.boton_para_agregar_fecha.setIconSize(QtCore.QSize(20, 20))
-        self.boton_para_agregar_fecha.setObjectName("boton_para_agregar_fecha")
-        self.gridLayout_2.addWidget(self.boton_para_agregar_fecha, 1, 0, 1, 1)
-        self.label_mostrar_fecha = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_mostrar_fecha.setFont(font)
-        self.label_mostrar_fecha.setStyleSheet("QLabel{\n"
-"\n"
-"    border:0px;\n"
-"\n"
-"\n"
-"}")
-        self.label_mostrar_fecha.setText("")
-        self.label_mostrar_fecha.setObjectName("label_mostrar_fecha")
-        self.gridLayout_2.addWidget(self.label_mostrar_fecha, 1, 1, 1, 1)
-        self.gridLayout.addWidget(self.espacio_fecha_nacimiento, 2, 1, 2, 1, QtCore.Qt.AlignTop)
+        self.input_cedula.setObjectName("input_cedula")
+        self.verticalLayout_15.addWidget(self.input_cedula)
+        self.gridLayout.addLayout(self.verticalLayout_15, 1, 1, 1, 1)
         self.espacio_sexo = QtWidgets.QFrame(self.preguntas_info_basica)
         self.espacio_sexo.setMinimumSize(QtCore.QSize(0, 0))
         self.espacio_sexo.setMaximumSize(QtCore.QSize(16777215, 100))
@@ -527,16 +579,6 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_sexo.setScaledContents(False)
         self.label_sexo.setObjectName("label_sexo")
         self.verticalLayout_5.addWidget(self.label_sexo)
-        self.input_sexo_femenino = QtWidgets.QRadioButton(self.espacio_sexo)
-        self.input_sexo_femenino.setStyleSheet("QRadioButton{\n"
-"\n"
-"    background:transparent;\n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
-        self.input_sexo_femenino.setObjectName("input_sexo_femenino")
-        self.verticalLayout_5.addWidget(self.input_sexo_femenino)
         self.input_sexo_masculino = QtWidgets.QRadioButton(self.espacio_sexo)
         self.input_sexo_masculino.setStyleSheet("QRadioButton{\n"
 "\n"
@@ -546,8 +588,18 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}")
         self.input_sexo_masculino.setObjectName("input_sexo_masculino")
-        self.verticalLayout_5.addWidget(self.input_sexo_masculino)
-        self.gridLayout.addWidget(self.espacio_sexo, 2, 2, 2, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_5.addWidget(self.input_sexo_masculino, 0, QtCore.Qt.AlignLeft)
+        self.input_sexo_femenino = QtWidgets.QRadioButton(self.espacio_sexo)
+        self.input_sexo_femenino.setStyleSheet("QRadioButton{\n"
+"\n"
+"    background:transparent;\n"
+"    font: 75 10pt \"Arial\";\n"
+"    border-color:#ffffff;\n"
+"\n"
+"}")
+        self.input_sexo_femenino.setObjectName("input_sexo_femenino")
+        self.verticalLayout_5.addWidget(self.input_sexo_femenino, 0, QtCore.Qt.AlignLeft)
+        self.gridLayout.addWidget(self.espacio_sexo, 1, 2, 1, 1)
         self.espacio_hijos = QtWidgets.QFrame(self.preguntas_info_basica)
         self.espacio_hijos.setMaximumSize(QtCore.QSize(250, 100))
         self.espacio_hijos.setStyleSheet("border:none;")
@@ -597,56 +649,72 @@ class Ui_PantallaFormularioEmpleado(object):
 "}")
         self.input_no.setObjectName("input_no")
         self.verticalLayout_6.addWidget(self.input_no)
-        self.gridLayout.addWidget(self.espacio_hijos, 2, 3, 2, 1, QtCore.Qt.AlignTop)
-        self.input_cedula = QtWidgets.QLineEdit(self.preguntas_info_basica)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(20)
-        sizePolicy.setHeightForWidth(self.input_cedula.sizePolicy().hasHeightForWidth())
-        self.input_cedula.setSizePolicy(sizePolicy)
-        self.input_cedula.setMinimumSize(QtCore.QSize(220, 40))
+        self.gridLayout.addWidget(self.espacio_hijos, 1, 3, 1, 1)
+        self.espacio_fecha_nacimiento = QtWidgets.QFrame(self.preguntas_info_basica)
+        self.espacio_fecha_nacimiento.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.espacio_fecha_nacimiento.setStyleSheet("border:none;")
+        self.espacio_fecha_nacimiento.setObjectName("espacio_fecha_nacimiento")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.espacio_fecha_nacimiento)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label_fecha_de_nacimiento = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_cedula.setFont(font)
-        self.input_cedula.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_de_nacimiento.setFont(font)
+        self.label_fecha_de_nacimiento.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
 "\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
+"    border-color: #ffffff;\n"
 "\n"
 "\n"
 "}\n"
 "")
-        self.input_cedula.setObjectName("input_cedula")
-        self.gridLayout.addWidget(self.input_cedula, 3, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.gridLayout.setRowMinimumHeight(1, 70)
+        self.label_fecha_de_nacimiento.setScaledContents(False)
+        self.label_fecha_de_nacimiento.setObjectName("label_fecha_de_nacimiento")
+        self.gridLayout_2.addWidget(self.label_fecha_de_nacimiento, 0, 0, 1, 2, QtCore.Qt.AlignLeft)
+        self.boton_para_agregar_fecha = QtWidgets.QPushButton(self.espacio_fecha_nacimiento)
+        self.boton_para_agregar_fecha.setMinimumSize(QtCore.QSize(110, 35))
+        self.boton_para_agregar_fecha.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_para_agregar_fecha.setStyleSheet("QPushButton{\n"
+"\n"
+"    border: 1px solid black;\n"
+"    border-radius:12px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    background-color: rgb(199, 199, 199)\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_para_agregar_fecha.setIcon(icon1)
+        self.boton_para_agregar_fecha.setIconSize(QtCore.QSize(20, 20))
+        self.boton_para_agregar_fecha.setObjectName("boton_para_agregar_fecha")
+        self.gridLayout_2.addWidget(self.boton_para_agregar_fecha, 1, 0, 1, 1)
+        self.label_mostrar_fecha = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_mostrar_fecha.setFont(font)
+        self.label_mostrar_fecha.setStyleSheet("QLabel{\n"
+"\n"
+"    border:0px;\n"
+"\n"
+"\n"
+"}")
+        self.label_mostrar_fecha.setText("")
+        self.label_mostrar_fecha.setObjectName("label_mostrar_fecha")
+        self.gridLayout_2.addWidget(self.label_mostrar_fecha, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.espacio_fecha_nacimiento, 2, 0, 1, 1)
         self.espacio_fecha_nacimiento.raise_()
-        self.espacio_sexo.raise_()
-        self.input_segundo_nombre.raise_()
-        self.label_segundo_nombre.raise_()
-        self.input_apellido_paterno.raise_()
-        self.label_apellido_paterno.raise_()
-        self.label_cedula.raise_()
-        self.input_primer_nombre.raise_()
-        self.label_primer_nombre.raise_()
-        self.input_cedula.raise_()
-        self.label_apellido_materno.raise_()
-        self.input_apellido_materno.raise_()
         self.espacio_hijos.raise_()
+        self.espacio_sexo.raise_()
         self.verticalLayout_4.addWidget(self.preguntas_info_basica)
         self.verticalLayout_3.addWidget(self.info_basica, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_medidas = QtWidgets.QFrame(self.espacio_preguntas)
@@ -694,11 +762,13 @@ class Ui_PantallaFormularioEmpleado(object):
         self.preguntas_info_medidas.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_medidas.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_medidas.setObjectName("preguntas_info_medidas")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.preguntas_info_medidas)
-        self.gridLayout_3.setContentsMargins(10, 30, -1, 30)
-        self.gridLayout_3.setHorizontalSpacing(20)
-        self.gridLayout_3.setVerticalSpacing(0)
-        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.preguntas_info_medidas)
+        self.gridLayout_5.setHorizontalSpacing(9)
+        self.gridLayout_5.setVerticalSpacing(20)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
         self.label_talla_de_camisa = QtWidgets.QLabel(self.preguntas_info_medidas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -723,57 +793,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_talla_de_camisa.setScaledContents(False)
         self.label_talla_de_camisa.setObjectName("label_talla_de_camisa")
-        self.gridLayout_3.addWidget(self.label_talla_de_camisa, 0, 0, 1, 1, QtCore.Qt.AlignLeft)
-        self.label_talla_De_pantalon = QtWidgets.QLabel(self.preguntas_info_medidas)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_talla_De_pantalon.sizePolicy().hasHeightForWidth())
-        self.label_talla_De_pantalon.setSizePolicy(sizePolicy)
-        self.label_talla_De_pantalon.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_talla_De_pantalon.setFont(font)
-        self.label_talla_De_pantalon.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_talla_De_pantalon.setScaledContents(False)
-        self.label_talla_De_pantalon.setObjectName("label_talla_De_pantalon")
-        self.gridLayout_3.addWidget(self.label_talla_De_pantalon, 0, 1, 1, 1, QtCore.Qt.AlignLeft)
-        self.label_talla_de_zapatos = QtWidgets.QLabel(self.preguntas_info_medidas)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_talla_de_zapatos.sizePolicy().hasHeightForWidth())
-        self.label_talla_de_zapatos.setSizePolicy(sizePolicy)
-        self.label_talla_de_zapatos.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_talla_de_zapatos.setFont(font)
-        self.label_talla_de_zapatos.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_talla_de_zapatos.setScaledContents(False)
-        self.label_talla_de_zapatos.setObjectName("label_talla_de_zapatos")
-        self.gridLayout_3.addWidget(self.label_talla_de_zapatos, 0, 2, 1, 1, QtCore.Qt.AlignLeft)
+        self.verticalLayout_18.addWidget(self.label_talla_de_camisa, 0, QtCore.Qt.AlignLeft)
         self.input_talla_de_camisa = QtWidgets.QLineEdit(self.preguntas_info_medidas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -808,7 +828,36 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_talla_de_camisa.setObjectName("input_talla_de_camisa")
-        self.gridLayout_3.addWidget(self.input_talla_de_camisa, 1, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_18.addWidget(self.input_talla_de_camisa)
+        self.gridLayout_5.addLayout(self.verticalLayout_18, 0, 0, 1, 1)
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.label_talla_De_pantalon = QtWidgets.QLabel(self.preguntas_info_medidas)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_talla_De_pantalon.sizePolicy().hasHeightForWidth())
+        self.label_talla_De_pantalon.setSizePolicy(sizePolicy)
+        self.label_talla_De_pantalon.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_talla_De_pantalon.setFont(font)
+        self.label_talla_De_pantalon.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_talla_De_pantalon.setScaledContents(False)
+        self.label_talla_De_pantalon.setObjectName("label_talla_De_pantalon")
+        self.verticalLayout_19.addWidget(self.label_talla_De_pantalon, 0, QtCore.Qt.AlignLeft)
         self.input_talla_de_pantalon = QtWidgets.QLineEdit(self.preguntas_info_medidas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -843,7 +892,36 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_talla_de_pantalon.setObjectName("input_talla_de_pantalon")
-        self.gridLayout_3.addWidget(self.input_talla_de_pantalon, 1, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_19.addWidget(self.input_talla_de_pantalon)
+        self.gridLayout_5.addLayout(self.verticalLayout_19, 0, 1, 1, 1)
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_20.setSpacing(0)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.label_talla_de_zapatos = QtWidgets.QLabel(self.preguntas_info_medidas)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_talla_de_zapatos.sizePolicy().hasHeightForWidth())
+        self.label_talla_de_zapatos.setSizePolicy(sizePolicy)
+        self.label_talla_de_zapatos.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_talla_de_zapatos.setFont(font)
+        self.label_talla_de_zapatos.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_talla_de_zapatos.setScaledContents(False)
+        self.label_talla_de_zapatos.setObjectName("label_talla_de_zapatos")
+        self.verticalLayout_20.addWidget(self.label_talla_de_zapatos, 0, QtCore.Qt.AlignLeft)
         self.input_talla_de_zapatos = QtWidgets.QLineEdit(self.preguntas_info_medidas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -878,13 +956,8 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_talla_de_zapatos.setObjectName("input_talla_de_zapatos")
-        self.gridLayout_3.addWidget(self.input_talla_de_zapatos, 1, 2, 1, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.input_talla_de_pantalon.raise_()
-        self.input_talla_de_camisa.raise_()
-        self.input_talla_de_zapatos.raise_()
-        self.label_talla_de_camisa.raise_()
-        self.label_talla_De_pantalon.raise_()
-        self.label_talla_de_zapatos.raise_()
+        self.verticalLayout_20.addWidget(self.input_talla_de_zapatos, 0, QtCore.Qt.AlignLeft)
+        self.gridLayout_5.addLayout(self.verticalLayout_20, 0, 2, 1, 1)
         self.verticalLayout_7.addWidget(self.preguntas_info_medidas)
         self.verticalLayout_3.addWidget(self.info_medidas, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_geografica = QtWidgets.QFrame(self.espacio_preguntas)
@@ -893,7 +966,7 @@ class Ui_PantallaFormularioEmpleado(object):
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_geografica.sizePolicy().hasHeightForWidth())
         self.info_geografica.setSizePolicy(sizePolicy)
-        self.info_geografica.setMinimumSize(QtCore.QSize(1000, 220))
+        self.info_geografica.setMinimumSize(QtCore.QSize(1000, 170))
         self.info_geografica.setMaximumSize(QtCore.QSize(1000, 16777215))
         self.info_geografica.setStyleSheet("QFrame{\n"
 "    background-color: rgb(255, 255, 255);\n"
@@ -934,11 +1007,13 @@ class Ui_PantallaFormularioEmpleado(object):
         self.espacio_para_preguntas.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_para_preguntas.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_preguntas.setObjectName("espacio_para_preguntas")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.espacio_para_preguntas)
-        self.gridLayout_4.setContentsMargins(10, 30, -1, 30)
-        self.gridLayout_4.setHorizontalSpacing(20)
-        self.gridLayout_4.setVerticalSpacing(0)
-        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.espacio_para_preguntas)
+        self.gridLayout_3.setHorizontalSpacing(9)
+        self.gridLayout_3.setVerticalSpacing(20)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.verticalLayout_24 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_24.setSpacing(0)
+        self.verticalLayout_24.setObjectName("verticalLayout_24")
         self.label_estado_residente = QtWidgets.QLabel(self.espacio_para_preguntas)
         self.label_estado_residente.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
@@ -958,52 +1033,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_estado_residente.setScaledContents(False)
         self.label_estado_residente.setObjectName("label_estado_residente")
-        self.gridLayout_4.addWidget(self.label_estado_residente, 0, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.label_municipio = QtWidgets.QLabel(self.espacio_para_preguntas)
-        self.label_municipio.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_municipio.setFont(font)
-        self.label_municipio.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_municipio.setScaledContents(False)
-        self.label_municipio.setObjectName("label_municipio")
-        self.gridLayout_4.addWidget(self.label_municipio, 0, 1, 1, 1, QtCore.Qt.AlignTop)
-        self.label_direccion_recidencia = QtWidgets.QLabel(self.espacio_para_preguntas)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(20)
-        sizePolicy.setHeightForWidth(self.label_direccion_recidencia.sizePolicy().hasHeightForWidth())
-        self.label_direccion_recidencia.setSizePolicy(sizePolicy)
-        self.label_direccion_recidencia.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_direccion_recidencia.setFont(font)
-        self.label_direccion_recidencia.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_direccion_recidencia.setScaledContents(False)
-        self.label_direccion_recidencia.setObjectName("label_direccion_recidencia")
-        self.gridLayout_4.addWidget(self.label_direccion_recidencia, 0, 2, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_24.addWidget(self.label_estado_residente, 0, QtCore.Qt.AlignLeft)
         self.input_estado_residente = QtWidgets.QLineEdit(self.espacio_para_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1038,7 +1068,31 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_estado_residente.setObjectName("input_estado_residente")
-        self.gridLayout_4.addWidget(self.input_estado_residente, 1, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_24.addWidget(self.input_estado_residente)
+        self.gridLayout_3.addLayout(self.verticalLayout_24, 0, 0, 1, 1)
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_25.setSpacing(0)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.label_municipio = QtWidgets.QLabel(self.espacio_para_preguntas)
+        self.label_municipio.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_municipio.setFont(font)
+        self.label_municipio.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_municipio.setScaledContents(False)
+        self.label_municipio.setObjectName("label_municipio")
+        self.verticalLayout_25.addWidget(self.label_municipio, 0, QtCore.Qt.AlignLeft)
         self.input_municipio = QtWidgets.QLineEdit(self.espacio_para_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1073,7 +1127,36 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_municipio.setObjectName("input_municipio")
-        self.gridLayout_4.addWidget(self.input_municipio, 1, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_25.addWidget(self.input_municipio)
+        self.gridLayout_3.addLayout(self.verticalLayout_25, 0, 1, 1, 1)
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_26.setSpacing(0)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.label_direccion_recidencia = QtWidgets.QLabel(self.espacio_para_preguntas)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(20)
+        sizePolicy.setHeightForWidth(self.label_direccion_recidencia.sizePolicy().hasHeightForWidth())
+        self.label_direccion_recidencia.setSizePolicy(sizePolicy)
+        self.label_direccion_recidencia.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_direccion_recidencia.setFont(font)
+        self.label_direccion_recidencia.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_direccion_recidencia.setScaledContents(False)
+        self.label_direccion_recidencia.setObjectName("label_direccion_recidencia")
+        self.verticalLayout_26.addWidget(self.label_direccion_recidencia, 0, QtCore.Qt.AlignLeft)
         self.input_direccion_residencia = QtWidgets.QLineEdit(self.espacio_para_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1108,13 +1191,8 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_direccion_residencia.setObjectName("input_direccion_residencia")
-        self.gridLayout_4.addWidget(self.input_direccion_residencia, 1, 2, 1, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.input_estado_residente.raise_()
-        self.input_municipio.raise_()
-        self.label_direccion_recidencia.raise_()
-        self.label_municipio.raise_()
-        self.label_estado_residente.raise_()
-        self.input_direccion_residencia.raise_()
+        self.verticalLayout_26.addWidget(self.input_direccion_residencia)
+        self.gridLayout_3.addLayout(self.verticalLayout_26, 0, 2, 1, 1)
         self.verticalLayout_8.addWidget(self.espacio_para_preguntas)
         self.verticalLayout_3.addWidget(self.info_geografica, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_contactos = QtWidgets.QFrame(self.espacio_preguntas)
@@ -1162,11 +1240,13 @@ class Ui_PantallaFormularioEmpleado(object):
         self.espacio_para_preguntas_2.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_para_preguntas_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_preguntas_2.setObjectName("espacio_para_preguntas_2")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.espacio_para_preguntas_2)
-        self.gridLayout_5.setContentsMargins(10, 30, 10, 30)
-        self.gridLayout_5.setHorizontalSpacing(20)
-        self.gridLayout_5.setVerticalSpacing(0)
-        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.espacio_para_preguntas_2)
+        self.gridLayout_4.setHorizontalSpacing(9)
+        self.gridLayout_4.setVerticalSpacing(20)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_21.setSpacing(0)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
         self.label_numero_de_telefono = QtWidgets.QLabel(self.espacio_para_preguntas_2)
         self.label_numero_de_telefono.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
@@ -1186,27 +1266,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_numero_de_telefono.setScaledContents(False)
         self.label_numero_de_telefono.setObjectName("label_numero_de_telefono")
-        self.gridLayout_5.addWidget(self.label_numero_de_telefono, 0, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.label_correo_electronico = QtWidgets.QLabel(self.espacio_para_preguntas_2)
-        self.label_correo_electronico.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_correo_electronico.setFont(font)
-        self.label_correo_electronico.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_correo_electronico.setScaledContents(False)
-        self.label_correo_electronico.setObjectName("label_correo_electronico")
-        self.gridLayout_5.addWidget(self.label_correo_electronico, 0, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_21.addWidget(self.label_numero_de_telefono, 0, QtCore.Qt.AlignLeft)
         self.input_numero_de_telefono = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1241,7 +1301,90 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_numero_de_telefono.setObjectName("input_numero_de_telefono")
-        self.gridLayout_5.addWidget(self.input_numero_de_telefono, 1, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_21.addWidget(self.input_numero_de_telefono)
+        self.gridLayout_4.addLayout(self.verticalLayout_21, 0, 0, 1, 1)
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_23.setSpacing(0)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.label_numero_de_telefono_adicional = QtWidgets.QLabel(self.espacio_para_preguntas_2)
+        self.label_numero_de_telefono_adicional.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_de_telefono_adicional.setFont(font)
+        self.label_numero_de_telefono_adicional.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_de_telefono_adicional.setScaledContents(False)
+        self.label_numero_de_telefono_adicional.setObjectName("label_numero_de_telefono_adicional")
+        self.verticalLayout_23.addWidget(self.label_numero_de_telefono_adicional, 0, QtCore.Qt.AlignLeft)
+        self.input_numero_de_telefono_adicional = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(20)
+        sizePolicy.setHeightForWidth(self.input_numero_de_telefono_adicional.sizePolicy().hasHeightForWidth())
+        self.input_numero_de_telefono_adicional.setSizePolicy(sizePolicy)
+        self.input_numero_de_telefono_adicional.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_numero_de_telefono_adicional.setFont(font)
+        self.input_numero_de_telefono_adicional.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_numero_de_telefono_adicional.setObjectName("input_numero_de_telefono_adicional")
+        self.verticalLayout_23.addWidget(self.input_numero_de_telefono_adicional)
+        self.gridLayout_4.addLayout(self.verticalLayout_23, 0, 1, 1, 1)
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.label_correo_electronico = QtWidgets.QLabel(self.espacio_para_preguntas_2)
+        self.label_correo_electronico.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_correo_electronico.setFont(font)
+        self.label_correo_electronico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_correo_electronico.setScaledContents(False)
+        self.label_correo_electronico.setObjectName("label_correo_electronico")
+        self.verticalLayout_22.addWidget(self.label_correo_electronico, 0, QtCore.Qt.AlignLeft)
         self.input_correo_electronico = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1276,7 +1419,8 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_correo_electronico.setObjectName("input_correo_electronico")
-        self.gridLayout_5.addWidget(self.input_correo_electronico, 1, 1, 1, 1, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.verticalLayout_22.addWidget(self.input_correo_electronico, 0, QtCore.Qt.AlignLeft)
+        self.gridLayout_4.addLayout(self.verticalLayout_22, 0, 2, 1, 1)
         self.verticalLayout_9.addWidget(self.espacio_para_preguntas_2)
         self.verticalLayout_3.addWidget(self.info_contactos, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_medica = QtWidgets.QFrame(self.espacio_preguntas)
@@ -1395,7 +1539,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_enfermedades.setCurrentText("")
         self.boton_enfermedades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_enfermedades.setIconSize(QtCore.QSize(40, 40))
-        self.boton_enfermedades.setPlaceholderText("")
+        self.boton_enfermedades.setProperty("placeholderText", "")
         self.boton_enfermedades.setObjectName("boton_enfermedades")
         self.boton_diagnostico = QtWidgets.QComboBox(self.preguntas_info_medica)
         self.boton_diagnostico.setGeometry(QtCore.QRect(370, 50, 300, 40))
@@ -1446,20 +1590,8 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_diagnostico.setCurrentText("")
         self.boton_diagnostico.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_diagnostico.setIconSize(QtCore.QSize(40, 40))
-        self.boton_diagnostico.setPlaceholderText("")
+        self.boton_diagnostico.setProperty("placeholderText", "")
         self.boton_diagnostico.setObjectName("boton_diagnostico")
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.preguntas_info_medica)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(11, 210, 291, 141))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.espacio_para_enfermedades = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.espacio_para_enfermedades.setContentsMargins(0, 0, 0, 0)
-        self.espacio_para_enfermedades.setObjectName("espacio_para_enfermedades")
-        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.preguntas_info_medica)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(370, 210, 291, 141))
-        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
-        self.espacio_para_diagnostico = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
-        self.espacio_para_diagnostico.setContentsMargins(0, 0, 0, 0)
-        self.espacio_para_diagnostico.setObjectName("espacio_para_diagnostico")
         self.input_otra_enfermedad = QtWidgets.QLineEdit(self.preguntas_info_medica)
         self.input_otra_enfermedad.setGeometry(QtCore.QRect(10, 100, 300, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -1564,7 +1696,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_anadir_diagnostico.setIcon(icon2)
         self.boton_anadir_diagnostico.setIconSize(QtCore.QSize(40, 20))
         self.boton_anadir_diagnostico.setObjectName("boton_anadir_diagnostico")
@@ -1615,6 +1747,22 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_anadir_enfermedad.setIcon(icon2)
         self.boton_anadir_enfermedad.setIconSize(QtCore.QSize(40, 20))
         self.boton_anadir_enfermedad.setObjectName("boton_anadir_enfermedad")
+        self.ver_lista_enfermedades = QtWidgets.QListWidget(self.preguntas_info_medica)
+        self.ver_lista_enfermedades.setGeometry(QtCore.QRect(15, 196, 291, 181))
+        self.ver_lista_enfermedades.setStyleSheet("QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"\n"
+"}")
+        self.ver_lista_enfermedades.setObjectName("ver_lista_enfermedades")
+        self.ver_lista_diagnostico = QtWidgets.QListWidget(self.preguntas_info_medica)
+        self.ver_lista_diagnostico.setGeometry(QtCore.QRect(369, 193, 301, 192))
+        self.ver_lista_diagnostico.setStyleSheet("QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"\n"
+"}")
+        self.ver_lista_diagnostico.setObjectName("ver_lista_diagnostico")
         self.verticalLayout_10.addWidget(self.preguntas_info_medica)
         self.verticalLayout_3.addWidget(self.info_medica, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_laboral = QtWidgets.QFrame(self.espacio_preguntas)
@@ -1789,7 +1937,7 @@ class Ui_PantallaFormularioEmpleado(object):
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_detalles_cargo.sizePolicy().hasHeightForWidth())
         self.info_detalles_cargo.setSizePolicy(sizePolicy)
-        self.info_detalles_cargo.setMinimumSize(QtCore.QSize(1000, 362))
+        self.info_detalles_cargo.setMinimumSize(QtCore.QSize(1000, 320))
         self.info_detalles_cargo.setStyleSheet("QFrame{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
@@ -1828,10 +1976,12 @@ class Ui_PantallaFormularioEmpleado(object):
         self.preguntas_info_detalle_cargo.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_detalle_cargo.setObjectName("preguntas_info_detalle_cargo")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.preguntas_info_detalle_cargo)
-        self.gridLayout_10.setContentsMargins(10, 30, 10, 30)
-        self.gridLayout_10.setHorizontalSpacing(20)
-        self.gridLayout_10.setVerticalSpacing(0)
+        self.gridLayout_10.setHorizontalSpacing(9)
+        self.gridLayout_10.setVerticalSpacing(20)
         self.gridLayout_10.setObjectName("gridLayout_10")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_30.setSpacing(0)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
         self.label_cargos = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
         self.label_cargos.setEnabled(True)
         self.label_cargos.setMaximumSize(QtCore.QSize(16777215, 40))
@@ -1852,70 +2002,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_cargos.setScaledContents(False)
         self.label_cargos.setObjectName("label_cargos")
-        self.gridLayout_10.addWidget(self.label_cargos, 0, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.label_funcion_del_cargo = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
-        self.label_funcion_del_cargo.setEnabled(True)
-        self.label_funcion_del_cargo.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_funcion_del_cargo.setFont(font)
-        self.label_funcion_del_cargo.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_funcion_del_cargo.setScaledContents(False)
-        self.label_funcion_del_cargo.setObjectName("label_funcion_del_cargo")
-        self.gridLayout_10.addWidget(self.label_funcion_del_cargo, 0, 1, 1, 1, QtCore.Qt.AlignTop)
-        self.label_tipo_de_cargo = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
-        self.label_tipo_de_cargo.setEnabled(True)
-        self.label_tipo_de_cargo.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_tipo_de_cargo.setFont(font)
-        self.label_tipo_de_cargo.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_tipo_de_cargo.setScaledContents(False)
-        self.label_tipo_de_cargo.setObjectName("label_tipo_de_cargo")
-        self.gridLayout_10.addWidget(self.label_tipo_de_cargo, 0, 2, 1, 1, QtCore.Qt.AlignTop)
-        self.label_cargos_2 = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
-        self.label_cargos_2.setEnabled(True)
-        self.label_cargos_2.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_cargos_2.setFont(font)
-        self.label_cargos_2.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_cargos_2.setScaledContents(False)
-        self.label_cargos_2.setObjectName("label_cargos_2")
-        self.gridLayout_10.addWidget(self.label_cargos_2, 0, 3, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_30.addWidget(self.label_cargos, 0, QtCore.Qt.AlignLeft)
         self.boton_de_cargos = QtWidgets.QComboBox(self.preguntas_info_detalle_cargo)
         self.boton_de_cargos.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -1975,9 +2062,34 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_de_cargos.setCurrentText("")
         self.boton_de_cargos.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_cargos.setIconSize(QtCore.QSize(40, 40))
-        self.boton_de_cargos.setPlaceholderText("")
+        self.boton_de_cargos.setProperty("placeholderText", "")
         self.boton_de_cargos.setObjectName("boton_de_cargos")
-        self.gridLayout_10.addWidget(self.boton_de_cargos, 1, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_30.addWidget(self.boton_de_cargos)
+        self.gridLayout_10.addLayout(self.verticalLayout_30, 0, 0, 1, 1)
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_28.setSpacing(0)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        self.label_funcion_del_cargo = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
+        self.label_funcion_del_cargo.setEnabled(True)
+        self.label_funcion_del_cargo.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_funcion_del_cargo.setFont(font)
+        self.label_funcion_del_cargo.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_funcion_del_cargo.setScaledContents(False)
+        self.label_funcion_del_cargo.setObjectName("label_funcion_del_cargo")
+        self.verticalLayout_28.addWidget(self.label_funcion_del_cargo, 0, QtCore.Qt.AlignLeft)
         self.boton_funcion_cargos = QtWidgets.QComboBox(self.preguntas_info_detalle_cargo)
         self.boton_funcion_cargos.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -2036,9 +2148,34 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_funcion_cargos.setCurrentText("")
         self.boton_funcion_cargos.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_funcion_cargos.setIconSize(QtCore.QSize(40, 40))
-        self.boton_funcion_cargos.setPlaceholderText("")
+        self.boton_funcion_cargos.setProperty("placeholderText", "")
         self.boton_funcion_cargos.setObjectName("boton_funcion_cargos")
-        self.gridLayout_10.addWidget(self.boton_funcion_cargos, 1, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_28.addWidget(self.boton_funcion_cargos)
+        self.gridLayout_10.addLayout(self.verticalLayout_28, 0, 1, 1, 1)
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_31.setSpacing(0)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.label_tipo_de_cargo = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
+        self.label_tipo_de_cargo.setEnabled(True)
+        self.label_tipo_de_cargo.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_tipo_de_cargo.setFont(font)
+        self.label_tipo_de_cargo.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_tipo_de_cargo.setScaledContents(False)
+        self.label_tipo_de_cargo.setObjectName("label_tipo_de_cargo")
+        self.verticalLayout_31.addWidget(self.label_tipo_de_cargo, 0, QtCore.Qt.AlignLeft)
         self.boton_tipo_de_cargo = QtWidgets.QComboBox(self.preguntas_info_detalle_cargo)
         self.boton_tipo_de_cargo.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -2097,9 +2234,34 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_tipo_de_cargo.setCurrentText("")
         self.boton_tipo_de_cargo.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_tipo_de_cargo.setIconSize(QtCore.QSize(40, 40))
-        self.boton_tipo_de_cargo.setPlaceholderText("")
+        self.boton_tipo_de_cargo.setProperty("placeholderText", "")
         self.boton_tipo_de_cargo.setObjectName("boton_tipo_de_cargo")
-        self.gridLayout_10.addWidget(self.boton_tipo_de_cargo, 1, 2, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_31.addWidget(self.boton_tipo_de_cargo)
+        self.gridLayout_10.addLayout(self.verticalLayout_31, 0, 2, 1, 1)
+        self.verticalLayout_32 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_32.setSpacing(0)
+        self.verticalLayout_32.setObjectName("verticalLayout_32")
+        self.label_cargos_2 = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
+        self.label_cargos_2.setEnabled(True)
+        self.label_cargos_2.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_cargos_2.setFont(font)
+        self.label_cargos_2.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_cargos_2.setScaledContents(False)
+        self.label_cargos_2.setObjectName("label_cargos_2")
+        self.verticalLayout_32.addWidget(self.label_cargos_2, 0, QtCore.Qt.AlignLeft)
         self.boton_de_especialidad = QtWidgets.QComboBox(self.preguntas_info_detalle_cargo)
         self.boton_de_especialidad.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -2158,11 +2320,15 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_de_especialidad.setCurrentText("")
         self.boton_de_especialidad.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_especialidad.setIconSize(QtCore.QSize(40, 40))
-        self.boton_de_especialidad.setPlaceholderText("")
         self.boton_de_especialidad.setDuplicatesEnabled(False)
         self.boton_de_especialidad.setFrame(False)
+        self.boton_de_especialidad.setProperty("placeholderText", "")
         self.boton_de_especialidad.setObjectName("boton_de_especialidad")
-        self.gridLayout_10.addWidget(self.boton_de_especialidad, 1, 3, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_32.addWidget(self.boton_de_especialidad)
+        self.gridLayout_10.addLayout(self.verticalLayout_32, 0, 3, 1, 1)
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
         self.label_titulo_del_cargo = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
         self.label_titulo_del_cargo.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
@@ -2182,7 +2348,46 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_titulo_del_cargo.setScaledContents(False)
         self.label_titulo_del_cargo.setObjectName("label_titulo_del_cargo")
-        self.gridLayout_10.addWidget(self.label_titulo_del_cargo, 2, 0, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_29.addWidget(self.label_titulo_del_cargo, 0, QtCore.Qt.AlignLeft)
+        self.input_titulo_del_cargo = QtWidgets.QLineEdit(self.preguntas_info_detalle_cargo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.input_titulo_del_cargo.sizePolicy().hasHeightForWidth())
+        self.input_titulo_del_cargo.setSizePolicy(sizePolicy)
+        self.input_titulo_del_cargo.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_titulo_del_cargo.setFont(font)
+        self.input_titulo_del_cargo.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_titulo_del_cargo.setObjectName("input_titulo_del_cargo")
+        self.verticalLayout_29.addWidget(self.input_titulo_del_cargo)
+        self.gridLayout_10.addLayout(self.verticalLayout_29, 1, 0, 1, 1)
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_27.setSpacing(0)
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
         self.label_labores_que_realiza = QtWidgets.QLabel(self.preguntas_info_detalle_cargo)
         self.label_labores_que_realiza.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
@@ -2202,7 +2407,43 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_labores_que_realiza.setScaledContents(False)
         self.label_labores_que_realiza.setObjectName("label_labores_que_realiza")
-        self.gridLayout_10.addWidget(self.label_labores_que_realiza, 2, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.verticalLayout_27.addWidget(self.label_labores_que_realiza, 0, QtCore.Qt.AlignLeft)
+        self.input_labores_que_realiza = QtWidgets.QLineEdit(self.preguntas_info_detalle_cargo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.input_labores_que_realiza.sizePolicy().hasHeightForWidth())
+        self.input_labores_que_realiza.setSizePolicy(sizePolicy)
+        self.input_labores_que_realiza.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_labores_que_realiza.setFont(font)
+        self.input_labores_que_realiza.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_labores_que_realiza.setObjectName("input_labores_que_realiza")
+        self.verticalLayout_27.addWidget(self.input_labores_que_realiza)
+        self.gridLayout_10.addLayout(self.verticalLayout_27, 1, 1, 1, 1)
         self.frame = QtWidgets.QFrame(self.preguntas_info_detalle_cargo)
         self.frame.setObjectName("frame")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.frame)
@@ -2254,7 +2495,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_mostrar_fecha_de_ingreso_del_minis.setText("")
         self.label_mostrar_fecha_de_ingreso_del_minis.setObjectName("label_mostrar_fecha_de_ingreso_del_minis")
         self.gridLayout_8.addWidget(self.label_mostrar_fecha_de_ingreso_del_minis, 1, 1, 1, 1)
-        self.gridLayout_10.addWidget(self.frame, 2, 2, 2, 1, QtCore.Qt.AlignTop)
+        self.gridLayout_10.addWidget(self.frame, 1, 2, 1, 1)
         self.frame1 = QtWidgets.QFrame(self.preguntas_info_detalle_cargo)
         self.frame1.setObjectName("frame1")
         self.gridLayout_9 = QtWidgets.QGridLayout(self.frame1)
@@ -2306,77 +2547,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_mostrar_fecha_de_ingreso_tela.setText("")
         self.label_mostrar_fecha_de_ingreso_tela.setObjectName("label_mostrar_fecha_de_ingreso_tela")
         self.gridLayout_9.addWidget(self.label_mostrar_fecha_de_ingreso_tela, 1, 1, 1, 1)
-        self.gridLayout_10.addWidget(self.frame1, 2, 3, 2, 1, QtCore.Qt.AlignTop)
-        self.input_titulo_del_cargo = QtWidgets.QLineEdit(self.preguntas_info_detalle_cargo)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
-        sizePolicy.setHeightForWidth(self.input_titulo_del_cargo.sizePolicy().hasHeightForWidth())
-        self.input_titulo_del_cargo.setSizePolicy(sizePolicy)
-        self.input_titulo_del_cargo.setMinimumSize(QtCore.QSize(220, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_titulo_del_cargo.setFont(font)
-        self.input_titulo_del_cargo.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_titulo_del_cargo.setObjectName("input_titulo_del_cargo")
-        self.gridLayout_10.addWidget(self.input_titulo_del_cargo, 3, 0, 1, 1, QtCore.Qt.AlignTop)
-        self.input_labores_que_realiza = QtWidgets.QLineEdit(self.preguntas_info_detalle_cargo)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
-        sizePolicy.setHeightForWidth(self.input_labores_que_realiza.sizePolicy().hasHeightForWidth())
-        self.input_labores_que_realiza.setSizePolicy(sizePolicy)
-        self.input_labores_que_realiza.setMinimumSize(QtCore.QSize(220, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_labores_que_realiza.setFont(font)
-        self.input_labores_que_realiza.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_labores_que_realiza.setObjectName("input_labores_que_realiza")
-        self.gridLayout_10.addWidget(self.input_labores_que_realiza, 3, 1, 1, 1, QtCore.Qt.AlignTop)
+        self.gridLayout_10.addWidget(self.frame1, 1, 3, 1, 1)
         self.boton_finalizar = QtWidgets.QPushButton(self.preguntas_info_detalle_cargo)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2401,8 +2572,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}")
         self.boton_finalizar.setObjectName("boton_finalizar")
-        self.gridLayout_10.addWidget(self.boton_finalizar, 4, 3, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
-        self.gridLayout_10.setRowStretch(1, 9)
+        self.gridLayout_10.addWidget(self.boton_finalizar, 2, 3, 1, 1, QtCore.Qt.AlignRight)
         self.frame.raise_()
         self.boton_tipo_de_cargo.raise_()
         self.boton_funcion_cargos.raise_()
@@ -2439,8 +2609,7 @@ class Ui_PantallaFormularioEmpleado(object):
         PantallaFormularioEmpleado.setTabOrder(self.input_apellido_materno, self.input_cedula)
         PantallaFormularioEmpleado.setTabOrder(self.input_cedula, self.boton_para_agregar_fecha)
         PantallaFormularioEmpleado.setTabOrder(self.boton_para_agregar_fecha, self.input_sexo_femenino)
-        PantallaFormularioEmpleado.setTabOrder(self.input_sexo_femenino, self.input_sexo_masculino)
-        PantallaFormularioEmpleado.setTabOrder(self.input_sexo_masculino, self.input_si)
+        PantallaFormularioEmpleado.setTabOrder(self.input_sexo_femenino, self.input_si)
         PantallaFormularioEmpleado.setTabOrder(self.input_si, self.input_no)
         PantallaFormularioEmpleado.setTabOrder(self.input_no, self.input_talla_de_camisa)
         PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_camisa, self.input_talla_de_pantalon)
@@ -2476,41 +2645,45 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_titulo_formulario.setText(_translate("PantallaFormularioEmpleado", "Formulario de registro"))
         self.label_titulo_del_segmento_info_basica.setText(_translate("PantallaFormularioEmpleado", " Información básica"))
         self.label_primer_nombre.setText(_translate("PantallaFormularioEmpleado", "Primer nombre"))
-        self.label_segundo_nombre.setText(_translate("PantallaFormularioEmpleado", "Segundo nombre"))
-        self.label_apellido_paterno.setText(_translate("PantallaFormularioEmpleado", "Apellido paterno"))
-        self.label_apellido_materno.setText(_translate("PantallaFormularioEmpleado", "Apellido materno"))
         self.input_primer_nombre.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_segundo_nombre.setText(_translate("PantallaFormularioEmpleado", "Segundo nombre"))
         self.input_segundo_nombre.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_tercer_nombre.setText(_translate("PantallaFormularioEmpleado", "Tercer nombre"))
+        self.input_tercer_nombre.setPlaceholderText(_translate("PantallaFormularioEmpleado", "(Opcional)"))
+        self.label_apellido_paterno.setText(_translate("PantallaFormularioEmpleado", "Apellido paterno"))
         self.input_apellido_paterno.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_apellido_materno.setText(_translate("PantallaFormularioEmpleado", "Apellido materno"))
         self.input_apellido_materno.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_cedula.setText(_translate("PantallaFormularioEmpleado", "Cédula"))
-        self.label_fecha_de_nacimiento.setText(_translate("PantallaFormularioEmpleado", "Fecha de nacimiento"))
-        self.boton_para_agregar_fecha.setText(_translate("PantallaFormularioEmpleado", "Agregar fecha"))
+        self.input_cedula.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_sexo.setText(_translate("PantallaFormularioEmpleado", "Sexo"))
-        self.input_sexo_femenino.setText(_translate("PantallaFormularioEmpleado", "Femenino"))
         self.input_sexo_masculino.setText(_translate("PantallaFormularioEmpleado", "Masculino"))
+        self.input_sexo_femenino.setText(_translate("PantallaFormularioEmpleado", "Femenino"))
         self.label_tiene_hijos.setText(_translate("PantallaFormularioEmpleado", "¿Tiene hijos menores de edad?"))
         self.input_si.setText(_translate("PantallaFormularioEmpleado", "Si"))
         self.input_no.setText(_translate("PantallaFormularioEmpleado", "No"))
-        self.input_cedula.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_fecha_de_nacimiento.setText(_translate("PantallaFormularioEmpleado", "Fecha de nacimiento"))
+        self.boton_para_agregar_fecha.setText(_translate("PantallaFormularioEmpleado", "Agregar fecha"))
         self.label_titulo_del_segmento_medidas.setText(_translate("PantallaFormularioEmpleado", " Medidas"))
         self.label_talla_de_camisa.setText(_translate("PantallaFormularioEmpleado", "Talla de camisa"))
-        self.label_talla_De_pantalon.setText(_translate("PantallaFormularioEmpleado", "Talla de pantalón"))
-        self.label_talla_de_zapatos.setText(_translate("PantallaFormularioEmpleado", "Talla de zapatos"))
         self.input_talla_de_camisa.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_talla_De_pantalon.setText(_translate("PantallaFormularioEmpleado", "Talla de pantalón"))
         self.input_talla_de_pantalon.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_talla_de_zapatos.setText(_translate("PantallaFormularioEmpleado", "Talla de zapatos"))
         self.input_talla_de_zapatos.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_del_segmento_info_geografica.setText(_translate("PantallaFormularioEmpleado", " Información geografica"))
         self.label_estado_residente.setText(_translate("PantallaFormularioEmpleado", "Estado residente"))
-        self.label_municipio.setText(_translate("PantallaFormularioEmpleado", "Municipio"))
-        self.label_direccion_recidencia.setText(_translate("PantallaFormularioEmpleado", "Dirección de residencia"))
         self.input_estado_residente.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_municipio.setText(_translate("PantallaFormularioEmpleado", "Municipio"))
         self.input_municipio.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_direccion_recidencia.setText(_translate("PantallaFormularioEmpleado", "Dirección de residencia"))
         self.input_direccion_residencia.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_del_segmento_info_contacto.setText(_translate("PantallaFormularioEmpleado", " Información de contacto"))
         self.label_numero_de_telefono.setText(_translate("PantallaFormularioEmpleado", "Número de télefono"))
-        self.label_correo_electronico.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico"))
         self.input_numero_de_telefono.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_numero_de_telefono_adicional.setText(_translate("PantallaFormularioEmpleado", "Número de télefono adicional"))
+        self.input_numero_de_telefono_adicional.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_correo_electronico.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico"))
         self.input_correo_electronico.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_info_medica.setText(_translate("PantallaFormularioEmpleado", " Enfermedades crónicas y discapacidades"))
         self.label_diagnostico.setText(_translate("PantallaFormularioEmpleado", "Diagnóstico"))
@@ -2530,11 +2703,11 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_tipo_de_cargo.setText(_translate("PantallaFormularioEmpleado", " Tipo de cargo "))
         self.label_cargos_2.setText(_translate("PantallaFormularioEmpleado", "Especialidad"))
         self.label_titulo_del_cargo.setText(_translate("PantallaFormularioEmpleado", "Titulo del cargo"))
+        self.input_titulo_del_cargo.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_labores_que_realiza.setText(_translate("PantallaFormularioEmpleado", " Labores que realiza "))
+        self.input_labores_que_realiza.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_fecha_de_ingreso_del_minis.setText(_translate("PantallaFormularioEmpleado", "Fecha de ingreso al ministerio"))
         self.boton_para_agregar_fecha_de_ingreso_del_minis.setText(_translate("PantallaFormularioEmpleado", "Agregar fecha"))
         self.label_fecha_de_ingreso_tela.setText(_translate("PantallaFormularioEmpleado", "Fecha de ingreso al T.E.L.A"))
         self.boton_fecha_de_ingreso_tela.setText(_translate("PantallaFormularioEmpleado", "Agregar fecha"))
-        self.input_titulo_del_cargo.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
-        self.input_labores_que_realiza.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.boton_finalizar.setText(_translate("PantallaFormularioEmpleado", "Finallizar"))
