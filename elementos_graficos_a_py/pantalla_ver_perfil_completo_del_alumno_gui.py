@@ -120,14 +120,14 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_tercer_nombre.setScaledContents(False)
         self.label_tercer_nombre.setObjectName("label_tercer_nombre")
         self.verticalLayout_36.addWidget(self.label_tercer_nombre, 0, QtCore.Qt.AlignLeft)
-        self.input_mostrar_segundo_nombre_2 = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_segundo_nombre_2.setEnabled(True)
-        self.input_mostrar_segundo_nombre_2.setMinimumSize(QtCore.QSize(0, 40))
+        self.input_mostrar_tercer_nombre = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_tercer_nombre.setEnabled(True)
+        self.input_mostrar_tercer_nombre.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(13)
-        self.input_mostrar_segundo_nombre_2.setFont(font)
-        self.input_mostrar_segundo_nombre_2.setStyleSheet("QLineEdit{\n"
+        self.input_mostrar_tercer_nombre.setFont(font)
+        self.input_mostrar_tercer_nombre.setStyleSheet("QLineEdit{\n"
 "    \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-radius:5px;\n"
@@ -149,9 +149,9 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "\n"
 "}\n"
 "")
-        self.input_mostrar_segundo_nombre_2.setReadOnly(True)
-        self.input_mostrar_segundo_nombre_2.setObjectName("input_mostrar_segundo_nombre_2")
-        self.verticalLayout_36.addWidget(self.input_mostrar_segundo_nombre_2)
+        self.input_mostrar_tercer_nombre.setReadOnly(True)
+        self.input_mostrar_tercer_nombre.setObjectName("input_mostrar_tercer_nombre")
+        self.verticalLayout_36.addWidget(self.input_mostrar_tercer_nombre)
         self.gridLayout_2.addLayout(self.verticalLayout_36, 2, 0, 1, 1)
         self.frame = QtWidgets.QFrame(self.layoutWidget)
         self.frame.setStyleSheet("border:none;")
@@ -946,7 +946,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.espacio_scroll_mostrar_datos_obtenidos.setWidgetResizable(True)
         self.espacio_scroll_mostrar_datos_obtenidos.setObjectName("espacio_scroll_mostrar_datos_obtenidos")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 722, 2113))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -1413, 722, 2113))
         self.scrollAreaWidgetContents.setStyleSheet("background:transparent;")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
@@ -1012,6 +1012,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.mostrar_datos_del_representante.setObjectName("mostrar_datos_del_representante")
         self.gridLayout = QtWidgets.QGridLayout(self.mostrar_datos_del_representante)
         self.gridLayout.setHorizontalSpacing(20)
+        self.gridLayout.setVerticalSpacing(6)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout()
         self.verticalLayout_14.setObjectName("verticalLayout_14")
@@ -1192,62 +1193,6 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_cedula_representante.setObjectName("input_mostrar_cedula_representante")
         self.verticalLayout_15.addWidget(self.input_mostrar_cedula_representante)
         self.gridLayout.addLayout(self.verticalLayout_15, 1, 0, 1, 1)
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_19.setObjectName("verticalLayout_19")
-        self.label_numero_telefono = QtWidgets.QLabel(self.mostrar_datos_del_representante)
-        self.label_numero_telefono.setMinimumSize(QtCore.QSize(200, 30))
-        self.label_numero_telefono.setMaximumSize(QtCore.QSize(200, 30))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_numero_telefono.setFont(font)
-        self.label_numero_telefono.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_numero_telefono.setScaledContents(False)
-        self.label_numero_telefono.setObjectName("label_numero_telefono")
-        self.verticalLayout_19.addWidget(self.label_numero_telefono)
-        self.input_mostrar_numero_telefono = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
-        self.input_mostrar_numero_telefono.setEnabled(True)
-        self.input_mostrar_numero_telefono.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_numero_telefono.setFont(font)
-        self.input_mostrar_numero_telefono.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_numero_telefono.setReadOnly(True)
-        self.input_mostrar_numero_telefono.setObjectName("input_mostrar_numero_telefono")
-        self.verticalLayout_19.addWidget(self.input_mostrar_numero_telefono)
-        self.gridLayout.addLayout(self.verticalLayout_19, 1, 1, 1, 1)
         self.verticalLayout_16 = QtWidgets.QVBoxLayout()
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.label_relacion_alumno = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1303,7 +1248,174 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_relacion_alumno.setReadOnly(True)
         self.input_mostrar_relacion_alumno.setObjectName("input_mostrar_relacion_alumno")
         self.verticalLayout_16.addWidget(self.input_mostrar_relacion_alumno)
-        self.gridLayout.addLayout(self.verticalLayout_16, 2, 0, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_16, 1, 1, 1, 1)
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.label_numero_telefono = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_numero_telefono.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_telefono.setFont(font)
+        self.label_numero_telefono.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_telefono.setScaledContents(False)
+        self.label_numero_telefono.setObjectName("label_numero_telefono")
+        self.verticalLayout_19.addWidget(self.label_numero_telefono, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_numero_telefono = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_numero_telefono.setEnabled(True)
+        self.input_mostrar_numero_telefono.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_numero_telefono.setFont(font)
+        self.input_mostrar_numero_telefono.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_numero_telefono.setReadOnly(True)
+        self.input_mostrar_numero_telefono.setObjectName("input_mostrar_numero_telefono")
+        self.verticalLayout_19.addWidget(self.input_mostrar_numero_telefono)
+        self.gridLayout.addLayout(self.verticalLayout_19, 2, 0, 1, 1)
+        self.verticalLayout_37 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_37.setObjectName("verticalLayout_37")
+        self.label_numero_telefono_adicional = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_numero_telefono_adicional.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_numero_telefono_adicional.setMaximumSize(QtCore.QSize(200, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_telefono_adicional.setFont(font)
+        self.label_numero_telefono_adicional.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_telefono_adicional.setScaledContents(False)
+        self.label_numero_telefono_adicional.setObjectName("label_numero_telefono_adicional")
+        self.verticalLayout_37.addWidget(self.label_numero_telefono_adicional)
+        self.input_mostrar_numero_telefono_adicional = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_numero_telefono_adicional.setEnabled(True)
+        self.input_mostrar_numero_telefono_adicional.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_numero_telefono_adicional.setFont(font)
+        self.input_mostrar_numero_telefono_adicional.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_numero_telefono_adicional.setReadOnly(True)
+        self.input_mostrar_numero_telefono_adicional.setObjectName("input_mostrar_numero_telefono_adicional")
+        self.verticalLayout_37.addWidget(self.input_mostrar_numero_telefono_adicional)
+        self.gridLayout.addLayout(self.verticalLayout_37, 2, 1, 1, 1)
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.label_estado_civil = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_estado_civil.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_estado_civil.setMaximumSize(QtCore.QSize(200, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_estado_civil.setFont(font)
+        self.label_estado_civil.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_estado_civil.setScaledContents(False)
+        self.label_estado_civil.setObjectName("label_estado_civil")
+        self.verticalLayout_21.addWidget(self.label_estado_civil)
+        self.input_mostrar_estado_civil = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_estado_civil.setEnabled(True)
+        self.input_mostrar_estado_civil.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_estado_civil.setFont(font)
+        self.input_mostrar_estado_civil.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_estado_civil.setReadOnly(True)
+        self.input_mostrar_estado_civil.setObjectName("input_mostrar_estado_civil")
+        self.verticalLayout_21.addWidget(self.input_mostrar_estado_civil, 0, QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_21, 3, 0, 1, 1)
         self.verticalLayout_20 = QtWidgets.QVBoxLayout()
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.label_carga_familiar = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1359,7 +1471,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_carga_familiar.setReadOnly(True)
         self.input_mostrar_carga_familiar.setObjectName("input_mostrar_carga_familiar")
         self.verticalLayout_20.addWidget(self.input_mostrar_carga_familiar)
-        self.gridLayout.addLayout(self.verticalLayout_20, 2, 1, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_20, 3, 1, 1, 1)
         self.verticalLayout_17 = QtWidgets.QVBoxLayout()
         self.verticalLayout_17.setObjectName("verticalLayout_17")
         self.label_direccion_residencial = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1415,64 +1527,8 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_direccion_residencial.setReadOnly(True)
         self.input_mostrar_direccion_residencial.setObjectName("input_mostrar_direccion_residencial")
         self.verticalLayout_17.addWidget(self.input_mostrar_direccion_residencial)
-        self.gridLayout.addLayout(self.verticalLayout_17, 3, 0, 1, 2)
-        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.label_estado_civil = QtWidgets.QLabel(self.mostrar_datos_del_representante)
-        self.label_estado_civil.setMinimumSize(QtCore.QSize(200, 30))
-        self.label_estado_civil.setMaximumSize(QtCore.QSize(200, 30))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_estado_civil.setFont(font)
-        self.label_estado_civil.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_estado_civil.setScaledContents(False)
-        self.label_estado_civil.setObjectName("label_estado_civil")
-        self.verticalLayout_21.addWidget(self.label_estado_civil)
-        self.input_mostrar_estado_civil = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
-        self.input_mostrar_estado_civil.setEnabled(True)
-        self.input_mostrar_estado_civil.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_estado_civil.setFont(font)
-        self.input_mostrar_estado_civil.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_estado_civil.setReadOnly(True)
-        self.input_mostrar_estado_civil.setObjectName("input_mostrar_estado_civil")
-        self.verticalLayout_21.addWidget(self.input_mostrar_estado_civil)
-        self.gridLayout.addLayout(self.verticalLayout_21, 4, 0, 1, 1)
-        self.verticalLayout_5.addWidget(self.mostrar_datos_del_representante, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_17, 4, 0, 1, 2)
+        self.verticalLayout_5.addWidget(self.mostrar_datos_del_representante, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.verticalLayout_4.addWidget(self.espacio_info_contacto, 0, QtCore.Qt.AlignTop)
         self.espacio_info_bancaria_alumno = QtWidgets.QFrame(self.espacio_mostrar_datos)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -1844,6 +1900,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.frame_2.setObjectName("frame_2")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_3.setHorizontalSpacing(20)
+        self.gridLayout_3.setVerticalSpacing(10)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.verticalLayout_33 = QtWidgets.QVBoxLayout()
         self.verticalLayout_33.setObjectName("verticalLayout_33")
@@ -2028,6 +2085,67 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_tiempo.setObjectName("input_mostrar_tiempo")
         self.verticalLayout_35.addWidget(self.input_mostrar_tiempo)
         self.gridLayout_3.addLayout(self.verticalLayout_35, 1, 0, 1, 1)
+        self.verticalLayout_38 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_38.setObjectName("verticalLayout_38")
+        self.label_matricula = QtWidgets.QLabel(self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_matricula.sizePolicy().hasHeightForWidth())
+        self.label_matricula.setSizePolicy(sizePolicy)
+        self.label_matricula.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_matricula.setMaximumSize(QtCore.QSize(200, 35))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_matricula.setFont(font)
+        self.label_matricula.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_matricula.setScaledContents(False)
+        self.label_matricula.setObjectName("label_matricula")
+        self.verticalLayout_38.addWidget(self.label_matricula)
+        self.input_mostrar_matricula = QtWidgets.QLineEdit(self.frame_2)
+        self.input_mostrar_matricula.setEnabled(True)
+        self.input_mostrar_matricula.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_matricula.setFont(font)
+        self.input_mostrar_matricula.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_matricula.setReadOnly(True)
+        self.input_mostrar_matricula.setObjectName("input_mostrar_matricula")
+        self.verticalLayout_38.addWidget(self.input_mostrar_matricula)
+        self.gridLayout_3.addLayout(self.verticalLayout_38, 1, 1, 1, 1)
         self.verticalLayout_11.addWidget(self.frame_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.verticalLayout_4.addWidget(self.espacio_info_carnet_2)
         self.verticalLayout_2.addWidget(self.espacio_mostrar_datos)
@@ -2064,11 +2182,12 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Nombre"))
         self.label_apellido.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido"))
         self.label_numero_telefono_3.setText(_translate("PantallaInfoCompletaDelAlumno", "Cédula"))
-        self.label_numero_telefono.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono"))
         self.label_relacion_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Relación con el alumno"))
+        self.label_numero_telefono.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono"))
+        self.label_numero_telefono_adicional.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono adicional "))
+        self.label_estado_civil.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado civil"))
         self.label_carga_familiar.setText(_translate("PantallaInfoCompletaDelAlumno", "Carga familiar"))
         self.label_direccion_residencial.setText(_translate("PantallaInfoCompletaDelAlumno", "Dirección residencial"))
-        self.label_estado_civil.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado civil"))
         self.label_titulo_info_bancaria_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Información bancaria del alumno"))
         self.label_titulo_diagnosticos_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnósticos del alumno"))
         self.groupBox.setTitle(_translate("PantallaInfoCompletaDelAlumno", "Mensaje de ayuda"))
@@ -2080,3 +2199,4 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_especialidad.setText(_translate("PantallaInfoCompletaDelAlumno", "Especialidad"))
         self.label_fecha_ingreso.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de ingreso"))
         self.label_tiempo.setText(_translate("PantallaInfoCompletaDelAlumno", "Tiempo en el T.E.L.A"))
+        self.label_matricula.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de matricula"))

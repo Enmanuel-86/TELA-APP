@@ -251,7 +251,7 @@ QPushButton:hover{
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="input_mostrar_segundo_nombre_2">
+                <widget class="QLineEdit" name="input_mostrar_tercer_nombre">
                  <property name="enabled">
                   <bool>true</bool>
                  </property>
@@ -1526,7 +1526,7 @@ QLineEdit:focus{
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-1413</y>
            <width>722</width>
            <height>2113</height>
           </rect>
@@ -3193,6 +3193,9 @@ QLineEdit:focus{
                    <property name="horizontalSpacing">
                     <number>20</number>
                    </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
+                   </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_33">
                      <item>
@@ -3438,6 +3441,103 @@ QLineEdit:focus{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_mostrar_tiempo">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_38">
+                     <item>
+                      <widget class="QLabel" name="label_matricula">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Número de matricula</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="input_mostrar_matricula">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>

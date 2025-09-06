@@ -87,8 +87,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
         self.boton_generar_informe.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","generar_informe.png")))
         self.boton_crear_nuevo_registro.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","nuevo_registro.png")))
-        self.boton_de_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
-        self.boton_de_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
         self.imagen_contador.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
 
         
@@ -257,7 +255,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             return
 
         for persona in coincidencias:
-            item = f'{persona[1]} - {persona[2]} {persona[4]}'
+            item = f'{persona[1]} - {persona[2]} {persona[5]}'
             self.resultados.addItem(QListWidgetItem(item))
 
         # Ocultar si hay una coincidencia exacta por cédula
@@ -294,7 +292,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         row = index.row()
         
         # Obtener el texto de la primera columna (nombre)
-        cedula = modelo.item(row, 0).text()
+        cedula = modelo.item(row, 1).text()
         
         # Establecer el texto en el QLineEdit
         self.barra_de_busqueda.setText(cedula)
@@ -361,8 +359,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     # Método para cargar los alumnos en la tabla
     def cargar_alumnos_en_tabla(self, tabla, alumnos):
         columnas = [
-            "Cédula", "Primer Nombre",
-            "Apellido Paterno", "Matricula", "Fecha de inscrip","Estado", "Opciones"
+            "Matricula", "Cédula", "Primer Nombre", "Apellido Paterno",
+            "Situación", "Opciones"
         ]
 
         global modelo
@@ -372,8 +370,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Primero cargamos los datos
         for indice, alumno in enumerate(alumnos):
             datos_visibles = [
-                alumno[1], alumno[2], alumno[3],
-                alumno[5], alumno[6], alumno[9], 
+                alumno[5], alumno[1], alumno[2],
+                alumno[3], alumno[9] 
             ]
 
             items = []
@@ -522,15 +520,31 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             pantalla_perfil_alumno.input_mostrar_cedula.setText(info_basica[1])
             pantalla_perfil_alumno.input_mostrar_primer_nombre.setText(info_basica[2])
             pantalla_perfil_alumno.input_mostrar_segundo_nombre.setText(info_basica[3])
-            pantalla_perfil_alumno.input_mostrar_apellido_paterno.setText(info_basica[4])
-            pantalla_perfil_alumno.input_mostrar_apellido_materno.setText(info_basica[5])
-            pantalla_perfil_alumno.input_mostrar_fecha_nacimiento.setText(info_basica[6])
-            pantalla_perfil_alumno.input_mostrar_edad.setText(str(info_basica[7]))
-            pantalla_perfil_alumno.input_mostrar_lugar_nacimiento.setText(info_basica[8])
-            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[12])
+            
+            if info_basica[4] == None:
+                
+                pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText("No tiene")
+                
+            else:
+                
+                pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText(info_basica[4])
+                
+                
+                
+                
+                
             
             
-            if info_basica[9] == 'F':
+            
+            pantalla_perfil_alumno.input_mostrar_apellido_paterno.setText(info_basica[5])
+            pantalla_perfil_alumno.input_mostrar_apellido_materno.setText(info_basica[6])
+            pantalla_perfil_alumno.input_mostrar_fecha_nacimiento.setText(info_basica[7])
+            pantalla_perfil_alumno.input_mostrar_edad.setText(str(info_basica[8]))
+            pantalla_perfil_alumno.input_mostrar_lugar_nacimiento.setText(info_basica[9])
+            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[14])
+            
+            
+            if info_basica[10] == 'F':
                     
                 pantalla_perfil_alumno.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_f.png")))
                 
@@ -538,7 +552,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 pantalla_perfil_alumno.input_sexo_masculino.setChecked(False)
                 
                 
-            elif info_basica[9] == 'M':
+            elif info_basica[10] == 'M':
                 
                 
                 pantalla_perfil_alumno.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_m.png")))
@@ -547,24 +561,24 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         
         
-            if info_basica[10] == 1:
+            if info_basica[11] == 1:
                 
                 pantalla_perfil_alumno.input_si_cma.setChecked(True)
                 pantalla_perfil_alumno.input_no_cma.setChecked(False)
                 
-            elif info_basica[10] == 0:
+            elif info_basica[11] == 0:
                 
                 pantalla_perfil_alumno.input_no_cma.setChecked(True)
                 pantalla_perfil_alumno.input_si_cma.setChecked(False)
                 
                 
                 
-            if info_basica[11] == 1:
+            if info_basica[12] == 1:
                 
                 pantalla_perfil_alumno.input_si_imt.setChecked(True)
                 pantalla_perfil_alumno.input_no_imt.setChecked(False)
                 
-            elif info_basica[11] == 0:
+            elif info_basica[12] == 0:
                 
                 pantalla_perfil_alumno.input_no_imt.setChecked(True)
                 pantalla_perfil_alumno.input_si_imt.setChecked(False)
@@ -584,9 +598,16 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             pantalla_perfil_alumno.input_mostrar_apellido.setText(datos_representante[4])   
             pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText("ninguna")
             pantalla_perfil_alumno.input_mostrar_cedula_representante.setText(datos_representante[2])
-            pantalla_perfil_alumno.input_mostrar_nombre.setText(datos_representante[3])
-            pantalla_perfil_alumno.input_mostrar_direccion_residencial.setText(datos_representante[6])
-            pantalla_perfil_alumno.input_mostrar_numero_telefono.setText(datos_representante[7])
+            
+            pantalla_perfil_alumno.input_mostrar_direccion_residencial.setText(datos_representante[5])
+            pantalla_perfil_alumno.input_mostrar_numero_telefono.setText(datos_representante[6])
+            
+            if datos_representante[7] == None:
+                pantalla_perfil_alumno.input_mostrar_numero_telefono_adicional.setText("No tiene")
+            
+            else:
+                pantalla_perfil_alumno.input_mostrar_numero_telefono_adicional.setText(datos_representante[7])
+            
             pantalla_perfil_alumno.input_mostrar_carga_familiar.setText(str(datos_representante[8]))   
             pantalla_perfil_alumno.input_mostrar_estado_civil.setText(datos_representante[9])
             
@@ -647,8 +668,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
             
-            pantalla_perfil_alumno.input_mostrar_especialidad.setText(info_inscripcion[3])
-            pantalla_perfil_alumno.input_mostrar_fecha_ingreso.setText(str(info_inscripcion[10]))
+            pantalla_perfil_alumno.input_mostrar_especialidad.setText(info_inscripcion[4])
+            pantalla_perfil_alumno.input_mostrar_matricula.setText(info_inscripcion[5])
+            pantalla_perfil_alumno.input_mostrar_fecha_ingreso.setText(str(info_inscripcion[6]))
             pantalla_perfil_alumno.input_mostrar_tiempo.setText("1 año")
             
             
