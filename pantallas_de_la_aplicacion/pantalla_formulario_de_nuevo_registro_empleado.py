@@ -1,7 +1,7 @@
 from datetime import datetime
-from PyQt5.QtCore import QRegExp, Qt
+from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QRegExpValidator, QIntValidator
-from PyQt5 import QtGui
+from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
 import traceback
 import os
@@ -341,7 +341,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
             self.lista_de_diagnosticos.append(diagnostico)
 
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos)
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos, self.boton_diagnostico, diagnostico)
 
         
             
