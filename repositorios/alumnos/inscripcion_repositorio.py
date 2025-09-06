@@ -61,7 +61,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
@@ -96,7 +97,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
@@ -136,7 +138,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
@@ -176,7 +179,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
@@ -216,7 +220,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
@@ -256,7 +261,8 @@ class InscripcionRepositorio(RepositorioBase):
                             ELSE 0
                         END AS tiempo_en_tela,
                         inscripciones.periodo_escolar,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
                     FROM tb_alumnos AS alumnos
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 

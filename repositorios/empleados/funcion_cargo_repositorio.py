@@ -92,6 +92,9 @@ class FuncionCargoRepositorio(RepositorioBase):
                 
                 detalle_cargo_asociado = funcion_cargo.detalle_cargo
                 
+                if ((funcion_cargo_id >= 1) and (funcion_cargo_id <= 15)):
+                    raise BaseDatosError("FUNCION_CARGO_PREDETERMINADO", "Esta función de cargo no se puede eliminar")
+                
                 if detalle_cargo_asociado:
                     raise BaseDatosError("DETALLE_CARGO_ASOCIADO", "Esta función del cargo está asociada a 1 o más empleados y no puede ser eliminado")
                 
@@ -113,7 +116,7 @@ class FuncionCargoRepositorio(RepositorioBase):
 if __name__ == "__main__":
     funcion_cargo_repositorio = FuncionCargoRepositorio()
     
-    campos_funcion_cargo = {"funcion_cargo": "SECRETARIO"}
+    #campos_funcion_cargo = {"funcion_cargo": "SECRETARIO"}
     
     #funcion_cargo_repositorio.registrar(campos_funcion_cargo)
     
@@ -126,4 +129,3 @@ if __name__ == "__main__":
     
     #funcion_cargo_repositorio.eliminar(9)
     #funcion_cargo_repositorio.eliminar(1)
-    #funcion_cargo_repositorio.eliminar(2)

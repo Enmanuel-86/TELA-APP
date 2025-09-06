@@ -1,3 +1,5 @@
+import calendar
+
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
@@ -142,10 +144,11 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         
         return lista_evaluadores
     
-    def transformar_lista_firmantes(self, lista_evaluadores: List, nombre_completo_directora: str) -> List[Dict]:
+    def transformar_lista_firmantes(self, lista_evaluadores: List, nombre_completo_directora: str, nombre_completo_coord_academico: str) -> List[Dict]:
         lista_dict_firmantes = []
         
         lista_evaluadores.append(nombre_completo_directora)
+        lista_evaluadores.append(nombre_completo_coord_academico)
         
         for firmante in lista_evaluadores:
             elemento_lista = {
@@ -160,6 +163,30 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         documento = Document()
         
         return documento
+    
+    def cargar_mes(self) -> str:
+        fecha_actual = datetime.today()
+        
+        diccionario_meses_espaniol = {
+            "January": "Enero",
+            "February": "Febrero",
+            "March": "Marzo",
+            "April": "Abril",
+            "May": "Mayo",
+            "June": "Junio",
+            "July": "Julio",
+            "August": "Agosto",
+            "September": "Septiembre",
+            "October": "Octubre",
+            "November": "Noviembre",
+            "December": "Diciembre"
+        }
+        
+        # Obtener el nombre del mes en inglés de la fecha de nacimiento
+        nombre_mes_ingles = calendar.month_name[fecha_actual.month]
+        
+        # Devolver el nombre del mes en español
+        return diccionario_meses_espaniol.get(nombre_mes_ingles)
     
     def cargar_cintillo(self, documento):
         encabezado = documento.sections[0].header
@@ -523,7 +550,8 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         info_clinica_alumno_repositorio: InfoClinicaAlumnoRepositorio,
         detalles_cargo_repositorio: DetalleCargoRepositorio,
         especialidad_repositorio: EspecialidadRepositorio,
-        especialidad_id: int
+        especialidad_id: int,
+        nombre_completo_coord_academico: str
     ) -> Optional[List[Any]]:
         try:
             datos = []
@@ -538,7 +566,8 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
             )
             
             lista_dict_firmantes = self.transformar_lista_firmantes(
-                lista_evaluadores_firmantes, nombre_completo_directora
+                lista_evaluadores_firmantes, nombre_completo_directora,
+                nombre_completo_coord_academico
             )
             
             lista_evaluadores_especialidad = self.transformar_lista_evaluadores(
@@ -571,6 +600,7 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS.mkdir(exist_ok = True)
         
         nombre_especialidad_ocupacional = datos[0].upper()
+        mes_actual = self.cargar_mes().upper()
         lista_dict_alumnos = datos[1]
         lista_dict_firmantes = datos[2]
         
@@ -580,7 +610,7 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         self.cargar_cintillo(documento)
         self.cargar_info_alumnos(documento, lista_dict_alumnos, lista_dict_firmantes)
         
-        nombre_archivo = f"INFORME EDUCATIVO INTEGRAL DE {nombre_especialidad_ocupacional} {fecha_actual}-{fecha_actual + 1}"
+        nombre_archivo = f"INFORME EDUCATIVO INTEGRAL DE {nombre_especialidad_ocupacional} {mes_actual}-{fecha_actual}"
         
         documento.save(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
         
@@ -605,6 +635,7 @@ if __name__ == "__main__":
     especialidad_repositorio = EspecialidadRepositorio()
     
     ESPECIALIDAD_ID = 1
+    nombre_completo_coord_academico = "FULANO DE TAL"
     
     datos = reporte_informe_educativo_alumnos.cargar_datos(
         alumno_repositorio,
@@ -612,7 +643,8 @@ if __name__ == "__main__":
         info_clinica_alumno_repositorio,
         detalles_cargo_repositorio,
         especialidad_repositorio,
-        ESPECIALIDAD_ID
+        ESPECIALIDAD_ID,
+        nombre_completo_coord_academico
     )
     
     reporte_informe_educativo_alumnos.exportar(datos)
