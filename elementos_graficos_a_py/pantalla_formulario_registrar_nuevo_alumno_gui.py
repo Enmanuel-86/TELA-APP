@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_FormularioNuevoRegistroAlumnos(object):
     def setupUi(self, FormularioNuevoRegistroAlumnos):
         FormularioNuevoRegistroAlumnos.setObjectName("FormularioNuevoRegistroAlumnos")
-        FormularioNuevoRegistroAlumnos.resize(1054, 1409)
+        FormularioNuevoRegistroAlumnos.resize(1057, 1409)
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(FormularioNuevoRegistroAlumnos)
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_12.setSpacing(0)
@@ -26,7 +26,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1062, 2702))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -1299, 1062, 2691))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -221,7 +221,8 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.preguntas_datos_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_datos_alumno.setObjectName("preguntas_datos_alumno")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.preguntas_datos_alumno)
-        self.gridLayout_6.setVerticalSpacing(20)
+        self.gridLayout_6.setHorizontalSpacing(20)
+        self.gridLayout_6.setVerticalSpacing(10)
         self.gridLayout_6.setObjectName("gridLayout_6")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -399,65 +400,6 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_tercer_nombre.setObjectName("input_tercer_nombre")
         self.verticalLayout_16.addWidget(self.input_tercer_nombre)
         self.gridLayout_6.addLayout(self.verticalLayout_16, 0, 2, 1, 1)
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_19.setObjectName("verticalLayout_19")
-        self.label_apellido_materno = QtWidgets.QLabel(self.preguntas_datos_alumno)
-        self.label_apellido_materno.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_apellido_materno.setFont(font)
-        self.label_apellido_materno.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_apellido_materno.setTextFormat(QtCore.Qt.PlainText)
-        self.label_apellido_materno.setScaledContents(True)
-        self.label_apellido_materno.setObjectName("label_apellido_materno")
-        self.verticalLayout_19.addWidget(self.label_apellido_materno)
-        self.input_apellido_materno = QtWidgets.QLineEdit(self.preguntas_datos_alumno)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_apellido_materno.sizePolicy().hasHeightForWidth())
-        self.input_apellido_materno.setSizePolicy(sizePolicy)
-        self.input_apellido_materno.setMinimumSize(QtCore.QSize(220, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_apellido_materno.setFont(font)
-        self.input_apellido_materno.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_apellido_materno.setObjectName("input_apellido_materno")
-        self.verticalLayout_19.addWidget(self.input_apellido_materno)
-        self.gridLayout_6.addLayout(self.verticalLayout_19, 0, 3, 1, 1)
         self.verticalLayout_15 = QtWidgets.QVBoxLayout()
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.label_apellido_paterno = QtWidgets.QLabel(self.preguntas_datos_alumno)
@@ -516,7 +458,66 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
 "")
         self.input_apellido_paterno.setObjectName("input_apellido_paterno")
         self.verticalLayout_15.addWidget(self.input_apellido_paterno)
-        self.gridLayout_6.addLayout(self.verticalLayout_15, 1, 0, 1, 1)
+        self.gridLayout_6.addLayout(self.verticalLayout_15, 0, 3, 1, 1)
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.label_apellido_materno = QtWidgets.QLabel(self.preguntas_datos_alumno)
+        self.label_apellido_materno.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_apellido_materno.setFont(font)
+        self.label_apellido_materno.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_apellido_materno.setTextFormat(QtCore.Qt.PlainText)
+        self.label_apellido_materno.setScaledContents(True)
+        self.label_apellido_materno.setObjectName("label_apellido_materno")
+        self.verticalLayout_19.addWidget(self.label_apellido_materno, 0, QtCore.Qt.AlignLeft)
+        self.input_apellido_materno = QtWidgets.QLineEdit(self.preguntas_datos_alumno)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_apellido_materno.sizePolicy().hasHeightForWidth())
+        self.input_apellido_materno.setSizePolicy(sizePolicy)
+        self.input_apellido_materno.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_apellido_materno.setFont(font)
+        self.input_apellido_materno.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_apellido_materno.setObjectName("input_apellido_materno")
+        self.verticalLayout_19.addWidget(self.input_apellido_materno)
+        self.gridLayout_6.addLayout(self.verticalLayout_19, 1, 0, 1, 1)
         self.verticalLayout_13 = QtWidgets.QVBoxLayout()
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.label_cedula = QtWidgets.QLabel(self.preguntas_datos_alumno)
@@ -1020,7 +1021,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_fecha_de_ingreso_tela.setObjectName("boton_fecha_de_ingreso_tela")
         self.gridLayout_9.addWidget(self.boton_fecha_de_ingreso_tela, 1, 0, 1, 1)
         self.label_mostrar_fecha_de_ingreso_tela = QtWidgets.QLabel(self.frame_2)
-        self.label_mostrar_fecha_de_ingreso_tela.setMinimumSize(QtCore.QSize(100, 0))
+        self.label_mostrar_fecha_de_ingreso_tela.setMinimumSize(QtCore.QSize(50, 0))
         self.label_mostrar_fecha_de_ingreso_tela.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -1030,7 +1031,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_mostrar_fecha_de_ingreso_tela.setFont(font)
         self.label_mostrar_fecha_de_ingreso_tela.setText("")
         self.label_mostrar_fecha_de_ingreso_tela.setObjectName("label_mostrar_fecha_de_ingreso_tela")
-        self.gridLayout_9.addWidget(self.label_mostrar_fecha_de_ingreso_tela, 1, 1, 1, 1, QtCore.Qt.AlignLeft)
+        self.gridLayout_9.addWidget(self.label_mostrar_fecha_de_ingreso_tela, 1, 1, 1, 1, QtCore.Qt.AlignRight)
         self.gridLayout_6.addWidget(self.frame_2, 3, 1, 1, 1)
         self.verticalLayout_4.addWidget(self.preguntas_datos_alumno, 0, QtCore.Qt.AlignVCenter)
         self.verticalLayout_3.addWidget(self.datos_del_alumno, 0, QtCore.Qt.AlignHCenter)
@@ -2551,7 +2552,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_diagnostico.setCurrentText("")
         self.boton_diagnostico.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_diagnostico.setIconSize(QtCore.QSize(40, 40))
-        self.boton_diagnostico.setProperty("placeholderText", "")
+        self.boton_diagnostico.setPlaceholderText("")
         self.boton_diagnostico.setObjectName("boton_diagnostico")
         self.verticalLayout_34.addWidget(self.boton_diagnostico)
         self.gridLayout_8.addLayout(self.verticalLayout_34, 0, 0, 1, 1)
@@ -3206,128 +3207,15 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_de_especialidad.setCurrentText("")
         self.boton_de_especialidad.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_especialidad.setIconSize(QtCore.QSize(40, 40))
+        self.boton_de_especialidad.setPlaceholderText("")
         self.boton_de_especialidad.setDuplicatesEnabled(False)
         self.boton_de_especialidad.setFrame(False)
-        self.boton_de_especialidad.setProperty("placeholderText", "")
         self.boton_de_especialidad.setObjectName("boton_de_especialidad")
         self.verticalLayout_41.addWidget(self.boton_de_especialidad)
         self.gridLayout_7.addLayout(self.verticalLayout_41, 0, 0, 1, 1)
-        self.verticalLayout_44 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_44.setSpacing(0)
-        self.verticalLayout_44.setObjectName("verticalLayout_44")
-        self.label_turno_incribir = QtWidgets.QLabel(self.preguntas_especialidad_inscribit)
-        self.label_turno_incribir.setEnabled(True)
-        self.label_turno_incribir.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_turno_incribir.setFont(font)
-        self.label_turno_incribir.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_turno_incribir.setScaledContents(False)
-        self.label_turno_incribir.setObjectName("label_turno_incribir")
-        self.verticalLayout_44.addWidget(self.label_turno_incribir, 0, QtCore.Qt.AlignLeft)
-        self.boton_turno = QtWidgets.QComboBox(self.preguntas_especialidad_inscribit)
-        self.boton_turno.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_turno.sizePolicy().hasHeightForWidth())
-        self.boton_turno.setSizePolicy(sizePolicy)
-        self.boton_turno.setMinimumSize(QtCore.QSize(300, 40))
-        self.boton_turno.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"")
-        self.boton_turno.setEditable(False)
-        self.boton_turno.setCurrentText("")
-        self.boton_turno.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_turno.setIconSize(QtCore.QSize(40, 40))
-        self.boton_turno.setDuplicatesEnabled(False)
-        self.boton_turno.setFrame(False)
-        self.boton_turno.setProperty("placeholderText", "")
-        self.boton_turno.setObjectName("boton_turno")
-        self.verticalLayout_44.addWidget(self.boton_turno)
-        self.gridLayout_7.addLayout(self.verticalLayout_44, 0, 1, 1, 1)
-        self.boton_finalizar = QtWidgets.QPushButton(self.preguntas_especialidad_inscribit)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_finalizar.sizePolicy().hasHeightForWidth())
-        self.boton_finalizar.setSizePolicy(sizePolicy)
-        self.boton_finalizar.setMinimumSize(QtCore.QSize(150, 50))
-        self.boton_finalizar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_finalizar.setStyleSheet("QPushButton{\n"
-"\n"
-"    font: 75 14pt \"Arial\";\n"
-"    background-color: rgb(0, 138, 71);\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        self.boton_finalizar.setObjectName("boton_finalizar")
-        self.gridLayout_7.addWidget(self.boton_finalizar, 2, 4, 1, 1)
-        self.verticalLayout_43 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_43.setContentsMargins(-1, 10, -1, -1)
-        self.verticalLayout_43.setObjectName("verticalLayout_43")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(-1, 10, -1, -1)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.label_periodo_escolar = QtWidgets.QLabel(self.preguntas_especialidad_inscribit)
         self.label_periodo_escolar.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
@@ -3348,7 +3236,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_periodo_escolar.setTextFormat(QtCore.Qt.PlainText)
         self.label_periodo_escolar.setScaledContents(True)
         self.label_periodo_escolar.setObjectName("label_periodo_escolar")
-        self.verticalLayout_43.addWidget(self.label_periodo_escolar, 0, QtCore.Qt.AlignTop)
+        self.horizontalLayout_3.addWidget(self.label_periodo_escolar)
         self.label_mostrar_periodo_escolar = QtWidgets.QLabel(self.preguntas_especialidad_inscribit)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3375,8 +3263,8 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_mostrar_periodo_escolar.setTextFormat(QtCore.Qt.PlainText)
         self.label_mostrar_periodo_escolar.setScaledContents(True)
         self.label_mostrar_periodo_escolar.setObjectName("label_mostrar_periodo_escolar")
-        self.verticalLayout_43.addWidget(self.label_mostrar_periodo_escolar, 0, QtCore.Qt.AlignTop)
-        self.gridLayout_7.addLayout(self.verticalLayout_43, 0, 3, 1, 2)
+        self.horizontalLayout_3.addWidget(self.label_mostrar_periodo_escolar)
+        self.gridLayout_7.addLayout(self.horizontalLayout_3, 0, 1, 1, 1)
         self.frame_3 = QtWidgets.QFrame(self.preguntas_especialidad_inscribit)
         self.frame_3.setObjectName("frame_3")
         self.gridLayout_15 = QtWidgets.QGridLayout(self.frame_3)
@@ -3436,6 +3324,31 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_mostrar_fecha_de_ingreso_especialidad.setObjectName("label_mostrar_fecha_de_ingreso_especialidad")
         self.gridLayout_15.addWidget(self.label_mostrar_fecha_de_ingreso_especialidad, 1, 1, 1, 1, QtCore.Qt.AlignLeft)
         self.gridLayout_7.addWidget(self.frame_3, 1, 0, 1, 1)
+        self.boton_finalizar = QtWidgets.QPushButton(self.preguntas_especialidad_inscribit)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_finalizar.sizePolicy().hasHeightForWidth())
+        self.boton_finalizar.setSizePolicy(sizePolicy)
+        self.boton_finalizar.setMinimumSize(QtCore.QSize(150, 50))
+        self.boton_finalizar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_finalizar.setStyleSheet("QPushButton{\n"
+"\n"
+"    font: 75 14pt \"Arial\";\n"
+"    background-color: rgb(0, 138, 71);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        self.boton_finalizar.setObjectName("boton_finalizar")
+        self.gridLayout_7.addWidget(self.boton_finalizar, 2, 2, 1, 1)
         self.verticalLayout_11.addWidget(self.preguntas_especialidad_inscribit)
         self.verticalLayout_3.addWidget(self.especialidad_incribir, 0, QtCore.Qt.AlignHCenter)
         self.horizontalLayout.addWidget(self.espacio_preguntas)
@@ -3446,23 +3359,31 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.retranslateUi(FormularioNuevoRegistroAlumnos)
         self.boton_diagnostico.setCurrentIndex(-1)
         self.boton_de_especialidad.setCurrentIndex(-1)
-        self.boton_turno.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(FormularioNuevoRegistroAlumnos)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_primer_nombre, self.input_segundo_nombre)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_segundo_nombre, self.input_apellido_paterno)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_segundo_nombre, self.input_tercer_nombre)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_tercer_nombre, self.input_apellido_paterno)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_apellido_paterno, self.input_apellido_materno)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_apellido_materno, self.input_cedula)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_cedula, self.input_relacion_con_representante)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_relacion_con_representante, self.input_sexo_femenino)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_relacion_con_representante, self.boton_para_agregar_fecha)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_para_agregar_fecha, self.input_situacion)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_situacion, self.input_sexo_femenino)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_sexo_femenino, self.input_sexo_masculino)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_sexo_masculino, self.boton_para_agregar_fecha)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_para_agregar_fecha, self.input_lugar_de_nacimiento)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_lugar_de_nacimiento, self.input_buscar_por_cedula)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_buscar_por_cedula, self.boton_buscar_cedula_representante)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_buscar_cedula_representante, self.input_nombre_del_representante)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_sexo_masculino, self.input_imt_si)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_imt_si, self.input_imt_no)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_imt_no, self.input_cma_si)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_cma_si, self.input_cma_no)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_cma_no, self.input_lugar_de_nacimiento)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_lugar_de_nacimiento, self.boton_fecha_de_ingreso_tela)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_fecha_de_ingreso_tela, self.input_escolaridad)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_escolaridad, self.input_procendencia)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_procendencia, self.input_buscar_por_cedula)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_buscar_por_cedula, self.input_nombre_del_representante)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_nombre_del_representante, self.input_apellido_del_representante)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_apellido_del_representante, self.input_numero_de_telefono)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_numero_de_telefono, self.input_estado_civil)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_numero_de_telefono, self.input_numero_de_telefono_adicional)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_numero_de_telefono_adicional, self.input_estado_civil)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_estado_civil, self.input_carga_familiar)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_carga_familiar, self.input_direccion_residencia)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_direccion_residencia, self.input_talla_camisa)
@@ -3479,12 +3400,19 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_medicacion, self.boton_para_agregar_fecha_diagnostico)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_para_agregar_fecha_diagnostico, self.input_certificado_discapacidad)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.input_certificado_discapacidad, self.boton_para_agregar_fecha_certificado)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_para_agregar_fecha_certificado, self.vista_previa_diagnostico)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.vista_previa_diagnostico, self.boton_de_especialidad)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_de_especialidad, self.boton_finalizar)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_finalizar, self.boton_de_regreso)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_para_agregar_fecha_certificado, self.input_observacion_adicional)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.input_observacion_adicional, self.boton_anadir_diagnostico)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_anadir_diagnostico, self.boton_de_especialidad)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_de_especialidad, self.boton_fecha_de_ingreso_especialidad)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_fecha_de_ingreso_especialidad, self.boton_finalizar)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_finalizar, self.boton_buscar_cedula_representante)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_buscar_cedula_representante, self.vista_previa_diagnostico)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.vista_previa_diagnostico, self.vista_previa_cuentas_bancarias)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.vista_previa_cuentas_bancarias, self.boton_anadir_cuenta_banco)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_anadir_cuenta_banco, self.boton_anadir_otro_diagnostico)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_anadir_otro_diagnostico, self.boton_ayuda)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_ayuda, self.boton_de_regreso)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_de_regreso, self.area_de_scroll)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.area_de_scroll, self.boton_ayuda)
 
     def retranslateUi(self, FormularioNuevoRegistroAlumnos):
         _translate = QtCore.QCoreApplication.translate
@@ -3497,10 +3425,10 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_segundo_nombre.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_segundo_nombre_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Tercer nombre"))
         self.input_tercer_nombre.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "(si es que lo tiene)"))
-        self.label_apellido_materno.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido materno"))
-        self.input_apellido_materno.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_apellido_paterno.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido paterno"))
         self.input_apellido_paterno.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.label_apellido_materno.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido materno"))
+        self.input_apellido_materno.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_cedula.setText(_translate("FormularioNuevoRegistroAlumnos", "Cédula"))
         self.input_cedula.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_relacion_con_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Relación con el representante"))
@@ -3586,8 +3514,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_anadir_diagnostico.setText(_translate("FormularioNuevoRegistroAlumnos", "Añadir "))
         self.label_titulo_especialidad_incribrir.setText(_translate("FormularioNuevoRegistroAlumnos", "Especialidad por inscribir"))
         self.label_especialidad_incribir.setText(_translate("FormularioNuevoRegistroAlumnos", "Especialidad"))
-        self.label_turno_incribir.setText(_translate("FormularioNuevoRegistroAlumnos", "Turno"))
-        self.boton_finalizar.setText(_translate("FormularioNuevoRegistroAlumnos", "Finallizar"))
         self.label_periodo_escolar.setText(_translate("FormularioNuevoRegistroAlumnos", "Periodo escolar"))
         self.label_fecha_de_ingreso_especialidad.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha de ingreso de la especialidad"))
         self.boton_fecha_de_ingreso_especialidad.setText(_translate("FormularioNuevoRegistroAlumnos", "Agregar fecha"))
+        self.boton_finalizar.setText(_translate("FormularioNuevoRegistroAlumnos", "Finallizar"))

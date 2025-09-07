@@ -37,8 +37,10 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.apellido,
                     Representante.direccion_residencia,
                     Representante.num_telefono,
+                    Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
+                    
                 ).all()
                 return representantes
         except Exception as error:
@@ -54,8 +56,10 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.apellido,
                     Representante.direccion_residencia,
                     Representante.num_telefono,
+                    Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
+                    
                 ).filter_by(representante_id = representante_id).first()
                 return representante
         except Exception as error:
@@ -71,8 +75,10 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.apellido,
                     Representante.direccion_residencia,
                     Representante.num_telefono,
+                    Representante.num_telefono_adicional,
                     Representante.carga_familiar,
-                    Representante.estado_civil 
+                    Representante.estado_civil
+                    
                 ).filter_by(cedula = cedula).first()
                 
                 return representante
@@ -115,6 +121,7 @@ class RepresentanteRepositorio(RepositorioBase):
                     "apellido": "APELLIDO",
                     "direccion_residencia": "DIRECCIÓN DE RESIDENCIA",
                     "num_telefono": "NÚMERO DE TELÉFONO",
+                    "num_telefono_adicional": "NÚMERO DE TELÉFONO ADICIONAL",
                     "carga_familiar": "CARGA FAMILIAR",
                     "estado_civil": "ESTADO CIVIL"
                 }

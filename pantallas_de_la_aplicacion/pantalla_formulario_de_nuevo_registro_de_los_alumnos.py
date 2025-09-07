@@ -359,10 +359,18 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     nombre_representante = datos_representante[2]
                     apellido_representante = datos_representante[3]
                     num_telefono_representante = datos_representante[5]
-                    carga_familiar_representante = datos_representante[6]
+                    
+                    
+                    if datos_representante[6] == None:
+                        self.input_numero_de_telefono_adicional.setText("No posee")
+                    else:
+                        self.input_numero_de_telefono_adicional.setText(datos_representante[6])
+                    
+                    
+                    carga_familiar_representante = datos_representante[7]
                     carga_familiar_representante = str(carga_familiar_representante)
                     direccion_residencia_representante = datos_representante[4]
-                    estado_civil_representante = datos_representante[7]
+                    estado_civil_representante = datos_representante[8]
                     
                     representante_id_retornado = datos_representante[0]
                     
@@ -385,6 +393,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_carga_familiar.setDisabled(True)
                     self.input_direccion_residencia.setDisabled(True)
                     self.input_numero_de_telefono.setDisabled(True)
+                    self.input_numero_de_telefono_adicional.setDisabled(True)
                     self.input_estado_civil.setDisabled(True)
                     
                     # mostramos mensaje en pantalla
@@ -923,6 +932,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             primer_nombre = self.input_primer_nombre.text().strip().capitalize()
             segundo_nombre = self.input_segundo_nombre.text().strip().capitalize()
+            
+            if self.input_tercer_nombre.text().strip():
+                tercer_nombre = self.input_tercer_nombre.text().strip().capitalize()
+                
+            else:
+                tercer_nombre = None
+            
             apellido_paterno = self.input_apellido_paterno.text().strip().capitalize()
             apellido_materno = self.input_apellido_materno.text().strip().capitalize()
             cedula = self.input_cedula.text().strip()
@@ -947,6 +963,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             campos_datos_alumno_1 = {
                 "primer_nombre": primer_nombre,
                 "segundo_nombre": segundo_nombre,
+                "tercer_nombre": tercer_nombre,
                 "apellido_paterno": apellido_paterno,
                 "apellido_materno": apellido_materno,
                 "cedula": cedula,
@@ -960,6 +977,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     campos_datos_alumno_1.get("cedula"),
                     campos_datos_alumno_1.get("primer_nombre"),
                     campos_datos_alumno_1.get("segundo_nombre"),
+                    campos_datos_alumno_1.get("tercer_nombre"),
                     campos_datos_alumno_1.get("apellido_paterno"),
                     campos_datos_alumno_1.get("apellido_materno"),
                     campos_datos_alumno_1.get("relacion_con_rep"),
@@ -1132,6 +1150,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     "cedula": campos_datos_alumno_1.get("cedula"),
                                     "primer_nombre": campos_datos_alumno_1.get("primer_nombre"),
                                     "segundo_nombre": campos_datos_alumno_1.get("segundo_nombre"),
+                                    "tercer_nombre": campos_datos_alumno_1.get("tercer_nombre"),
                                     "apellido_paterno": campos_datos_alumno_1.get("apellido_paterno"),
                                     "apellido_materno": campos_datos_alumno_1.get("apellido_materno"),
                                     "fecha_nacimiento": campos_datos_alumno_2.get("fecha_nacimiento"),
@@ -1393,6 +1412,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 apellido = self.input_apellido_del_representante.text().strip().capitalize()
                                 direccion_residencia = self.input_direccion_residencia.text().strip()
                                 num_telefono = self.input_numero_de_telefono.text().strip()
+                                
+                                if self.input_numero_de_telefono_adicional.text().strip():
+                                    num_telefono_adicional = self.input_numero_de_telefono_adicional.text().strip()
+                                else:
+                                    num_telefono_adicional = None
+                                
                                 estado_civil = self.input_estado_civil.text().strip().capitalize()
                                 carga_familiar = None
                                 carga_familiar = self.de_str_a_int_o_float(carga_familiar, self.input_carga_familiar, int)
@@ -1404,6 +1429,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     "apellido": apellido,
                                     "direccion_residencia": direccion_residencia,
                                     "num_telefono": num_telefono,
+                                    "num_telefono_adicional": num_telefono_adicional,
                                     "carga_familiar": carga_familiar,
                                     "estado_civil": estado_civil
                                 }
@@ -1414,6 +1440,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 campos_representante.get("apellido"),
                                 campos_representante.get("direccion_residencia"),
                                 campos_representante.get("num_telefono"),
+                                campos_representante.get("num_telefono_adicional"),
                                 campos_representante.get("carga_familiar"),
                                 campos_representante.get("estado_civil")
                                 )

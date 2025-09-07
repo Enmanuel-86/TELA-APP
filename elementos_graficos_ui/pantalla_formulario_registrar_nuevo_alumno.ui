@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1054</width>
+    <width>1057</width>
     <height>1409</height>
    </rect>
   </property>
@@ -47,9 +47,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-1299</y>
         <width>1062</width>
-        <height>2702</height>
+        <height>2691</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -429,8 +429,11 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
-                   <property name="verticalSpacing">
+                   <property name="horizontalSpacing">
                     <number>20</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
                    </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -703,9 +706,9 @@ QLineEdit:focus{
                     </layout>
                    </item>
                    <item row="0" column="3">
-                    <layout class="QVBoxLayout" name="verticalLayout_19">
-                     <item>
-                      <widget class="QLabel" name="label_apellido_materno">
+                    <layout class="QVBoxLayout" name="verticalLayout_15">
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLabel" name="label_apellido_paterno">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
@@ -732,7 +735,7 @@ QLineEdit:focus{
 </string>
                        </property>
                        <property name="text">
-                        <string>Apellido materno</string>
+                        <string>Apellido paterno</string>
                        </property>
                        <property name="textFormat">
                         <enum>Qt::PlainText</enum>
@@ -743,7 +746,7 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_apellido_materno">
+                      <widget class="QLineEdit" name="input_apellido_paterno">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -794,9 +797,9 @@ QLineEdit:focus{
                     </layout>
                    </item>
                    <item row="1" column="0">
-                    <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <layout class="QVBoxLayout" name="verticalLayout_19">
                      <item alignment="Qt::AlignLeft">
-                      <widget class="QLabel" name="label_apellido_paterno">
+                      <widget class="QLabel" name="label_apellido_materno">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
@@ -823,7 +826,7 @@ QLineEdit:focus{
 </string>
                        </property>
                        <property name="text">
-                        <string>Apellido paterno</string>
+                        <string>Apellido materno</string>
                        </property>
                        <property name="textFormat">
                         <enum>Qt::PlainText</enum>
@@ -834,7 +837,7 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_apellido_paterno">
+                      <widget class="QLineEdit" name="input_apellido_materno">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1741,11 +1744,11 @@ QPushButton:hover{
                         </property>
                        </widget>
                       </item>
-                      <item row="1" column="1" alignment="Qt::AlignLeft">
+                      <item row="1" column="1" alignment="Qt::AlignRight">
                        <widget class="QLabel" name="label_mostrar_fecha_de_ingreso_tela">
                         <property name="minimumSize">
                          <size>
-                          <width>100</width>
+                          <width>50</width>
                           <height>0</height>
                          </size>
                         </property>
@@ -4156,7 +4159,7 @@ QComboBox QAbstractItemView::item:hover {
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="placeholderText" stdset="0">
+                       <property name="placeholderText">
                         <string/>
                        </property>
                       </widget>
@@ -5239,203 +5242,25 @@ QComboBox:disabled {
                          <height>40</height>
                         </size>
                        </property>
+                       <property name="placeholderText">
+                        <string/>
+                       </property>
                        <property name="duplicatesEnabled">
                         <bool>false</bool>
                        </property>
                        <property name="frame">
                         <bool>false</bool>
-                       </property>
-                       <property name="placeholderText" stdset="0">
-                        <string/>
                        </property>
                       </widget>
                      </item>
                     </layout>
                    </item>
                    <item row="0" column="1">
-                    <layout class="QVBoxLayout" name="verticalLayout_44">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item alignment="Qt::AlignLeft">
-                      <widget class="QLabel" name="label_turno_incribir">
-                       <property name="enabled">
-                        <bool>true</bool>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>10</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>Turno</string>
-                       </property>
-                       <property name="scaledContents">
-                        <bool>false</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QComboBox" name="boton_turno">
-                       <property name="enabled">
-                        <bool>true</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>300</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QComboBox{
-
-	font: 75 10pt &quot;Arial&quot;;
-	padding-left:15px;
-	border:1px solid #000000 ;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QComboBox:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-</string>
-                       </property>
-                       <property name="editable">
-                        <bool>false</bool>
-                       </property>
-                       <property name="currentText">
-                        <string/>
-                       </property>
-                       <property name="currentIndex">
-                        <number>-1</number>
-                       </property>
-                       <property name="insertPolicy">
-                        <enum>QComboBox::NoInsert</enum>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>40</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="duplicatesEnabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="frame">
-                        <bool>false</bool>
-                       </property>
-                       <property name="placeholderText" stdset="0">
-                        <string/>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item row="2" column="4">
-                    <widget class="QPushButton" name="boton_finalizar">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>150</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	font: 75 14pt &quot;Arial&quot;;
-	background-color: rgb(0, 138, 71);
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Finallizar</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="3" colspan="2">
-                    <layout class="QVBoxLayout" name="verticalLayout_43">
+                    <layout class="QHBoxLayout" name="horizontalLayout_3">
                      <property name="topMargin">
                       <number>10</number>
                      </property>
-                     <item alignment="Qt::AlignTop">
+                     <item>
                       <widget class="QLabel" name="label_periodo_escolar">
                        <property name="maximumSize">
                         <size>
@@ -5473,7 +5298,7 @@ QPushButton:hover{
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignTop">
+                     <item>
                       <widget class="QLabel" name="label_mostrar_periodo_escolar">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -5631,6 +5456,45 @@ QPushButton:hover{
                      </layout>
                     </widget>
                    </item>
+                   <item row="2" column="2">
+                    <widget class="QPushButton" name="boton_finalizar">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>150</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+
+	font: 75 14pt &quot;Arial&quot;;
+	background-color: rgb(0, 138, 71);
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Finallizar</string>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -5652,19 +5516,28 @@ QPushButton:hover{
  <tabstops>
   <tabstop>input_primer_nombre</tabstop>
   <tabstop>input_segundo_nombre</tabstop>
+  <tabstop>input_tercer_nombre</tabstop>
   <tabstop>input_apellido_paterno</tabstop>
   <tabstop>input_apellido_materno</tabstop>
   <tabstop>input_cedula</tabstop>
   <tabstop>input_relacion_con_representante</tabstop>
+  <tabstop>boton_para_agregar_fecha</tabstop>
+  <tabstop>input_situacion</tabstop>
   <tabstop>input_sexo_femenino</tabstop>
   <tabstop>input_sexo_masculino</tabstop>
-  <tabstop>boton_para_agregar_fecha</tabstop>
+  <tabstop>input_imt_si</tabstop>
+  <tabstop>input_imt_no</tabstop>
+  <tabstop>input_cma_si</tabstop>
+  <tabstop>input_cma_no</tabstop>
   <tabstop>input_lugar_de_nacimiento</tabstop>
+  <tabstop>boton_fecha_de_ingreso_tela</tabstop>
+  <tabstop>input_escolaridad</tabstop>
+  <tabstop>input_procendencia</tabstop>
   <tabstop>input_buscar_por_cedula</tabstop>
-  <tabstop>boton_buscar_cedula_representante</tabstop>
   <tabstop>input_nombre_del_representante</tabstop>
   <tabstop>input_apellido_del_representante</tabstop>
   <tabstop>input_numero_de_telefono</tabstop>
+  <tabstop>input_numero_de_telefono_adicional</tabstop>
   <tabstop>input_estado_civil</tabstop>
   <tabstop>input_carga_familiar</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
@@ -5682,12 +5555,19 @@ QPushButton:hover{
   <tabstop>boton_para_agregar_fecha_diagnostico</tabstop>
   <tabstop>input_certificado_discapacidad</tabstop>
   <tabstop>boton_para_agregar_fecha_certificado</tabstop>
-  <tabstop>vista_previa_diagnostico</tabstop>
+  <tabstop>input_observacion_adicional</tabstop>
+  <tabstop>boton_anadir_diagnostico</tabstop>
   <tabstop>boton_de_especialidad</tabstop>
+  <tabstop>boton_fecha_de_ingreso_especialidad</tabstop>
   <tabstop>boton_finalizar</tabstop>
+  <tabstop>boton_buscar_cedula_representante</tabstop>
+  <tabstop>vista_previa_diagnostico</tabstop>
+  <tabstop>vista_previa_cuentas_bancarias</tabstop>
+  <tabstop>boton_anadir_cuenta_banco</tabstop>
+  <tabstop>boton_anadir_otro_diagnostico</tabstop>
+  <tabstop>boton_ayuda</tabstop>
   <tabstop>boton_de_regreso</tabstop>
   <tabstop>area_de_scroll</tabstop>
-  <tabstop>boton_ayuda</tabstop>
  </tabstops>
  <resources/>
  <connections/>
