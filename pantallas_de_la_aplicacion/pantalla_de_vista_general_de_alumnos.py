@@ -541,7 +541,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             pantalla_perfil_alumno.input_mostrar_fecha_nacimiento.setText(info_basica[7])
             pantalla_perfil_alumno.input_mostrar_edad.setText(str(info_basica[8]))
             pantalla_perfil_alumno.input_mostrar_lugar_nacimiento.setText(info_basica[9])
-            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[14])
+            
+            relacion_con_rep = info_basica[14]
+            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[15])
             
             
             if info_basica[10] == 'F':
@@ -596,7 +598,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             pantalla_perfil_alumno.input_mostrar_nombre.setText(datos_representante[3])
             pantalla_perfil_alumno.input_mostrar_apellido.setText(datos_representante[4])   
-            pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText("ninguna")
+            pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText(relacion_con_rep)
             pantalla_perfil_alumno.input_mostrar_cedula_representante.setText(datos_representante[2])
             
             pantalla_perfil_alumno.input_mostrar_direccion_residencial.setText(datos_representante[5])

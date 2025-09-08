@@ -171,7 +171,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.boton_para_agregar_fecha_certificado.clicked.connect(lambda:  self.mostrar_calendario(self.label_mostrar_fecha_certificado))
         self.boton_para_agregar_fecha_diagnostico.clicked.connect(lambda:  self.mostrar_calendario(self.label_mostrar_fecha_diagnostico))
         self.boton_fecha_de_ingreso_tela.clicked.connect(lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_tela))
-        
+        self.boton_fecha_de_ingreso_especialidad.clicked.connect(lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_especialidad))
         
         today = datetime.now()
         dia_de_hoy = today.strftime("%Y-%m-%d")
