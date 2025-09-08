@@ -200,13 +200,13 @@ QPushButton:hover{
              </size>
             </property>
            </widget>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>20</x>
               <y>160</y>
               <width>361</width>
-              <height>381</height>
+              <height>391</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
@@ -1636,7 +1636,7 @@ border:none;	border-color: #ffffff;
                   </property>
                  </widget>
                 </item>
-                <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+                <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                  <widget class="QFrame" name="mostrar_datos_info_contacto">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1647,7 +1647,7 @@ border:none;	border-color: #ffffff;
                   <property name="minimumSize">
                    <size>
                     <width>600</width>
-                    <height>200</height>
+                    <height>120</height>
                    </size>
                   </property>
                   <property name="styleSheet">
@@ -1897,7 +1897,7 @@ QLineEdit:focus{
                        </property>
                       </widget>
                      </item>
-                     <item>
+                     <item alignment="Qt::AlignTop">
                       <widget class="QLineEdit" name="input_mostrar_numero_telefono_adicional">
                        <property name="enabled">
                         <bool>true</bool>
@@ -1937,6 +1937,103 @@ QLineEdit:focus{
 
 }
 </string>
+                       </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_41">
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLabel" name="label_correo_adicional">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
+	
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Correo electrónico adicional</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="input_mostrar_correo_adicional">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="cursorPosition">
+                        <number>0</number>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -4273,6 +4370,13 @@ border:none;	border-color: #ffffff;
                        <bold>false</bold>
                       </font>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">QListWidget{
+
+	border:1px solid black;
+
+}</string>
+                     </property>
                     </widget>
                    </item>
                    <item row="1" column="1" alignment="Qt::AlignHCenter">
@@ -4282,6 +4386,13 @@ border:none;	border-color: #ffffff;
                        <family>Arial</family>
                        <pointsize>11</pointsize>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QListWidget{
+
+	border:1px solid black;
+
+}</string>
                      </property>
                     </widget>
                    </item>

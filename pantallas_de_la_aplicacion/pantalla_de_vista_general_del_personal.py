@@ -106,9 +106,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         self.setupUi(self)
         
-
+        #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
         self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 4, indice_2do_apellido= 5, indice_estado= 7)
+                                                   indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
         ## Ruta relativa de las imagenes ##
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
@@ -279,7 +279,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             return
 
         for persona in coincidencias:
-            item = f'{persona[5]} - {persona[1]} {persona[3]}'
+            item = f'{persona[5]} - {persona[1]} {persona[4]}'
             self.resultados.addItem(QListWidgetItem(item))
 
         # Ocultar si hay una coincidencia exacta por cédula
@@ -432,26 +432,37 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
         
             pantalla_perfil_empleado.input_mostrar_primer_nombre.setText(info_basica[1])
-            pantalla_perfil_empleado.input_mostrar_segundo_nombre.setText(info_basica[2])
-            pantalla_perfil_empleado.input_mostrar_apellido_paterno.setText(info_basica[3])
-            pantalla_perfil_empleado.input_mostrar_apellido_materno.setText(info_basica[4])
-            pantalla_perfil_empleado.input_mostrar_cedula.setText(info_basica[5])
-            pantalla_perfil_empleado.input_mostrar_fecha_nacimiento.setText(info_basica[6])
-            pantalla_perfil_empleado.input_mostrar_edad.setText(str(info_basica[7]))
-            pantalla_perfil_empleado.label_mostrar_estado.setText(str(info_basica[8]))
+            
+            segundo_nombre = self.comprobar_si_hay_valor(info_basica[2])
+            pantalla_perfil_empleado.input_mostrar_segundo_nombre.setText(segundo_nombre)
+            
+            tercer_nombre = self.comprobar_si_hay_valor(info_basica[3])
+            pantalla_perfil_empleado.input_mostrar_tercer_nombre.setText(tercer_nombre)
+            
+            pantalla_perfil_empleado.input_mostrar_apellido_paterno.setText(info_basica[4])
+            
+            apellido_materno = self.comprobar_si_hay_valor(info_basica[5])
+            pantalla_perfil_empleado.input_mostrar_apellido_materno.setText(apellido_materno)
+            
+            pantalla_perfil_empleado.input_mostrar_cedula.setText(info_basica[6])
+            pantalla_perfil_empleado.input_mostrar_fecha_nacimiento.setText(info_basica[7])
+            
+            pantalla_perfil_empleado.input_mostrar_edad.setText(str(info_basica[8]))
+            
+            pantalla_perfil_empleado.label_mostrar_estado.setText(str(info_basica[9]))
             
             
             
             
             
             
-            if info_basica[9] == 'M' or info_basica[9] == 'm':
+            if info_basica[10] == 'M' or info_basica[10] == 'm':
                 
                 pantalla_perfil_empleado.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "imagen_personal_m.png")))
                 pantalla_perfil_empleado.input_sexo_masculino.setChecked(True)
                 pantalla_perfil_empleado.input_sexo_femenino.setChecked(False)
                 
-            if info_basica[9] == 'F' or info_basica[9] == 'f':
+            if info_basica[10] == 'F' or info_basica[10] == 'f':
                 
                 pantalla_perfil_empleado.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "imagen_personal_f.png")))
                 pantalla_perfil_empleado.input_sexo_masculino.setChecked(False)
@@ -459,7 +470,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 
         
             
-            if info_basica[10] == 1:
+            if info_basica[11] == 1:
                 
                 pantalla_perfil_empleado.input_si.setChecked(True)
                 pantalla_perfil_empleado.input_no.setChecked(False)
@@ -472,7 +483,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info basica: {e}")
             
        
        
@@ -482,12 +493,19 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             info_contacto = empleado_servicio.obtener_info_contacto_empleado(empleado_id)
             
             pantalla_perfil_empleado.input_mostrar_numero_telefono.setText(info_contacto[1])
-            pantalla_perfil_empleado.input_mostrar_correo.setText(info_contacto[2])
+            
+            num_telefono_adicional = self.comprobar_si_hay_valor(info_contacto[2])
+            pantalla_perfil_empleado.input_mostrar_numero_telefono_adicional.setText(num_telefono_adicional)
+            
+            pantalla_perfil_empleado.input_mostrar_correo.setText(info_contacto[3])
+            
+            correo_adicional = self.comprobar_si_hay_valor(info_contacto[4])
+            pantalla_perfil_empleado.input_mostrar_correo_adicional.setText(correo_adicional)
 
 
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info contacto: {e}")
             
             
         
@@ -503,7 +521,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             pantalla_perfil_empleado.input_mostrar_talla_zapatos.setText(str(info_medidas[3]))
                 
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info medica: {e}")
             
         
         
@@ -524,7 +542,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso info geografica: {e}")
             
         
         
@@ -600,18 +618,14 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso detalles del cargo: {e}")
             
         
         
         
         
         ### info medica
-        
-
-        
-        
-        
+    
         try:
             
             lista_historial_enferm = histotial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
@@ -622,9 +636,11 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 pantalla_perfil_empleado.mostrar_enfermedades.addItem(enfermedad[2])
                 
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso info medica: {e}")
             
         
+        
+        # info diagnostico
         try:
             lista_info_clinica = info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(empleado_id)
 
@@ -637,7 +653,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso info diagnostico: {e}")
             
             
     # Metodo para ver lo QlineEdits(los inputs) se vean desde su posicion cero (ojo no hablo de ninguna posicion
@@ -729,11 +745,11 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     
                     # funcion para cargar la tabla segun el cargo
                     self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 4, indice_2do_apellido= 5, indice_estado= 7)
+                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
 
                     # actualizar la tabla segun el cargo
                     self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 4, indice_2do_apellido= 5, indice_estado= 7)
+                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
                     
                     # si es docente habilita este boton de especialidades
                     self.habilitar_boton_especialidades()
@@ -968,4 +984,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         #self.stacked_widget.setCurrentIndex(1)
 
-    
+    # Metodo para comprobar y hay valor por asignar en la variable o se asigna None
+    # Este metodo sirve para comprobar esos valores que pueden ser None
+    def comprobar_si_hay_valor(self, elemento_lista):
+        
+        if elemento_lista == None:
+                
+            return "No tiene"
+                
+        else:
+            
+            return elemento_lista
+            
+
