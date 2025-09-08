@@ -88,7 +88,6 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cma,
                         alumnos.imt,
                         alumnos.fecha_ingreso_institucion,
-                        alumnos.relacion_con_rep,
                         alumnos.situacion
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
@@ -129,7 +128,6 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cma,
                         alumnos.imt,
                         alumnos.fecha_ingreso_institucion,
-                        alumnos.relacion_con_rep,
                         alumnos.situacion
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;

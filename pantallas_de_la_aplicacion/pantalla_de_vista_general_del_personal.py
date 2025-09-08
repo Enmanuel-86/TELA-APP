@@ -407,7 +407,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         
             else:
                 #print(f"el empleado es: \nNombre:{empleado[2]}\n ID:{empleado[0]}")
-                QMessageBox.critical(self, "Error", "Campo vacio")
+                QMessageBox.critical(self, "Error", "La barra de busqueda esta vacia")
 
                 return
                     

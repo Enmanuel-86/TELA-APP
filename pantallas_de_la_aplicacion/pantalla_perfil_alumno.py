@@ -29,6 +29,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
                                 
                                 ]
         
+        
      
         
         self.boton_de_regreso.clicked.connect(self.volver_vista_general_alumnos)

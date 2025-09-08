@@ -116,7 +116,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.tabla_ver_alumnos.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
 
         #esto me da el valor de la cedula al darle click a la persona que quiero
-        self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
+        self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
 
         # Opcional: desactivar clic en el encabezado vertical
         self.tabla_ver_alumnos.verticalHeader().setSectionsClickable(True)
@@ -235,6 +235,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
     
     
+    
+    
     def filtrar_resultados(self, texto):
         texto = texto.strip().lower()
         self.resultados.clear()
@@ -285,7 +287,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         
     # esta funcion es para que el usuario le de dobleclick a la fila del empleado
-    # ponga la cedula en la barra de busqueda    
+    # para que lo lleve a la pantalla de perfil del alumno
     def on_double_click(self, index):
          
         # Obtener la fila donde se hizo doble click
@@ -294,9 +296,29 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Obtener el texto de la primera columna (nombre)
         cedula = modelo.item(row, 1).text()
         
-        # Establecer el texto en el QLineEdit
-        self.barra_de_busqueda.setText(cedula)
-        
+        try:
+            
+            # buscamo el id del alumno para acceder a su perfil
+            # iteramos cada alumno en la lista de alumnos
+            for alumno in self.lista_alumnos_actual:
+                
+                # comparamos la cedula de cada que esta en la lista para ver si es igual para obtener su id
+                if cedula == alumno[1]:
+                    
+                    # luego nos vamos a la pantalla del perfil del alumno
+                    self.stacked_widget.setCurrentIndex(11)
+                    
+                    self.mostrar_la_info_alumno(alumno_id= alumno[0])
+                    
+                    self.barra_de_busqueda.clear()
+                    
+                    break
+            
+            
+        except Exception as e:
+            
+            print("Error en la funcion on_double_click", f"{e}")
+    
 
     ################################################################################################################    
     ################################################################################################################
@@ -352,7 +374,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             self.label_contador.setText("0")
             QMessageBox.information(self, "Error", f"{e}")
             
-            print(e)
+            print("Error en la funcion filtrar_por_especialidad", f"{e}")
     
     
     
@@ -498,52 +520,67 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 
             else:
                 
-                QMessageBox.critical(self, "Error", "Campo vacio")
+                QMessageBox.critical(self, "Error ", "La barra de busqueda esta vacia")
 
                 return
-                    
+            
                 
         except:
+            
+            QMessageBox.critical(self, "Error en la funcion acceder_al_perfil_alumno", "Cédula no encontrada")
             return
         
 
     # Metodo para acceder a la informacion del alumno
     def mostrar_la_info_alumno(self, alumno_id: int):
         
+        
         pantalla_perfil_alumno = self.stacked_widget.widget(11)
+    
+    
+        if pantalla_perfil_alumno.lista_cuentas_alumno.count() == 0:
+            
+            pantalla_perfil_alumno.lista_cuentas_alumno.addItem("No tiene cuentas bancarias registradas")
+            
+        
+        
+        # cargamos todos la infomacion del alumno
+        info_basica = alumnos_servicio.obtener_alumno_por_id(alumno_id)
+        
+        datos_representante = alumnos_servicio.obtener_datos_representante(alumno_id)
+        
+        
+        info_academica = alumnos_servicio.obtener_info_academica_alumno(alumno_id)
+        
+        info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
+        
+        info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
         
         try:
-            info_basica = alumnos_servicio.obtener_alumno_por_id(alumno_id)
+            
             
             # info basica
             pantalla_perfil_alumno.input_mostrar_cedula.setText(info_basica[1])
             pantalla_perfil_alumno.input_mostrar_primer_nombre.setText(info_basica[2])
-            pantalla_perfil_alumno.input_mostrar_segundo_nombre.setText(info_basica[3])
             
-            if info_basica[4] == None:
-                
-                pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText("No tiene")
-                
-            else:
-                
-                pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText(info_basica[4])
-                
-                
-                
-                
-                
+            segundo_nombre = self.comprobar_si_hay_valor(info_basica[3])
+            pantalla_perfil_alumno.input_mostrar_segundo_nombre.setText(segundo_nombre)
             
+            
+            tercer_nombre = self.comprobar_si_hay_valor(info_basica[4])
+            pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText(tercer_nombre)
             
             
             pantalla_perfil_alumno.input_mostrar_apellido_paterno.setText(info_basica[5])
-            pantalla_perfil_alumno.input_mostrar_apellido_materno.setText(info_basica[6])
+            
+            apellido_materno = self.comprobar_si_hay_valor(info_basica[6])
+            pantalla_perfil_alumno.input_mostrar_apellido_materno.setText(apellido_materno)
             pantalla_perfil_alumno.input_mostrar_fecha_nacimiento.setText(info_basica[7])
             pantalla_perfil_alumno.input_mostrar_edad.setText(str(info_basica[8]))
             pantalla_perfil_alumno.input_mostrar_lugar_nacimiento.setText(info_basica[9])
             
-            relacion_con_rep = info_basica[14]
-            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[15])
+            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[14])
             
             
             if info_basica[10] == 'F':
@@ -587,18 +624,18 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 
         except Exception as e:
             
-            print(f"Algo malo paso: {e}")  
+            print(f"Algo malo paso en la info basica: {e}")  
             
             
         
         try:    
             # Datos del representante
                 
-            datos_representante = alumnos_servicio.obtener_datos_representante(alumno_id)
+            
             
             pantalla_perfil_alumno.input_mostrar_nombre.setText(datos_representante[3])
             pantalla_perfil_alumno.input_mostrar_apellido.setText(datos_representante[4])   
-            pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText(relacion_con_rep)
+            pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText(info_inscripcion[10])
             pantalla_perfil_alumno.input_mostrar_cedula_representante.setText(datos_representante[2])
             
             pantalla_perfil_alumno.input_mostrar_direccion_residencial.setText(datos_representante[5])
@@ -614,62 +651,63 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             pantalla_perfil_alumno.input_mostrar_estado_civil.setText(datos_representante[9])
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en datos del representante: {e}")
             
             
-        # Info bancaria del alumno
+        
         
         try: 
         
-            info_bancaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id= alumno_id)
-
+            # Info bancaria del alumno
+            info_bancaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
+            
             if info_bancaria:
                 
                 print("tiene cuenta en el banco")
                 print(info_bancaria)
-                
+                pantalla_perfil_alumno.lista_cuentas_alumno.clear()
                 self.agregar_elementos_a_la_vista_previa_cuentas_alumno(pantalla_perfil_alumno.lista_cuentas_alumno, info_bancaria)
                 
                 
             
-
         except Exception as e:
             
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info bancaria: {e}")
     
             
             
         
-        # info escolaridad
+        
+        
         
         try:
             
-            info_academica = alumnos_servicio.obtener_info_academica_alumno(alumno_id)
             
+            # info escolaridad
             
             pantalla_perfil_alumno.input_mostrar_escolaridad.setText(info_academica[1])
             pantalla_perfil_alumno.input_mostrar_procedencia.setText(info_academica[2])
             
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en escolaridad: {e}")
             
             
             
         try:
             
-            info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
             
-            self.agregar_elementos_a_la_vista_previa(pantalla_perfil_alumno.lista_diagnostico_alumno, info_clinica)
+            # info clinica
+            self.agregar_elementos_a_la_vista_previa_diagnostico_alumno(pantalla_perfil_alumno.lista_diagnostico_alumno, info_clinica)
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info clinia: {e}")
             
             
         try:
             
-            info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
             
+            # info inscripcion
             pantalla_perfil_alumno.input_mostrar_especialidad.setText(info_inscripcion[4])
             pantalla_perfil_alumno.input_mostrar_matricula.setText(info_inscripcion[5])
             pantalla_perfil_alumno.input_mostrar_fecha_ingreso.setText(str(info_inscripcion[6]))
@@ -678,7 +716,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en info inscripcion: {e}")
             
             
 
@@ -726,7 +764,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
         
     # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista):
+    def agregar_elementos_a_la_vista_previa_diagnostico_alumno(self, nombre_qlistwidget, nombre_lista):
         
         i = 1
         for diagnostico in nombre_lista:
@@ -836,7 +874,17 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         
         
+    # Metodo para comprobar y hay valor por asignar en la variable o se asigna None
+    # Este metodo sirve para comprobar esos valores que pueden ser None
+    def comprobar_si_hay_valor(self, elemento_lista):
         
+        if elemento_lista == None:
+                
+            return "No tiene"
+                
+        else:
+            
+            return elemento_lista
             
 
 
