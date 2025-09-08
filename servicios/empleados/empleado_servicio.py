@@ -233,6 +233,22 @@ class EmpleadoServicio:
         
         return errores
     
+    def validar_numero_telefono_adicional(self, num_telefono_adicional: str) -> List[str]:
+        errores = []
+        
+        if (num_telefono_adicional):
+            num_telefono_adicional_sin_espacios = num_telefono_adicional.replace(" ", "")
+            contiene_numeros = all(caracter in digits for caracter in num_telefono_adicional)
+            if (len(num_telefono_adicional_sin_espacios) == 0):
+                errores.append("Número de teléfono adicional: No puede estar vacío.")
+            if not(contiene_numeros):
+                errores.append("Número de teléfono adicional: No debe contener letras, espacios o caracteres especiales.")
+                
+            if (len(num_telefono_adicional) > 15):
+                errores.append("Número de teléfono adicional: No puede contener más de 15 caracteres.")
+        
+        return errores
+    
     def validar_correo_electronico(self, correo_electronico: str) -> List[str]:
         errores = []
         
@@ -253,6 +269,27 @@ class EmpleadoServicio:
             
             if (len(correo_electronico) > 50):
                 errores.append("Correo electrónico: No puede contener más de 50 caracteres.")
+        
+        return errores
+    
+    def validar_correo_electronico_adicional(self, correo_electronico_adicional: str) -> List[str]:
+        errores = []
+        
+        if (correo_electronico_adicional):
+            correo_electronico_adicional_sin_espacios = correo_electronico_adicional.replace(" ", "")
+            ya_existe_correo_electronico = self.repositorio.obtener_por_correo_adicional(correo_electronico_adicional)
+            estructura_correo_electronico = re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$", correo_electronico_adicional)
+            if (len(correo_electronico_adicional_sin_espacios) == 0):
+                errores.append("Correo electrónico adicional: No puede estar vacío.")
+        
+            if not(estructura_correo_electronico):
+                errores.append("Correo electrónico adicional: La estructura del correo electrónico es inválida.")
+            
+            if (ya_existe_correo_electronico):
+                errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
+            
+            if (len(correo_electronico_adicional) > 50):
+                errores.append("Correo electrónico adicional: No puede contener más de 50 caracteres.")
         
         return errores
     
@@ -292,11 +329,14 @@ class EmpleadoServicio:
         
         return errores_totales
     
-    def validar_info_contacto_empleado(self, num_telefono: str, correo_electronico: str) -> List[str]:
+    def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str) -> List[str]:
         error_num_telefono = self.validar_numero_telefono(num_telefono)
-        error_correo_electronico = self.validar_correo_electronico(correo_electronico)
+        error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional)
         
-        errores_totales = error_num_telefono + error_correo_electronico
+        error_correo_electronico = self.validar_correo_electronico(correo_electronico)
+        error_correo_electronico_adicional = self.validar_correo_electronico_adicional(correo_electronico_adicional)
+        
+        errores_totales = error_num_telefono + error_num_telefono_adicional + error_correo_electronico + error_correo_electronico_adicional
         
         return errores_totales
     
@@ -385,7 +425,9 @@ if __name__ == "__main__":
         "talla_pantalon": 30,
         "talla_zapatos": 45,
         "num_telefono": "04124372808",
+        "num_telefono_adicional": "0412567832",
         "correo_electronico": "alonsochacon@gmail.com",
+        "correo_electronico_adicional": "otrocorreo@gmail.com", 
         "estado_reside": "ANZOÁTEGUI",
         "municipio": "SIMÓN BOLÍVAR",
         "direccion_residencia": "BOYACA 2",
@@ -445,10 +487,13 @@ if __name__ == "__main__":
         print("Registro de la info geográfica exitosa")"""
     
     
-    """num_telefono = input("- Ingrese su número de teléfono: ")
-    correo_electronico = input("- Ingrese su correo electrónico: ")
+    """num_telefono = "0412456875"
+    num_telefono_adicional = "0431345678"
     
-    errores_totales = empleado_servicio.validar_info_contacto_empleado(num_telefono, correo_electronico)
+    correo_electronico = "uncorreoejemplo@gmail.com"
+    correo_electronico_adicional  ="otrocorreoejemplo@gmail.com"
+    
+    errores_totales = empleado_servicio.validar_info_contacto_empleado(num_telefono, num_telefono_adicional, correo_electronico, correo_electronico_adicional)
     
     if (errores_totales):
         print("\n".join(errores_totales))

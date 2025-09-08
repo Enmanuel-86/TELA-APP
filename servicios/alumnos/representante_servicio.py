@@ -99,6 +99,22 @@ class RepresentanteServicio:
         
         return errores
     
+    def validar_num_telefono_adicional(self, num_telefono_adicional: str) -> List[str]:
+        errores = []
+        
+        if (num_telefono_adicional):
+            num_telefono_adicional_sin_espacios = num_telefono_adicional.replace(" ", "")
+            contiene_numeros = all(caracter in digits for caracter in num_telefono_adicional)
+            if (len(num_telefono_adicional_sin_espacios) == 0):
+                errores.append("Número de teléfono adicional: No puede estar vacío.")
+            if not(contiene_numeros):
+                errores.append("Número de teléfono adicional: No debe contener letras, espacios o caracteres especiales.")
+                
+            if (len(num_telefono_adicional) > 15):
+                errores.append("Número de teléfono adicional: No puede contener más de 15 caracteres.")
+        
+        return errores
+    
     def validar_carga_familiar(self, carga_familiar: int) -> List[str]:
         errores = []
         
@@ -126,6 +142,7 @@ class RepresentanteServicio:
         self, cedula: str,
         nombre: str, apellido: str, 
         direccion_residencia: str, num_telefono: str, 
+        num_telefono_adicional: str,
         carga_familiar: int, estado_civil: str
     ) -> List[str]:
         error_cedula = self.validar_cedula(cedula)
@@ -133,10 +150,11 @@ class RepresentanteServicio:
         error_apellido = self.validar_apellido(apellido)
         error_direccion_residencia = self.validar_direccion_residencia(direccion_residencia)
         error_num_telefono = self.validar_num_telefono(num_telefono)
+        error_num_telefono_adicional = self.validar_num_telefono_adicional(num_telefono_adicional)
         error_carga_familiar = self.validar_carga_familiar(carga_familiar)
         error_estado_civil = self.validar_estado_civil(estado_civil)
         
-        errores_totales = error_cedula + error_nombre + error_apellido + error_direccion_residencia + error_num_telefono + error_carga_familiar + error_estado_civil
+        errores_totales = error_cedula + error_nombre + error_apellido + error_direccion_residencia + error_num_telefono + error_num_telefono_adicional + error_carga_familiar + error_estado_civil
         
         return errores_totales
     
@@ -213,11 +231,12 @@ if __name__ == "__main__":
     
     
     """campos_representante = {
-        "cedula": "9821457",
+        "cedula": "1231457",
         "nombre": "JOSÉ",
         "apellido": "GÓMES",
         "direccion_residencia": "BOYACÁ 6",
         "num_telefono": "0412423678",
+        "num_telefono_adicional": "0412357886",
         "carga_familiar": 5,
         "estado_civil": "CASADO"
     }
@@ -228,6 +247,7 @@ if __name__ == "__main__":
         campos_representante.get("apellido"),
         campos_representante.get("direccion_residencia"),
         campos_representante.get("num_telefono"),
+        campos_representante.get("num_telefono_adicional"),
         campos_representante.get("carga_familiar"),
         campos_representante.get("estado_civil")
     )

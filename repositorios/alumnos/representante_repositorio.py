@@ -40,7 +40,6 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
-                    
                 ).all()
                 return representantes
         except Exception as error:
@@ -59,7 +58,6 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
-                    
                 ).filter_by(representante_id = representante_id).first()
                 return representante
         except Exception as error:
@@ -78,7 +76,6 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
-                    
                 ).filter_by(cedula = cedula).first()
                 
                 return representante

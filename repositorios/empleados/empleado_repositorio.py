@@ -139,6 +139,39 @@ class EmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER EL EMPLEADO: {error}")
     
+    def obtener_por_correo_adicional(self, correo_electronico_adicional: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                empleado = sesion.execute(text(
+                    """
+                        SELECT
+                            empleado_id,
+                            primer_nombre,
+                            segundo_nombre,
+                            tercer_nombre,
+                            apellido_paterno,
+                            apellido_materno,
+                            cedula,
+                            fecha_nacimiento,
+                            STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', fecha_nacimiento) -
+                            CASE
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', fecha_nacimiento) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', fecha_nacimiento) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', fecha_nacimiento) THEN 1
+                                ELSE 0
+                            END AS edad,
+                            situacion,
+                            sexo,
+                            tiene_hijos_menores
+                        FROM tb_empleados
+                        WHERE correo_electronico_adicional = :correo_electronico_adicional;
+                    """
+                ), {"correo_electronico_adicional": correo_electronico_adicional}).fetchone()
+                
+                return empleado
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL EMPLEADO: {error}")
+    
     def obtener_por_cedula(self, cedula: str) -> Optional[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
