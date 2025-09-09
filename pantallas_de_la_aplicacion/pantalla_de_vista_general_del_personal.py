@@ -559,7 +559,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             pantalla_perfil_empleado.input_mostrar_funcion_cargo.setText(info_detalles_cargos[3])
             pantalla_perfil_empleado.input_mostrar_tipo_cargo.setText(info_detalles_cargos[4])
             pantalla_perfil_empleado.input_mostrar_titulo_cargo.setText(info_detalles_cargos[5])
-            pantalla_perfil_empleado.input_mostrar_labores_que_realiza.setText(info_detalles_cargos[6])
+            
+            labores = self.comprobar_si_hay_valor(info_detalles_cargos[6])
+            pantalla_perfil_empleado.input_mostrar_labores_que_realiza.setText(labores)
             pantalla_perfil_empleado.input_mostrar_fecha_del_tela.setText(info_detalles_cargos[7])
             pantalla_perfil_empleado.input_mostrar_fecha_ministerio.setText(info_detalles_cargos[8])
             pantalla_perfil_empleado.input_mostrar_tiempo_servicio.setText(str(info_detalles_cargos[9]) + " años")

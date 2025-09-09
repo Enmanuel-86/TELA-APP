@@ -305,14 +305,20 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         if self.boton_enfermedades.currentText() and not self.boton_enfermedades.currentIndex() == 0:
             
             enfermedad = self.boton_enfermedades.currentText()
+            
             self.lista_de_enfermedades.append(enfermedad)
+            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_de_enfermedades, self.boton_enfermedades, enfermedad)
         
             
         elif self.input_otra_enfermedad.text():
             
-            enfermedad = self.input_otra_enfermedad.text()
+            enfermedad = self.input_otra_enfermedad.text().strip().capitalize()
+            
             self.lista_de_enfermedades.append(enfermedad)
             
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_de_enfermedades, self.boton_enfermedades, enfermedad)
+
             nueva_enfermedad = {"enfermedad_cronica": enfermedad.capitalize()}
             
             enfermedad_cronica_servicio.registrar_enfermedad_cronica(nueva_enfermedad)
@@ -326,7 +332,18 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         else:
             return
         
+        self.boton_enfermedades.clear()
         
+        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        
+        self.cargar_lista_para_el_combobox(self.lista_enfermedades, self.boton_enfermedades, 1)
+
+
+
+        # Limpiar el QLineEdit después de añadir
+        self.input_otra_enfermedad.clear()
+        self.boton_enfermedades.setCurrentIndex(0)
+        print(self.lista_de_enfermedades)
 
 
     ## Metodo para añadir un diagnostico al "carrito"
@@ -347,7 +364,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
         elif self.input_otro_diagnostico.text().strip():
             
-            diagnostico = self.input_otro_diagnostico.text().strip()
+            diagnostico = self.input_otro_diagnostico.text().strip().capitalize()
             self.lista_de_diagnosticos.append(diagnostico)
             self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos, self.boton_diagnostico ,diagnostico)
 
@@ -372,9 +389,18 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
        
         
         # Limpiar el QLineEdit después de añadir
+        self.boton_diagnostico.clear()
+        
+        self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
+        
+        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
+
+        # Limpiar el QLineEdit después de añadir
         self.input_otro_diagnostico.clear()
         self.boton_diagnostico.setCurrentIndex(0)
         print(self.lista_de_diagnosticos)
+
+
 
 
     # Metodo para agregar elementos a la vista previa
@@ -547,6 +573,20 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         return
     
     
+    # Metodo para comprobar si la input tiene texto o valor
+    # si es SI: guarda el valor
+    # si es NO: guarda NONE
+    def comprobar_si_hay_valor(self, elemento_a_comprobar):
+        
+        if elemento_a_comprobar.text().strip():
+            
+            return elemento_a_comprobar.text().strip().capitalize()
+        
+        else:
+            
+            return None
+    
+    
     ## Metodo para guardar todas las preguntas en la bd ##
     def guardar_informacion_empleado(self):
 
@@ -562,11 +602,12 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             # info basica
             fecha_nacimiento = 0
 
-            primer_nombre = self.input_primer_nombre.text()
-            segundo_nombre = self.input_segundo_nombre.text()
-            apellido_paterno = self.input_apellido_paterno.text()
-            apellido_materno = self.input_apellido_materno.text()
-            cedula = self.input_cedula.text()
+            primer_nombre = self.input_primer_nombre.text().capitalize()
+            segundo_nombre = self.comprobar_si_hay_valor(self.input_segundo_nombre)
+            tercer_nombre = self.comprobar_si_hay_valor(self.input_tercer_nombre)
+            apellido_paterno = self.input_apellido_paterno.text().capitalize()
+            apellido_materno = self.comprobar_si_hay_valor(self.input_apellido_materno)
+            cedula = self.input_cedula.text().capitalize()
             
             fecha_nacimiento = self.fecha_de_str_a_date(self.label_mostrar_fecha.text())
 
@@ -592,7 +633,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
 
             errores_info_basica = empleado_servicio.validar_info_basica_empleado(
-                primer_nombre, segundo_nombre,
+                primer_nombre, segundo_nombre, tercer_nombre,
                 apellido_paterno, apellido_materno,
                 cedula, fecha_nacimiento
             )
@@ -601,383 +642,392 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                 self.area_de_scroll.verticalScrollBar().setValue(100)
                 self.mostrar_errores_antes_de_guardar(errores_info_basica)
                 return
-                
-                
-
-
-
-            ## "Info medidas" que verifique si falta un campo requerido  ##
-
-            talla_camisa =  self.input_talla_de_camisa.text().upper()
-            talla_pantalon = self.input_talla_de_pantalon.text()
-            talla_zapatos = self.input_talla_de_zapatos.text()
-
-            if not(talla_pantalon):
-                talla_pantalon = None
-            else:
-                talla_pantalon = int(talla_pantalon)
-                
-            if not(talla_zapatos):
-                talla_zapatos = None
-            else:
-                talla_zapatos = int(talla_zapatos)
-                    
-                
-
-            errores_medidas = empleado_servicio.validar_medidas_empleado(talla_camisa, talla_pantalon, talla_zapatos)
-
-            if errores_medidas:
-                self.area_de_scroll.verticalScrollBar().setValue(300)
-                self.mostrar_errores_antes_de_guardar(errores_medidas)
-                return
-                
-                
-                
-
-            ## info cgeografica" que verifique si falta un campo requerido  ##
             
-
-            estado_reside = self.input_estado_residente.text()
-            municipio = self.input_municipio.text()
-            direccion_residencia = self.input_direccion_residencia.text()
-
-            errores_info_geografica = empleado_servicio.validar_info_geografica_empleado(
-                estado_reside, municipio,
-                direccion_residencia
-            )
-
-            if errores_info_geografica:
-                
-                self.area_de_scroll.verticalScrollBar().setValue(500)
-                self.mostrar_errores_antes_de_guardar(errores_info_geografica)
-                return
+            else:   
                 
 
-            ## "info contactos" que verifique si falta un campo requerido  ##
-            
-
-            num_telefono = self.input_numero_de_telefono.text()
-            correo_electronico = self.input_correo_electronico.text()
-
-            errores_info_contacto = empleado_servicio.validar_info_contacto_empleado(num_telefono, correo_electronico)
-
-            if errores_info_contacto:
-                self.area_de_scroll.verticalScrollBar().setValue(700)
-                self.mostrar_errores_antes_de_guardar(errores_info_contacto)
-                return
 
 
+                ## "Info medidas" que verifique si falta un campo requerido  ##
 
-            ## "info medica" que verifique si falta un campo requerido  ##
-            
-            # Info medica es opcional
+                talla_camisa =  self.input_talla_de_camisa.text().upper()
+                talla_pantalon = self.input_talla_de_pantalon.text()
+                talla_zapatos = self.input_talla_de_zapatos.text()
 
-            
-
-
-            ## "info laboral" que verifique si falta un campo requerido  ##
-            
-            cod_depend_cobra = self.input_codigo_por_donde_cobra.text()
-            institucion_labora = self.input_institucion_donde_laboral.text()
-
-
-            errores_info_laboral = info_laboral_servicio.validar_campos_info_laboral(
-                cod_depend_cobra, institucion_labora
-            )
-
-            if errores_info_laboral:
-                self.area_de_scroll.verticalScrollBar().setValue(1500)
-                self.mostrar_errores_antes_de_guardar(errores_info_laboral)
-                return
-
-
-
-
-
-
-
-
-            ## "info detalle del cargo" que verifique si falta un campo requerido  ##
-            ## y que muestre un mensaje que de registro exitoso y que se vaya a la pantalla de vista previa del personal  ##
-            
-            
-            
-
-            #cargo_id = None
-            #funcion_cargo_id = None
-            #tipo_cargo_id = None
-            
-            labores_cargo = self.input_labores_que_realiza.text()
-
-            fecha_ingreso_institucion = None  # Por defecto se establece la fecha actual
-
-            fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_del_minis.text())
-            
-
-            situacion = None  # Por defecto es Activo
-
-            titulo_cargo = self.input_titulo_del_cargo.text()
-            
-            especialidad_id = None
-
-            #cargo_id, funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1,1
-            #funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1
-
-            # buscamos el id de la lista cargo del boton seleccionado
-            cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_cargos, lista_cargo, 2, 0)
-
-            # buscamos el id de la lista de la funcion del cargo del boton seleccionado
-            funcion_cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_funcion_cargos, lista_funcion_cargo, 1, 0)
-
-            # buscamos el id en la lista del tipo de cargo del boton seleccionado 
-            tipo_cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_tipo_de_cargo, lista_tipo_cargo, 1, 0)
-        
-        
-            
-            
-            if especialidad_id == None:
-                
-                # buscamos el id de la especialidad que esta en la lista del boton 
-                especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
-
-            else:
-                especialidad_id = None
-                
-
-            
-                
-            #print(f"\nID del cargo: {cargo_id}tipo de variable: {type(cargo_id)}",)
-            #print(f"\nID del funcion de cargo: {funcion_cargo_id} tipo de variable: {type(funcion_cargo_id)}",)
-            #print(f"\nID del tipo de cargo: {tipo_cargo_id} tipo de variable: {type(tipo_cargo_id)}",)
-            #print(f"\nID del especialidad: {especialidad_id} tipo de variable: {type(especialidad_id)}",)   
-    
-
-
-            errores_detalle_cargo = detalle_cargo_servicio.validar_detalles_cargo(
-                cargo_id, funcion_cargo_id,
-                tipo_cargo_id, titulo_cargo,
-                labores_cargo, fecha_ingreso_ministerio
-            )
-
-            if errores_detalle_cargo:
-                self.mostrar_errores_antes_de_guardar(errores_detalle_cargo)
-                return
-
-
-            print(f" cargo: {cargo_id}\n funcion de cargo: {funcion_cargo_id}\n tipo de cargo: {tipo_cargo_id}\n especialidad: {especialidad_id}")
-
-
-
-            try:
-                # esto es para ver si los datos se guardan y mostrarlos por consola
-                """
-                print("-------nuevo empleado--------")
-                print(f"Primer Nombre:{primer_nombre} {type(primer_nombre)}\nSegundo nombre: {segundo_nombre} {type(segundo_nombre)}")
-                print(f"Apellido Paterno: {apellido_paterno} {type(apellido_paterno)}\n Apellido Materno: {apellido_materno} {type(apellido_materno)}")
-                print(f"Sexo: {sexo} {type(sexo)}\nTiene hijos: {tiene_hijos_menores} {type(tiene_hijos_menores)}")
-                print(f"Fecha de nacimiento: {fecha_nacimiento} {type(fecha_nacimiento)}")
-                print(f"Talla camisa: {talla_camisa} {type(talla_camisa)}\nTalla pantalon: {talla_pantalon}\nTalla zapatos: {talla_zapatos} {type(talla_zapatos)}")
-                print(f"Estado: {estado_reside} {type(estado_reside)}\nMunicipio: {municipio} {type(municipio)}\n Direccion: {direccion_residencia} {type(direccion_residencia)} ")
-                print(f"Telefono: {num_telefono} {type(num_telefono)}\nCorreo: {correo_electronico} {type(correo_electronico)}")
-                print(f'Enfermedad:{enferm_cronica_id} {type(enferm_cronica_id)}\nDiagnotico:{diagnostico_id} {type(diagnostico_id)}')
-                print(f"Codigo por donde cobra: {cod_depend_cobra} {type(cod_depend_cobra)}\nInstitucion por donde labora: {institucion_labora} {type(institucion_labora)} ")
-                print(f"Cargo: {cargo_id} {type(cargo_id)}\nFuncion del cargo: {funcion_cargo_id} {type(funcion_cargo_id)}\nTipo de cargo: {tipo_cargo_id} {type(tipo_cargo_id)} ")
-                print(f"Titulo: {titulo_cargo} {type(titulo_cargo)}\n Labores que realiza: {labores_cargo} {type(labores_cargo)}")
-                print(f"fecha de ingreso del ministerio: {fecha_ingreso_ministerio} {type(fecha_ingreso_ministerio)}\nFecha de ingreso al tela: {fecha_ingreso_institucion} {type(fecha_ingreso_institucion)}")
-
-                """
-
-                campos_empleado = {
-                    "cedula": cedula,
-                    "primer_nombre": primer_nombre,
-                    "segundo_nombre": segundo_nombre,
-                    "apellido_paterno": apellido_paterno,
-                    "apellido_materno": apellido_materno,
-                    "fecha_nacimiento": fecha_nacimiento,
-                    "sexo": sexo,
-                    "tiene_hijos_menores": tiene_hijos_menores,
-                    "fecha_ingreso_institucion": fecha_ingreso_institucion,
-                    "fecha_ingreso_ministerio": fecha_ingreso_ministerio,
-                    "talla_camisa": talla_camisa,
-                    "talla_pantalon": talla_pantalon,
-                    "talla_zapatos": talla_zapatos,
-                    "num_telefono": num_telefono,
-                    "correo_electronico": correo_electronico,
-                    "estado_reside": estado_reside,
-                    "municipio": municipio,
-                    "direccion_residencia": direccion_residencia,
-                    "situacion": situacion
-                }
-
-                # Acá va a retornar el empleado_id para asociarlo a las demás tablas cuyos campos
-                # se llenaron en el formulario
-                empleado_id = empleado_servicio.registrar_empleado(campos_empleado)
-
-                # Acá con esto es para más adelante comprobar que si
-                # Si la lista de diagnosticos o la lista de enfermedades crónicas
-                # no está vacía entonces se hace el proceso de asociar el empleado con sus enfermedades o discapacidades
-                # en caso de que alguna esté vacía entonces ese registro en concreto (por ejemplo, si la de discapaciades
-                # está vacía) no se hace
-                
-                campos_info_clinica_empleado = {
-                    "empleado_id": empleado_id,
-                    "diagnostico_id": None
-                }
-                
-                # declaramos el diccionario
-                campos_historial_enferm_cronicas = {
-                        "empleado_id": empleado_id,
-                        "enferm_cronica_id": None
-                    }
-                
-                
-                
-                
-                # se ve si la lista esta llena
-                if self.lista_de_diagnosticos:
-                    
-                    # se itera cada diagnostico
-                    for diagnostico in self.lista_de_diagnosticos:
-                        
-                        for id_diagnostico, nombre_diagnostico in self.lista_diagnostico:
-                            
-                            
-                            if diagnostico == nombre_diagnostico:
-                                
-                                diagnostico_id = id_diagnostico
-                                
-                                campos_info_clinica_empleado["diagnostico_id"] = diagnostico_id
-                            
-                                info_clinica_empleado_servicio.registrar_info_clinica_empleado(campos_info_clinica_empleado)
-
-                    
+                if not(talla_pantalon):
+                    talla_pantalon = None
                 else:
-                    pass
+                    talla_pantalon = int(talla_pantalon)
                     
-                    
-                
+                if not(talla_zapatos):
+                    talla_zapatos = None
+                else:
+                    talla_zapatos = int(talla_zapatos)
                         
                     
-                if self.lista_de_enfermedades:
-                    
-                    for enfermedad in self.lista_de_enfermedades:
-                        
-                            for id_enfermedad, nombre_enfermedad in self.lista_enfermedades:
-                                
-                                if enfermedad == nombre_enfermedad:
-                                    
-                                    enferm_cronica_id = id_enfermedad
-                                    
-                                    campos_historial_enferm_cronicas["enferm_cronica_id"] = enferm_cronica_id
-                                    
-                                    historial_enferm_cronicas_servicio.registrar_historial_enferm_cronica(campos_historial_enferm_cronicas)
 
-                                    
+                errores_medidas = empleado_servicio.validar_medidas_empleado(talla_camisa, talla_pantalon, talla_zapatos)
+
+                if errores_medidas:
+                    self.area_de_scroll.verticalScrollBar().setValue(300)
+                    self.mostrar_errores_antes_de_guardar(errores_medidas)
+                    return
+                
                 else:
                     
-                    pass
+                
+                
+                
+
+                    ## info cgeografica" que verifique si falta un campo requerido  ##
+                    
+
+                    estado_reside = self.input_estado_residente.text()
+                    municipio = self.input_municipio.text()
+                    direccion_residencia = self.input_direccion_residencia.text()
+
+                    errores_info_geografica = empleado_servicio.validar_info_geografica_empleado(
+                        estado_reside, municipio,
+                        direccion_residencia
+                    )
+
+                    if errores_info_geografica:
+                        
+                        self.area_de_scroll.verticalScrollBar().setValue(500)
+                        self.mostrar_errores_antes_de_guardar(errores_info_geografica)
+                        return
+                        
+
+                    ## "info contactos" que verifique si falta un campo requerido  ##
+                    
+
+                    num_telefono = self.input_numero_de_telefono.text().strip()
+                    num_telefono_adicional = self.comprobar_si_hay_valor(self.input_numero_de_telefono_adicional)
+                    
+                    correo_electronico = self.input_correo_electronico.text().strip()
+                    correo_electronico_adicional = self.comprobar_si_hay_valor(self.input_correo_electronico_adicional)
+
+                    errores_info_contacto = empleado_servicio.validar_info_contacto_empleado(num_telefono, num_telefono_adicional, correo_electronico, correo_electronico_adicional)
+
+                    if errores_info_contacto:
+                        self.area_de_scroll.verticalScrollBar().setValue(700)
+                        self.mostrar_errores_antes_de_guardar(errores_info_contacto)
+                        return
+
+                    else:
+
+                        ## "info medica" que verifique si falta un campo requerido  ##
+                        
+                        # Info medica es opcional
+
+                        
+
+
+                        ## "info laboral" que verifique si falta un campo requerido  ##
+                        
+                        cod_depend_cobra = self.input_codigo_por_donde_cobra.text()
+                        institucion_labora = self.input_institucion_donde_laboral.text()
+
+
+                        errores_info_laboral = info_laboral_servicio.validar_campos_info_laboral(
+                            cod_depend_cobra, institucion_labora
+                        )
+
+                        if errores_info_laboral:
+                            self.area_de_scroll.verticalScrollBar().setValue(1500)
+                            self.mostrar_errores_antes_de_guardar(errores_info_laboral)
+                            return
+                        
+                        else:
+
+
+                            ## "info detalle del cargo" que verifique si falta un campo requerido  ##
+                            ## y que muestre un mensaje que de registro exitoso y que se vaya a la pantalla de vista previa del personal  ##
+                            
+                            
+                            
+
+                            #cargo_id = None
+                            #funcion_cargo_id = None
+                            #tipo_cargo_id = None
+                            
+                            labores_cargo = self.input_labores_que_realiza.text()
+
+                            fecha_ingreso_institucion = None  # Por defecto se establece la fecha actual
+
+                            fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_del_minis.text())
+                            
+
+                            situacion = None  # Por defecto es Activo
+
+                            titulo_cargo = self.input_titulo_del_cargo.text()
+                            
+                            especialidad_id = None
+
+                            #cargo_id, funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1,1
+                            #funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1
+
+                            # buscamos el id de la lista cargo del boton seleccionado
+                            cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_cargos, lista_cargo, 2, 0)
+
+                            # buscamos el id de la lista de la funcion del cargo del boton seleccionado
+                            funcion_cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_funcion_cargos, lista_funcion_cargo, 1, 0)
+
+                            # buscamos el id en la lista del tipo de cargo del boton seleccionado 
+                            tipo_cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_tipo_de_cargo, lista_tipo_cargo, 1, 0)
+                        
+                        
+                            
+                            
+                            if especialidad_id == None:
+                                
+                                # buscamos el id de la especialidad que esta en la lista del boton 
+                                especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
+
+                            else:
+                                especialidad_id = None
+                                
+
+                            
+                                
+                            #print(f"\nID del cargo: {cargo_id}tipo de variable: {type(cargo_id)}",)
+                            #print(f"\nID del funcion de cargo: {funcion_cargo_id} tipo de variable: {type(funcion_cargo_id)}",)
+                            #print(f"\nID del tipo de cargo: {tipo_cargo_id} tipo de variable: {type(tipo_cargo_id)}",)
+                            #print(f"\nID del especialidad: {especialidad_id} tipo de variable: {type(especialidad_id)}",)   
+                    
+
+
+                            errores_detalle_cargo = detalle_cargo_servicio.validar_detalles_cargo(
+                                cargo_id, funcion_cargo_id,
+                                tipo_cargo_id, titulo_cargo,
+                                labores_cargo, fecha_ingreso_ministerio
+                            )
+
+                            if errores_detalle_cargo:
+                                self.mostrar_errores_antes_de_guardar(errores_detalle_cargo)
+                                return
+
+                            
+                            
+                            else:
+                                
+                                
+
+                                print(f" cargo: {cargo_id}\n funcion de cargo: {funcion_cargo_id}\n tipo de cargo: {tipo_cargo_id}\n especialidad: {especialidad_id}")
+
+
+
+                                try:
+                                    # esto es para ver si los datos se guardan y mostrarlos por consola
+                                    """
+                                    print("-------nuevo empleado--------")
+                                    print(f"Primer Nombre:{primer_nombre} {type(primer_nombre)}\nSegundo nombre: {segundo_nombre} {type(segundo_nombre)}")
+                                    print(f"Apellido Paterno: {apellido_paterno} {type(apellido_paterno)}\n Apellido Materno: {apellido_materno} {type(apellido_materno)}")
+                                    print(f"Sexo: {sexo} {type(sexo)}\nTiene hijos: {tiene_hijos_menores} {type(tiene_hijos_menores)}")
+                                    print(f"Fecha de nacimiento: {fecha_nacimiento} {type(fecha_nacimiento)}")
+                                    print(f"Talla camisa: {talla_camisa} {type(talla_camisa)}\nTalla pantalon: {talla_pantalon}\nTalla zapatos: {talla_zapatos} {type(talla_zapatos)}")
+                                    print(f"Estado: {estado_reside} {type(estado_reside)}\nMunicipio: {municipio} {type(municipio)}\n Direccion: {direccion_residencia} {type(direccion_residencia)} ")
+                                    print(f"Telefono: {num_telefono} {type(num_telefono)}\nCorreo: {correo_electronico} {type(correo_electronico)}")
+                                    print(f'Enfermedad:{enferm_cronica_id} {type(enferm_cronica_id)}\nDiagnotico:{diagnostico_id} {type(diagnostico_id)}')
+                                    print(f"Codigo por donde cobra: {cod_depend_cobra} {type(cod_depend_cobra)}\nInstitucion por donde labora: {institucion_labora} {type(institucion_labora)} ")
+                                    print(f"Cargo: {cargo_id} {type(cargo_id)}\nFuncion del cargo: {funcion_cargo_id} {type(funcion_cargo_id)}\nTipo de cargo: {tipo_cargo_id} {type(tipo_cargo_id)} ")
+                                    print(f"Titulo: {titulo_cargo} {type(titulo_cargo)}\n Labores que realiza: {labores_cargo} {type(labores_cargo)}")
+                                    print(f"fecha de ingreso del ministerio: {fecha_ingreso_ministerio} {type(fecha_ingreso_ministerio)}\nFecha de ingreso al tela: {fecha_ingreso_institucion} {type(fecha_ingreso_institucion)}")
+
+                                    """
+
+                                    campos_empleado = {
+                                        "cedula": cedula,
+                                        "primer_nombre": primer_nombre,
+                                        "segundo_nombre": segundo_nombre,
+                                        "tercer_nombre": tercer_nombre,
+                                        "apellido_paterno": apellido_paterno,
+                                        "apellido_materno": apellido_materno,
+                                        "fecha_nacimiento": fecha_nacimiento,
+                                        "sexo": sexo,
+                                        "tiene_hijos_menores": tiene_hijos_menores,
+                                        "fecha_ingreso_institucion": fecha_ingreso_institucion,
+                                        "fecha_ingreso_ministerio": fecha_ingreso_ministerio,
+                                        "talla_camisa": talla_camisa,
+                                        "talla_pantalon": talla_pantalon,
+                                        "talla_zapatos": talla_zapatos,
+                                        "num_telefono": num_telefono,
+                                        "correo_electronico": correo_electronico,
+                                        "estado_reside": estado_reside,
+                                        "municipio": municipio,
+                                        "direccion_residencia": direccion_residencia,
+                                        "situacion": situacion
+                                    }
+
+                                    # Acá va a retornar el empleado_id para asociarlo a las demás tablas cuyos campos
+                                    # se llenaron en el formulario
+                                    empleado_id = empleado_servicio.registrar_empleado(campos_empleado)
+
+                                    # Acá con esto es para más adelante comprobar que si
+                                    # Si la lista de diagnosticos o la lista de enfermedades crónicas
+                                    # no está vacía entonces se hace el proceso de asociar el empleado con sus enfermedades o discapacidades
+                                    # en caso de que alguna esté vacía entonces ese registro en concreto (por ejemplo, si la de discapaciades
+                                    # está vacía) no se hace
+                                    
+                                    campos_info_clinica_empleado = {
+                                        "empleado_id": empleado_id,
+                                        "diagnostico_id": None
+                                    }
+                                    
+                                    # declaramos el diccionario
+                                    campos_historial_enferm_cronicas = {
+                                            "empleado_id": empleado_id,
+                                            "enferm_cronica_id": None
+                                        }
+                                    
+                                    
+                                    
+                                    
+                                    # se ve si la lista esta llena
+                                    if self.lista_de_diagnosticos:
                                         
-                    
-                
+                                        # se itera cada diagnostico
+                                        for diagnostico in self.lista_de_diagnosticos:
+                                            
+                                            for id_diagnostico, nombre_diagnostico in self.lista_diagnostico:
+                                                
+                                                
+                                                if diagnostico == nombre_diagnostico:
+                                                    
+                                                    diagnostico_id = id_diagnostico
+                                                    
+                                                    campos_info_clinica_empleado["diagnostico_id"] = diagnostico_id
+                                                
+                                                    info_clinica_empleado_servicio.registrar_info_clinica_empleado(campos_info_clinica_empleado)
 
-                campos_info_laboral = {
-                    "empleado_id": empleado_id,
-                    "cod_depend_cobra": cod_depend_cobra,
-                    "institucion_labora": institucion_labora
-                }
+                                        
+                                    else:
+                                        pass
+                                        
+                                        
+                                    
+                                            
+                                        
+                                    if self.lista_de_enfermedades:
+                                        
+                                        for enfermedad in self.lista_de_enfermedades:
+                                            
+                                                for id_enfermedad, nombre_enfermedad in self.lista_enfermedades:
+                                                    
+                                                    if enfermedad == nombre_enfermedad:
+                                                        
+                                                        enferm_cronica_id = id_enfermedad
+                                                        
+                                                        campos_historial_enferm_cronicas["enferm_cronica_id"] = enferm_cronica_id
+                                                        
+                                                        historial_enferm_cronicas_servicio.registrar_historial_enferm_cronica(campos_historial_enferm_cronicas)
 
-                campos_detalle_cargo = {
-                    "empleado_id": empleado_id,
-                    "cargo_id": cargo_id,
-                    "funcion_cargo_id": funcion_cargo_id,
-                    "especialidad_id": especialidad_id,
-                    "tipo_cargo_id": tipo_cargo_id,
-                    "titulo_cargo": titulo_cargo,
-                    "labores_cargo": labores_cargo
-                }
+                                                        
+                                    else:
+                                        
+                                        pass
+                                                            
+                                        
+                                    
 
-                info_laboral_servicio.registrar_info_laboral(campos_info_laboral)
-                detalle_cargo_servicio.registrar_detalle_cargo(campos_detalle_cargo)
+                                    campos_info_laboral = {
+                                        "empleado_id": empleado_id,
+                                        "cod_depend_cobra": cod_depend_cobra,
+                                        "institucion_labora": institucion_labora
+                                    }
 
-                QMessageBox.information(self, "Bien hecho", "Registro exitoso")
+                                    campos_detalle_cargo = {
+                                        "empleado_id": empleado_id,
+                                        "cargo_id": cargo_id,
+                                        "funcion_cargo_id": funcion_cargo_id,
+                                        "especialidad_id": especialidad_id,
+                                        "tipo_cargo_id": tipo_cargo_id,
+                                        "titulo_cargo": titulo_cargo,
+                                        "labores_cargo": labores_cargo
+                                    }
 
+                                    info_laboral_servicio.registrar_info_laboral(campos_info_laboral)
+                                    detalle_cargo_servicio.registrar_detalle_cargo(campos_detalle_cargo)
 
-                pantalla_tabla = self.stacked_widget.widget(2)
-                
-                pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 4, indice_2do_apellido= 5, indice_estado= 7)
-                pantalla_tabla.actualizar_lista_busqueda()
-                pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
-            
-                self.stacked_widget.setCurrentIndex(2)
-
-
-                ## Borrar todo lo que esta en el formulario 1 info basica ##
-                self.input_primer_nombre.clear()
-                self.input_segundo_nombre.clear()
-                self.input_apellido_paterno.clear()
-                self.input_apellido_materno.clear()
-                self.input_cedula.clear()
-                self.label_mostrar_fecha.clear()
-                # Desactivar temporalmente la auto-exclusividad
-                self.input_sexo_masculino.setAutoExclusive(False)
-                self.input_sexo_femenino.setAutoExclusive(False)
-
-                # Desmarcar ambos
-                self.input_sexo_masculino.setChecked(False)
-                self.input_sexo_femenino.setChecked(False)
-
-                # Reactivar la auto-exclusividad (comportamiento normal)
-                self.input_sexo_masculino.setAutoExclusive(True)
-                self.input_sexo_femenino.setAutoExclusive(True)
-
-                # Desactivar temporalmente la auto-exclusividad
-                self.input_si.setAutoExclusive(False)
-                self.input_no.setAutoExclusive(False)
-
-                # Desmarcar ambos
-                self.input_si.setChecked(False)
-                self.input_no.setChecked(False)
-
-                # Reactivar la auto-exclusividad (comportamiento normal)
-                self.input_si.setAutoExclusive(True)
-                self.input_no.setAutoExclusive(True)
-
-                ## Borrar todo lo del formulario 2 info medidas ##
-
-                self.input_talla_de_camisa.clear()
-                self.input_talla_de_zapatos.clear()
-                self.input_talla_de_pantalon.clear()
+                                    QMessageBox.information(self, "Bien hecho", "Registro exitoso")
 
 
-                ## Borrar todo lo del formulario 4 info geografica  ##
-
-                self.input_municipio.clear()
-                self.input_estado_residente.clear()
-                self.input_direccion_residencia.clear()
-
-                ## Borrar todo lo del formulario 5 info de contacto  ##
-
-                self.input_numero_de_telefono.clear()
-                self.input_correo_electronico.clear()
-
-                ## Borrar todo lo del formulario 7 info del cargo ##
-
-                self.input_institucion_donde_laboral.clear()
-                self.input_codigo_por_donde_cobra.clear()
+                                    pantalla_tabla = self.stacked_widget.widget(2)
+                                    
+                                    pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
+                                                                    indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8)
+                                    pantalla_tabla.actualizar_lista_busqueda()
+                                    pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
+                                
+                                    self.stacked_widget.setCurrentIndex(2)
 
 
+                                    ## Borrar todo lo que esta en el formulario 1 info basica ##
+                                    self.input_primer_nombre.clear()
+                                    self.input_segundo_nombre.clear()
+                                    self.input_apellido_paterno.clear()
+                                    self.input_apellido_materno.clear()
+                                    self.input_cedula.clear()
+                                    self.label_mostrar_fecha.clear()
+                                    # Desactivar temporalmente la auto-exclusividad
+                                    self.input_sexo_masculino.setAutoExclusive(False)
+                                    self.input_sexo_femenino.setAutoExclusive(False)
 
-            except Exception as e:
+                                    # Desmarcar ambos
+                                    self.input_sexo_masculino.setChecked(False)
+                                    self.input_sexo_femenino.setChecked(False)
 
-                QMessageBox.information(self, "No se pudo", f"{str(e)}")
-                return
-                #self.cambio.setCurrentIndex(0)
-                #self.stacked_widget.setCurrentIndex(2)
+                                    # Reactivar la auto-exclusividad (comportamiento normal)
+                                    self.input_sexo_masculino.setAutoExclusive(True)
+                                    self.input_sexo_femenino.setAutoExclusive(True)
 
-            else:
-                
-                print("registro exitoso")
+                                    # Desactivar temporalmente la auto-exclusividad
+                                    self.input_si.setAutoExclusive(False)
+                                    self.input_no.setAutoExclusive(False)
+
+                                    # Desmarcar ambos
+                                    self.input_si.setChecked(False)
+                                    self.input_no.setChecked(False)
+
+                                    # Reactivar la auto-exclusividad (comportamiento normal)
+                                    self.input_si.setAutoExclusive(True)
+                                    self.input_no.setAutoExclusive(True)
+
+                                    ## Borrar todo lo del formulario 2 info medidas ##
+
+                                    self.input_talla_de_camisa.clear()
+                                    self.input_talla_de_zapatos.clear()
+                                    self.input_talla_de_pantalon.clear()
+
+
+                                    ## Borrar todo lo del formulario 4 info geografica  ##
+
+                                    self.input_municipio.clear()
+                                    self.input_estado_residente.clear()
+                                    self.input_direccion_residencia.clear()
+
+                                    ## Borrar todo lo del formulario 5 info de contacto  ##
+
+                                    self.input_numero_de_telefono.clear()
+                                    self.input_correo_electronico.clear()
+
+                                    ## Borrar todo lo del formulario 7 info del cargo ##
+
+                                    self.input_institucion_donde_laboral.clear()
+                                    self.input_codigo_por_donde_cobra.clear()
+
+
+
+                                except Exception as e:
+
+                                    QMessageBox.information(self, "No se pudo", f"{str(e)}")
+                                    return
+                                    #self.cambio.setCurrentIndex(0)
+                                    #self.stacked_widget.setCurrentIndex(2)
+
+                                else:
+                                    
+                                    print("registro exitoso")
                 
         except Exception as e:
             
@@ -988,7 +1038,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             print("\n\nError en la línea:", traceback.extract_tb(e.__traceback__)[-1].lineno)
             print("Traceback completo:\n", error_traceback)
             
-            print(f"error en un segmento: {e}")
+            print(f"error en la funcion guardar_informacion_empleado: {e}")
             
         else:
             
@@ -1078,6 +1128,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
             self.input_numero_de_telefono.clear()
             self.input_correo_electronico.clear()
+            self.input_numero_de_telefono_adicional.clear()
+            self.input_correo_electronico_adicional.clear()
 
         
 

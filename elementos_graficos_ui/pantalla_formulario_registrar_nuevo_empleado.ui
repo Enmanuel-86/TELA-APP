@@ -41,9 +41,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-766</y>
+        <y>-897</y>
         <width>1079</width>
-        <height>2145</height>
+        <height>2251</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -162,7 +162,7 @@ QFrame{
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <property name="spacing">
-              <number>12</number>
+              <number>20</number>
              </property>
              <item alignment="Qt::AlignHCenter|Qt::AlignTop">
               <widget class="QFrame" name="mensaje_bienvenida">
@@ -1275,7 +1275,7 @@ QPushButton:hover{
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
-                 <verstretch>10</verstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
@@ -1660,7 +1660,7 @@ QLineEdit:focus{
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
-                 <verstretch>10</verstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
@@ -2041,13 +2041,13 @@ QLineEdit:focus{
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
-                 <verstretch>10</verstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
                 <size>
                  <width>1000</width>
-                 <height>170</height>
+                 <height>220</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -2117,12 +2117,103 @@ border:none;</string>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_4">
                    <property name="horizontalSpacing">
-                    <number>9</number>
-                   </property>
-                   <property name="verticalSpacing">
                     <number>20</number>
                    </property>
+                   <property name="verticalSpacing">
+                    <number>10</number>
+                   </property>
                    <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLabel" name="label_correo_electronico">
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
+		
+	color: rgb(80, 80, 80);
+
+	border-color: #ffffff;
+
+
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Correo electrónico</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLineEdit" name="input_correo_electronico">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>20</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>350</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                       </property>
+                       <property name="placeholderText">
+                        <string>.....</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="1">
                     <layout class="QVBoxLayout" name="verticalLayout_21">
                      <property name="spacing">
                       <number>0</number>
@@ -2304,13 +2395,13 @@ QLineEdit:focus{
                      </item>
                     </layout>
                    </item>
-                   <item row="0" column="2">
-                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                   <item row="1" column="0">
+                    <layout class="QVBoxLayout" name="verticalLayout_33">
                      <property name="spacing">
                       <number>0</number>
                      </property>
                      <item alignment="Qt::AlignLeft">
-                      <widget class="QLabel" name="label_correo_electronico">
+                      <widget class="QLabel" name="label_correo_electronico_adicional">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
@@ -2337,7 +2428,7 @@ QLineEdit:focus{
 </string>
                        </property>
                        <property name="text">
-                        <string>Correo electrónico</string>
+                        <string>Correo electrónico adicional</string>
                        </property>
                        <property name="scaledContents">
                         <bool>false</bool>
@@ -2345,7 +2436,7 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item alignment="Qt::AlignLeft">
-                      <widget class="QLineEdit" name="input_correo_electronico">
+                      <widget class="QLineEdit" name="input_correo_electronico_adicional">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2395,6 +2486,19 @@ QLineEdit:focus{
                      </item>
                     </layout>
                    </item>
+                   <item row="0" column="2">
+                    <spacer name="horizontalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -2406,7 +2510,7 @@ QLineEdit:focus{
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
-                 <verstretch>10</verstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
@@ -2605,7 +2709,7 @@ QComboBox QAbstractItemView::item:hover {
                      <height>40</height>
                     </size>
                    </property>
-                   <property name="placeholderText" stdset="0">
+                   <property name="placeholderText">
                     <string/>
                    </property>
                   </widget>
@@ -2687,7 +2791,7 @@ QComboBox QAbstractItemView::item:hover {
                      <height>40</height>
                     </size>
                    </property>
-                   <property name="placeholderText" stdset="0">
+                   <property name="placeholderText">
                     <string/>
                    </property>
                   </widget>
@@ -3007,7 +3111,7 @@ QPushButton:hover{
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
-                 <verstretch>10</verstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
@@ -3490,7 +3594,7 @@ QComboBox:disabled {
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="placeholderText" stdset="0">
+                       <property name="placeholderText">
                         <string/>
                        </property>
                       </widget>
@@ -3623,7 +3727,7 @@ QComboBox:disabled {
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="placeholderText" stdset="0">
+                       <property name="placeholderText">
                         <string/>
                        </property>
                       </widget>
@@ -3756,7 +3860,7 @@ QComboBox:disabled {
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="placeholderText" stdset="0">
+                       <property name="placeholderText">
                         <string/>
                        </property>
                       </widget>
@@ -3889,14 +3993,14 @@ QComboBox:disabled {
                          <height>40</height>
                         </size>
                        </property>
+                       <property name="placeholderText">
+                        <string/>
+                       </property>
                        <property name="duplicatesEnabled">
                         <bool>false</bool>
                        </property>
                        <property name="frame">
                         <bool>false</bool>
-                       </property>
-                       <property name="placeholderText" stdset="0">
-                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -4312,21 +4416,6 @@ QPushButton:hover{
                     </widget>
                    </item>
                   </layout>
-                  <zorder>frame</zorder>
-                  <zorder>boton_tipo_de_cargo</zorder>
-                  <zorder>boton_funcion_cargos</zorder>
-                  <zorder>label_funcion_del_cargo</zorder>
-                  <zorder>input_titulo_del_cargo</zorder>
-                  <zorder>label_titulo_del_cargo</zorder>
-                  <zorder>label_tipo_de_cargo</zorder>
-                  <zorder>boton_de_cargos</zorder>
-                  <zorder>label_cargos</zorder>
-                  <zorder>input_labores_que_realiza</zorder>
-                  <zorder>label_labores_que_realiza</zorder>
-                  <zorder>boton_de_especialidad</zorder>
-                  <zorder>label_cargos_2</zorder>
-                  <zorder>frame</zorder>
-                  <zorder>boton_finalizar</zorder>
                  </widget>
                 </item>
                </layout>

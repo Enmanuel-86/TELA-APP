@@ -237,7 +237,7 @@ class MainWindow(QMainWindow):
         self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 12
         
         
-        self.stacked_widget.setCurrentIndex(2)
+        self.stacked_widget.setCurrentIndex(0)
         
         
         self.msg = QMessageBox()

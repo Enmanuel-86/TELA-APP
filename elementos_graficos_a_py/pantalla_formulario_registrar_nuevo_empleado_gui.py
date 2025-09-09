@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui/pantalla_formulario_registrar_nuevo_empleado.ui'
+# Form implementation generated from reading ui file 'C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui/pantalla_formulario_registrar_nuevo_empleado.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -24,7 +24,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -766, 1079, 2145))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -897, 1079, 2251))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -65,7 +65,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -82,7 +82,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.espacio_preguntas.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_preguntas.setObjectName("espacio_preguntas")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.espacio_preguntas)
-        self.verticalLayout_3.setSpacing(12)
+        self.verticalLayout_3.setSpacing(20)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.mensaje_bienvenida = QtWidgets.QFrame(self.espacio_preguntas)
         self.mensaje_bienvenida.setMinimumSize(QtCore.QSize(1000, 200))
@@ -112,7 +112,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.foto_anadir_personal.setMaximumSize(QtCore.QSize(170, 150))
         self.foto_anadir_personal.setStyleSheet("border:none;")
         self.foto_anadir_personal.setText("")
-        self.foto_anadir_personal.setPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/registro_personal.png"))
+        self.foto_anadir_personal.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/registro_personal.png"))
         self.foto_anadir_personal.setScaledContents(True)
         self.foto_anadir_personal.setObjectName("foto_anadir_personal")
         self.horizontalLayout_2.addWidget(self.foto_anadir_personal)
@@ -690,7 +690,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "    background-color: rgb(199, 199, 199)\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_para_agregar_fecha.setIcon(icon1)
         self.boton_para_agregar_fecha.setIconSize(QtCore.QSize(20, 20))
         self.boton_para_agregar_fecha.setObjectName("boton_para_agregar_fecha")
@@ -720,7 +720,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.info_medidas = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.info_medidas.sizePolicy().hasHeightForWidth())
         self.info_medidas.setSizePolicy(sizePolicy)
         self.info_medidas.setMinimumSize(QtCore.QSize(1000, 170))
@@ -963,7 +963,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.info_geografica = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.info_geografica.sizePolicy().hasHeightForWidth())
         self.info_geografica.setSizePolicy(sizePolicy)
         self.info_geografica.setMinimumSize(QtCore.QSize(1000, 170))
@@ -1198,10 +1198,10 @@ class Ui_PantallaFormularioEmpleado(object):
         self.info_contactos = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.info_contactos.sizePolicy().hasHeightForWidth())
         self.info_contactos.setSizePolicy(sizePolicy)
-        self.info_contactos.setMinimumSize(QtCore.QSize(1000, 170))
+        self.info_contactos.setMinimumSize(QtCore.QSize(1000, 220))
         self.info_contactos.setStyleSheet("QFrame{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
@@ -1241,9 +1241,68 @@ class Ui_PantallaFormularioEmpleado(object):
         self.espacio_para_preguntas_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_preguntas_2.setObjectName("espacio_para_preguntas_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.espacio_para_preguntas_2)
-        self.gridLayout_4.setHorizontalSpacing(9)
-        self.gridLayout_4.setVerticalSpacing(20)
+        self.gridLayout_4.setHorizontalSpacing(20)
+        self.gridLayout_4.setVerticalSpacing(10)
         self.gridLayout_4.setObjectName("gridLayout_4")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.label_correo_electronico = QtWidgets.QLabel(self.espacio_para_preguntas_2)
+        self.label_correo_electronico.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_correo_electronico.setFont(font)
+        self.label_correo_electronico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_correo_electronico.setScaledContents(False)
+        self.label_correo_electronico.setObjectName("label_correo_electronico")
+        self.verticalLayout_22.addWidget(self.label_correo_electronico, 0, QtCore.Qt.AlignLeft)
+        self.input_correo_electronico = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(20)
+        sizePolicy.setHeightForWidth(self.input_correo_electronico.sizePolicy().hasHeightForWidth())
+        self.input_correo_electronico.setSizePolicy(sizePolicy)
+        self.input_correo_electronico.setMinimumSize(QtCore.QSize(350, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_correo_electronico.setFont(font)
+        self.input_correo_electronico.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_correo_electronico.setObjectName("input_correo_electronico")
+        self.verticalLayout_22.addWidget(self.input_correo_electronico, 0, QtCore.Qt.AlignLeft)
+        self.gridLayout_4.addLayout(self.verticalLayout_22, 0, 0, 1, 1)
         self.verticalLayout_21 = QtWidgets.QVBoxLayout()
         self.verticalLayout_21.setSpacing(0)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
@@ -1302,7 +1361,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.input_numero_de_telefono.setObjectName("input_numero_de_telefono")
         self.verticalLayout_21.addWidget(self.input_numero_de_telefono)
-        self.gridLayout_4.addLayout(self.verticalLayout_21, 0, 0, 1, 1)
+        self.gridLayout_4.addLayout(self.verticalLayout_21, 1, 1, 1, 1)
         self.verticalLayout_23 = QtWidgets.QVBoxLayout()
         self.verticalLayout_23.setSpacing(0)
         self.verticalLayout_23.setObjectName("verticalLayout_23")
@@ -1362,18 +1421,18 @@ class Ui_PantallaFormularioEmpleado(object):
         self.input_numero_de_telefono_adicional.setObjectName("input_numero_de_telefono_adicional")
         self.verticalLayout_23.addWidget(self.input_numero_de_telefono_adicional)
         self.gridLayout_4.addLayout(self.verticalLayout_23, 0, 1, 1, 1)
-        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_22.setSpacing(0)
-        self.verticalLayout_22.setObjectName("verticalLayout_22")
-        self.label_correo_electronico = QtWidgets.QLabel(self.espacio_para_preguntas_2)
-        self.label_correo_electronico.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.verticalLayout_33 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_33.setSpacing(0)
+        self.verticalLayout_33.setObjectName("verticalLayout_33")
+        self.label_correo_electronico_adicional = QtWidgets.QLabel(self.espacio_para_preguntas_2)
+        self.label_correo_electronico_adicional.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.label_correo_electronico.setFont(font)
-        self.label_correo_electronico.setStyleSheet("QLabel{\n"
+        self.label_correo_electronico_adicional.setFont(font)
+        self.label_correo_electronico_adicional.setStyleSheet("QLabel{\n"
 "        \n"
 "    color: rgb(80, 80, 80);\n"
 "\n"
@@ -1382,21 +1441,21 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}\n"
 "")
-        self.label_correo_electronico.setScaledContents(False)
-        self.label_correo_electronico.setObjectName("label_correo_electronico")
-        self.verticalLayout_22.addWidget(self.label_correo_electronico, 0, QtCore.Qt.AlignLeft)
-        self.input_correo_electronico = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
+        self.label_correo_electronico_adicional.setScaledContents(False)
+        self.label_correo_electronico_adicional.setObjectName("label_correo_electronico_adicional")
+        self.verticalLayout_33.addWidget(self.label_correo_electronico_adicional, 0, QtCore.Qt.AlignLeft)
+        self.input_correo_electronico_adicional = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(20)
-        sizePolicy.setHeightForWidth(self.input_correo_electronico.sizePolicy().hasHeightForWidth())
-        self.input_correo_electronico.setSizePolicy(sizePolicy)
-        self.input_correo_electronico.setMinimumSize(QtCore.QSize(350, 40))
+        sizePolicy.setHeightForWidth(self.input_correo_electronico_adicional.sizePolicy().hasHeightForWidth())
+        self.input_correo_electronico_adicional.setSizePolicy(sizePolicy)
+        self.input_correo_electronico_adicional.setMinimumSize(QtCore.QSize(350, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(15)
-        self.input_correo_electronico.setFont(font)
-        self.input_correo_electronico.setStyleSheet("QLineEdit{\n"
+        self.input_correo_electronico_adicional.setFont(font)
+        self.input_correo_electronico_adicional.setStyleSheet("QLineEdit{\n"
 "    \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-radius:5px;\n"
@@ -1418,15 +1477,17 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}\n"
 "")
-        self.input_correo_electronico.setObjectName("input_correo_electronico")
-        self.verticalLayout_22.addWidget(self.input_correo_electronico, 0, QtCore.Qt.AlignLeft)
-        self.gridLayout_4.addLayout(self.verticalLayout_22, 0, 2, 1, 1)
+        self.input_correo_electronico_adicional.setObjectName("input_correo_electronico_adicional")
+        self.verticalLayout_33.addWidget(self.input_correo_electronico_adicional, 0, QtCore.Qt.AlignLeft)
+        self.gridLayout_4.addLayout(self.verticalLayout_33, 1, 0, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_4.addItem(spacerItem, 0, 2, 1, 1)
         self.verticalLayout_9.addWidget(self.espacio_para_preguntas_2)
         self.verticalLayout_3.addWidget(self.info_contactos, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.info_medica = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.info_medica.sizePolicy().hasHeightForWidth())
         self.info_medica.setSizePolicy(sizePolicy)
         self.info_medica.setMinimumSize(QtCore.QSize(1000, 470))
@@ -1539,7 +1600,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_enfermedades.setCurrentText("")
         self.boton_enfermedades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_enfermedades.setIconSize(QtCore.QSize(40, 40))
-        self.boton_enfermedades.setProperty("placeholderText", "")
+        self.boton_enfermedades.setPlaceholderText("")
         self.boton_enfermedades.setObjectName("boton_enfermedades")
         self.boton_diagnostico = QtWidgets.QComboBox(self.preguntas_info_medica)
         self.boton_diagnostico.setGeometry(QtCore.QRect(370, 50, 300, 40))
@@ -1590,7 +1651,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_diagnostico.setCurrentText("")
         self.boton_diagnostico.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_diagnostico.setIconSize(QtCore.QSize(40, 40))
-        self.boton_diagnostico.setProperty("placeholderText", "")
+        self.boton_diagnostico.setPlaceholderText("")
         self.boton_diagnostico.setObjectName("boton_diagnostico")
         self.input_otra_enfermedad = QtWidgets.QLineEdit(self.preguntas_info_medica)
         self.input_otra_enfermedad.setGeometry(QtCore.QRect(10, 100, 300, 40))
@@ -1696,7 +1757,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/EnmanuelDev/Desktop/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_anadir_diagnostico.setIcon(icon2)
         self.boton_anadir_diagnostico.setIconSize(QtCore.QSize(40, 20))
         self.boton_anadir_diagnostico.setObjectName("boton_anadir_diagnostico")
@@ -1768,7 +1829,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.info_laboral = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.info_laboral.sizePolicy().hasHeightForWidth())
         self.info_laboral.setSizePolicy(sizePolicy)
         self.info_laboral.setMinimumSize(QtCore.QSize(1000, 130))
@@ -2062,7 +2123,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_de_cargos.setCurrentText("")
         self.boton_de_cargos.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_cargos.setIconSize(QtCore.QSize(40, 40))
-        self.boton_de_cargos.setProperty("placeholderText", "")
+        self.boton_de_cargos.setPlaceholderText("")
         self.boton_de_cargos.setObjectName("boton_de_cargos")
         self.verticalLayout_30.addWidget(self.boton_de_cargos)
         self.gridLayout_10.addLayout(self.verticalLayout_30, 0, 0, 1, 1)
@@ -2148,7 +2209,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_funcion_cargos.setCurrentText("")
         self.boton_funcion_cargos.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_funcion_cargos.setIconSize(QtCore.QSize(40, 40))
-        self.boton_funcion_cargos.setProperty("placeholderText", "")
+        self.boton_funcion_cargos.setPlaceholderText("")
         self.boton_funcion_cargos.setObjectName("boton_funcion_cargos")
         self.verticalLayout_28.addWidget(self.boton_funcion_cargos)
         self.gridLayout_10.addLayout(self.verticalLayout_28, 0, 1, 1, 1)
@@ -2234,7 +2295,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_tipo_de_cargo.setCurrentText("")
         self.boton_tipo_de_cargo.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_tipo_de_cargo.setIconSize(QtCore.QSize(40, 40))
-        self.boton_tipo_de_cargo.setProperty("placeholderText", "")
+        self.boton_tipo_de_cargo.setPlaceholderText("")
         self.boton_tipo_de_cargo.setObjectName("boton_tipo_de_cargo")
         self.verticalLayout_31.addWidget(self.boton_tipo_de_cargo)
         self.gridLayout_10.addLayout(self.verticalLayout_31, 0, 2, 1, 1)
@@ -2320,9 +2381,9 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_de_especialidad.setCurrentText("")
         self.boton_de_especialidad.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_especialidad.setIconSize(QtCore.QSize(40, 40))
+        self.boton_de_especialidad.setPlaceholderText("")
         self.boton_de_especialidad.setDuplicatesEnabled(False)
         self.boton_de_especialidad.setFrame(False)
-        self.boton_de_especialidad.setProperty("placeholderText", "")
         self.boton_de_especialidad.setObjectName("boton_de_especialidad")
         self.verticalLayout_32.addWidget(self.boton_de_especialidad)
         self.gridLayout_10.addLayout(self.verticalLayout_32, 0, 3, 1, 1)
@@ -2573,21 +2634,6 @@ class Ui_PantallaFormularioEmpleado(object):
 "}")
         self.boton_finalizar.setObjectName("boton_finalizar")
         self.gridLayout_10.addWidget(self.boton_finalizar, 2, 3, 1, 1, QtCore.Qt.AlignRight)
-        self.frame.raise_()
-        self.boton_tipo_de_cargo.raise_()
-        self.boton_funcion_cargos.raise_()
-        self.label_funcion_del_cargo.raise_()
-        self.input_titulo_del_cargo.raise_()
-        self.label_titulo_del_cargo.raise_()
-        self.label_tipo_de_cargo.raise_()
-        self.boton_de_cargos.raise_()
-        self.label_cargos.raise_()
-        self.input_labores_que_realiza.raise_()
-        self.label_labores_que_realiza.raise_()
-        self.boton_de_especialidad.raise_()
-        self.label_cargos_2.raise_()
-        self.frame.raise_()
-        self.boton_finalizar.raise_()
         self.verticalLayout_11.addWidget(self.preguntas_info_detalle_cargo)
         self.verticalLayout_3.addWidget(self.info_detalles_cargo, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.horizontalLayout.addWidget(self.espacio_preguntas)
@@ -2679,12 +2725,14 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_direccion_recidencia.setText(_translate("PantallaFormularioEmpleado", "Dirección de residencia"))
         self.input_direccion_residencia.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_del_segmento_info_contacto.setText(_translate("PantallaFormularioEmpleado", " Información de contacto"))
+        self.label_correo_electronico.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico"))
+        self.input_correo_electronico.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_numero_de_telefono.setText(_translate("PantallaFormularioEmpleado", "Número de télefono"))
         self.input_numero_de_telefono.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_numero_de_telefono_adicional.setText(_translate("PantallaFormularioEmpleado", "Número de télefono adicional"))
         self.input_numero_de_telefono_adicional.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
-        self.label_correo_electronico.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico"))
-        self.input_correo_electronico.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_correo_electronico_adicional.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico adicional"))
+        self.input_correo_electronico_adicional.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_info_medica.setText(_translate("PantallaFormularioEmpleado", " Enfermedades crónicas y discapacidades"))
         self.label_diagnostico.setText(_translate("PantallaFormularioEmpleado", "Diagnóstico"))
         self.input_otra_enfermedad.setPlaceholderText(_translate("PantallaFormularioEmpleado", "¿otra enfermedad?"))
