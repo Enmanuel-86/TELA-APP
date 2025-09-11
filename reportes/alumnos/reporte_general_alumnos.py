@@ -42,10 +42,10 @@ class ReporteGeneralAlumnos(ReporteBase):
             alumno_id = alumno[0]
             
             primer_nombre = alumno[2]
-            segundo_nombre = alumno[3]
-            tercer_nombre = alumno[4]
+            segundo_nombre = alumno[3] if (alumno[3]) else ""
+            tercer_nombre = alumno[4] if (alumno[4]) else ""
             apellido_paterno = alumno[5]
-            apellido_materno = alumno[6]
+            apellido_materno = alumno[6] if (alumno[6]) else ""
             nombre_completo = f"{primer_nombre} {segundo_nombre} {tercer_nombre} {apellido_paterno} {apellido_materno}"
             
             cedula = alumno[1]
@@ -82,7 +82,7 @@ class ReporteGeneralAlumnos(ReporteBase):
             procedencia = alumno_servicio.obtener_info_academica_alumno(alumno_id)[2]
             fecha_ingreso_institucion = alumno[13]
             escolaridad = alumno_servicio.obtener_info_academica_alumno(alumno_id)[1]
-            tiempo_en_tela = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)[6]
+            tiempo_en_tela = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)[7]
             cma = alumno[11]
             imt = alumno[12]
             

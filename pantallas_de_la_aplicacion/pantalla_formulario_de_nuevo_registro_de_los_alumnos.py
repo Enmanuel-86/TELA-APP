@@ -918,6 +918,20 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print(f"error en un segmento: {e}")
     
     
+    # Metodo para comprobar si la input tiene texto o valor
+    # si es SI: guarda el valor
+    # si es NO: guarda NONE
+    def comprobar_si_hay_valor(self, elemento_a_comprobar):
+        
+        if elemento_a_comprobar.text().strip():
+            
+            return elemento_a_comprobar.text().strip().capitalize()
+        
+        else:
+            
+            return None
+    
+    
     # Metodo para guardar todos los datos del Alumno en la BD
     # hasta los momentos nada (vamos a realizar todas las funciones, )
     def guardar_informacion_alumno(self):
@@ -931,16 +945,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             # vamos guardando los valores de los inputs en las varibles
             
             primer_nombre = self.input_primer_nombre.text().strip().capitalize()
-            segundo_nombre = self.input_segundo_nombre.text().strip().capitalize()
+            segundo_nombre = self.comprobar_si_hay_valor(self.input_segundo_nombre)
+            tercer_nombre = self.comprobar_si_hay_valor(self.input_tercer_nombre)
             
-            if self.input_tercer_nombre.text().strip():
-                tercer_nombre = self.input_tercer_nombre.text().strip().capitalize()
-                
-            else:
-                tercer_nombre = None
+            
             
             apellido_paterno = self.input_apellido_paterno.text().strip().capitalize()
-            apellido_materno = self.input_apellido_materno.text().strip().capitalize()
+            apellido_materno = self.comprobar_si_hay_valor(self.input_apellido_materno)
             cedula = self.input_cedula.text().strip()
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
             situacion = self.input_situacion.text().strip().capitalize()
@@ -1403,7 +1414,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                             
                                 
                                 
-                            ## si no esta registrado
+                            ## si el representante no esta registrado
                             else:
                                 
                                 # vamos guardando los valores de los inputs en las varibles 
@@ -1723,7 +1734,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         pantalla_tabla_alumnos = self.stacked_widget.widget(5)
             
                                                         pantalla_tabla_alumnos.actualizar_tabla(1)
-                                                        #pantalla_tabla_alumnos.actualizar_lista_busqueda()
+                                                        pantalla_tabla_alumnos.actualizar_lista_busqueda()
                                                         pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                     
                                                         self.stacked_widget.setCurrentIndex(5)

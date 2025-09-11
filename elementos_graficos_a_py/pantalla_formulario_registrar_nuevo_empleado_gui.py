@@ -24,7 +24,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -897, 1079, 2251))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -879, 1079, 2251))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -1306,65 +1306,6 @@ class Ui_PantallaFormularioEmpleado(object):
         self.verticalLayout_21 = QtWidgets.QVBoxLayout()
         self.verticalLayout_21.setSpacing(0)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.label_numero_de_telefono = QtWidgets.QLabel(self.espacio_para_preguntas_2)
-        self.label_numero_de_telefono.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_numero_de_telefono.setFont(font)
-        self.label_numero_de_telefono.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_numero_de_telefono.setScaledContents(False)
-        self.label_numero_de_telefono.setObjectName("label_numero_de_telefono")
-        self.verticalLayout_21.addWidget(self.label_numero_de_telefono, 0, QtCore.Qt.AlignLeft)
-        self.input_numero_de_telefono = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(20)
-        sizePolicy.setHeightForWidth(self.input_numero_de_telefono.sizePolicy().hasHeightForWidth())
-        self.input_numero_de_telefono.setSizePolicy(sizePolicy)
-        self.input_numero_de_telefono.setMinimumSize(QtCore.QSize(220, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_numero_de_telefono.setFont(font)
-        self.input_numero_de_telefono.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_numero_de_telefono.setObjectName("input_numero_de_telefono")
-        self.verticalLayout_21.addWidget(self.input_numero_de_telefono)
-        self.gridLayout_4.addLayout(self.verticalLayout_21, 1, 1, 1, 1)
-        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_23.setSpacing(0)
-        self.verticalLayout_23.setObjectName("verticalLayout_23")
         self.label_numero_de_telefono_adicional = QtWidgets.QLabel(self.espacio_para_preguntas_2)
         self.label_numero_de_telefono_adicional.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
@@ -1384,7 +1325,7 @@ class Ui_PantallaFormularioEmpleado(object):
 "")
         self.label_numero_de_telefono_adicional.setScaledContents(False)
         self.label_numero_de_telefono_adicional.setObjectName("label_numero_de_telefono_adicional")
-        self.verticalLayout_23.addWidget(self.label_numero_de_telefono_adicional, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_21.addWidget(self.label_numero_de_telefono_adicional)
         self.input_numero_de_telefono_adicional = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1419,7 +1360,66 @@ class Ui_PantallaFormularioEmpleado(object):
 "}\n"
 "")
         self.input_numero_de_telefono_adicional.setObjectName("input_numero_de_telefono_adicional")
-        self.verticalLayout_23.addWidget(self.input_numero_de_telefono_adicional)
+        self.verticalLayout_21.addWidget(self.input_numero_de_telefono_adicional)
+        self.gridLayout_4.addLayout(self.verticalLayout_21, 1, 1, 1, 1)
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_23.setSpacing(0)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.label_numero_de_telefono = QtWidgets.QLabel(self.espacio_para_preguntas_2)
+        self.label_numero_de_telefono.setMaximumSize(QtCore.QSize(16777215, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_de_telefono.setFont(font)
+        self.label_numero_de_telefono.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_de_telefono.setScaledContents(False)
+        self.label_numero_de_telefono.setObjectName("label_numero_de_telefono")
+        self.verticalLayout_23.addWidget(self.label_numero_de_telefono)
+        self.input_numero_de_telefono = QtWidgets.QLineEdit(self.espacio_para_preguntas_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(20)
+        sizePolicy.setHeightForWidth(self.input_numero_de_telefono.sizePolicy().hasHeightForWidth())
+        self.input_numero_de_telefono.setSizePolicy(sizePolicy)
+        self.input_numero_de_telefono.setMinimumSize(QtCore.QSize(220, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_numero_de_telefono.setFont(font)
+        self.input_numero_de_telefono.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_numero_de_telefono.setObjectName("input_numero_de_telefono")
+        self.verticalLayout_23.addWidget(self.input_numero_de_telefono)
         self.gridLayout_4.addLayout(self.verticalLayout_23, 0, 1, 1, 1)
         self.verticalLayout_33 = QtWidgets.QVBoxLayout()
         self.verticalLayout_33.setSpacing(0)
@@ -2650,28 +2650,25 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_de_especialidad.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(PantallaFormularioEmpleado)
         PantallaFormularioEmpleado.setTabOrder(self.input_primer_nombre, self.input_segundo_nombre)
-        PantallaFormularioEmpleado.setTabOrder(self.input_segundo_nombre, self.input_apellido_paterno)
+        PantallaFormularioEmpleado.setTabOrder(self.input_segundo_nombre, self.input_tercer_nombre)
+        PantallaFormularioEmpleado.setTabOrder(self.input_tercer_nombre, self.input_apellido_paterno)
         PantallaFormularioEmpleado.setTabOrder(self.input_apellido_paterno, self.input_apellido_materno)
         PantallaFormularioEmpleado.setTabOrder(self.input_apellido_materno, self.input_cedula)
-        PantallaFormularioEmpleado.setTabOrder(self.input_cedula, self.boton_para_agregar_fecha)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_para_agregar_fecha, self.input_sexo_femenino)
+        PantallaFormularioEmpleado.setTabOrder(self.input_cedula, self.input_sexo_masculino)
+        PantallaFormularioEmpleado.setTabOrder(self.input_sexo_masculino, self.input_sexo_femenino)
         PantallaFormularioEmpleado.setTabOrder(self.input_sexo_femenino, self.input_si)
         PantallaFormularioEmpleado.setTabOrder(self.input_si, self.input_no)
-        PantallaFormularioEmpleado.setTabOrder(self.input_no, self.input_talla_de_camisa)
-        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_camisa, self.input_talla_de_pantalon)
-        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_pantalon, self.input_talla_de_zapatos)
-        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_zapatos, self.input_estado_residente)
+        PantallaFormularioEmpleado.setTabOrder(self.input_no, self.boton_para_agregar_fecha)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_para_agregar_fecha, self.input_estado_residente)
         PantallaFormularioEmpleado.setTabOrder(self.input_estado_residente, self.input_municipio)
         PantallaFormularioEmpleado.setTabOrder(self.input_municipio, self.input_direccion_residencia)
-        PantallaFormularioEmpleado.setTabOrder(self.input_direccion_residencia, self.input_numero_de_telefono)
-        PantallaFormularioEmpleado.setTabOrder(self.input_numero_de_telefono, self.input_correo_electronico)
-        PantallaFormularioEmpleado.setTabOrder(self.input_correo_electronico, self.boton_enfermedades)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_enfermedades, self.input_otra_enfermedad)
-        PantallaFormularioEmpleado.setTabOrder(self.input_otra_enfermedad, self.boton_anadir_enfermedad)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_anadir_enfermedad, self.boton_diagnostico)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_diagnostico, self.input_otro_diagnostico)
-        PantallaFormularioEmpleado.setTabOrder(self.input_otro_diagnostico, self.boton_anadir_diagnostico)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_anadir_diagnostico, self.input_codigo_por_donde_cobra)
+        PantallaFormularioEmpleado.setTabOrder(self.input_direccion_residencia, self.input_correo_electronico)
+        PantallaFormularioEmpleado.setTabOrder(self.input_correo_electronico, self.input_correo_electronico_adicional)
+        PantallaFormularioEmpleado.setTabOrder(self.input_correo_electronico_adicional, self.boton_enfermedades)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_enfermedades, self.boton_diagnostico)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_diagnostico, self.input_otra_enfermedad)
+        PantallaFormularioEmpleado.setTabOrder(self.input_otra_enfermedad, self.input_otro_diagnostico)
+        PantallaFormularioEmpleado.setTabOrder(self.input_otro_diagnostico, self.input_codigo_por_donde_cobra)
         PantallaFormularioEmpleado.setTabOrder(self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral)
         PantallaFormularioEmpleado.setTabOrder(self.input_institucion_donde_laboral, self.boton_de_cargos)
         PantallaFormularioEmpleado.setTabOrder(self.boton_de_cargos, self.boton_funcion_cargos)
@@ -2682,8 +2679,15 @@ class Ui_PantallaFormularioEmpleado(object):
         PantallaFormularioEmpleado.setTabOrder(self.input_labores_que_realiza, self.boton_para_agregar_fecha_de_ingreso_del_minis)
         PantallaFormularioEmpleado.setTabOrder(self.boton_para_agregar_fecha_de_ingreso_del_minis, self.boton_fecha_de_ingreso_tela)
         PantallaFormularioEmpleado.setTabOrder(self.boton_fecha_de_ingreso_tela, self.boton_finalizar)
-        PantallaFormularioEmpleado.setTabOrder(self.boton_finalizar, self.boton_de_regreso)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_finalizar, self.boton_anadir_diagnostico)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_anadir_diagnostico, self.boton_de_regreso)
         PantallaFormularioEmpleado.setTabOrder(self.boton_de_regreso, self.area_de_scroll)
+        PantallaFormularioEmpleado.setTabOrder(self.area_de_scroll, self.input_talla_de_pantalon)
+        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_pantalon, self.input_talla_de_camisa)
+        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_camisa, self.boton_anadir_enfermedad)
+        PantallaFormularioEmpleado.setTabOrder(self.boton_anadir_enfermedad, self.input_talla_de_zapatos)
+        PantallaFormularioEmpleado.setTabOrder(self.input_talla_de_zapatos, self.ver_lista_enfermedades)
+        PantallaFormularioEmpleado.setTabOrder(self.ver_lista_enfermedades, self.ver_lista_diagnostico)
 
     def retranslateUi(self, PantallaFormularioEmpleado):
         _translate = QtCore.QCoreApplication.translate
@@ -2727,10 +2731,10 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_titulo_del_segmento_info_contacto.setText(_translate("PantallaFormularioEmpleado", " Información de contacto"))
         self.label_correo_electronico.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico"))
         self.input_correo_electronico.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
-        self.label_numero_de_telefono.setText(_translate("PantallaFormularioEmpleado", "Número de télefono"))
-        self.input_numero_de_telefono.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_numero_de_telefono_adicional.setText(_translate("PantallaFormularioEmpleado", "Número de télefono adicional"))
         self.input_numero_de_telefono_adicional.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
+        self.label_numero_de_telefono.setText(_translate("PantallaFormularioEmpleado", "Número de télefono"))
+        self.input_numero_de_telefono.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_correo_electronico_adicional.setText(_translate("PantallaFormularioEmpleado", "Correo electrónico adicional"))
         self.input_correo_electronico_adicional.setPlaceholderText(_translate("PantallaFormularioEmpleado", "....."))
         self.label_titulo_info_medica.setText(_translate("PantallaFormularioEmpleado", " Enfermedades crónicas y discapacidades"))

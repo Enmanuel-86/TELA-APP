@@ -41,7 +41,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-897</y>
+        <y>-879</y>
         <width>1079</width>
         <height>2251</height>
        </rect>
@@ -2218,8 +2218,8 @@ QLineEdit:focus{
                      <property name="spacing">
                       <number>0</number>
                      </property>
-                     <item alignment="Qt::AlignLeft">
-                      <widget class="QLabel" name="label_numero_de_telefono">
+                     <item>
+                      <widget class="QLabel" name="label_numero_de_telefono_adicional">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
@@ -2246,7 +2246,7 @@ QLineEdit:focus{
 </string>
                        </property>
                        <property name="text">
-                        <string>Número de télefono</string>
+                        <string>Número de télefono adicional</string>
                        </property>
                        <property name="scaledContents">
                         <bool>false</bool>
@@ -2254,7 +2254,7 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_numero_de_telefono">
+                      <widget class="QLineEdit" name="input_numero_de_telefono_adicional">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2309,8 +2309,8 @@ QLineEdit:focus{
                      <property name="spacing">
                       <number>0</number>
                      </property>
-                     <item alignment="Qt::AlignLeft">
-                      <widget class="QLabel" name="label_numero_de_telefono_adicional">
+                     <item>
+                      <widget class="QLabel" name="label_numero_de_telefono">
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
@@ -2337,7 +2337,7 @@ QLineEdit:focus{
 </string>
                        </property>
                        <property name="text">
-                        <string>Número de télefono adicional</string>
+                        <string>Número de télefono</string>
                        </property>
                        <property name="scaledContents">
                         <bool>false</bool>
@@ -2345,7 +2345,7 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_numero_de_telefono_adicional">
+                      <widget class="QLineEdit" name="input_numero_de_telefono">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -4436,27 +4436,24 @@ QPushButton:hover{
  <tabstops>
   <tabstop>input_primer_nombre</tabstop>
   <tabstop>input_segundo_nombre</tabstop>
+  <tabstop>input_tercer_nombre</tabstop>
   <tabstop>input_apellido_paterno</tabstop>
   <tabstop>input_apellido_materno</tabstop>
   <tabstop>input_cedula</tabstop>
-  <tabstop>boton_para_agregar_fecha</tabstop>
+  <tabstop>input_sexo_masculino</tabstop>
   <tabstop>input_sexo_femenino</tabstop>
   <tabstop>input_si</tabstop>
   <tabstop>input_no</tabstop>
-  <tabstop>input_talla_de_camisa</tabstop>
-  <tabstop>input_talla_de_pantalon</tabstop>
-  <tabstop>input_talla_de_zapatos</tabstop>
+  <tabstop>boton_para_agregar_fecha</tabstop>
   <tabstop>input_estado_residente</tabstop>
   <tabstop>input_municipio</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
-  <tabstop>input_numero_de_telefono</tabstop>
   <tabstop>input_correo_electronico</tabstop>
+  <tabstop>input_correo_electronico_adicional</tabstop>
   <tabstop>boton_enfermedades</tabstop>
-  <tabstop>input_otra_enfermedad</tabstop>
-  <tabstop>boton_anadir_enfermedad</tabstop>
   <tabstop>boton_diagnostico</tabstop>
+  <tabstop>input_otra_enfermedad</tabstop>
   <tabstop>input_otro_diagnostico</tabstop>
-  <tabstop>boton_anadir_diagnostico</tabstop>
   <tabstop>input_codigo_por_donde_cobra</tabstop>
   <tabstop>input_institucion_donde_laboral</tabstop>
   <tabstop>boton_de_cargos</tabstop>
@@ -4468,8 +4465,15 @@ QPushButton:hover{
   <tabstop>boton_para_agregar_fecha_de_ingreso_del_minis</tabstop>
   <tabstop>boton_fecha_de_ingreso_tela</tabstop>
   <tabstop>boton_finalizar</tabstop>
+  <tabstop>boton_anadir_diagnostico</tabstop>
   <tabstop>boton_de_regreso</tabstop>
   <tabstop>area_de_scroll</tabstop>
+  <tabstop>input_talla_de_pantalon</tabstop>
+  <tabstop>input_talla_de_camisa</tabstop>
+  <tabstop>boton_anadir_enfermedad</tabstop>
+  <tabstop>input_talla_de_zapatos</tabstop>
+  <tabstop>ver_lista_enfermedades</tabstop>
+  <tabstop>ver_lista_diagnostico</tabstop>
  </tabstops>
  <resources/>
  <connections/>

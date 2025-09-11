@@ -492,6 +492,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             ## info de contacto del empleado
             info_contacto = empleado_servicio.obtener_info_contacto_empleado(empleado_id)
             
+            print(info_contacto)
             pantalla_perfil_empleado.input_mostrar_numero_telefono.setText(info_contacto[1])
             
             num_telefono_adicional = self.comprobar_si_hay_valor(info_contacto[2])
@@ -799,10 +800,10 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         
                         
                         self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_por_especialidad, indice_cedula= 2, indice_1er_nombre= 3,
-                                                    indice_2do_nombre= 4, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
                         self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, indice_cedula= 2, indice_1er_nombre= 3,
-                                                    indice_2do_nombre= 4, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                         
                         
                         #print(f"\n {especialidad_selec} si esta en la tupla {especialidad}")

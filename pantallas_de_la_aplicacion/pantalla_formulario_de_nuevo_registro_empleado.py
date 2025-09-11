@@ -710,6 +710,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     errores_info_contacto = empleado_servicio.validar_info_contacto_empleado(num_telefono, num_telefono_adicional, correo_electronico, correo_electronico_adicional)
 
                     if errores_info_contacto:
+                        #print(f"tlf 1: {num_telefono}| tlf 2 : {num_telefono_adicional}")
+                        #print(f"correo 1: {correo_electronico} | correo 2: {correo_electronico_adicional}")
                         self.area_de_scroll.verticalScrollBar().setValue(700)
                         self.mostrar_errores_antes_de_guardar(errores_info_contacto)
                         return
@@ -852,7 +854,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                         "talla_pantalon": talla_pantalon,
                                         "talla_zapatos": talla_zapatos,
                                         "num_telefono": num_telefono,
+                                        "num_telefono_adicional": num_telefono_adicional,
                                         "correo_electronico": correo_electronico,
+                                        "correo_electronico_adicional": correo_electronico_adicional,
                                         "estado_reside": estado_reside,
                                         "municipio": municipio,
                                         "direccion_residencia": direccion_residencia,
