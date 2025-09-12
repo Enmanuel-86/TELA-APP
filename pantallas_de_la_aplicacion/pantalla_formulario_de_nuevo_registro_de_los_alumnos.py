@@ -198,43 +198,43 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # Datos insertados desde los inputs
         # si no los va a usar comentelos con """"""
         
-        """
-            # info alumno
-            
-            self.input_primer_nombre.setText("Francisco")
-            
-            self.input_segundo_nombre.setText("Jose")
-            self.input_apellido_paterno.setText("Merida")
-            self.input_apellido_materno.setText("Lopez")
-            self.input_cedula.setText("40199989")
-            self.input_relacion_con_representante.setText("hijo")
-            self.input_sexo_masculino.setChecked(True)
-            self.label_mostrar_fecha.setText("2010-03-02")
-            self.input_cma_no.setChecked(True)
-            self.input_imt_si.setChecked(True)
-            self.input_lugar_de_nacimiento.setText("barcelona")
-            self.input_situacion.setText("Inicial")
-            
-            # info representante no los voy a colocar, es para comprobar si se asocian al alumno
-            
-            # info cuenta de banco, como es opcional no los voy a llenar por aqui
-            
-            
-            # info medidas
-            self.input_talla_camisa.setText("M")
-            self.input_talla_pantalon.setText("32")
-            self.input_talla_zapatos.setText("32")
-            self.input_peso.setText("60")
-            self.input_estatura.setText("170")
-            
-            # info escolaridad
-            
-            self.input_escolaridad.setText("Ninguna")
-            self.input_procendencia.setText("U E Escuela de arte")
-            
-            
-            
-            
+        #"""
+        # info alumno
+        
+        self.input_primer_nombre.setText("Mario")
+        
+        self.input_segundo_nombre.setText("Jose")
+        self.input_apellido_paterno.setText("Merida")
+        self.input_apellido_materno.setText("Lopez")
+        self.input_cedula.setText("40199988")
+        self.input_relacion_con_representante.setText("hijo")
+        self.input_sexo_masculino.setChecked(True)
+        self.label_mostrar_fecha.setText("2010-03-02")
+        self.input_cma_no.setChecked(True)
+        self.input_imt_si.setChecked(True)
+        self.input_lugar_de_nacimiento.setText("barcelona")
+        self.input_situacion.setText("Inicial")
+        
+        # info representante no los voy a colocar, es para comprobar si se asocian al alumno
+        
+        # info cuenta de banco, como es opcional no los voy a llenar por aqui
+        
+        
+        # info medidas
+        self.input_talla_camisa.setText("M")
+        self.input_talla_pantalon.setText("32")
+        self.input_talla_zapatos.setText("32")
+        self.input_peso.setText("60")
+        self.input_estatura.setText("170")
+        
+        # info escolaridad
+        
+        self.input_escolaridad.setText("Ninguna")
+        self.input_procendencia.setText("U E Escuela de arte")
+        
+        
+        
+        
             
             
             
@@ -245,7 +245,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
        
        
        
-       """
+       #"""
         
     # Metodo para cargar catalogo en los combobox
     def cargar_lista_para_el_combobox(self, lista_catalogo, boton_desplegable, indice_nombre_elemento:int):
@@ -1734,7 +1734,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         pantalla_tabla_alumnos = self.stacked_widget.widget(5)
             
                                                         pantalla_tabla_alumnos.actualizar_tabla(1)
-                                                        pantalla_tabla_alumnos.actualizar_lista_busqueda()
+                                                        #pantalla_tabla_alumnos.actualizar_lista_busqueda()
                                                         pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                     
                                                         self.stacked_widget.setCurrentIndex(5)
