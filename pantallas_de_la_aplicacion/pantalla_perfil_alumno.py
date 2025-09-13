@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import  QWidget
-from PyQt5 import QtGui
+from PyQt5.QtWidgets import  QWidget, QDockWidget
+from PyQt5 import QtGui, Qt
 import os
 from elementos_graficos_a_py import Ui_PantallaInfoCompletaDelAlumno
 
@@ -21,6 +21,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         self.dockWidget_diagnostico.hide()
         
+        
         self.lista_labels_mostrar = [self.input_mostrar_cedula_representante, self.input_mostrar_cedula_representante, self.input_mostrar_apellido, self.input_mostrar_nombre, self.input_mostrar_carga_familiar,
                                 self.input_mostrar_direccion_residencial, self.input_mostrar_cedula, self.input_mostrar_escolaridad, self.input_mostrar_especialidad, self.input_mostrar_procedencia,
                                 self.input_mostrar_primer_nombre, self.input_mostrar_segundo_nombre, self.input_mostrar_apellido_materno, self.input_mostrar_apellido_paterno, self.input_mostrar_estado_civil,
@@ -38,7 +39,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
     def volver_vista_general_alumnos(self):
         
         self.stacked_widget.setCurrentIndex(5)
-        
+        self.dockWidget_diagnostico.hide()
 
         
         self.limpiar_inputs(self.lista_labels_mostrar)
