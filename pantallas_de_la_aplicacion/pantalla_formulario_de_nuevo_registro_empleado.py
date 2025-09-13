@@ -960,7 +960,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     
                                     pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                                     indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8)
+                                    
                                     pantalla_tabla.actualizar_lista_busqueda()
+                                    
                                     pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
                                 
                                     self.stacked_widget.setCurrentIndex(2)
