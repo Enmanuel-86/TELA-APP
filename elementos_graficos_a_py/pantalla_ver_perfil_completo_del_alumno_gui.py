@@ -937,6 +937,366 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_mostrar_estado.setObjectName("label_mostrar_estado")
         self.horizontalLayout_3.addWidget(self.label_mostrar_estado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 6, 0, 1, 1)
+        self.dockWidget_diagnostico = QtWidgets.QDockWidget(self.espacio_personal)
+        self.dockWidget_diagnostico.setGeometry(QtCore.QRect(-40, 80, 600, 480))
+        self.dockWidget_diagnostico.setMinimumSize(QtCore.QSize(600, 480))
+        self.dockWidget_diagnostico.setMaximumSize(QtCore.QSize(600, 480))
+        self.dockWidget_diagnostico.setFloating(True)
+        self.dockWidget_diagnostico.setFeatures(QtWidgets.QDockWidget.DockWidgetClosable|QtWidgets.QDockWidget.DockWidgetMovable)
+        self.dockWidget_diagnostico.setObjectName("dockWidget_diagnostico")
+        self.dockWidgetContents = QtWidgets.QWidget()
+        self.dockWidgetContents.setObjectName("dockWidgetContents")
+        self.verticalLayout_46 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_46.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_46.setSpacing(0)
+        self.verticalLayout_46.setObjectName("verticalLayout_46")
+        self.espacio_principal_2 = QtWidgets.QFrame(self.dockWidgetContents)
+        self.espacio_principal_2.setStyleSheet("QFrame{\n"
+"\n"
+"    border:none;\n"
+"    background: qlineargradient(\n"
+"        x1:0, y1:0, x2:1, y2:1,\n"
+"        stop:0 #3fea87, stop:1 #00770e)\n"
+"   \n"
+"}")
+        self.espacio_principal_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_principal_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_principal_2.setObjectName("espacio_principal_2")
+        self.verticalLayout_39 = QtWidgets.QVBoxLayout(self.espacio_principal_2)
+        self.verticalLayout_39.setContentsMargins(-1, 20, -1, -1)
+        self.verticalLayout_39.setSpacing(0)
+        self.verticalLayout_39.setObjectName("verticalLayout_39")
+        self.titulo = QtWidgets.QLabel(self.espacio_principal_2)
+        self.titulo.setMinimumSize(QtCore.QSize(230, 50))
+        self.titulo.setMaximumSize(QtCore.QSize(230, 300))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.titulo.setFont(font)
+        self.titulo.setStyleSheet("QLabel{\n"
+"    \n"
+"    background-color: rgb(0, 112, 21);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}")
+        self.titulo.setAlignment(QtCore.Qt.AlignCenter)
+        self.titulo.setObjectName("titulo")
+        self.verticalLayout_39.addWidget(self.titulo, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.mostrar_diagnostico = QtWidgets.QFrame(self.espacio_principal_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.mostrar_diagnostico.sizePolicy().hasHeightForWidth())
+        self.mostrar_diagnostico.setSizePolicy(sizePolicy)
+        self.mostrar_diagnostico.setMaximumSize(QtCore.QSize(500, 500))
+        self.mostrar_diagnostico.setStyleSheet("QFrame{\n"
+"\n"
+"    background:#ffffff;\n"
+"    border: 10px ridge rgb(122, 59, 33);\n"
+"    \n"
+"\n"
+"\n"
+"}")
+        self.mostrar_diagnostico.setFrameShape(QtWidgets.QFrame.Box)
+        self.mostrar_diagnostico.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.mostrar_diagnostico.setObjectName("mostrar_diagnostico")
+        self.formLayout = QtWidgets.QFormLayout(self.mostrar_diagnostico)
+        self.formLayout.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+        self.formLayout.setContentsMargins(20, 20, 20, 20)
+        self.formLayout.setHorizontalSpacing(20)
+        self.formLayout.setVerticalSpacing(10)
+        self.formLayout.setObjectName("formLayout")
+        self.verticalLayout_40 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_40.setObjectName("verticalLayout_40")
+        self.label_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_diagnostico.setMaximumSize(QtCore.QSize(100, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_diagnostico.setFont(font)
+        self.label_diagnostico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_diagnostico.setScaledContents(True)
+        self.label_diagnostico.setObjectName("label_diagnostico")
+        self.verticalLayout_40.addWidget(self.label_diagnostico)
+        self.label_mostrar_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_diagnostico.setMinimumSize(QtCore.QSize(437, 40))
+        self.label_mostrar_diagnostico.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_diagnostico.setFont(font)
+        self.label_mostrar_diagnostico.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_diagnostico.setText("")
+        self.label_mostrar_diagnostico.setScaledContents(False)
+        self.label_mostrar_diagnostico.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_diagnostico.setObjectName("label_mostrar_diagnostico")
+        self.verticalLayout_40.addWidget(self.label_mostrar_diagnostico)
+        self.formLayout.setLayout(0, QtWidgets.QFormLayout.SpanningRole, self.verticalLayout_40)
+        self.verticalLayout_41 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_41.setObjectName("verticalLayout_41")
+        self.label_fecha_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_diagnostico.setFont(font)
+        self.label_fecha_diagnostico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_fecha_diagnostico.setScaledContents(True)
+        self.label_fecha_diagnostico.setObjectName("label_fecha_diagnostico")
+        self.verticalLayout_41.addWidget(self.label_fecha_diagnostico, 0, QtCore.Qt.AlignBottom)
+        self.label_mostrar_fecha_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_fecha_diagnostico.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_fecha_diagnostico.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_fecha_diagnostico.setFont(font)
+        self.label_mostrar_fecha_diagnostico.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_fecha_diagnostico.setText("")
+        self.label_mostrar_fecha_diagnostico.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_fecha_diagnostico.setObjectName("label_mostrar_fecha_diagnostico")
+        self.verticalLayout_41.addWidget(self.label_mostrar_fecha_diagnostico)
+        self.formLayout.setLayout(1, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_41)
+        self.verticalLayout_42 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_42.setObjectName("verticalLayout_42")
+        self.label_fecha_venc_certificado = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_venc_certificado.setFont(font)
+        self.label_fecha_venc_certificado.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_fecha_venc_certificado.setScaledContents(True)
+        self.label_fecha_venc_certificado.setWordWrap(True)
+        self.label_fecha_venc_certificado.setObjectName("label_fecha_venc_certificado")
+        self.verticalLayout_42.addWidget(self.label_fecha_venc_certificado)
+        self.label_mostrar_fecha_venc_certificado = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_fecha_venc_certificado.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_fecha_venc_certificado.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_fecha_venc_certificado.setFont(font)
+        self.label_mostrar_fecha_venc_certificado.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_fecha_venc_certificado.setText("")
+        self.label_mostrar_fecha_venc_certificado.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_fecha_venc_certificado.setObjectName("label_mostrar_fecha_venc_certificado")
+        self.verticalLayout_42.addWidget(self.label_mostrar_fecha_venc_certificado)
+        self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_42)
+        self.verticalLayout_43 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_43.setObjectName("verticalLayout_43")
+        self.label_medico_tratante = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_medico_tratante.setFont(font)
+        self.label_medico_tratante.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_medico_tratante.setScaledContents(True)
+        self.label_medico_tratante.setObjectName("label_medico_tratante")
+        self.verticalLayout_43.addWidget(self.label_medico_tratante)
+        self.label_mostrar_medico_tratante = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_medico_tratante.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_medico_tratante.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_medico_tratante.setFont(font)
+        self.label_mostrar_medico_tratante.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_medico_tratante.setText("")
+        self.label_mostrar_medico_tratante.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_medico_tratante.setObjectName("label_mostrar_medico_tratante")
+        self.verticalLayout_43.addWidget(self.label_mostrar_medico_tratante)
+        self.formLayout.setLayout(2, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_43)
+        self.verticalLayout_44 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_44.setObjectName("verticalLayout_44")
+        self.label_certificado_discap = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_certificado_discap.setFont(font)
+        self.label_certificado_discap.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_certificado_discap.setScaledContents(True)
+        self.label_certificado_discap.setObjectName("label_certificado_discap")
+        self.verticalLayout_44.addWidget(self.label_certificado_discap)
+        self.label_mostrar_certificado_discap = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_certificado_discap.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_certificado_discap.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_certificado_discap.setFont(font)
+        self.label_mostrar_certificado_discap.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_certificado_discap.setText("")
+        self.label_mostrar_certificado_discap.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_certificado_discap.setObjectName("label_mostrar_certificado_discap")
+        self.verticalLayout_44.addWidget(self.label_mostrar_certificado_discap)
+        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_44)
+        self.verticalLayout_45 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_45.setObjectName("verticalLayout_45")
+        self.label_medicacion = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_medicacion.setFont(font)
+        self.label_medicacion.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_medicacion.setScaledContents(True)
+        self.label_medicacion.setObjectName("label_medicacion")
+        self.verticalLayout_45.addWidget(self.label_medicacion)
+        self.label_mostrar_medicacion = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_medicacion.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_medicacion.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_medicacion.setFont(font)
+        self.label_mostrar_medicacion.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_medicacion.setText("")
+        self.label_mostrar_medicacion.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_medicacion.setObjectName("label_mostrar_medicacion")
+        self.verticalLayout_45.addWidget(self.label_mostrar_medicacion)
+        self.formLayout.setLayout(3, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_45)
+        self.verticalLayout_39.addWidget(self.mostrar_diagnostico, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout_46.addWidget(self.espacio_principal_2)
+        self.dockWidget_diagnostico.setWidget(self.dockWidgetContents)
         self.verticalLayout_3.addWidget(self.espacio_personal, 0, QtCore.Qt.AlignTop)
         self.horizontalLayout.addWidget(self.espacio_izquierdo, 0, QtCore.Qt.AlignTop)
         self.espacio_scroll_mostrar_datos_obtenidos = QtWidgets.QScrollArea(self.espacio_principal)
@@ -946,7 +1306,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.espacio_scroll_mostrar_datos_obtenidos.setWidgetResizable(True)
         self.espacio_scroll_mostrar_datos_obtenidos.setObjectName("espacio_scroll_mostrar_datos_obtenidos")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -1413, 722, 2113))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 722, 2113))
         self.scrollAreaWidgetContents.setStyleSheet("background:transparent;")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
@@ -2178,6 +2538,13 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_primer_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Primer nombre"))
         self.label_cedula.setText(_translate("PantallaInfoCompletaDelAlumno", "Cédula"))
         self.label_estado.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado:"))
+        self.titulo.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnóstico N° #"))
+        self.label_diagnostico.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnóstico"))
+        self.label_fecha_diagnostico.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha del diagnóstico"))
+        self.label_fecha_venc_certificado.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de venc del certificado de discapacidad"))
+        self.label_medico_tratante.setText(_translate("PantallaInfoCompletaDelAlumno", "Medico Tratante"))
+        self.label_certificado_discap.setText(_translate("PantallaInfoCompletaDelAlumno", "Certificado de discapacidad"))
+        self.label_medicacion.setText(_translate("PantallaInfoCompletaDelAlumno", "Medicación"))
         self.label_titulo_datos_del_representante.setText(_translate("PantallaInfoCompletaDelAlumno", "Datos del representante"))
         self.label_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Nombre"))
         self.label_apellido.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido"))

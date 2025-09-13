@@ -185,7 +185,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         
         
-        self.ventana_diagnostico = VentanaMostrarDiagnostico() 
+        #self.ventana_diagnostico = VentanaMostrarDiagnostico() 
         
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         
@@ -534,6 +534,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     # Metodo para acceder a la informacion del alumno
     def mostrar_la_info_alumno(self, alumno_id: int):
         
+        global pantalla_perfil_alumno
         
         pantalla_perfil_alumno = self.stacked_widget.widget(11)
     
@@ -856,17 +857,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
             diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
             
-            self.ventana_diagnostico.setWindowTitle(f"Diagnóstico N° {indice_vista_previa + 1}")
-            self.ventana_diagnostico.titulo.setText(f"Diagnóstico N° {indice_vista_previa + 1}")
-            self.ventana_diagnostico.label_mostrar_diagnostico.setText(diagnostico[2])
-            self.ventana_diagnostico.label_mostrar_fecha_diagnostico.setText(str(diagnostico[3]))
-            self.ventana_diagnostico.label_mostrar_medico_tratante.setText(diagnostico[4])
-            self.ventana_diagnostico.label_mostrar_certificado_discap.setText(diagnostico[5])
-            self.ventana_diagnostico.label_mostrar_fecha_venc_certificado.setText(str(diagnostico[6]))
-            self.ventana_diagnostico.label_mostrar_medicacion.setText(diagnostico[7])
             
             
-            self.ventana_diagnostico.show()
+            pantalla_perfil_alumno.mostrar(f"Diagnóstico N° {indice_vista_previa + 1}",diagnostico[2],str(diagnostico[3]),diagnostico[4],diagnostico[5],str(diagnostico[6]),diagnostico[7])
         
         except Exception as e:
             
@@ -909,15 +902,15 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             self.stacked_widget.setCurrentIndex(7)
             
             
+""""            
             
+    # Clase de la ventana para mostrar el x diagnostico
+    class VentanaMostrarDiagnostico(QWidget, Ui_VentanaMostrarDiagnosticoRegistrado):
+        def __init__(self):
+            super().__init__()
             
-# Clase de la ventana para mostrar el x diagnostico
-class VentanaMostrarDiagnostico(QWidget, Ui_VentanaMostrarDiagnosticoRegistrado):
-    def __init__(self):
-        super().__init__()
-        
-        self.setupUi(self) 
-        
-        self.setWindowFlags(Qt.Window | Qt.WindowCloseButtonHint)
-        self.setWindowModality(Qt.ApplicationModal)
-        
+            self.setupUi(self) 
+            
+            self.setWindowFlags(Qt.Window | Qt.WindowCloseButtonHint)
+            self.setWindowModality(Qt.ApplicationModal)
+"""

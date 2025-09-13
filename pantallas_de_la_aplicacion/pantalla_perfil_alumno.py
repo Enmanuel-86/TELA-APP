@@ -19,7 +19,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "estudiante_m.png")))
         
-        
+        self.dockWidget_diagnostico.hide()
         
         self.lista_labels_mostrar = [self.input_mostrar_cedula_representante, self.input_mostrar_cedula_representante, self.input_mostrar_apellido, self.input_mostrar_nombre, self.input_mostrar_carga_familiar,
                                 self.input_mostrar_direccion_residencial, self.input_mostrar_cedula, self.input_mostrar_escolaridad, self.input_mostrar_especialidad, self.input_mostrar_procedencia,
@@ -42,6 +42,21 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
 
         
         self.limpiar_inputs(self.lista_labels_mostrar)
+    
+    
+    def mostrar(self, titulo,nombre_diag, fecha_diag, medico, medicacion ,  certificado ,fecha_venc ):
+        
+        self.dockWidget_diagnostico.setWindowTitle(f"{titulo}: {nombre_diag}")
+        self.titulo.setText(titulo)
+        self.label_mostrar_diagnostico.setText(nombre_diag)
+        self.label_mostrar_fecha_diagnostico.setText(fecha_diag)
+        self.label_mostrar_medico_tratante.setText(medico)
+        self.label_mostrar_certificado_discap.setText(certificado)
+        self.label_mostrar_fecha_venc_certificado.setText(fecha_venc)
+        self.label_mostrar_medicacion.setText(medicacion)
+        
+        self.dockWidget_diagnostico.show()
+    
         
 
     
