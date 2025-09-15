@@ -857,6 +857,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
             diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
             
+            if pantalla_perfil_alumno.dockWidget_diagnostico.show():
+                
+                pantalla_perfil_alumno.dockWidget_diagnostico.hide()
+                
+            elif pantalla_perfil_alumno.dockWidget_diagnostico.hide():
+                
+                pantalla_perfil_alumno.dockWidget_diagnostico.show()
+                
             
             
             pantalla_perfil_alumno.mostrar(f"Diagnóstico N° {indice_vista_previa + 1}",diagnostico[2],str(diagnostico[3]),diagnostico[4],diagnostico[5],str(diagnostico[6]),diagnostico[7])
