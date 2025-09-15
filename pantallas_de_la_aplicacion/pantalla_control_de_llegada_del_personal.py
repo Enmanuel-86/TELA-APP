@@ -142,10 +142,10 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             return
 
         for persona in coincidencias:
-            item = f'{persona[5]} - {persona[1]} {persona[3]}'
+            item = f'{persona[6]} - {persona[1]} {persona[4]}'
             
             global nombre_guia
-            nombre_guia = f" {persona[1].capitalize()} {persona[3].capitalize()}"
+            nombre_guia = f" {persona[1].capitalize()} {persona[4].capitalize()}"
             
             self.resultados.addItem(QListWidgetItem(item))
 
@@ -200,7 +200,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 empleado_id = self.buscar_id_empleado(cedula)
                 
                 
-                if not any(cedula in empleado[5] for empleado in self.lista_empleados_actual):
+                if not any(cedula in empleado[6] for empleado in self.lista_empleados_actual):
                     
                     QMessageBox.warning(self, "Error", "La persona ya esta agregada o no existe")
                     return
@@ -265,7 +265,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 empleado_n.append(empleado[1])
                 
                 #9) apellido
-                empleado_n.append(empleado[3])
+                empleado_n.append(empleado[4])
                 
                 
                 # el texto que quiero mostrar en la lista de asistencias es : Cedula - Nombre Apellido
@@ -276,7 +276,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 
                 empleado = empleado_servicio.obtener_empleado_por_id(empleado_n[0])
                 
-                #print(empleado_n)
+                print(empleado_n)
                 
                 
                     
@@ -744,15 +744,32 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                     if errores_totales:
                         
                         QMessageBox.information(self, "Error", "Tu registro de asistencia a tenido un error. ")
+                        estado = False
                         return
                     else:
                         asistencia_empleado_servicio.registrar_asistencia_empleado(campos_asistencia_empleados)
-                        todo_bien = True
+                        estado = True
                         
                         
-                if todo_bien:
+                if estado:
                     
-                    QMessageBox.information(self, "Registro exitoso", "Tu registro de asistencia a sido exitoso 👍. ")
+                    QMessageBox.information(self, "Registro exitoso", "Tu registro de asistencia a sido exitoso. ")
+                    self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                    
+                    # Limpiamos las listas y los contadores
+                    self.lista_asistencia.clear()
+                    self.lista_de_asistencias.clear()
+                    self.lista_agregados.clear()
+                    self.indice = 0
+                    self.contador_de_asistencias = 0
+                    
+                    # restablecemos el contador de asistencias
+                    self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                    
+                    # restablecemos la lista de empleados actuales de la bd
+                    self.actualizar_lista_busqueda()
+
+                    
                     
                     
                         
@@ -764,7 +781,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
         except Exception as e:
             
-            print(f"algo malo paso: {e}")
+            print(f"algo malo paso en suministrar info : {e}")
                                     
                                     
                                     
