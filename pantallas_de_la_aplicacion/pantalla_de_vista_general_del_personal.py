@@ -279,7 +279,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             return
 
         for persona in coincidencias:
-            item = f'{persona[5]} - {persona[1]} {persona[4]}'
+            item = f'{persona[6]} - {persona[1]} {persona[4]}'
             self.resultados.addItem(QListWidgetItem(item))
 
         # Ocultar si hay una coincidencia exacta por cédula
