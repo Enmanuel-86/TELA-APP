@@ -56,13 +56,13 @@ class AsistenciaEmpleadoServicio:
         fecha_asistencia: date, estado_asistencia: str,
         motivo_retraso: str, motivo_inasistencia: str
     ) -> List[str]:
-        error_empleado_id = self.validar_empleado_id(empleado_id)
+        error_empleado_id_y_fecha = self.validar_empleado_id_y_fecha(empleado_id, fecha_asistencia)
         error_fecha_asistencia = self.validar_fecha_asistencia(fecha_asistencia)
         error_estado_asistencia = self.validar_estado_asistencia(estado_asistencia)
         error_motivo_retraso = self.validar_motivo_retraso(motivo_retraso)
         error_motivo_inasistencia = self.validar_motivo_inasistencia(motivo_inasistencia)
         
-        errores_totales = error_empleado_id + error_fecha_asistencia + error_estado_asistencia + error_motivo_retraso + error_motivo_inasistencia
+        errores_totales = error_empleado_id_y_fecha + error_fecha_asistencia + error_estado_asistencia + error_motivo_retraso + error_motivo_inasistencia
         
         return errores_totales
     
