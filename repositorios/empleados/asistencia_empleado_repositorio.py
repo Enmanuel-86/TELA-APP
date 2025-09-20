@@ -70,6 +70,20 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LA ASISTENCIA DEL EMPLEADO: {error}")
     
+    def obtener_por_empleado_id_y_fecha(self, empleado_id: int, fecha_asistencia: date) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                asistencia_empleado = sesion.execute(text(
+                    """
+                        SELECT * FROM vw_asistencia_empleados 
+                        WHERE fecha_asistencia = :fecha_asistencia AND empleado_id = :empleado_id;
+                    """
+                ), {"fecha_asistencia": fecha_asistencia, "empleado_id": empleado_id}).fetchone()
+                
+                return asistencia_empleado
+        except Exception:
+            return None
+    
     def obtener_horas_retraso_mensuales(self, anio_mes: str) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:

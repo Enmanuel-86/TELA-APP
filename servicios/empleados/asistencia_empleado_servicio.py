@@ -9,11 +9,11 @@ class AsistenciaEmpleadoServicio:
     def __init__(self, repositorio: RepositorioBase):
         self.repositorio = repositorio
     
-    def validar_empleado_id(self, empleado_id: int) -> List[str]:
+    def validar_empleado_id_y_fecha(self, empleado_id: int, fecha_asistencia: date) -> List[str]:
         errores = []
         
-        if not(empleado_id):
-            errores.append("Empleado: Tiene que registrar la asistencia a un empleado.")
+        if (self.obtener_asistencia_por_empleado_id_y_fecha(empleado_id, fecha_asistencia)):
+            errores.append("Asistencia: No puedes marcar la asistencia de un mismo empleado en el mismo día.")
         
         return errores
     
@@ -56,13 +56,13 @@ class AsistenciaEmpleadoServicio:
         fecha_asistencia: date, estado_asistencia: str,
         motivo_retraso: str, motivo_inasistencia: str
     ) -> List[str]:
-        error_empleado_id = self.validar_empleado_id(empleado_id)
+        error_empleado_id_y_fecha = self.validar_empleado_id_y_fecha(empleado_id, fecha_asistencia)
         error_fecha_asistencia = self.validar_fecha_asistencia(fecha_asistencia)
         error_estado_asistencia = self.validar_estado_asistencia(estado_asistencia)
         error_motivo_retraso = self.validar_motivo_retraso(motivo_retraso)
         error_motivo_inasistencia = self.validar_motivo_inasistencia(motivo_inasistencia)
         
-        errores_totales = error_empleado_id + error_fecha_asistencia + error_estado_asistencia + error_motivo_retraso + error_motivo_inasistencia
+        errores_totales = error_empleado_id_y_fecha + error_fecha_asistencia + error_estado_asistencia + error_motivo_retraso + error_motivo_inasistencia
         
         return errores_totales
     
@@ -83,6 +83,9 @@ class AsistenciaEmpleadoServicio:
             return self.repositorio.obtener_por_fecha(fecha_asistencia)
         except BaseDatosError as error:
             raise error
+    
+    def obtener_asistencia_por_empleado_id_y_fecha(self, empleado_id: int, fecha_asistencia: date) -> Optional[Tuple]:
+        return self.repositorio.obtener_por_empleado_id_y_fecha(empleado_id, fecha_asistencia)
     
     def obtener_horas_retraso_mensuales_empleado(self, anio_mes: str) -> List[Tuple]:
         try:
@@ -160,7 +163,7 @@ if __name__ == "__main__":
     
     #asistencia_empleado_servicio.eliminar(9)
     
-    empleado_id = input("- Ingrese el ID del empleado: ")
+    """empleado_id = input("- Ingrese el ID del empleado: ")
     if empleado_id:
         empleado_id = int(empleado_id)
     
@@ -206,4 +209,13 @@ if __name__ == "__main__":
     if errores_totales:
         print("\n".join(errores_totales))
     else:
-        print("Registro de la asistencia exitoso")
+        print("Registro de la asistencia exitoso")"""
+    
+    """errores = asistencia_empleado_servicio.validar_empleado_id_y_fecha(
+        1, date(2024, 9, 26)
+    )
+    
+    if errores:
+        print("\n".join(errores))
+    else:
+        print("Asistencia registrada")"""

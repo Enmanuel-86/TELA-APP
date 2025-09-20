@@ -37,6 +37,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cedula,
                         alumnos.primer_nombre,
                         alumnos.segundo_nombre,
+                        alumnos.tercer_nombre,
                         alumnos.apellido_paterno,
                         alumnos.apellido_materno,
                         alumnos.fecha_nacimiento,
@@ -51,6 +52,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.sexo,
                         alumnos.cma,
                         alumnos.imt,
+                        alumnos.fecha_ingreso_institucion,
                         alumnos.situacion
                     FROM tb_alumnos AS alumnos
                     WHERE alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial';
@@ -70,6 +72,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cedula,
                         alumnos.primer_nombre,
                         alumnos.segundo_nombre,
+                        alumnos.tercer_nombre,
                         alumnos.apellido_paterno,
                         alumnos.apellido_materno,
                         alumnos.fecha_nacimiento,
@@ -84,6 +87,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.sexo,
                         alumnos.cma,
                         alumnos.imt,
+                        alumnos.fecha_ingreso_institucion,
                         alumnos.situacion
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
@@ -108,6 +112,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cedula,
                         alumnos.primer_nombre,
                         alumnos.segundo_nombre,
+                        alumnos.tercer_nombre,
                         alumnos.apellido_paterno,
                         alumnos.apellido_materno,
                         alumnos.fecha_nacimiento,
@@ -122,6 +127,7 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.sexo,
                         alumnos.cma,
                         alumnos.imt,
+                        alumnos.fecha_ingreso_institucion,
                         alumnos.situacion
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;
@@ -140,9 +146,9 @@ class AlumnoRepositorio(RepositorioBase):
                     Representante.cedula,
                     Representante.nombre,
                     Representante.apellido,
-                    Representante.apellido,
                     Representante.direccion_residencia,
                     Representante.num_telefono,
+                    Representante.num_telefono_adicional,
                     Representante.carga_familiar,
                     Representante.estado_civil
                 ).join(Alumno.representante).filter(Alumno.alumno_id == alumno_id).first()
@@ -177,6 +183,7 @@ class AlumnoRepositorio(RepositorioBase):
                     "cedula": "CÉDULA",
                     "primer_nombre": "PRIMER NOMBRE",
                     "segundo_nombre": "SEGUNDO NOMBRE",
+                    "tercer_nombre": "TERCER NOMBRE",
                     "apellido_paterno": "APELLIDO PATERNO",
                     "apellido_materno": "APELLIDO MATERNO",
                     "fecha_nacimiento": "FECHA DE NACIMIENTO",

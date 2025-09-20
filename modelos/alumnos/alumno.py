@@ -12,6 +12,7 @@ class Alumno(Base):
     cedula = Column(String(10), unique = True)
     primer_nombre = Column(String(15), nullable = False)
     segundo_nombre = Column(String(15))
+    tercer_nombre = Column(String(15))
     apellido_paterno = Column(String(15), nullable = False)
     apellido_materno = Column(String(15))
     fecha_nacimiento = Column(Date, nullable = False)

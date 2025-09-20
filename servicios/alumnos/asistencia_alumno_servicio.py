@@ -50,6 +50,9 @@ class AsistenciaAlumnoServicio:
     def obtener_sumatoria_asistencias_inasistencias(self, especialidad_id: int, anio_mes: str) -> Optional[Tuple]:
         return self.repositorio.obtener_sumatoria_asistencias_inasistencias(especialidad_id, anio_mes)
     
+    def obtener_dias_habiles(self, especialidad_id: int, anio_mes: str) -> Optional[int]:
+        return self.repositorio.obtener_dias_habiles(especialidad_id, anio_mes)
+    
     def obtener_promedio_asistencias_inasistencias(self, especialidad_id: int, anio_mes: str) -> Optional[Tuple]:
         return self.repositorio.obtener_promedio_asistencias_inasistencias(especialidad_id, anio_mes)
     

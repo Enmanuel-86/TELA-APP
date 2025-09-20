@@ -95,6 +95,18 @@ class InscripcionServicio:
         except BaseDatosError as error:
             raise error
     
+    def obtener_inscripcion_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+        try:
+            return self.repositorio.obtener_por_cedula_situacion_especialidad(especialidad_id, cedula, situacion)
+        except BaseDatosError as error:
+            raise error
+    
+    def obtener_inscripcion_por_matricula_situacion_especialidad(self, especialidad_id: int, num_matricula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+        try:
+            return self.repositorio.obtener_por_matricula_situacion_especialidad(especialidad_id, num_matricula, situacion)
+        except BaseDatosError as error:
+            raise error
+    
     def actualizar_inscripcion(self, alumno_id: int, campos_inscripcion: Dict) -> None:
         self.repositorio.actualizar(alumno_id, campos_inscripcion)
 

@@ -1,8 +1,9 @@
 # Estos archivos no quiero que los envie
 
-main_bd.py
+main_bd1.py
 main_bd2.py
 main_bd3.py
+main_bd4.py
 
 token.txt
 

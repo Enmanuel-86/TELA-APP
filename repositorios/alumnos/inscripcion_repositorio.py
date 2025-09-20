@@ -6,6 +6,7 @@ from modelos import Inscripcion, Alumno, Especialidad
 from repositorios.usuarios.auditoria_repositorio import auditoria_repositorio
 from repositorios.repositorio_base import RepositorioBase
 from conexiones.conexion import conexion_bd
+from sqlalchemy import text
 
 
 class InscripcionRepositorio(RepositorioBase):
@@ -43,49 +44,75 @@ class InscripcionRepositorio(RepositorioBase):
     def obtener_todos(self) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                inscripciones = sesion.query(
-                    Inscripcion.inscripcion_id,
-                    Alumno.alumno_id,
-                    Especialidad.especialidad_id,
-                    Especialidad.especialidad,
-                    Inscripcion.num_matricula,
-                    Alumno.cedula,
-                    Alumno.primer_nombre,
-                    Alumno.segundo_nombre,
-                    Alumno.apellido_paterno,
-                    Alumno.apellido_materno,
-                    Inscripcion.periodo_escolar,
-                    Inscripcion.fecha_inscripcion,
-                    Alumno.situacion
-                ).join(Inscripcion.alumno).join(Inscripcion.especialidad).all()
+                consulta = """
+                    SELECT
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial';
+                """
                 
-                return inscripciones
+                alumnos = sesion.execute(text(consulta)).fetchall()
+                
+                return alumnos
         except Exception as error:
             print(f"ERROR AL OBTENER TODAS LAS INSCRIPCIONES: {error}")
     
     def obtener_por_id(self, alumno_id: int) -> Optional[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                inscripcion = sesion.query(
-                    Inscripcion.inscripcion_id,
-                    Alumno.alumno_id,
-                    Especialidad.especialidad_id,
-                    Especialidad.especialidad,
-                    Inscripcion.num_matricula,
-                    Alumno.cedula,
-                    Alumno.primer_nombre,
-                    Alumno.segundo_nombre,
-                    Alumno.apellido_paterno,
-                    Alumno.apellido_materno,
-                    Inscripcion.periodo_escolar,
-                    Inscripcion.fecha_inscripcion,
-                    Alumno.situacion
-                ).join(Inscripcion.alumno).join(Inscripcion.especialidad).filter(Inscripcion.alumno_id == alumno_id).first()
+                consulta = """
+                    SELECT
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
+                """
                 
-                if not(inscripcion):
+                alumno = sesion.execute(text(consulta), {"alumno_id": alumno_id}).fetchone()
+                
+                if not(alumno):
                     raise BaseDatosError("INSCRIPCION_NO_EXISTE", "Este registro de inscripción no existe")
                 
-                return inscripcion
+                return alumno
         except BaseDatosError as error:
             raise error
         except Exception as error:
@@ -94,26 +121,39 @@ class InscripcionRepositorio(RepositorioBase):
     def obtener_por_num_matricula(self, num_matricula: str) -> Optional[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                inscripcion = sesion.query(
-                    Inscripcion.inscripcion_id,
-                    Alumno.alumno_id,
-                    Especialidad.especialidad_id,
-                    Especialidad.especialidad,
-                    Inscripcion.num_matricula,
-                    Alumno.cedula,
-                    Alumno.primer_nombre,
-                    Alumno.segundo_nombre,
-                    Alumno.apellido_paterno,
-                    Alumno.apellido_materno,
-                    Inscripcion.periodo_escolar,
-                    Inscripcion.fecha_inscripcion,
-                    Alumno.situacion
-                ).join(Inscripcion.alumno).join(Inscripcion.especialidad).filter(Inscripcion.num_matricula == num_matricula).first()
+                consulta = """
+                    SELECT
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND inscripciones.num_matricula = :num_matricula;
+                """
                 
-                if not(inscripcion):
+                alumno = sesion.execute(text(consulta), {"num_matricula": num_matricula}).fetchone()
+                
+                if not(alumno):
                     raise BaseDatosError("INSCRIPCION_NO_EXISTE", "Este registro de inscripción no existe")
                 
-                return inscripcion
+                return alumno
         except BaseDatosError as error:
             raise error
         except Exception as error:
@@ -122,26 +162,39 @@ class InscripcionRepositorio(RepositorioBase):
     def obtener_por_especialidad(self, especialidad_id: int) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                inscripciones = sesion.query(
-                    Inscripcion.inscripcion_id,
-                    Alumno.alumno_id,
-                    Especialidad.especialidad_id,
-                    Especialidad.especialidad,
-                    Inscripcion.num_matricula,
-                    Alumno.cedula,
-                    Alumno.primer_nombre,
-                    Alumno.segundo_nombre,
-                    Alumno.apellido_paterno,
-                    Alumno.apellido_materno,
-                    Inscripcion.periodo_escolar,
-                    Inscripcion.fecha_inscripcion,
-                    Alumno.situacion
-                ).join(Inscripcion.alumno).join(Inscripcion.especialidad).filter(Inscripcion.especialidad_id == especialidad_id).all()
+                consulta = """
+                    SELECT
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND especialidades.especialidad_id = :especialidad_id;
+                """
                 
-                if not(inscripciones):
-                    raise BaseDatosError("INSCRIPCIONES_NO_EXISTEN", "No hay alumnos inscritos en esta especialidad")
+                alumnos = sesion.execute(text(consulta), {"especialidad_id": especialidad_id}).fetchall()
                 
-                return inscripciones
+                if not(alumnos):
+                    raise BaseDatosError("INSCRIPCIONES_NO_EXISTEN", "No hay alumnos inscritos en esta especialidad.")
+                
+                return alumnos
         except BaseDatosError as error:
             raise error
         except Exception as error:
@@ -150,38 +203,94 @@ class InscripcionRepositorio(RepositorioBase):
     def obtener_por_cedula(self, cedula: str) -> Optional[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                inscripcion = sesion.query(
-                    Inscripcion.inscripcion_id,
-                    Alumno.alumno_id,
-                    Especialidad.especialidad_id,
-                    Especialidad.especialidad,
-                    Inscripcion.num_matricula,
-                    Alumno.cedula,
-                    Alumno.primer_nombre,
-                    Alumno.segundo_nombre,
-                    Alumno.apellido_paterno,
-                    Alumno.apellido_materno,
-                    Inscripcion.periodo_escolar,
-                    Inscripcion.fecha_inscripcion,
-                    Alumno.situacion
-                ).join(Inscripcion.alumno).join(Inscripcion.especialidad).filter(Alumno.cedula == cedula).first()
+                consulta = """
+                    SELECT
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;
+                """
                 
-                if not(inscripcion):
+                alumno = sesion.execute(text(consulta), {"cedula": cedula}).fetchone()
+                
+                if not(alumno):
                     raise BaseDatosError("INSCRIPCION_NO_EXISTE", "Este registro de inscripción no existe")
                 
-                return inscripcion
+                return alumno
         except BaseDatosError as error:
             raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA INSCRIPCIÓN: {error}")
     
+    def obtener_por_situacion_y_especialidad(self, situacion: str, especialidad_id: int) -> Optional[List[Tuple]]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT 
+                        alumnos.alumno_id,
+                        alumnos.cedula,
+                        alumnos.primer_nombre,
+                        alumnos.apellido_paterno,
+                        especialidades.especialidad,
+                        inscripciones.num_matricula,
+                        inscripciones.fecha_inscripcion,
+                        STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                        CASE 
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                            ELSE 0
+                        END AS tiempo_en_tela,
+                        inscripciones.periodo_escolar,
+                        alumnos.situacion,
+                        alumnos.relacion_con_rep
+                    FROM tb_alumnos AS alumnos
+                    INNER JOIN tb_inscripciones AS inscripciones 
+                        ON inscripciones.alumno_id = alumnos.alumno_id 
+                    INNER JOIN tb_especialidades AS especialidades 
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id
+                    WHERE alumnos.situacion = :situacion AND especialidades.especialidad_id = :especialidad_id;
+                """
+                
+                alumnos = sesion.execute(text(consulta), {
+                    "situacion": situacion,
+                    "especialidad_id": especialidad_id
+                }).fetchone()
+                
+                if not(alumnos):
+                    raise BaseDatosError("INSCRIPCIONES_NO_EXISTEN", "No hay alumnos inscritos en esta especialidad.")
+                
+                return alumnos
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER LAS INSCRIPCIONES POR SU SITUACIÓN/ESTADO: {error}")
+    
     def obtener_por_especialidad_o_cedula(self, especialidad_id: int, cedula: str = None) -> Union[List[Tuple], Tuple]:
         try:
-            if (especialidad_id and cedula):
-                if ((self.obtener_por_especialidad(especialidad_id)) and (self.obtener_por_cedula(cedula))):
+            if (cedula):
+                if (self.obtener_por_cedula(cedula)):
                     return self.obtener_por_cedula(cedula)
-            
-            if not(cedula):
+            else:
                 return self.obtener_por_especialidad(especialidad_id)
         except BaseDatosError as error:
             raise error
@@ -190,15 +299,39 @@ class InscripcionRepositorio(RepositorioBase):
     
     def obtener_por_especialidad_o_matricula(self, especialidad_id: int, num_matricula: str = None) -> Union[List[Tuple], Tuple]:
         try:
-            if ((self.obtener_por_especialidad(especialidad_id)) and (self.obtener_por_num_matricula(num_matricula))):
-                return self.obtener_por_num_matricula(num_matricula)
-            
-            if not(num_matricula):
+            if (num_matricula):
+                if (self.obtener_por_num_matricula(num_matricula)):
+                    return self.obtener_por_num_matricula(num_matricula)
+            else:
                 return self.obtener_por_especialidad(especialidad_id)
         except BaseDatosError as error:
             raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA INSCRIPCION/ES POR ESPECIALIDAD O MATRICULA: {error}")
+    
+    def obtener_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+        try:
+            if (cedula):
+                if (self.obtener_por_cedula(cedula)):
+                    return self.obtener_por_cedula(cedula)
+            else:
+                return self.obtener_por_situacion_y_especialidad(situacion, especialidad_id)
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER LAS INSCRIPCIONES POR CÉDULA, SITUACIÓN Y ESPECIALIDAD: {error}")
+    
+    def obtener_por_matricula_situacion_especialidad(self, especialidad_id: int, num_matricula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+        try:
+            if (num_matricula):
+                if (self.obtener_por_num_matricula(num_matricula)):
+                    return self.obtener_por_num_matricula(num_matricula)
+            else:
+                return self.obtener_por_situacion_y_especialidad(situacion, especialidad_id)
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER LAS INSCRIPCIONES POR MATRICULA, SITUACIÓN Y ESPECIALIDAD: {error}")
     
     def actualizar(self, alumno_id: int, campos_inscripcion: Dict) -> None:
         try:
@@ -221,17 +354,21 @@ class InscripcionRepositorio(RepositorioBase):
                         if (clave == "especialidad_id"):
                             nuevo_especialidad_id = campos_inscripcion.get("especialidad_id")
                             especialidad_actual = sesion.query(Especialidad).filter_by(especialidad_id = nuevo_especialidad_id).first()
-                            
+                        
                             valor_campo_actual = campos_inscripcion.get(clave)
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {especialidad_anterior.especialidad}. AHORA: {especialidad_actual.especialidad}. MATRICULA: {inscripcion.num_matricula}"
+                            
+                            auditoria_repositorio.registrar(self.entidad, accion)
+                        elif (clave == "periodo_escolar"):
+                            valor_campo_actual = campos_inscripcion.get(clave)
                         else:
                             valor_campo_anterior = diccionario_inscripcion.get(clave)
                             valor_campo_actual = campos_inscripcion.get(clave)
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_campo_anterior}. AHORA: {valor_campo_actual}. MATRICULA: {inscripcion.num_matricula}"
                         
-                        auditoria_repositorio.registrar(self.entidad, accion)
+                            auditoria_repositorio.registrar(self.entidad, accion)
                         
                         sesion.query(Inscripcion).filter_by(alumno_id = alumno_id).update({clave: valor_campo_actual})
                         sesion.commit()
@@ -312,3 +449,27 @@ if __name__ == "__main__":
     }
     
     inscripcion_repositorio.actualizar(17, campos_inscripcion)"""
+    
+    """try:
+        alumnos = inscripcion_repositorio.obtener_por_cedula_situacion_especialidad(1, None, "Ingresado")
+        print(alumnos)
+    except BaseDatosError as error:
+        print(error)"""
+    
+    """try:
+        alumno = inscripcion_repositorio.obtener_por_matricula_situacion_especialidad(1, None)
+        print(alumno)
+    except BaseDatosError as error:
+        print(error)"""
+    
+    """try:
+        alumno = inscripcion_repositorio.obtener_por_especialidad_o_cedula(1, "43342903")
+        print(alumno)
+    except BaseDatosError as error:
+        print(error)"""
+    
+    """try:
+        alumno = inscripcion_repositorio.obtener_por_especialidad_o_matricula(1, "MAT-5qa2341")
+        print(alumno)
+    except BaseDatosError as error:
+        print(error)"""

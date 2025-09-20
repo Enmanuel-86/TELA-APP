@@ -35,6 +35,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                             empleados.cedula,
                             empleados.primer_nombre,
                             empleados.segundo_nombre,
+                            empleados.tercer_nombre,
                             empleados.apellido_paterno,
                             empleados.apellido_materno,
                             tipos_cargo.tipo_cargo,
@@ -60,6 +61,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                             empleados.cedula,
                             empleados.primer_nombre,
                             empleados.segundo_nombre,
+                            empleados.tercer_nombre,
                             empleados.apellido_paterno,
                             empleados.apellido_materno,
                             tipos_cargo.tipo_cargo,
@@ -90,6 +92,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                             empleados.cedula,
                             empleados.primer_nombre,
                             empleados.segundo_nombre,
+                            empleados.tercer_nombre,
                             empleados.apellido_paterno,
                             empleados.apellido_materno,
                             tipos_cargo.tipo_cargo,
@@ -110,7 +113,7 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR CÉDULA: {error}")
     
-    def obtener_por_tipo_cargo(self, tipo_cargo_id: int) -> List[Tuple]:
+    def obtener_por_tipo_cargo(self, tipo_cargo_id: int, situacion: str) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 detalles_cargo = sesion.execute(text(
@@ -120,6 +123,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                             empleados.cedula,
                             empleados.primer_nombre,
                             empleados.segundo_nombre,
+                            empleados.tercer_nombre,
                             empleados.apellido_paterno,
                             empleados.apellido_materno,
                             tipos_cargo.tipo_cargo,
@@ -127,12 +131,12 @@ class DetalleCargoRepositorio(RepositorioBase):
                         FROM tb_detalles_cargo AS detalles_cargo
                         INNER JOIN tb_empleados AS empleados ON detalles_cargo.empleado_id = empleados.empleado_id
                         INNER JOIN tb_tipos_cargo AS tipos_cargo ON detalles_cargo.tipo_cargo_id = tipos_cargo.tipo_cargo_id
-                        WHERE empleados.situacion = 'Activo' AND tipos_cargo.tipo_cargo_id = :tipo_cargo_id;
+                        WHERE empleados.situacion = :situacion AND tipos_cargo.tipo_cargo_id = :tipo_cargo_id;
                     """
-                ), {"tipo_cargo_id": tipo_cargo_id}).fetchall()
+                ), {"tipo_cargo_id": tipo_cargo_id, "situacion": situacion}).fetchall()
                 
                 if not(detalles_cargo):
-                    raise BaseDatosError("DETALLE_CARGO_NO_EXISTE", "No hay empleados con este tipo de cargo")
+                    raise BaseDatosError("DETALLE_CARGO_NO_EXISTE", f"No hay empleados con este tipo de cargo y que sean {situacion}")
                 
                 return detalles_cargo
         except BaseDatosError as error:
@@ -140,7 +144,7 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR TIPO DE CARGO: {error}")
     
-    def obtener_por_especialidad(self, especialidad_id: int) -> List[Tuple]:
+    def obtener_por_especialidad(self, especialidad_id: int, situacion: str = "Activo") -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 detalles_cargo = sesion.execute(text(
@@ -151,6 +155,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                             empleados.cedula,
                             empleados.primer_nombre,
                             empleados.segundo_nombre,
+                            empleados.tercer_nombre,
                             empleados.apellido_paterno,
                             empleados.apellido_materno,
                             tipos_cargo.tipo_cargo,
@@ -159,12 +164,12 @@ class DetalleCargoRepositorio(RepositorioBase):
                         INNER JOIN tb_empleados AS empleados ON detalles_cargo.empleado_id = empleados.empleado_id
                         INNER JOIN tb_tipos_cargo AS tipos_cargo ON detalles_cargo.tipo_cargo_id = tipos_cargo.tipo_cargo_id
                         INNER JOIN tb_especialidades AS especialidades ON detalles_cargo.especialidad_id = especialidades.especialidad_id
-                        WHERE empleados.situacion = 'Activo' AND especialidades.especialidad_id = :especialidad_id;
+                        WHERE empleados.situacion = :situacion AND especialidades.especialidad_id = :especialidad_id;
                     """
-                ), {"especialidad_id": especialidad_id}).fetchall()
+                ), {"especialidad_id": especialidad_id, "situacion": situacion}).fetchall()
                 
                 if not(detalles_cargo):
-                    raise BaseDatosError("DETALLE_CARGO_NO_EXISTE", "No hay empleados que imparten esta especialidad")
+                    raise BaseDatosError("DETALLE_CARGO_NO_EXISTE", f"No hay empleados que imparten esta especialidad y que sean {situacion}")
                 
                 return detalles_cargo
         except BaseDatosError as error:
@@ -172,27 +177,59 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR TIPO DE CARGO: {error}")
     
-    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None) -> Union[List[Tuple], Tuple]:
+    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> Union[List[Tuple], Tuple]:
         try:
-            if (tipo_cargo_id and especialidad_id and cedula):
-                if ((self.obtener_por_tipo_cargo(tipo_cargo_id)) and (self.obtener_por_especialidad(especialidad_id)) and (self.obtener_por_cedula(cedula))):
+            if (cedula):
+                if (self.obtener_por_cedula(cedula)):
                     return self.obtener_por_cedula(cedula)
             
-            if ((tipo_cargo_id) and (not(especialidad_id)) and (cedula)):
-                if ((self.obtener_por_tipo_cargo(tipo_cargo_id)) and (self.obtener_por_cedula(cedula))):
-                    return self.obtener_por_cedula(cedula)
-            
-            if (tipo_cargo_id and especialidad_id):
-                if ((self.obtener_por_tipo_cargo(tipo_cargo_id)) and (self.obtener_por_especialidad(especialidad_id))):
-                    return self.obtener_por_especialidad(especialidad_id)
+            if ((tipo_cargo_id) and (especialidad_id)):
+                if ((self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)) and (self.obtener_por_especialidad(especialidad_id, situacion))):
+                    return self.obtener_por_especialidad(especialidad_id, situacion)
             
             if (tipo_cargo_id):
-                if (self.obtener_por_tipo_cargo(tipo_cargo_id)):
-                    return self.obtener_por_tipo_cargo(tipo_cargo_id)
+                if (self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)):
+                    return self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)
         except BaseDatosError as error:
             raise error
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR TIPO DE CARGO O ESPECIALIDAD O CÉDULA: {error}")
+    
+    def obtener_detalles_cargo_empleados(self) -> List[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                detalle_cargo = sesion.execute(text(
+                    """
+                        SELECT
+                            empleados.empleado_id,
+                            cargos_empleados.codigo_cargo,
+                            cargos_empleados.cargo,
+                            funciones_cargo.funcion_cargo,
+                            tipos_cargo.tipo_cargo,
+                            detalles_cargo.titulo_cargo,
+                            detalles_cargo.labores_cargo,
+                            empleados.fecha_ingreso_institucion,
+                            empleados.fecha_ingreso_ministerio,
+                            STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', empleados.fecha_ingreso_ministerio) -
+                            CASE 
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', empleados.fecha_ingreso_ministerio) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', empleados.fecha_ingreso_ministerio) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', empleados.fecha_ingreso_ministerio) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', empleados.fecha_ingreso_ministerio) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', empleados.fecha_ingreso_ministerio) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', empleados.fecha_ingreso_ministerio) THEN 1
+                                ELSE 0
+                            END AS tiempo_servicio,
+                            especialidades.especialidad
+                        FROM tb_detalles_cargo AS detalles_cargo
+                        INNER JOIN tb_empleados AS empleados ON detalles_cargo.empleado_id = empleados.empleado_id
+                        INNER JOIN tb_cargos_empleados AS cargos_empleados ON detalles_cargo.cargo_id = cargos_empleados.cargo_id
+                        INNER JOIN tb_funciones_cargo AS funciones_cargo ON detalles_cargo.funcion_cargo_id = funciones_cargo.funcion_cargo_id
+                        INNER JOIN tb_tipos_cargo AS tipos_cargo ON detalles_cargo.tipo_cargo_id = tipos_cargo.tipo_cargo_id
+                        LEFT JOIN tb_especialidades AS especialidades ON detalles_cargo.especialidad_id = especialidades.especialidad_id;
+                    """
+                )).fetchall()
+                
+                return detalle_cargo
+        except Exception as error:
+            print(f"ERROR AL OBTENER LOS DETALLES DEL CARGO: {error}")
     
     def obtener_detalles_cargo(self, empleado_id: int) -> Tuple:
         try:
@@ -231,6 +268,34 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LOS DETALLES DEL CARGO: {error}")
     
+    def conteo_empleados_por_funcion_cargo(self) -> List[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = "SELECT * FROM vw_conteo_tipo_personal;"
+                
+                conteo_empleados_funcion_cargo = sesion.execute(text(consulta)).fetchall()
+                
+                return conteo_empleados_funcion_cargo
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL CONTEO DE EMPLEADOS POR FUNCION DE CARGO: {error}")
+    
+    def conteo_matricula_empleados(self) -> List[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        SUM(CASE WHEN empleados.sexo = 'M' THEN 1 ELSE 0 END) AS total_varones,
+                        SUM(CASE WHEN empleados.sexo = 'F' THEN 1 ELSE 0 END) AS total_hembras,
+                        (SUM(CASE WHEN empleados.sexo = 'M' THEN 1 ELSE 0 END)) + (SUM(CASE WHEN empleados.sexo = 'F' THEN 1 ELSE 0 END)) AS total_general
+                    FROM tb_empleados AS empleados;
+                """
+                
+                conteo_empleados_matricula = sesion.execute(text(consulta)).fetchall()
+                
+                return conteo_empleados_matricula
+        except Exception as error:
+            print(f"ERROR AL OBTENER LA MATRICULA DE LOS EMPLEADOS: {error}")
+
     def actualizar(self, empleado_id: int, campos_detalle_cargo: Dict) -> None:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
@@ -386,3 +451,9 @@ if __name__ == "__main__":
     }
     
     detalle_cargo_repositorio.actualizar(4, campos_detalle_cargo)"""
+    
+    """try:
+        empleados = detalle_cargo_repositorio.obtener_por_tipo_cargo_o_especialidad_o_cedula(2, None, None, "Activo")
+        print(empleados)
+    except BaseDatosError as error:
+        print(error)"""

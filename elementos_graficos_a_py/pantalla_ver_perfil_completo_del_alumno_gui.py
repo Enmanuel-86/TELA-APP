@@ -35,8 +35,8 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.horizontalLayout.setSpacing(25)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.espacio_izquierdo = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_izquierdo.setMinimumSize(QtCore.QSize(400, 700))
-        self.espacio_izquierdo.setMaximumSize(QtCore.QSize(350, 700))
+        self.espacio_izquierdo.setMinimumSize(QtCore.QSize(400, 650))
+        self.espacio_izquierdo.setMaximumSize(QtCore.QSize(350, 650))
         self.espacio_izquierdo.setStyleSheet("QFrame{\n"
 "\n"
 "    background:none;\n"
@@ -48,7 +48,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.verticalLayout_3.setSpacing(5)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.espacio_personal = QtWidgets.QFrame(self.espacio_izquierdo)
-        self.espacio_personal.setMinimumSize(QtCore.QSize(500, 620))
+        self.espacio_personal.setMinimumSize(QtCore.QSize(410, 620))
         self.espacio_personal.setMaximumSize(QtCore.QSize(0, 1))
         self.espacio_personal.setStyleSheet("QFrame{\n"
 "\n"
@@ -91,23 +91,24 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
         self.layoutWidget = QtWidgets.QWidget(self.espacio_personal)
-        self.layoutWidget.setGeometry(QtCore.QRect(21, 151, 371, 458))
+        self.layoutWidget.setGeometry(QtCore.QRect(24, 150, 361, 477))
         self.layoutWidget.setObjectName("layoutWidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.layoutWidget)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setHorizontalSpacing(20)
+        self.gridLayout_2.setVerticalSpacing(10)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_23.setSpacing(0)
-        self.verticalLayout_23.setObjectName("verticalLayout_23")
-        self.label_primer_nombre = QtWidgets.QLabel(self.layoutWidget)
+        self.verticalLayout_36 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_36.setSpacing(0)
+        self.verticalLayout_36.setObjectName("verticalLayout_36")
+        self.label_tercer_nombre = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.label_primer_nombre.setFont(font)
-        self.label_primer_nombre.setStyleSheet("QLabel{\n"
+        self.label_tercer_nombre.setFont(font)
+        self.label_tercer_nombre.setStyleSheet("QLabel{\n"
 "    \n"
 "    color: rgb(80, 80, 80);\n"
 "\n"
@@ -116,17 +117,17 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "\n"
 "}\n"
 "")
-        self.label_primer_nombre.setScaledContents(False)
-        self.label_primer_nombre.setObjectName("label_primer_nombre")
-        self.verticalLayout_23.addWidget(self.label_primer_nombre)
-        self.input_mostrar_primer_nombre = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_primer_nombre.setEnabled(True)
-        self.input_mostrar_primer_nombre.setMinimumSize(QtCore.QSize(0, 40))
+        self.label_tercer_nombre.setScaledContents(False)
+        self.label_tercer_nombre.setObjectName("label_tercer_nombre")
+        self.verticalLayout_36.addWidget(self.label_tercer_nombre, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_tercer_nombre = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_tercer_nombre.setEnabled(True)
+        self.input_mostrar_tercer_nombre.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(13)
-        self.input_mostrar_primer_nombre.setFont(font)
-        self.input_mostrar_primer_nombre.setStyleSheet("QLineEdit{\n"
+        self.input_mostrar_tercer_nombre.setFont(font)
+        self.input_mostrar_tercer_nombre.setStyleSheet("QLineEdit{\n"
 "    \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-radius:5px;\n"
@@ -148,443 +149,16 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "\n"
 "}\n"
 "")
-        self.input_mostrar_primer_nombre.setReadOnly(True)
-        self.input_mostrar_primer_nombre.setObjectName("input_mostrar_primer_nombre")
-        self.verticalLayout_23.addWidget(self.input_mostrar_primer_nombre)
-        self.gridLayout_2.addLayout(self.verticalLayout_23, 0, 0, 1, 1)
-        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_22.setSpacing(0)
-        self.verticalLayout_22.setObjectName("verticalLayout_22")
-        self.label_segundo_nombre = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_segundo_nombre.setFont(font)
-        self.label_segundo_nombre.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_segundo_nombre.setScaledContents(False)
-        self.label_segundo_nombre.setObjectName("label_segundo_nombre")
-        self.verticalLayout_22.addWidget(self.label_segundo_nombre)
-        self.input_mostrar_segundo_nombre = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_segundo_nombre.setEnabled(True)
-        self.input_mostrar_segundo_nombre.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_segundo_nombre.setFont(font)
-        self.input_mostrar_segundo_nombre.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_segundo_nombre.setReadOnly(True)
-        self.input_mostrar_segundo_nombre.setObjectName("input_mostrar_segundo_nombre")
-        self.verticalLayout_22.addWidget(self.input_mostrar_segundo_nombre)
-        self.gridLayout_2.addLayout(self.verticalLayout_22, 0, 1, 1, 1)
-        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_27.setObjectName("verticalLayout_27")
-        self.label_apellido_paterno = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_apellido_paterno.setFont(font)
-        self.label_apellido_paterno.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_apellido_paterno.setScaledContents(False)
-        self.label_apellido_paterno.setObjectName("label_apellido_paterno")
-        self.verticalLayout_27.addWidget(self.label_apellido_paterno)
-        self.input_mostrar_apellido_paterno = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_apellido_paterno.setEnabled(True)
-        self.input_mostrar_apellido_paterno.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_apellido_paterno.setFont(font)
-        self.input_mostrar_apellido_paterno.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_apellido_paterno.setReadOnly(True)
-        self.input_mostrar_apellido_paterno.setObjectName("input_mostrar_apellido_paterno")
-        self.verticalLayout_27.addWidget(self.input_mostrar_apellido_paterno)
-        self.gridLayout_2.addLayout(self.verticalLayout_27, 1, 0, 1, 1)
-        self.verticalLayout_24 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_24.setObjectName("verticalLayout_24")
-        self.label_apellido_materno = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_apellido_materno.setFont(font)
-        self.label_apellido_materno.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_apellido_materno.setScaledContents(False)
-        self.label_apellido_materno.setObjectName("label_apellido_materno")
-        self.verticalLayout_24.addWidget(self.label_apellido_materno)
-        self.input_mostrar_apellido_materno = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_apellido_materno.setEnabled(True)
-        self.input_mostrar_apellido_materno.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_apellido_materno.setFont(font)
-        self.input_mostrar_apellido_materno.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_apellido_materno.setReadOnly(True)
-        self.input_mostrar_apellido_materno.setObjectName("input_mostrar_apellido_materno")
-        self.verticalLayout_24.addWidget(self.input_mostrar_apellido_materno)
-        self.gridLayout_2.addLayout(self.verticalLayout_24, 1, 1, 1, 1)
-        self.verticalLayout_25 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_25.setObjectName("verticalLayout_25")
-        self.label_cedula = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_cedula.setFont(font)
-        self.label_cedula.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_cedula.setScaledContents(False)
-        self.label_cedula.setObjectName("label_cedula")
-        self.verticalLayout_25.addWidget(self.label_cedula)
-        self.input_mostrar_cedula = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_cedula.setEnabled(True)
-        self.input_mostrar_cedula.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_cedula.setFont(font)
-        self.input_mostrar_cedula.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_cedula.setReadOnly(True)
-        self.input_mostrar_cedula.setObjectName("input_mostrar_cedula")
-        self.verticalLayout_25.addWidget(self.input_mostrar_cedula)
-        self.gridLayout_2.addLayout(self.verticalLayout_25, 2, 0, 1, 1)
-        self.verticalLayout_26 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_26.setObjectName("verticalLayout_26")
-        self.label_edad = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_edad.setFont(font)
-        self.label_edad.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_edad.setScaledContents(False)
-        self.label_edad.setObjectName("label_edad")
-        self.verticalLayout_26.addWidget(self.label_edad)
-        self.input_mostrar_edad = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_edad.setEnabled(True)
-        self.input_mostrar_edad.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_edad.setFont(font)
-        self.input_mostrar_edad.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_edad.setReadOnly(True)
-        self.input_mostrar_edad.setObjectName("input_mostrar_edad")
-        self.verticalLayout_26.addWidget(self.input_mostrar_edad)
-        self.gridLayout_2.addLayout(self.verticalLayout_26, 3, 0, 1, 1)
-        self.verticalLayout_29 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_29.setObjectName("verticalLayout_29")
-        self.label_lugar_nacimiento = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_lugar_nacimiento.setFont(font)
-        self.label_lugar_nacimiento.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_lugar_nacimiento.setScaledContents(False)
-        self.label_lugar_nacimiento.setObjectName("label_lugar_nacimiento")
-        self.verticalLayout_29.addWidget(self.label_lugar_nacimiento)
-        self.input_mostrar_lugar_nacimiento = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_lugar_nacimiento.setEnabled(True)
-        self.input_mostrar_lugar_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_lugar_nacimiento.setFont(font)
-        self.input_mostrar_lugar_nacimiento.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_lugar_nacimiento.setReadOnly(True)
-        self.input_mostrar_lugar_nacimiento.setObjectName("input_mostrar_lugar_nacimiento")
-        self.verticalLayout_29.addWidget(self.input_mostrar_lugar_nacimiento)
-        self.gridLayout_2.addLayout(self.verticalLayout_29, 3, 1, 1, 1)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_estado = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_estado.setFont(font)
-        self.label_estado.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_estado.setScaledContents(False)
-        self.label_estado.setObjectName("label_estado")
-        self.horizontalLayout_3.addWidget(self.label_estado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.label_mostrar_estado = QtWidgets.QLabel(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(10)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_mostrar_estado.sizePolicy().hasHeightForWidth())
-        self.label_mostrar_estado.setSizePolicy(sizePolicy)
-        self.label_mostrar_estado.setMinimumSize(QtCore.QSize(90, 0))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(9)
-        self.label_mostrar_estado.setFont(font)
-        self.label_mostrar_estado.setStyleSheet("QLabel{\n"
-"    font: 75 11pt \"Arial\";\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_mostrar_estado.setText("")
-        self.label_mostrar_estado.setScaledContents(False)
-        self.label_mostrar_estado.setObjectName("label_mostrar_estado")
-        self.horizontalLayout_3.addWidget(self.label_mostrar_estado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.gridLayout_2.addLayout(self.horizontalLayout_3, 5, 1, 1, 1)
-        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_28.setObjectName("verticalLayout_28")
-        self.label_fecha_nacimiento = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_fecha_nacimiento.setFont(font)
-        self.label_fecha_nacimiento.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_fecha_nacimiento.setScaledContents(False)
-        self.label_fecha_nacimiento.setObjectName("label_fecha_nacimiento")
-        self.verticalLayout_28.addWidget(self.label_fecha_nacimiento)
-        self.input_mostrar_fecha_nacimiento = QtWidgets.QLineEdit(self.layoutWidget)
-        self.input_mostrar_fecha_nacimiento.setEnabled(True)
-        self.input_mostrar_fecha_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_fecha_nacimiento.setFont(font)
-        self.input_mostrar_fecha_nacimiento.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_fecha_nacimiento.setReadOnly(True)
-        self.input_mostrar_fecha_nacimiento.setObjectName("input_mostrar_fecha_nacimiento")
-        self.verticalLayout_28.addWidget(self.input_mostrar_fecha_nacimiento)
-        self.gridLayout_2.addLayout(self.verticalLayout_28, 2, 1, 1, 1)
+        self.input_mostrar_tercer_nombre.setReadOnly(True)
+        self.input_mostrar_tercer_nombre.setObjectName("input_mostrar_tercer_nombre")
+        self.verticalLayout_36.addWidget(self.input_mostrar_tercer_nombre)
+        self.gridLayout_2.addLayout(self.verticalLayout_36, 2, 0, 1, 1)
         self.frame = QtWidgets.QFrame(self.layoutWidget)
         self.frame.setStyleSheet("border:none;")
         self.frame.setObjectName("frame")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.label_sexo = QtWidgets.QLabel(self.frame)
         self.label_sexo.setMaximumSize(QtCore.QSize(50, 16777215))
@@ -685,7 +259,8 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.espacio_cma.setStyleSheet("border:none;")
         self.espacio_cma.setObjectName("espacio_cma")
         self.formLayout_5 = QtWidgets.QFormLayout(self.espacio_cma)
-        self.formLayout_5.setHorizontalSpacing(30)
+        self.formLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_5.setHorizontalSpacing(20)
         self.formLayout_5.setObjectName("formLayout_5")
         self.label_cma = QtWidgets.QLabel(self.espacio_cma)
         font = QtGui.QFont()
@@ -778,11 +353,120 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "}")
         self.input_no_cma.setObjectName("input_no_cma")
         self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.input_no_cma)
-        self.gridLayout_2.addWidget(self.espacio_cma, 4, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.espacio_cma, 4, 1, 1, 1)
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        self.label_fecha_nacimiento = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_nacimiento.setFont(font)
+        self.label_fecha_nacimiento.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_fecha_nacimiento.setScaledContents(False)
+        self.label_fecha_nacimiento.setObjectName("label_fecha_nacimiento")
+        self.verticalLayout_28.addWidget(self.label_fecha_nacimiento, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_fecha_nacimiento = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_fecha_nacimiento.setEnabled(True)
+        self.input_mostrar_fecha_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_fecha_nacimiento.setFont(font)
+        self.input_mostrar_fecha_nacimiento.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_fecha_nacimiento.setReadOnly(True)
+        self.input_mostrar_fecha_nacimiento.setObjectName("input_mostrar_fecha_nacimiento")
+        self.verticalLayout_28.addWidget(self.input_mostrar_fecha_nacimiento)
+        self.gridLayout_2.addLayout(self.verticalLayout_28, 3, 0, 1, 1)
+        self.verticalLayout_24 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_24.setObjectName("verticalLayout_24")
+        self.label_apellido_materno = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_apellido_materno.setFont(font)
+        self.label_apellido_materno.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_apellido_materno.setScaledContents(False)
+        self.label_apellido_materno.setObjectName("label_apellido_materno")
+        self.verticalLayout_24.addWidget(self.label_apellido_materno, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_apellido_materno = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_apellido_materno.setEnabled(True)
+        self.input_mostrar_apellido_materno.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_apellido_materno.setFont(font)
+        self.input_mostrar_apellido_materno.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_apellido_materno.setReadOnly(True)
+        self.input_mostrar_apellido_materno.setObjectName("input_mostrar_apellido_materno")
+        self.verticalLayout_24.addWidget(self.input_mostrar_apellido_materno)
+        self.gridLayout_2.addLayout(self.verticalLayout_24, 1, 1, 1, 1)
         self.espacio_imt = QtWidgets.QFrame(self.layoutWidget)
         self.espacio_imt.setStyleSheet("border:none;")
         self.espacio_imt.setObjectName("espacio_imt")
         self.formLayout_6 = QtWidgets.QFormLayout(self.espacio_imt)
+        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
         self.formLayout_6.setHorizontalSpacing(30)
         self.formLayout_6.setObjectName("formLayout_6")
         self.label_imt = QtWidgets.QLabel(self.espacio_imt)
@@ -876,9 +560,745 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "}")
         self.input_no_imt.setObjectName("input_no_imt")
         self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.input_no_imt)
-        self.gridLayout_2.addWidget(self.espacio_imt, 4, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.espacio_imt, 5, 1, 1, 1)
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
+        self.label_lugar_nacimiento = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_lugar_nacimiento.setFont(font)
+        self.label_lugar_nacimiento.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_lugar_nacimiento.setScaledContents(False)
+        self.label_lugar_nacimiento.setObjectName("label_lugar_nacimiento")
+        self.verticalLayout_29.addWidget(self.label_lugar_nacimiento, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_lugar_nacimiento = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_lugar_nacimiento.setEnabled(True)
+        self.input_mostrar_lugar_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_lugar_nacimiento.setFont(font)
+        self.input_mostrar_lugar_nacimiento.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_lugar_nacimiento.setReadOnly(True)
+        self.input_mostrar_lugar_nacimiento.setObjectName("input_mostrar_lugar_nacimiento")
+        self.verticalLayout_29.addWidget(self.input_mostrar_lugar_nacimiento)
+        self.gridLayout_2.addLayout(self.verticalLayout_29, 3, 1, 1, 1)
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
+        self.label_apellido_paterno = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_apellido_paterno.setFont(font)
+        self.label_apellido_paterno.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_apellido_paterno.setScaledContents(False)
+        self.label_apellido_paterno.setObjectName("label_apellido_paterno")
+        self.verticalLayout_27.addWidget(self.label_apellido_paterno, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_apellido_paterno = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_apellido_paterno.setEnabled(True)
+        self.input_mostrar_apellido_paterno.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_apellido_paterno.setFont(font)
+        self.input_mostrar_apellido_paterno.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_apellido_paterno.setReadOnly(True)
+        self.input_mostrar_apellido_paterno.setObjectName("input_mostrar_apellido_paterno")
+        self.verticalLayout_27.addWidget(self.input_mostrar_apellido_paterno)
+        self.gridLayout_2.addLayout(self.verticalLayout_27, 0, 1, 1, 1)
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
+        self.label_segundo_nombre = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_segundo_nombre.setFont(font)
+        self.label_segundo_nombre.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_segundo_nombre.setScaledContents(False)
+        self.label_segundo_nombre.setObjectName("label_segundo_nombre")
+        self.verticalLayout_22.addWidget(self.label_segundo_nombre, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_segundo_nombre = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_segundo_nombre.setEnabled(True)
+        self.input_mostrar_segundo_nombre.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_segundo_nombre.setFont(font)
+        self.input_mostrar_segundo_nombre.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_segundo_nombre.setReadOnly(True)
+        self.input_mostrar_segundo_nombre.setObjectName("input_mostrar_segundo_nombre")
+        self.verticalLayout_22.addWidget(self.input_mostrar_segundo_nombre)
+        self.gridLayout_2.addLayout(self.verticalLayout_22, 1, 0, 1, 1)
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.label_edad = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_edad.setFont(font)
+        self.label_edad.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_edad.setScaledContents(False)
+        self.label_edad.setObjectName("label_edad")
+        self.verticalLayout_26.addWidget(self.label_edad, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_edad = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_edad.setEnabled(True)
+        self.input_mostrar_edad.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_edad.setFont(font)
+        self.input_mostrar_edad.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_edad.setReadOnly(True)
+        self.input_mostrar_edad.setObjectName("input_mostrar_edad")
+        self.verticalLayout_26.addWidget(self.input_mostrar_edad)
+        self.gridLayout_2.addLayout(self.verticalLayout_26, 4, 0, 1, 1)
+        self.verticalLayout_23 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_23.setSpacing(0)
+        self.verticalLayout_23.setObjectName("verticalLayout_23")
+        self.label_primer_nombre = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_primer_nombre.setFont(font)
+        self.label_primer_nombre.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_primer_nombre.setScaledContents(False)
+        self.label_primer_nombre.setObjectName("label_primer_nombre")
+        self.verticalLayout_23.addWidget(self.label_primer_nombre, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_primer_nombre = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_primer_nombre.setEnabled(True)
+        self.input_mostrar_primer_nombre.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_primer_nombre.setFont(font)
+        self.input_mostrar_primer_nombre.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_primer_nombre.setReadOnly(True)
+        self.input_mostrar_primer_nombre.setObjectName("input_mostrar_primer_nombre")
+        self.verticalLayout_23.addWidget(self.input_mostrar_primer_nombre)
+        self.gridLayout_2.addLayout(self.verticalLayout_23, 0, 0, 1, 1)
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.label_cedula = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_cedula.setFont(font)
+        self.label_cedula.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_cedula.setScaledContents(False)
+        self.label_cedula.setObjectName("label_cedula")
+        self.verticalLayout_25.addWidget(self.label_cedula, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_cedula = QtWidgets.QLineEdit(self.layoutWidget)
+        self.input_mostrar_cedula.setEnabled(True)
+        self.input_mostrar_cedula.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_cedula.setFont(font)
+        self.input_mostrar_cedula.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_cedula.setReadOnly(True)
+        self.input_mostrar_cedula.setObjectName("input_mostrar_cedula")
+        self.verticalLayout_25.addWidget(self.input_mostrar_cedula)
+        self.gridLayout_2.addLayout(self.verticalLayout_25, 2, 1, 1, 1)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.label_estado = QtWidgets.QLabel(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_estado.setFont(font)
+        self.label_estado.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_estado.setScaledContents(False)
+        self.label_estado.setObjectName("label_estado")
+        self.horizontalLayout_3.addWidget(self.label_estado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label_mostrar_estado = QtWidgets.QLabel(self.layoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(10)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_mostrar_estado.sizePolicy().hasHeightForWidth())
+        self.label_mostrar_estado.setSizePolicy(sizePolicy)
+        self.label_mostrar_estado.setMinimumSize(QtCore.QSize(90, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
+        self.label_mostrar_estado.setFont(font)
+        self.label_mostrar_estado.setStyleSheet("QLabel{\n"
+"    font: 75 11pt \"Arial\";\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_mostrar_estado.setText("")
+        self.label_mostrar_estado.setScaledContents(False)
+        self.label_mostrar_estado.setObjectName("label_mostrar_estado")
+        self.horizontalLayout_3.addWidget(self.label_mostrar_estado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.gridLayout_2.addLayout(self.horizontalLayout_3, 6, 0, 1, 1)
+        self.dockWidget_diagnostico = QtWidgets.QDockWidget(self.espacio_personal)
+        self.dockWidget_diagnostico.setGeometry(QtCore.QRect(-40, 80, 600, 480))
+        self.dockWidget_diagnostico.setMinimumSize(QtCore.QSize(600, 480))
+        self.dockWidget_diagnostico.setMaximumSize(QtCore.QSize(600, 480))
+        self.dockWidget_diagnostico.setFloating(True)
+        self.dockWidget_diagnostico.setFeatures(QtWidgets.QDockWidget.DockWidgetClosable|QtWidgets.QDockWidget.DockWidgetMovable)
+        self.dockWidget_diagnostico.setObjectName("dockWidget_diagnostico")
+        self.dockWidgetContents = QtWidgets.QWidget()
+        self.dockWidgetContents.setObjectName("dockWidgetContents")
+        self.verticalLayout_46 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout_46.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_46.setSpacing(0)
+        self.verticalLayout_46.setObjectName("verticalLayout_46")
+        self.espacio_principal_2 = QtWidgets.QFrame(self.dockWidgetContents)
+        self.espacio_principal_2.setStyleSheet("QFrame{\n"
+"\n"
+"    border:none;\n"
+"    background: qlineargradient(\n"
+"        x1:0, y1:0, x2:1, y2:1,\n"
+"        stop:0 #3fea87, stop:1 #00770e)\n"
+"   \n"
+"}")
+        self.espacio_principal_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_principal_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_principal_2.setObjectName("espacio_principal_2")
+        self.verticalLayout_39 = QtWidgets.QVBoxLayout(self.espacio_principal_2)
+        self.verticalLayout_39.setContentsMargins(-1, 20, -1, -1)
+        self.verticalLayout_39.setSpacing(0)
+        self.verticalLayout_39.setObjectName("verticalLayout_39")
+        self.titulo = QtWidgets.QLabel(self.espacio_principal_2)
+        self.titulo.setMinimumSize(QtCore.QSize(230, 50))
+        self.titulo.setMaximumSize(QtCore.QSize(230, 300))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.titulo.setFont(font)
+        self.titulo.setStyleSheet("QLabel{\n"
+"    \n"
+"    background-color: rgb(0, 112, 21);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}")
+        self.titulo.setAlignment(QtCore.Qt.AlignCenter)
+        self.titulo.setObjectName("titulo")
+        self.verticalLayout_39.addWidget(self.titulo, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.mostrar_diagnostico = QtWidgets.QFrame(self.espacio_principal_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.mostrar_diagnostico.sizePolicy().hasHeightForWidth())
+        self.mostrar_diagnostico.setSizePolicy(sizePolicy)
+        self.mostrar_diagnostico.setMaximumSize(QtCore.QSize(500, 500))
+        self.mostrar_diagnostico.setStyleSheet("QFrame{\n"
+"\n"
+"    background:#ffffff;\n"
+"    border: 10px ridge rgb(122, 59, 33);\n"
+"    \n"
+"\n"
+"\n"
+"}")
+        self.mostrar_diagnostico.setFrameShape(QtWidgets.QFrame.Box)
+        self.mostrar_diagnostico.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.mostrar_diagnostico.setObjectName("mostrar_diagnostico")
+        self.formLayout = QtWidgets.QFormLayout(self.mostrar_diagnostico)
+        self.formLayout.setRowWrapPolicy(QtWidgets.QFormLayout.DontWrapRows)
+        self.formLayout.setContentsMargins(20, 20, 20, 20)
+        self.formLayout.setHorizontalSpacing(20)
+        self.formLayout.setVerticalSpacing(10)
+        self.formLayout.setObjectName("formLayout")
+        self.verticalLayout_40 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_40.setObjectName("verticalLayout_40")
+        self.label_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_diagnostico.setMaximumSize(QtCore.QSize(100, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_diagnostico.setFont(font)
+        self.label_diagnostico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_diagnostico.setScaledContents(True)
+        self.label_diagnostico.setObjectName("label_diagnostico")
+        self.verticalLayout_40.addWidget(self.label_diagnostico)
+        self.label_mostrar_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_diagnostico.setMinimumSize(QtCore.QSize(437, 40))
+        self.label_mostrar_diagnostico.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_diagnostico.setFont(font)
+        self.label_mostrar_diagnostico.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_diagnostico.setText("")
+        self.label_mostrar_diagnostico.setScaledContents(False)
+        self.label_mostrar_diagnostico.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_diagnostico.setObjectName("label_mostrar_diagnostico")
+        self.verticalLayout_40.addWidget(self.label_mostrar_diagnostico)
+        self.formLayout.setLayout(0, QtWidgets.QFormLayout.SpanningRole, self.verticalLayout_40)
+        self.verticalLayout_41 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_41.setObjectName("verticalLayout_41")
+        self.label_fecha_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_diagnostico.setFont(font)
+        self.label_fecha_diagnostico.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_fecha_diagnostico.setScaledContents(True)
+        self.label_fecha_diagnostico.setObjectName("label_fecha_diagnostico")
+        self.verticalLayout_41.addWidget(self.label_fecha_diagnostico, 0, QtCore.Qt.AlignBottom)
+        self.label_mostrar_fecha_diagnostico = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_fecha_diagnostico.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_fecha_diagnostico.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_fecha_diagnostico.setFont(font)
+        self.label_mostrar_fecha_diagnostico.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_fecha_diagnostico.setText("")
+        self.label_mostrar_fecha_diagnostico.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_fecha_diagnostico.setObjectName("label_mostrar_fecha_diagnostico")
+        self.verticalLayout_41.addWidget(self.label_mostrar_fecha_diagnostico)
+        self.formLayout.setLayout(1, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_41)
+        self.verticalLayout_42 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_42.setObjectName("verticalLayout_42")
+        self.label_fecha_venc_certificado = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_fecha_venc_certificado.setFont(font)
+        self.label_fecha_venc_certificado.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_fecha_venc_certificado.setScaledContents(True)
+        self.label_fecha_venc_certificado.setWordWrap(True)
+        self.label_fecha_venc_certificado.setObjectName("label_fecha_venc_certificado")
+        self.verticalLayout_42.addWidget(self.label_fecha_venc_certificado)
+        self.label_mostrar_fecha_venc_certificado = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_fecha_venc_certificado.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_fecha_venc_certificado.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_fecha_venc_certificado.setFont(font)
+        self.label_mostrar_fecha_venc_certificado.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_fecha_venc_certificado.setText("")
+        self.label_mostrar_fecha_venc_certificado.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_fecha_venc_certificado.setObjectName("label_mostrar_fecha_venc_certificado")
+        self.verticalLayout_42.addWidget(self.label_mostrar_fecha_venc_certificado)
+        self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_42)
+        self.verticalLayout_43 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_43.setObjectName("verticalLayout_43")
+        self.label_medico_tratante = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_medico_tratante.setFont(font)
+        self.label_medico_tratante.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_medico_tratante.setScaledContents(True)
+        self.label_medico_tratante.setObjectName("label_medico_tratante")
+        self.verticalLayout_43.addWidget(self.label_medico_tratante)
+        self.label_mostrar_medico_tratante = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_medico_tratante.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_medico_tratante.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_medico_tratante.setFont(font)
+        self.label_mostrar_medico_tratante.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_medico_tratante.setText("")
+        self.label_mostrar_medico_tratante.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_medico_tratante.setObjectName("label_mostrar_medico_tratante")
+        self.verticalLayout_43.addWidget(self.label_mostrar_medico_tratante)
+        self.formLayout.setLayout(2, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_43)
+        self.verticalLayout_44 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_44.setObjectName("verticalLayout_44")
+        self.label_certificado_discap = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_certificado_discap.setFont(font)
+        self.label_certificado_discap.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_certificado_discap.setScaledContents(True)
+        self.label_certificado_discap.setObjectName("label_certificado_discap")
+        self.verticalLayout_44.addWidget(self.label_certificado_discap)
+        self.label_mostrar_certificado_discap = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_certificado_discap.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_certificado_discap.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_certificado_discap.setFont(font)
+        self.label_mostrar_certificado_discap.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_certificado_discap.setText("")
+        self.label_mostrar_certificado_discap.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_certificado_discap.setObjectName("label_mostrar_certificado_discap")
+        self.verticalLayout_44.addWidget(self.label_mostrar_certificado_discap)
+        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_44)
+        self.verticalLayout_45 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_45.setObjectName("verticalLayout_45")
+        self.label_medicacion = QtWidgets.QLabel(self.mostrar_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_medicacion.setFont(font)
+        self.label_medicacion.setStyleSheet("QLabel{\n"
+"        \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_medicacion.setScaledContents(True)
+        self.label_medicacion.setObjectName("label_medicacion")
+        self.verticalLayout_45.addWidget(self.label_medicacion)
+        self.label_mostrar_medicacion = QtWidgets.QLabel(self.mostrar_diagnostico)
+        self.label_mostrar_medicacion.setMinimumSize(QtCore.QSize(200, 40))
+        self.label_mostrar_medicacion.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.label_mostrar_medicacion.setFont(font)
+        self.label_mostrar_medicacion.setStyleSheet("QLabel{\n"
+"       background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"    }\n"
+"    \n"
+" ")
+        self.label_mostrar_medicacion.setText("")
+        self.label_mostrar_medicacion.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.label_mostrar_medicacion.setObjectName("label_mostrar_medicacion")
+        self.verticalLayout_45.addWidget(self.label_mostrar_medicacion)
+        self.formLayout.setLayout(3, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_45)
+        self.verticalLayout_39.addWidget(self.mostrar_diagnostico, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.verticalLayout_46.addWidget(self.espacio_principal_2)
+        self.dockWidget_diagnostico.setWidget(self.dockWidgetContents)
         self.verticalLayout_3.addWidget(self.espacio_personal, 0, QtCore.Qt.AlignTop)
-        self.horizontalLayout.addWidget(self.espacio_izquierdo)
+        self.horizontalLayout.addWidget(self.espacio_izquierdo, 0, QtCore.Qt.AlignTop)
         self.espacio_scroll_mostrar_datos_obtenidos = QtWidgets.QScrollArea(self.espacio_principal)
         self.espacio_scroll_mostrar_datos_obtenidos.setStyleSheet("background:transparent;")
         self.espacio_scroll_mostrar_datos_obtenidos.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -952,6 +1372,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.mostrar_datos_del_representante.setObjectName("mostrar_datos_del_representante")
         self.gridLayout = QtWidgets.QGridLayout(self.mostrar_datos_del_representante)
         self.gridLayout.setHorizontalSpacing(20)
+        self.gridLayout.setVerticalSpacing(6)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout()
         self.verticalLayout_14.setObjectName("verticalLayout_14")
@@ -1132,62 +1553,6 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_cedula_representante.setObjectName("input_mostrar_cedula_representante")
         self.verticalLayout_15.addWidget(self.input_mostrar_cedula_representante)
         self.gridLayout.addLayout(self.verticalLayout_15, 1, 0, 1, 1)
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_19.setObjectName("verticalLayout_19")
-        self.label_numero_telefono = QtWidgets.QLabel(self.mostrar_datos_del_representante)
-        self.label_numero_telefono.setMinimumSize(QtCore.QSize(200, 30))
-        self.label_numero_telefono.setMaximumSize(QtCore.QSize(200, 30))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_numero_telefono.setFont(font)
-        self.label_numero_telefono.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_numero_telefono.setScaledContents(False)
-        self.label_numero_telefono.setObjectName("label_numero_telefono")
-        self.verticalLayout_19.addWidget(self.label_numero_telefono)
-        self.input_mostrar_numero_telefono = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
-        self.input_mostrar_numero_telefono.setEnabled(True)
-        self.input_mostrar_numero_telefono.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_numero_telefono.setFont(font)
-        self.input_mostrar_numero_telefono.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_numero_telefono.setReadOnly(True)
-        self.input_mostrar_numero_telefono.setObjectName("input_mostrar_numero_telefono")
-        self.verticalLayout_19.addWidget(self.input_mostrar_numero_telefono)
-        self.gridLayout.addLayout(self.verticalLayout_19, 1, 1, 1, 1)
         self.verticalLayout_16 = QtWidgets.QVBoxLayout()
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.label_relacion_alumno = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1243,7 +1608,174 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_relacion_alumno.setReadOnly(True)
         self.input_mostrar_relacion_alumno.setObjectName("input_mostrar_relacion_alumno")
         self.verticalLayout_16.addWidget(self.input_mostrar_relacion_alumno)
-        self.gridLayout.addLayout(self.verticalLayout_16, 2, 0, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_16, 1, 1, 1, 1)
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.label_numero_telefono = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_numero_telefono.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_telefono.setFont(font)
+        self.label_numero_telefono.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_telefono.setScaledContents(False)
+        self.label_numero_telefono.setObjectName("label_numero_telefono")
+        self.verticalLayout_19.addWidget(self.label_numero_telefono, 0, QtCore.Qt.AlignLeft)
+        self.input_mostrar_numero_telefono = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_numero_telefono.setEnabled(True)
+        self.input_mostrar_numero_telefono.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_numero_telefono.setFont(font)
+        self.input_mostrar_numero_telefono.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_numero_telefono.setReadOnly(True)
+        self.input_mostrar_numero_telefono.setObjectName("input_mostrar_numero_telefono")
+        self.verticalLayout_19.addWidget(self.input_mostrar_numero_telefono)
+        self.gridLayout.addLayout(self.verticalLayout_19, 2, 0, 1, 1)
+        self.verticalLayout_37 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_37.setObjectName("verticalLayout_37")
+        self.label_numero_telefono_adicional = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_numero_telefono_adicional.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_numero_telefono_adicional.setMaximumSize(QtCore.QSize(200, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_numero_telefono_adicional.setFont(font)
+        self.label_numero_telefono_adicional.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_numero_telefono_adicional.setScaledContents(False)
+        self.label_numero_telefono_adicional.setObjectName("label_numero_telefono_adicional")
+        self.verticalLayout_37.addWidget(self.label_numero_telefono_adicional)
+        self.input_mostrar_numero_telefono_adicional = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_numero_telefono_adicional.setEnabled(True)
+        self.input_mostrar_numero_telefono_adicional.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_numero_telefono_adicional.setFont(font)
+        self.input_mostrar_numero_telefono_adicional.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_numero_telefono_adicional.setReadOnly(True)
+        self.input_mostrar_numero_telefono_adicional.setObjectName("input_mostrar_numero_telefono_adicional")
+        self.verticalLayout_37.addWidget(self.input_mostrar_numero_telefono_adicional)
+        self.gridLayout.addLayout(self.verticalLayout_37, 2, 1, 1, 1)
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.label_estado_civil = QtWidgets.QLabel(self.mostrar_datos_del_representante)
+        self.label_estado_civil.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_estado_civil.setMaximumSize(QtCore.QSize(200, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_estado_civil.setFont(font)
+        self.label_estado_civil.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_estado_civil.setScaledContents(False)
+        self.label_estado_civil.setObjectName("label_estado_civil")
+        self.verticalLayout_21.addWidget(self.label_estado_civil)
+        self.input_mostrar_estado_civil = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
+        self.input_mostrar_estado_civil.setEnabled(True)
+        self.input_mostrar_estado_civil.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_estado_civil.setFont(font)
+        self.input_mostrar_estado_civil.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_estado_civil.setReadOnly(True)
+        self.input_mostrar_estado_civil.setObjectName("input_mostrar_estado_civil")
+        self.verticalLayout_21.addWidget(self.input_mostrar_estado_civil, 0, QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_21, 3, 0, 1, 1)
         self.verticalLayout_20 = QtWidgets.QVBoxLayout()
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.label_carga_familiar = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1299,7 +1831,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_carga_familiar.setReadOnly(True)
         self.input_mostrar_carga_familiar.setObjectName("input_mostrar_carga_familiar")
         self.verticalLayout_20.addWidget(self.input_mostrar_carga_familiar)
-        self.gridLayout.addLayout(self.verticalLayout_20, 2, 1, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_20, 3, 1, 1, 1)
         self.verticalLayout_17 = QtWidgets.QVBoxLayout()
         self.verticalLayout_17.setObjectName("verticalLayout_17")
         self.label_direccion_residencial = QtWidgets.QLabel(self.mostrar_datos_del_representante)
@@ -1355,64 +1887,8 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_direccion_residencial.setReadOnly(True)
         self.input_mostrar_direccion_residencial.setObjectName("input_mostrar_direccion_residencial")
         self.verticalLayout_17.addWidget(self.input_mostrar_direccion_residencial)
-        self.gridLayout.addLayout(self.verticalLayout_17, 3, 0, 1, 2)
-        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.label_estado_civil = QtWidgets.QLabel(self.mostrar_datos_del_representante)
-        self.label_estado_civil.setMinimumSize(QtCore.QSize(200, 30))
-        self.label_estado_civil.setMaximumSize(QtCore.QSize(200, 30))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_estado_civil.setFont(font)
-        self.label_estado_civil.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_estado_civil.setScaledContents(False)
-        self.label_estado_civil.setObjectName("label_estado_civil")
-        self.verticalLayout_21.addWidget(self.label_estado_civil)
-        self.input_mostrar_estado_civil = QtWidgets.QLineEdit(self.mostrar_datos_del_representante)
-        self.input_mostrar_estado_civil.setEnabled(True)
-        self.input_mostrar_estado_civil.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        self.input_mostrar_estado_civil.setFont(font)
-        self.input_mostrar_estado_civil.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_mostrar_estado_civil.setReadOnly(True)
-        self.input_mostrar_estado_civil.setObjectName("input_mostrar_estado_civil")
-        self.verticalLayout_21.addWidget(self.input_mostrar_estado_civil)
-        self.gridLayout.addLayout(self.verticalLayout_21, 4, 0, 1, 1)
-        self.verticalLayout_5.addWidget(self.mostrar_datos_del_representante, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_17, 4, 0, 1, 2)
+        self.verticalLayout_5.addWidget(self.mostrar_datos_del_representante, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.verticalLayout_4.addWidget(self.espacio_info_contacto, 0, QtCore.Qt.AlignTop)
         self.espacio_info_bancaria_alumno = QtWidgets.QFrame(self.espacio_mostrar_datos)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -1784,6 +2260,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.frame_2.setObjectName("frame_2")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_3.setHorizontalSpacing(20)
+        self.gridLayout_3.setVerticalSpacing(10)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.verticalLayout_33 = QtWidgets.QVBoxLayout()
         self.verticalLayout_33.setObjectName("verticalLayout_33")
@@ -1968,6 +2445,67 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.input_mostrar_tiempo.setObjectName("input_mostrar_tiempo")
         self.verticalLayout_35.addWidget(self.input_mostrar_tiempo)
         self.gridLayout_3.addLayout(self.verticalLayout_35, 1, 0, 1, 1)
+        self.verticalLayout_38 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_38.setObjectName("verticalLayout_38")
+        self.label_matricula = QtWidgets.QLabel(self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_matricula.sizePolicy().hasHeightForWidth())
+        self.label_matricula.setSizePolicy(sizePolicy)
+        self.label_matricula.setMinimumSize(QtCore.QSize(200, 30))
+        self.label_matricula.setMaximumSize(QtCore.QSize(200, 35))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_matricula.setFont(font)
+        self.label_matricula.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(80, 80, 80);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_matricula.setScaledContents(False)
+        self.label_matricula.setObjectName("label_matricula")
+        self.verticalLayout_38.addWidget(self.label_matricula)
+        self.input_mostrar_matricula = QtWidgets.QLineEdit(self.frame_2)
+        self.input_mostrar_matricula.setEnabled(True)
+        self.input_mostrar_matricula.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        self.input_mostrar_matricula.setFont(font)
+        self.input_mostrar_matricula.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_mostrar_matricula.setReadOnly(True)
+        self.input_mostrar_matricula.setObjectName("input_mostrar_matricula")
+        self.verticalLayout_38.addWidget(self.input_mostrar_matricula)
+        self.gridLayout_3.addLayout(self.verticalLayout_38, 1, 1, 1, 1)
         self.verticalLayout_11.addWidget(self.frame_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
         self.verticalLayout_4.addWidget(self.espacio_info_carnet_2)
         self.verticalLayout_2.addWidget(self.espacio_mostrar_datos)
@@ -1981,33 +2519,42 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
     def retranslateUi(self, PantallaInfoCompletaDelAlumno):
         _translate = QtCore.QCoreApplication.translate
         PantallaInfoCompletaDelAlumno.setWindowTitle(_translate("PantallaInfoCompletaDelAlumno", "Form"))
-        self.label_primer_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Primer nombre"))
-        self.label_segundo_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Segundo nombre"))
-        self.label_apellido_paterno.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido paterno"))
-        self.label_apellido_materno.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido materno"))
-        self.label_cedula.setText(_translate("PantallaInfoCompletaDelAlumno", "Cédula"))
-        self.label_edad.setText(_translate("PantallaInfoCompletaDelAlumno", "Edad"))
-        self.label_lugar_nacimiento.setText(_translate("PantallaInfoCompletaDelAlumno", "Lugar de nacimiento"))
-        self.label_estado.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado:"))
-        self.label_fecha_nacimiento.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de nacimiento"))
+        self.label_tercer_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Tercer nombre"))
         self.label_sexo.setText(_translate("PantallaInfoCompletaDelAlumno", "Sexo"))
         self.input_sexo_femenino.setText(_translate("PantallaInfoCompletaDelAlumno", "Femenino"))
         self.input_sexo_masculino.setText(_translate("PantallaInfoCompletaDelAlumno", "Masculino"))
         self.label_cma.setText(_translate("PantallaInfoCompletaDelAlumno", "CMA"))
         self.input_si_cma.setText(_translate("PantallaInfoCompletaDelAlumno", "Si"))
         self.input_no_cma.setText(_translate("PantallaInfoCompletaDelAlumno", "No"))
+        self.label_fecha_nacimiento.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de nacimiento"))
+        self.label_apellido_materno.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido materno"))
         self.label_imt.setText(_translate("PantallaInfoCompletaDelAlumno", "IMT"))
         self.input_si_imt.setText(_translate("PantallaInfoCompletaDelAlumno", "Si"))
         self.input_no_imt.setText(_translate("PantallaInfoCompletaDelAlumno", "No"))
+        self.label_lugar_nacimiento.setText(_translate("PantallaInfoCompletaDelAlumno", "Lugar de nacimiento"))
+        self.label_apellido_paterno.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido paterno"))
+        self.label_segundo_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Segundo nombre"))
+        self.label_edad.setText(_translate("PantallaInfoCompletaDelAlumno", "Edad"))
+        self.label_primer_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Primer nombre"))
+        self.label_cedula.setText(_translate("PantallaInfoCompletaDelAlumno", "Cédula"))
+        self.label_estado.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado:"))
+        self.titulo.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnóstico N° #"))
+        self.label_diagnostico.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnóstico"))
+        self.label_fecha_diagnostico.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha del diagnóstico"))
+        self.label_fecha_venc_certificado.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de venc del certificado de discapacidad"))
+        self.label_medico_tratante.setText(_translate("PantallaInfoCompletaDelAlumno", "Medico Tratante"))
+        self.label_certificado_discap.setText(_translate("PantallaInfoCompletaDelAlumno", "Certificado de discapacidad"))
+        self.label_medicacion.setText(_translate("PantallaInfoCompletaDelAlumno", "Medicación"))
         self.label_titulo_datos_del_representante.setText(_translate("PantallaInfoCompletaDelAlumno", "Datos del representante"))
         self.label_nombre.setText(_translate("PantallaInfoCompletaDelAlumno", "Nombre"))
         self.label_apellido.setText(_translate("PantallaInfoCompletaDelAlumno", "Apellido"))
         self.label_numero_telefono_3.setText(_translate("PantallaInfoCompletaDelAlumno", "Cédula"))
-        self.label_numero_telefono.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono"))
         self.label_relacion_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Relación con el alumno"))
+        self.label_numero_telefono.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono"))
+        self.label_numero_telefono_adicional.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de telefono adicional "))
+        self.label_estado_civil.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado civil"))
         self.label_carga_familiar.setText(_translate("PantallaInfoCompletaDelAlumno", "Carga familiar"))
         self.label_direccion_residencial.setText(_translate("PantallaInfoCompletaDelAlumno", "Dirección residencial"))
-        self.label_estado_civil.setText(_translate("PantallaInfoCompletaDelAlumno", "Estado civil"))
         self.label_titulo_info_bancaria_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Información bancaria del alumno"))
         self.label_titulo_diagnosticos_alumno.setText(_translate("PantallaInfoCompletaDelAlumno", "Diagnósticos del alumno"))
         self.groupBox.setTitle(_translate("PantallaInfoCompletaDelAlumno", "Mensaje de ayuda"))
@@ -2019,3 +2566,4 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_especialidad.setText(_translate("PantallaInfoCompletaDelAlumno", "Especialidad"))
         self.label_fecha_ingreso.setText(_translate("PantallaInfoCompletaDelAlumno", "Fecha de ingreso"))
         self.label_tiempo.setText(_translate("PantallaInfoCompletaDelAlumno", "Tiempo en el T.E.L.A"))
+        self.label_matricula.setText(_translate("PantallaInfoCompletaDelAlumno", "Número de matricula"))

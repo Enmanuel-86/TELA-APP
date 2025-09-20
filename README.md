@@ -112,7 +112,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 </ol>
 
 
-### mas descripcion para luego ###
+<h1>Toda la descripcion de como funciona y como se puede modificar el proyecto estara cuando se termine</h1>
 
 
 

@@ -186,7 +186,7 @@ class AsistenciaAlumnoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LA SUMATORIA DE ASISTENCIAS E INASISTENCIAS: {error}")
     
-    def obtener_promedio_asistencias_inasistencias(self, especialidad_id: int, anio_mes: str) -> Optional[Tuple]:
+    def obtener_dias_habiles(self, especialidad_id: int, anio_mes: str) -> Optional[int]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 consulta_dias_habiles = """
@@ -202,6 +202,15 @@ class AsistenciaAlumnoRepositorio(RepositorioBase):
                     "especialidad_id": especialidad_id,
                     "anio_mes": anio_mes
                 }).fetchone()
+                
+                return dias_habiles
+        except Exception:
+            return None
+    
+    def obtener_promedio_asistencias_inasistencias(self, especialidad_id: int, anio_mes: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                dias_habiles = self.obtener_dias_habiles(especialidad_id, anio_mes)
                 
                 consulta_promedio_asistencias_inasistencias = """
                     SELECT 
@@ -350,12 +359,12 @@ if __name__ == "__main__":
     except BaseDatosError as error:
         print(error)"""
     
-    """try:
+    try:
         asistencia_mensual_por_especialidad_anio_mes = asistencia_alumno_repositorio.obtener_por_especialidad_y_anio_mes(1, "2024-05")
         for registro in asistencia_mensual_por_especialidad_anio_mes:
             print(registro)
     except BaseDatosError as error:
-        print(error)"""
+        print(error)
     
     #sumatoria_asistencias_inasistencias_mensual = asistencia_alumno_repositorio.obtener_sumatoria_asistencias_inasistencias(1, "2024-05")
     #print(sumatoria_asistencias_inasistencias_mensual)

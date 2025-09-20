@@ -45,6 +45,7 @@ class EmpleadoRepositorio(RepositorioBase):
                             empleado_id,
                             primer_nombre,
                             segundo_nombre,
+                            tercer_nombre,
                             apellido_paterno,
                             apellido_materno,
                             cedula,
@@ -76,6 +77,7 @@ class EmpleadoRepositorio(RepositorioBase):
                             empleado_id,
                             primer_nombre,
                             segundo_nombre,
+                            tercer_nombre,
                             apellido_paterno,
                             apellido_materno,
                             cedula,
@@ -113,6 +115,7 @@ class EmpleadoRepositorio(RepositorioBase):
                             empleado_id,
                             primer_nombre,
                             segundo_nombre,
+                            tercer_nombre,
                             apellido_paterno,
                             apellido_materno,
                             cedula,
@@ -136,6 +139,39 @@ class EmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER EL EMPLEADO: {error}")
     
+    def obtener_por_correo_adicional(self, correo_electronico_adicional: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                empleado = sesion.execute(text(
+                    """
+                        SELECT
+                            empleado_id,
+                            primer_nombre,
+                            segundo_nombre,
+                            tercer_nombre,
+                            apellido_paterno,
+                            apellido_materno,
+                            cedula,
+                            fecha_nacimiento,
+                            STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', fecha_nacimiento) -
+                            CASE
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', fecha_nacimiento) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', fecha_nacimiento) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', fecha_nacimiento) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', fecha_nacimiento) THEN 1
+                                ELSE 0
+                            END AS edad,
+                            situacion,
+                            sexo,
+                            tiene_hijos_menores
+                        FROM tb_empleados
+                        WHERE correo_electronico_adicional = :correo_electronico_adicional;
+                    """
+                ), {"correo_electronico_adicional": correo_electronico_adicional}).fetchone()
+                
+                return empleado
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL EMPLEADO: {error}")
+    
     def obtener_por_cedula(self, cedula: str) -> Optional[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
@@ -145,6 +181,7 @@ class EmpleadoRepositorio(RepositorioBase):
                             empleado_id,
                             primer_nombre,
                             segundo_nombre,
+                            tercer_nombre,
                             apellido_paterno,
                             apellido_materno,
                             cedula,
@@ -176,7 +213,9 @@ class EmpleadoRepositorio(RepositorioBase):
                         SELECT
                             empleado_id,
                             num_telefono,
-                            correo_electronico
+                            num_telefono_adicional,
+                            correo_electronico,
+                            correo_electronico_adicional
                         FROM tb_empleados
                         WHERE empleado_id = :empleado_id;
                     """
@@ -234,6 +273,7 @@ class EmpleadoRepositorio(RepositorioBase):
                     "cedula": "CÉDULA",
                     "primer_nombre": "PRIMER NOMBRE",
                     "segundo_nombre": "SEGUNDO NOMBRE",
+                    "tercer_nombre": "TERCER NOMBRE",
                     "apellido_paterno": "APELLIDO PATERNO",
                     "apellido_materno": "APELLIDO MATERNO",
                     "fecha_nacimiento": "FECHA DE NACIMIENTO",
@@ -345,7 +385,7 @@ if __name__ == "__main__":
     
     #empleado_repositorio.eliminar(6)
     
-    campos_empleado = {
+    """campos_empleado = {
         "cedula": "30932925",
         "primer_nombre": "GABRIEL",
         "segundo_nombre": "ALONSO",
@@ -367,4 +407,4 @@ if __name__ == "__main__":
         "situacion": "Activo"
     }
     
-    empleado_repositorio.actualizar(7, campos_empleado)
+    empleado_repositorio.actualizar(7, campos_empleado)"""
