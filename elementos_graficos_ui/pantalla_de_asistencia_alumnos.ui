@@ -772,6 +772,9 @@ QLineEdit:disabled {
                   </item>
                   <item alignment="Qt::AlignLeft">
                    <widget class="QLineEdit" name="input_cedula_alumno">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>220</width>
@@ -803,6 +806,14 @@ QLineEdit:focus{
 
 	border: 2px solid rgb(17, 192, 255)
 
+
+
+}
+
+QLineEdit:disabled{
+
+	background-color: rgb(175, 175, 175);
+	border: 2px solid rgb(125, 125, 125)
 
 
 }</string>
