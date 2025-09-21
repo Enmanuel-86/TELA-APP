@@ -744,7 +744,7 @@ QLineEdit:disabled {
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_nombre_empleado_guia">
+                   <widget class="QLabel" name="label_nombre_alumno_guia">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -771,7 +771,7 @@ QLineEdit:disabled {
                    </widget>
                   </item>
                   <item alignment="Qt::AlignLeft">
-                   <widget class="QLineEdit" name="input_cedula_empleado">
+                   <widget class="QLineEdit" name="input_cedula_alumno">
                     <property name="minimumSize">
                      <size>
                       <width>220</width>
