@@ -348,9 +348,8 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}")
         self.espacio_botones.setObjectName("espacio_botones")
-        self.botones_de_opciones = QtWidgets.QGridLayout(self.espacio_botones)
-        self.botones_de_opciones.setHorizontalSpacing(150)
-        self.botones_de_opciones.setObjectName("botones_de_opciones")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.espacio_botones)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.boton_generar_informe = QtWidgets.QPushButton(self.espacio_botones)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -386,7 +385,9 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_generar_informe.setIcon(icon2)
         self.boton_generar_informe.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe.setObjectName("boton_generar_informe")
-        self.botones_de_opciones.addWidget(self.boton_generar_informe, 0, 0, 1, 1)
+        self.horizontalLayout_3.addWidget(self.boton_generar_informe)
+        spacerItem = QtWidgets.QSpacerItem(183, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
         self.boton_crear_nuevo_registro = QtWidgets.QPushButton(self.espacio_botones)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -422,9 +423,45 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_crear_nuevo_registro.setIcon(icon3)
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
-        self.botones_de_opciones.addWidget(self.boton_crear_nuevo_registro, 0, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.botones_de_opciones.addItem(spacerItem, 0, 2, 1, 1)
+        self.horizontalLayout_3.addWidget(self.boton_crear_nuevo_registro)
+        spacerItem1 = QtWidgets.QSpacerItem(182, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.boton_asistencia_alumnos = QtWidgets.QPushButton(self.espacio_botones)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_asistencia_alumnos.sizePolicy().hasHeightForWidth())
+        self.boton_asistencia_alumnos.setSizePolicy(sizePolicy)
+        self.boton_asistencia_alumnos.setMinimumSize(QtCore.QSize(237, 40))
+        self.boton_asistencia_alumnos.setMaximumSize(QtCore.QSize(250, 400))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_asistencia_alumnos.setFont(font)
+        self.boton_asistencia_alumnos.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_asistencia_alumnos.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_asistencia_alumnos.setIcon(icon4)
+        self.boton_asistencia_alumnos.setIconSize(QtCore.QSize(26, 26))
+        self.boton_asistencia_alumnos.setObjectName("boton_asistencia_alumnos")
+        self.horizontalLayout_3.addWidget(self.boton_asistencia_alumnos)
         self.gridLayout_3.addWidget(self.espacio_botones, 1, 0, 1, 3)
         self.verticalLayout_4.addWidget(self.espacio_central)
         self.verticalLayout_5.addWidget(self.espacio_principal)
@@ -445,3 +482,4 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.label_titulo_contador.setText(_translate("VistaGeneralDeAlumnos", "N° Estudiantes"))
         self.boton_generar_informe.setText(_translate("VistaGeneralDeAlumnos", "  Generar informe"))
         self.boton_crear_nuevo_registro.setText(_translate("VistaGeneralDeAlumnos", "  Crear nuevo registro"))
+        self.boton_asistencia_alumnos.setText(_translate("VistaGeneralDeAlumnos", "  Asistencia alumnos"))
