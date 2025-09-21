@@ -282,6 +282,7 @@ class MainWindow(QMainWindow):
 
             self.msg.exec_()
 
+            self.login.input_contrasena.clear()
 
         else:
             
