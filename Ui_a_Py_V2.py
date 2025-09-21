@@ -18,8 +18,24 @@ class UiConverterThread(QThread):
 
     def run(self):
         try:
-            with open(self.output_file, 'w', encoding='utf-8') as f:
-                compileUi(self.input_file, f)
+            # Primero compila el .ui en memoria
+            from io import StringIO
+            buffer = StringIO()
+            compileUi(self.input_file, buffer)
+            content = buffer.getvalue()
+
+            # Quitar la línea con la ruta absoluta
+            lines = content.splitlines()
+            cleaned_lines = []
+            for line in lines:
+                if "reading ui file" in line:  # detecta la línea con la ruta
+                    continue
+                cleaned_lines.append(line)
+
+            # Guardar el resultado sin la ruta
+            with open(self.output_file, "w", encoding="utf-8") as f:
+                f.write("\n".join(cleaned_lines))
+
             self.progress.emit(100)
             self.finished.emit(True, "Conversión completada con éxito!")
         except Exception as e:

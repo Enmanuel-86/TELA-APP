@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/elementos_graficos_ui/cintillo.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
