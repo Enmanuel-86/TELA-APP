@@ -649,11 +649,8 @@ QPushButton:hover{
 
 }</string>
                </property>
-               <layout class="QGridLayout" name="botones_de_opciones">
-                <property name="horizontalSpacing">
-                 <number>150</number>
-                </property>
-                <item row="0" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
                  <widget class="QPushButton" name="boton_generar_informe">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -716,7 +713,20 @@ QPushButton:hover{
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>183</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
                  <widget class="QPushButton" name="boton_crear_nuevo_registro">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -779,18 +789,81 @@ QPushButton:hover{
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer">
+                <item>
+                 <spacer name="horizontalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>40</width>
+                    <width>182</width>
                     <height>20</height>
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="boton_asistencia_alumnos">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>237</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>400</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: #008a47;
+
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>  Asistencia alumnos</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
