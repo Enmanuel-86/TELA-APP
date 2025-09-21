@@ -803,7 +803,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
             
             
-    # Metodo para agregar elementos a la vista previa de los diagnosticos
+    # Metodo convertir la fecha de str a date
     def fecha_de_str_a_date(self, fecha_string):
         
         # Convertir el string a objeto date
