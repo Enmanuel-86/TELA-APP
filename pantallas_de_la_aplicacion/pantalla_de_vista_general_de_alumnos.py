@@ -204,6 +204,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         self.boton_buscar.clicked.connect(self.acceder_al_perfil_alumno)
         
+        self.boton_asistencia_alumnos.clicked.connect(self.ir_asistencia_alumno)
+        
+        self.boton_generar_informe.clicked.connect(self.ir_a_generar_informes_y_reportes)
         
         
         
@@ -894,9 +897,20 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
 
 
-    # Metodo para registrar un alumno
+    # Metodo para ir a la pantalla para registrar un alumno
     def ir_crear_nuevo_registro(self):
         self.stacked_widget.setCurrentIndex(6)
+        
+    # Metodo para ir a la pantalla de asistenca de alumnos
+    def ir_asistencia_alumno(self):
+        
+        self.stacked_widget.setCurrentIndex(13)
+        
+        
+    def ir_a_generar_informes_y_reportes(self):
+    
+        self.stacked_widget.setCurrentIndex(14)
+        
 
     # Metodo para volver a la pantalla anterior
     def volver_pantalla_opciones(self):
@@ -908,6 +922,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     def volver_pantalla_opciones_admin(self):
         
             self.stacked_widget.setCurrentIndex(7)
+            
+            
             
             
 """"            
