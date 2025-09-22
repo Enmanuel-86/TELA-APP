@@ -410,6 +410,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.label_nombre_alumno_guia.setObjectName("label_nombre_alumno_guia")
         self.verticalLayout_3.addWidget(self.label_nombre_alumno_guia)
         self.input_cedula_alumno = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
+        self.input_cedula_alumno.setEnabled(True)
         self.input_cedula_alumno.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -435,7 +436,14 @@ class Ui_PantallaAsistenciaAlumnos(object):
 "\n"
 "\n"
 "\n"
-"}")
+"}\n"
+"\n"
+"QLineEdit:disabled {\n"
+"        background-color:rgb(189, 189, 189);\n"
+"        color: #808080;\n"
+"        border: 1px solid rgb(127, 127, 127);\n"
+"    }\n"
+" ")
         self.input_cedula_alumno.setObjectName("input_cedula_alumno")
         self.verticalLayout_3.addWidget(self.input_cedula_alumno, 0, QtCore.Qt.AlignLeft)
         self.gridLayout.addLayout(self.verticalLayout_3, 1, 0, 1, 1)
