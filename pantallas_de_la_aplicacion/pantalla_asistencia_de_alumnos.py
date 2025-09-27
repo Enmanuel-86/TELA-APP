@@ -139,6 +139,51 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         
         try:
             
+            
+            if len(self.lista_asistencia) > 0:
+                
+                
+                self.msg_box.setWindowTitle("Advertencia")
+                self.msg_box.setText("¿Seguro que quiere cambiar de especialidad teniendo alumnos en la lista de asistencia actual?, si lo hace la lista actual se va a borrar")
+                self.msg_box.setIcon(QMessageBox.Warning)
+                QApplication.beep()
+
+
+
+                # Mostrar el cuadro de diálogo y esperar respuesta
+                self.msg_box.exec_()
+
+                if self.msg_box.clickedButton() == self.boton_si:
+
+                    
+                        
+                    # Limpiamos los inputs
+                    self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+                    
+                    # Limpiamos las lista de asistencias
+                    self.lista_asistencia.clear()
+                    
+                    self.lista_de_asistencias.clear()
+                    
+                    self.lista_agregados.clear()
+                    
+                    #self.actualizar_lista_busqueda()
+                    
+                    
+                    self.indice = 0
+                    self.contador_de_asistencias = 0
+                    self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                    
+
+                        
+                        
+    
+
+                elif self.msg_box.clickedButton() == self.boton_no:
+                    pass
+                
+                
+            
             # Si el boton de especialidades su indice no es 0
             if not self.boton_especialidades.currentIndex() == 0:
                 
@@ -156,6 +201,8 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 self.lista_alumnos_actual = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id)
                 
                 #print(self.lista_alumnos_actual)
+            
+            
             
             # Si es igual a 0
             if self.boton_especialidades.currentIndex() == 0:
@@ -597,13 +644,13 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
         enfoca_input.setFocus()
         
-        if not self.lista_agregados[indice_vista_previa] in self.lista_empleados_actual:
+        if not self.lista_agregados[indice_vista_previa] in self.lista_alumnos_actual:
             
-            empleado_restaurar = self.lista_agregados[indice_vista_previa]
+            alumno_restaurar = self.lista_agregados[indice_vista_previa]
             
-            self.lista_empleados_actual.append(empleado_restaurar)
+            self.lista_alumnos_actual.append(alumno_restaurar)
             
-            self.lista_agregados.remove(empleado_restaurar)
+            self.lista_agregados.remove(alumno_restaurar)
         
         
         # actualizar el contador de asistencias
