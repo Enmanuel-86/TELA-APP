@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout,
                              QMessageBox, QListWidget, QListWidgetItem, QPushButton)
 from PyQt5 import QtGui
 import os
-from elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
+from ..elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
 
 
 ##################################

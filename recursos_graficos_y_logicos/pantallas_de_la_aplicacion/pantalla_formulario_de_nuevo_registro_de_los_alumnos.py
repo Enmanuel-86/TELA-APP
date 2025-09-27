@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
                              QStackedWidget, QMessageBox,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
-from elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
+from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
                                      
 ##################################
 # importaciones de base de datos #

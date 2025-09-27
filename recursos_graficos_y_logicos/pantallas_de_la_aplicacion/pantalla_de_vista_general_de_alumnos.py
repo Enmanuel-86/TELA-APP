@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLay
                              QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
 from PyQt5 import QtGui, QtCore
 import os
-from elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
+from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
 
 
 

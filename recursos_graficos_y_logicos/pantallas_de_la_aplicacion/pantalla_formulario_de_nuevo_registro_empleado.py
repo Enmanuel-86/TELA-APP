@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 
-from elementos_graficos_a_py import Ui_PantallaFormularioEmpleado
+from ..elementos_graficos_a_py import Ui_PantallaFormularioEmpleado
 
 
 ##################################

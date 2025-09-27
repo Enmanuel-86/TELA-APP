@@ -10,10 +10,10 @@ from PyQt5.QtGui import QColor
 
 
 from PyQt5 import QtGui
-from elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login)
+from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login)
 
 
-from pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos, PantallaAsistenciaAlumnos)
 
@@ -58,9 +58,9 @@ empleado_servicio = EmpleadoServicio(empleado_repositorio)
 
 
 
-ruta_del_icono = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.ico")
-icono_reloj_azul = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "reloj_azul.png")
-icono_reloj = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "reloj.png")
+ruta_del_icono = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.ico")
+icono_reloj_azul = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "reloj_azul.png")
+icono_reloj = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "reloj.png")
 
 
 
@@ -105,10 +105,10 @@ class Cintillo(QWidget, Ui_CintilloV2):
         self.setupUi(self)
 
         ## Rutas relativas de la imagenes ##
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "logo_zona_educativa.png")))
-        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "membrete.png")))
-        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.png")))
-        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "logo_juventud.png")))
+        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_zona_educativa.png")))
+        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "membrete.png")))
+        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
+        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
 
 
 ## Login del sistema
@@ -118,11 +118,11 @@ class Login(QWidget, Ui_Login):
         self.setupUi(self)
 
         # Rutas de las imagenes
-        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "Tela.png")))
-        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
-        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz", "icono_contraseña.png")))
-        self.ojo_abierto = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz","ver_contraseña.png")
-        self.ojo_cerrado = os.path.join(os.path.dirname(__file__), "recursos_de_imagenes", "iconos_de_interfaz","no_ver_contraseña.png")
+        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
+        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
+        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_contraseña.png")))
+        self.ojo_abierto = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","ver_contraseña.png")
+        self.ojo_cerrado = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","no_ver_contraseña.png")
 
         aplicar_sombra(self.espacio_login, 50, 255)
 
