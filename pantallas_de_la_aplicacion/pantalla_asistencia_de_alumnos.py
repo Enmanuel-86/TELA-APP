@@ -119,6 +119,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.input_cedula_alumno.textChanged.connect(self.filtrar_resultados)
         self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias)
+        self.boton_suministrar.clicked.connect(self.suministrar_info)
         
          # Lista de coincidencias
         self.resultados = QListWidget(self)
@@ -140,6 +141,9 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             
             # Si el boton de especialidades su indice no es 0
             if not self.boton_especialidades.currentIndex() == 0:
+                
+                #limpiamos el input
+                self.input_cedula_alumno.clear()
                 
                 # Habilitamos el input de cedula alumno
                 self.input_cedula_alumno.setDisabled(False)
@@ -464,6 +468,12 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         except Exception as e:
             print(f"Error al agregar la informacion: {e}")
     
+    
+    # Metodo para administrar la informacion a la base de datos
+    def suministrar_info(self):
+        
+        QMessageBox.information(self, "Todavia no", "Todavia no se puede, proximamente en el proximo DLC")
+    
     # Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
     # esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
     # empleado que ya fue agregado a la lista de asistencias
@@ -708,6 +718,15 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             # restablecemos el contador de asistencias
             self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
             
+            # establecemos el indice 0 del combo box
+            self.boton_especialidades.setCurrentIndex(0)
+            
+            # limpiamos el input
+            self.input_cedula_alumno.clear()
+            
+            # limpiamos los inputs
+            self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+            
             # restablecemos la lista de empleados actuales de la bd
             self.actualizar_lista_busqueda()
 
@@ -735,7 +754,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             try: 
                 
                 # Limpiamos los inputs
-                #self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons, self.lista_timeedits)
+                self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
                 
                 # Limpiamos las lista de asistencias
                 self.lista_asistencia.clear()
