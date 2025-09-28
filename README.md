@@ -24,7 +24,7 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
 <div style="display: flex; justify-content: center; " align = "center">
   
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logo_Uptjaa.svg/1200px-Logo_Uptjaa.svg.png" style="width: 180px; height: auto; margin-right: 20px;" alt="Logo del UPTJAA">
-  <img src="./recursos_de_imagenes/Tela.png" style="width: 200px; height: auto;" alt="Logo del Tela">
+  <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/Tela.png" style="width: 200px; height: auto;" alt="Logo del Tela">
   
 </div>
 
