@@ -83,7 +83,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -195,119 +195,6 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.gridLayout.setContentsMargins(20, 20, 20, 20)
         self.gridLayout.setSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
-        self.boton_agregar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
-        self.boton_agregar.setMinimumSize(QtCore.QSize(120, 40))
-        self.boton_agregar.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_agregar.setFont(font)
-        self.boton_agregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_agregar.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(0, 183, 72);\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_agregar.setIcon(icon1)
-        self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
-        self.boton_agregar.setObjectName("boton_agregar")
-        self.gridLayout.addWidget(self.boton_agregar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setSpacing(0)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.titulo_de_boton_de_opciones = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(30)
-        sizePolicy.setHeightForWidth(self.titulo_de_boton_de_opciones.sizePolicy().hasHeightForWidth())
-        self.titulo_de_boton_de_opciones.setSizePolicy(sizePolicy)
-        self.titulo_de_boton_de_opciones.setMinimumSize(QtCore.QSize(0, 0))
-        self.titulo_de_boton_de_opciones.setMaximumSize(QtCore.QSize(500, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.titulo_de_boton_de_opciones.setFont(font)
-        self.titulo_de_boton_de_opciones.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(0, 0, 0);\n"
-"    border:none;\n"
-"}")
-        self.titulo_de_boton_de_opciones.setObjectName("titulo_de_boton_de_opciones")
-        self.verticalLayout_6.addWidget(self.titulo_de_boton_de_opciones, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
-        self.boton_especialidades = QtWidgets.QComboBox(self.espacio_para_el_formulario)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_especialidades.sizePolicy().hasHeightForWidth())
-        self.boton_especialidades.setSizePolicy(sizePolicy)
-        self.boton_especialidades.setMinimumSize(QtCore.QSize(220, 40))
-        self.boton_especialidades.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.boton_especialidades.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 12pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    background:white;\n"
-"    border:1px solid black;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
-        self.boton_especialidades.setEditable(False)
-        self.boton_especialidades.setCurrentText("")
-        self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
-        self.boton_especialidades.setPlaceholderText("")
-        self.boton_especialidades.setObjectName("boton_especialidades")
-        self.verticalLayout_6.addWidget(self.boton_especialidades, 0, QtCore.Qt.AlignTop)
-        self.gridLayout.addLayout(self.verticalLayout_6, 0, 0, 1, 1)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
@@ -322,7 +209,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.label_motivo_de_inasistencia.setStyleSheet("QLabel{\n"
 "\n"
 "    \n"
-"    color: rgb(80, 80, 80);\n"
+"    color: rgb(0, 0, 0);\n"
 "\n"
 "    border-color: #ffffff;\n"
 "    border:none;\n"
@@ -375,6 +262,37 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.input_motivo_de_inasistencia.setObjectName("input_motivo_de_inasistencia")
         self.verticalLayout_7.addWidget(self.input_motivo_de_inasistencia)
         self.gridLayout.addLayout(self.verticalLayout_7, 3, 0, 1, 2)
+        self.boton_agregar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
+        self.boton_agregar.setMinimumSize(QtCore.QSize(120, 40))
+        self.boton_agregar.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_agregar.setFont(font)
+        self.boton_agregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_agregar.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: rgb(0, 183, 72);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_agregar.setIcon(icon1)
+        self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
+        self.boton_agregar.setObjectName("boton_agregar")
+        self.gridLayout.addWidget(self.boton_agregar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -388,7 +306,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.label_cedula_empleado.setStyleSheet("QLabel{\n"
 "\n"
 "    \n"
-"    color: rgb(80, 80, 80);\n"
+"    color: rgb(0,0,0);\n"
 "\n"
 "    border-color: #ffffff;\n"
 "    border:none;\n"
@@ -486,6 +404,155 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.input_inasistente.setObjectName("input_inasistente")
         self.verticalLayout_2.addWidget(self.input_inasistente)
         self.gridLayout.addWidget(self.estado_de_asistencia, 1, 1, 1, 1)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.titulo_de_boton_de_opciones = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(30)
+        sizePolicy.setHeightForWidth(self.titulo_de_boton_de_opciones.sizePolicy().hasHeightForWidth())
+        self.titulo_de_boton_de_opciones.setSizePolicy(sizePolicy)
+        self.titulo_de_boton_de_opciones.setMinimumSize(QtCore.QSize(0, 0))
+        self.titulo_de_boton_de_opciones.setMaximumSize(QtCore.QSize(500, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.titulo_de_boton_de_opciones.setFont(font)
+        self.titulo_de_boton_de_opciones.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(0, 0, 0);\n"
+"    border:none;\n"
+"}")
+        self.titulo_de_boton_de_opciones.setObjectName("titulo_de_boton_de_opciones")
+        self.verticalLayout_6.addWidget(self.titulo_de_boton_de_opciones, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
+        self.boton_especialidades = QtWidgets.QComboBox(self.espacio_para_el_formulario)
+        self.boton_especialidades.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_especialidades.sizePolicy().hasHeightForWidth())
+        self.boton_especialidades.setSizePolicy(sizePolicy)
+        self.boton_especialidades.setMinimumSize(QtCore.QSize(220, 40))
+        self.boton_especialidades.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.boton_especialidades.setStyleSheet("QComboBox{\n"
+"\n"
+"    font: 75 10pt \"Arial\";\n"
+"    padding-left:15px;\n"
+"    border:1px solid #000000 ;\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 1px solid #ccc;\n"
+"    background-color: white;\n"
+"    color: #333;\n"
+"    padding: 5px;  /* Margen interno de la lista */\n"
+"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    padding: 8px; /* Espaciado interno de cada elemento */\n"
+"    margin: 4px; /* Separación entre los elementos */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {\n"
+"    background-color: #c5c1c1;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"        background-color:rgb(189, 189, 189);\n"
+"        color: #808080;\n"
+"        border: 1px solid rgb(127, 127, 127);\n"
+"    }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 1px solid #ccc;\n"
+"    background-color: white;\n"
+"    color: #333;\n"
+"    padding: 5px;  /* Margen interno de la lista */\n"
+"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    padding: 8px; /* Espaciado interno de cada elemento */\n"
+"    margin: 4px; /* Separación entre los elementos */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {\n"
+"    background-color: #c5c1c1;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.boton_especialidades.setEditable(False)
+        self.boton_especialidades.setCurrentText("")
+        self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
+        self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
+        self.boton_especialidades.setPlaceholderText("")
+        self.boton_especialidades.setObjectName("boton_especialidades")
+        self.verticalLayout_6.addWidget(self.boton_especialidades, 0, QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_6, 0, 0, 1, 1)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.label_estado_boton_desplegable = QtWidgets.QLabel(self.espacio_para_el_formulario)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_estado_boton_desplegable.setFont(font)
+        self.label_estado_boton_desplegable.setStyleSheet("QLabel{\n"
+"\n"
+"    \n"
+"    color: rgb(0,0,0);\n"
+"\n"
+"    border-color: #ffffff;\n"
+"    border:none;\n"
+"    padding-left:3px;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_estado_boton_desplegable.setScaledContents(False)
+        self.label_estado_boton_desplegable.setObjectName("label_estado_boton_desplegable")
+        self.verticalLayout_8.addWidget(self.label_estado_boton_desplegable, 0, QtCore.Qt.AlignTop)
+        self.checkbox_estado_combobox = QtWidgets.QCheckBox(self.espacio_para_el_formulario)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.checkbox_estado_combobox.sizePolicy().hasHeightForWidth())
+        self.checkbox_estado_combobox.setSizePolicy(sizePolicy)
+        self.checkbox_estado_combobox.setStyleSheet("QCheckBox{\n"
+"\n"
+"\n"
+"    padding-left:8px;\n"
+"\n"
+"}")
+        self.checkbox_estado_combobox.setObjectName("checkbox_estado_combobox")
+        self.verticalLayout_8.addWidget(self.checkbox_estado_combobox, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.gridLayout.addLayout(self.verticalLayout_8, 0, 1, 1, 1)
         self.horizontalLayout_2.addWidget(self.espacio_para_el_formulario, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.espacio_lista_asistencia = QtWidgets.QFrame(self.espacio_para_tabla_empleados)
         font = QtGui.QFont()
@@ -561,7 +628,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
 "\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/brocha.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/brocha.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_limpiar_lista.setIcon(icon2)
         self.boton_limpiar_lista.setObjectName("boton_limpiar_lista")
         self.gridLayout_2.addWidget(self.boton_limpiar_lista, 0, 1, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
@@ -615,7 +682,7 @@ class Ui_PantallaAsistenciaAlumnos(object):
 "\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/exportar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/exportar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_suministrar.setIcon(icon3)
         self.boton_suministrar.setIconSize(QtCore.QSize(26, 26))
         self.boton_suministrar.setObjectName("boton_suministrar")
@@ -635,15 +702,17 @@ class Ui_PantallaAsistenciaAlumnos(object):
         PantallaAsistenciaAlumnos.setWindowTitle(_translate("PantallaAsistenciaAlumnos", "Form"))
         self.label_control_de_llegada.setText(_translate("PantallaAsistenciaAlumnos", "Asistencia de los alumnos"))
         self.label_fecha_actual.setText(_translate("PantallaAsistenciaAlumnos", "Fecha actual"))
-        self.boton_agregar.setText(_translate("PantallaAsistenciaAlumnos", " Agregar"))
-        self.titulo_de_boton_de_opciones.setText(_translate("PantallaAsistenciaAlumnos", "Especialidad ocupacional"))
         self.label_motivo_de_inasistencia.setText(_translate("PantallaAsistenciaAlumnos", " Motivo de la inasistencia "))
         self.input_motivo_de_inasistencia.setPlaceholderText(_translate("PantallaAsistenciaAlumnos", "....."))
+        self.boton_agregar.setText(_translate("PantallaAsistenciaAlumnos", " Agregar"))
         self.label_cedula_empleado.setText(_translate("PantallaAsistenciaAlumnos", "Cédula o nombre del estudiante"))
         self.input_cedula_alumno.setPlaceholderText(_translate("PantallaAsistenciaAlumnos", "....."))
         self.estado_de_asistencia.setTitle(_translate("PantallaAsistenciaAlumnos", "Estado de asistencia"))
         self.input_asistente.setText(_translate("PantallaAsistenciaAlumnos", "Asistente"))
         self.input_inasistente.setText(_translate("PantallaAsistenciaAlumnos", "Inasistente"))
+        self.titulo_de_boton_de_opciones.setText(_translate("PantallaAsistenciaAlumnos", "Especialidad ocupacional"))
+        self.label_estado_boton_desplegable.setText(_translate("PantallaAsistenciaAlumnos", "Estado del boton desplegable"))
+        self.checkbox_estado_combobox.setText(_translate("PantallaAsistenciaAlumnos", "poner activado o desactivado"))
         self.label_titulo_asistencia.setText(_translate("PantallaAsistenciaAlumnos", "Lista de asistencia actual: n personas"))
         self.boton_limpiar_lista.setText(_translate("PantallaAsistenciaAlumnos", "Limpiar lista", "hola"))
         self.boton_suministrar.setText(_translate("PantallaAsistenciaAlumnos", "Suministrar"))
