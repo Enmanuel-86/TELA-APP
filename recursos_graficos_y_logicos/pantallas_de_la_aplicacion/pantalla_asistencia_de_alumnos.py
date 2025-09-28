@@ -96,7 +96,8 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.lista_radiobuttons = [self.input_asistente, self.input_inasistente]
         
         
-        
+        self.checkbox_estado_combobox.setText("Activado")
+        self.checkbox_estado_combobox.setChecked(True)
         
 
         self.msg_box = QMessageBox(self)
@@ -118,10 +119,11 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.boton_especialidades.currentIndexChanged.connect(self.actualizar_lista_busqueda)
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.input_cedula_alumno.textChanged.connect(self.filtrar_resultados)
-        self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias)
+        self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias_con_boton)
         self.boton_suministrar.clicked.connect(self.suministrar_info)
+        self.checkbox_estado_combobox.clicked.connect(self.verficacion_combobox)
         
-         # Lista de coincidencias
+        # Lista de coincidencias
         self.resultados = QListWidget(self)
         self.resultados.setFocusPolicy(Qt.NoFocus)
         self.resultados.setMouseTracking(True)
@@ -134,55 +136,68 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
     ########################################################################################################
 
     # Funciones para la busqueda dinamica del empleado
-    
+
+    # Metodo para verificar el estado del combobox que contiene las especialidades
+    def verficacion_combobox(self):
+        
+        # Primero verificamos que el combobox no tenga el indice 0 que es el "Seleccione aqui"
+        if not self.boton_especialidades.currentIndex() == 0:
+            
+            # Si el indice no es 0 entonces que le avise al usuario el siguiente mensaje
+            
+            self.msg_box.setWindowTitle("Advertencia")
+            self.msg_box.setText("¿Seguro que quiere habilitar el boton desplegable?\n\n Si pulsa (SI) se borrara la lista de asistencia actual y podra elegir otra especialdad \n\n Si pulsa (NO) puede continuar con la asistencia de la especialidad actual")
+            QApplication.beep()
+            
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+            
+            # si le da a SI, verificamos primero
+            if self.msg_box.clickedButton() == self.boton_si:
+                
+                # Si el checkbox esta marcado/activado entonces 
+                # Lo que queremos es que si esta activado el checkbox el combobox tambien
+                if self.checkbox_estado_combobox.isChecked():
+                    
+                    # Le indicicamos al checkbox que diga activado mientras esta marcado
+                    self.estado_checkbox(1) # esto es igual a ACTIVADO
+                    
+                    # Activamos el combobox
+                    self.boton_especialidades.setEnabled(True)
+                    
+                    # usamos la funcion de limpiar la lista de asistencia
+                    self.limpiar_lista_de_asistencias()
+                    
+                    # y usamos la funcion para limpiar los inputs
+                    self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+                
+                
+            # si le a da a no
+            elif self.msg_box.clickedButton() == self.boton_no:
+                    
+                # Si el checkbox no esta habilitado
+                if not self.checkbox_estado_combobox.isChecked():
+                    
+                    # le indicamos al checkbox que diga que esta desactivado mientras no este marcado
+                    self.estado_checkbox(0)
+                    
+                    # Y deshabilitamos el combobox
+                    self.boton_especialidades.setEnabled(False)
+            
+        else:
+            # en caso contrario de que le indice del combo box no sea 0 que deje el checkbox activado
+            # indicando asi que el combobox esta habilitado
+            self.estado_checkbox(1)
+            
+        
+
+
+
+
     def actualizar_lista_busqueda(self):
         
         try:
             
-            
-            if len(self.lista_asistencia) > 0:
-                
-                
-                self.msg_box.setWindowTitle("Advertencia")
-                self.msg_box.setText("¿Seguro que quiere cambiar de especialidad teniendo alumnos en la lista de asistencia actual?, si lo hace la lista actual se va a borrar")
-                self.msg_box.setIcon(QMessageBox.Warning)
-                QApplication.beep()
-
-
-
-                # Mostrar el cuadro de diálogo y esperar respuesta
-                self.msg_box.exec_()
-
-                if self.msg_box.clickedButton() == self.boton_si:
-
-                    
-                        
-                    # Limpiamos los inputs
-                    self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
-                    
-                    # Limpiamos las lista de asistencias
-                    self.lista_asistencia.clear()
-                    
-                    self.lista_de_asistencias.clear()
-                    
-                    self.lista_agregados.clear()
-                    
-                    #self.actualizar_lista_busqueda()
-                    
-                    
-                    self.indice = 0
-                    self.contador_de_asistencias = 0
-                    self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
-                    
-
-                        
-                        
-    
-
-                elif self.msg_box.clickedButton() == self.boton_no:
-                    pass
-                
-                
             
             # Si el boton de especialidades su indice no es 0
             if not self.boton_especialidades.currentIndex() == 0:
@@ -200,6 +215,10 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 # la especialidad seleccionada
                 self.lista_alumnos_actual = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id)
                 
+                
+                self.boton_especialidades.setEnabled(False)
+                
+                self.estado_checkbox(0)
                 #print(self.lista_alumnos_actual)
             
             
@@ -210,13 +229,30 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 # que desabilite el input, para evitar errores
                 self.input_cedula_alumno.setDisabled(True)
                 
+                self.boton_especialidades.setEnabled(True)
+                
+                self.estado_checkbox(1)
+                
             
         except Exception as e:
             
             print(f"Algo malo sucedio en actualizar lista de busqueda: {e}")
             
         
+    # Metodo para indicar en que estado queremos el checkbox que
+    # verifica el estado del combobox que contiene las especialidades
+    def estado_checkbox(self, estado: int)->int:
         
+        if estado == 1:
+            
+            self.checkbox_estado_combobox.setChecked(True)
+            self.checkbox_estado_combobox.setText("Activado") 
+            
+        elif estado == 0:
+            
+            self.checkbox_estado_combobox.setChecked(False)
+            self.checkbox_estado_combobox.setText("Desactivado")
+            
             
 
         
@@ -738,11 +774,43 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         except ValueError as e:
             print(f"Error al convertir la fecha: {e}")
             
+            
+            
+    # Metodo para limpiar la lista de asistencias solamente sin preguntar al usuario
+    def limpiar_lista_de_asistencias(self):
         
+
+    
+        # Limpiamos las listas y los contadores
+        self.lista_asistencia.clear()
+        self.lista_de_asistencias.clear()
+        self.lista_agregados.clear()
+        self.indice = 0
+        self.contador_de_asistencias = 0
+        
+        # restablecemos el contador de asistencias
+        self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+        
+        # establecemos el indice 0 del combo box
+        self.boton_especialidades.setCurrentIndex(0)
+        
+        # limpiamos el input
+        self.input_cedula_alumno.clear()
+        
+        # limpiamos los inputs
+        self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+        
+        # restablecemos la lista de empleados actuales de la bd
+        self.actualizar_lista_busqueda()
+
+    
+
+       
+
         
             
     # Metodo para limpiar la lista de asistencias con el boton limpiar lista
-    def limpiar_lista_de_asistencias(self):
+    def limpiar_lista_de_asistencias_con_boton(self):
         
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText("¿Seguro que quiere borrar la lista y empezar de nuevo?")
@@ -755,27 +823,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         if self.msg_box.clickedButton() == self.boton_si:
             
 
-            # Limpiamos las listas y los contadores
-            self.lista_asistencia.clear()
-            self.lista_de_asistencias.clear()
-            self.lista_agregados.clear()
-            self.indice = 0
-            self.contador_de_asistencias = 0
-            
-            # restablecemos el contador de asistencias
-            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
-            
-            # establecemos el indice 0 del combo box
-            self.boton_especialidades.setCurrentIndex(0)
-            
-            # limpiamos el input
-            self.input_cedula_alumno.clear()
-            
-            # limpiamos los inputs
-            self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
-            
-            # restablecemos la lista de empleados actuales de la bd
-            self.actualizar_lista_busqueda()
+            self.limpiar_lista_de_asistencias()
 
         
 
@@ -803,19 +851,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 # Limpiamos los inputs
                 self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
                 
-                # Limpiamos las lista de asistencias
-                self.lista_asistencia.clear()
-                
-                self.lista_de_asistencias.clear()
-                
-                self.lista_agregados.clear()
-                
-                #self.actualizar_lista_busqueda()
-                
-                
-                self.indice = 0
-                self.contador_de_asistencias = 0
-                self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                self.limpiar_lista_de_asistencias()
                 
                 # nos devolvemos a la pantalla anterior
                 self.stacked_widget.setCurrentIndex(5)
