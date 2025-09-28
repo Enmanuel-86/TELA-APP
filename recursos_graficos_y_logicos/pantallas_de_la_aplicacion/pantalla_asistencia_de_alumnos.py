@@ -175,14 +175,11 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             # si le a da a no
             elif self.msg_box.clickedButton() == self.boton_no:
                     
-                # Si el checkbox no esta habilitado
-                if not self.checkbox_estado_combobox.isChecked():
-                    
-                    # le indicamos al checkbox que diga que esta desactivado mientras no este marcado
-                    self.estado_checkbox(0)
-                    
-                    # Y deshabilitamos el combobox
-                    self.boton_especialidades.setEnabled(False)
+                # le indicamos al checkbox que diga que esta desactivado mientras no este marcado
+                self.estado_checkbox(0)
+                
+                # Y deshabilitamos el combobox
+                self.boton_especialidades.setEnabled(False)
             
         else:
             # en caso contrario de que le indice del combo box no sea 0 que deje el checkbox activado
