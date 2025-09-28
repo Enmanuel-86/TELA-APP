@@ -417,197 +417,6 @@ QPushButton:hover{
                 <property name="spacing">
                  <number>20</number>
                 </property>
-                <item row="4" column="0" colspan="2" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="boton_agregar">
-                  <property name="minimumSize">
-                   <size>
-                    <width>120</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>120</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: rgb(0, 183, 72);
-	
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> Agregar</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>26</width>
-                    <height>26</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_6">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item alignment="Qt::AlignLeft|Qt::AlignBottom">
-                   <widget class="QLabel" name="titulo_de_boton_de_opciones">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>30</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>500</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel{
-	
-	color: rgb(0, 0, 0);
-	border:none;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Especialidad ocupacional</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignTop">
-                   <widget class="QComboBox" name="boton_especialidades">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>220</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QComboBox{
-
-	font: 75 12pt &quot;Arial&quot;;
-	padding-left:15px;
-	background:white;
-	border:1px solid black;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-
-
-</string>
-                    </property>
-                    <property name="editable">
-                     <bool>false</bool>
-                    </property>
-                    <property name="currentText">
-                     <string/>
-                    </property>
-                    <property name="currentIndex">
-                     <number>-1</number>
-                    </property>
-                    <property name="insertPolicy">
-                     <enum>QComboBox::NoInsert</enum>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>40</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="placeholderText">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
                 <item row="3" column="0" colspan="2">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
                   <property name="spacing">
@@ -630,7 +439,7 @@ QComboBox QAbstractItemView::item:hover {
                      <string notr="true">QLabel{
 
 	
-	color: rgb(80, 80, 80);
+	color: rgb(0, 0, 0);
 
 	border-color: #ffffff;
 	border:none;
@@ -707,6 +516,63 @@ QLineEdit:disabled {
                   </item>
                  </layout>
                 </item>
+                <item row="4" column="0" colspan="2" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="boton_agregar">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>120</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: rgb(0, 183, 72);
+	
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string> Agregar</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
                 <item row="1" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_3">
                   <property name="spacing">
@@ -726,7 +592,7 @@ QLineEdit:disabled {
                      <string notr="true">QLabel{
 
 	
-	color: rgb(80, 80, 80);
+	color: rgb(0,0,0);
 
 	border-color: #ffffff;
 	border:none;
@@ -772,6 +638,9 @@ QLineEdit:disabled {
                   </item>
                   <item alignment="Qt::AlignLeft">
                    <widget class="QLineEdit" name="input_cedula_alumno">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>220</width>
@@ -805,7 +674,14 @@ QLineEdit:focus{
 
 
 
-}</string>
+}
+
+QLineEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+ </string>
                     </property>
                     <property name="placeholderText">
                      <string>.....</string>
@@ -892,6 +768,229 @@ QLineEdit:focus{
                    </item>
                   </layout>
                  </widget>
+                </item>
+                <item row="0" column="0">
+                 <layout class="QVBoxLayout" name="verticalLayout_6">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignLeft|Qt::AlignBottom">
+                   <widget class="QLabel" name="titulo_de_boton_de_opciones">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>30</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>500</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+	
+	color: rgb(0, 0, 0);
+	border:none;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Especialidad ocupacional</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QComboBox" name="boton_especialidades">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>200</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+
+	font: 75 10pt &quot;Arial&quot;;
+	padding-left:15px;
+	border:1px solid #000000 ;
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+
+
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+QComboBox:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+
+
+
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+
+
+</string>
+                    </property>
+                    <property name="editable">
+                     <bool>false</bool>
+                    </property>
+                    <property name="currentText">
+                     <string/>
+                    </property>
+                    <property name="currentIndex">
+                     <number>-1</number>
+                    </property>
+                    <property name="insertPolicy">
+                     <enum>QComboBox::NoInsert</enum>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="placeholderText">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="0" column="1">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QLabel" name="label_estado_boton_desplegable">
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+
+	
+	color: rgb(0,0,0);
+
+	border-color: #ffffff;
+	border:none;
+	padding-left:3px;
+
+
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Estado del boton desplegable</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                   <widget class="QCheckBox" name="checkbox_estado_combobox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QCheckBox{
+
+
+	padding-left:8px;
+
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>poner activado o desactivado</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </widget>

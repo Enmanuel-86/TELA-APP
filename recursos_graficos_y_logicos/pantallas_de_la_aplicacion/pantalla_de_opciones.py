@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import  QWidget
 from PyQt5 import QtGui
 import os
 
-from elementos_graficos_a_py import Ui_PantallaDeOpciones
+from ..elementos_graficos_a_py import Ui_PantallaDeOpciones
 
 
 

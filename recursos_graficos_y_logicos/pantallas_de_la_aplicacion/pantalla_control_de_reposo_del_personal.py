@@ -5,7 +5,7 @@ from datetime import datetime
 from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QMessageBox,
                             QApplication)
 
-from elementos_graficos_a_py import Ui_PantallaControlReposoPersonal, Ui_VentanaAnadirReposo
+from ..elementos_graficos_a_py import Ui_PantallaControlReposoPersonal, Ui_VentanaAnadirReposo
 
 
 

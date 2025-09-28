@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import  QWidget, QFileDialog, QMessageBox, QApplication
 from PyQt5 import QtGui
 import os
 import platform
-from elementos_graficos_a_py import Ui_PantallaCrearRespaldo
+from ..elementos_graficos_a_py import Ui_PantallaCrearRespaldo
 
 from conexiones.respaldo import RespaldoLocal
 

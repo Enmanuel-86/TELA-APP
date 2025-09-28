@@ -2,7 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import  QWidget
 from PyQt5 import QtGui
 import os
-from elementos_graficos_a_py import Ui_CrearNuevoUsuario
+from ..elementos_graficos_a_py import Ui_CrearNuevoUsuario
 
 
 class PantallaAdminCrearUsuario(QWidget, Ui_CrearNuevoUsuario):

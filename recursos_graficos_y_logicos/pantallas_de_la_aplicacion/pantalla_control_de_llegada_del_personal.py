@@ -4,7 +4,7 @@ from PyQt5.QtCore import QTime, QPoint, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
-from elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
+from ..elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
 from datetime import datetime, time
 
 ##################################
@@ -803,7 +803,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
             
             
-    # Metodo para agregar elementos a la vista previa de los diagnosticos
+    # Metodo convertir la fecha de str a date
     def fecha_de_str_a_date(self, fecha_string):
         
         # Convertir el string a objeto date
