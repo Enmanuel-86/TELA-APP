@@ -101,10 +101,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.boton_buscar_cedula_representante.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "lupa_de_busqueda.png")))
         self.boton_anadir_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
         self.foto_anadir_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "registro_alumnos.png")))
-        self.boton_para_agregar_fecha.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
-        self.boton_para_agregar_fecha_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
-        self.boton_para_agregar_fecha_certificado.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
-        self.boton_fecha_de_ingreso_tela.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
         self.boton_anadir_otro_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "mas.png")))
         
 
@@ -112,12 +108,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
         self.lista_de_inputs = [
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
-                                self.input_cedula, self.input_relacion_con_representante, self.label_mostrar_fecha, self.input_lugar_de_nacimiento,
+                                self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
                                 self.input_situacion, self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
                                 self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
                                 self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
                                 self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
-                                self.input_medicacion, self.input_medico_tratante, self.label_fecha_diagnostico, self.label_fecha_del_certificado, self.input_certificado_discapacidad,
+                                self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
                                 self.vista_previa_diagnostico
                                 ]
         
@@ -166,18 +162,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # cargar catalogos de las especialidades
         self.cargar_lista_para_el_combobox(lista_especialidades, self.boton_de_especialidad, 1)
         
-        # botones para mostrar guardar fechas
-        self.boton_para_agregar_fecha.clicked.connect(lambda:  self.mostrar_calendario(self.label_mostrar_fecha))
-        self.boton_para_agregar_fecha_certificado.clicked.connect(lambda:  self.mostrar_calendario(self.label_mostrar_fecha_certificado))
-        self.boton_para_agregar_fecha_diagnostico.clicked.connect(lambda:  self.mostrar_calendario(self.label_mostrar_fecha_diagnostico))
-        self.boton_fecha_de_ingreso_tela.clicked.connect(lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_tela))
-        self.boton_fecha_de_ingreso_especialidad.clicked.connect(lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_especialidad))
+        
         
         today = datetime.now()
         dia_de_hoy = today.strftime("%Y-%m-%d")
         
-        self.label_mostrar_fecha_de_ingreso_tela.setText(dia_de_hoy)
-        self.label_mostrar_fecha_de_ingreso_especialidad.setText(dia_de_hoy)
+        self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.currentDate())
+        self.dateedit_fecha_ingreso_especialidad.setDate(QtCore.QDate.currentDate())
+        
         
         self.boton_buscar_cedula_representante.clicked.connect(self.comprobar_representante_registrado)
         
@@ -291,38 +283,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
             
             
-            
-    ## Metodo para mostrar el calendario y colocar mostrar la fecha seleccionada ##
-    def mostrar_calendario(self, label_destino):
-        
-        ## Metodo para colocar la fecha a un label  ##
-        def seleccionar_fecha(date):
-            """Actualiza el label con la fecha seleccionada y cierra el calendario."""
-            if self.current_label:
-                fecha_formateada = date.toString("yyyy-MM-dd")
-                fecha_date = datetime.strptime(fecha_formateada, "%Y-%m-%d").date()
-                self.current_label.setText(f"{fecha_date}")
-                #print(type(fecha_date))
-                self.calendario.close()  # Cerrar el calendario (¡nombre correcto!)
-
-
-        
-        
-        """Muestra el calendario y asigna el label objetivo."""
-        if not self.calendario:
-            # Crear el calendario solo una vez
-            self.calendario = QCalendarWidget(self)
-            self.calendario.setGridVisible(True)
-            self.calendario.clicked.connect(seleccionar_fecha)
-            self.calendario.setWindowTitle("Seleccione una fecha")
-            self.calendario.setFixedSize(400, 300)
-
-        self.current_label = label_destino  # Guardar el label a actualizar
-        self.calendario.move(
-            (self.width() - self.calendario.width()) // 2,
-            (self.height() - self.calendario.height()) // 2
-        )
-        self.calendario.show()    
+    
         
         
     # Metodo para comprobar que el representante esta registrado o no, para evitar redundancia/no repetir los datos
@@ -431,19 +392,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
     
 
-    # Metodo para cambiar de str a date (solo usar para las fechas)
+
+    # Método para cambiar de str a date (solo usar para las fechas)
     def fecha_de_str_a_date(self, fecha_string):
-        
         # Convertir el string a objeto date
         try:
-            fecha_date = datetime.strptime(fecha_string, "%Y-%m-%d").date()
+            # Primero eliminar espacios y normalizar el formato
+            fecha_limpia = fecha_string.replace(" ", "")  # Eliminar espacios
+            fecha_limpia = fecha_limpia.replace("/", "-")  # Reemplazar / por -
+            
+            # Si el formato original era "2000/04/02" ahora será "2000-04-02"
+            # Verificar que tenga el formato correcto para datetime
+            fecha_date = datetime.strptime(fecha_limpia, "%Y-%m-%d").date()
             
             return fecha_date
-        
-            #print(type(fecha_nacimiento))
+    
         except ValueError as e:
             print(f"Error al convertir la fecha: {e}")
-    
+            return None  
+        
     
     # Metodo para agregar otro diagnostico que no esta en la lista catalogo de los diagnosticos
     def anadir_otro_diagnotico_diferente(self):
@@ -508,12 +475,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 
                 
-                fecha_diagnostico = self.fecha_de_str_a_date(self.label_mostrar_fecha_diagnostico.text())
+                fecha_diagnostico = self.fecha_de_str_a_date(self.dateedit_fecha_diagnostico.text().strip())
                 
                 
-                fecha_vencimiento_certif = self.fecha_de_str_a_date(self.label_mostrar_fecha_certificado.text())
+                fecha_vencimiento_certif = self.fecha_de_str_a_date(self.dateedit_fecha_vencimiento_certificado.text())
                 
-                
+                print(fecha_diagnostico, type(fecha_diagnostico))
                 
                 if self.input_medicacion.text().strip():
                     
@@ -602,8 +569,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_medico_tratante.clear()
                     self.input_medicacion.clear()
                     self.input_certificado_discapacidad.clear()
-                    self.label_mostrar_fecha_certificado.clear()
-                    self.label_mostrar_fecha_diagnostico.clear()
+                    self.dateedit_fecha_diagnostico.setDate(QtCore.QDate(2000, 1, 1))
+                    self.dateedit_fecha_vencimiento_certificado.setDate(QtCore.QDate(2000, 1, 1))
                     self.input_observacion_adicional.clear()
                     
                     
@@ -884,6 +851,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
             self.boton_de_especialidad.setCurrentIndex(0)
             self.boton_diagnostico.setCurrentIndex(0)
+            
+            self.dateedit_fecha_vencimiento_certificado.setDate(QtCore.QDate(2000, 1, 1))
+            self.dateedit_fecha_diagnostico.setDate(QtCore.QDate(2000, 1, 1))
                 
             
         except Exception as e:
@@ -948,7 +918,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
             situacion = self.input_situacion.text().strip().capitalize()
             
-            fecha_ingreso_institucion = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_tela.text())
+            fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
             
             
             if self.input_sexo_masculino.isChecked():
@@ -1036,15 +1006,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     imt = None
                 
-                # si la etiqueta que tiene la fecha tiene texto
-                # entonces que la transforme de str a date con la funcion
-                if self.label_mostrar_fecha.text():
+                
                     
-                    fecha_nacimiento = self.fecha_de_str_a_date(self.label_mostrar_fecha.text())
+                fecha_nacimiento = self.fecha_de_str_a_date(self.dateedit_fecha_nacimiento.text())
                     
-                else:
-                    fecha_nacimiento = None
-                    
+                
                 
                 lugar_nacimiento = self.input_lugar_de_nacimiento.text()
                 
@@ -1269,7 +1235,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         
                                         
                                         
-                                        fecha_inscripcion = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_especialidad.text())
+                                        fecha_inscripcion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_especialidad.text())
                                         
                                         campos_inscripcion = {
                                                             "num_matricula": None, #Esto es None para que internamente se modifique este valor por el que se va a generar automáticamente
@@ -1603,7 +1569,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             periodo_escolar = str(año_actual) + "-" + str(año_actual + 1)
                                             
                                             
-                                            fecha_inscripcion = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_especialidad.text())
+                                            fecha_inscripcion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_especialidad.text())
                                             
                                             campos_inscripcion = {
                                                                 "num_matricula": None, #Esto es None para que internamente se modifique este valor por el que se va a generar automáticamente
