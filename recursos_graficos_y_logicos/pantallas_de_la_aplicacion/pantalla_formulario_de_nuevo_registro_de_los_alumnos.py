@@ -191,45 +191,50 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # si no los va a usar comentelos con """"""
         
         """
-            # info alumno
-            
-            self.input_primer_nombre.setText("jario")
-            
-            self.input_segundo_nombre.setText("Jose")
-            self.input_apellido_paterno.setText("Merida")
-            self.input_apellido_materno.setText("Lopez")
-            self.input_cedula.setText("40199002")
-            self.input_relacion_con_representante.setText("hijo")
-            self.input_sexo_masculino.setChecked(True)
-            self.label_mostrar_fecha.setText("2010-03-02")
-            self.input_cma_no.setChecked(True)
-            self.input_imt_si.setChecked(True)
-            self.input_lugar_de_nacimiento.setText("barcelona")
-            self.input_situacion.setText("Inicial")
-            
-            # info representante no los voy a colocar, es para comprobar si se asocian al alumno
-            
-            # info cuenta de banco, como es opcional no los voy a llenar por aqui
-            
-            
-            # info medidas
-            self.input_talla_camisa.setText("M")
-            self.input_talla_pantalon.setText("32")
-            self.input_talla_zapatos.setText("32")
-            self.input_peso.setText("60")
-            self.input_estatura.setText("170")
-            
-            # info escolaridad
-            
-            self.input_escolaridad.setText("Ninguna")
-            self.input_procendencia.setText("U E Escuela de arte")
-            
+        
+        # info alumno
+        
+        self.input_primer_nombre.setText("jario")
+        
+        self.input_segundo_nombre.setText("Jose")
+        self.input_apellido_paterno.setText("Merida")
+        self.input_apellido_materno.setText("Lopez")
+        self.input_cedula.setText("40199022")
+        self.input_relacion_con_representante.setText("hijo")
+        self.input_sexo_masculino.setChecked(True)
+        
+        self.input_cma_no.setChecked(True)
+        self.input_imt_si.setChecked(True)
+        self.input_lugar_de_nacimiento.setText("barcelona")
+        self.input_situacion.setText("Inicial")
+        
+        # info representante no los voy a colocar, es para comprobar si se asocian al alumno
+        
+        # info cuenta de banco, como es opcional no los voy a llenar por aqui
+        
+        
+        # info medidas
+        self.input_talla_camisa.setText("M")
+        self.input_talla_pantalon.setText("32")
+        self.input_talla_zapatos.setText("32")
+        self.input_peso.setText("60")
+        self.input_estatura.setText("170")
+        
+        # info escolaridad
+        
+        self.input_escolaridad.setText("Ninguna")
+        self.input_procendencia.setText("U E Escuela de arte")
+        
+    
+    
+    
+        
+        """
         
         
         
-            
        
-       """
+       
         
     # Metodo para cargar catalogo en los combobox
     def cargar_lista_para_el_combobox(self, lista_catalogo, boton_desplegable, indice_nombre_elemento:int):
@@ -364,6 +369,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_carga_familiar.setEnabled(True)
                     self.input_direccion_residencia.setEnabled(True)
                     self.input_numero_de_telefono.setEnabled(True)
+                    self.input_numero_de_telefono_adicional.setEnabled(True)
                     self.input_estado_civil.setEnabled(True)
                     
                     # limpiamos los campos
@@ -372,6 +378,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_carga_familiar.clear()
                     self.input_direccion_residencia.clear()
                     self.input_numero_de_telefono.clear()
+                    self.input_numero_de_telefono_adicional.clear()
                     self.input_estado_civil.clear()
                     
                     # mostramos el mensaje
@@ -582,7 +589,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         except Exception as e:
             
-            pass
+            self.mostrar_errores_por_excepcion(e)
     
     
     
@@ -855,6 +862,29 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.dateedit_fecha_vencimiento_certificado.setDate(QtCore.QDate(2000, 1, 1))
             self.dateedit_fecha_diagnostico.setDate(QtCore.QDate(2000, 1, 1))
                 
+            # habilitamos los campos
+            self.input_nombre_del_representante.setEnabled(True)
+            self.input_apellido_del_representante.setEnabled(True)
+            self.input_carga_familiar.setEnabled(True)
+            self.input_direccion_residencia.setEnabled(True)
+            self.input_numero_de_telefono.setEnabled(True)
+            self.input_numero_de_telefono_adicional.setEnabled(True)
+            self.input_estado_civil.setEnabled(True)
+            
+            # limpiamos los campos
+            self.input_nombre_del_representante.clear()
+            self.input_apellido_del_representante.clear()
+            self.input_carga_familiar.clear()
+            self.input_direccion_residencia.clear()
+            self.input_numero_de_telefono.clear()
+            self.input_numero_de_telefono_adicional.clear()
+            self.input_estado_civil.clear()
+            
+            
+            # Limpiamos la listas "carrito"
+            
+            self.lista_diagnostico_regitrados.clear()
+            self.cuentas_bancarias_alumno.clear()
             
         except Exception as e:
             self.mostrar_errores_por_excepcion(e)
