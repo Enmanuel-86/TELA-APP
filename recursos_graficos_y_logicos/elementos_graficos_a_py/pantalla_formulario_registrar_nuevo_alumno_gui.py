@@ -4055,7 +4055,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_diagnostico_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Diagnóstico"))
         self.label_otro_diagnostico.setText(_translate("FormularioNuevoRegistroAlumnos", "Otro diagnóstico"))
         self.input_otro_diagnostico.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "¿otro diagnostico?"))
-        self.label_mensaje_1.setText(_translate("FormularioNuevoRegistroAlumnos", "Lista de diganosticos"))
+        self.label_mensaje_1.setText(_translate("FormularioNuevoRegistroAlumnos", "Lista de diagnosticos"))
         self.label_mensaje_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Si añadio un diagnostico de más o quiere eliminar haga click en el boton eliminar"))
         self.label_medico_tratante.setText(_translate("FormularioNuevoRegistroAlumnos", "Medico tratante "))
         self.input_medico_tratante.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))

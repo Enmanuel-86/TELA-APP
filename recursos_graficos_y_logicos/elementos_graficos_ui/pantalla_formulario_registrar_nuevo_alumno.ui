@@ -4603,7 +4603,7 @@ QPushButton:hover{
                         </font>
                        </property>
                        <property name="text">
-                        <string>Lista de diganosticos</string>
+                        <string>Lista de diagnosticos</string>
                        </property>
                       </widget>
                      </item>
