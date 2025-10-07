@@ -124,11 +124,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ## Rutas relativas para las imagenes ##
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "flecha_izquierda_2.png")))
         self.foto_anadir_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "registro_personal.png")))
-        self.boton_para_agregar_fecha.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
-        self.boton_fecha_de_ingreso_tela.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
         self.boton_anadir_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
         self.boton_anadir_enfermedad.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
-        self.boton_para_agregar_fecha_de_ingreso_del_minis.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "calendario.png")))
 
         ###############################################################################################################
         # Detalles para los inputs info basica #
@@ -175,9 +172,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
         ###############################################################################################################
         # Detalles para detalles de cargo
-        today = datetime.now()
-        dia_de_hoy = today.strftime("%Y-%m-%d")
-        self.label_mostrar_fecha_de_ingreso_tela.setText(dia_de_hoy)
+        self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.currentDate())
+        
+        
+        
         self.input_labores_que_realiza.clear()
         
         # Cargamos al boton la lista de los cargos
@@ -206,7 +204,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ## Boton de siguiente para ir cambiando las preguntas ##
         self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
         
-        self.boton_para_agregar_fecha.clicked.connect(lambda: self.mostrar_calendario(self.label_mostrar_fecha))
         
         
         
@@ -214,14 +211,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ## Boton de regreso para retroceder a la pregunta previa o salir del formulario ##
         self.boton_de_regreso.clicked.connect(self.salir_del_formulario_empleado)
         
-        # Conexión CORRECTA del botón (usa lambda sin llamar a la función)
-        self.boton_fecha_de_ingreso_tela.clicked.connect(
-            lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_tela)
-        )
-        self.boton_para_agregar_fecha_de_ingreso_del_minis.clicked.connect(
-            lambda: self.mostrar_calendario(self.label_mostrar_fecha_de_ingreso_del_minis)
-        )
-        
+    
         
         ### Esto es de prueba, esto asigna un valor a los input
         
@@ -261,39 +251,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             self.boton_de_especialidad.setEnabled(True)
     
     
-    ## Metodo para mostrar el calendario ##
-    def mostrar_calendario(self, label_destino):
-        
-        ## Metodo para colocar la fecha a un label  ##
-        def seleccionar_fecha(date):
-            """Actualiza el label con la fecha seleccionada y cierra el calendario."""
-            if self.current_label:
-                fecha_formateada = date.toString("yyyy-MM-dd")
-                fecha_date = datetime.strptime(fecha_formateada, "%Y-%m-%d").date()
-                self.current_label.setText(f"{fecha_date}")
-                #print(type(fecha_date))
-                self.calendario.close()  # Cerrar el calendario (¡nombre correcto!)
-
-
-        
-        
-        
-        
-        """Muestra el calendario y asigna el label objetivo."""
-        if not self.calendario:
-            # Crear el calendario solo una vez
-            self.calendario = QCalendarWidget(self)
-            self.calendario.setGridVisible(True)
-            self.calendario.clicked.connect(seleccionar_fecha)
-            self.calendario.setWindowTitle("Seleccione una fecha")
-            self.calendario.setFixedSize(400, 300)
-
-        self.current_label = label_destino  # Guardar el label a actualizar
-        self.calendario.move(
-            (self.width() - self.calendario.width()) // 2,
-            (self.height() - self.calendario.height()) // 2
-        )
-        self.calendario.show()
 
     
     ## Metodo para añadir una enfermedad al "carrito"
@@ -551,17 +508,23 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             pass
 
     
-    # Metodo para agregar elementos a la vista previa de los diagnosticos
+    # Método para cambiar de str a date (solo usar para las fechas)
     def fecha_de_str_a_date(self, fecha_string):
-        
         # Convertir el string a objeto date
         try:
-            fecha_date = datetime.strptime(fecha_string, "%Y-%m-%d").date()
+            # Primero eliminar espacios y normalizar el formato
+            fecha_limpia = fecha_string.replace(" ", "")  # Eliminar espacios
+            fecha_limpia = fecha_limpia.replace("/", "-")  # Reemplazar / por -
+            
+            # Si el formato original era "2000/04/02" ahora será "2000-04-02"
+            # Verificar que tenga el formato correcto para datetime
+            fecha_date = datetime.strptime(fecha_limpia, "%Y-%m-%d").date()
             
             return fecha_date
-            #print(type(fecha_nacimiento))
+    
         except ValueError as e:
             print(f"Error al convertir la fecha: {e}")
+            return None  
     
     # Metodo para mostrar errores de la base de datos 
     def mostrar_errores_antes_de_guardar(self, errores):
@@ -600,7 +563,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         try:    
             
             # info basica
-            fecha_nacimiento = 0
+            
 
             primer_nombre = self.input_primer_nombre.text().capitalize()
             segundo_nombre = self.comprobar_si_hay_valor(self.input_segundo_nombre)
@@ -609,7 +572,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             apellido_materno = self.comprobar_si_hay_valor(self.input_apellido_materno)
             cedula = self.input_cedula.text().capitalize()
             
-            fecha_nacimiento = self.fecha_de_str_a_date(self.label_mostrar_fecha.text())
+            fecha_nacimiento = self.fecha_de_str_a_date(self.dateedit_fecha_nacimiento.text())
 
 
             if self.input_sexo_masculino.isChecked():
@@ -755,9 +718,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                             
                             labores_cargo = self.input_labores_que_realiza.text()
 
-                            fecha_ingreso_institucion = None  # Por defecto se establece la fecha actual
+                            fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())  # Por defecto se establece la fecha actual
 
-                            fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.label_mostrar_fecha_de_ingreso_del_minis.text())
+                            fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_ministerio.text())
                             
 
                             situacion = None  # Por defecto es Activo
@@ -1089,7 +1052,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             self.input_apellido_paterno.clear()
             self.input_apellido_materno.clear()
             self.input_cedula.clear()
-            self.label_mostrar_fecha.clear()
             # Desactivar temporalmente la auto-exclusividad
             self.input_sexo_masculino.setAutoExclusive(False)
             self.input_sexo_femenino.setAutoExclusive(False)
@@ -1143,6 +1105,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
             self.input_institucion_donde_laboral.clear()
             self.input_codigo_por_donde_cobra.clear()
+
+            self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
+            self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
+
 
             self.stacked_widget.setCurrentIndex(2)
 
