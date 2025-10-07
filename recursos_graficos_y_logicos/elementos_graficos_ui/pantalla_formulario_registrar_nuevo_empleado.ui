@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1096</width>
-    <height>661</height>
+    <height>2277</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,9 +41,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-879</y>
-        <width>1079</width>
-        <height>2251</height>
+        <y>0</y>
+        <width>1096</width>
+        <height>2277</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1166,19 +1166,25 @@ QLineEdit:focus{
                      <property name="styleSheet">
                       <string notr="true">border:none;</string>
                      </property>
-                     <layout class="QGridLayout" name="gridLayout_2">
-                      <item row="0" column="0" colspan="2" alignment="Qt::AlignLeft">
-                       <widget class="QLabel" name="label_fecha_de_nacimiento">
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QLabel{
+                     <widget class="QLabel" name="label_fecha_de_nacimiento">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>-1</y>
+                        <width>134</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{
 		
 	color: rgb(80, 80, 80);
 
@@ -1187,78 +1193,215 @@ QLineEdit:focus{
 
 }
 </string>
-                        </property>
-                        <property name="text">
-                         <string>Fecha de nacimiento</string>
-                        </property>
-                        <property name="scaledContents">
-                         <bool>false</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QPushButton" name="boton_para_agregar_fecha">
-                        <property name="minimumSize">
-                         <size>
-                          <width>110</width>
-                          <height>35</height>
-                         </size>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton{
+                      </property>
+                      <property name="text">
+                       <string>Fecha de nacimiento</string>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                     <widget class="QDateEdit" name="dateedit_fecha_nacimiento">
+                      <property name="geometry">
+                       <rect>
+                        <x>1</x>
+                        <y>14</y>
+                        <width>211</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Año/Mes/Dia</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QDateEdit{
 
-	border: 1px solid black;
-	border-radius:12px;
-	background-color: rgb(255, 255, 255);
+	padding-left:10px;
+	padding-top:10px;
+	border:1px solid #000000 ;
+
 }
 
-QPushButton:hover{
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
 
-	background-color: rgb(199, 199, 199)
-}</string>
-                        </property>
-                        <property name="text">
-                         <string>Agregar fecha</string>
-                        </property>
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="label_mostrar_fecha">
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QLabel{
-
-	border:0px;
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
 
 
-}</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
+
+
+QDateEdit QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QDateEdit QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QDateEdit QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+QDateEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+
+
+QCalendarWidget {
+                background-color: white;
+                border: 1px solid #d0d0d0;
+                border-radius: 8px;
+                font-family: Arial, sans-serif;
+            }
+            
+            /* Barra superior con mes y año */
+            QCalendarWidget QWidget#qt_calendar_navigationbar {
+                background-color: #4a90e2;
+                color: white;
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+                padding: 5px;
+            }
+            
+            /* Botones de navegación */
+            QCalendarWidget QToolButton {
+                background-color: transparent;
+                color: white;
+                font-weight: bold;
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            
+            QCalendarWidget QToolButton:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Días de la semana */
+            QCalendarWidget QHeaderView::section {
+                background-color: #f8f9fa;
+                color: #555555;
+                font-weight: bold;
+                padding: 8px;
+                border: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* Días normales */
+            QCalendarWidget QAbstractItemView:enabled {
+                color: #333333;
+                background-color: white;
+                selection-background-color: #4a90e2;
+                selection-color: white;
+                outline: none;
+                border: none;
+            }
+            
+            /* Día actual */
+            QCalendarWidget QAbstractItemView:enabled:focus {
+                background-color: #e8f4fd;
+                color: #4a90e2;
+                font-weight: bold;
+            }
+            
+            /* Días de otros meses */
+            QCalendarWidget QAbstractItemView:enabled:!selected {
+                color: #aaaaaa;
+            }
+            
+            /* Efecto hover sobre los días */
+            QCalendarWidget QAbstractItemView:enabled:hover {
+                background-color: #f0f7ff;
+            }
+            
+            /* Fines de semana */
+            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
+                background-color: #4a90e2;
+                color: white;
+            }
+
+
+</string>
+                      </property>
+                      <property name="wrapping">
+                       <bool>false</bool>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="accelerated">
+                       <bool>true</bool>
+                      </property>
+                      <property name="keyboardTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="showGroupSeparator" stdset="0">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSection">
+                       <enum>QDateTimeEdit::YearSection</enum>
+                      </property>
+                      <property name="displayFormat">
+                       <string>yyyy / MM / dd</string>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSectionIndex">
+                       <number>0</number>
+                      </property>
+                      <property name="date">
+                       <date>
+                        <year>2000</year>
+                        <month>1</month>
+                        <day>26</day>
+                       </date>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_5">
+                      <property name="geometry">
+                       <rect>
+                        <x>22</x>
+                        <y>15</y>
+                        <width>101</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background:none;</string>
+                      </property>
+                      <property name="text">
+                       <string>Año    / Mes / Dia</string>
+                      </property>
+                     </widget>
                     </widget>
                    </item>
                   </layout>
@@ -4189,26 +4332,32 @@ QLineEdit:focus{
                     </layout>
                    </item>
                    <item row="1" column="2">
-                    <widget class="QFrame" name="frame">
-                     <layout class="QGridLayout" name="gridLayout_8">
-                      <item row="0" column="0" colspan="2">
-                       <widget class="QLabel" name="label_fecha_de_ingreso_del_minis">
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QLabel{
+                    <widget class="QFrame" name="espacio_fecha_ingreso_ministerio">
+                     <widget class="QLabel" name="label_fecha_de_ingreso_del_minis">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>5</y>
+                        <width>193</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{
 	
 	color: rgb(80, 80, 80);
 
@@ -4217,92 +4366,247 @@ QLineEdit:focus{
 
 }
 </string>
-                        </property>
-                        <property name="text">
-                         <string>Fecha de ingreso al ministerio</string>
-                        </property>
-                        <property name="scaledContents">
-                         <bool>false</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QPushButton" name="boton_para_agregar_fecha_de_ingreso_del_minis">
-                        <property name="minimumSize">
-                         <size>
-                          <width>110</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton{
+                      </property>
+                      <property name="text">
+                       <string>Fecha de ingreso al ministerio</string>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                     <widget class="QDateEdit" name="dateedit_fecha_ingreso_ministerio">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>20</y>
+                        <width>221</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Año/Mes/Dia</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QDateEdit{
 
-	border: 1px solid black;
-	border-radius:12px;
+	padding-left:10px;
+	padding-top:10px;
+	border:1px solid #000000 ;
+
 }
 
-QPushButton:hover{
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
 
-	background-color: rgb(199, 199, 199)
-}</string>
-                        </property>
-                        <property name="text">
-                         <string>Agregar fecha</string>
-                        </property>
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="label_mostrar_fecha_de_ingreso_del_minis">
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+
+
+
+QDateEdit QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QDateEdit QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QDateEdit QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+QDateEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+
+
+QCalendarWidget {
+                background-color: white;
+                border: 1px solid #d0d0d0;
+                border-radius: 8px;
+                font-family: Arial, sans-serif;
+            }
+            
+            /* Barra superior con mes y año */
+            QCalendarWidget QWidget#qt_calendar_navigationbar {
+                background-color: #4a90e2;
+                color: white;
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+                padding: 5px;
+            }
+            
+            /* Botones de navegación */
+            QCalendarWidget QToolButton {
+                background-color: transparent;
+                color: white;
+                font-weight: bold;
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            
+            QCalendarWidget QToolButton:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Días de la semana */
+            QCalendarWidget QHeaderView::section {
+                background-color: #f8f9fa;
+                color: #555555;
+                font-weight: bold;
+                padding: 8px;
+                border: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* Días normales */
+            QCalendarWidget QAbstractItemView:enabled {
+                color: #333333;
+                background-color: white;
+                selection-background-color: #4a90e2;
+                selection-color: white;
+                outline: none;
+                border: none;
+            }
+            
+            /* Día actual */
+            QCalendarWidget QAbstractItemView:enabled:focus {
+                background-color: #e8f4fd;
+                color: #4a90e2;
+                font-weight: bold;
+            }
+            
+            /* Días de otros meses */
+            QCalendarWidget QAbstractItemView:enabled:!selected {
+                color: #aaaaaa;
+            }
+            
+            /* Efecto hover sobre los días */
+            QCalendarWidget QAbstractItemView:enabled:hover {
+                background-color: #f0f7ff;
+            }
+            
+            /* Fines de semana */
+            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
+                background-color: #4a90e2;
+                color: white;
+            }
+
+
+</string>
+                      </property>
+                      <property name="wrapping">
+                       <bool>false</bool>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="accelerated">
+                       <bool>true</bool>
+                      </property>
+                      <property name="keyboardTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="showGroupSeparator" stdset="0">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSection">
+                       <enum>QDateTimeEdit::YearSection</enum>
+                      </property>
+                      <property name="displayFormat">
+                       <string>yyyy / MM / dd</string>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSectionIndex">
+                       <number>0</number>
+                      </property>
+                      <property name="date">
+                       <date>
+                        <year>2000</year>
+                        <month>1</month>
+                        <day>26</day>
+                       </date>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_7">
+                      <property name="geometry">
+                       <rect>
+                        <x>21</x>
+                        <y>22</y>
+                        <width>101</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background:none;</string>
+                      </property>
+                      <property name="text">
+                       <string>Año    / Mes / Dia</string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>dateedit_fecha_ingreso_ministerio</cstring>
+                      </property>
+                     </widget>
                     </widget>
                    </item>
                    <item row="1" column="3">
-                    <widget class="QFrame" name="frame">
-                     <layout class="QGridLayout" name="gridLayout_9">
-                      <item row="0" column="0" colspan="2">
-                       <widget class="QLabel" name="label_fecha_de_ingreso_tela">
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QLabel{
+                    <widget class="QFrame" name="espacio_fecha_ingreso_tela">
+                     <widget class="QLabel" name="label_fecha_de_ingreso_tela">
+                      <property name="geometry">
+                       <rect>
+                        <x>9</x>
+                        <y>4</y>
+                        <width>174</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{
 	
 	color: rgb(80, 80, 80);
 
@@ -4311,69 +4615,215 @@ QPushButton:hover{
 
 }
 </string>
-                        </property>
-                        <property name="text">
-                         <string>Fecha de ingreso al T.E.L.A</string>
-                        </property>
-                        <property name="scaledContents">
-                         <bool>false</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="0">
-                       <widget class="QPushButton" name="boton_fecha_de_ingreso_tela">
-                        <property name="minimumSize">
-                         <size>
-                          <width>110</width>
-                          <height>30</height>
-                         </size>
-                        </property>
-                        <property name="cursor">
-                         <cursorShape>PointingHandCursor</cursorShape>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton{
+                      </property>
+                      <property name="text">
+                       <string>Fecha de ingreso al T.E.L.A</string>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                     <widget class="QDateEdit" name="dateedit_fecha_ingreso_tela">
+                      <property name="geometry">
+                       <rect>
+                        <x>9</x>
+                        <y>19</y>
+                        <width>211</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Arial</family>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Año/Mes/Dia</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QDateEdit{
 
-	border: 1px solid black;
-	border-radius:12px;
+	padding-left:10px;
+	padding-top:10px;
+	border:1px solid #000000 ;
+
 }
 
-QPushButton:hover{
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
 
-	background-color: rgb(199, 199, 199)
-}</string>
-                        </property>
-                        <property name="text">
-                         <string>Agregar fecha</string>
-                        </property>
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>20</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="label_mostrar_fecha_de_ingreso_tela">
-                        <property name="font">
-                         <font>
-                          <family>Arial</family>
-                          <pointsize>10</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
+QDateEdit:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+
+
+
+QDateEdit QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QDateEdit QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QDateEdit QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+QDateEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+
+
+QCalendarWidget {
+                background-color: white;
+                border: 1px solid #d0d0d0;
+                border-radius: 8px;
+                font-family: Arial, sans-serif;
+            }
+            
+            /* Barra superior con mes y año */
+            QCalendarWidget QWidget#qt_calendar_navigationbar {
+                background-color: #4a90e2;
+                color: white;
+                border-top-left-radius: 7px;
+                border-top-right-radius: 7px;
+                padding: 5px;
+            }
+            
+            /* Botones de navegación */
+            QCalendarWidget QToolButton {
+                background-color: transparent;
+                color: white;
+                font-weight: bold;
+                border: none;
+                padding: 5px;
+                border-radius: 3px;
+            }
+            
+            QCalendarWidget QToolButton:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Días de la semana */
+            QCalendarWidget QHeaderView::section {
+                background-color: #f8f9fa;
+                color: #555555;
+                font-weight: bold;
+                padding: 8px;
+                border: none;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* Días normales */
+            QCalendarWidget QAbstractItemView:enabled {
+                color: #333333;
+                background-color: white;
+                selection-background-color: #4a90e2;
+                selection-color: white;
+                outline: none;
+                border: none;
+            }
+            
+            /* Día actual */
+            QCalendarWidget QAbstractItemView:enabled:focus {
+                background-color: #e8f4fd;
+                color: #4a90e2;
+                font-weight: bold;
+            }
+            
+            /* Días de otros meses */
+            QCalendarWidget QAbstractItemView:enabled:!selected {
+                color: #aaaaaa;
+            }
+            
+            /* Efecto hover sobre los días */
+            QCalendarWidget QAbstractItemView:enabled:hover {
+                background-color: #f0f7ff;
+            }
+            
+            /* Fines de semana */
+            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
+                background-color: #4a90e2;
+                color: white;
+            }
+
+
+</string>
+                      </property>
+                      <property name="wrapping">
+                       <bool>false</bool>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="accelerated">
+                       <bool>true</bool>
+                      </property>
+                      <property name="keyboardTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="showGroupSeparator" stdset="0">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSection">
+                       <enum>QDateTimeEdit::YearSection</enum>
+                      </property>
+                      <property name="displayFormat">
+                       <string>yyyy / MM / dd</string>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSectionIndex">
+                       <number>0</number>
+                      </property>
+                      <property name="date">
+                       <date>
+                        <year>2000</year>
+                        <month>1</month>
+                        <day>26</day>
+                       </date>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_6">
+                      <property name="geometry">
+                       <rect>
+                        <x>30</x>
+                        <y>20</y>
+                        <width>101</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background:none;</string>
+                      </property>
+                      <property name="text">
+                       <string>Año    / Mes / Dia</string>
+                      </property>
+                     </widget>
                     </widget>
                    </item>
                    <item row="2" column="3" alignment="Qt::AlignRight">
@@ -4444,16 +4894,25 @@ QPushButton:hover{
   <tabstop>input_sexo_femenino</tabstop>
   <tabstop>input_si</tabstop>
   <tabstop>input_no</tabstop>
-  <tabstop>boton_para_agregar_fecha</tabstop>
+  <tabstop>dateedit_fecha_nacimiento</tabstop>
+  <tabstop>input_talla_de_camisa</tabstop>
+  <tabstop>input_talla_de_pantalon</tabstop>
+  <tabstop>input_talla_de_zapatos</tabstop>
   <tabstop>input_estado_residente</tabstop>
   <tabstop>input_municipio</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
   <tabstop>input_correo_electronico</tabstop>
+  <tabstop>input_numero_de_telefono</tabstop>
   <tabstop>input_correo_electronico_adicional</tabstop>
+  <tabstop>input_numero_de_telefono_adicional</tabstop>
   <tabstop>boton_enfermedades</tabstop>
-  <tabstop>boton_diagnostico</tabstop>
   <tabstop>input_otra_enfermedad</tabstop>
+  <tabstop>boton_anadir_enfermedad</tabstop>
+  <tabstop>ver_lista_enfermedades</tabstop>
+  <tabstop>boton_diagnostico</tabstop>
   <tabstop>input_otro_diagnostico</tabstop>
+  <tabstop>boton_anadir_diagnostico</tabstop>
+  <tabstop>ver_lista_diagnostico</tabstop>
   <tabstop>input_codigo_por_donde_cobra</tabstop>
   <tabstop>input_institucion_donde_laboral</tabstop>
   <tabstop>boton_de_cargos</tabstop>
@@ -4462,18 +4921,11 @@ QPushButton:hover{
   <tabstop>boton_de_especialidad</tabstop>
   <tabstop>input_titulo_del_cargo</tabstop>
   <tabstop>input_labores_que_realiza</tabstop>
-  <tabstop>boton_para_agregar_fecha_de_ingreso_del_minis</tabstop>
-  <tabstop>boton_fecha_de_ingreso_tela</tabstop>
+  <tabstop>dateedit_fecha_ingreso_ministerio</tabstop>
+  <tabstop>dateedit_fecha_ingreso_tela</tabstop>
   <tabstop>boton_finalizar</tabstop>
-  <tabstop>boton_anadir_diagnostico</tabstop>
   <tabstop>boton_de_regreso</tabstop>
   <tabstop>area_de_scroll</tabstop>
-  <tabstop>input_talla_de_pantalon</tabstop>
-  <tabstop>input_talla_de_camisa</tabstop>
-  <tabstop>boton_anadir_enfermedad</tabstop>
-  <tabstop>input_talla_de_zapatos</tabstop>
-  <tabstop>ver_lista_enfermedades</tabstop>
-  <tabstop>ver_lista_diagnostico</tabstop>
  </tabstops>
  <resources/>
  <connections/>
