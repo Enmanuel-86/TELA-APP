@@ -18,6 +18,7 @@ class PantallaAdminOpciones(QWidget, Ui_PantallaDeOpcionesAdmin):
         self.imagen_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "foto_alumnos.png")))
         self.imagen_crear_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","agregar-usuario.png")))
         self.imagen_respaldo.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "respaldo.png")))
+        self.imagen_lista_catalogo.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "lista_de_verificacion.png")))
 
 
 
@@ -27,6 +28,7 @@ class PantallaAdminOpciones(QWidget, Ui_PantallaDeOpcionesAdmin):
         self.boton_opcion_alumno.clicked.connect(self.ir_vista_general_alumnos)
         self.boton_crear_usuario.clicked.connect(self.ir_crear_nuevo_usuario)
         self.boton_importar_exportar.clicked.connect(self.ir_crear_respaldo)
+        self.boton_cargar_catalogo.clicked.connect(self.ir_insetar_catalogo)
         
     
     
@@ -48,6 +50,11 @@ class PantallaAdminOpciones(QWidget, Ui_PantallaDeOpcionesAdmin):
     def ir_crear_respaldo(self):
         
         self.stacked_widget.setCurrentIndex(9)
+        
+    
+    def ir_insetar_catalogo(self):
+        
+        self.stacked_widget.setCurrentIndex(15)
 
 
     def volver_al_login(self):
