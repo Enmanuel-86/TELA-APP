@@ -41,7 +41,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-54</y>
         <width>1230</width>
         <height>967</height>
        </rect>
@@ -212,7 +212,7 @@ QPushButton:hover{
              <number>20</number>
             </property>
             <item row="0" column="0">
-             <widget class="QFrame" name="espacio_informe_integral">
+             <widget class="QFrame" name="espacio_catalogo_especialidades">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -310,7 +310,7 @@ QPushButton:hover{
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label">
+                  <widget class="QLabel" name="label_especialidades">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -333,7 +333,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input">
+                  <widget class="QLineEdit" name="input_especialidad">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -385,7 +385,7 @@ QLineEdit:focus{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral">
+                  <widget class="QPushButton" name="boton_registrar_especialidad">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -472,7 +472,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico">
+                  <widget class="QListWidget" name="vista_previa_especialidades">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -500,7 +500,7 @@ QPushButton:hover{
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QFrame" name="espacio_informe_integral_2">
+             <widget class="QFrame" name="espacio_catalogo_diagnostico">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -598,7 +598,7 @@ QPushButton:hover{
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
                  <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_3">
+                  <widget class="QLabel" name="label_diagnostico">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -621,7 +621,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_2">
+                  <widget class="QLineEdit" name="input_diagnostico">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -673,7 +673,7 @@ QLineEdit:focus{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral_2">
+                  <widget class="QPushButton" name="boton_registrar_diagnostico">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -760,7 +760,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico_2">
+                  <widget class="QListWidget" name="vista_previa_diagnosticos">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -788,7 +788,7 @@ QPushButton:hover{
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QFrame" name="espacio_informe_integral_3">
+             <widget class="QFrame" name="espacio_catalogo_enfermedades">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -886,7 +886,7 @@ QPushButton:hover{
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_5">
+                  <widget class="QLabel" name="label_enfermedades">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -909,7 +909,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_3">
+                  <widget class="QLineEdit" name="input_enfermedad">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -961,7 +961,7 @@ QLineEdit:focus{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral_3">
+                  <widget class="QPushButton" name="boton_registrar_enfermedad">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1048,7 +1048,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico_3">
+                  <widget class="QListWidget" name="vista_previa_enfermedades">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -1076,7 +1076,7 @@ QPushButton:hover{
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QFrame" name="espacio_informe_integral_6">
+             <widget class="QFrame" name="espacio_catalogo_cargos_empleado">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1174,7 +1174,7 @@ QPushButton:hover{
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_19">
                  <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_11">
+                  <widget class="QLabel" name="label_cargo_empleado">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -1197,7 +1197,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_6">
+                  <widget class="QLineEdit" name="input_cargo_empleado">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1217,7 +1217,7 @@ QPushButton:hover{
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>Aqui va a escribir la enfermedad nueva que falta</string>
+                    <string>Aqui va a escribir el cargo nuevo que falta</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLineEdit{
@@ -1249,7 +1249,7 @@ QLineEdit:focus{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral_6">
+                  <widget class="QPushButton" name="boton_registrar_cargo_empleado">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1336,7 +1336,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico_6">
+                  <widget class="QListWidget" name="vista_previa_cargos_empleados">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -1364,7 +1364,7 @@ QPushButton:hover{
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QFrame" name="espacio_informe_integral_5">
+             <widget class="QFrame" name="espacio_catalogo_funciones_cargo">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1462,7 +1462,7 @@ QPushButton:hover{
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_16">
                  <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_9">
+                  <widget class="QLabel" name="label_funcion_cargo">
                    <property name="font">
                     <font>
                      <family>Arial</family>
@@ -1485,7 +1485,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_5">
+                  <widget class="QLineEdit" name="input_funcion_cargo">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1505,7 +1505,7 @@ QPushButton:hover{
                     </font>
                    </property>
                    <property name="toolTip">
-                    <string>Aqui va a escribir la enfermedad nueva que falta</string>
+                    <string>Aqui va a escribir la funcion de cargo nueva que falta</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLineEdit{
@@ -1537,7 +1537,7 @@ QLineEdit:focus{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral_5">
+                  <widget class="QPushButton" name="boton_registrar_funcion_cargo">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -1624,295 +1624,7 @@ QPushButton:hover{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico_5">
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>14</pointsize>
-                     <weight>50</weight>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string/>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QFrame" name="espacio_informe_integral_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>388</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QFrame{
-
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-	padding:15px;
-
-
-}
-
-</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0,0">
-               <property name="spacing">
-                <number>6</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_titulo_informe_educativo_4">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>320</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	
-	color: rgb(0, 0, 0);
-	border:none;
-	border-color: #ffffff;
-	padding:10px;
-
-
-}
-</string>
-                 </property>
-                 <property name="text">
-                  <string>Catalogo de enfermedades</string>
-                 </property>
-                 <property name="scaledContents">
-                  <bool>false</bool>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="wordWrap">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_13">
-                 <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_7">
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel{
-
-	border:none;
-	padding:0px;
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Roles</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="input_4">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>15</pointsize>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Aqui va a escribir la enfermedad nueva que falta</string>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
-                   </property>
-                   <property name="placeholderText">
-                    <string>.....</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="boton_generar_informe_integral_4">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>13</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-
-	background-color: #008a47;
-
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string> Añadir</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>26</width>
-                     <height>26</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_14">
-                 <item alignment="Qt::AlignLeft">
-                  <widget class="QLabel" name="label_8">
-                   <property name="font">
-                    <font>
-                     <family>Arial</family>
-                     <pointsize>10</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="toolTip">
-                    <string>Aqui estan todas las enfermedades registradas</string>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel{
-
-	border:none;
-	padding:0px;
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Roles registrados</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QListWidget" name="vista_previa_diagnostico_4">
+                  <widget class="QListWidget" name="vista_previa_funciones_cargo">
                    <property name="font">
                     <font>
                      <family>Arial</family>
