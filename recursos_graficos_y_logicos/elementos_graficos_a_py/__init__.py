@@ -6,6 +6,7 @@ from .pantalla_de_opciones_gui import Ui_PantallaDeOpciones
 from .pantalla_admin_opciones_gui import Ui_PantallaDeOpcionesAdmin
 from .pantalla_admin_crear_nuevo_usuario_gui import Ui_CrearNuevoUsuario
 from .pantalla_admin_crear_respaldo_gui import Ui_PantallaCrearRespaldo
+from .pantalla_admin_insertar_catalogo_bd_gui import Ui_PantallaInsertarCatalogoBD
 
 from .pantalla_de_vista_general_de_alumnos_gui import Ui_VistaGeneralDeAlumnos
 from .pantalla_de_vista_general_del_personal_gui import Ui_VistaGeneralDelPersonal
