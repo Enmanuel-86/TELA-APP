@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_PantallaDeOpcionesAdmin(object):
     def setupUi(self, PantallaDeOpcionesAdmin):
         PantallaDeOpcionesAdmin.setObjectName("PantallaDeOpcionesAdmin")
-        PantallaDeOpcionesAdmin.resize(756, 680)
+        PantallaDeOpcionesAdmin.resize(991, 680)
         self.verticalLayout = QtWidgets.QVBoxLayout(PantallaDeOpcionesAdmin)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -22,7 +22,7 @@ class Ui_PantallaDeOpcionesAdmin(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.layout_area_de_scroll = QtWidgets.QWidget()
-        self.layout_area_de_scroll.setGeometry(QtCore.QRect(0, 0, 737, 682))
+        self.layout_area_de_scroll.setGeometry(QtCore.QRect(0, 0, 989, 678))
         self.layout_area_de_scroll.setObjectName("layout_area_de_scroll")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.layout_area_de_scroll)
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -41,7 +41,9 @@ class Ui_PantallaDeOpcionesAdmin(object):
         self.espacio_principal.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.espacio_principal.setObjectName("espacio_principal")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_principal)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.espacio_principal)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_principal)
         self.boton_de_regreso.setMinimumSize(QtCore.QSize(42, 42))
@@ -61,13 +63,13 @@ class Ui_PantallaDeOpcionesAdmin(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
-        self.horizontalLayout.addWidget(self.boton_de_regreso, 0, QtCore.Qt.AlignTop)
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalLayout.addWidget(self.boton_de_regreso)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.label_titulo_del_segemeto_opciones_admin = QtWidgets.QLabel(self.espacio_principal)
         self.label_titulo_del_segemeto_opciones_admin.setMinimumSize(QtCore.QSize(500, 60))
         self.label_titulo_del_segemeto_opciones_admin.setMaximumSize(QtCore.QSize(600, 60))
@@ -86,15 +88,68 @@ class Ui_PantallaDeOpcionesAdmin(object):
 "}")
         self.label_titulo_del_segemeto_opciones_admin.setAlignment(QtCore.Qt.AlignCenter)
         self.label_titulo_del_segemeto_opciones_admin.setObjectName("label_titulo_del_segemeto_opciones_admin")
-        self.verticalLayout_6.addWidget(self.label_titulo_del_segemeto_opciones_admin, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout.addWidget(self.label_titulo_del_segemeto_opciones_admin)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.verticalLayout_8.addLayout(self.horizontalLayout)
         self.espacio_opciones = QtWidgets.QFrame(self.espacio_principal)
         self.espacio_opciones.setStyleSheet("background:transparent;")
         self.espacio_opciones.setObjectName("espacio_opciones")
-        self.formLayout = QtWidgets.QFormLayout(self.espacio_opciones)
-        self.formLayout.setHorizontalSpacing(180)
-        self.formLayout.setVerticalSpacing(30)
-        self.formLayout.setObjectName("formLayout")
+        self.gridLayout = QtWidgets.QGridLayout(self.espacio_opciones)
+        self.gridLayout.setObjectName("gridLayout")
+        self.espacio_opcion_personal = QtWidgets.QFrame(self.espacio_opciones)
+        self.espacio_opcion_personal.setMaximumSize(QtCore.QSize(218, 274))
+        self.espacio_opcion_personal.setStyleSheet("background:transparent;")
+        self.espacio_opcion_personal.setObjectName("espacio_opcion_personal")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.espacio_opcion_personal)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.boton_opcion_personal = QtWidgets.QPushButton(self.espacio_opcion_personal)
+        self.boton_opcion_personal.setMinimumSize(QtCore.QSize(200, 50))
+        self.boton_opcion_personal.setMaximumSize(QtCore.QSize(200, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_opcion_personal.setFont(font)
+        self.boton_opcion_personal.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_opcion_personal.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}\n"
+"")
+        self.boton_opcion_personal.setObjectName("boton_opcion_personal")
+        self.verticalLayout_3.addWidget(self.boton_opcion_personal, 0, QtCore.Qt.AlignHCenter)
+        self.imagen_personal = QtWidgets.QLabel(self.espacio_opcion_personal)
+        self.imagen_personal.setMinimumSize(QtCore.QSize(200, 200))
+        self.imagen_personal.setMaximumSize(QtCore.QSize(200, 200))
+        self.imagen_personal.setStyleSheet("QLabel{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:2px solid black;\n"
+"    border-radius:60px;\n"
+"\n"
+"}")
+        self.imagen_personal.setText("")
+        self.imagen_personal.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/foto_personal.png"))
+        self.imagen_personal.setScaledContents(True)
+        self.imagen_personal.setObjectName("imagen_personal")
+        self.verticalLayout_3.addWidget(self.imagen_personal)
+        self.gridLayout.addWidget(self.espacio_opcion_personal, 0, 0, 1, 1)
         self.espacio_opcion_alumnos = QtWidgets.QFrame(self.espacio_opciones)
+        self.espacio_opcion_alumnos.setMaximumSize(QtCore.QSize(218, 274))
         self.espacio_opcion_alumnos.setStyleSheet("background:transparent;")
         self.espacio_opcion_alumnos.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_opcion_alumnos.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -141,12 +196,13 @@ class Ui_PantallaDeOpcionesAdmin(object):
 "\n"
 "}")
         self.imagen_alumno.setText("")
-        self.imagen_alumno.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/foto_alumnos.png"))
+        self.imagen_alumno.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/foto_alumnos.png"))
         self.imagen_alumno.setScaledContents(True)
         self.imagen_alumno.setObjectName("imagen_alumno")
         self.verticalLayout_2.addWidget(self.imagen_alumno, 0, QtCore.Qt.AlignHCenter)
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.espacio_opcion_alumnos)
+        self.gridLayout.addWidget(self.espacio_opcion_alumnos, 0, 1, 1, 1)
         self.espacio_opcion_crear_usuario = QtWidgets.QFrame(self.espacio_opciones)
+        self.espacio_opcion_crear_usuario.setMaximumSize(QtCore.QSize(218, 274))
         self.espacio_opcion_crear_usuario.setStyleSheet("background:transparent;")
         self.espacio_opcion_crear_usuario.setObjectName("espacio_opcion_crear_usuario")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.espacio_opcion_crear_usuario)
@@ -196,62 +252,13 @@ class Ui_PantallaDeOpcionesAdmin(object):
 "\n"
 "}")
         self.imagen_crear_usuario.setText("")
-        self.imagen_crear_usuario.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/agregar-usuario.png"))
+        self.imagen_crear_usuario.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/agregar-usuario.png"))
         self.imagen_crear_usuario.setScaledContents(True)
         self.imagen_crear_usuario.setObjectName("imagen_crear_usuario")
         self.verticalLayout_5.addWidget(self.imagen_crear_usuario, 0, QtCore.Qt.AlignHCenter)
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.espacio_opcion_crear_usuario)
-        self.espacio_opcion_personal = QtWidgets.QFrame(self.espacio_opciones)
-        self.espacio_opcion_personal.setStyleSheet("background:transparent;")
-        self.espacio_opcion_personal.setObjectName("espacio_opcion_personal")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.espacio_opcion_personal)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.boton_opcion_personal = QtWidgets.QPushButton(self.espacio_opcion_personal)
-        self.boton_opcion_personal.setMinimumSize(QtCore.QSize(200, 50))
-        self.boton_opcion_personal.setMaximumSize(QtCore.QSize(200, 50))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_opcion_personal.setFont(font)
-        self.boton_opcion_personal.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_opcion_personal.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}\n"
-"")
-        self.boton_opcion_personal.setObjectName("boton_opcion_personal")
-        self.verticalLayout_3.addWidget(self.boton_opcion_personal, 0, QtCore.Qt.AlignHCenter)
-        self.imagen_personal = QtWidgets.QLabel(self.espacio_opcion_personal)
-        self.imagen_personal.setMinimumSize(QtCore.QSize(200, 200))
-        self.imagen_personal.setMaximumSize(QtCore.QSize(200, 200))
-        self.imagen_personal.setStyleSheet("QLabel{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:2px solid black;\n"
-"    border-radius:60px;\n"
-"\n"
-"}")
-        self.imagen_personal.setText("")
-        self.imagen_personal.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/foto_personal.png"))
-        self.imagen_personal.setScaledContents(True)
-        self.imagen_personal.setObjectName("imagen_personal")
-        self.verticalLayout_3.addWidget(self.imagen_personal, 0, QtCore.Qt.AlignHCenter)
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.espacio_opcion_personal)
+        self.gridLayout.addWidget(self.espacio_opcion_crear_usuario, 0, 2, 1, 1)
         self.espacio_generar_respaldo = QtWidgets.QFrame(self.espacio_opciones)
+        self.espacio_generar_respaldo.setMaximumSize(QtCore.QSize(218, 274))
         self.espacio_generar_respaldo.setStyleSheet("background:transparent;")
         self.espacio_generar_respaldo.setObjectName("espacio_generar_respaldo")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.espacio_generar_respaldo)
@@ -305,13 +312,77 @@ class Ui_PantallaDeOpcionesAdmin(object):
 "\n"
 "}")
         self.imagen_respaldo.setText("")
-        self.imagen_respaldo.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/respaldo.png"))
+        self.imagen_respaldo.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/respaldo.png"))
         self.imagen_respaldo.setScaledContents(True)
         self.imagen_respaldo.setObjectName("imagen_respaldo")
-        self.verticalLayout_4.addWidget(self.imagen_respaldo, 0, QtCore.Qt.AlignHCenter)
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.espacio_generar_respaldo)
-        self.verticalLayout_6.addWidget(self.espacio_opciones, 0, QtCore.Qt.AlignHCenter)
-        self.horizontalLayout.addLayout(self.verticalLayout_6)
+        self.verticalLayout_4.addWidget(self.imagen_respaldo)
+        self.gridLayout.addWidget(self.espacio_generar_respaldo, 1, 0, 1, 1)
+        self.espacio_catalogo = QtWidgets.QFrame(self.espacio_opciones)
+        self.espacio_catalogo.setMaximumSize(QtCore.QSize(218, 274))
+        self.espacio_catalogo.setStyleSheet("background:transparent;")
+        self.espacio_catalogo.setObjectName("espacio_catalogo")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.espacio_catalogo)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.boton_cargar_catalogo = QtWidgets.QPushButton(self.espacio_catalogo)
+        self.boton_cargar_catalogo.setMinimumSize(QtCore.QSize(200, 50))
+        self.boton_cargar_catalogo.setMaximumSize(QtCore.QSize(200, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        self.boton_cargar_catalogo.setFont(font)
+        self.boton_cargar_catalogo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_cargar_catalogo.setAcceptDrops(False)
+        self.boton_cargar_catalogo.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}\n"
+"")
+        icon = QtGui.QIcon.fromTheme("document-open")
+        self.boton_cargar_catalogo.setIcon(icon)
+        self.boton_cargar_catalogo.setIconSize(QtCore.QSize(70, 70))
+        self.boton_cargar_catalogo.setAutoDefault(False)
+        self.boton_cargar_catalogo.setObjectName("boton_cargar_catalogo")
+        self.verticalLayout_6.addWidget(self.boton_cargar_catalogo, 0, QtCore.Qt.AlignHCenter)
+        self.imagen_lista_catalogo = QtWidgets.QLabel(self.espacio_catalogo)
+        self.imagen_lista_catalogo.setMinimumSize(QtCore.QSize(200, 200))
+        self.imagen_lista_catalogo.setMaximumSize(QtCore.QSize(200, 200))
+        self.imagen_lista_catalogo.setStyleSheet("QLabel{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:2px solid black;\n"
+"    border-radius:60px;\n"
+"    padding:20px;\n"
+"\n"
+"\n"
+"    \n"
+"\n"
+"}")
+        self.imagen_lista_catalogo.setText("")
+        self.imagen_lista_catalogo.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/lista-de-verificacion.png"))
+        self.imagen_lista_catalogo.setScaledContents(True)
+        self.imagen_lista_catalogo.setAlignment(QtCore.Qt.AlignCenter)
+        self.imagen_lista_catalogo.setObjectName("imagen_lista_catalogo")
+        self.verticalLayout_6.addWidget(self.imagen_lista_catalogo)
+        self.gridLayout.addWidget(self.espacio_catalogo, 1, 1, 1, 1)
+        self.verticalLayout_8.addWidget(self.espacio_opciones)
         self.verticalLayout_7.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.layout_area_de_scroll)
         self.verticalLayout.addWidget(self.area_de_scroll)
@@ -323,8 +394,10 @@ class Ui_PantallaDeOpcionesAdmin(object):
         _translate = QtCore.QCoreApplication.translate
         PantallaDeOpcionesAdmin.setWindowTitle(_translate("PantallaDeOpcionesAdmin", "Form"))
         self.label_titulo_del_segemeto_opciones_admin.setText(_translate("PantallaDeOpcionesAdmin", "Elige hacia dónde se va a dirigir"))
+        self.boton_opcion_personal.setText(_translate("PantallaDeOpcionesAdmin", "Personal"))
         self.boton_opcion_alumno.setText(_translate("PantallaDeOpcionesAdmin", "Alumnos"))
         self.boton_crear_usuario.setText(_translate("PantallaDeOpcionesAdmin", "Crear nuevo usuario"))
-        self.boton_opcion_personal.setText(_translate("PantallaDeOpcionesAdmin", "Personal"))
         self.boton_importar_exportar.setText(_translate("PantallaDeOpcionesAdmin", "Importar / Exportar\n"
 "datos"))
+        self.boton_cargar_catalogo.setText(_translate("PantallaDeOpcionesAdmin", "Cargar catalogo al\n"
+"sistema"))
