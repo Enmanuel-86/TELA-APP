@@ -15,7 +15,8 @@ from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, 
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
-                                        PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos, PantallaAsistenciaAlumnos)
+                                        PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
+                                        PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo)
 
 
 ##################################
@@ -224,6 +225,9 @@ class MainWindow(QMainWindow):
         self.pantalla_asistencia_alumnos = PantallaAsistenciaAlumnos(self.stacked_widget)
         self.pantalla_generar_informes_reportes_alumno = PantallaGenerarInformesReportesAlumnos(self.stacked_widget)
 
+        self.pantalla_admin_insertar_catalogo = PantallaAdminInsertarCatalogo(self.stacked_widget)
+
+        # Añadiendo las pantalla en el stackedwidget
         self.stacked_widget.addWidget(self.menu_opciones)  # indice 1
         self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 2
         self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 3
@@ -241,6 +245,10 @@ class MainWindow(QMainWindow):
         
         self.stacked_widget.addWidget(self.pantalla_asistencia_alumnos) # indice 13
         self.stacked_widget.addWidget(self.pantalla_generar_informes_reportes_alumno) # indice #14
+        
+        self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 15
+        
+        # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
         
         self.stacked_widget.setCurrentIndex(0)
