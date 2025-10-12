@@ -83,26 +83,12 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 
 <ol>
   <li>
-    <b>Registra Informacion:</b> este sistema registra toda la informacion requerida del taller de educacion laboral anzoategui, registra la informacion de los alumnos y del personal.
-    <div align="center">
-       <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/formulario.png" alt="imagen formulario" width="600" height="300">
-    </div>
-    <hr>
-    
-    
-  </li>
-    
-
-    
+    <b>Registra Informacion:</b> este sistema registra toda la informacion requerida del taller de educacion laboral anzoategui, registra la informacion de los alumnos y del personal.</li>
+  [insertar imagen relacionada a registrar]
 
   <li>
     <b>Consulta la informacion que se registro:</b> se puede consultar toda la informacion que se registro en el sistema.
-    <div align="center">
-       <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/vista_general.png" alt="vista general" width="600" height="300">
-       <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/perfil_alumno.png" alt="perfil de alumno" width="600" height="300">
-    </div>
-  <hr>
-    
+    [insertar imagenes de como se consulta ]
   </li>
 
   <li>
@@ -120,10 +106,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 
   <li>
     <b>Genera respaldos:</b>el sistema genera respaldos para resguardar la informacion y de exportar en caso de  instalar el sistema en otro equipo.
-    <div align="center">
-       <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/importar_exportar.png" alt="respaldo" width="600" height="300">
-    </div>
-    <hr>
+    [insertar imagen de la pantalla de respaldo]
   
   </li>  
 
