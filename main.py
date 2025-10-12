@@ -252,7 +252,7 @@ class MainWindow(QMainWindow):
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
         
-        self.stacked_widget.setCurrentIndex(15)
+        self.stacked_widget.setCurrentIndex(0)
         
         
         self.msg = QMessageBox()
