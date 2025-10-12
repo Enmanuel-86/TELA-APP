@@ -1,42 +1,48 @@
 import os
 import sys
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
-                             QHBoxLayout, QLabel, QLineEdit, QPushButton,
-                             QFileDialog, QMessageBox, QProgressBar)
-from PyQt5.QtCore import QThread, pyqtSignal
-from PyQt5.uic import compileUi
+from io import StringIO
+from PySide2.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox,
+    QProgressBar, QListWidget, QListWidgetItem
+)
+from PySide2.QtCore import QThread, Signal
+from PyQt5.uic import compileUi  # Se usa solo para compilar en memoria
 
 
 class UiConverterThread(QThread):
-    progress = pyqtSignal(int)
-    finished = pyqtSignal(bool, str)
+    progress = Signal(int)
+    finished = Signal(bool, str)
 
-    def __init__(self, input_file, output_file):
+    def __init__(self, input_files, output_folder):
         super().__init__()
-        self.input_file = input_file
-        self.output_file = output_file
+        self.input_files = input_files
+        self.output_folder = output_folder
 
     def run(self):
         try:
-            # Primero compila el .ui en memoria
-            from io import StringIO
-            buffer = StringIO()
-            compileUi(self.input_file, buffer)
-            content = buffer.getvalue()
+            total_files = len(self.input_files)
+            for index, input_file in enumerate(self.input_files):
+                base_name = os.path.splitext(os.path.basename(input_file))[0]
+                output_file = os.path.join(self.output_folder, f"{base_name}_gui.py")
 
-            # Quitar la línea con la ruta absoluta
-            lines = content.splitlines()
-            cleaned_lines = []
-            for line in lines:
-                if "reading ui file" in line:  # detecta la línea con la ruta
-                    continue
-                cleaned_lines.append(line)
+                buffer = StringIO()
+                compileUi(input_file, buffer)
+                content = buffer.getvalue()
 
-            # Guardar el resultado sin la ruta
-            with open(self.output_file, "w", encoding="utf-8") as f:
-                f.write("\n".join(cleaned_lines))
+                # Limpiar línea con ruta absoluta
+                lines = [line for line in content.splitlines() if "reading ui file" not in line]
+                content = "\n".join(lines)
 
-            self.progress.emit(100)
+                # Reemplazar PyQt5 → PySide2
+                content = content.replace("from PyQt5 import", "from PySide2 import")
+
+                # Guardar archivo convertido
+                with open(output_file, "w", encoding="utf-8") as f:
+                    f.write(content)
+
+                self.progress.emit(int((index + 1) / total_files * 100))
+
             self.finished.emit(True, "Conversión completada con éxito!")
         except Exception as e:
             self.finished.emit(False, f"Error: {str(e)}")
@@ -45,122 +51,122 @@ class UiConverterThread(QThread):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Conversor UI a PY - Qt Designer")
-        self.setGeometry(100, 100, 500, 220)  # Aumenté la altura para el nuevo label
-
+        self.setWindowTitle("Conversor UI → PySide2")
+        self.setGeometry(100, 100, 600, 400)
         self.init_ui()
         self.converter_thread = None
         self.output_folder = ""
+        self.selected_files = []
 
     def init_ui(self):
-        # Widget principal
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
+        main_layout = QVBoxLayout(central_widget)
+        main_layout.setContentsMargins(15, 15, 15, 15)
+        main_layout.setSpacing(15)
 
-        # Layout principal
-        main_layout = QVBoxLayout()
-        central_widget.setLayout(main_layout)
-
-        # Sección de archivo de entrada (.ui)
+        # Sección selección de archivos
         input_layout = QHBoxLayout()
-        self.input_label = QLabel("Archivo UI:")
         self.input_line = QLineEdit()
-        self.input_line.setPlaceholderText("Selecciona un archivo .ui")
+        self.input_line.setPlaceholderText("Selecciona archivos .ui")
+        self.input_line.setReadOnly(True)
         self.input_btn = QPushButton("Examinar...")
-        self.input_btn.clicked.connect(self.browse_ui_file)
-
-        input_layout.addWidget(self.input_label)
+        self.input_btn.clicked.connect(self.browse_ui_files)
         input_layout.addWidget(self.input_line)
         input_layout.addWidget(self.input_btn)
 
-        # Sección de carpeta de salida
+        # Lista de archivos seleccionados
+        self.file_list_widget = QListWidget()
+        self.file_list_widget.setStyleSheet("""
+            QListWidget {
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 5px;
+                background-color: #f9f9f9;
+            }
+        """)
+
+        # Carpeta de salida
         output_layout = QHBoxLayout()
-        self.output_label = QLabel("Carpeta PY:")
         self.output_line = QLineEdit()
         self.output_line.setPlaceholderText("Selecciona carpeta para guardar .py")
+        self.output_line.setReadOnly(True)
         self.output_btn = QPushButton("Examinar...")
         self.output_btn.clicked.connect(self.browse_output_folder)
-
-        output_layout.addWidget(self.output_label)
         output_layout.addWidget(self.output_line)
         output_layout.addWidget(self.output_btn)
-
-        # Label para mostrar el nombre del archivo de salida
-        self.filename_label = QLabel("Nombre del archivo: ")
-        self.filename_label.setStyleSheet("font-weight: bold; color: #2c3e50;")
 
         # Barra de progreso
         self.progress_bar = QProgressBar()
         self.progress_bar.setValue(0)
+        self.progress_bar.setStyleSheet("""
+            QProgressBar {
+                border: 1px solid #bbb;
+                border-radius: 8px;
+                text-align: center;
+            }
+            QProgressBar::chunk {
+                background-color: #5cb85c;
+                border-radius: 8px;
+            }
+        """)
 
         # Botón de conversión
         self.convert_btn = QPushButton("Convertir")
         self.convert_btn.clicked.connect(self.convert_ui)
+        self.convert_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #4CAF50;
+                color: white;
+                font-weight: bold;
+                border-radius: 10px;
+                padding: 8px 15px;
+            }
+            QPushButton:hover {
+                background-color: #45a049;
+            }
+        """)
 
-        # Agregar widgets al layout principal
+        # Agregar todos los widgets al layout principal
         main_layout.addLayout(input_layout)
+        main_layout.addWidget(QLabel("Archivos seleccionados:"))
+        main_layout.addWidget(self.file_list_widget)
         main_layout.addLayout(output_layout)
-        main_layout.addWidget(self.filename_label)
         main_layout.addWidget(self.progress_bar)
         main_layout.addWidget(self.convert_btn)
 
-    def browse_ui_file(self):
-        file_path, _ = QFileDialog.getOpenFileName(
-            self, "Seleccionar archivo UI", "", "Qt Designer Files (*.ui)"
+    def browse_ui_files(self):
+        files, _ = QFileDialog.getOpenFileNames(
+            self, "Seleccionar archivo(s) UI", "", "Qt Designer Files (*.ui)"
         )
-        if file_path:
-            self.input_line.setText(file_path)
-            self.update_filename_display()
+        if files:
+            self.selected_files = files
+            self.input_line.setText(f"{len(files)} archivo(s) seleccionado(s)")
+            self.file_list_widget.clear()
+            for f in files:
+                item = QListWidgetItem(os.path.basename(f))
+                self.file_list_widget.addItem(item)
 
     def browse_output_folder(self):
-        folder_path = QFileDialog.getExistingDirectory(
-            self, "Seleccionar carpeta de destino"
-        )
+        folder_path = QFileDialog.getExistingDirectory(self, "Seleccionar carpeta de destino")
         if folder_path:
             self.output_folder = folder_path
             self.output_line.setText(folder_path)
-            self.update_filename_display()
-
-    def update_filename_display(self):
-        """Actualiza el label con el nombre del archivo de salida que se generará"""
-        input_file = self.input_line.text()
-        output_folder = self.output_line.text()
-
-        if input_file and output_folder:
-            base_name = os.path.splitext(os.path.basename(input_file))[0]
-            output_filename = f"{base_name}_gui.py"
-            self.filename_label.setText(f"Nombre del archivo: {output_filename}")
-        else:
-            self.filename_label.setText("Nombre del archivo: ")
 
     def convert_ui(self):
-        input_file = self.input_line.text()
-        output_folder = self.output_line.text()
-
-        if not input_file:
-            QMessageBox.warning(self, "Advertencia", "Debes seleccionar un archivo .ui!")
+        if not self.selected_files:
+            QMessageBox.warning(self, "Advertencia", "Debes seleccionar al menos un archivo .ui!")
             return
-
-        if not output_folder:
+        if not self.output_folder:
             QMessageBox.warning(self, "Advertencia", "Debes seleccionar una carpeta de destino!")
             return
 
-        if not input_file.endswith('.ui'):
-            QMessageBox.warning(self, "Advertencia", "El archivo de entrada debe ser .ui!")
-            return
-
-        # Generar nombre del archivo de salida
-        base_name = os.path.splitext(os.path.basename(input_file))[0]
-        output_file = os.path.join(output_folder, f"{base_name}_gui.py")
-
-        # Deshabilitar botones durante la conversión
         self.input_btn.setEnabled(False)
         self.output_btn.setEnabled(False)
         self.convert_btn.setEnabled(False)
         self.progress_bar.setValue(0)
 
-        # Crear y ejecutar hilo de conversión
-        self.converter_thread = UiConverterThread(input_file, output_file)
+        self.converter_thread = UiConverterThread(self.selected_files, self.output_folder)
         self.converter_thread.progress.connect(self.update_progress)
         self.converter_thread.finished.connect(self.conversion_finished)
         self.converter_thread.start()
@@ -169,12 +175,10 @@ class MainWindow(QMainWindow):
         self.progress_bar.setValue(value)
 
     def conversion_finished(self, success, message):
-        # Habilitar botones nuevamente
         self.input_btn.setEnabled(True)
         self.output_btn.setEnabled(True)
         self.convert_btn.setEnabled(True)
 
-        # Mostrar mensaje
         if success:
             QMessageBox.information(self, "Éxito", message)
         else:

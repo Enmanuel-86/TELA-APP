@@ -1,8 +1,8 @@
-from PyQt5.QtCore import Qt,QPoint
-from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout, 
+from PySide2.QtCore import Qt,QPoint
+from PySide2.QtGui import QIcon, QStandardItemModel, QStandardItem
+from PySide2.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout, 
                              QMessageBox, QListWidget, QListWidgetItem, QPushButton)
-from PyQt5 import QtGui
+from PySide2 import QtGui
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
 

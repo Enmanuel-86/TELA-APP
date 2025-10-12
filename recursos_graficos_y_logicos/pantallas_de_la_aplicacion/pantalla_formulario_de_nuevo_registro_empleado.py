@@ -1,11 +1,11 @@
 from datetime import datetime
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QRegExpValidator, QIntValidator
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtGui import QIcon
+from PySide2.QtCore import QRegExp
+from PySide2.QtGui import QRegExpValidator, QIntValidator
+from PySide2 import QtGui, QtCore
+from PySide2.QtGui import QIcon
 import traceback
 import os
-from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
+from PySide2.QtWidgets import (QWidget, QCalendarWidget, QFrame,
                              QStackedWidget, QMessageBox,QListWidgetItem,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)

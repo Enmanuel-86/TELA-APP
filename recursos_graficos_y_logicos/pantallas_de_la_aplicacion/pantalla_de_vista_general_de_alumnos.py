@@ -1,8 +1,8 @@
-from PyQt5.QtCore import Qt,QPoint
-from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLayout, 
+from PySide2.QtCore import Qt,QPoint
+from PySide2.QtGui import QIcon, QStandardItemModel, QStandardItem
+from PySide2.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLayout, 
                              QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
-from PyQt5 import QtGui, QtCore
+from PySide2 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
 
@@ -834,7 +834,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             row_layout.addWidget(boton_ver)
             
             boton_ver.clicked.connect(
-            lambda checked, item=item, lista=nombre_lista: self.ver_diagnostico_seleccionado(nombre_qlistwidget, lista, item)
+            lambda  item=item, lista=nombre_lista: self.ver_diagnostico_seleccionado(nombre_qlistwidget, lista, item)
         )
         
             # Asignar el widget al QListWidgetItem

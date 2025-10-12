@@ -1,15 +1,15 @@
 import sys
 import os
 import random
-from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
+from PySide2.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
                              QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
-from PyQt5.QtGui import QIcon, QPixmap
+from PySide2.QtGui import QIcon, QPixmap
 
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect
-from PyQt5.QtGui import QColor
+from PySide2.QtWidgets import QGraphicsDropShadowEffect
+from PySide2.QtGui import QColor
 
 
-from PyQt5 import QtGui
+from PySide2 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login)
 
 
@@ -208,9 +208,10 @@ class MainWindow(QMainWindow):
         ## Instanacias de las primeras pantallas ##
         self.menu_opciones = PantallaDeOpciones(self.stacked_widget) # Menu de opciones
         self.pantalla_vista_general_del_personal = PantallaDeVistaGeneralDelPersonal(self.stacked_widget) # pantalla vista general del personal
-        self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
         self.pantalla_formulario_nuevo_registro_empleado = PantallaDeFormularioNuevoRegistroEmpleado(self.stacked_widget) # pantalla del formulario para el nuevo registro del personal
         self.pantalla_control_de_llegada = PantallaControlDeLlegada(self.stacked_widget) # pantalla de control de llegada del personal
+
+        self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
         self.pantalla_formulario_nuevo_registro_de_alumnos = PantallaDeFormularioNuevoRegistroAlumnos(self.stacked_widget) # pantalla del formulario para el nuevo registro de los alumnos
         
         
@@ -251,7 +252,7 @@ class MainWindow(QMainWindow):
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
         
-        self.stacked_widget.setCurrentIndex(0)
+        self.stacked_widget.setCurrentIndex(15)
         
         
         self.msg = QMessageBox()

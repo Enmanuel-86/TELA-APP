@@ -1,6 +1,6 @@
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import  QWidget, QDockWidget
-from PyQt5 import QtGui, Qt
+from PySide2.QtGui import QIcon
+from PySide2.QtWidgets import  QWidget, QDockWidget
+from PySide2 import QtGui
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInfoCompletaDelAlumno
 
