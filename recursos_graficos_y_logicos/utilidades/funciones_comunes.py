@@ -157,6 +157,77 @@ class FuncionesComunes:
             print(f"\nLa lista para el/los boton cargo correctamente")
     
     
+    
+    # Metodos para limpiar los inputs 
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: list, lista_qradiobuttons: list = []) -> None:
+        
+        """
+            ### Este metodo sirve para limpiar los inputs mas relevante como los:
+            
+            * QLineEdit
+            * QLabel
+            * QRadioButton
+            
+            
+            Para usar la funcion solo haga una lista agrupando todos los QLabel y QLineEdit en una lista y los QRadioButton en otra.
+            
+            Ya que los QLabel y QLineEdit para limpiarse ambos usan .clear() y los QRadioButton no.
+            
+            
+            
+            **Ejemplo**
+            
+            lista_qlabel_qlineedit = [input_1, input_2, input_3, ......]
+            
+            lista_qradiobutton = [radiobuton_1, radiobuton_2, ........]
+            
+            limpiar_inputs_de_qt(lista_qlabel_qlineedit, lista_qradiobutton) 
+            
+            ### Limpia los inputs (usarlo para salir de una pantalla o terminar una tarea)
+            
+            
+            
+            
+            
+        
+        
+        """
+        
+        
+        try:
+            # Limpiamos los QlineEdits
+            for qlineedit_o_qlabel in lista_qlineedits_y_qlabel:
+                qlineedit_o_qlabel.clear()
+                #qlineedit_o_qlabel.setEnabled(True)
+                
+            # Limpiamos los RadioButtons
+            
+            if len(lista_qradiobuttons) >= 0: 
+                
+                for radiobutton in lista_qradiobuttons:
+                    
+                    radiobutton.setAutoExclusive(False)
+                    radiobutton.setChecked(False)
+                    radiobutton.setAutoExclusive(True)
+                
+            
+
+        except Exception as e:
+            
+            self.mostrar_errores_por_excepcion(e, "Limpiar_inputs_de_qt")
+            
+            
+        else:
+            
+            print("Todo se limpio correctamente")
+        
+    
+    
+    
+    
+    
+    
+    
     # Metodo para muestrar los errores en X linea y x funcion
     def mostrar_errores_por_excepcion(self, e, nombre_func: str):
         """
@@ -198,5 +269,8 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
 
 funciones_comunes = FuncionesComunes()
 
-print(funciones_comunes.buscar_id_por_cedula("175362562", lista_prueba))
-print(funciones_comunes.cargar_elementos_para_el_combobox())
+#print(funciones_comunes.buscar_id_por_cedula("175362562", lista_prueba))
+#print(funciones_comunes.cargar_elementos_para_el_combobox())
+
+
+#funciones_comunes.limpiar_inputs_de_qt(lista_qlineedits_y_qlabel= [("12"), (123)])
