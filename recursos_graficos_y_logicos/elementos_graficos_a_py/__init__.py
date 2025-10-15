@@ -1,3 +1,5 @@
+from .pantalla_principal_gui import Ui_VentanaPrincipal
+
 from .cintillo_gui import Ui_CintilloV2
 from .pantalla_de_login_gui import Ui_Login
 
