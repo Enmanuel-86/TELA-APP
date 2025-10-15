@@ -10,7 +10,7 @@ from PySide2.QtGui import QColor
 
 
 from PySide2 import QtGui
-from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login)
+from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login, Ui_VentanaPrincipal)
 
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
@@ -156,12 +156,18 @@ class Login(QWidget, Ui_Login):
     
 
 ## Clase principal donde esta toda la apliacion ##
-class MainWindow(QMainWindow):
+class MainWindow(Ui_VentanaPrincipal, QMainWindow):
     def __init__(self):
         super().__init__()
+        
+        self.setupUi(self)
+        
         ## Colocamos el icono a la aplicacion ##
         self.setWindowTitle("T.E.L.A APP")
         self.setWindowIcon(QIcon(ruta_del_icono))
+        
+        #Eliminar las 2 primeras páginas
+        self.remove_default_pages()
         
         self.setGeometry(0,0,700,650)
         # Establecer tamaño mínimo y máximo
@@ -178,28 +184,16 @@ class MainWindow(QMainWindow):
         
 
         # instancia del login y el cintillo
-        self.stacked_widget = QStackedWidget()
+        #self.stacked_widget = QStackedWidget()
         self.login = Login()
-        self.cintillo = Cintillo()
 
         self.login.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.login.ojo_cerrado))
 
-        # Configurar widget central
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+        
 
-        # Crear layout
-        layout = QVBoxLayout()
-
-        # Agregar widgets al layout
-        layout.addWidget(self.cintillo)
-        layout.addWidget(self.stacked_widget)
-        layout.setContentsMargins(0, 0, 0, 0)  # ❌ Quitar márgenes
-        layout.setSpacing(0)
-
-        # Asignar layout al widget central
-        central_widget.setLayout(layout)
-
+        
+       
+        
         self.stacked_widget.addWidget(self.login)
 
 
@@ -253,6 +247,9 @@ class MainWindow(QMainWindow):
         
         
         self.stacked_widget.setCurrentIndex(0)
+        
+        self.area_scroll_side_bar.hide()
+        self.pushButton_8.clicked.connect(lambda: self.area_scroll_side_bar.hide())
         
         
         self.msg = QMessageBox()
@@ -333,6 +330,7 @@ class MainWindow(QMainWindow):
                     self.login.input_usuario.clear() #limpia el input de nombre de usuario
                     self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
                     self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
+                    self.area_scroll_side_bar.show()
                     
                     
 
@@ -347,7 +345,23 @@ class MainWindow(QMainWindow):
 
 
 
-    
+     
+        
+    def remove_default_pages(self):
+        """Elimina las 2 primeras páginas por defecto de Qt Designer"""
+        # Verificar que existen al menos 2 páginas
+        if self.stacked_widget.count() >= 2:
+            # Eliminar página 1 (índice 0)
+            page1 = self.stacked_widget.widget(0)
+            self.stacked_widget.removeWidget(page1)
+            if page1:
+                page1.deleteLater()
+            
+            # Eliminar página 2 (índice 0 ahora, porque ya eliminamos la primera)
+            page2 = self.stacked_widget.widget(0)
+            self.stacked_widget.removeWidget(page2)
+            if page2:
+                page2.deleteLater()
 
 
 
