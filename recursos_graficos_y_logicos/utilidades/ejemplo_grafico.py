@@ -7,6 +7,12 @@ from crear_grafico_estadistico import GraficoEstadistico
 
 
 class VentanaPrincipal(QMainWindow):
+    
+    """
+        Este archivo no se usa para nada, solo para recordar la sintaxis de como usar las funciones del grafico
+    
+    
+    """
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Gráfico Estadístico Interactivo")
