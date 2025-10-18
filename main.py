@@ -13,10 +13,12 @@ from PySide2 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login, Ui_VentanaPrincipal)
 
 
-from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+from recursos_graficos_y_logicos import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
                                         PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo)
+
+
 
 
 ##################################
@@ -93,24 +95,7 @@ def aplicar_sombra(widget, n_blurradio, n_opacidad):
         sombra.setBlurRadius(n_blurradio)
         sombra.setOffset(2, 2)
         sombra.setColor(QColor(0, 0, 0, n_opacidad))
-        widget.setGraphicsEffect(sombra)     
-
-
-
-
-    
-## cintillo ##
-class Cintillo(QWidget, Ui_CintilloV2):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-
-        ## Rutas relativas de la imagenes ##
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_zona_educativa.png")))
-        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "membrete.png")))
-        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
-        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
-
+        widget.setGraphicsEffect(sombra) 
 
 ## Login del sistema
 class Login(QWidget, Ui_Login):
@@ -178,7 +163,19 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         ## Procurar activarlo al final ##
         #self.mostrar_advertencia()
         
-        # Barra de estado, esto es para ver que tal
+        
+        
+        # Rutas relativas de la imagenes
+        
+        ## cintillo ##
+        ## Rutas relativas de la imagenes ##
+        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_zona_educativa.png")))
+        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "membrete.png")))
+        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
+        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
+
+        
+        
         
         
         
@@ -249,7 +246,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.stacked_widget.setCurrentIndex(0)
         
         self.area_scroll_side_bar.hide()
-        self.pushButton_8.clicked.connect(lambda: self.area_scroll_side_bar.hide())
+        
         
         
         self.msg = QMessageBox()
