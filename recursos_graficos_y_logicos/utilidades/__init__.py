@@ -1,1 +1,1 @@
-from .funciones_comunes import funciones_comunes
+from .funciones_sistema import funciones_comunes
