@@ -170,7 +170,7 @@ class Ui_Login(object):
         self.logo_del_tela.setObjectName("logo_del_tela")
         self.verticalLayout.addWidget(self.espacio_login, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.label_mensaje_usuario = QtWidgets.QLabel(Login)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.label_mensaje_usuario.sizePolicy().hasHeightForWidth())
