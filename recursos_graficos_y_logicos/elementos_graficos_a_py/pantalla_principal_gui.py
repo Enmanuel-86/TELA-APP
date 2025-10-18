@@ -13,7 +13,8 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_VentanaPrincipal(object):
     def setupUi(self, VentanaPrincipal):
         VentanaPrincipal.setObjectName("VentanaPrincipal")
-        VentanaPrincipal.resize(749, 583)
+        VentanaPrincipal.resize(760, 583)
+        VentanaPrincipal.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(VentanaPrincipal)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -107,243 +108,443 @@ class Ui_VentanaPrincipal(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.side_bar = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.side_bar.setMinimumSize(QtCore.QSize(181, 351))
+        self.side_bar.setMinimumSize(QtCore.QSize(100, 351))
+        self.side_bar.setMaximumSize(QtCore.QSize(200, 16777215))
         self.side_bar.setStyleSheet("QFrame{\n"
 "\n"
-"    \n"
-"    \n"
-"    background-color: rgb(0, 138, 71);\n"
-"\n"
-"\n"
+"background-color: rgb(0, 138, 71);\n"
 "}")
         self.side_bar.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.side_bar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.side_bar.setObjectName("side_bar")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.side_bar)
         self.verticalLayout_2.setContentsMargins(5, 10, -1, -1)
-        self.verticalLayout_2.setSpacing(12)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame = QtWidgets.QFrame(self.side_bar)
+        self.frame.setStyleSheet("QFrame{\n"
+"\n"
+"    padding:0px 0px 0px 5px;\n"
+"\n"
+"}\n"
+"")
         self.frame.setObjectName("frame")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setMaximumSize(QtCore.QSize(40, 30))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/menu.png"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_2.addWidget(self.label_2)
-        self.label_3 = QtWidgets.QLabel(self.frame)
-        self.label_3.setMaximumSize(QtCore.QSize(80, 50))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(19)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("QLabel{\n"
-"\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"\n"
-"}")
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout_2.addWidget(self.label_3)
-        self.verticalLayout_2.addWidget(self.frame)
-        self.pushButton_4 = QtWidgets.QPushButton(self.side_bar)
+        self.boton_menu = QtWidgets.QPushButton(self.frame)
+        self.boton_menu.setMaximumSize(QtCore.QSize(62, 16777215))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet("QPushButton {\n"
+        self.boton_menu.setFont(font)
+        self.boton_menu.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    \n"
+"\n"
+"    padding:5px 0px 5px 5px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
 "}\n"
 "\n"
 "\n"
 "\n"
 "")
+        self.boton_menu.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/analisis_de_datos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon)
-        self.pushButton_4.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_4.setCheckable(True)
-        self.pushButton_4.setAutoRepeat(True)
-        self.pushButton_4.setAutoExclusive(True)
-        self.pushButton_4.setAutoDefault(False)
-        self.pushButton_4.setDefault(False)
-        self.pushButton_4.setFlat(False)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout_2.addWidget(self.pushButton_4)
-        self.pushButton = QtWidgets.QPushButton(self.side_bar)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_menu.setIcon(icon)
+        self.boton_menu.setIconSize(QtCore.QSize(30, 30))
+        self.boton_menu.setAutoDefault(False)
+        self.boton_menu.setDefault(False)
+        self.boton_menu.setFlat(False)
+        self.boton_menu.setObjectName("boton_menu")
+        self.horizontalLayout_2.addWidget(self.boton_menu, 0, QtCore.Qt.AlignLeft)
+        self.label_menu = QtWidgets.QLabel(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(10)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_menu.sizePolicy().hasHeightForWidth())
+        self.label_menu.setSizePolicy(sizePolicy)
+        self.label_menu.setMaximumSize(QtCore.QSize(80, 50))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(19)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_menu.setFont(font)
+        self.label_menu.setStyleSheet("QLabel{\n"
+"\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_menu.setObjectName("label_menu")
+        self.horizontalLayout_2.addWidget(self.label_menu, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_2.addWidget(self.frame)
+        self.line = QtWidgets.QFrame(self.side_bar)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.verticalLayout_2.addWidget(self.line)
+        self.boton_dashboard = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.boton_dashboard.setFont(font)
+        self.boton_dashboard.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
+"\n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border:none;\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"    border-left:3px solid rgb(0, 183, 72);\n"
+"    padding-left:4px;\n"
+"\n"
 "}\n"
 "\n"
 "\n"
 "\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon1)
-        self.pushButton.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton.setCheckable(True)
-        self.pushButton.setAutoRepeat(True)
-        self.pushButton.setAutoExclusive(True)
-        self.pushButton.setAutoDefault(False)
-        self.pushButton.setDefault(False)
-        self.pushButton.setFlat(False)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout_2.addWidget(self.pushButton)
-        self.pushButton_7 = QtWidgets.QPushButton(self.side_bar)
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/analisis_de_datos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_dashboard.setIcon(icon1)
+        self.boton_dashboard.setIconSize(QtCore.QSize(30, 30))
+        self.boton_dashboard.setCheckable(True)
+        self.boton_dashboard.setAutoRepeat(True)
+        self.boton_dashboard.setAutoExclusive(True)
+        self.boton_dashboard.setObjectName("boton_dashboard")
+        self.verticalLayout_2.addWidget(self.boton_dashboard)
+        self.line_2 = QtWidgets.QFrame(self.side_bar)
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.verticalLayout_2.addWidget(self.line_2)
+        self.boton_estudiante = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_7.setFont(font)
-        self.pushButton_7.setStyleSheet("QPushButton {\n"
+        self.boton_estudiante.setFont(font)
+        self.boton_estudiante.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
+"\n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border:none;\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"    border-left:3px solid rgb(0, 183, 72);\n"
+"    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/equipo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon2)
-        self.pushButton_7.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_7.setCheckable(True)
-        self.pushButton_7.setAutoRepeat(True)
-        self.pushButton_7.setAutoExclusive(True)
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.verticalLayout_2.addWidget(self.pushButton_7)
-        self.pushButton_2 = QtWidgets.QPushButton(self.side_bar)
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_estudiante.setIcon(icon2)
+        self.boton_estudiante.setIconSize(QtCore.QSize(30, 30))
+        self.boton_estudiante.setCheckable(True)
+        self.boton_estudiante.setAutoRepeat(True)
+        self.boton_estudiante.setAutoExclusive(True)
+        self.boton_estudiante.setAutoDefault(False)
+        self.boton_estudiante.setDefault(False)
+        self.boton_estudiante.setFlat(False)
+        self.boton_estudiante.setObjectName("boton_estudiante")
+        self.verticalLayout_2.addWidget(self.boton_estudiante)
+        self.line_3 = QtWidgets.QFrame(self.side_bar)
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.verticalLayout_2.addWidget(self.line_3)
+        self.boton_personal = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
+        self.boton_personal.setFont(font)
+        self.boton_personal.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
-        self.pushButton_2.setIcon(icon2)
-        self.pushButton_2.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_2.setCheckable(True)
-        self.pushButton_2.setAutoRepeat(True)
-        self.pushButton_2.setAutoExclusive(True)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout_2.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.side_bar)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet("QPushButton {\n"
-"    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
-"    text-align: left;\n"
+"\n"
+"    background:transparent; \n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
+"    color: rgb(255, 255, 255);\n"
+"    border:none;\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"    border-left:3px solid rgb(0, 183, 72);\n"
+"    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/base_de_datos_negra.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon3)
-        self.pushButton_3.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_3.setCheckable(True)
-        self.pushButton_3.setAutoRepeat(True)
-        self.pushButton_3.setAutoExclusive(True)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout_2.addWidget(self.pushButton_3)
-        self.pushButton_6 = QtWidgets.QPushButton(self.side_bar)
+        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/empleado.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_personal.setIcon(icon3)
+        self.boton_personal.setIconSize(QtCore.QSize(30, 30))
+        self.boton_personal.setCheckable(True)
+        self.boton_personal.setAutoRepeat(True)
+        self.boton_personal.setAutoExclusive(True)
+        self.boton_personal.setObjectName("boton_personal")
+        self.verticalLayout_2.addWidget(self.boton_personal)
+        self.line_4 = QtWidgets.QFrame(self.side_bar)
+        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setObjectName("line_4")
+        self.verticalLayout_2.addWidget(self.line_4)
+        self.boton_respaldo = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setStyleSheet("QPushButton {\n"
+        self.boton_respaldo.setFont(font)
+        self.boton_respaldo.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
+"\n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border:none;\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"    border-left:3px solid rgb(0, 183, 72);\n"
+"    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/folleto.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_6.setIcon(icon4)
-        self.pushButton_6.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_6.setCheckable(True)
-        self.pushButton_6.setAutoRepeat(True)
-        self.pushButton_6.setAutoExclusive(True)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.verticalLayout_2.addWidget(self.pushButton_6)
-        self.pushButton_8 = QtWidgets.QPushButton(self.side_bar)
+        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/respaldo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_respaldo.setIcon(icon4)
+        self.boton_respaldo.setIconSize(QtCore.QSize(30, 30))
+        self.boton_respaldo.setCheckable(True)
+        self.boton_respaldo.setAutoRepeat(True)
+        self.boton_respaldo.setAutoExclusive(True)
+        self.boton_respaldo.setObjectName("boton_respaldo")
+        self.verticalLayout_2.addWidget(self.boton_respaldo)
+        self.line_6 = QtWidgets.QFrame(self.side_bar)
+        self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
+        self.verticalLayout_2.addWidget(self.line_6)
+        self.boton_cargar_catologo = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_8.setFont(font)
-        self.pushButton_8.setStyleSheet("QPushButton {\n"
+        self.boton_cargar_catologo.setFont(font)
+        self.boton_cargar_catologo.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
-        self.pushButton_8.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_8.setCheckable(False)
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.verticalLayout_2.addWidget(self.pushButton_8)
+"\n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border:none;\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"    border-left:3px solid rgb(0, 183, 72);\n"
+"    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/catalogar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_cargar_catologo.setIcon(icon5)
+        self.boton_cargar_catologo.setIconSize(QtCore.QSize(30, 30))
+        self.boton_cargar_catologo.setCheckable(True)
+        self.boton_cargar_catologo.setAutoRepeat(True)
+        self.boton_cargar_catologo.setAutoExclusive(True)
+        self.boton_cargar_catologo.setObjectName("boton_cargar_catologo")
+        self.verticalLayout_2.addWidget(self.boton_cargar_catologo)
+        self.line_7 = QtWidgets.QFrame(self.side_bar)
+        self.line_7.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_7.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_7.setObjectName("line_7")
+        self.verticalLayout_2.addWidget(self.line_7)
         spacerItem2 = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem2)
-        self.pushButton_5 = QtWidgets.QPushButton(self.side_bar)
+        self.line_5 = QtWidgets.QFrame(self.side_bar)
+        self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_5.setObjectName("line_5")
+        self.verticalLayout_2.addWidget(self.line_5)
+        self.boton_salir = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setStyleSheet("QPushButton {\n"
+        self.boton_salir.setFont(font)
+        self.boton_salir.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
-"    padding-left:10px;\n"
-" \n"
-"}")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon5)
-        self.pushButton_5.setIconSize(QtCore.QSize(40, 40))
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.verticalLayout_2.addWidget(self.pushButton_5)
+"\n"
+"    background:transparent; \n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    \n"
+"\n"
+"    padding:5px 0px 5px 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:checked{\n"
+"\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 89, 45);\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_salir.setIcon(icon6)
+        self.boton_salir.setIconSize(QtCore.QSize(30, 30))
+        self.boton_salir.setCheckable(False)
+        self.boton_salir.setObjectName("boton_salir")
+        self.verticalLayout_2.addWidget(self.boton_salir)
+        self.line_8 = QtWidgets.QFrame(self.side_bar)
+        self.line_8.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_8.setObjectName("line_8")
+        self.verticalLayout_2.addWidget(self.line_8)
         self.verticalLayout.addWidget(self.side_bar)
         self.area_scroll_side_bar.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.area_scroll_side_bar, 1, 0, 1, 1)
@@ -364,12 +565,11 @@ class Ui_VentanaPrincipal(object):
     def retranslateUi(self, VentanaPrincipal):
         _translate = QtCore.QCoreApplication.translate
         VentanaPrincipal.setWindowTitle(_translate("VentanaPrincipal", "MainWindow"))
-        self.label_3.setText(_translate("VentanaPrincipal", "MENU"))
-        self.pushButton_4.setText(_translate("VentanaPrincipal", "DashBoard"))
-        self.pushButton.setText(_translate("VentanaPrincipal", "Estudiantes"))
-        self.pushButton_7.setText(_translate("VentanaPrincipal", "Personal"))
-        self.pushButton_2.setText(_translate("VentanaPrincipal", "Personal"))
-        self.pushButton_3.setText(_translate("VentanaPrincipal", "Respaldos"))
-        self.pushButton_6.setText(_translate("VentanaPrincipal", "cargar catalogo"))
-        self.pushButton_8.setText(_translate("VentanaPrincipal", "boton XD"))
-        self.pushButton_5.setText(_translate("VentanaPrincipal", "salir"))
+        self.label_menu.setText(_translate("VentanaPrincipal", "MENU"))
+        self.boton_dashboard.setText(_translate("VentanaPrincipal", "  DashBoard"))
+        self.boton_estudiante.setText(_translate("VentanaPrincipal", "  Estudiantes"))
+        self.boton_personal.setText(_translate("VentanaPrincipal", "  Personal"))
+        self.boton_respaldo.setText(_translate("VentanaPrincipal", "  Respaldos"))
+        self.boton_cargar_catologo.setText(_translate("VentanaPrincipal", "  cargar catalogo"))
+        self.boton_salir.setText(_translate("VentanaPrincipal", "salir"))
+import recursos_imagenes_rc
