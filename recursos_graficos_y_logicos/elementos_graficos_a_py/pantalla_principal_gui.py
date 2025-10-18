@@ -572,4 +572,3 @@ class Ui_VentanaPrincipal(object):
         self.boton_respaldo.setText(_translate("VentanaPrincipal", "  Respaldos"))
         self.boton_cargar_catologo.setText(_translate("VentanaPrincipal", "  cargar catalogo"))
         self.boton_salir.setText(_translate("VentanaPrincipal", "salir"))
-import recursos_imagenes_rc

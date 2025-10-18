@@ -943,8 +943,6 @@ QPushButton:checked{
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="../recursos_de_imagenes/recursos_imagenes.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
