@@ -13,12 +13,12 @@ from PySide2 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login, Ui_VentanaPrincipal)
 
 
-from recursos_graficos_y_logicos import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
                                         PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo)
 
-
+from recursos_graficos_y_logicos.utilidades import funciones_comunes
 
 
 ##################################
@@ -246,6 +246,15 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.stacked_widget.setCurrentIndex(0)
         
         self.area_scroll_side_bar.hide()
+        
+        
+        # Funciones para los botones del sidebar
+        
+        self.boton_estudiante.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,5 ))
+        self.boton_personal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 2 ))
+        
+        
+        
         
         
         
