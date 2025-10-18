@@ -267,7 +267,7 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
                 (4, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '16788123', '1985-10-28', 39, 'Activo', 'F', 0), 
                 (5, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '26788123', '1985-10-28', 39, 'Activo', 'F', 0)]
 
-
+funciones_comunes = FuncionesComunes()
 
 #print(funciones_comunes.buscar_id_por_cedula("175362562", lista_prueba))
 #print(funciones_comunes.cargar_elementos_para_el_combobox())
