@@ -7,6 +7,11 @@ codigo que ya esta escrito. Con esto solo llamamos la funcion, pasamos parametro
 """
 
 class FuncionesComunes:
+    def __init__(self):
+        
+        # Variables axuliares
+        self.estado_boton = True
+        
     
     
     # Metodo para moverse entre pantallas
@@ -261,6 +266,44 @@ class FuncionesComunes:
         print("------------------------------------------------------------------------------------")
 
 
+
+    # Metodo para minizar el side bar/barra lateral
+    def cambiar_tamano_side_bar(self, side_bar):
+        
+        """
+            Este metodo minizar el sidebar a un 200 de ancho
+        
+        """
+        
+        
+        if self.estado_boton == True:
+            
+            side_bar.setFixedWidth(55)
+            self.estado_boton = False
+            
+            
+
+        elif self.estado_boton == False:
+            
+            side_bar.setFixedWidth(190)
+            
+            self.estado_boton = True
+            
+            
+            
+           
+            
+            
+            
+            
+            
+        
+        
+       
+        
+        
+        
+        
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
                 (3, 'ROSMARY', 'DEL VALLE', None, 'SALAS', 'JIMENEZ', '18128319', '1986-10-28', 38, 'Activo', 'F', 0),
