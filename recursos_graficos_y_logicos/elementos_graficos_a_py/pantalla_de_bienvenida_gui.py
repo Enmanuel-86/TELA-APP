@@ -383,6 +383,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         font.setWeight(75)
         self.label_5.setFont(font)
         self.label_5.setTextFormat(QtCore.Qt.MarkdownText)
+        self.label_5.setOpenExternalLinks(True)
         self.label_5.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard|QtCore.Qt.LinksAccessibleByMouse)
         self.label_5.setObjectName("label_5")
         self.verticalLayout_8.addWidget(self.label_5, 0, QtCore.Qt.AlignHCenter)
@@ -484,7 +485,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         self.label_titulo_alumno_3.setText(_translate("PantallaBienvenidaUsuario", "¿Quieres saber como se hizo y como funciona el sistema?"))
         self.label_alumnos_5.setText(_translate("PantallaBienvenidaUsuario", "Si quieres saber sobre este sistema puedes acceder al repositorio de GitHub y ver el codigo fuente o descargar alguna actualización.\n"
 ""))
-        self.label_5.setText(_translate("PantallaBienvenidaUsuario", "https://github.com/Enmanuel-86/TELA-APP"))
+        self.label_5.setText(_translate("PantallaBienvenidaUsuario", "<html><head/><body><p><a href=\"https://github.com/Enmanuel-86/TELA-APP\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/Enmanuel-86/TELA-APP</span></a></p></body></html>"))
         self.label_alumnos_6.setText(_translate("PantallaBienvenidaUsuario", "Para realizar alguna revision comparta el codigo exclusivamente con otros desarrolladores que le quieran hacer una reingenieria en otro proyecto universitario para mejorar este sistema."))
         self.label_alumnos_4.setText(_translate("PantallaBienvenidaUsuario", "<html><head/><body><p>Si solo quiere aprender sobre como funciona el sistema puede consultar en el manual.</p></body></html>"))
         self.pushButton.setText(_translate("PantallaBienvenidaUsuario", "Abrir manual PDF"))

@@ -619,10 +619,13 @@ QLabel{
                        </font>
                       </property>
                       <property name="text">
-                       <string>https://github.com/Enmanuel-86/TELA-APP</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Enmanuel-86/TELA-APP&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/Enmanuel-86/TELA-APP&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="textFormat">
                        <enum>Qt::MarkdownText</enum>
+                      </property>
+                      <property name="openExternalLinks">
+                       <bool>true</bool>
                       </property>
                       <property name="textInteractionFlags">
                        <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse</set>
