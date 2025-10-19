@@ -1,5 +1,5 @@
 import traceback
-
+from PySide2.QtCore import QPropertyAnimation, QEasingCurve
 
 """
 Este archivo contiene todas las funciones que suelen repetirse, esto ayuda a evitar copiar y pegar
@@ -11,6 +11,7 @@ class FuncionesComunes:
         
         # Variables axuliares
         self.estado_boton = True
+        
         
     
     
@@ -275,19 +276,50 @@ class FuncionesComunes:
         
         """
         
+        # Configurar la animación
+        self.animacion = QPropertyAnimation(side_bar, b"minimumWidth")
+        self.animacion.setDuration(500)  # 500 milisegundos
+        self.animacion.setEasingCurve(QEasingCurve.InOutCubic)
+        
+        # Segunda animación para el ancho máximo
+        self.animacion2 = QPropertyAnimation(side_bar, b"maximumWidth")
+        self.animacion2.setDuration(500)
+        self.animacion2.setEasingCurve(QEasingCurve.InOutCubic)
+        
         
         if self.estado_boton == True:
             
-            side_bar.setFixedWidth(55)
+            # Animación para minimizar (190 → 55)
+            self.animacion.setStartValue(190)
+            self.animacion.setEndValue(55)
+            self.animacion2.setStartValue(190)
+            self.animacion2.setEndValue(5)
+            self.minimizado = True
+            #side_bar.setFixedWidth(55)
+            
             self.estado_boton = False
             
             
 
         elif self.estado_boton == False:
             
-            side_bar.setFixedWidth(190)
+            
+            # Animación para maximizar (20 → 100)
+            self.animacion.setStartValue(55)
+            self.animacion.setEndValue(190)
+            self.animacion2.setStartValue(55)
+            self.animacion2.setEndValue(190)
+            self.minimizado = False
+            
+            
+            #side_bar.setFixedWidth(190)
             
             self.estado_boton = True
+            
+            
+        # Iniciar ambas animaciones
+        self.animacion.start()
+        self.animacion2.start()
             
             
             
