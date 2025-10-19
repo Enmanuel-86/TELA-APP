@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_PantallaBienvenidaUsuario(object):
     def setupUi(self, PantallaBienvenidaUsuario):
         PantallaBienvenidaUsuario.setObjectName("PantallaBienvenidaUsuario")
-        PantallaBienvenidaUsuario.resize(975, 723)
+        PantallaBienvenidaUsuario.resize(975, 892)
         self.verticalLayout = QtWidgets.QVBoxLayout(PantallaBienvenidaUsuario)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -22,7 +22,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.layout_area_de_scroll = QtWidgets.QWidget()
-        self.layout_area_de_scroll.setGeometry(QtCore.QRect(0, 0, 956, 962))
+        self.layout_area_de_scroll.setGeometry(QtCore.QRect(0, 0, 956, 1000))
         self.layout_area_de_scroll.setObjectName("layout_area_de_scroll")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.layout_area_de_scroll)
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -43,9 +43,9 @@ class Ui_PantallaBienvenidaUsuario(object):
         self.espacio_principal.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.espacio_principal.setObjectName("espacio_principal")
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.espacio_principal)
-        self.verticalLayout_11.setSpacing(40)
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.espacio_principal)
+        self.verticalLayout_9.setSpacing(30)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.label_titulo_del_segemeto_bienvenido = QtWidgets.QLabel(self.espacio_principal)
         self.label_titulo_del_segemeto_bienvenido.setMinimumSize(QtCore.QSize(500, 80))
         self.label_titulo_del_segemeto_bienvenido.setMaximumSize(QtCore.QSize(600, 60))
@@ -66,465 +66,76 @@ class Ui_PantallaBienvenidaUsuario(object):
 "}")
         self.label_titulo_del_segemeto_bienvenido.setAlignment(QtCore.Qt.AlignCenter)
         self.label_titulo_del_segemeto_bienvenido.setObjectName("label_titulo_del_segemeto_bienvenido")
-        self.verticalLayout_11.addWidget(self.label_titulo_del_segemeto_bienvenido, 0, QtCore.Qt.AlignHCenter)
-        self.gridLayout = QtWidgets.QGridLayout()
-        self.gridLayout.setHorizontalSpacing(0)
-        self.gridLayout.setVerticalSpacing(40)
-        self.gridLayout.setObjectName("gridLayout")
-        self.espacio_grafico_docentes = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_grafico_docentes.setMinimumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_docentes.setMaximumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_docentes.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
-        self.espacio_grafico_docentes.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.espacio_grafico_docentes.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_grafico_docentes.setObjectName("espacio_grafico_docentes")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.espacio_grafico_docentes)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label_grafico_empleado = QtWidgets.QLabel(self.espacio_grafico_docentes)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_grafico_empleado.setFont(font)
-        self.label_grafico_empleado.setStyleSheet("QLabel{\n"
-"\n"
-"border:none;\n"
-"    \n"
-"    \n"
-"    \n"
-"    \n"
-"\n"
-"\n"
-"}")
-        self.label_grafico_empleado.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_grafico_empleado.setWordWrap(True)
-        self.label_grafico_empleado.setObjectName("label_grafico_empleado")
-        self.verticalLayout_2.addWidget(self.label_grafico_empleado)
-        self.boton_especialidades_docente = QtWidgets.QComboBox(self.espacio_grafico_docentes)
-        self.boton_especialidades_docente.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
-        sizePolicy.setHeightForWidth(self.boton_especialidades_docente.sizePolicy().hasHeightForWidth())
-        self.boton_especialidades_docente.setSizePolicy(sizePolicy)
-        self.boton_especialidades_docente.setMinimumSize(QtCore.QSize(250, 40))
-        self.boton_especialidades_docente.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.boton_especialidades_docente.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
-        self.boton_especialidades_docente.setEditable(False)
-        self.boton_especialidades_docente.setCurrentText("")
-        self.boton_especialidades_docente.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_especialidades_docente.setIconSize(QtCore.QSize(40, 40))
-        self.boton_especialidades_docente.setPlaceholderText("")
-        self.boton_especialidades_docente.setObjectName("boton_especialidades_docente")
-        self.verticalLayout_2.addWidget(self.boton_especialidades_docente)
-        self.verticalLayout_3.addLayout(self.verticalLayout_2)
-        self.grafico_empleado_especialidad = QtWidgets.QFrame(self.espacio_grafico_docentes)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.grafico_empleado_especialidad.sizePolicy().hasHeightForWidth())
-        self.grafico_empleado_especialidad.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.grafico_empleado_especialidad.setFont(font)
-        self.grafico_empleado_especialidad.setStyleSheet("QFrame{background:transparent; border:1px solid black;}")
-        self.grafico_empleado_especialidad.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.grafico_empleado_especialidad.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.grafico_empleado_especialidad.setObjectName("grafico_empleado_especialidad")
-        self.verticalLayout_3.addWidget(self.grafico_empleado_especialidad)
-        self.gridLayout.addWidget(self.espacio_grafico_docentes, 0, 0, 1, 1)
-        self.espacio_grafico_alumnos = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_grafico_alumnos.setMinimumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_alumnos.setMaximumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_alumnos.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
-        self.espacio_grafico_alumnos.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_grafico_alumnos.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_grafico_alumnos.setObjectName("espacio_grafico_alumnos")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.espacio_grafico_alumnos)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.label_grafico_alumno = QtWidgets.QLabel(self.espacio_grafico_alumnos)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_grafico_alumno.setFont(font)
-        self.label_grafico_alumno.setStyleSheet("QLabel{\n"
-"\n"
-"border:none;\n"
-"    \n"
-"    \n"
-"    \n"
-"    \n"
-"\n"
-"\n"
-"}")
-        self.label_grafico_alumno.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_grafico_alumno.setWordWrap(True)
-        self.label_grafico_alumno.setObjectName("label_grafico_alumno")
-        self.verticalLayout_6.addWidget(self.label_grafico_alumno)
-        self.boton_especialidades_alumno = QtWidgets.QComboBox(self.espacio_grafico_alumnos)
-        self.boton_especialidades_alumno.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_especialidades_alumno.sizePolicy().hasHeightForWidth())
-        self.boton_especialidades_alumno.setSizePolicy(sizePolicy)
-        self.boton_especialidades_alumno.setMinimumSize(QtCore.QSize(250, 40))
-        self.boton_especialidades_alumno.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.boton_especialidades_alumno.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
-        self.boton_especialidades_alumno.setEditable(False)
-        self.boton_especialidades_alumno.setCurrentText("")
-        self.boton_especialidades_alumno.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_especialidades_alumno.setIconSize(QtCore.QSize(40, 40))
-        self.boton_especialidades_alumno.setPlaceholderText("")
-        self.boton_especialidades_alumno.setObjectName("boton_especialidades_alumno")
-        self.verticalLayout_6.addWidget(self.boton_especialidades_alumno)
-        self.verticalLayout_8.addLayout(self.verticalLayout_6)
-        self.grafico_alumno = QtWidgets.QFrame(self.espacio_grafico_alumnos)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.grafico_alumno.sizePolicy().hasHeightForWidth())
-        self.grafico_alumno.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.grafico_alumno.setFont(font)
-        self.grafico_alumno.setStyleSheet("QFrame{background:transparent; border:1px solid black;}")
-        self.grafico_alumno.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.grafico_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.grafico_alumno.setObjectName("grafico_alumno")
-        self.verticalLayout_8.addWidget(self.grafico_alumno)
-        self.gridLayout.addWidget(self.espacio_grafico_alumnos, 0, 1, 1, 1)
-        self.espacio_grafico_docentes_2 = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_grafico_docentes_2.setMinimumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_docentes_2.setMaximumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_docentes_2.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
-        self.espacio_grafico_docentes_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_grafico_docentes_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_grafico_docentes_2.setObjectName("espacio_grafico_docentes_2")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.espacio_grafico_docentes_2)
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.verticalLayout_9.addWidget(self.label_titulo_del_segemeto_bienvenido, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setSpacing(20)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.label_empleado_2 = QtWidgets.QLabel(self.espacio_grafico_docentes_2)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_empleado_2.setFont(font)
-        self.label_empleado_2.setStyleSheet("QLabel{\n"
-"\n"
-"border:none;\n"
-"    \n"
-"    \n"
-"    \n"
-"    \n"
-"\n"
-"\n"
-"}")
-        self.label_empleado_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_empleado_2.setWordWrap(True)
-        self.label_empleado_2.setObjectName("label_empleado_2")
-        self.verticalLayout_5.addWidget(self.label_empleado_2)
-        self.boton_empleados = QtWidgets.QComboBox(self.espacio_grafico_docentes_2)
-        self.boton_empleados.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        self.espacio_contenido = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_empleados.sizePolicy().hasHeightForWidth())
-        self.boton_empleados.setSizePolicy(sizePolicy)
-        self.boton_empleados.setMinimumSize(QtCore.QSize(250, 40))
-        self.boton_empleados.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.boton_empleados.setStyleSheet("QComboBox{\n"
+        sizePolicy.setHeightForWidth(self.espacio_contenido.sizePolicy().hasHeightForWidth())
+        self.espacio_contenido.setSizePolicy(sizePolicy)
+        self.espacio_contenido.setMinimumSize(QtCore.QSize(900, 0))
+        self.espacio_contenido.setStyleSheet("QFrame{\n"
 "\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:1px solid rgb(197, 197, 197)\n"
 "\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
 "\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
 "}\n"
 "\n"
 "\n"
 "\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
-        self.boton_empleados.setEditable(False)
-        self.boton_empleados.setCurrentText("")
-        self.boton_empleados.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_empleados.setIconSize(QtCore.QSize(40, 40))
-        self.boton_empleados.setPlaceholderText("")
-        self.boton_empleados.setObjectName("boton_empleados")
-        self.verticalLayout_5.addWidget(self.boton_empleados)
-        self.verticalLayout_10.addLayout(self.verticalLayout_5)
-        self.grafico_empleado_2 = QtWidgets.QFrame(self.espacio_grafico_docentes_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.grafico_empleado_2.sizePolicy().hasHeightForWidth())
-        self.grafico_empleado_2.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.grafico_empleado_2.setFont(font)
-        self.grafico_empleado_2.setStyleSheet("QFrame{background:transparent; border:1px solid black;}")
-        self.grafico_empleado_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.grafico_empleado_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.grafico_empleado_2.setObjectName("grafico_empleado_2")
-        self.verticalLayout_10.addWidget(self.grafico_empleado_2)
-        self.gridLayout.addWidget(self.espacio_grafico_docentes_2, 1, 0, 1, 1)
-        self.espacio_grafico_alumnos_2 = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_grafico_alumnos_2.setMinimumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_alumnos_2.setMaximumSize(QtCore.QSize(411, 391))
-        self.espacio_grafico_alumnos_2.setStyleSheet("QFrame{\n"
+"QFrame#espacio_contenido{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
-"}")
-        self.espacio_grafico_alumnos_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_grafico_alumnos_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_grafico_alumnos_2.setObjectName("espacio_grafico_alumnos_2")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.espacio_grafico_alumnos_2)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.label_grafico_alumno_2 = QtWidgets.QLabel(self.espacio_grafico_alumnos_2)
+"}\n"
+"\n"
+"\n"
+"QLabel{\n"
+"\n"
+"    \n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.espacio_contenido.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.espacio_contenido.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_contenido.setObjectName("espacio_contenido")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_contenido)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.frame = QtWidgets.QFrame(self.espacio_contenido)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_titulo_alumno = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
-        self.label_grafico_alumno_2.setFont(font)
-        self.label_grafico_alumno_2.setStyleSheet("QLabel{\n"
-"\n"
-"border:none;\n"
-"    \n"
-"    \n"
-"    \n"
-"    \n"
-"\n"
-"\n"
-"}")
-        self.label_grafico_alumno_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_grafico_alumno_2.setWordWrap(True)
-        self.label_grafico_alumno_2.setObjectName("label_grafico_alumno_2")
-        self.verticalLayout_4.addWidget(self.label_grafico_alumno_2)
-        self.boton_especialidades_general = QtWidgets.QComboBox(self.espacio_grafico_alumnos_2)
-        self.boton_especialidades_general.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        self.label_titulo_alumno.setFont(font)
+        self.label_titulo_alumno.setWordWrap(False)
+        self.label_titulo_alumno.setObjectName("label_titulo_alumno")
+        self.verticalLayout_2.addWidget(self.label_titulo_alumno, 0, QtCore.Qt.AlignLeft)
+        self.boton_especialidades = QtWidgets.QComboBox(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_especialidades_general.sizePolicy().hasHeightForWidth())
-        self.boton_especialidades_general.setSizePolicy(sizePolicy)
-        self.boton_especialidades_general.setMinimumSize(QtCore.QSize(250, 40))
-        self.boton_especialidades_general.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.boton_especialidades_general.setStyleSheet("QComboBox{\n"
+        sizePolicy.setHeightForWidth(self.boton_especialidades.sizePolicy().hasHeightForWidth())
+        self.boton_especialidades.setSizePolicy(sizePolicy)
+        self.boton_especialidades.setMinimumSize(QtCore.QSize(260, 40))
+        self.boton_especialidades.setStyleSheet("QComboBox{\n"
 "\n"
-"    font: 75 10pt \"Arial\";\n"
+"    font: 75 12pt \"Arial\";\n"
 "    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
+"    background:white;\n"
+"    border:1px solid black;\n"
 "}\n"
 "\n"
 "QComboBox:focus {\n"
@@ -536,33 +147,6 @@ class Ui_PantallaBienvenidaUsuario(object):
 "    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
 "    background-color: #e0f7ff;   /* Fondo azul claro */\n"
 "}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
 "\n"
 "\n"
 "\n"
@@ -588,46 +172,319 @@ class Ui_PantallaBienvenidaUsuario(object):
 "\n"
 "\n"
 "")
-        self.boton_especialidades_general.setEditable(False)
-        self.boton_especialidades_general.setCurrentText("")
-        self.boton_especialidades_general.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_especialidades_general.setIconSize(QtCore.QSize(40, 40))
-        self.boton_especialidades_general.setPlaceholderText("")
-        self.boton_especialidades_general.setObjectName("boton_especialidades_general")
-        self.verticalLayout_4.addWidget(self.boton_especialidades_general)
-        self.verticalLayout_9.addLayout(self.verticalLayout_4)
-        self.grafico_alumno_2 = QtWidgets.QFrame(self.espacio_grafico_alumnos_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.boton_especialidades.setEditable(False)
+        self.boton_especialidades.setCurrentText("")
+        self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
+        self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
+        self.boton_especialidades.setPlaceholderText("")
+        self.boton_especialidades.setObjectName("boton_especialidades")
+        self.verticalLayout_2.addWidget(self.boton_especialidades)
+        self.label_alumnos = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_alumnos.setFont(font)
+        self.label_alumnos.setObjectName("label_alumnos")
+        self.verticalLayout_2.addWidget(self.label_alumnos, 0, QtCore.Qt.AlignLeft)
+        self.label_alumnas = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_alumnas.setFont(font)
+        self.label_alumnas.setObjectName("label_alumnas")
+        self.verticalLayout_2.addWidget(self.label_alumnas, 0, QtCore.Qt.AlignLeft)
+        self.label_total_alumnos = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_total_alumnos.setFont(font)
+        self.label_total_alumnos.setObjectName("label_total_alumnos")
+        self.verticalLayout_2.addWidget(self.label_total_alumnos, 0, QtCore.Qt.AlignLeft)
+        self.horizontalLayout.addWidget(self.frame)
+        self.frame_2 = QtWidgets.QFrame(self.espacio_contenido)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frame_2)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.label_8 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_8.setFont(font)
+        self.label_8.setWordWrap(False)
+        self.label_8.setObjectName("label_8")
+        self.verticalLayout_3.addWidget(self.label_8, 0, QtCore.Qt.AlignLeft)
+        self.boton_personal = QtWidgets.QComboBox(self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.grafico_alumno_2.sizePolicy().hasHeightForWidth())
-        self.grafico_alumno_2.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.boton_personal.sizePolicy().hasHeightForWidth())
+        self.boton_personal.setSizePolicy(sizePolicy)
+        self.boton_personal.setMinimumSize(QtCore.QSize(260, 40))
+        self.boton_personal.setStyleSheet("QComboBox{\n"
+"\n"
+"    font: 75 12pt \"Arial\";\n"
+"    padding-left:15px;\n"
+"    background:white;\n"
+"    border:1px solid black;\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 1px solid #ccc;\n"
+"    background-color: white;\n"
+"    color: #333;\n"
+"    padding: 5px;  /* Margen interno de la lista */\n"
+"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    padding: 8px; /* Espaciado interno de cada elemento */\n"
+"    margin: 4px; /* Separación entre los elementos */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {\n"
+"    background-color: #c5c1c1;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.boton_personal.setEditable(False)
+        self.boton_personal.setCurrentText("")
+        self.boton_personal.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
+        self.boton_personal.setIconSize(QtCore.QSize(40, 40))
+        self.boton_personal.setPlaceholderText("")
+        self.boton_personal.setObjectName("boton_personal")
+        self.verticalLayout_3.addWidget(self.boton_personal)
+        self.label_profesores = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
-        font.setPointSize(9)
-        self.grafico_alumno_2.setFont(font)
-        self.grafico_alumno_2.setStyleSheet("QFrame{background:transparent; border:1px solid black;}")
-        self.grafico_alumno_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.grafico_alumno_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.grafico_alumno_2.setObjectName("grafico_alumno_2")
-        self.verticalLayout_9.addWidget(self.grafico_alumno_2)
-        self.gridLayout.addWidget(self.espacio_grafico_alumnos_2, 1, 1, 1, 1)
-        self.verticalLayout_11.addLayout(self.gridLayout)
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_profesores.setFont(font)
+        self.label_profesores.setObjectName("label_profesores")
+        self.verticalLayout_3.addWidget(self.label_profesores, 0, QtCore.Qt.AlignLeft)
+        self.label_profesoras = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_profesoras.setFont(font)
+        self.label_profesoras.setObjectName("label_profesoras")
+        self.verticalLayout_3.addWidget(self.label_profesoras, 0, QtCore.Qt.AlignLeft)
+        self.horizontalLayout.addWidget(self.frame_2)
+        self.verticalLayout_5.addWidget(self.espacio_contenido, 0, QtCore.Qt.AlignHCenter)
+        self.espacio_contenido_2 = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.espacio_contenido_2.sizePolicy().hasHeightForWidth())
+        self.espacio_contenido_2.setSizePolicy(sizePolicy)
+        self.espacio_contenido_2.setMinimumSize(QtCore.QSize(900, 0))
+        self.espacio_contenido_2.setStyleSheet("QFrame{\n"
+"\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:1px solid rgb(197, 197, 197)\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QFrame#espacio_contenido_2{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:10px ridge rgb(122, 59, 33);\n"
+"}\n"
+"\n"
+"\n"
+"QLabel{\n"
+"\n"
+"    \n"
+"    border:none;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.espacio_contenido_2.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.espacio_contenido_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_contenido_2.setObjectName("espacio_contenido_2")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.espacio_contenido_2)
+        self.verticalLayout_6.setSpacing(20)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.frame_4 = QtWidgets.QFrame(self.espacio_contenido_2)
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_4)
+        self.verticalLayout_10.setSpacing(10)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.label_titulo_alumno_3 = QtWidgets.QLabel(self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_titulo_alumno_3.setFont(font)
+        self.label_titulo_alumno_3.setWordWrap(False)
+        self.label_titulo_alumno_3.setObjectName("label_titulo_alumno_3")
+        self.verticalLayout_10.addWidget(self.label_titulo_alumno_3)
+        self.label_alumnos_5 = QtWidgets.QLabel(self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_alumnos_5.setFont(font)
+        self.label_alumnos_5.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
+        self.label_alumnos_5.setWordWrap(True)
+        self.label_alumnos_5.setObjectName("label_alumnos_5")
+        self.verticalLayout_10.addWidget(self.label_alumnos_5)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setContentsMargins(-1, 20, -1, 20)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.label_4 = QtWidgets.QLabel(self.frame_4)
+        self.label_4.setMaximumSize(QtCore.QSize(400, 100))
+        self.label_4.setText("")
+        self.label_4.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/github_logo.png"))
+        self.label_4.setScaledContents(True)
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_8.addWidget(self.label_4, 0, QtCore.Qt.AlignHCenter)
+        self.label_5 = QtWidgets.QLabel(self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setTextFormat(QtCore.Qt.MarkdownText)
+        self.label_5.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard|QtCore.Qt.LinksAccessibleByMouse)
+        self.label_5.setObjectName("label_5")
+        self.verticalLayout_8.addWidget(self.label_5, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_10.addLayout(self.verticalLayout_8)
+        self.label_alumnos_6 = QtWidgets.QLabel(self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_alumnos_6.setFont(font)
+        self.label_alumnos_6.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
+        self.label_alumnos_6.setWordWrap(True)
+        self.label_alumnos_6.setObjectName("label_alumnos_6")
+        self.verticalLayout_10.addWidget(self.label_alumnos_6)
+        self.verticalLayout_6.addWidget(self.frame_4)
+        self.frame_3 = QtWidgets.QFrame(self.espacio_contenido_2)
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.frame_3)
+        self.verticalLayout_4.setSpacing(20)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label_alumnos_4 = QtWidgets.QLabel(self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_alumnos_4.setFont(font)
+        self.label_alumnos_4.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
+        self.label_alumnos_4.setWordWrap(True)
+        self.label_alumnos_4.setObjectName("label_alumnos_4")
+        self.verticalLayout_4.addWidget(self.label_alumnos_4)
+        self.label_3 = QtWidgets.QLabel(self.frame_3)
+        self.label_3.setMaximumSize(QtCore.QSize(150, 150))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/logo_pdf.png"))
+        self.label_3.setScaledContents(True)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_4.addWidget(self.label_3, 0, QtCore.Qt.AlignHCenter)
+        self.pushButton = QtWidgets.QPushButton(self.frame_3)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(170, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 138, 71);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/archivo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon)
+        self.pushButton.setIconSize(QtCore.QSize(20, 20))
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_4.addWidget(self.pushButton, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_6.addWidget(self.frame_3)
+        self.verticalLayout_5.addWidget(self.espacio_contenido_2, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_9.addLayout(self.verticalLayout_5)
         self.verticalLayout_7.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.layout_area_de_scroll)
         self.verticalLayout.addWidget(self.area_de_scroll)
 
         self.retranslateUi(PantallaBienvenidaUsuario)
-        self.boton_especialidades_docente.setCurrentIndex(-1)
-        self.boton_especialidades_alumno.setCurrentIndex(-1)
-        self.boton_empleados.setCurrentIndex(-1)
-        self.boton_especialidades_general.setCurrentIndex(-1)
+        self.boton_especialidades.setCurrentIndex(-1)
+        self.boton_personal.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(PantallaBienvenidaUsuario)
 
     def retranslateUi(self, PantallaBienvenidaUsuario):
         _translate = QtCore.QCoreApplication.translate
         PantallaBienvenidaUsuario.setWindowTitle(_translate("PantallaBienvenidaUsuario", "Form"))
         self.label_titulo_del_segemeto_bienvenido.setText(_translate("PantallaBienvenidaUsuario", "Bienvendio/a {usuario}"))
-        self.label_grafico_empleado.setText(_translate("PantallaBienvenidaUsuario", "Grafico de cuantos docentes hay por especialidad"))
-        self.label_grafico_alumno.setText(_translate("PantallaBienvenidaUsuario", "Grafico de cuantos alumnos hay por especialidad"))
-        self.label_empleado_2.setText(_translate("PantallaBienvenidaUsuario", "Grafico de cuantos empleados estan"))
-        self.label_grafico_alumno_2.setText(_translate("PantallaBienvenidaUsuario", "Grafico general de cuantos alumnos hay por especialidad"))
+        self.label_titulo_alumno.setText(_translate("PantallaBienvenidaUsuario", "Cantidad de alumnos segun la especilidad"))
+        self.label_alumnos.setText(_translate("PantallaBienvenidaUsuario", "Alumnos: 0"))
+        self.label_alumnas.setText(_translate("PantallaBienvenidaUsuario", "Alumnas: 0"))
+        self.label_total_alumnos.setText(_translate("PantallaBienvenidaUsuario", "Alumnos en total: 0"))
+        self.label_8.setText(_translate("PantallaBienvenidaUsuario", "Cantidad de personal"))
+        self.label_profesores.setText(_translate("PantallaBienvenidaUsuario", "Profesores: 0"))
+        self.label_profesoras.setText(_translate("PantallaBienvenidaUsuario", "Profesoras: 0"))
+        self.label_titulo_alumno_3.setText(_translate("PantallaBienvenidaUsuario", "¿Quieres saber como se hizo y como funciona el sistema?"))
+        self.label_alumnos_5.setText(_translate("PantallaBienvenidaUsuario", "Si quieres saber sobre este sistema puedes acceder al repositorio de GitHub y ver el codigo fuente o descargar alguna actualización.\n"
+""))
+        self.label_5.setText(_translate("PantallaBienvenidaUsuario", "https://github.com/Enmanuel-86/TELA-APP"))
+        self.label_alumnos_6.setText(_translate("PantallaBienvenidaUsuario", "Para realizar alguna revision comparta el codigo exclusivamente con otros desarrolladores que le quieran hacer una reingenieria en otro proyecto universitario para mejorar este sistema."))
+        self.label_alumnos_4.setText(_translate("PantallaBienvenidaUsuario", "<html><head/><body><p>Si solo quiere aprender sobre como funciona el sistema puede consultar en el manual.</p></body></html>"))
+        self.pushButton.setText(_translate("PantallaBienvenidaUsuario", "Abrir manual PDF"))
