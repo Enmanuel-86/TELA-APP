@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_PantallaInfoCompletaDelEmpleado(object):
@@ -58,7 +60,7 @@ class Ui_PantallaInfoCompletaDelEmpleado(object):
         self.label_imagen_del_personal.setGeometry(QtCore.QRect(130, 25, 141, 131))
         self.label_imagen_del_personal.setStyleSheet("border:none;")
         self.label_imagen_del_personal.setText("")
-        self.label_imagen_del_personal.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/imagen_personal_m.png"))
+        self.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/imagen_personal_m.png")))
         self.label_imagen_del_personal.setScaledContents(True)
         self.label_imagen_del_personal.setObjectName("label_imagen_del_personal")
         self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_personal)
@@ -80,7 +82,7 @@ class Ui_PantallaInfoCompletaDelEmpleado(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -531,7 +533,7 @@ class Ui_PantallaInfoCompletaDelEmpleado(object):
 "    background-color: rgb(199, 199, 199)\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/calendario.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_para_agregar_fecha.setIcon(icon1)
         self.boton_para_agregar_fecha.setIconSize(QtCore.QSize(20, 20))
         self.boton_para_agregar_fecha.setObjectName("boton_para_agregar_fecha")

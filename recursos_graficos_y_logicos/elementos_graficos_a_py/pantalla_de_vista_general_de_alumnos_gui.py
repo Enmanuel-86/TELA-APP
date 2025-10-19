@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_VistaGeneralDeAlumnos(object):
@@ -215,7 +217,7 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_buscar.setIcon(icon)
         self.boton_buscar.setIconSize(QtCore.QSize(25, 25))
         self.boton_buscar.setObjectName("boton_buscar")
@@ -255,7 +257,7 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.imagen_contador.setMaximumSize(QtCore.QSize(40, 40))
         self.imagen_contador.setStyleSheet("color: rgb(255, 255, 255);")
         self.imagen_contador.setText("")
-        self.imagen_contador.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
+        self.imagen_contador.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
         self.imagen_contador.setScaledContents(True)
         self.imagen_contador.setObjectName("imagen_contador")
         self.gridLayout.addWidget(self.imagen_contador, 1, 0, 1, 1, QtCore.Qt.AlignHCenter)
@@ -351,7 +353,7 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_generar_informe.setIcon(icon1)
         self.boton_generar_informe.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe.setObjectName("boton_generar_informe")
@@ -389,7 +391,7 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_crear_nuevo_registro.setIcon(icon2)
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
@@ -427,7 +429,7 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_asistencia_alumnos.setIcon(icon3)
         self.boton_asistencia_alumnos.setIconSize(QtCore.QSize(26, 26))
         self.boton_asistencia_alumnos.setObjectName("boton_asistencia_alumnos")

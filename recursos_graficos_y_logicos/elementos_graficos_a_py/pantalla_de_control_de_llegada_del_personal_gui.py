@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_PantallaControlDeLlegada(object):
@@ -82,7 +84,7 @@ class Ui_PantallaControlDeLlegada(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -552,7 +554,7 @@ class Ui_PantallaControlDeLlegada(object):
 "\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_agregar.setIcon(icon1)
         self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
         self.boton_agregar.setObjectName("boton_agregar")
@@ -640,7 +642,7 @@ class Ui_PantallaControlDeLlegada(object):
 "\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/brocha.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/brocha.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_limpiar_lista.setIcon(icon2)
         self.boton_limpiar_lista.setObjectName("boton_limpiar_lista")
         self.gridLayout_2.addWidget(self.boton_limpiar_lista, 0, 1, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignBottom)
@@ -694,7 +696,7 @@ class Ui_PantallaControlDeLlegada(object):
 "\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/exportar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/exportar.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_suministrar.setIcon(icon3)
         self.boton_suministrar.setIconSize(QtCore.QSize(26, 26))
         self.boton_suministrar.setObjectName("boton_suministrar")

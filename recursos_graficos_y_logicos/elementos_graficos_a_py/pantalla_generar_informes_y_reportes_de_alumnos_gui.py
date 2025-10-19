@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_PantallaGenerarInformesReportesAlumnos(object):
@@ -86,7 +88,7 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -333,7 +335,7 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_generar_informe_integral.setIcon(icon1)
         self.boton_generar_informe_integral.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe_integral.setObjectName("boton_generar_informe_integral")

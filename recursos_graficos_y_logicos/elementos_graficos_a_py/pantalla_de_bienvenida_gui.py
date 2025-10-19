@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_PantallaBienvenidaUsuario(object):
@@ -371,7 +373,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         self.label_4 = QtWidgets.QLabel(self.frame_4)
         self.label_4.setMaximumSize(QtCore.QSize(400, 100))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/github_logo.png"))
+        self.label_4.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/github_logo.png")))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.verticalLayout_8.addWidget(self.label_4, 0, QtCore.Qt.AlignHCenter)
@@ -421,7 +423,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         self.label_3 = QtWidgets.QLabel(self.frame_3)
         self.label_3.setMaximumSize(QtCore.QSize(150, 150))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/logo_pdf.png"))
+        self.label_3.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_pdf.png")))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_4.addWidget(self.label_3, 0, QtCore.Qt.AlignHCenter)
@@ -454,7 +456,7 @@ class Ui_PantallaBienvenidaUsuario(object):
 "\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/archivo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/archivo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setIconSize(QtCore.QSize(20, 20))
         self.pushButton.setObjectName("pushButton")

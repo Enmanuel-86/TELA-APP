@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_PantallaInfoCompletaDelAlumno(object):
@@ -63,7 +65,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.label_imagen_del_alumno.setGeometry(QtCore.QRect(130, 10, 141, 131))
         self.label_imagen_del_alumno.setStyleSheet("border:none;")
         self.label_imagen_del_alumno.setText("")
-        self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/estudiante_m.png"))
+        self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/estudiante_m.png")))
         self.label_imagen_del_alumno.setScaledContents(True)
         self.label_imagen_del_alumno.setObjectName("label_imagen_del_alumno")
         self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_personal)
@@ -85,7 +87,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")

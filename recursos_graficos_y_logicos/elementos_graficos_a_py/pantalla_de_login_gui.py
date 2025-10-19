@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_Login(object):
@@ -135,7 +137,7 @@ class Ui_Login(object):
         self.icono_contrasena.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_contrasena.setText("")
-        self.icono_contrasena.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_contraseña.png"))
+        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_contraseña.png")))
         self.icono_contrasena.setScaledContents(True)
         self.icono_contrasena.setObjectName("icono_contrasena")
         self.icono_usuario = QtWidgets.QLabel(self.espacio_login)
@@ -143,7 +145,7 @@ class Ui_Login(object):
         self.icono_usuario.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_usuario.setText("")
-        self.icono_usuario.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
+        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
         self.icono_usuario.setScaledContents(True)
         self.icono_usuario.setObjectName("icono_usuario")
         self.boton_ver_contrasena = QtWidgets.QPushButton(self.espacio_login)
@@ -157,7 +159,7 @@ class Ui_Login(object):
 "}")
         self.boton_ver_contrasena.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/ver_contraseña.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/ver_contraseña.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_ver_contrasena.setIcon(icon)
         self.boton_ver_contrasena.setIconSize(QtCore.QSize(25, 25))
         self.boton_ver_contrasena.setObjectName("boton_ver_contrasena")
@@ -165,7 +167,7 @@ class Ui_Login(object):
         self.logo_del_tela.setGeometry(QtCore.QRect(340, 60, 181, 171))
         self.logo_del_tela.setStyleSheet("background:transparent;")
         self.logo_del_tela.setText("")
-        self.logo_del_tela.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/Tela.png"))
+        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
         self.logo_del_tela.setScaledContents(True)
         self.logo_del_tela.setObjectName("logo_del_tela")
         self.verticalLayout.addWidget(self.espacio_login, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)

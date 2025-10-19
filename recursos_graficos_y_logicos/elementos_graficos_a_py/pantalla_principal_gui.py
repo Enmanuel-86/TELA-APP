@@ -8,6 +8,8 @@
 
 
 from PySide2 import QtCore, QtGui, QtWidgets
+import os
+BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_VentanaPrincipal(object):
@@ -38,7 +40,7 @@ class Ui_VentanaPrincipal(object):
         self.logo_zona_educativa.setMaximumSize(QtCore.QSize(100, 40))
         self.logo_zona_educativa.setStyleSheet("border:none;")
         self.logo_zona_educativa.setText("")
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/logo_zona_educativa.PNG"))
+        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_zona_educativa.PNG")))
         self.logo_zona_educativa.setScaledContents(True)
         self.logo_zona_educativa.setObjectName("logo_zona_educativa")
         self.horizontalLayout.addWidget(self.logo_zona_educativa)
@@ -53,7 +55,7 @@ class Ui_VentanaPrincipal(object):
         self.membrete.setMaximumSize(QtCore.QSize(230, 40))
         self.membrete.setStyleSheet("border:none;")
         self.membrete.setText("")
-        self.membrete.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/membrete.PNG"))
+        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/membrete.PNG")))
         self.membrete.setScaledContents(True)
         self.membrete.setObjectName("membrete")
         self.horizontalLayout.addWidget(self.membrete)
@@ -69,7 +71,7 @@ class Ui_VentanaPrincipal(object):
         self.logo_tela.setBaseSize(QtCore.QSize(0, 0))
         self.logo_tela.setStyleSheet("border:none;")
         self.logo_tela.setText("")
-        self.logo_tela.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/Tela.png"))
+        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
         self.logo_tela.setScaledContents(True)
         self.logo_tela.setObjectName("logo_tela")
         self.horizontalLayout.addWidget(self.logo_tela)
@@ -85,7 +87,7 @@ class Ui_VentanaPrincipal(object):
         self.logo_juventud.setSizeIncrement(QtCore.QSize(0, 0))
         self.logo_juventud.setStyleSheet("border:none;")
         self.logo_juventud.setText("")
-        self.logo_juventud.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/logo_juventud.PNG"))
+        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_juventud.PNG")))
         self.logo_juventud.setScaledContents(True)
         self.logo_juventud.setObjectName("logo_juventud")
         self.horizontalLayout.addWidget(self.logo_juventud)
@@ -177,7 +179,7 @@ class Ui_VentanaPrincipal(object):
 "")
         self.boton_menu.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/menu.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_menu.setIcon(icon)
         self.boton_menu.setIconSize(QtCore.QSize(30, 30))
         self.boton_menu.setCheckable(False)
@@ -255,7 +257,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/hogar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/hogar.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_principal.setIcon(icon1)
         self.boton_principal.setIconSize(QtCore.QSize(30, 30))
         self.boton_principal.setCheckable(True)
@@ -309,7 +311,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_estudiante.setIcon(icon2)
         self.boton_estudiante.setIconSize(QtCore.QSize(30, 30))
         self.boton_estudiante.setCheckable(True)
@@ -366,7 +368,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/empleado.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/empleado.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_personal.setIcon(icon3)
         self.boton_personal.setIconSize(QtCore.QSize(30, 30))
         self.boton_personal.setCheckable(True)
@@ -420,7 +422,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/respaldo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/respaldo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_respaldo.setIcon(icon4)
         self.boton_respaldo.setIconSize(QtCore.QSize(30, 30))
         self.boton_respaldo.setCheckable(True)
@@ -474,7 +476,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/catalogar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/catalogar.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_cargar_catologo.setIcon(icon5)
         self.boton_cargar_catologo.setIconSize(QtCore.QSize(30, 30))
         self.boton_cargar_catologo.setCheckable(True)
@@ -535,7 +537,7 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_salir.setIcon(icon6)
         self.boton_salir.setIconSize(QtCore.QSize(30, 30))
         self.boton_salir.setCheckable(False)
