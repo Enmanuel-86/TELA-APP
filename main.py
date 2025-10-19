@@ -244,13 +244,16 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
         
-        self.stacked_widget.setCurrentIndex(0)
+        self.stacked_widget.setCurrentIndex(1)
+    
+        #self.area_scroll_side_bar.hide()
         
-        self.area_scroll_side_bar.hide()
+        
         
         
         # Funciones para los botones del sidebar
-        
+        self.boton_menu.clicked.connect(lambda: funciones_comunes.cambiar_tamano_side_bar(self.area_scroll_side_bar))
+        self.boton_principal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,5 ))
         self.boton_personal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 2 ))
         
