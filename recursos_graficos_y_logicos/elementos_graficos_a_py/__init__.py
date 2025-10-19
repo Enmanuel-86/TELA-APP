@@ -2,7 +2,7 @@ from .pantalla_principal_gui import Ui_VentanaPrincipal
 
 from .cintillo_gui import Ui_CintilloV2
 from .pantalla_de_login_gui import Ui_Login
-
+from .pantalla_de_bienvenida_gui import Ui_PantallaBienvenidaUsuario
 from .pantalla_de_opciones_gui import Ui_PantallaDeOpciones
 
 from .pantalla_admin_opciones_gui import Ui_PantallaDeOpcionesAdmin
