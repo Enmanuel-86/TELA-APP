@@ -1,11 +1,8 @@
 from .pantalla_principal_gui import Ui_VentanaPrincipal
 
-from .cintillo_gui import Ui_CintilloV2
 from .pantalla_de_login_gui import Ui_Login
 from .pantalla_de_bienvenida_gui import Ui_PantallaBienvenidaUsuario
-from .pantalla_de_opciones_gui import Ui_PantallaDeOpciones
 
-from .pantalla_admin_opciones_gui import Ui_PantallaDeOpcionesAdmin
 from .pantalla_admin_crear_nuevo_usuario_gui import Ui_CrearNuevoUsuario
 from .pantalla_admin_crear_respaldo_gui import Ui_PantallaCrearRespaldo
 from .pantalla_admin_insertar_catalogo_bd_gui import Ui_PantallaInsertarCatalogoBD

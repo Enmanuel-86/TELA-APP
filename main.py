@@ -10,10 +10,10 @@ from PySide2.QtGui import QColor
 
 
 from PySide2 import QtGui
-from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, Ui_Login, Ui_VentanaPrincipal)
+from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
 
 
-from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
                                         PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
@@ -312,13 +312,6 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
                     self.login.input_contrasena.clear()
                     self.stacked_widget.setCurrentIndex(7)
                     
-                    
-                    vista_personal = self.pantalla_vista_general_del_personal
-                    vista_alumnos = self.pantalla_vista_general_de_alumnos
-                    
-                    vista_personal.boton_de_regreso.clicked.connect(vista_personal.volver_pantalla_opciones_admin)
-                    vista_alumnos.boton_de_regreso.clicked.connect(vista_alumnos.volver_pantalla_opciones_admin)
-
                     
 
                 elif usuario[5] == "SUB-DIRECTOR":
