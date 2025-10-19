@@ -317,7 +317,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
             empleado_id = self.buscar_id_empleado(cedula)
             
-            self.stacked_widget.setCurrentIndex(10)
+            self.stacked_widget.setCurrentIndex(11)
             self.mostra_info_empleado(empleado_id)
             
             self.habilitar_inputs(lista_qlineedits)
@@ -355,7 +355,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 
                 print(f"el empleado es: \n\nNombre:{empleado[1]}\nID:{empleado[0]}")
                 
-                self.stacked_widget.setCurrentIndex(10)
+                self.stacked_widget.setCurrentIndex(11)
                 
                 self.mostra_info_empleado(empleado_id)
                 
@@ -393,7 +393,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         
                         print(f"el empleado es: \n\nNombre:{empleado[1]}\nID:{empleado[0]}")
                         
-                        self.stacked_widget.setCurrentIndex(10)
+                        self.stacked_widget.setCurrentIndex(11)
                         
                         self.mostra_info_empleado(empleado_id)
                         
@@ -425,7 +425,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             
             info_basica = empleado_servicio.obtener_empleado_por_id(empleado_id)
         
-            pantalla_perfil_empleado = self.stacked_widget.widget(10)
+            pantalla_perfil_empleado = self.stacked_widget.widget(11)
             
             
         
@@ -954,36 +954,18 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
     # Metodo para ir pantalla va a la pantalla de crear nuevo registro
     def ir_a_crear_nuevo_registro(self):
-        self.stacked_widget.setCurrentIndex(3)
+        self.stacked_widget.setCurrentIndex(8)
 
     # Metodo para ir  a la pantalla de control de llegadaq
     def ir_a_control_de_llegada(self):
-        self.stacked_widget.setCurrentIndex(4)
+        self.stacked_widget.setCurrentIndex(9)
         
     # Metodo para ir  a la pantalla de control de reposos
     def ir_a_control_de_reposos(self):
-        self.stacked_widget.setCurrentIndex(12)
+        self.stacked_widget.setCurrentIndex(10)
         
-    # Metodo para volver a la pantalla de opciones
-    def volver_pantalla_opciones(self):
-        
-        self.stacked_widget.setCurrentIndex(1)
+    
 
-        self.boton_de_opciones.setCurrentIndex(0)
-
-        self.barra_de_busqueda.clear()        
-
-
-    # Metodo para volver a la pantalla de opciones del admin
-    def volver_pantalla_opciones_admin(self):
-        
-        self.stacked_widget.setCurrentIndex(7)
-
-        self.boton_de_opciones.setCurrentIndex(0)
-
-        self.barra_de_busqueda.clear()
-        
-        #self.stacked_widget.setCurrentIndex(1)
 
     # Metodo para comprobar y hay valor por asignar en la variable o se asigna None
     # Este metodo sirve para comprobar esos valores que pueden ser None

@@ -19,7 +19,6 @@ class PantallaAdminCrearRespaldo(QWidget, Ui_PantallaCrearRespaldo):
         self.setupUi(self)
         
         #Rutas de las imagenes
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.boton_exportar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","exportar.png")))
         self.boton_importar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","importar.png")))
         self.boton_respaldo_correo.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mail.png")))
@@ -27,22 +26,12 @@ class PantallaAdminCrearRespaldo(QWidget, Ui_PantallaCrearRespaldo):
         
         self.ruta = None 
         
-        self.boton_de_regreso.clicked.connect(self.volver_atras)
         self.boton_exportar.clicked.connect(self.exportar_datos)
         self.boton_ruta_importar.clicked.connect(self.seleccionar_archivo_db_importar_datos)
         self.boton_importar.clicked.connect(self.importar_archivo_sql)
         
     
-        
-        
-        
-        
-        
-    def volver_atras(self):
-        self.stacked_widget.setCurrentIndex(7)
-        
-        
-    
+
     
     def exportar_datos(self):
         QApplication.beep()

@@ -919,7 +919,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     QMessageBox.information(self, "Bien hecho", "Registro exitoso")
 
 
-                                    pantalla_tabla = self.stacked_widget.widget(2)
+                                    pantalla_tabla = self.stacked_widget.widget(7)
                                     
                                     pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                                     indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8)
@@ -928,7 +928,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     
                                     pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
                                 
-                                    self.stacked_widget.setCurrentIndex(2)
+                                    self.stacked_widget.setCurrentIndex(7)
 
 
                                     ## Borrar todo lo que esta en el formulario 1 info basica ##
@@ -1110,7 +1110,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
 
 
-            self.stacked_widget.setCurrentIndex(2)
+            self.stacked_widget.setCurrentIndex(7)
 
         ## si el boton "no" es pulsadoo, no pasa nada #3
         elif msg_box.clickedButton() == boton_no:

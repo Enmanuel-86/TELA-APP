@@ -897,31 +897,22 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
     # Metodo para ir a la pantalla para registrar un alumno
     def ir_crear_nuevo_registro(self):
-        self.stacked_widget.setCurrentIndex(6)
+        self.stacked_widget.setCurrentIndex(3)
         
     # Metodo para ir a la pantalla de asistenca de alumnos
     def ir_asistencia_alumno(self):
         
-        self.stacked_widget.setCurrentIndex(13)
+        self.stacked_widget.setCurrentIndex(4)
         
         
     def ir_a_generar_informes_y_reportes(self):
     
-        self.stacked_widget.setCurrentIndex(14)
+        self.stacked_widget.setCurrentIndex(5)
         
 
-    # Metodo para volver a la pantalla anterior
-    def volver_pantalla_opciones(self):
-        self.stacked_widget.setCurrentIndex(1)
-
+ 
     
     
-    # metodo para volver a la pantalla anterior admin
-    def volver_pantalla_opciones_admin(self):
-        
-            self.stacked_widget.setCurrentIndex(7)
-            
-            
             
             
 """"            

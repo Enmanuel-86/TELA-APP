@@ -26,7 +26,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
     # Metodo para volver atras (pantalla de opciones admin)
     def volver_atras(self):
-        self.stacked_widget.setCurrentIndex(7)
+        self.stacked_widget.setCurrentIndex(1)
     
         
     

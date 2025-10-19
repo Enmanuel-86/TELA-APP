@@ -22,4 +22,4 @@ class PantallaAdminCrearUsuario(QWidget, Ui_CrearNuevoUsuario):
         
         
     def volver_atras(self):
-        self.stacked_widget.setCurrentIndex(7)
+        self.stacked_widget.setCurrentIndex(1)

@@ -605,7 +605,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
                 
                 # nos devolvemos a la pantalla anterior
-                self.stacked_widget.setCurrentIndex(2)
+                self.stacked_widget.setCurrentIndex(7)
                 
                 
             except Exception as e:

@@ -34,7 +34,7 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
         
     def volver_vista_general_empleados(self):
         
-        self.stacked_widget.setCurrentIndex(2)
+        self.stacked_widget.setCurrentIndex(7)
         
         self.espacio_scroll_mostrar_datos_obtenidos.verticalScrollBar().setValue(0)
 

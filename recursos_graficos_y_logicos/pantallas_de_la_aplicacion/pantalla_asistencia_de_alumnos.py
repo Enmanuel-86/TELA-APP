@@ -851,7 +851,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 self.limpiar_lista_de_asistencias()
                 
                 # nos devolvemos a la pantalla anterior
-                self.stacked_widget.setCurrentIndex(5)
+                self.stacked_widget.setCurrentIndex(2)
                 
                 
             except Exception as e:

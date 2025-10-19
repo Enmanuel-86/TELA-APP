@@ -41,7 +41,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
     # Metodo para volver a la pantalla anterior
     def volver_vista_general_alumnos(self):
         
-        self.stacked_widget.setCurrentIndex(5)
+        self.stacked_widget.setCurrentIndex(2)
         self.dockWidget_diagnostico.hide()
 
         

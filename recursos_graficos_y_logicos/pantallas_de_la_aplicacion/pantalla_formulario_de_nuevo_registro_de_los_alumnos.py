@@ -794,7 +794,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         if self.msg_box.clickedButton() == self.boton_si:
             
         
-            self.stacked_widget.setCurrentIndex(5)
+            self.stacked_widget.setCurrentIndex(2)
             self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
         
         ## si el boton "no" es pulsadoo, no pasa nada #3
@@ -1381,14 +1381,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     # Limpiar todos los inputs
                                                     self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
                                                     
-                                                    pantalla_tabla_alumnos = self.stacked_widget.widget(5)
+                                                    pantalla_tabla_alumnos = self.stacked_widget.widget(2)
         
                                                     pantalla_tabla_alumnos.actualizar_tabla(1)
                                                     
                                                     pantalla_tabla_alumnos.actualizar_lista_busqueda()
                                                     pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                 
-                                                    self.stacked_widget.setCurrentIndex(5)
+                                                    self.stacked_widget.setCurrentIndex(2)
                                                 
                                                 ## si el boton "no" es pulsadoo, no hace nada
                                                 elif self.msg_box.clickedButton() == self.boton_no:
@@ -1720,7 +1720,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         # Limpiar todos los inputs
                                                         self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
                                                         
-                                                        pantalla_tabla_alumnos = self.stacked_widget.widget(5)
+                                                        pantalla_tabla_alumnos = self.stacked_widget.widget(2)
             
                                                         pantalla_tabla_alumnos.actualizar_tabla(1)
                                                         
@@ -1728,7 +1728,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                         pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                     
-                                                        self.stacked_widget.setCurrentIndex(5)
+                                                        self.stacked_widget.setCurrentIndex(2)
                                                     
                                                     ## si el boton "no" es pulsadoo, no hace nada
                                                     elif self.msg_box.clickedButton() == self.boton_no:

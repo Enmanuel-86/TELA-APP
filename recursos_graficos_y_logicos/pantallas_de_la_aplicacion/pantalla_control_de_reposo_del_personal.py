@@ -44,7 +44,7 @@ class PantallaControlRepososPersonal(QWidget, Ui_PantallaControlReposoPersonal):
     # Metodo para regresar a la pantalla anterior
     def volver_vista_general_personal(self):
         
-        self.stacked_widget.setCurrentIndex(2)
+        self.stacked_widget.setCurrentIndex(7)
         
         
         
