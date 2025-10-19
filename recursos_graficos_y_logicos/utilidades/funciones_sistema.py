@@ -16,7 +16,7 @@ class FuncionesComunes:
     
     
     # Metodo para moverse entre pantallas
-    def moverse_de_pantalla(self, pantalla , indice: int) -> None:
+    def moverse_de_pantalla(self, stacked_widget , indice: int) -> None:
         """
         
             Este metodo sirve para moverse de pantalla, se la pantalla y el indice.
@@ -27,7 +27,7 @@ class FuncionesComunes:
             
         """
         try:
-            pantalla.setCurrentIndex(indice)
+            stacked_widget.setCurrentIndex(indice)
             
         except Exception as e:
             
@@ -289,11 +289,11 @@ class FuncionesComunes:
         
         if self.estado_boton == True:
             
-            # Animación para minimizar (190 → 55)
+            # Animación para minimizar (190 → 50)
             self.animacion.setStartValue(190)
-            self.animacion.setEndValue(55)
+            self.animacion.setEndValue(50)
             self.animacion2.setStartValue(190)
-            self.animacion2.setEndValue(5)
+            self.animacion2.setEndValue(50)
             self.minimizado = True
             #side_bar.setFixedWidth(55)
             
@@ -304,10 +304,10 @@ class FuncionesComunes:
         elif self.estado_boton == False:
             
             
-            # Animación para maximizar (20 → 100)
-            self.animacion.setStartValue(55)
+            # Animación para maximizar (50 → 100)
+            self.animacion.setStartValue(50)
             self.animacion.setEndValue(190)
-            self.animacion2.setStartValue(55)
+            self.animacion2.setStartValue(50)
             self.animacion2.setEndValue(190)
             self.minimizado = False
             
