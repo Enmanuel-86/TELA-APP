@@ -99,14 +99,14 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    \n"
 "    background-color: rgb(0, 138, 71);\n"
-"    padding:5px;\n"
+"    padding:0px 5px 0px 0px;\n"
 "}")
         self.area_scroll_side_bar.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.area_scroll_side_bar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.area_scroll_side_bar.setWidgetResizable(True)
         self.area_scroll_side_bar.setObjectName("area_scroll_side_bar")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 185, 514))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 185, 524))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -135,7 +135,7 @@ class Ui_VentanaPrincipal(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame)
         self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setSpacing(2)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.boton_menu = QtWidgets.QPushButton(self.frame)
         self.boton_menu.setMaximumSize(QtCore.QSize(62, 16777215))
