@@ -28,7 +28,7 @@ class Ui_VistaGeneralDelPersonal(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(-2, 0, 1175, 552))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1173, 569))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
@@ -55,35 +55,6 @@ class Ui_VistaGeneralDelPersonal(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setSpacing(0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.espacio_boton_de_regreso = QtWidgets.QFrame(self.espacio_superior)
-        self.espacio_boton_de_regreso.setMinimumSize(QtCore.QSize(55, 0))
-        self.espacio_boton_de_regreso.setMaximumSize(QtCore.QSize(42, 16777215))
-        self.espacio_boton_de_regreso.setStyleSheet("background:transparent;")
-        self.espacio_boton_de_regreso.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_boton_de_regreso.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_boton_de_regreso.setObjectName("espacio_boton_de_regreso")
-        self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_boton_de_regreso)
-        self.boton_de_regreso.setGeometry(QtCore.QRect(0, 0, 41, 41))
-        self.boton_de_regreso.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_regreso.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px ;\n"
-"    border:2px solid;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
-        self.boton_de_regreso.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_de_regreso.setIcon(icon)
-        self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
-        self.boton_de_regreso.setObjectName("boton_de_regreso")
-        self.horizontalLayout_4.addWidget(self.espacio_boton_de_regreso, 0, QtCore.Qt.AlignLeft)
         self.espacio_para_las_opciones = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(10)
@@ -331,9 +302,9 @@ class Ui_VistaGeneralDelPersonal(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_buscar.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_buscar.setIcon(icon)
         self.boton_buscar.setIconSize(QtCore.QSize(25, 25))
         self.boton_buscar.setObjectName("boton_buscar")
         self.horizontalLayout_3.addWidget(self.boton_buscar, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
@@ -457,9 +428,9 @@ class Ui_VistaGeneralDelPersonal(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_control_de_llegada.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_control_de_llegada.setIcon(icon1)
         self.boton_control_de_llegada.setIconSize(QtCore.QSize(26, 26))
         self.boton_control_de_llegada.setObjectName("boton_control_de_llegada")
         self.horizontalLayout_2.addWidget(self.boton_control_de_llegada, 0, QtCore.Qt.AlignLeft)
@@ -492,9 +463,9 @@ class Ui_VistaGeneralDelPersonal(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_control_de_reposos.setIcon(icon3)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_control_de_reposos.setIcon(icon2)
         self.boton_control_de_reposos.setIconSize(QtCore.QSize(26, 26))
         self.boton_control_de_reposos.setObjectName("boton_control_de_reposos")
         self.horizontalLayout_2.addWidget(self.boton_control_de_reposos, 0, QtCore.Qt.AlignHCenter)
@@ -527,9 +498,9 @@ class Ui_VistaGeneralDelPersonal(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_crear_nuevo_registro.setIcon(icon4)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_crear_nuevo_registro.setIcon(icon3)
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
         self.horizontalLayout_2.addWidget(self.boton_crear_nuevo_registro, 0, QtCore.Qt.AlignRight)

@@ -102,71 +102,6 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
-              <widget class="QFrame" name="espacio_boton_de_regreso">
-               <property name="minimumSize">
-                <size>
-                 <width>60</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>42</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background:none;</string>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <widget class="QPushButton" name="boton_de_regreso">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>41</width>
-                  <height>41</height>
-                 </rect>
-                </property>
-                <property name="cursor">
-                 <cursorShape>PointingHandCursor</cursorShape>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-
-	background-color: rgb(255, 255, 255);
-	border-radius: 20px ;
-	border:2px solid;
-
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-               </widget>
-              </widget>
-             </item>
              <item alignment="Qt::AlignTop">
               <widget class="QFrame" name="espacio_para_las_opciones">
                <property name="sizePolicy">
@@ -371,8 +306,8 @@ QComboBox QAbstractItemView::item:hover {
                    <font>
                     <family>Arial</family>
                     <pointsize>14</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <weight>50</weight>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="styleSheet">

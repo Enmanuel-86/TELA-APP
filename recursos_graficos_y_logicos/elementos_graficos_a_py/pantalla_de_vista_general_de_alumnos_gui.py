@@ -47,35 +47,6 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.espacio_boton_de_regreso = QtWidgets.QFrame(self.espacio_superior)
-        self.espacio_boton_de_regreso.setMinimumSize(QtCore.QSize(60, 0))
-        self.espacio_boton_de_regreso.setMaximumSize(QtCore.QSize(42, 16777215))
-        self.espacio_boton_de_regreso.setStyleSheet("background:none;")
-        self.espacio_boton_de_regreso.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_boton_de_regreso.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_boton_de_regreso.setObjectName("espacio_boton_de_regreso")
-        self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_boton_de_regreso)
-        self.boton_de_regreso.setGeometry(QtCore.QRect(0, 0, 41, 41))
-        self.boton_de_regreso.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_regreso.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px ;\n"
-"    border:2px solid;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
-        self.boton_de_regreso.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_de_regreso.setIcon(icon)
-        self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
-        self.boton_de_regreso.setObjectName("boton_de_regreso")
-        self.horizontalLayout_2.addWidget(self.espacio_boton_de_regreso)
         self.espacio_para_las_opciones = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -187,8 +158,8 @@ class Ui_VistaGeneralDeAlumnos(object):
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         self.barra_de_busqueda.setFont(font)
         self.barra_de_busqueda.setStyleSheet("QLineEdit{\n"
 "    \n"
@@ -243,9 +214,9 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_buscar.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_buscar.setIcon(icon)
         self.boton_buscar.setIconSize(QtCore.QSize(25, 25))
         self.boton_buscar.setObjectName("boton_buscar")
         self.horizontalLayout.addWidget(self.boton_buscar, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
@@ -284,7 +255,7 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.imagen_contador.setMaximumSize(QtCore.QSize(40, 40))
         self.imagen_contador.setStyleSheet("color: rgb(255, 255, 255);")
         self.imagen_contador.setText("")
-        self.imagen_contador.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
+        self.imagen_contador.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
         self.imagen_contador.setScaledContents(True)
         self.imagen_contador.setObjectName("imagen_contador")
         self.gridLayout.addWidget(self.imagen_contador, 1, 0, 1, 1, QtCore.Qt.AlignHCenter)
@@ -379,9 +350,9 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_generar_informe.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_generar_informe.setIcon(icon1)
         self.boton_generar_informe.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe.setObjectName("boton_generar_informe")
         self.horizontalLayout_3.addWidget(self.boton_generar_informe)
@@ -417,9 +388,9 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_crear_nuevo_registro.setIcon(icon3)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_crear_nuevo_registro.setIcon(icon2)
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
         self.horizontalLayout_3.addWidget(self.boton_crear_nuevo_registro)
@@ -455,9 +426,9 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_asistencia_alumnos.setIcon(icon4)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_asistencia_alumnos.setIcon(icon3)
         self.boton_asistencia_alumnos.setIconSize(QtCore.QSize(26, 26))
         self.boton_asistencia_alumnos.setObjectName("boton_asistencia_alumnos")
         self.horizontalLayout_3.addWidget(self.boton_asistencia_alumnos)
