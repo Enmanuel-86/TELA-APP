@@ -83,7 +83,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
 
         ## Ruta relativa de las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
         self.boton_generar_informe.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","generar_informe.png")))
         self.boton_asistencia_alumnos.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","control_de_llegada.png")))
@@ -198,8 +197,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Carga las especialidades al boton deplegable
         self.cargar_especialidades()
         
-
-        self.boton_de_regreso.clicked.connect(self.volver_pantalla_opciones)
 
         self.boton_crear_nuevo_registro.clicked.connect(self.ir_crear_nuevo_registro)
         

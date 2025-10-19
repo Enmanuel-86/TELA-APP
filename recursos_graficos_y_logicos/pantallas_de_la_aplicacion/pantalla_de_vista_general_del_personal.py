@@ -110,7 +110,6 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                    indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
         ## Ruta relativa de las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
         self.boton_control_de_llegada.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","control_de_llegada.png")))
         self.boton_control_de_reposos.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "control_de_reposos.png")))
@@ -211,7 +210,6 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
         # conectar botones a los metodos para ir a las otras pantallas
-        self.boton_de_regreso.clicked.connect(self.volver_pantalla_opciones)
         self.boton_crear_nuevo_registro.clicked.connect(self.ir_a_crear_nuevo_registro)
         self.boton_control_de_llegada.clicked.connect(self.ir_a_control_de_llegada)
         self.boton_control_de_reposos.clicked.connect(self.ir_a_control_de_reposos)
