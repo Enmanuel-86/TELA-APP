@@ -16,7 +16,7 @@ from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_CintilloV2, 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaDeOpciones, PantallaAdminOpciones, PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
-                                        PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo)
+                                        PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
 
 from recursos_graficos_y_logicos.utilidades import funciones_comunes
 
@@ -197,6 +197,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
      
 
         ## Instanacias de las primeras pantallas ##
+        self.pantalla_bienvenida = PantallaBienvenidaUsuario(self.stacked_widget) # pantalla bienvenida al usuario / dashboard
         self.menu_opciones = PantallaDeOpciones(self.stacked_widget) # Menu de opciones
         self.pantalla_vista_general_del_personal = PantallaDeVistaGeneralDelPersonal(self.stacked_widget) # pantalla vista general del personal
         self.pantalla_formulario_nuevo_registro_empleado = PantallaDeFormularioNuevoRegistroEmpleado(self.stacked_widget) # pantalla del formulario para el nuevo registro del personal
@@ -220,7 +221,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.pantalla_admin_insertar_catalogo = PantallaAdminInsertarCatalogo(self.stacked_widget)
 
         # Añadiendo las pantalla en el stackedwidget
-        self.stacked_widget.addWidget(self.menu_opciones)  # indice 1
+        self.stacked_widget.addWidget(self.pantalla_bienvenida)  # indice 1
         self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 2
         self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 3
         self.stacked_widget.addWidget(self.pantalla_control_de_llegada)  # indice 4
