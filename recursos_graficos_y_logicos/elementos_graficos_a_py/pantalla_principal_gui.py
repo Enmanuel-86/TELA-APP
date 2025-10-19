@@ -91,25 +91,26 @@ class Ui_VentanaPrincipal(object):
         self.horizontalLayout.addWidget(self.logo_juventud)
         self.gridLayout.addWidget(self.espacio_princiapl, 0, 0, 1, 2)
         self.area_scroll_side_bar = QtWidgets.QScrollArea(self.centralwidget)
-        self.area_scroll_side_bar.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.area_scroll_side_bar.setMaximumSize(QtCore.QSize(190, 16777215))
         self.area_scroll_side_bar.setStyleSheet("QScrollArea{\n"
 "\n"
 "    \n"
-"    background-color: red;\n"
+"    \n"
+"    background-color: rgb(0, 138, 71);\n"
+"    padding:5px;\n"
 "}")
         self.area_scroll_side_bar.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.area_scroll_side_bar.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.area_scroll_side_bar.setWidgetResizable(True)
         self.area_scroll_side_bar.setObjectName("area_scroll_side_bar")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 200, 524))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 185, 514))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.side_bar = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.side_bar.setMinimumSize(QtCore.QSize(100, 351))
-        self.side_bar.setMaximumSize(QtCore.QSize(200, 16777215))
         self.side_bar.setStyleSheet("QFrame{\n"
 "\n"
 "background-color: rgb(0, 138, 71);\n"
@@ -124,7 +125,7 @@ class Ui_VentanaPrincipal(object):
         self.frame = QtWidgets.QFrame(self.side_bar)
         self.frame.setStyleSheet("QFrame{\n"
 "\n"
-"    padding:0px 0px 0px 5px;\n"
+"    padding:0px 0px 0px 0px;\n"
 "\n"
 "}\n"
 "")
@@ -179,6 +180,7 @@ class Ui_VentanaPrincipal(object):
         icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/menu.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_menu.setIcon(icon)
         self.boton_menu.setIconSize(QtCore.QSize(30, 30))
+        self.boton_menu.setCheckable(False)
         self.boton_menu.setAutoDefault(False)
         self.boton_menu.setDefault(False)
         self.boton_menu.setFlat(False)
@@ -206,20 +208,20 @@ class Ui_VentanaPrincipal(object):
 "}")
         self.label_menu.setObjectName("label_menu")
         self.horizontalLayout_2.addWidget(self.label_menu, 0, QtCore.Qt.AlignLeft)
-        self.verticalLayout_2.addWidget(self.frame)
+        self.verticalLayout_2.addWidget(self.frame, 0, QtCore.Qt.AlignLeft)
         self.line = QtWidgets.QFrame(self.side_bar)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout_2.addWidget(self.line)
-        self.boton_dashboard = QtWidgets.QPushButton(self.side_bar)
+        self.boton_principal = QtWidgets.QPushButton(self.side_bar)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.boton_dashboard.setFont(font)
-        self.boton_dashboard.setStyleSheet("QPushButton {\n"
+        self.boton_principal.setFont(font)
+        self.boton_principal.setStyleSheet("QPushButton {\n"
 "    /* Mantiene el icono a la izquierda y el texto más a la derecha */\n"
 "    text-align: left;\n"
 "    \n"
@@ -228,7 +230,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 0px 5px 10px;\n"
+"    padding:5px 0px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -251,17 +253,16 @@ class Ui_VentanaPrincipal(object):
 "}\n"
 "\n"
 "\n"
-"\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/analisis_de_datos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_dashboard.setIcon(icon1)
-        self.boton_dashboard.setIconSize(QtCore.QSize(30, 30))
-        self.boton_dashboard.setCheckable(True)
-        self.boton_dashboard.setAutoRepeat(True)
-        self.boton_dashboard.setAutoExclusive(True)
-        self.boton_dashboard.setObjectName("boton_dashboard")
-        self.verticalLayout_2.addWidget(self.boton_dashboard)
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/hogar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_principal.setIcon(icon1)
+        self.boton_principal.setIconSize(QtCore.QSize(30, 30))
+        self.boton_principal.setCheckable(True)
+        self.boton_principal.setAutoRepeat(True)
+        self.boton_principal.setAutoExclusive(True)
+        self.boton_principal.setObjectName("boton_principal")
+        self.verticalLayout_2.addWidget(self.boton_principal)
         self.line_2 = QtWidgets.QFrame(self.side_bar)
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -283,7 +284,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 0px 5px 10px;\n"
+"    padding:5px 0px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -340,7 +341,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 0px 5px 10px;\n"
+"    padding:5px 0px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -394,7 +395,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 0px 5px 10px;\n"
+"    padding:5px 0px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -448,7 +449,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 0px 5px 10px;\n"
+"    padding:5px 5px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -566,7 +567,7 @@ class Ui_VentanaPrincipal(object):
         _translate = QtCore.QCoreApplication.translate
         VentanaPrincipal.setWindowTitle(_translate("VentanaPrincipal", "MainWindow"))
         self.label_menu.setText(_translate("VentanaPrincipal", "MENU"))
-        self.boton_dashboard.setText(_translate("VentanaPrincipal", "  DashBoard"))
+        self.boton_principal.setText(_translate("VentanaPrincipal", "  Principal"))
         self.boton_estudiante.setText(_translate("VentanaPrincipal", "  Estudiantes"))
         self.boton_personal.setText(_translate("VentanaPrincipal", "  Personal"))
         self.boton_respaldo.setText(_translate("VentanaPrincipal", "  Respaldos"))

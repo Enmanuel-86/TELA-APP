@@ -217,7 +217,7 @@
      <widget class="QScrollArea" name="area_scroll_side_bar">
       <property name="maximumSize">
        <size>
-        <width>200</width>
+        <width>190</width>
         <height>16777215</height>
        </size>
       </property>
@@ -225,11 +225,16 @@
        <string notr="true">QScrollArea{
 
 	
-	background-color: red;
+	
+	background-color: rgb(0, 138, 71);
+	padding:5px;
 }</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -239,8 +244,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>200</width>
-         <height>524</height>
+         <width>185</width>
+         <height>514</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -261,18 +266,6 @@
         </property>
         <item>
          <widget class="QFrame" name="side_bar">
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>351</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="styleSheet">
            <string notr="true">QFrame{
 
@@ -295,12 +288,12 @@ background-color: rgb(0, 138, 71);
            <property name="topMargin">
             <number>10</number>
            </property>
-           <item>
+           <item alignment="Qt::AlignLeft">
             <widget class="QFrame" name="frame">
              <property name="styleSheet">
               <string notr="true">QFrame{
 
-	padding:0px 0px 0px 5px;
+	padding:0px 0px 0px 0px;
 
 }
 </string>
@@ -387,6 +380,9 @@ QPushButton:checked{
                   <height>30</height>
                  </size>
                 </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
                 <property name="autoDefault">
                  <bool>false</bool>
                 </property>
@@ -445,7 +441,7 @@ QPushButton:checked{
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="boton_dashboard">
+            <widget class="QPushButton" name="boton_principal">
              <property name="font">
               <font>
                <family>Arial</family>
@@ -464,7 +460,7 @@ QPushButton:checked{
 	
 	color: rgb(255, 255, 255);
 	border:none;
-	padding:5px 0px 5px 10px;
+	padding:5px 0px 5px 5px;
 
 }
 
@@ -487,15 +483,14 @@ QPushButton:checked{
 }
 
 
-
 </string>
              </property>
              <property name="text">
-              <string>  DashBoard</string>
+              <string>  Principal</string>
              </property>
              <property name="icon">
               <iconset>
-               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/analisis_de_datos.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/analisis_de_datos.png</iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -541,7 +536,7 @@ QPushButton:checked{
 	
 	color: rgb(255, 255, 255);
 	border:none;
-	padding:5px 0px 5px 10px;
+	padding:5px 0px 5px 5px;
 
 }
 
@@ -626,7 +621,7 @@ QPushButton:checked{
 	
 	color: rgb(255, 255, 255);
 	border:none;
-	padding:5px 0px 5px 10px;
+	padding:5px 0px 5px 5px;
 
 }
 
@@ -702,7 +697,7 @@ QPushButton:checked{
 	
 	color: rgb(255, 255, 255);
 	border:none;
-	padding:5px 0px 5px 10px;
+	padding:5px 0px 5px 5px;
 
 }
 
@@ -778,7 +773,7 @@ QPushButton:checked{
 	
 	color: rgb(255, 255, 255);
 	border:none;
-	padding:5px 0px 5px 10px;
+	padding:5px 5px 5px 5px;
 
 }
 
