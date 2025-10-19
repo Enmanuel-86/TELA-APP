@@ -186,60 +186,52 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
 
         self.login.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.login.ojo_cerrado))
 
-        
 
-        
-       
-        
-        self.stacked_widget.addWidget(self.login)
-
-
-     
 
         ## Instanacias de las primeras pantallas ##
         self.pantalla_bienvenida = PantallaBienvenidaUsuario(self.stacked_widget) # pantalla bienvenida al usuario / dashboard
-        self.menu_opciones = PantallaDeOpciones(self.stacked_widget) # Menu de opciones
+        
+        self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
+        self.pantalla_formulario_nuevo_registro_de_alumnos = PantallaDeFormularioNuevoRegistroAlumnos(self.stacked_widget) # pantalla del formulario para el nuevo registro de los alumnos
+        self.pantalla_asistencia_alumnos = PantallaAsistenciaAlumnos(self.stacked_widget) # pantalla de asistencias de los alumnos
+        self.pantalla_generar_informes_reportes_alumno = PantallaGenerarInformesReportesAlumnos(self.stacked_widget) # pantalla para generar los reportes de los alumnos
+        self.pantalla_perfil_alumno = PantallaPerfilAlumno(self.stacked_widget) # pantalla para ver el perfil del alumno
+        
+        
         self.pantalla_vista_general_del_personal = PantallaDeVistaGeneralDelPersonal(self.stacked_widget) # pantalla vista general del personal
         self.pantalla_formulario_nuevo_registro_empleado = PantallaDeFormularioNuevoRegistroEmpleado(self.stacked_widget) # pantalla del formulario para el nuevo registro del personal
         self.pantalla_control_de_llegada = PantallaControlDeLlegada(self.stacked_widget) # pantalla de control de llegada del personal
+        self.pantalla_control_de_reposos = PantallaControlRepososPersonal(self.stacked_widget) # pantalla para ver y registrar los reposos del personal/empleados
+        self.pantalla_perfil_empleado = PantallaPerfilEmpleado(self.stacked_widget) # pantalla para ver el perfil del empleado
 
-        self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
-        self.pantalla_formulario_nuevo_registro_de_alumnos = PantallaDeFormularioNuevoRegistroAlumnos(self.stacked_widget) # pantalla del formulario para el nuevo registro de los alumnos
         
-        
-        self.pantalla_admin_opciones = PantallaAdminOpciones(self.stacked_widget) # pantalla de opciones del admin
         self.pantalla_admin_crear_usuario = PantallaAdminCrearUsuario(self.stacked_widget) # pantalla del admin para crear usuario 
         self.pantalla_admin_crear_respaldo = PantallaAdminCrearRespaldo(self.stacked_widget) # pantalla del admin para crear respaldo
-        
-        self.pantalla_perfil_empleado = PantallaPerfilEmpleado(self.stacked_widget)
-        self.pantalla_perfil_alumno = PantallaPerfilAlumno(self.stacked_widget)
-        self.pantalla_control_de_reposos = PantallaControlRepososPersonal(self.stacked_widget)
-        
-        self.pantalla_asistencia_alumnos = PantallaAsistenciaAlumnos(self.stacked_widget)
-        self.pantalla_generar_informes_reportes_alumno = PantallaGenerarInformesReportesAlumnos(self.stacked_widget)
-
         self.pantalla_admin_insertar_catalogo = PantallaAdminInsertarCatalogo(self.stacked_widget)
+        
+        
+        
 
         # Añadiendo las pantalla en el stackedwidget
+        self.stacked_widget.addWidget(self.login) # indice 0
+        
         self.stacked_widget.addWidget(self.pantalla_bienvenida)  # indice 1
-        self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 2
-        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 3
-        self.stacked_widget.addWidget(self.pantalla_control_de_llegada)  # indice 4
-        self.stacked_widget.addWidget(self.pantalla_vista_general_de_alumnos)  # indice 5
-        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_de_alumnos)  # indice 6
         
-        self.stacked_widget.addWidget(self.pantalla_admin_opciones) # indice 7
-        self.stacked_widget.addWidget(self.pantalla_admin_crear_usuario) # indice 8
-        self.stacked_widget.addWidget(self.pantalla_admin_crear_respaldo) #indice 9
+        self.stacked_widget.addWidget(self.pantalla_vista_general_de_alumnos)  # indice 2
+        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_de_alumnos)  # indice 3
+        self.stacked_widget.addWidget(self.pantalla_asistencia_alumnos) # indice 4
+        self.stacked_widget.addWidget(self.pantalla_generar_informes_reportes_alumno) # indice 5
+        self.stacked_widget.addWidget(self.pantalla_perfil_alumno) # indice 6
         
-        self.stacked_widget.addWidget(self.pantalla_perfil_empleado) # indice 10
-        self.stacked_widget.addWidget(self.pantalla_perfil_alumno) # indice 11
-        self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 12
+        self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 7
+        self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 8
+        self.stacked_widget.addWidget(self.pantalla_control_de_llegada)  # indice 9
+        self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 10
+        self.stacked_widget.addWidget(self.pantalla_perfil_empleado) # indice 11
         
-        self.stacked_widget.addWidget(self.pantalla_asistencia_alumnos) # indice 13
-        self.stacked_widget.addWidget(self.pantalla_generar_informes_reportes_alumno) # indice #14
-        
-        self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 15
+        self.stacked_widget.addWidget(self.pantalla_admin_crear_usuario) # indice 12
+        self.stacked_widget.addWidget(self.pantalla_admin_crear_respaldo) #indice 13
+        self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 14
         
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
@@ -254,8 +246,8 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         # Funciones para los botones del sidebar
         self.boton_menu.clicked.connect(lambda: funciones_comunes.cambiar_tamano_side_bar(self.area_scroll_side_bar))
         self.boton_principal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
-        self.boton_estudiante.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,5 ))
-        self.boton_personal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 2 ))
+        self.boton_estudiante.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
+        self.boton_personal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
         
         
         
