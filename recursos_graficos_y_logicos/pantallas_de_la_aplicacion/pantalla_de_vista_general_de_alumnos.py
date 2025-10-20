@@ -307,7 +307,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 if cedula == alumno[1]:
                     
                     # luego nos vamos a la pantalla del perfil del alumno
-                    self.stacked_widget.setCurrentIndex(11)
+                    self.stacked_widget.setCurrentIndex(6)
                     
                     self.mostrar_la_info_alumno(alumno_id= alumno[0])
                     
@@ -509,7 +509,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                         print(f"\nel alumno es: \nNombre:{alumno[2]}\nID:{alumno[0]}")
                         
                         
-                        self.stacked_widget.setCurrentIndex(11)
+                        self.stacked_widget.setCurrentIndex(6)
                         
                         self.mostrar_la_info_alumno(alumno_id= alumno_id)
                         
@@ -537,7 +537,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         global pantalla_perfil_alumno
         
-        pantalla_perfil_alumno = self.stacked_widget.widget(11)
+        pantalla_perfil_alumno = self.stacked_widget.widget(6)
     
     
         if pantalla_perfil_alumno.lista_cuentas_alumno.count() == 0:
