@@ -240,14 +240,14 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
     
         #self.area_scroll_side_bar.hide()
         
-        
+        self.stacked_widget.currentChanged.connect(lambda x: print(x))
         
         
         # Funciones para los botones del sidebar
         self.boton_menu.clicked.connect(lambda: funciones_comunes.cambiar_tamano_side_bar(self.area_scroll_side_bar))
-        self.boton_principal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
-        self.boton_estudiante.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
-        self.boton_personal.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
+        self.boton_principal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
+        self.boton_estudiante.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
+        self.boton_personal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
         
         
         
@@ -257,7 +257,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.msg = QMessageBox()
         self.msg.setWindowTitle("Error de inicio de sesión")
         self.msg.setText("")
-        # Usar un icono del sistema (predeterminado de PyQt5)
+        # Usar un icono del sistema 
         self.msg.setIcon(QMessageBox.Warning)
         self.msg.setWindowIcon(QIcon(ruta_del_icono))
 
@@ -268,7 +268,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         
 
    
-  
+    
       
 
     def validar_credenciales(self):
@@ -312,7 +312,8 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
                     self.login.input_contrasena.clear()
                     self.stacked_widget.setCurrentIndex(7)
                     
-                    
+                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
+
 
                 elif usuario[5] == "SUB-DIRECTOR":
 
@@ -326,6 +327,10 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
                     self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
                     self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
                     self.area_scroll_side_bar.show()
+                    
+                    self.boton_cargar_catologo.hide()
+                    
+                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
                     
                     
 
