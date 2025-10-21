@@ -12,6 +12,40 @@ class FuncionesComunes:
         # Variables axuliares
         self.estado_boton = True
         
+    # Metodo para bloquear los botones del side bar
+    def bloquear_botones_sidebar(self, indice_stackedwidget: int, pantallas_importantes: tuple, botones_sidebar: tuple) -> None:
+        
+        """
+            Este metodo sirve especificamente para boloquear los botones del sidebar cuando estan en una pantalla importante.
+            
+            Lo que hace este metodo como tal es verificar si el indice actual del stackedwideget es igual al de una de las pantallas
+            que son importantes, si es una pantalla importante se bloquean los botones del sidebar para evitar errores de insersion de datos
+            
+            **Ejemplo**
+            
+            lista_pantallas_importantes = (1,8,0,6) # los indices de las pantallas que se consideren importantes que se deje comentado en el main.py
+            
+            El el indice actual del **stackedwidger** es uno de los indices de la **lista_pantallas_importantes**
+            
+            si lo es bloquea los botones
+            
+            si no lo es deja los botones habilitados, o si estan deshabilitados habilitalos
+        
+        """
+        
+        if indice_stackedwidget in pantallas_importantes:
+            
+            for boton in botones_sidebar:
+                
+                boton.setDisabled(True)
+                
+        else:
+            
+            for boton in botones_sidebar:
+                
+                boton.setEnabled(True)
+        
+        
         
     
     
