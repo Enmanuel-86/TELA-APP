@@ -1,6 +1,5 @@
-from PySide2.QtGui import QIcon
-from PySide2.QtWidgets import  QWidget
-#from PySide2 import QtGui, Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import  QWidget
 import os
 from ..elementos_graficos_a_py import Ui_PantallaGenerarInformesReportesAlumnos
 

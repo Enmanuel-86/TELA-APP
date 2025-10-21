@@ -1,9 +1,9 @@
 from datetime import datetime, date
-from PySide2 import QtGui, QtCore
-from PySide2.QtGui import QIcon
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtGui import QIcon
 import traceback
 import os
-from PySide2.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
+from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
                              QStackedWidget, QMessageBox,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)

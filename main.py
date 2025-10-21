@@ -1,12 +1,12 @@
 import sys
 import os
 import random
-from PySide2.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
+from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
                              QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
-from PySide2.QtGui import QIcon, QPixmap
+from PyQt5.QtGui import QIcon, QPixmap
 
-from PySide2.QtWidgets import QGraphicsDropShadowEffect
-from PySide2.QtGui import QColor
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+from PyQt5.QtGui import QColor
 
 
 from PySide2 import QtGui

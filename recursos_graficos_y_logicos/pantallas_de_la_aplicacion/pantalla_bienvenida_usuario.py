@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import (QWidget, QVBoxLayout, QPushButton)
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QPushButton)
 
 from ..elementos_graficos_a_py import  Ui_PantallaBienvenidaUsuario
 from datetime import datetime, time

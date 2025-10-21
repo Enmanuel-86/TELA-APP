@@ -1,7 +1,7 @@
-from PySide2.QtGui import QIcon,  QDesktopServices
-from PySide2.QtCore import QUrl
-from PySide2.QtWidgets import  QWidget, QFileDialog, QMessageBox, QApplication
-from PySide2 import QtGui
+from PyQt5.QtGui import QIcon,  QDesktopServices
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import  QWidget, QFileDialog, QMessageBox, QApplication
+from PyQt5 import QtGui
 import os
 import platform
 from ..elementos_graficos_a_py import Ui_PantallaCrearRespaldo

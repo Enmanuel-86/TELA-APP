@@ -1,8 +1,8 @@
-from PySide2.QtCore import Qt,QPoint
-from PySide2.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PySide2.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLayout, 
+from PyQt5.QtCore import Qt,QPoint
+from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLayout, 
                              QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
-from PySide2 import QtGui, QtCore
+from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
 
