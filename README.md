@@ -1,6 +1,6 @@
 # ⚠️ AVISO IMPORTANTE
 
-Este repositorio es de **solo consulta pública**.
+Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
 Está prohibido:
 
 - ❌ Descargar el código 
