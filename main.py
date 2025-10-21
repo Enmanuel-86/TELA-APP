@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
 
 
-from PySide2 import QtGui
+from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
 
 

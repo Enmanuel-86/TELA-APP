@@ -1,5 +1,5 @@
 import traceback
-from PySide2.QtCore import QPropertyAnimation, QEasingCurve
+from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 
 """
 Este archivo contiene todas las funciones que suelen repetirse, esto ayuda a evitar copiar y pegar

@@ -1,18 +1,18 @@
 import os
 import sys
 from io import StringIO
-from PySide2.QtWidgets import (
+from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox,
     QProgressBar, QListWidget, QListWidgetItem
 )
-from PySide2.QtCore import QThread, Signal
-from PyQt5.uic import compileUi  # Solo para compilar en memoria
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.uic import compileUi  # Compila el archivo .ui
 
 
 class UiConverterThread(QThread):
-    progress = Signal(int)
-    finished = Signal(bool, str)
+    progress = pyqtSignal(int)
+    finished = pyqtSignal(bool, str)
 
     def __init__(self, input_files, output_folder):
         super().__init__()
@@ -37,10 +37,7 @@ class UiConverterThread(QThread):
                 lines = [line for line in content.splitlines() if "reading ui file" not in line]
                 content = "\n".join(lines)
 
-                # 2️⃣ Reemplazar PyQt5 → PySide2
-                content = content.replace("from PyQt5 import", "from PySide2 import")
-
-                # 3️⃣ Insertar definición BASE_DIR al principio
+                # 2️⃣ Insertar definición BASE_DIR al principio
                 content_lines = content.splitlines()
                 insert_index = 0
                 for i, line in enumerate(content_lines):
@@ -49,7 +46,7 @@ class UiConverterThread(QThread):
                 content_lines.insert(insert_index, "import os\nBASE_DIR = os.path.dirname(__file__)")
                 content = "\n".join(content_lines)
 
-                # 4️⃣ Convertir rutas absolutas → os.path.join(BASE_DIR, "ruta_relativa")
+                # 3️⃣ Convertir rutas absolutas → os.path.join(BASE_DIR, "ruta_relativa")
                 ui_dir = os.path.dirname(input_file)
                 py_dir = os.path.dirname(output_file)
 
@@ -77,7 +74,7 @@ class UiConverterThread(QThread):
                             f'addPixmap(QtGui.QPixmap({make_relative(abs_path)})'
                         )
 
-                # 5️⃣ Guardar archivo convertido
+                # 4️⃣ Guardar archivo convertido
                 with open(output_file, "w", encoding="utf-8") as f:
                     f.write(content)
 
@@ -92,7 +89,7 @@ class UiConverterThread(QThread):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Conversor UI → PySide2 (rutas portables)")
+        self.setWindowTitle("Conversor UI → PyQt5 (rutas portables)")
         self.setGeometry(100, 100, 600, 400)
         self.init_ui()
         self.converter_thread = None
@@ -168,7 +165,7 @@ class MainWindow(QMainWindow):
             }
         """)
 
-        # Agregar todos los widgets al layout principal
+        # Agregar widgets al layout principal
         main_layout.addLayout(input_layout)
         main_layout.addWidget(QLabel("Archivos seleccionados:"))
         main_layout.addWidget(self.file_list_widget)
