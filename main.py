@@ -175,7 +175,10 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
 
         
+        self.botones_sidebar = (self.boton_principal, self.boton_estudiante, self.boton_personal, 
+                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_salir)
         
+        self.pantallas_importantes = (3,8)
         
         
         
@@ -240,15 +243,15 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
     
         #self.area_scroll_side_bar.hide()
         
-        self.stacked_widget.currentChanged.connect(lambda x: print(x))
-        
+        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: funciones_comunes.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
+
         
         # Funciones para los botones del sidebar
         self.boton_menu.clicked.connect(lambda: funciones_comunes.cambiar_tamano_side_bar(self.area_scroll_side_bar))
         self.boton_principal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
-        
+        self.boton_salir.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 0))
         
         
         
