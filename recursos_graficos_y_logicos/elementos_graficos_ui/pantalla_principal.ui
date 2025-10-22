@@ -30,7 +30,7 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="1" column="0" alignment="Qt::AlignLeft">
+    <item row="1" column="0">
      <widget class="QScrollArea" name="area_scroll_side_bar">
       <property name="maximumSize">
        <size>
@@ -81,7 +81,7 @@
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <item alignment="Qt::AlignHCenter">
+        <item>
          <widget class="QFrame" name="side_bar">
           <property name="styleSheet">
            <string notr="true">QFrame{
