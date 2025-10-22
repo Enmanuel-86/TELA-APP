@@ -312,12 +312,12 @@ class FuncionesComunes:
         
         # Configurar la animación
         self.animacion = QPropertyAnimation(side_bar, b"minimumWidth")
-        self.animacion.setDuration(500)  # 500 milisegundos
+        self.animacion.setDuration(400)  # 500 milisegundos
         self.animacion.setEasingCurve(QEasingCurve.InOutCubic)
         
         # Segunda animación para el ancho máximo
         self.animacion2 = QPropertyAnimation(side_bar, b"maximumWidth")
-        self.animacion2.setDuration(500)
+        self.animacion2.setDuration(400)
         self.animacion2.setEasingCurve(QEasingCurve.InOutCubic)
         
         
