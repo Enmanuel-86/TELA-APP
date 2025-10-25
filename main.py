@@ -141,7 +141,7 @@ class Login(QWidget, Ui_Login):
     
 
 ## Clase principal donde esta toda la apliacion ##
-class MainWindow(Ui_VentanaPrincipal, QMainWindow):
+class MainWindow(QMainWindow, Ui_VentanaPrincipal):
     def __init__(self):
         super().__init__()
         
@@ -251,6 +251,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
         self.boton_principal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
+        self.boton_respaldo.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 13) )
         self.boton_salir.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 0))
         
         
@@ -348,7 +349,7 @@ class MainWindow(Ui_VentanaPrincipal, QMainWindow):
 
 
 
-     
+
         
     def remove_default_pages(self):
         """Elimina las 2 primeras páginas por defecto de Qt Designer"""
