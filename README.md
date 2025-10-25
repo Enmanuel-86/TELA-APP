@@ -61,7 +61,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 
 ### 2️⃣ Para el desarrollo de las interfaces gráficas:
 
-| PyQt5 | QtDegigner |                                            
+| PyQt5 | QtDesigner |                                            
 |-------|------------|
 | <img src="https://process.filestackapi.com/cache=expiry:max/resize=width:700/uPPuFFskQoezJvzvNcHi" style="width: 200px; height: auto;" alt="Logo de PyQt5">| <img src="https://flathub.org/_next/image?url=https%3A%2F%2Fdl.flathub.org%2Fmedia%2Fio%2Fqt%2FDesigner%2F256e688f981e073bb67f8847eba5316c%2Ficons%2F128x128%2Fio.qt.Designer.png&w=128&q=100"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">|
 
