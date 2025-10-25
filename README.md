@@ -1,4 +1,4 @@
-# ⚠️ AVISO IMPORTANTE
+AQLAlchemylchemy AVISO IMPORTANTE
 
 Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
 Está prohibido:
@@ -70,7 +70,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 ### 3️⃣ Para la base de datos:
 
 
-|SQlite|AQLAlchemy|
+|SQlite|SQLalchemy|
 |------|----------|
 |<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">| <img src="https://learnbatta.com/assets/images/sqlalchemy/logo.png"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">
 
