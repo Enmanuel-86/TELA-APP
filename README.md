@@ -17,7 +17,7 @@ El código se comparte solo con fines demostrativos.
 # 🟢TELA APP 💻🟢
 
 
-<img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo sistema V3.png" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
+<img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_sistema_V3.png" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
 
 
 ### ¿Qué es el TELA APP?
@@ -26,7 +26,15 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
 <div style="display: flex; justify-content: center; " align = "center">
   
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logo_Uptjaa.svg/1200px-Logo_Uptjaa.svg.png" style="width: 180px; height: auto; margin-right: 20px;" alt="Logo del UPTJAA">
+
+  <h1 style="font-size: 100px; align-content:center;">+</h1>
+  
+
   <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/Tela.png" style="width: 200px; height: auto;" alt="Logo del Tela">
+
+  <h1 style="font-size: 100px; align-content:center;">=</h1>
+
+  <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/icono_sistema_V3.png" style="width: 200px; height: auto;" alt="icono tela-app">
   
 </div>
 
@@ -34,7 +42,7 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
 
 
 ## Contenido
-
+  
 - [¿Qué es el TELA APP?](#qué-es-el-tela-app) ❓
 - [¿De que se trata el sistema de información?](#de-que-se-trata-el-sistema-de-información) ❓
 - [Herramientas Utilizadas para el desarrollo del sistema de información](#herramientas-utilizadas-para-el-desarrollo-del-sistema-de-información) 🧰
