@@ -23,6 +23,84 @@ class Ui_VentanaPrincipal(object):
         self.gridLayout.setContentsMargins(0, -1, 0, 0)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
+        self.stacked_widget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stacked_widget.setObjectName("stacked_widget")
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.stacked_widget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.stacked_widget.addWidget(self.page_2)
+        self.gridLayout.addWidget(self.stacked_widget, 1, 1, 1, 1)
+        self.espacio_princiapl = QtWidgets.QFrame(self.centralwidget)
+        self.espacio_princiapl.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.espacio_princiapl.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.espacio_princiapl.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_princiapl.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_princiapl.setObjectName("espacio_princiapl")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_princiapl)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.logo_zona_educativa = QtWidgets.QLabel(self.espacio_princiapl)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo_zona_educativa.sizePolicy().hasHeightForWidth())
+        self.logo_zona_educativa.setSizePolicy(sizePolicy)
+        self.logo_zona_educativa.setMaximumSize(QtCore.QSize(100, 40))
+        self.logo_zona_educativa.setStyleSheet("border:none;")
+        self.logo_zona_educativa.setText("")
+        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_zona_educativa.PNG")))
+        self.logo_zona_educativa.setScaledContents(True)
+        self.logo_zona_educativa.setObjectName("logo_zona_educativa")
+        self.horizontalLayout.addWidget(self.logo_zona_educativa)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.membrete = QtWidgets.QLabel(self.espacio_princiapl)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.membrete.sizePolicy().hasHeightForWidth())
+        self.membrete.setSizePolicy(sizePolicy)
+        self.membrete.setMaximumSize(QtCore.QSize(230, 40))
+        self.membrete.setStyleSheet("border:none;")
+        self.membrete.setText("")
+        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/membrete.PNG")))
+        self.membrete.setScaledContents(True)
+        self.membrete.setObjectName("membrete")
+        self.horizontalLayout.addWidget(self.membrete)
+        self.logo_tela = QtWidgets.QLabel(self.espacio_princiapl)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo_tela.sizePolicy().hasHeightForWidth())
+        self.logo_tela.setSizePolicy(sizePolicy)
+        self.logo_tela.setMinimumSize(QtCore.QSize(0, 0))
+        self.logo_tela.setMaximumSize(QtCore.QSize(50, 40))
+        self.logo_tela.setSizeIncrement(QtCore.QSize(0, 0))
+        self.logo_tela.setBaseSize(QtCore.QSize(0, 0))
+        self.logo_tela.setStyleSheet("border:none;")
+        self.logo_tela.setText("")
+        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
+        self.logo_tela.setScaledContents(True)
+        self.logo_tela.setObjectName("logo_tela")
+        self.horizontalLayout.addWidget(self.logo_tela)
+        spacerItem1 = QtWidgets.QSpacerItem(133, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.logo_juventud = QtWidgets.QLabel(self.espacio_princiapl)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo_juventud.sizePolicy().hasHeightForWidth())
+        self.logo_juventud.setSizePolicy(sizePolicy)
+        self.logo_juventud.setMaximumSize(QtCore.QSize(60, 40))
+        self.logo_juventud.setSizeIncrement(QtCore.QSize(0, 0))
+        self.logo_juventud.setStyleSheet("border:none;")
+        self.logo_juventud.setText("")
+        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_juventud.PNG")))
+        self.logo_juventud.setScaledContents(True)
+        self.logo_juventud.setObjectName("logo_juventud")
+        self.horizontalLayout.addWidget(self.logo_juventud)
+        self.gridLayout.addWidget(self.espacio_princiapl, 0, 0, 1, 2)
         self.area_scroll_side_bar = QtWidgets.QScrollArea(self.centralwidget)
         self.area_scroll_side_bar.setMaximumSize(QtCore.QSize(190, 16777215))
         self.area_scroll_side_bar.setStyleSheet("QScrollArea{\n"
@@ -37,7 +115,7 @@ class Ui_VentanaPrincipal(object):
         self.area_scroll_side_bar.setWidgetResizable(True)
         self.area_scroll_side_bar.setObjectName("area_scroll_side_bar")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 185, 524))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 180, 514))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -148,6 +226,7 @@ class Ui_VentanaPrincipal(object):
         self.line.setObjectName("line")
         self.verticalLayout_2.addWidget(self.line)
         self.boton_principal = QtWidgets.QPushButton(self.side_bar)
+        self.boton_principal.setEnabled(True)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
@@ -182,6 +261,13 @@ class Ui_VentanaPrincipal(object):
 "    background-color: rgb(0, 89, 45);\n"
 "    border-left:3px solid rgb(0, 183, 72);\n"
 "    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 92, 47)\n"
 "\n"
 "}\n"
 "\n"
@@ -236,6 +322,13 @@ class Ui_VentanaPrincipal(object):
 "    background-color: rgb(0, 89, 45);\n"
 "    border-left:3px solid rgb(0, 183, 72);\n"
 "    padding-left:4px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 92, 47)\n"
 "\n"
 "}\n"
 "\n"
@@ -296,6 +389,13 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "}\n"
 "\n"
+"QPushButton:disabled{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 92, 47)\n"
+"\n"
+"}\n"
+"\n"
 "\n"
 "")
         icon3 = QtGui.QIcon()
@@ -350,6 +450,13 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "}\n"
 "\n"
+"QPushButton:disabled{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 92, 47)\n"
+"\n"
+"}\n"
+"\n"
 "\n"
 "")
         icon4 = QtGui.QIcon()
@@ -367,6 +474,7 @@ class Ui_VentanaPrincipal(object):
         self.line_6.setObjectName("line_6")
         self.verticalLayout_2.addWidget(self.line_6)
         self.boton_cargar_catologo = QtWidgets.QPushButton(self.side_bar)
+        self.boton_cargar_catologo.setEnabled(True)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(12)
@@ -382,7 +490,7 @@ class Ui_VentanaPrincipal(object):
 "    \n"
 "    color: rgb(255, 255, 255);\n"
 "    border:none;\n"
-"    padding:5px 5px 5px 5px;\n"
+"    padding:5px 0px 5px 5px;\n"
 "\n"
 "}\n"
 "\n"
@@ -404,6 +512,13 @@ class Ui_VentanaPrincipal(object):
 "\n"
 "}\n"
 "\n"
+"QPushButton:disabled{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 92, 47)\n"
+"\n"
+"}\n"
+"\n"
 "\n"
 "")
         icon5 = QtGui.QIcon()
@@ -420,8 +535,8 @@ class Ui_VentanaPrincipal(object):
         self.line_7.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_7.setObjectName("line_7")
         self.verticalLayout_2.addWidget(self.line_7)
-        spacerItem = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem2)
         self.line_5 = QtWidgets.QFrame(self.side_bar)
         self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -465,8 +580,7 @@ class Ui_VentanaPrincipal(object):
 "}\n"
 "\n"
 "\n"
-"\n"
-"")
+"QPushButton:disabled{\\n\\n    \\n    background-color: rgb(0, 92, 47)}")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_salir.setIcon(icon6)
@@ -482,84 +596,6 @@ class Ui_VentanaPrincipal(object):
         self.horizontalLayout_3.addWidget(self.side_bar)
         self.area_scroll_side_bar.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.area_scroll_side_bar, 1, 0, 1, 1)
-        self.stacked_widget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stacked_widget.setObjectName("stacked_widget")
-        self.page = QtWidgets.QWidget()
-        self.page.setObjectName("page")
-        self.stacked_widget.addWidget(self.page)
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setObjectName("page_2")
-        self.stacked_widget.addWidget(self.page_2)
-        self.gridLayout.addWidget(self.stacked_widget, 1, 1, 1, 1)
-        self.espacio_princiapl = QtWidgets.QFrame(self.centralwidget)
-        self.espacio_princiapl.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.espacio_princiapl.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.espacio_princiapl.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_princiapl.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_princiapl.setObjectName("espacio_princiapl")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_princiapl)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.logo_zona_educativa = QtWidgets.QLabel(self.espacio_princiapl)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logo_zona_educativa.sizePolicy().hasHeightForWidth())
-        self.logo_zona_educativa.setSizePolicy(sizePolicy)
-        self.logo_zona_educativa.setMaximumSize(QtCore.QSize(100, 40))
-        self.logo_zona_educativa.setStyleSheet("border:none;")
-        self.logo_zona_educativa.setText("")
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_zona_educativa.PNG")))
-        self.logo_zona_educativa.setScaledContents(True)
-        self.logo_zona_educativa.setObjectName("logo_zona_educativa")
-        self.horizontalLayout.addWidget(self.logo_zona_educativa)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.membrete = QtWidgets.QLabel(self.espacio_princiapl)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.membrete.sizePolicy().hasHeightForWidth())
-        self.membrete.setSizePolicy(sizePolicy)
-        self.membrete.setMaximumSize(QtCore.QSize(230, 40))
-        self.membrete.setStyleSheet("border:none;")
-        self.membrete.setText("")
-        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/membrete.PNG")))
-        self.membrete.setScaledContents(True)
-        self.membrete.setObjectName("membrete")
-        self.horizontalLayout.addWidget(self.membrete)
-        self.logo_tela = QtWidgets.QLabel(self.espacio_princiapl)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logo_tela.sizePolicy().hasHeightForWidth())
-        self.logo_tela.setSizePolicy(sizePolicy)
-        self.logo_tela.setMinimumSize(QtCore.QSize(0, 0))
-        self.logo_tela.setMaximumSize(QtCore.QSize(50, 40))
-        self.logo_tela.setSizeIncrement(QtCore.QSize(0, 0))
-        self.logo_tela.setBaseSize(QtCore.QSize(0, 0))
-        self.logo_tela.setStyleSheet("border:none;")
-        self.logo_tela.setText("")
-        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
-        self.logo_tela.setScaledContents(True)
-        self.logo_tela.setObjectName("logo_tela")
-        self.horizontalLayout.addWidget(self.logo_tela)
-        spacerItem2 = QtWidgets.QSpacerItem(133, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem2)
-        self.logo_juventud = QtWidgets.QLabel(self.espacio_princiapl)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logo_juventud.sizePolicy().hasHeightForWidth())
-        self.logo_juventud.setSizePolicy(sizePolicy)
-        self.logo_juventud.setMaximumSize(QtCore.QSize(60, 40))
-        self.logo_juventud.setSizeIncrement(QtCore.QSize(0, 0))
-        self.logo_juventud.setStyleSheet("border:none;")
-        self.logo_juventud.setText("")
-        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/logo_juventud.PNG")))
-        self.logo_juventud.setScaledContents(True)
-        self.logo_juventud.setObjectName("logo_juventud")
-        self.horizontalLayout.addWidget(self.logo_juventud)
-        self.gridLayout.addWidget(self.espacio_princiapl, 0, 0, 1, 2)
         VentanaPrincipal.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(VentanaPrincipal)
