@@ -18,7 +18,7 @@ from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdmi
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
                                         PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
 
-from recursos_graficos_y_logicos.utilidades import funciones_comunes
+from recursos_graficos_y_logicos.utilidades import FuncionSistema
 
 
 ##################################
@@ -243,16 +243,17 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
     
         #self.area_scroll_side_bar.hide()
         
-        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: funciones_comunes.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
-
+        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
+        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget:  self.boton_principal.setChecked(True) if indice_stackedwidget == 1 else None)
         
         # Funciones para los botones del sidebar
-        self.boton_menu.clicked.connect(lambda: funciones_comunes.cambiar_tamano_side_bar(self.area_scroll_side_bar))
-        self.boton_principal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,1 ))
-        self.boton_estudiante.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget,2 ))
-        self.boton_personal.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 7 ))
-        self.boton_respaldo.toggled.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 13) )
-        self.boton_salir.clicked.connect(lambda : funciones_comunes.moverse_de_pantalla(self.stacked_widget, 0))
+        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.area_scroll_side_bar))
+        self.boton_principal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,1 ))
+        self.boton_estudiante.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,2 ))
+        self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
+        self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
+        self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
+        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.area_scroll_side_bar))
         
         
         
@@ -314,8 +315,8 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                 if usuario[5] == "DIRECTOR":
                     self.login.input_usuario.clear()
                     self.login.input_contrasena.clear()
-                    self.stacked_widget.setCurrentIndex(7)
-                    
+                    self.stacked_widget.setCurrentIndex(1)
+                    self.area_scroll_side_bar.show()
                     self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
 
 
