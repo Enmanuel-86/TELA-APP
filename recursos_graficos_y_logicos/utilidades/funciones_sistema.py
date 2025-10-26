@@ -1,16 +1,20 @@
 import traceback
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+
 
 """
 Este archivo contiene todas las funciones que suelen repetirse, esto ayuda a evitar copiar y pegar
 codigo que ya esta escrito. Con esto solo llamamos la funcion, pasamos parametro y listo
 """
 
-class FuncionesComunes:
+class FuncionesDelSistema:
     def __init__(self):
         
         # Variables axuliares
-        self.estado_boton = True
+        self.estado_sidebar = True
+        
+        
         
     # Metodo para bloquear los botones del side bar
     def bloquear_botones_sidebar(self, indice_stackedwidget: int, pantallas_importantes: tuple, botones_sidebar: tuple) -> None:
@@ -44,9 +48,32 @@ class FuncionesComunes:
             for boton in botones_sidebar:
                 
                 boton.setEnabled(True)
+                
+                
+    # Metodo para salir al login con el sidebar
+    def salir_al_login_con_sidebar(self, stacked_widget, sidebar):
+        
+        """
+            Este metodo es para salir al login usando el boton de "salir" que esta en el sidebar,
+            este metodo lo que hace es arreglar el tamaño el siderbar y hacer que vuelva a su estado inicial.
+            
+            **Su estado inicial seria que:**
+            
+            - Su tamaño es de 190px de ancho por defecto, ya que si nos vamos al login sin hacer eso, el sidebar se vera mal
+            - La variable self.estado_sidebar vuelve a tener el valor de True, lo que hace que se reproduzca la animacion de minimizar
+            
+        """
         
         
         
+        self.moverse_de_pantalla(stacked_widget, 0)
+        
+        sidebar.setFixedWidth(190)
+        
+        self.estado_sidebar = True
+    
+    
+    
     
     
     # Metodo para moverse entre pantallas
@@ -321,7 +348,7 @@ class FuncionesComunes:
         self.animacion2.setEasingCurve(QEasingCurve.InOutCubic)
         
         
-        if self.estado_boton == True:
+        if self.estado_sidebar == True:
             
             # Animación para minimizar (190 → 50)
             self.animacion.setStartValue(190)
@@ -331,11 +358,11 @@ class FuncionesComunes:
             self.minimizado = True
             #side_bar.setFixedWidth(55)
             
-            self.estado_boton = False
+            self.estado_sidebar  = False
             
             
 
-        elif self.estado_boton == False:
+        elif self.estado_sidebar == False:
             
             
             # Animación para maximizar (50 → 100)
@@ -348,7 +375,7 @@ class FuncionesComunes:
             
             #side_bar.setFixedWidth(190)
             
-            self.estado_boton = True
+            self.estado_sidebar = True
             
             
         # Iniciar ambas animaciones
@@ -376,7 +403,7 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
                 (4, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '16788123', '1985-10-28', 39, 'Activo', 'F', 0), 
                 (5, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '26788123', '1985-10-28', 39, 'Activo', 'F', 0)]
 
-funciones_comunes = FuncionesComunes()
+FuncionSistema = FuncionesDelSistema()
 
 #print(funciones_comunes.buscar_id_por_cedula("175362562", lista_prueba))
 #print(funciones_comunes.cargar_elementos_para_el_combobox())
