@@ -80,11 +80,11 @@ class FuncionesDelSistema:
     def moverse_de_pantalla(self, stacked_widget , indice: int) -> None:
         """
         
-            Este metodo sirve para moverse de pantalla, se la pantalla y el indice.
+            Este metodo sirve para moverse de pantalla, se le pasa la variable donde se tiene el QStackedWidget y el indice de la pantalla a donde queremos ir.
         
             Como estamos trabajando con stackedWidget este metodo funciona asi:
             
-            boton.clicked.connect(lambda: moverse_de_pantalla(self.stacked_widget, 3 )
+            boton.clicked.connect(lambda: moverse_de_pantalla(self.stacked_widget, 3 ) # nos dirige a la pantalla de formulario alumno
             
         """
         try:
