@@ -1,4 +1,4 @@
-AQLAlchemylchemy AVISO IMPORTANTE
+# AVISO IMPORTANTE
 
 Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
 Está prohibido:
@@ -27,13 +27,11 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
   
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logo_Uptjaa.svg/1200px-Logo_Uptjaa.svg.png" style="width: 180px; height: auto; margin-right: 20px;" alt="Logo del UPTJAA">
 
-  <h1 style="font-size: 100px; align-content:center;">+</h1>
   
 
   <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/Tela.png" style="width: 200px; height: auto;" alt="Logo del Tela">
 
-  <h1 style="font-size: 100px; align-content:center;">=</h1>
-
+  
   <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/icono_sistema_V3.png" style="width: 200px; height: auto;" alt="icono tela-app">
   
 </div>
