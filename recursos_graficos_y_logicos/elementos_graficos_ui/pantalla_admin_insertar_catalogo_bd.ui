@@ -41,7 +41,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-54</y>
+        <y>0</y>
         <width>1230</width>
         <height>967</height>
        </rect>
@@ -65,11 +65,13 @@
        <item>
         <widget class="QFrame" name="espacio_principal">
          <property name="styleSheet">
-          <string notr="true">
+          <string notr="true">QFrame{
     background: qlineargradient(
         x1:0, y1:0, x2:1, y2:1,
         stop:0 #3fea87, stop:1 #00770e)
    
+}
+
 </string>
          </property>
          <property name="frameShape">
@@ -87,52 +89,6 @@
           </property>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout">
-            <item alignment="Qt::AlignTop">
-             <widget class="QPushButton" name="boton_de_regreso">
-              <property name="minimumSize">
-               <size>
-                <width>40</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>40</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="cursor">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton{
-
-	background-color: rgb(255, 255, 255);
-	border-radius: 20px ;
-	border:2px solid;
-
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>30</width>
-                <height>30</height>
-               </size>
-              </property>
-             </widget>
-            </item>
             <item>
              <spacer name="horizontalSpacer">
               <property name="orientation">
@@ -231,6 +187,15 @@ QPushButton:hover{
 	background-color: rgb(255, 255, 255);
 	border:10px ridge rgb(122, 59, 33);
 	padding:15px;
+
+
+}
+
+QListWidget{
+
+	border:1px solid black;
+	background:#ffffff;
+	padding:0px;
 
 
 }
@@ -485,12 +450,7 @@ QPushButton:hover{
                     <string/>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
@@ -519,6 +479,15 @@ QPushButton:hover{
 	background-color: rgb(255, 255, 255);
 	border:10px ridge rgb(122, 59, 33);
 	padding:15px;
+
+
+}
+
+QListWidget{
+
+	border:1px solid black;
+	background:#ffffff;
+	padding:0px;
 
 
 }
@@ -773,12 +742,25 @@ QPushButton:hover{
                     <string/>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                    <string notr="true"/>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="viewMode">
+                    <enum>QListView::ListMode</enum>
+                   </property>
+                   <property name="uniformItemSizes">
+                    <bool>false</bool>
+                   </property>
+                   <property name="batchSize">
+                    <number>100</number>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="selectionRectVisible">
+                    <bool>false</bool>
                    </property>
                   </widget>
                  </item>
@@ -807,6 +789,15 @@ QPushButton:hover{
 	background-color: rgb(255, 255, 255);
 	border:10px ridge rgb(122, 59, 33);
 	padding:15px;
+
+
+}
+
+QListWidget{
+
+	border:1px solid black;
+	background:#ffffff;
+	padding:0px;
 
 
 }
@@ -1061,12 +1052,7 @@ QPushButton:hover{
                     <string/>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
@@ -1095,6 +1081,15 @@ QPushButton:hover{
 	background-color: rgb(255, 255, 255);
 	border:10px ridge rgb(122, 59, 33);
 	padding:15px;
+
+
+}
+
+QListWidget{
+
+	border:1px solid black;
+	background:#ffffff;
+	padding:0px;
 
 
 }
@@ -1349,12 +1344,7 @@ QPushButton:hover{
                     <string/>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
@@ -1383,6 +1373,15 @@ QPushButton:hover{
 	background-color: rgb(255, 255, 255);
 	border:10px ridge rgb(122, 59, 33);
 	padding:15px;
+
+
+}
+
+QListWidget{
+
+	border:1px solid black;
+	background:#ffffff;
+	padding:0px;
 
 
 }
@@ -1637,12 +1636,7 @@ QPushButton:hover{
                     <string/>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>

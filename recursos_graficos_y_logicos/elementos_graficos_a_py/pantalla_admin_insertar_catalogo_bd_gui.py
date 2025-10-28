@@ -25,18 +25,20 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -54, 1230, 967))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1230, 967))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.espacio_principal = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.espacio_principal.setStyleSheet("\n"
+        self.espacio_principal.setStyleSheet("QFrame{\n"
 "    background: qlineargradient(\n"
 "        x1:0, y1:0, x2:1, y2:1,\n"
 "        stop:0 #3fea87, stop:1 #00770e)\n"
 "   \n"
+"}\n"
+"\n"
 "")
         self.espacio_principal.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -47,29 +49,6 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.verticalLayout_21.setObjectName("verticalLayout_21")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_principal)
-        self.boton_de_regreso.setMinimumSize(QtCore.QSize(40, 40))
-        self.boton_de_regreso.setMaximumSize(QtCore.QSize(40, 40))
-        self.boton_de_regreso.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_regreso.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px ;\n"
-"    border:2px solid;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
-        self.boton_de_regreso.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_de_regreso.setIcon(icon)
-        self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
-        self.boton_de_regreso.setObjectName("boton_de_regreso")
-        self.horizontalLayout.addWidget(self.boton_de_regreso, 0, QtCore.Qt.AlignTop)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.label_titulo_pantalla = QtWidgets.QLabel(self.espacio_principal)
@@ -115,6 +94,15 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
 "    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
 "\n"
 "\n"
 "}\n"
@@ -236,9 +224,9 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_registrar_especialidad.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_registrar_especialidad.setIcon(icon)
         self.boton_registrar_especialidad.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_especialidad.setObjectName("boton_registrar_especialidad")
         self.verticalLayout_3.addWidget(self.boton_registrar_especialidad, 0, QtCore.Qt.AlignRight)
@@ -268,12 +256,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         font.setWeight(50)
         self.vista_previa_especialidades.setFont(font)
         self.vista_previa_especialidades.setToolTip("")
-        self.vista_previa_especialidades.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_especialidades.setStyleSheet("")
         self.vista_previa_especialidades.setObjectName("vista_previa_especialidades")
         self.verticalLayout_4.addWidget(self.vista_previa_especialidades)
         self.verticalLayout_5.addLayout(self.verticalLayout_4)
@@ -290,6 +273,15 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
 "    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
 "\n"
 "\n"
 "}\n"
@@ -411,7 +403,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_registrar_diagnostico.setIcon(icon1)
+        self.boton_registrar_diagnostico.setIcon(icon)
         self.boton_registrar_diagnostico.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_diagnostico.setObjectName("boton_registrar_diagnostico")
         self.verticalLayout_7.addWidget(self.boton_registrar_diagnostico, 0, QtCore.Qt.AlignRight)
@@ -441,12 +433,13 @@ class Ui_PantallaInsertarCatalogoBD(object):
         font.setWeight(50)
         self.vista_previa_diagnosticos.setFont(font)
         self.vista_previa_diagnosticos.setToolTip("")
-        self.vista_previa_diagnosticos.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_diagnosticos.setStyleSheet("")
+        self.vista_previa_diagnosticos.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.vista_previa_diagnosticos.setViewMode(QtWidgets.QListView.ListMode)
+        self.vista_previa_diagnosticos.setUniformItemSizes(False)
+        self.vista_previa_diagnosticos.setBatchSize(100)
+        self.vista_previa_diagnosticos.setWordWrap(True)
+        self.vista_previa_diagnosticos.setSelectionRectVisible(False)
         self.vista_previa_diagnosticos.setObjectName("vista_previa_diagnosticos")
         self.verticalLayout_8.addWidget(self.vista_previa_diagnosticos)
         self.verticalLayout_6.addLayout(self.verticalLayout_8)
@@ -463,6 +456,15 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
 "    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
 "\n"
 "\n"
 "}\n"
@@ -584,7 +586,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_registrar_enfermedad.setIcon(icon1)
+        self.boton_registrar_enfermedad.setIcon(icon)
         self.boton_registrar_enfermedad.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_enfermedad.setObjectName("boton_registrar_enfermedad")
         self.verticalLayout_10.addWidget(self.boton_registrar_enfermedad, 0, QtCore.Qt.AlignRight)
@@ -614,12 +616,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         font.setWeight(50)
         self.vista_previa_enfermedades.setFont(font)
         self.vista_previa_enfermedades.setToolTip("")
-        self.vista_previa_enfermedades.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_enfermedades.setStyleSheet("")
         self.vista_previa_enfermedades.setObjectName("vista_previa_enfermedades")
         self.verticalLayout_11.addWidget(self.vista_previa_enfermedades)
         self.verticalLayout_9.addLayout(self.verticalLayout_11)
@@ -636,6 +633,15 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
 "    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
 "\n"
 "\n"
 "}\n"
@@ -757,7 +763,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_registrar_cargo_empleado.setIcon(icon1)
+        self.boton_registrar_cargo_empleado.setIcon(icon)
         self.boton_registrar_cargo_empleado.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_cargo_empleado.setObjectName("boton_registrar_cargo_empleado")
         self.verticalLayout_19.addWidget(self.boton_registrar_cargo_empleado, 0, QtCore.Qt.AlignRight)
@@ -787,12 +793,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         font.setWeight(50)
         self.vista_previa_cargos_empleados.setFont(font)
         self.vista_previa_cargos_empleados.setToolTip("")
-        self.vista_previa_cargos_empleados.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_cargos_empleados.setStyleSheet("")
         self.vista_previa_cargos_empleados.setObjectName("vista_previa_cargos_empleados")
         self.verticalLayout_20.addWidget(self.vista_previa_cargos_empleados)
         self.verticalLayout_18.addLayout(self.verticalLayout_20)
@@ -809,6 +810,15 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(255, 255, 255);\n"
 "    border:10px ridge rgb(122, 59, 33);\n"
 "    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
 "\n"
 "\n"
 "}\n"
@@ -930,7 +940,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_registrar_funcion_cargo.setIcon(icon1)
+        self.boton_registrar_funcion_cargo.setIcon(icon)
         self.boton_registrar_funcion_cargo.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_funcion_cargo.setObjectName("boton_registrar_funcion_cargo")
         self.verticalLayout_16.addWidget(self.boton_registrar_funcion_cargo, 0, QtCore.Qt.AlignRight)
@@ -960,12 +970,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         font.setWeight(50)
         self.vista_previa_funciones_cargo.setFont(font)
         self.vista_previa_funciones_cargo.setToolTip("")
-        self.vista_previa_funciones_cargo.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_funciones_cargo.setStyleSheet("")
         self.vista_previa_funciones_cargo.setObjectName("vista_previa_funciones_cargo")
         self.verticalLayout_17.addWidget(self.vista_previa_funciones_cargo)
         self.verticalLayout_15.addLayout(self.verticalLayout_17)
