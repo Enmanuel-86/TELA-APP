@@ -384,6 +384,26 @@ class FuncionesDelSistema:
             
             
             
+    # Metodos para cambiar de estilos/TEMAS
+    def cargar_estilos(self):
+        try:
+            ruta_estilos = 'recursos_graficos_y_logicos/estilos/tema_principal.qss'
+            
+            # LEER el archivo primero
+            with open(ruta_estilos, 'r', encoding='utf-8') as archivo:
+                estilo = archivo.read()
+            
+            # Aplicar el contenido leído
+            self.setStyleSheet(estilo)
+            
+        except FileNotFoundError:
+            print("Error: No se encontró el archivo estilos.qss")
+        except Exception as e:
+            print(f"Error al cargar estilos: {e}")
+
+
+            
+            
            
             
             
