@@ -1,0 +1,58 @@
+/* =============================== */
+/* ARCHIVO: tema_principal.qss */
+/* =============================== */
+
+
+
+/*Estilo para los espacios principales, son los que tiene el fondo de gradiante verde */
+
+QFrame[tipo= "espacio_principal"]{
+
+   
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:1,
+        stop:0 #3fea87, stop:1 #00770e);
+
+}
+
+
+
+
+/* Estilo para los espacio de los segementos */
+
+QFrame[tipo="espacio_segmento"]{
+	background-color: rgb(255, 255, 255);
+	border:10px ridge rgb(122, 59, 33);
+}
+
+
+
+
+
+
+/* ********************************************************** */
+
+/*Estilo para los QLineEdit "los inputs" */
+QLineEdit[tipo="formulario"]{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ 	padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit[tipo="formulario"]:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+/* **************************************************************** */
+
