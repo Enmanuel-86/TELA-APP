@@ -70,29 +70,6 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
         self.gridLayout.addWidget(self.label_titulo_pantalla, 0, 2, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(241, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem, 0, 3, 1, 1)
-        self.boton_de_regreso = QtWidgets.QPushButton(self.espacio_principal)
-        self.boton_de_regreso.setMinimumSize(QtCore.QSize(40, 40))
-        self.boton_de_regreso.setMaximumSize(QtCore.QSize(40, 40))
-        self.boton_de_regreso.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_regreso.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px ;\n"
-"    border:2px solid;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
-        self.boton_de_regreso.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_de_regreso.setIcon(icon)
-        self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
-        self.boton_de_regreso.setObjectName("boton_de_regreso")
-        self.gridLayout.addWidget(self.boton_de_regreso, 0, 0, 1, 1)
         spacerItem1 = QtWidgets.QSpacerItem(241, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem1, 0, 1, 1, 1)
         self.frame_4 = QtWidgets.QFrame(self.espacio_principal)
@@ -334,9 +311,9 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_generar_informe_integral.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_generar_informe_integral.setIcon(icon)
         self.boton_generar_informe_integral.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe_integral.setObjectName("boton_generar_informe_integral")
         self.verticalLayout_4.addWidget(self.boton_generar_informe_integral, 0, QtCore.Qt.AlignHCenter)
@@ -417,7 +394,7 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_generar_informe_integral_2.setIcon(icon1)
+        self.boton_generar_informe_integral_2.setIcon(icon)
         self.boton_generar_informe_integral_2.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe_integral_2.setObjectName("boton_generar_informe_integral_2")
         self.verticalLayout_5.addWidget(self.boton_generar_informe_integral_2, 0, QtCore.Qt.AlignHCenter)
@@ -463,24 +440,167 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "}\n"
 "")
         self.label_titulo_reporte_asistencia.setScaledContents(False)
+        self.label_titulo_reporte_asistencia.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo_reporte_asistencia.setWordWrap(False)
         self.label_titulo_reporte_asistencia.setObjectName("label_titulo_reporte_asistencia")
-        self.verticalLayout_3.addWidget(self.label_titulo_reporte_asistencia, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
-        self.boton_generar_informe_integral_3 = QtWidgets.QPushButton(self.frame_3)
+        self.verticalLayout_3.addWidget(self.label_titulo_reporte_asistencia)
+        self.dateedit_fecha_reporte_asistencia = QtWidgets.QDateEdit(self.frame_3)
+        self.dateedit_fecha_reporte_asistencia.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.dateedit_fecha_reporte_asistencia.setFont(font)
+        self.dateedit_fecha_reporte_asistencia.setStyleSheet("QDateEdit{\n"
+"\n"
+"    padding-left:10px;\n"
+"    padding-top:10px;\n"
+"    border:1px solid #000000 ;\n"
+"\n"
+"}\n"
+"\n"
+"QDateEdit:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"QDateEdit:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QDateEdit QAbstractItemView {\n"
+"    border: 1px solid #ccc;\n"
+"    background-color: white;\n"
+"    color: #333;\n"
+"    padding: 5px;  /* Margen interno de la lista */\n"
+"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
+"}\n"
+"\n"
+"QDateEdit QAbstractItemView::item {\n"
+"    padding: 8px; /* Espaciado interno de cada elemento */\n"
+"    margin: 4px; /* Separación entre los elementos */\n"
+"}\n"
+"\n"
+"QDateEdit QAbstractItemView::item:hover {\n"
+"    background-color: #c5c1c1;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QDateEdit:disabled {\n"
+"        background-color:rgb(189, 189, 189);\n"
+"        color: #808080;\n"
+"        border: 1px solid rgb(127, 127, 127);\n"
+"    }\n"
+"\n"
+"\n"
+"QCalendarWidget {\n"
+"                background-color: white;\n"
+"                border: 1px solid #d0d0d0;\n"
+"                border-radius: 8px;\n"
+"                font-family: Arial, sans-serif;\n"
+"            }\n"
+"            \n"
+"            /* Barra superior con mes y año */\n"
+"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
+"                background-color: #4a90e2;\n"
+"                color: white;\n"
+"                border-top-left-radius: 7px;\n"
+"                border-top-right-radius: 7px;\n"
+"                padding: 5px;\n"
+"            }\n"
+"            \n"
+"            /* Botones de navegación */\n"
+"            QCalendarWidget QToolButton {\n"
+"                background-color: transparent;\n"
+"                color: white;\n"
+"                font-weight: bold;\n"
+"                border: none;\n"
+"                padding: 5px;\n"
+"                border-radius: 3px;\n"
+"            }\n"
+"            \n"
+"            QCalendarWidget QToolButton:hover {\n"
+"                background-color: rgba(255, 255, 255, 0.2);\n"
+"            }\n"
+"            \n"
+"            /* Días de la semana */\n"
+"            QCalendarWidget QHeaderView::section {\n"
+"                background-color: #f8f9fa;\n"
+"                color: #555555;\n"
+"                font-weight: bold;\n"
+"                padding: 8px;\n"
+"                border: none;\n"
+"                border-bottom: 1px solid #e0e0e0;\n"
+"            }\n"
+"            \n"
+"            /* Días normales */\n"
+"            QCalendarWidget QAbstractItemView:enabled {\n"
+"                color: #333333;\n"
+"                background-color: white;\n"
+"                selection-background-color: #4a90e2;\n"
+"                selection-color: white;\n"
+"                outline: none;\n"
+"                border: none;\n"
+"            }\n"
+"            \n"
+"            /* Día actual */\n"
+"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
+"                background-color: #e8f4fd;\n"
+"                color: #4a90e2;\n"
+"                font-weight: bold;\n"
+"            }\n"
+"            \n"
+"            /* Días de otros meses */\n"
+"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
+"                color: #aaaaaa;\n"
+"            }\n"
+"            \n"
+"            /* Efecto hover sobre los días */\n"
+"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
+"                background-color: #f0f7ff;\n"
+"            }\n"
+"            \n"
+"            /* Fines de semana */\n"
+"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
+"                background-color: #4a90e2;\n"
+"                color: white;\n"
+"            }\n"
+"\n"
+"\n"
+"")
+        self.dateedit_fecha_reporte_asistencia.setWrapping(False)
+        self.dateedit_fecha_reporte_asistencia.setFrame(True)
+        self.dateedit_fecha_reporte_asistencia.setAccelerated(True)
+        self.dateedit_fecha_reporte_asistencia.setKeyboardTracking(True)
+        self.dateedit_fecha_reporte_asistencia.setProperty("showGroupSeparator", True)
+        self.dateedit_fecha_reporte_asistencia.setCurrentSection(QtWidgets.QDateTimeEdit.YearSection)
+        self.dateedit_fecha_reporte_asistencia.setCalendarPopup(True)
+        self.dateedit_fecha_reporte_asistencia.setCurrentSectionIndex(0)
+        self.dateedit_fecha_reporte_asistencia.setDate(QtCore.QDate(2000, 1, 26))
+        self.dateedit_fecha_reporte_asistencia.setObjectName("dateedit_fecha_reporte_asistencia")
+        self.verticalLayout_3.addWidget(self.dateedit_fecha_reporte_asistencia)
+        self.boton_generar_reporte_asistencia = QtWidgets.QPushButton(self.frame_3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_generar_informe_integral_3.sizePolicy().hasHeightForWidth())
-        self.boton_generar_informe_integral_3.setSizePolicy(sizePolicy)
-        self.boton_generar_informe_integral_3.setMinimumSize(QtCore.QSize(300, 40))
-        self.boton_generar_informe_integral_3.setMaximumSize(QtCore.QSize(250, 10))
+        sizePolicy.setHeightForWidth(self.boton_generar_reporte_asistencia.sizePolicy().hasHeightForWidth())
+        self.boton_generar_reporte_asistencia.setSizePolicy(sizePolicy)
+        self.boton_generar_reporte_asistencia.setMinimumSize(QtCore.QSize(300, 40))
+        self.boton_generar_reporte_asistencia.setMaximumSize(QtCore.QSize(250, 10))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(13)
         font.setBold(True)
         font.setWeight(75)
-        self.boton_generar_informe_integral_3.setFont(font)
-        self.boton_generar_informe_integral_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_generar_informe_integral_3.setStyleSheet("QPushButton{\n"
+        self.boton_generar_reporte_asistencia.setFont(font)
+        self.boton_generar_reporte_asistencia.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_generar_reporte_asistencia.setStyleSheet("QPushButton{\n"
 "\n"
 "    background-color: #008a47;\n"
 "\n"
@@ -495,10 +615,10 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        self.boton_generar_informe_integral_3.setIcon(icon1)
-        self.boton_generar_informe_integral_3.setIconSize(QtCore.QSize(26, 26))
-        self.boton_generar_informe_integral_3.setObjectName("boton_generar_informe_integral_3")
-        self.verticalLayout_3.addWidget(self.boton_generar_informe_integral_3, 0, QtCore.Qt.AlignHCenter)
+        self.boton_generar_reporte_asistencia.setIcon(icon)
+        self.boton_generar_reporte_asistencia.setIconSize(QtCore.QSize(26, 26))
+        self.boton_generar_reporte_asistencia.setObjectName("boton_generar_reporte_asistencia")
+        self.verticalLayout_3.addWidget(self.boton_generar_reporte_asistencia)
         self.horizontalLayout_2.addWidget(self.frame_3)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem5)
@@ -525,5 +645,8 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
         self.boton_generar_informe_integral.setText(_translate("PantallaGenerarInformesReportesAlumnos", "  Generar informe"))
         self.label_titulo_reporte_asistencia_2.setText(_translate("PantallaGenerarInformesReportesAlumnos", "Generar reporte caracterización general"))
         self.boton_generar_informe_integral_2.setText(_translate("PantallaGenerarInformesReportesAlumnos", "  Generar reporte"))
-        self.label_titulo_reporte_asistencia.setText(_translate("PantallaGenerarInformesReportesAlumnos", "Generar reporte de asistencia"))
-        self.boton_generar_informe_integral_3.setText(_translate("PantallaGenerarInformesReportesAlumnos", "  Generar reporte de asistencia"))
+        self.label_titulo_reporte_asistencia.setText(_translate("PantallaGenerarInformesReportesAlumnos", "Generar reporte de asistencia \n"
+" mensual"))
+        self.dateedit_fecha_reporte_asistencia.setToolTip(_translate("PantallaGenerarInformesReportesAlumnos", "Año/Mes/Dia"))
+        self.dateedit_fecha_reporte_asistencia.setDisplayFormat(_translate("PantallaGenerarInformesReportesAlumnos", "yyyy / MM / dd"))
+        self.boton_generar_reporte_asistencia.setText(_translate("PantallaGenerarInformesReportesAlumnos", "  Generar reporte de asistencia"))
