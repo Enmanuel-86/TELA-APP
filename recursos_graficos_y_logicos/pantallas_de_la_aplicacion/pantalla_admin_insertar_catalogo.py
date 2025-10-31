@@ -87,6 +87,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_registrar_funcion_cargo.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
         
         
+        # Listas catalogo
         self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
         self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
         self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
@@ -95,128 +96,98 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.lista_enfermerdades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
         
         
-        
+        # Cargando listas catalogos a los QListwidget
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
-        
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
-        
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermerdades)
-
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
-        
-        
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+     
+    def accion_editar_catalogo(self, elemento, qlistwidget, item):
+        """Prueba del botón editar"""
+        print(f"[EDITAR] Elemento:", elemento)
+        qlistwidget.setCurrentItem(item)  # Hace foco en el elemento
 
+
+    def accion_borrar_catalogo(self, elemento, qlistwidget, item):
+        """Prueba del botón borrar"""
+        print(f"[BORRAR] Elemento:", elemento)
+        qlistwidget.setCurrentItem(item)  # Hace foco en el elemento
+
+
+
+    def agregar_elementos_a_las_vistas_previas_catalogo(self, nombre_qlistwidget, lista_catalogo: list, indice_elemento: int = 1):
+        """
+        Agrega elementos a un QListWidget, cada uno con botones de editar y borrar.
+        """
+        nombre_qlistwidget.clear()  # Limpia antes de agregar nuevos elementos
         
-        
-   # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_las_vistas_previas_catalogo(self, nombre_qlistwidget, lista_catalogo, indice_elemento:int=1):
-        
-        i = 1
-        for elemento_catalogo in lista_catalogo:
-            
-            
-            
+        for i, elemento_catalogo in enumerate(lista_catalogo, start=1):
             texto_a_mostrar = f"{i}) " + elemento_catalogo[indice_elemento]
-            
-            i += 1
-            
+
             # Crear un QListWidgetItem
             item = QListWidgetItem()
             nombre_qlistwidget.addItem(item)
-            
-            
 
-            # Crear un widget personalizado para la fila
+            # Crear el widget personalizado
             widget = QWidget()
-            
             widget.setStyleSheet("""
-                                    QWidget{
-                                        
-                                        border:none;
-                                        padding:0px;
-                                        
-                                        
-                                    }
-            
-            
+                QWidget {
+                    border: none;
+                    padding: 0px;
+                }
             """)
-            
-            row_layout = QHBoxLayout()
-            
-            #row_layout.setSpacing(0)
-            
-            widget.setLayout(row_layout)
+            row_layout = QHBoxLayout(widget)
+            row_layout.setContentsMargins(2, 2, 2, 2)
+            row_layout.setSpacing(6)
 
-            # Label para el texto
-            label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
+            # Label
+            label = QLabel(texto_a_mostrar)
             label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:none;
-                                    font-family: 'Arial';
-                                    font-size: 12pt;
-                                    padding:0px;
-                                    
-                                    
-                                }
-                                
-                                """)
-            
+                QLabel {
+                    background: none;
+                    font-family: 'Arial';
+                    font-size: 12pt;
+                    padding: 0px;
+                }
+            """)
             row_layout.addWidget(label)
-            
-            
-            # Botón para eliminar
+
+            # --- Botón Editar ---
             boton_editar = QPushButton()
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "editar.png")))
+            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "editar.png")))
             boton_editar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-            boton_editar.setFixedSize(40,40)
+            boton_editar.setFixedSize(40, 30)
             boton_editar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                            
-                                            background-color: rgb(244, 131, 2);
-                                            
-                                            color: rgb(255, 255, 255);
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background-color: rgb(191, 64, 0);
-                                        }
-
-                                    """)
-
-            # Botón para eliminar
-            boton_borrar = QPushButton()
-            boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
-            boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-            boton_borrar.setFixedSize(40,40)
-            boton_borrar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                        
-                                        background-color: rgb(255, 0, 0);
-                                        
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    
-                                    QPushButton:hover{
-                                    
-                                        background-color: rgb(147, 0, 0);
-                                    }
-                                    
-                                    """)
-            
+                QPushButton {
+                    background-color: rgb(244, 131, 2);
+                    color: white;
+                }
+                QPushButton:hover {
+                    background-color: rgb(191, 64, 0);
+                }
+            """)
+            # Capturamos las variables actuales en la lambda
+            boton_editar.clicked.connect(lambda _, elem=elemento_catalogo, item=item: self.accion_editar_catalogo(elem, nombre_qlistwidget, item))
             row_layout.addWidget(boton_editar)
+
+            # --- Botón Borrar ---
+            boton_borrar = QPushButton()
+            boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
+            boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            boton_borrar.setFixedSize(40, 30)
+            boton_borrar.setStyleSheet("""
+                QPushButton {
+                    background-color: rgb(255, 0, 0);
+                    color: white;
+                }
+                QPushButton:hover {
+                    background-color: rgb(147, 0, 0);
+                }
+            """)
+            boton_borrar.clicked.connect(lambda _, elem=elemento_catalogo, item=item: self.accion_borrar_catalogo(elem, nombre_qlistwidget, item))
             row_layout.addWidget(boton_borrar)
-            
-            
-    
-        
+
             # Asignar el widget al QListWidgetItem
             item.setSizeHint(widget.sizeHint())
             nombre_qlistwidget.setItemWidget(item, widget)
