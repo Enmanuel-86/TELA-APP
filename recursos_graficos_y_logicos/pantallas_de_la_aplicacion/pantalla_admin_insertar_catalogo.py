@@ -102,7 +102,29 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermerdades)
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+
+
+        # Conectando señales para añadir elementos a los catalogos
+        
+        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad) )
      
+    def agregar_nuevo_elemento_al_catalogo(self, campo_nuevo):
+        
+        
+        
+        campo_nuevo = {
+            
+            "especialidad": campo_nuevo.text().strip().upper()
+        }
+        
+        especialidad_servicio.registrar_especialidad(campo_nuevo)
+        
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+
+       
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
+
+    
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
         """Prueba del botón editar"""
         print(f"[EDITAR] Elemento:", elemento)
