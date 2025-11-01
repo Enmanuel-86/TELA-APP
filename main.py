@@ -114,8 +114,8 @@ class Login(QWidget, Ui_Login):
 
         self.mensajes_usuario()
         
-        #self.input_usuario.setText("Enmanuel86")
-        #self.input_contrasena.setText("1212")
+        self.input_usuario.setText("douglas345")
+        self.input_contrasena.setText("1234")
         
 
         self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
@@ -239,7 +239,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
         
-        self.stacked_widget.setCurrentIndex(1)
+        self.stacked_widget.setCurrentIndex(0)
     
         #self.area_scroll_side_bar.hide()
         
