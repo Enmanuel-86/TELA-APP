@@ -17,7 +17,7 @@ El código se comparte solo con fines demostrativos.
 # 🟢TELA APP 💻🟢
 
 
-<img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_sistema_V3.png" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
+<img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_del_sistemaVFinal.svg" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
 
 
 ### ¿Qué es el TELA APP?
