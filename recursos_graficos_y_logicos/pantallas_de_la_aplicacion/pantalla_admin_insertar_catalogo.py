@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import  QWidget, QPushButton, QListWidgetItem, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import  (QWidget, QPushButton, QListWidgetItem,
+                              QHBoxLayout, QLabel, QMessageBox)
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInsertarCatalogoBD
@@ -106,25 +107,80 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
         # Conectando señales para añadir elementos a los catalogos
         
-        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad) )
-     
-    def agregar_nuevo_elemento_al_catalogo(self, campo_nuevo):
+        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+        self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
+    def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list):
         
-        
-        
-        campo_nuevo = {
+        """
+            ## Metodo para registrar nuevo elemento al catalogo.
             
-            "especialidad": campo_nuevo.text().strip().upper()
-        }
+            ### Por ahora solo sirve para los catalogos:
+            
+            - especialidades
+            - diagnosticos
+            - enfermedades
         
-        especialidad_servicio.registrar_especialidad(campo_nuevo)
         
-        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        """
+        
+        """
+            verificamos si el input/QlineEdit tiene algun valor.
+            
+            si lo tiene:
+            
+            - registre el nuevo elemento
+            - que limpie el QLineEdit
+            - y que actualice la lista
+            
+            si no tiene valor:
+            
+            - lanza un aviso de que el campo esta vacio
+        
+        """
+        
+        
+        if qlineedit.text().strip():
+            
+            # diccionario para registrar el nuevo elemento
+            diccionario_registrar = {
+                nombre_clave_dict: qlineedit.text().strip().capitalize()
+            }
+            
+            # en el caso de que sea especialidad
+            if nombre_clave_dict.lower() == "especialidad":
+                
+                especialidad_servicio.registrar_especialidad(diccionario_registrar)
+                
+                lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
 
-       
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
+            
+                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
 
-    
+                
+                
+                
+
+            elif nombre_clave_dict.lower() == "diagnostico":
+                
+                diagnostico_servicio.registrar_diagnostico(diccionario_registrar)
+                
+                lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
+
+            
+                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
+
+                
+                
+            
+            qlineedit.clear()
+
+
+        else:
+            
+            QMessageBox.warning(self, "Aviso", "El campo esta vacio")
+        
+        
+        
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
         """Prueba del botón editar"""
         print(f"[EDITAR] Elemento:", elemento)
