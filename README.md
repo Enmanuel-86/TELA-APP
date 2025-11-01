@@ -9,14 +9,8 @@
 
 # 🟢TELA APP 💻🟢
 
-<<<<<<< HEAD
 
 <img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_del_sistemaVFinal.svg" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
-=======
-<div style= "display: flex; justify-content: center; " align = "center">
-  <img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_sistema_V3.png" style="width: 500px; height: auto; margin-right: 20px; " alt="Logo del TELA-APP">
-</div>
->>>>>>> a073a392fa347cf84be46a302577d1f775f618c6
 
 
 ### ¿Qué es el TELA APP?
