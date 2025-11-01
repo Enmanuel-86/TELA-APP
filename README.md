@@ -1,23 +1,22 @@
 # AVISO IMPORTANTE
 
-Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
-Está prohibido:
+# Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
 
-- ❌ Descargar el código 
-- ❌ Hacer fork del proyecto  
-- ❌ Usar comercialmente
-- ❌ Modificar/distribuir
 
-El código se comparte solo con fines demostrativos.
-
-## Si deseas probar el sistema haz click [aqui](https://github.com/Enmanuel-86/TELA-APP/releases/tag/TELA-APP_Nuevas_versiones_(DEMO))
+## Si deseas probar el sistema haz click [aqui](https://github.com/Enmanuel-86/TELA-APP/releases/tag/TELA-APP_Nuevas_versiones_(DEMO)) 💡
 
 
 
 # 🟢TELA APP 💻🟢
 
+<<<<<<< HEAD
 
 <img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_del_sistemaVFinal.svg" style="width: 500px; height: auto; margin-right: 20px;" alt="Logo del TELA-APP">
+=======
+<div style= "display: flex; justify-content: center; " align = "center">
+  <img src="recursos_graficos_y_logicos/recursos_de_imagenes/logo_sistema_V3.png" style="width: 500px; height: auto; margin-right: 20px; " alt="Logo del TELA-APP">
+</div>
+>>>>>>> a073a392fa347cf84be46a302577d1f775f618c6
 
 
 ### ¿Qué es el TELA APP?
@@ -27,14 +26,13 @@ Este es un proyecto universitario de la **Universidad Politécnica Territorial J
   
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Logo_Uptjaa.svg/1200px-Logo_Uptjaa.svg.png" style="width: 180px; height: auto; margin-right: 20px;" alt="Logo del UPTJAA">
 
-  
-
   <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/Tela.png" style="width: 200px; height: auto;" alt="Logo del Tela">
-
   
   <img src="./recursos_graficos_y_logicos/recursos_de_imagenes/icono_sistema_V3.png" style="width: 200px; height: auto;" alt="icono tela-app">
   
 </div>
+
+
 
 
 
