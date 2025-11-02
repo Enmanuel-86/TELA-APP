@@ -79,43 +79,62 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
+        
+        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice))
 
-        # Ruta relativa para las imagenes
-        self.boton_registrar_cargo_empleado.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_registrar_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_registrar_enfermedad.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_registrar_especialidad.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_registrar_funcion_cargo.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+    def activar_pantalla(self, indice_pantalla):
         
+        """
+            ### Este metodo sirve para activar toda la funcion de la pantalla cuando el estamos en ella.
+            
+            la logica es la siguiente:
+            
+            - desde main.py nos aseguramos de la posiciones actual de la pantalla en el stackedWidget.
+            
+            self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 14
+            
+            - en este caso como esta pantalla es la 14 solo verificamos con un if si estamos en el indice 14
+            - si lo estamos ejecute todo lo que tenga que hacer
+            - si no, que no haga nada
+
         
-        # Listas catalogo
-        self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
-        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
-        self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
-        self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
-        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-        self.lista_enfermerdades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        """
         
+        if indice_pantalla == 14:
         
-        # Cargando listas catalogos a los QListwidget
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermerdades)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+            # Listas catalogo
+            self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+            self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+            self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+            self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
+            self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+            self.lista_enfermerdades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+            
+            
+            # Cargando listas catalogos a los QListwidget
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermerdades)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
 
 
-        # Conectando señales para añadir elementos a los catalogos
+            # Conectando señales para añadir elementos a los catalogos
+            
+            self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+            self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
+            self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermerdades))
+            self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
         
-        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-        self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
-        self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermerdades))
-        self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
+        
+        else:
+            
+            return None
         
     def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list):
         
         """
-            ## Metodo para registrar nuevo elemento al catalogo.
+            ### Metodo para registrar nuevo elemento al catalogo.
             
             ### Por ahora solo sirve para los catalogos:
             
