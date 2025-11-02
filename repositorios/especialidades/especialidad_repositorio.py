@@ -56,7 +56,7 @@ class EspecialidadRepositorio(RepositorioBase):
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 especialidad = sesion.query(Especialidad).filter(Especialidad.especialidad_id == especialidad_id).first()
-                diccionario_especialidad = {campo: valor for campo, valor in vars(especialidad) if not(campo.startswith("_")) and not(campo == "especialidad_id")}
+                diccionario_especialidad = {campo: valor for campo, valor in vars(especialidad).items() if not(campo.startswith("_")) and not(campo == "especialidad_id")}
                 
                 campos = {
                     "especialidad": "ESPECIALIDAD"
