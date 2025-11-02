@@ -186,102 +186,179 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             - lanza un aviso de que el campo esta vacio
         
         """
-        
-        
         if qlineedit.text().strip():
-            
-            # diccionario para registrar el nuevo elemento
-            diccionario_registrar = {
-                nombre_clave_dict: qlineedit.text().strip().capitalize()
-            }
-            
-            # en el caso de que sea especialidad
-            if nombre_clave_dict.lower() == "especialidad":
+            try:
                 
-                especialidad_servicio.registrar_especialidad(diccionario_registrar)
+                    
+                # diccionario para registrar el nuevo elemento
+                diccionario_registrar = {
+                    nombre_clave_dict: qlineedit.text().strip().capitalize()
+                }
                 
-                lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
+                # en el caso de que sea especialidad
+                if nombre_clave_dict.lower() == "especialidad":
+                    
+                    especialidad_servicio.registrar_especialidad(diccionario_registrar)
+                    
+                    lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
 
+                
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+
+                    
+                    
+                    
+
+                elif nombre_clave_dict.lower() == "diagnostico":
+                    
+                    diagnostico_servicio.registrar_diagnostico(diccionario_registrar)
+                    
+                    lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
+
+                
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
+
+                
+                elif nombre_clave_dict.lower() == "enfermedad_cronica":
+                    
+                    enfermedad_cronica_servicio.registrar_enfermedad_cronica(diccionario_registrar)
+                    
+                    lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+
+                
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
+                    
+                
+                
+                elif nombre_clave_dict.lower() == "funcion_cargo":
+                    
+                    funcion_cargo_servicio.registrar_funcion_cargo_repositorio(diccionario_registrar)
+                    
+                    lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+
+                
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
+                    
+                qlineedit.clear()
+
+
+                
+                
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e,"agregar_nuevo_elemento_al_catalogo")    
             
-                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
-
-                
-                
-                
-
-            elif nombre_clave_dict.lower() == "diagnostico":
-                
-                diagnostico_servicio.registrar_diagnostico(diccionario_registrar)
-                
-                lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
-
             
-                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
-
-            
-            elif nombre_clave_dict.lower() == "enfermedad_cronica":
+            else:
                 
-                enfermedad_cronica_servicio.registrar_enfermedad_cronica(diccionario_registrar)
+                QMessageBox.information(self, "Proceso exitoso", f"La {nombre_clave_dict} se agrego con exito")
                 
-                lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
-
-            
-                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
-                
-            
-            
-            elif nombre_clave_dict.lower() == "funcion_cargo":
-                
-                funcion_cargo_servicio.registrar_funcion_cargo_repositorio(diccionario_registrar)
-                
-                lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
-
-            
-                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
-                
-            qlineedit.clear()
-
-
         else:
-            
-            QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
-        
-        
-        
-        
+                    
+            QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")        
         
     def actualizar_elemento_del_catalogo(self, qlineedit, id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
         
+        """
+            ### Este metodo sirve para actualizar/editar el elemento de los siguientes catalogos
+            
+            - especialidades
+            - enfermededades
+            - diagnosticos
+            - funcion de cargo
+            
+            
+            Este metodo sigue la misma estructura del metodo agregar_nuevo_elemento_al_catalogo(), solo que la diferencia que se pide el id del elemento catalogo
+            
+            ***Ejemplo***
+            
+            lista_diagnosticos = [(1, "diagnostico 1"), (2, "diagnostico 2")]
+            
+            input_diagnostico = QLineEdit()
+            
+            
+            self.actualizar_elemento_del_catalogo(input_diagnostico, id_elemento, "diagnostico", lista_diagnostico) # esto da como resultado la insercion de un nuevo elemento
+            
+            
+            
+            - se le coloca texto del elemento catalogo a el QLineEdit para poder tomar el texto
+            - se le indica un nombre_clave_dict en este caso diagnostico ya que el metodo de la base de datos tiene la siguiente estructura
+
+            registrar_diagnostico{ "diagnostico": "nuevo_diagnostico"}  # en este caso el texto del QLineEdit
+
+              y lo que hace el metodo es variar el nombre clave del diccionario por el de enfermedades, diagnostico y especialidades
+                
+            - se pide la lista para que la refresque y con esta misma usamos de nuevo el metodo de agregar_elemento_a_la_vista_previa para actualizar el QListWidget
+            
+        
+        
+        
+        """
         
         if qlineedit.text().strip():
             
-            # diccionario para registrar el nuevo elemento
-            diccionario_registrar = {
-                nombre_clave_dict: qlineedit.text().strip().capitalize()
-            }
+            try:
+                
+                    
+                # diccionario para registrar el nuevo elemento
+                diccionario_registrar = {
+                    nombre_clave_dict: qlineedit.text().strip().capitalize()
+                }
+                
+                # en el caso de que sea especialidad
+                if nombre_clave_dict.lower() == "especialidad":
+                    
+                    especialidad_servicio.actualizar_especialidad(id_elemento, diccionario_registrar)
+                    
+                    lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
+
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+
+                    
+                    self.boton_registrar_especialidad.clicked.disconnect()
+                    self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+                    
+                
+                # en el caso de que sea especialidad
+                if nombre_clave_dict.lower() == "diagnostico":
+                    
+                    diagnostico_servicio.actualizar_diagnostico(id_elemento, diccionario_registrar)
+                    
+                    lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
+
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
+
+                    
+                    self.boton_registrar_diagnostico.clicked.disconnect()
+                    self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
+                    
+                
+                
+                
+                
+                    
+                qlineedit.clear()
+
+
+                
             
-            # en el caso de que sea especialidad
-            if nombre_clave_dict.lower() == "especialidad":
+            except Exception as e:
                 
-                especialidad_servicio.actualizar_especialidad(id_elemento, diccionario_registrar)
+                FuncionSistema.mostrar_errores_por_excepcion(e, "actualizar_elemento_del_catalogo" )
                 
-                lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
-
-
-                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
-
                 
-            
+            else:
                 
-            qlineedit.clear()
-
-
+                QMessageBox.information(self, "Proceso exitoso", f"se edito con exito la {nombre_clave_dict}")
+                
         else:
-            
+                    
             QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
-        
-        pass
-        
+                
+                
+            
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
         """
             Prueba del botón editar
