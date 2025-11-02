@@ -248,10 +248,61 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
         
         
+        
+        
+    def actualizar_elemento_del_catalogo(self, qlineedit, id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
+        
+        
+        if qlineedit.text().strip():
+            
+            # diccionario para registrar el nuevo elemento
+            diccionario_registrar = {
+                nombre_clave_dict: qlineedit.text().strip().capitalize()
+            }
+            
+            # en el caso de que sea especialidad
+            if nombre_clave_dict.lower() == "especialidad":
+                
+                especialidad_servicio.actualizar_especialidad(id_elemento, diccionario_registrar)
+                
+                lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
+
+
+                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+
+                
+            
+                
+            qlineedit.clear()
+
+
+        else:
+            
+            QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
+        
+        pass
+        
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
-        """Prueba del botón editar"""
+        """
+            Prueba del botón editar
+        
+        """
         print(f"[EDITAR] Elemento:", elemento)
         qlistwidget.setCurrentItem(item)  # Hace foco en el elemento
+        try:
+            
+            
+            if elemento in self.lista_especialidades:
+                
+                self.input_especialidad.setText(elemento[1])
+                self.input_especialidad.setFocus(True)
+                
+                self.boton_registrar_especialidad.clicked.disconnect()
+                self.boton_registrar_especialidad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_especialidad, elemento[0], "especialidad", self.lista_especialidades))
+            
+        except Exception as e:
+            
+            QMessageBox.information(self, "aviso", f"paso algo malo {e}")   
 
 
     def accion_borrar_catalogo(self, elemento, qlistwidget, item):
