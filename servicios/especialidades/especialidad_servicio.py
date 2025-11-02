@@ -88,7 +88,10 @@ if __name__ == "__main__":
         print("Registro de la especialidad con éxito.")"""
     
     
+    """"
     todos_especialidades = especialidad_servicio.obtener_todos_especialidades()
     
     for registro in todos_especialidades:
         print(registro)
+        
+    """
