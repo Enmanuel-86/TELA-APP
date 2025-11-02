@@ -79,7 +79,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        
+
         # Ruta relativa para las imagenes
         self.boton_registrar_cargo_empleado.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
         self.boton_registrar_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
@@ -109,6 +109,9 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
+        self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermerdades))
+        self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
+        
     def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list):
         
         """
@@ -119,8 +122,35 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             - especialidades
             - diagnosticos
             - enfermedades
+            - funcion de cargo
         
-        
+            ya que comparten la misma estructura de:
+            
+            Lista_n = [(int, "str"), (int, "str")]
+            
+            
+            ***Ejemplo***
+            
+            lista_diagnosticos = [(1, "diagnostico 1"), (2, "diagnostico 2")]
+            
+            input_diagnostico = QLineEdit()
+            
+            
+            self.agregar_nuevo_elemento_al_catalogo(input_diagnostico, "diagnostico", lista_diagnostico) # esto da como resultado la insercion de un nuevo elemento
+            
+            
+            
+            - se pide el QLineEdit para poder tomar el texto
+            - se le indica un nombre_clave_dict en este caso diagnostico ya que el metodo de la base de datos tiene la siguiente estructura
+
+            registrar_diagnostico{ "diagnostico": "nuevo_diagnostico"}  # en este caso el texto del QLineEdit
+
+              y lo que hace el metodo es variar el nombre clave del diccionario por el de enfermedades, diagnostico y especialidades
+                
+            - se pide la lista para que la refresque y con esta misma usamos de nuevo el metodo de agregar_elemento_a_la_vista_previa para actualizar el QListWidget
+            
+            
+            
         """
         
         """
@@ -169,15 +199,33 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
                 self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
 
+            
+            elif nombre_clave_dict.lower() == "enfermedad_cronica":
                 
+                enfermedad_cronica_servicio.registrar_enfermedad_cronica(diccionario_registrar)
+                
+                lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+
+            
+                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
                 
             
+            
+            elif nombre_clave_dict.lower() == "funcion_cargo":
+                
+                funcion_cargo_servicio.registrar_funcion_cargo_repositorio(diccionario_registrar)
+                
+                lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+
+            
+                self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
+                
             qlineedit.clear()
 
 
         else:
             
-            QMessageBox.warning(self, "Aviso", "El campo esta vacio")
+            QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
         
         
         
