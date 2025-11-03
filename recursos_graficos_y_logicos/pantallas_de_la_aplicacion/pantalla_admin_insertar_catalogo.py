@@ -108,13 +108,13 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
             self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
             self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-            self.lista_enfermerdades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+            self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
             
             
             # Cargando listas catalogos a los QListwidget
             self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
             self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermerdades)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
             self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
             self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
 
@@ -123,9 +123,9 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
             self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
-            self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermerdades))
+            self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
             self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
-        
+
         
         else:
             
@@ -317,6 +317,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     
                     self.boton_registrar_especialidad.clicked.disconnect()
+                    
                     self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
                     
                 
@@ -335,7 +336,33 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
                     
                 
+                if nombre_clave_dict.lower() == "enfermedad_cronica":
+                    
+                    enfermedad_cronica_servicio.actualizar_enfermedad_cronica(id_elemento, diccionario_registrar)
+                    
+                    lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
+
+                    
+                    self.boton_registrar_enfermedad.clicked.disconnect()
+                    self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
+                    
                 
+                if nombre_clave_dict.lower() == "funcion_cargo":
+                    
+                    funcion_cargo_servicio.actualizar_funcion_cargo(id_elemento, diccionario_registrar)
+                    
+                    lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
+
+                    
+                    self.boton_registrar_funcion_cargo.clicked.disconnect()
+                    self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
+                    
                 
                 
                     
@@ -376,6 +403,35 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 
                 self.boton_registrar_especialidad.clicked.disconnect()
                 self.boton_registrar_especialidad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_especialidad, elemento[0], "especialidad", self.lista_especialidades))
+            
+            
+            elif elemento in self.lista_diagnosticos:
+                
+                self.input_diagnostico.setText(elemento[1])
+                self.input_diagnostico.setFocus(True)
+                
+                self.boton_registrar_diagnostico.clicked.disconnect()
+                self.boton_registrar_diagnostico.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_diagnostico, elemento[0], "diagnostico", self.lista_diagnosticos))
+            
+            
+            elif elemento in self.lista_enfermedades:
+                
+                self.input_enfermedad.setText(elemento[1])
+                self.input_enfermedad.setFocus(True)
+                
+                self.boton_registrar_enfermedad.clicked.disconnect()
+                self.boton_registrar_enfermedad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_enfermedad, elemento[0], "enfermedad_cronica", self.lista_enfermedades))
+            
+            
+            elif elemento in self.lista_funcion_cargo:
+                
+                self.input_funcion_cargo.setText(elemento[1])
+                self.input_funcion_cargo.setFocus(True)
+                
+                self.boton_registrar_funcion_cargo.clicked.disconnect()
+                self.boton_registrar_funcion_cargo.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_funcion_cargo, elemento[0], "funcion_cargo", self.lista_funcion_cargo))
+            
+            
             
         except Exception as e:
             
