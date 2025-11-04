@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(__file__)
 class Ui_PantallaInsertarCatalogoBD(object):
     def setupUi(self, PantallaInsertarCatalogoBD):
         PantallaInsertarCatalogoBD.setObjectName("PantallaInsertarCatalogoBD")
-        PantallaInsertarCatalogoBD.resize(1247, 913)
+        PantallaInsertarCatalogoBD.resize(1247, 914)
         self.verticalLayout = QtWidgets.QVBoxLayout(PantallaInsertarCatalogoBD)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -25,7 +25,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1230, 967))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1230, 1055))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -82,6 +82,558 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.gridLayout.setHorizontalSpacing(10)
         self.gridLayout.setVerticalSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
+        self.espacio_catalogo_funciones_cargo = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.espacio_catalogo_funciones_cargo.sizePolicy().hasHeightForWidth())
+        self.espacio_catalogo_funciones_cargo.setSizePolicy(sizePolicy)
+        self.espacio_catalogo_funciones_cargo.setMinimumSize(QtCore.QSize(388, 200))
+        self.espacio_catalogo_funciones_cargo.setStyleSheet("QFrame{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:10px ridge rgb(122, 59, 33);\n"
+"    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.espacio_catalogo_funciones_cargo.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_catalogo_funciones_cargo.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_catalogo_funciones_cargo.setObjectName("espacio_catalogo_funciones_cargo")
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.espacio_catalogo_funciones_cargo)
+        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
+        self.label_titulo_informe_educativo_5 = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_5.sizePolicy().hasHeightForWidth())
+        self.label_titulo_informe_educativo_5.setSizePolicy(sizePolicy)
+        self.label_titulo_informe_educativo_5.setMinimumSize(QtCore.QSize(320, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_titulo_informe_educativo_5.setFont(font)
+        self.label_titulo_informe_educativo_5.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(0, 0, 0);\n"
+"    border:none;\n"
+"    border-color: #ffffff;\n"
+"    padding:10px;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_titulo_informe_educativo_5.setScaledContents(False)
+        self.label_titulo_informe_educativo_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo_informe_educativo_5.setWordWrap(True)
+        self.label_titulo_informe_educativo_5.setObjectName("label_titulo_informe_educativo_5")
+        self.verticalLayout_15.addWidget(self.label_titulo_informe_educativo_5)
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.label_funcion_cargo = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_funcion_cargo.setFont(font)
+        self.label_funcion_cargo.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_funcion_cargo.setObjectName("label_funcion_cargo")
+        self.verticalLayout_14.addWidget(self.label_funcion_cargo)
+        self.input_funcion_cargo = QtWidgets.QLineEdit(self.espacio_catalogo_funciones_cargo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_funcion_cargo.sizePolicy().hasHeightForWidth())
+        self.input_funcion_cargo.setSizePolicy(sizePolicy)
+        self.input_funcion_cargo.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_funcion_cargo.setFont(font)
+        self.input_funcion_cargo.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_funcion_cargo.setObjectName("input_funcion_cargo")
+        self.verticalLayout_14.addWidget(self.input_funcion_cargo)
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem2)
+        self.boton_registrar_funcion_cargo = QtWidgets.QPushButton(self.espacio_catalogo_funciones_cargo)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_registrar_funcion_cargo.sizePolicy().hasHeightForWidth())
+        self.boton_registrar_funcion_cargo.setSizePolicy(sizePolicy)
+        self.boton_registrar_funcion_cargo.setMinimumSize(QtCore.QSize(100, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_registrar_funcion_cargo.setFont(font)
+        self.boton_registrar_funcion_cargo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_registrar_funcion_cargo.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_registrar_funcion_cargo.setIcon(icon)
+        self.boton_registrar_funcion_cargo.setIconSize(QtCore.QSize(26, 26))
+        self.boton_registrar_funcion_cargo.setObjectName("boton_registrar_funcion_cargo")
+        self.horizontalLayout_6.addWidget(self.boton_registrar_funcion_cargo)
+        self.verticalLayout_14.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_15.addLayout(self.verticalLayout_14)
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.label_10 = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_10.setObjectName("label_10")
+        self.verticalLayout_17.addWidget(self.label_10, 0, QtCore.Qt.AlignLeft)
+        self.vista_previa_funciones_cargo = QtWidgets.QListWidget(self.espacio_catalogo_funciones_cargo)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
+        self.vista_previa_funciones_cargo.setFont(font)
+        self.vista_previa_funciones_cargo.setToolTip("")
+        self.vista_previa_funciones_cargo.setStyleSheet("")
+        self.vista_previa_funciones_cargo.setObjectName("vista_previa_funciones_cargo")
+        self.verticalLayout_17.addWidget(self.vista_previa_funciones_cargo)
+        self.verticalLayout_15.addLayout(self.verticalLayout_17)
+        self.gridLayout.addWidget(self.espacio_catalogo_funciones_cargo, 1, 1, 1, 1)
+        self.espacio_catalogo_diagnostico = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.espacio_catalogo_diagnostico.sizePolicy().hasHeightForWidth())
+        self.espacio_catalogo_diagnostico.setSizePolicy(sizePolicy)
+        self.espacio_catalogo_diagnostico.setMinimumSize(QtCore.QSize(388, 200))
+        self.espacio_catalogo_diagnostico.setStyleSheet("QFrame{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:10px ridge rgb(122, 59, 33);\n"
+"    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.espacio_catalogo_diagnostico.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_catalogo_diagnostico.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_catalogo_diagnostico.setObjectName("espacio_catalogo_diagnostico")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.espacio_catalogo_diagnostico)
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.label_titulo_informe_educativo_2 = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_2.sizePolicy().hasHeightForWidth())
+        self.label_titulo_informe_educativo_2.setSizePolicy(sizePolicy)
+        self.label_titulo_informe_educativo_2.setMinimumSize(QtCore.QSize(320, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_titulo_informe_educativo_2.setFont(font)
+        self.label_titulo_informe_educativo_2.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(0, 0, 0);\n"
+"    border:none;\n"
+"    border-color: #ffffff;\n"
+"    padding:10px;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_titulo_informe_educativo_2.setScaledContents(False)
+        self.label_titulo_informe_educativo_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo_informe_educativo_2.setWordWrap(True)
+        self.label_titulo_informe_educativo_2.setObjectName("label_titulo_informe_educativo_2")
+        self.verticalLayout_7.addWidget(self.label_titulo_informe_educativo_2)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.label_diagnostico = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_diagnostico.setFont(font)
+        self.label_diagnostico.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_diagnostico.setObjectName("label_diagnostico")
+        self.verticalLayout_6.addWidget(self.label_diagnostico)
+        self.input_diagnostico = QtWidgets.QLineEdit(self.espacio_catalogo_diagnostico)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_diagnostico.sizePolicy().hasHeightForWidth())
+        self.input_diagnostico.setSizePolicy(sizePolicy)
+        self.input_diagnostico.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_diagnostico.setFont(font)
+        self.input_diagnostico.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_diagnostico.setObjectName("input_diagnostico")
+        self.verticalLayout_6.addWidget(self.input_diagnostico)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.boton_registrar_diagnostico = QtWidgets.QPushButton(self.espacio_catalogo_diagnostico)
+        self.boton_registrar_diagnostico.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_registrar_diagnostico.sizePolicy().hasHeightForWidth())
+        self.boton_registrar_diagnostico.setSizePolicy(sizePolicy)
+        self.boton_registrar_diagnostico.setMinimumSize(QtCore.QSize(100, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_registrar_diagnostico.setFont(font)
+        self.boton_registrar_diagnostico.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_registrar_diagnostico.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        self.boton_registrar_diagnostico.setIcon(icon)
+        self.boton_registrar_diagnostico.setIconSize(QtCore.QSize(26, 26))
+        self.boton_registrar_diagnostico.setObjectName("boton_registrar_diagnostico")
+        self.horizontalLayout_3.addWidget(self.boton_registrar_diagnostico)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_7.addLayout(self.verticalLayout_6)
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.label_4 = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_8.addWidget(self.label_4, 0, QtCore.Qt.AlignLeft)
+        self.vista_previa_diagnosticos = QtWidgets.QListWidget(self.espacio_catalogo_diagnostico)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
+        self.vista_previa_diagnosticos.setFont(font)
+        self.vista_previa_diagnosticos.setToolTip("")
+        self.vista_previa_diagnosticos.setStyleSheet("")
+        self.vista_previa_diagnosticos.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.vista_previa_diagnosticos.setViewMode(QtWidgets.QListView.ListMode)
+        self.vista_previa_diagnosticos.setUniformItemSizes(False)
+        self.vista_previa_diagnosticos.setBatchSize(100)
+        self.vista_previa_diagnosticos.setWordWrap(True)
+        self.vista_previa_diagnosticos.setSelectionRectVisible(False)
+        self.vista_previa_diagnosticos.setObjectName("vista_previa_diagnosticos")
+        self.verticalLayout_8.addWidget(self.vista_previa_diagnosticos)
+        self.verticalLayout_7.addLayout(self.verticalLayout_8)
+        self.gridLayout.addWidget(self.espacio_catalogo_diagnostico, 0, 1, 1, 1)
+        self.espacio_catalogo_enfermedades = QtWidgets.QFrame(self.espacio_principal)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.espacio_catalogo_enfermedades.sizePolicy().hasHeightForWidth())
+        self.espacio_catalogo_enfermedades.setSizePolicy(sizePolicy)
+        self.espacio_catalogo_enfermedades.setMinimumSize(QtCore.QSize(388, 200))
+        self.espacio_catalogo_enfermedades.setStyleSheet("QFrame{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border:10px ridge rgb(122, 59, 33);\n"
+"    padding:15px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QListWidget{\n"
+"\n"
+"    border:1px solid black;\n"
+"    background:#ffffff;\n"
+"    padding:0px;\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.espacio_catalogo_enfermedades.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.espacio_catalogo_enfermedades.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.espacio_catalogo_enfermedades.setObjectName("espacio_catalogo_enfermedades")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.espacio_catalogo_enfermedades)
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.label_titulo_informe_educativo_3 = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_3.sizePolicy().hasHeightForWidth())
+        self.label_titulo_informe_educativo_3.setSizePolicy(sizePolicy)
+        self.label_titulo_informe_educativo_3.setMinimumSize(QtCore.QSize(320, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_titulo_informe_educativo_3.setFont(font)
+        self.label_titulo_informe_educativo_3.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(0, 0, 0);\n"
+"    border:none;\n"
+"    border-color: #ffffff;\n"
+"    padding:10px;\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_titulo_informe_educativo_3.setScaledContents(False)
+        self.label_titulo_informe_educativo_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo_informe_educativo_3.setWordWrap(True)
+        self.label_titulo_informe_educativo_3.setObjectName("label_titulo_informe_educativo_3")
+        self.verticalLayout_10.addWidget(self.label_titulo_informe_educativo_3)
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.label_enfermedades = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_enfermedades.setFont(font)
+        self.label_enfermedades.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_enfermedades.setObjectName("label_enfermedades")
+        self.verticalLayout_9.addWidget(self.label_enfermedades)
+        self.input_enfermedad = QtWidgets.QLineEdit(self.espacio_catalogo_enfermedades)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_enfermedad.sizePolicy().hasHeightForWidth())
+        self.input_enfermedad.setSizePolicy(sizePolicy)
+        self.input_enfermedad.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_enfermedad.setFont(font)
+        self.input_enfermedad.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_enfermedad.setObjectName("input_enfermedad")
+        self.verticalLayout_9.addWidget(self.input_enfermedad)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.boton_registrar_enfermedad = QtWidgets.QPushButton(self.espacio_catalogo_enfermedades)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_registrar_enfermedad.sizePolicy().hasHeightForWidth())
+        self.boton_registrar_enfermedad.setSizePolicy(sizePolicy)
+        self.boton_registrar_enfermedad.setMinimumSize(QtCore.QSize(100, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_registrar_enfermedad.setFont(font)
+        self.boton_registrar_enfermedad.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_registrar_enfermedad.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: #008a47;\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        self.boton_registrar_enfermedad.setIcon(icon)
+        self.boton_registrar_enfermedad.setIconSize(QtCore.QSize(26, 26))
+        self.boton_registrar_enfermedad.setObjectName("boton_registrar_enfermedad")
+        self.horizontalLayout_4.addWidget(self.boton_registrar_enfermedad)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_10.addLayout(self.verticalLayout_9)
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.label_6 = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout_11.addWidget(self.label_6, 0, QtCore.Qt.AlignLeft)
+        self.vista_previa_enfermedades = QtWidgets.QListWidget(self.espacio_catalogo_enfermedades)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
+        self.vista_previa_enfermedades.setFont(font)
+        self.vista_previa_enfermedades.setToolTip("")
+        self.vista_previa_enfermedades.setStyleSheet("")
+        self.vista_previa_enfermedades.setObjectName("vista_previa_enfermedades")
+        self.verticalLayout_11.addWidget(self.vista_previa_enfermedades)
+        self.verticalLayout_10.addLayout(self.verticalLayout_11)
+        self.gridLayout.addWidget(self.espacio_catalogo_enfermedades, 0, 2, 1, 1)
         self.espacio_catalogo_especialidades = QtWidgets.QFrame(self.espacio_principal)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -113,7 +665,6 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.espacio_catalogo_especialidades.setObjectName("espacio_catalogo_especialidades")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.espacio_catalogo_especialidades)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_5.setSpacing(6)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label_titulo_informe_educativo = QtWidgets.QLabel(self.espacio_catalogo_especialidades)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -159,7 +710,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "\n"
 "}")
         self.label_especialidades.setObjectName("label_especialidades")
-        self.verticalLayout_3.addWidget(self.label_especialidades, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_3.addWidget(self.label_especialidades)
         self.input_especialidad = QtWidgets.QLineEdit(self.espacio_catalogo_especialidades)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -195,6 +746,11 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "")
         self.input_especialidad.setObjectName("input_especialidad")
         self.verticalLayout_3.addWidget(self.input_especialidad)
+        self.verticalLayout_5.addLayout(self.verticalLayout_3)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem5)
         self.boton_registrar_especialidad = QtWidgets.QPushButton(self.espacio_catalogo_especialidades)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -224,13 +780,11 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_registrar_especialidad.setIcon(icon)
         self.boton_registrar_especialidad.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_especialidad.setObjectName("boton_registrar_especialidad")
-        self.verticalLayout_3.addWidget(self.boton_registrar_especialidad, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_5.addLayout(self.verticalLayout_3)
+        self.horizontalLayout_2.addWidget(self.boton_registrar_especialidad)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.label_2 = QtWidgets.QLabel(self.espacio_catalogo_especialidades)
@@ -261,366 +815,6 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.verticalLayout_4.addWidget(self.vista_previa_especialidades)
         self.verticalLayout_5.addLayout(self.verticalLayout_4)
         self.gridLayout.addWidget(self.espacio_catalogo_especialidades, 0, 0, 1, 1)
-        self.espacio_catalogo_diagnostico = QtWidgets.QFrame(self.espacio_principal)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.espacio_catalogo_diagnostico.sizePolicy().hasHeightForWidth())
-        self.espacio_catalogo_diagnostico.setSizePolicy(sizePolicy)
-        self.espacio_catalogo_diagnostico.setMinimumSize(QtCore.QSize(388, 200))
-        self.espacio_catalogo_diagnostico.setStyleSheet("QFrame{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"    padding:15px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"    background:#ffffff;\n"
-"    padding:0px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"")
-        self.espacio_catalogo_diagnostico.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_catalogo_diagnostico.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_catalogo_diagnostico.setObjectName("espacio_catalogo_diagnostico")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.espacio_catalogo_diagnostico)
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_6.setSpacing(6)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.label_titulo_informe_educativo_2 = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_2.sizePolicy().hasHeightForWidth())
-        self.label_titulo_informe_educativo_2.setSizePolicy(sizePolicy)
-        self.label_titulo_informe_educativo_2.setMinimumSize(QtCore.QSize(320, 0))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_titulo_informe_educativo_2.setFont(font)
-        self.label_titulo_informe_educativo_2.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(0, 0, 0);\n"
-"    border:none;\n"
-"    border-color: #ffffff;\n"
-"    padding:10px;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_titulo_informe_educativo_2.setScaledContents(False)
-        self.label_titulo_informe_educativo_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_titulo_informe_educativo_2.setWordWrap(True)
-        self.label_titulo_informe_educativo_2.setObjectName("label_titulo_informe_educativo_2")
-        self.verticalLayout_6.addWidget(self.label_titulo_informe_educativo_2)
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label_diagnostico = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_diagnostico.setFont(font)
-        self.label_diagnostico.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_diagnostico.setObjectName("label_diagnostico")
-        self.verticalLayout_7.addWidget(self.label_diagnostico, 0, QtCore.Qt.AlignLeft)
-        self.input_diagnostico = QtWidgets.QLineEdit(self.espacio_catalogo_diagnostico)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_diagnostico.sizePolicy().hasHeightForWidth())
-        self.input_diagnostico.setSizePolicy(sizePolicy)
-        self.input_diagnostico.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_diagnostico.setFont(font)
-        self.input_diagnostico.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_diagnostico.setObjectName("input_diagnostico")
-        self.verticalLayout_7.addWidget(self.input_diagnostico)
-        self.boton_registrar_diagnostico = QtWidgets.QPushButton(self.espacio_catalogo_diagnostico)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_registrar_diagnostico.sizePolicy().hasHeightForWidth())
-        self.boton_registrar_diagnostico.setSizePolicy(sizePolicy)
-        self.boton_registrar_diagnostico.setMinimumSize(QtCore.QSize(100, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_registrar_diagnostico.setFont(font)
-        self.boton_registrar_diagnostico.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_registrar_diagnostico.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        self.boton_registrar_diagnostico.setIcon(icon)
-        self.boton_registrar_diagnostico.setIconSize(QtCore.QSize(26, 26))
-        self.boton_registrar_diagnostico.setObjectName("boton_registrar_diagnostico")
-        self.verticalLayout_7.addWidget(self.boton_registrar_diagnostico, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_6.addLayout(self.verticalLayout_7)
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.label_4 = QtWidgets.QLabel(self.espacio_catalogo_diagnostico)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_4.setObjectName("label_4")
-        self.verticalLayout_8.addWidget(self.label_4, 0, QtCore.Qt.AlignLeft)
-        self.vista_previa_diagnosticos = QtWidgets.QListWidget(self.espacio_catalogo_diagnostico)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setWeight(50)
-        self.vista_previa_diagnosticos.setFont(font)
-        self.vista_previa_diagnosticos.setToolTip("")
-        self.vista_previa_diagnosticos.setStyleSheet("")
-        self.vista_previa_diagnosticos.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.vista_previa_diagnosticos.setViewMode(QtWidgets.QListView.ListMode)
-        self.vista_previa_diagnosticos.setUniformItemSizes(False)
-        self.vista_previa_diagnosticos.setBatchSize(100)
-        self.vista_previa_diagnosticos.setWordWrap(True)
-        self.vista_previa_diagnosticos.setSelectionRectVisible(False)
-        self.vista_previa_diagnosticos.setObjectName("vista_previa_diagnosticos")
-        self.verticalLayout_8.addWidget(self.vista_previa_diagnosticos)
-        self.verticalLayout_6.addLayout(self.verticalLayout_8)
-        self.gridLayout.addWidget(self.espacio_catalogo_diagnostico, 0, 1, 1, 1)
-        self.espacio_catalogo_enfermedades = QtWidgets.QFrame(self.espacio_principal)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.espacio_catalogo_enfermedades.sizePolicy().hasHeightForWidth())
-        self.espacio_catalogo_enfermedades.setSizePolicy(sizePolicy)
-        self.espacio_catalogo_enfermedades.setMinimumSize(QtCore.QSize(388, 200))
-        self.espacio_catalogo_enfermedades.setStyleSheet("QFrame{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"    padding:15px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"    background:#ffffff;\n"
-"    padding:0px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"")
-        self.espacio_catalogo_enfermedades.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_catalogo_enfermedades.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_catalogo_enfermedades.setObjectName("espacio_catalogo_enfermedades")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.espacio_catalogo_enfermedades)
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_9.setSpacing(6)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.label_titulo_informe_educativo_3 = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_3.sizePolicy().hasHeightForWidth())
-        self.label_titulo_informe_educativo_3.setSizePolicy(sizePolicy)
-        self.label_titulo_informe_educativo_3.setMinimumSize(QtCore.QSize(320, 0))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_titulo_informe_educativo_3.setFont(font)
-        self.label_titulo_informe_educativo_3.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(0, 0, 0);\n"
-"    border:none;\n"
-"    border-color: #ffffff;\n"
-"    padding:10px;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_titulo_informe_educativo_3.setScaledContents(False)
-        self.label_titulo_informe_educativo_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_titulo_informe_educativo_3.setWordWrap(True)
-        self.label_titulo_informe_educativo_3.setObjectName("label_titulo_informe_educativo_3")
-        self.verticalLayout_9.addWidget(self.label_titulo_informe_educativo_3)
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.label_enfermedades = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_enfermedades.setFont(font)
-        self.label_enfermedades.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_enfermedades.setObjectName("label_enfermedades")
-        self.verticalLayout_10.addWidget(self.label_enfermedades, 0, QtCore.Qt.AlignLeft)
-        self.input_enfermedad = QtWidgets.QLineEdit(self.espacio_catalogo_enfermedades)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_enfermedad.sizePolicy().hasHeightForWidth())
-        self.input_enfermedad.setSizePolicy(sizePolicy)
-        self.input_enfermedad.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_enfermedad.setFont(font)
-        self.input_enfermedad.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_enfermedad.setObjectName("input_enfermedad")
-        self.verticalLayout_10.addWidget(self.input_enfermedad)
-        self.boton_registrar_enfermedad = QtWidgets.QPushButton(self.espacio_catalogo_enfermedades)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_registrar_enfermedad.sizePolicy().hasHeightForWidth())
-        self.boton_registrar_enfermedad.setSizePolicy(sizePolicy)
-        self.boton_registrar_enfermedad.setMinimumSize(QtCore.QSize(100, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_registrar_enfermedad.setFont(font)
-        self.boton_registrar_enfermedad.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_registrar_enfermedad.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        self.boton_registrar_enfermedad.setIcon(icon)
-        self.boton_registrar_enfermedad.setIconSize(QtCore.QSize(26, 26))
-        self.boton_registrar_enfermedad.setObjectName("boton_registrar_enfermedad")
-        self.verticalLayout_10.addWidget(self.boton_registrar_enfermedad, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_9.addLayout(self.verticalLayout_10)
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
-        self.label_6 = QtWidgets.QLabel(self.espacio_catalogo_enfermedades)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_6.setFont(font)
-        self.label_6.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_6.setObjectName("label_6")
-        self.verticalLayout_11.addWidget(self.label_6, 0, QtCore.Qt.AlignLeft)
-        self.vista_previa_enfermedades = QtWidgets.QListWidget(self.espacio_catalogo_enfermedades)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setWeight(50)
-        self.vista_previa_enfermedades.setFont(font)
-        self.vista_previa_enfermedades.setToolTip("")
-        self.vista_previa_enfermedades.setStyleSheet("")
-        self.vista_previa_enfermedades.setObjectName("vista_previa_enfermedades")
-        self.verticalLayout_11.addWidget(self.vista_previa_enfermedades)
-        self.verticalLayout_9.addLayout(self.verticalLayout_11)
-        self.gridLayout.addWidget(self.espacio_catalogo_enfermedades, 0, 2, 1, 1)
         self.espacio_catalogo_cargos_empleado = QtWidgets.QFrame(self.espacio_principal)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -650,10 +844,9 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.espacio_catalogo_cargos_empleado.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_catalogo_cargos_empleado.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_catalogo_cargos_empleado.setObjectName("espacio_catalogo_cargos_empleado")
-        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.espacio_catalogo_cargos_empleado)
-        self.verticalLayout_18.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_18.setSpacing(6)
-        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.espacio_catalogo_cargos_empleado)
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.label_titulo_informe_educativo_6 = QtWidgets.QLabel(self.espacio_catalogo_cargos_empleado)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -681,9 +874,59 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.label_titulo_informe_educativo_6.setAlignment(QtCore.Qt.AlignCenter)
         self.label_titulo_informe_educativo_6.setWordWrap(True)
         self.label_titulo_informe_educativo_6.setObjectName("label_titulo_informe_educativo_6")
-        self.verticalLayout_18.addWidget(self.label_titulo_informe_educativo_6)
-        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.verticalLayout_13.addWidget(self.label_titulo_informe_educativo_6)
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.label_codigo_cargo_empleado = QtWidgets.QLabel(self.espacio_catalogo_cargos_empleado)
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_codigo_cargo_empleado.setFont(font)
+        self.label_codigo_cargo_empleado.setStyleSheet("QLabel{\n"
+"\n"
+"    border:none;\n"
+"    padding:0px;\n"
+"\n"
+"}")
+        self.label_codigo_cargo_empleado.setObjectName("label_codigo_cargo_empleado")
+        self.verticalLayout_12.addWidget(self.label_codigo_cargo_empleado)
+        self.input_codigo_cargo_empleado = QtWidgets.QLineEdit(self.espacio_catalogo_cargos_empleado)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_codigo_cargo_empleado.sizePolicy().hasHeightForWidth())
+        self.input_codigo_cargo_empleado.setSizePolicy(sizePolicy)
+        self.input_codigo_cargo_empleado.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(15)
+        self.input_codigo_cargo_empleado.setFont(font)
+        self.input_codigo_cargo_empleado.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192, 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.input_codigo_cargo_empleado.setObjectName("input_codigo_cargo_empleado")
+        self.verticalLayout_12.addWidget(self.input_codigo_cargo_empleado)
         self.label_cargo_empleado = QtWidgets.QLabel(self.espacio_catalogo_cargos_empleado)
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -698,7 +941,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "\n"
 "}")
         self.label_cargo_empleado.setObjectName("label_cargo_empleado")
-        self.verticalLayout_19.addWidget(self.label_cargo_empleado, 0, QtCore.Qt.AlignLeft)
+        self.verticalLayout_12.addWidget(self.label_cargo_empleado)
         self.input_cargo_empleado = QtWidgets.QLineEdit(self.espacio_catalogo_cargos_empleado)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -733,8 +976,14 @@ class Ui_PantallaInsertarCatalogoBD(object):
 "}\n"
 "")
         self.input_cargo_empleado.setObjectName("input_cargo_empleado")
-        self.verticalLayout_19.addWidget(self.input_cargo_empleado)
+        self.verticalLayout_12.addWidget(self.input_cargo_empleado)
+        self.verticalLayout_13.addLayout(self.verticalLayout_12)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem6)
         self.boton_registrar_cargo_empleado = QtWidgets.QPushButton(self.espacio_catalogo_cargos_empleado)
+        self.boton_registrar_cargo_empleado.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -766,8 +1015,8 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.boton_registrar_cargo_empleado.setIcon(icon)
         self.boton_registrar_cargo_empleado.setIconSize(QtCore.QSize(26, 26))
         self.boton_registrar_cargo_empleado.setObjectName("boton_registrar_cargo_empleado")
-        self.verticalLayout_19.addWidget(self.boton_registrar_cargo_empleado, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_18.addLayout(self.verticalLayout_19)
+        self.horizontalLayout_5.addWidget(self.boton_registrar_cargo_empleado)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_5)
         self.verticalLayout_20 = QtWidgets.QVBoxLayout()
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.label_12 = QtWidgets.QLabel(self.espacio_catalogo_cargos_empleado)
@@ -796,185 +1045,8 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.vista_previa_cargos_empleados.setStyleSheet("")
         self.vista_previa_cargos_empleados.setObjectName("vista_previa_cargos_empleados")
         self.verticalLayout_20.addWidget(self.vista_previa_cargos_empleados)
-        self.verticalLayout_18.addLayout(self.verticalLayout_20)
+        self.verticalLayout_13.addLayout(self.verticalLayout_20)
         self.gridLayout.addWidget(self.espacio_catalogo_cargos_empleado, 1, 0, 1, 1)
-        self.espacio_catalogo_funciones_cargo = QtWidgets.QFrame(self.espacio_principal)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.espacio_catalogo_funciones_cargo.sizePolicy().hasHeightForWidth())
-        self.espacio_catalogo_funciones_cargo.setSizePolicy(sizePolicy)
-        self.espacio_catalogo_funciones_cargo.setMinimumSize(QtCore.QSize(388, 200))
-        self.espacio_catalogo_funciones_cargo.setStyleSheet("QFrame{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"    padding:15px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"    background:#ffffff;\n"
-"    padding:0px;\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"")
-        self.espacio_catalogo_funciones_cargo.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.espacio_catalogo_funciones_cargo.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.espacio_catalogo_funciones_cargo.setObjectName("espacio_catalogo_funciones_cargo")
-        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.espacio_catalogo_funciones_cargo)
-        self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_15.setSpacing(6)
-        self.verticalLayout_15.setObjectName("verticalLayout_15")
-        self.label_titulo_informe_educativo_5 = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_titulo_informe_educativo_5.sizePolicy().hasHeightForWidth())
-        self.label_titulo_informe_educativo_5.setSizePolicy(sizePolicy)
-        self.label_titulo_informe_educativo_5.setMinimumSize(QtCore.QSize(320, 0))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_titulo_informe_educativo_5.setFont(font)
-        self.label_titulo_informe_educativo_5.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(0, 0, 0);\n"
-"    border:none;\n"
-"    border-color: #ffffff;\n"
-"    padding:10px;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_titulo_informe_educativo_5.setScaledContents(False)
-        self.label_titulo_informe_educativo_5.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_titulo_informe_educativo_5.setWordWrap(True)
-        self.label_titulo_informe_educativo_5.setObjectName("label_titulo_informe_educativo_5")
-        self.verticalLayout_15.addWidget(self.label_titulo_informe_educativo_5)
-        self.verticalLayout_16 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_16.setObjectName("verticalLayout_16")
-        self.label_funcion_cargo = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_funcion_cargo.setFont(font)
-        self.label_funcion_cargo.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_funcion_cargo.setObjectName("label_funcion_cargo")
-        self.verticalLayout_16.addWidget(self.label_funcion_cargo, 0, QtCore.Qt.AlignLeft)
-        self.input_funcion_cargo = QtWidgets.QLineEdit(self.espacio_catalogo_funciones_cargo)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_funcion_cargo.sizePolicy().hasHeightForWidth())
-        self.input_funcion_cargo.setSizePolicy(sizePolicy)
-        self.input_funcion_cargo.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_funcion_cargo.setFont(font)
-        self.input_funcion_cargo.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_funcion_cargo.setObjectName("input_funcion_cargo")
-        self.verticalLayout_16.addWidget(self.input_funcion_cargo)
-        self.boton_registrar_funcion_cargo = QtWidgets.QPushButton(self.espacio_catalogo_funciones_cargo)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.boton_registrar_funcion_cargo.sizePolicy().hasHeightForWidth())
-        self.boton_registrar_funcion_cargo.setSizePolicy(sizePolicy)
-        self.boton_registrar_funcion_cargo.setMinimumSize(QtCore.QSize(100, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_registrar_funcion_cargo.setFont(font)
-        self.boton_registrar_funcion_cargo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_registrar_funcion_cargo.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        self.boton_registrar_funcion_cargo.setIcon(icon)
-        self.boton_registrar_funcion_cargo.setIconSize(QtCore.QSize(26, 26))
-        self.boton_registrar_funcion_cargo.setObjectName("boton_registrar_funcion_cargo")
-        self.verticalLayout_16.addWidget(self.boton_registrar_funcion_cargo, 0, QtCore.Qt.AlignRight)
-        self.verticalLayout_15.addLayout(self.verticalLayout_16)
-        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_17.setObjectName("verticalLayout_17")
-        self.label_10 = QtWidgets.QLabel(self.espacio_catalogo_funciones_cargo)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_10.setFont(font)
-        self.label_10.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"    padding:0px;\n"
-"\n"
-"}")
-        self.label_10.setObjectName("label_10")
-        self.verticalLayout_17.addWidget(self.label_10, 0, QtCore.Qt.AlignLeft)
-        self.vista_previa_funciones_cargo = QtWidgets.QListWidget(self.espacio_catalogo_funciones_cargo)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setWeight(50)
-        self.vista_previa_funciones_cargo.setFont(font)
-        self.vista_previa_funciones_cargo.setToolTip("")
-        self.vista_previa_funciones_cargo.setStyleSheet("")
-        self.vista_previa_funciones_cargo.setObjectName("vista_previa_funciones_cargo")
-        self.verticalLayout_17.addWidget(self.vista_previa_funciones_cargo)
-        self.verticalLayout_15.addLayout(self.verticalLayout_17)
-        self.gridLayout.addWidget(self.espacio_catalogo_funciones_cargo, 1, 1, 1, 1)
         self.verticalLayout_21.addLayout(self.gridLayout)
         self.verticalLayout_2.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.scrollAreaWidgetContents)
@@ -987,13 +1059,13 @@ class Ui_PantallaInsertarCatalogoBD(object):
         _translate = QtCore.QCoreApplication.translate
         PantallaInsertarCatalogoBD.setWindowTitle(_translate("PantallaInsertarCatalogoBD", "Form"))
         self.label_titulo_pantalla.setText(_translate("PantallaInsertarCatalogoBD", "Cargar catalogos del sistema de información"))
-        self.label_titulo_informe_educativo.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de especialidades"))
-        self.label_especialidades.setText(_translate("PantallaInsertarCatalogoBD", "Especialidad"))
-        self.input_especialidad.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir la especilidad nueva que falta"))
-        self.input_especialidad.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
-        self.boton_registrar_especialidad.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
-        self.label_2.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las especialidades registradas"))
-        self.label_2.setText(_translate("PantallaInsertarCatalogoBD", "Especialidad registradas"))
+        self.label_titulo_informe_educativo_5.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de funciones de cargo"))
+        self.label_funcion_cargo.setText(_translate("PantallaInsertarCatalogoBD", "Funcion de cargo"))
+        self.input_funcion_cargo.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir la funcion de cargo nueva que falta"))
+        self.input_funcion_cargo.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
+        self.boton_registrar_funcion_cargo.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
+        self.label_10.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las enfermedades registradas"))
+        self.label_10.setText(_translate("PantallaInsertarCatalogoBD", "Funciones de cargo registrados"))
         self.label_titulo_informe_educativo_2.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de diagnostico"))
         self.label_diagnostico.setText(_translate("PantallaInsertarCatalogoBD", "Diagnostico"))
         self.input_diagnostico.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir el diagnostico nuevo que falta"))
@@ -1008,17 +1080,20 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.boton_registrar_enfermedad.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
         self.label_6.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las enfermedades registradas"))
         self.label_6.setText(_translate("PantallaInsertarCatalogoBD", "Enfermedades registradas"))
+        self.label_titulo_informe_educativo.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de especialidades"))
+        self.label_especialidades.setText(_translate("PantallaInsertarCatalogoBD", "Especialidad"))
+        self.input_especialidad.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir la especilidad nueva que falta"))
+        self.input_especialidad.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
+        self.boton_registrar_especialidad.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
+        self.label_2.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las especialidades registradas"))
+        self.label_2.setText(_translate("PantallaInsertarCatalogoBD", "Especialidad registradas"))
         self.label_titulo_informe_educativo_6.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de cargos de empleados"))
+        self.label_codigo_cargo_empleado.setText(_translate("PantallaInsertarCatalogoBD", "Codigo cargo"))
+        self.input_codigo_cargo_empleado.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir el cargo nuevo que falta"))
+        self.input_codigo_cargo_empleado.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
         self.label_cargo_empleado.setText(_translate("PantallaInsertarCatalogoBD", "Cargo empleados"))
         self.input_cargo_empleado.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir el cargo nuevo que falta"))
         self.input_cargo_empleado.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
         self.boton_registrar_cargo_empleado.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
         self.label_12.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las enfermedades registradas"))
         self.label_12.setText(_translate("PantallaInsertarCatalogoBD", "Cargos registrados"))
-        self.label_titulo_informe_educativo_5.setText(_translate("PantallaInsertarCatalogoBD", "Catalogo de funciones de cargo"))
-        self.label_funcion_cargo.setText(_translate("PantallaInsertarCatalogoBD", "Funcion de cargo"))
-        self.input_funcion_cargo.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui va a escribir la funcion de cargo nueva que falta"))
-        self.input_funcion_cargo.setPlaceholderText(_translate("PantallaInsertarCatalogoBD", "....."))
-        self.boton_registrar_funcion_cargo.setText(_translate("PantallaInsertarCatalogoBD", " Añadir"))
-        self.label_10.setToolTip(_translate("PantallaInsertarCatalogoBD", "Aqui estan todas las enfermedades registradas"))
-        self.label_10.setText(_translate("PantallaInsertarCatalogoBD", "Funciones de cargo registrados"))
