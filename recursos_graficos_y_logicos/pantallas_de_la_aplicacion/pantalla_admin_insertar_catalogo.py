@@ -348,6 +348,22 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
         """
         
+        
+        """
+            verificamos si el input/QlineEdit tiene algun valor.
+            
+            si lo tiene:
+            
+            - edite el nuevo elemento
+            - que limpie el QLineEdit
+            - y que actualice la lista
+            
+            si no tiene valor:
+            
+            - lanza un aviso de que el campo esta vacio
+        
+        """
+        
         if qlineedit.text().strip():
             
             
@@ -382,7 +398,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
 
 
-                        self.cambiar_estilo_del_boton(self.boton_registrar_especialidad)
+                        self.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "añadir")
                         self.boton_registrar_especialidad.clicked.disconnect()                   
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
                         
@@ -397,7 +413,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
 
-                        self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico)
+                        self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "añadir")
                         self.boton_registrar_diagnostico.clicked.disconnect()
                         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
                         
@@ -411,7 +427,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
 
-                        self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad)
+                        self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "añadir")
                         self.boton_registrar_enfermedad.clicked.disconnect()
                         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
                         
@@ -425,7 +441,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
 
-                        self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo)
+                        self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "añadir")
                         self.boton_registrar_funcion_cargo.clicked.disconnect()
                         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
                         
@@ -467,7 +483,18 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
         """
-            Prueba del botón editar
+            ### Este Metodo sirve para editar un elemento de un qlistwidget/vista_previa
+            
+            Este Metodo lo que hace es obtener la informacion del elemento seleccionado del qlistwidget
+            
+            Este metodo hace lo siguiente:
+            
+            1. verifica si el elemento se encuentra en una lista, que si la lista de enfermedades, especialidades, diagnostico etc.
+            2. al saber a donde pertenece este le da foco al qlineedit del segmento en donde pertenece ese elemento.<br>
+               ***ejemplo***: si el elemente pertenece a especialidades, este le da foco al qlineedit de especialidad
+            3. le cambia el estilo del icono mas con la palabra añadir por un icono de lapiz con la palabra editar (para que sea mas intuitivo)
+            4. se desconecta el metodo que tenia el boton del x segmento y le conecta el metodo de actualizar/editar.<br>
+               ***ejemplo***: si el boton registraba ahora actualiza/edita
         
         """
         print(f"[EDITAR] Elemento:", elemento)
@@ -480,7 +507,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_especialidad.setText(elemento[1])
                 self.input_especialidad.setFocus(True)
                 
-                self.cambiar_estilo_del_boton(self.boton_registrar_especialidad)
+                self.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "editar")
                 
                 self.boton_registrar_especialidad.clicked.disconnect()
                 self.boton_registrar_especialidad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_especialidad, elemento[0], "especialidad", self.lista_especialidades))
@@ -491,7 +518,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_diagnostico.setText(elemento[1])
                 self.input_diagnostico.setFocus(True)
                 
-                self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico)
+                self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "editar")
                 self.boton_registrar_diagnostico.clicked.disconnect()
                 self.boton_registrar_diagnostico.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_diagnostico, elemento[0], "diagnostico", self.lista_diagnosticos))
             
@@ -501,7 +528,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_enfermedad.setText(elemento[1])
                 self.input_enfermedad.setFocus(True)
                 
-                self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad)
+                self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "editar")
                 self.boton_registrar_enfermedad.clicked.disconnect()
                 self.boton_registrar_enfermedad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_enfermedad, elemento[0], "enfermedad_cronica", self.lista_enfermedades))
             
@@ -511,7 +538,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_funcion_cargo.setText(elemento[1])
                 self.input_funcion_cargo.setFocus(True)
                 
-                self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo)
+                self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "editar")
                 self.boton_registrar_funcion_cargo.clicked.disconnect()
                 self.boton_registrar_funcion_cargo.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_funcion_cargo, elemento[0], "funcion_cargo", self.lista_funcion_cargo))
             
@@ -607,106 +634,103 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
 
 
-    def cambiar_estilo_del_boton(self, qpushbutton, opcion_predeterminada: bool = False):
+    def cambiar_estilo_del_boton(self, qpushbutton, estilo_opcion:str = "añadir"):
         """
-            ### Este metodo sirve para cambiar de estilo a los botones de áñadir elementos catalogo.
+            ### Este metodo sirve para cambiar de estilo a los botones de registrar elementos catalogo.
             
-            lo que hace es cambirle es texto si:
+            lo que hace es cambirle es el texto si el parametro estilo_opcion:
             
-            - Si el boton tiene el texto de editar: le da un color amarillo con el icono de un lapiz
-            - Si el boton tiene el texto de añadir: le da un fondo verder con el icono de mas (estilo por defecto)
+            - si es "añadir" le da el estilo por defecto
+            - si es "editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
+            - si es "borrar" le cambia el texto por borrar, le cambia el fondo a rojo y le cambia el icono de mas por un icono de basurero
             
-            solo le pasamos como argumento el boton que queremos modificar y listo
             
-            el parametro opcion_predeterminada, por defecto siempre va a ser false ya que si este esta en true, le da a los botones el estilo inicial
-        
-        
+            ***Ejemplo***
+            
+            boton_registrar = QPushButton()
+            
+            self.cambiar_estilo_del_boton(boton, "editar") # estilo de editar
+            
+            
         """
         
-        if opcion_predeterminada == False:
         
-            try:
-                
-                
-                
-                
-                if qpushbutton.text() == " Editar":
-                    
-                    qpushbutton.setText(" Añadir")
-                    qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-                    
-                    
-                    qpushbutton.setStyleSheet(""" 
-                                            
-                                            QPushButton{
-
-                                                    background-color: #008a47;
-
-                                                    color: rgb(255, 255, 255);
-                                                    border-radius:12px;
-
-                                                }
-
-                                                QPushButton:hover{
-
-                                                    
-                                                    background-color: rgb(0, 56, 10);
-
-                                                }
-                                            
-                                            """)
-                    
-                    
-                elif qpushbutton.text() == " Añadir":
-                
-                    qpushbutton.setText(" Editar")
-                    qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
-
-
-                    qpushbutton.setStyleSheet("""
-                                                QPushButton {
-                                                    background-color: rgb(244, 131, 2);
-                                                    color: white;
-                                                    border-radius:12px;
-                                                }
-                                                QPushButton:hover {
-                                                    background-color: rgb(191, 64, 0);
-                                                }
-                                            """)
-
-
-
-            except Exception as e:
-                
-                FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
-                
-                
-        else:
+    
+        try:
             
-            qpushbutton.setText(" Añadir")
-            qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-                            
-            qpushbutton.setStyleSheet(""" 
-                                            
-                                            QPushButton{
+            
+            
+            
+            if estilo_opcion == "añadir":
+                
+                qpushbutton.setText(" Añadir")
+                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+                
+                
+                qpushbutton.setStyleSheet(""" 
+                                        
+                                        QPushButton{
 
-                                                    background-color: #008a47;
+                                                background-color: #008a47;
 
-                                                    color: rgb(255, 255, 255);
-                                                    border-radius:12px;
+                                                color: rgb(255, 255, 255);
+                                                border-radius:12px;
 
-                                                }
+                                            }
 
-                                                QPushButton:hover{
+                                            QPushButton:hover{
 
-                                                    
-                                                    background-color: rgb(0, 56, 10);
+                                                
+                                                background-color: rgb(0, 56, 10);
 
-                                                }
-                                            
-                                            """)
+                                            }
+                                        
+                                        """)
+                
+                
+            elif estilo_opcion == "editar":
+            
+                qpushbutton.setText(" Editar")
+                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
+
+
+                qpushbutton.setStyleSheet("""
+                                            QPushButton {
+                                                background-color: rgb(244, 131, 2);
+                                                color: white;
+                                                border-radius:12px;
+                                            }
+                                            QPushButton:hover {
+                                                background-color: rgb(191, 64, 0);
+                                            }
+                                        """)
+
+            
+            elif estilo_opcion == "Borrar":
+                
+                
+                qpushbutton.setText(" Borrar")
+                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
+
+                qpushbutton.setStyleSheet("""
+                    QPushButton {
+                        background-color: rgb(255, 0, 0);
+                        color: white;
+                    }
+                    QPushButton:hover {
+                        background-color: rgb(147, 0, 0);
+                    }
+                """)
+                
+            
+            
+
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
             
                 
+        
             
     def restaurar_botones_de_registrar(self):
         
@@ -723,7 +747,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             for boton in botones:
                 
-                self.cambiar_estilo_del_boton(boton, True)
+                self.cambiar_estilo_del_boton(boton, "añadir")
                 
                 
             self.desconectar_botones()
