@@ -19,7 +19,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "estudiante_m.png")))
         
-        #self.dockWidget_diagnostico.hide()
+        self.dockWidget_diagnostico.hide()
         
         
         self.lista_labels_mostrar = [self.input_mostrar_cedula_representante, self.input_mostrar_cedula_representante, self.input_mostrar_apellido, self.input_mostrar_nombre, self.input_mostrar_carga_familiar,
@@ -36,7 +36,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.boton_de_regreso.clicked.connect(self.volver_vista_general_alumnos)
         
         
-        self.dockWidget_diagnostico.hide()
+        
         
     # Metodo para volver a la pantalla anterior
     def volver_vista_general_alumnos(self):
@@ -60,6 +60,8 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.label_mostrar_medicacion.setText(medicacion)
         
         self.dockWidget_diagnostico.show()
+        self.dockWidget_diagnostico.setFloating(True)
+        
     
         
 

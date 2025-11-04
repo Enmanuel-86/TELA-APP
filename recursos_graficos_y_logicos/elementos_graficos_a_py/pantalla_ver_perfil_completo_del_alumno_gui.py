@@ -942,7 +942,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.dockWidget_diagnostico.setGeometry(QtCore.QRect(30, 60, 600, 480))
         self.dockWidget_diagnostico.setMinimumSize(QtCore.QSize(600, 480))
         self.dockWidget_diagnostico.setMaximumSize(QtCore.QSize(600, 480))
-        self.dockWidget_diagnostico.setFloating(True)
+        self.dockWidget_diagnostico.setFloating(False)
         self.dockWidget_diagnostico.setFeatures(QtWidgets.QDockWidget.DockWidgetClosable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidget_diagnostico.setObjectName("dockWidget_diagnostico")
         self.dockWidgetContents = QtWidgets.QWidget()

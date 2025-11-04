@@ -831,7 +831,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             row_layout.addWidget(boton_ver)
             
             boton_ver.clicked.connect(
-            lambda  item=item, lista=nombre_lista: self.ver_diagnostico_seleccionado(nombre_qlistwidget, lista, item)
+            lambda  _, item=item, lista=nombre_lista: self.ver_diagnostico_seleccionado(nombre_qlistwidget, lista, item)
         )
         
             # Asignar el widget al QListWidgetItem
@@ -865,6 +865,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             elif pantalla_perfil_alumno.dockWidget_diagnostico.hide():
                 
                 pantalla_perfil_alumno.dockWidget_diagnostico.show()
+                
+                
                 
             
             
