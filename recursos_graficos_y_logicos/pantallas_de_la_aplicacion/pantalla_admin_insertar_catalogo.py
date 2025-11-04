@@ -88,9 +88,19 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         
-        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla() if indice == 14 else None)
+        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice))
+        
+        
+        # Conectando señales para añadir elementos a los catalogos
+        
+        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+        self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
+        self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
+        self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
 
-    def activar_pantalla(self):
+
+
+    def activar_pantalla(self, indice):
         
         """
             ### Este metodo sirve para activar toda la funcion de la pantalla cuando el estamos en ella.
@@ -109,32 +119,33 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         """
         
         
-    
-        # Listas catalogo
-        self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
-        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
-        self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
-        self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
-        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        if indice == 14:
+            
+            # Listas catalogo
+            self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+            self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+            self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+            self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
+            self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+            self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+            
+            
+            # Cargando listas catalogos a los QListwidget
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
+            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+            
+        else:
+            
+            self.restaurar_botones_de_registrar()
+              
         
-        
-        # Cargando listas catalogos a los QListwidget
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
 
 
-        # Conectando señales para añadir elementos a los catalogos
         
-        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-        self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
-        self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
-        self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
-
-    
+        
    
         
     def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list):
@@ -202,7 +213,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             
             self.msg_box.setWindowTitle("Confirmar acción")
-            self.msg_box.setText("¿Seguro que quiere agregar este elemento?")
+            self.msg_box.setText(f"¿Seguro que quiere agregar esta {nombre_clave_dict}?")
             self.msg_box.setIcon(QMessageBox.Question)
 
             
@@ -264,9 +275,11 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
                         
+                        
                     qlineedit.clear()
 
 
+                    self.activar_pantalla()
                     
                     
                 except Exception as e:
@@ -337,89 +350,114 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
         if qlineedit.text().strip():
             
-            try:
+            
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText(f"¿Seguro que quiere editar esta {nombre_clave_dict} ?")
+            self.msg_box.setIcon(QMessageBox.Question)
+
+            
+
+            QApplication.beep()
+            self.msg_box.exec_()
+            
+            if self.msg_box.clickedButton() == self.boton_si:
+            
                 
+                try:
                     
-                # diccionario para registrar el nuevo elemento
-                diccionario_registrar = {
-                    nombre_clave_dict: qlineedit.text().strip().capitalize()
-                }
+                        
+                    # diccionario para registrar el nuevo elemento
+                    diccionario_registrar = {
+                        nombre_clave_dict: qlineedit.text().strip().capitalize()
+                    }
+                    
+                    # en el caso de que sea especialidad
+                    if nombre_clave_dict.lower() == "especialidad":
+                        
+                        especialidad_servicio.actualizar_especialidad(id_elemento, diccionario_registrar)
+                        
+                        lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
+
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+
+
+                        self.cambiar_estilo_del_boton(self.boton_registrar_especialidad)
+                        self.boton_registrar_especialidad.clicked.disconnect()                   
+                        self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+                        
+                    
+                    # en el caso de que sea especialidad
+                    if nombre_clave_dict.lower() == "diagnostico":
+                        
+                        diagnostico_servicio.actualizar_diagnostico(id_elemento, diccionario_registrar)
+                        
+                        lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
+
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
+
+                        self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico)
+                        self.boton_registrar_diagnostico.clicked.disconnect()
+                        self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
+                        
+                    
+                    if nombre_clave_dict.lower() == "enfermedad_cronica":
+                        
+                        enfermedad_cronica_servicio.actualizar_enfermedad_cronica(id_elemento, diccionario_registrar)
+                        
+                        lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
+
+                        self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad)
+                        self.boton_registrar_enfermedad.clicked.disconnect()
+                        self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
+                        
+                    
+                    if nombre_clave_dict.lower() == "funcion_cargo":
+                        
+                        funcion_cargo_servicio.actualizar_funcion_cargo(id_elemento, diccionario_registrar)
+                        
+                        lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
+
+                        self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo)
+                        self.boton_registrar_funcion_cargo.clicked.disconnect()
+                        self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
+                        
+                    
+                    
+                        
+                    qlineedit.clear()
+
+
+                    
+                    self.activar_pantalla()
+                    
+                except Exception as e:
+                    
+                    FuncionSistema.mostrar_errores_por_excepcion(e, "actualizar_elemento_del_catalogo" )
+                    
+                    
+                else:
+                    
+                    QMessageBox.information(self, "Proceso exitoso", f"se edito con exito la {nombre_clave_dict}")
+            
+            
+            
+            
+            
+            if self.msg_box.clickedButton() == self.boton_no:
                 
-                # en el caso de que sea especialidad
-                if nombre_clave_dict.lower() == "especialidad":
-                    
-                    especialidad_servicio.actualizar_especialidad(id_elemento, diccionario_registrar)
-                    
-                    lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
-
-
-                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
-
-
-                    self.cambiar_estilo_del_boton(self.boton_registrar_especialidad)
-                    self.boton_registrar_especialidad.clicked.disconnect()                   
-                    self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-                    
-                
-                # en el caso de que sea especialidad
-                if nombre_clave_dict.lower() == "diagnostico":
-                    
-                    diagnostico_servicio.actualizar_diagnostico(id_elemento, diccionario_registrar)
-                    
-                    lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
-
-
-                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
-
-                    self.cambiar_estilo_del_boton(self.boton_registrar_diagnostico)
-                    self.boton_registrar_diagnostico.clicked.disconnect()
-                    self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
-                    
-                
-                if nombre_clave_dict.lower() == "enfermedad_cronica":
-                    
-                    enfermedad_cronica_servicio.actualizar_enfermedad_cronica(id_elemento, diccionario_registrar)
-                    
-                    lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
-
-
-                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
-
-                    self.cambiar_estilo_del_boton(self.boton_registrar_enfermedad)
-                    self.boton_registrar_enfermedad.clicked.disconnect()
-                    self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
-                    
-                
-                if nombre_clave_dict.lower() == "funcion_cargo":
-                    
-                    funcion_cargo_servicio.actualizar_funcion_cargo(id_elemento, diccionario_registrar)
-                    
-                    lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
-
-
-                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
-
-                    self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo)
-                    self.boton_registrar_funcion_cargo.clicked.disconnect()
-                    self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
-                    
-                
-                
-                    
                 qlineedit.clear()
-
-
                 
-                self.activar_pantalla()
+                self.restaurar_botones_de_registrar()
                 
-            except Exception as e:
-                
-                FuncionSistema.mostrar_errores_por_excepcion(e, "actualizar_elemento_del_catalogo" )
-                
-                
-            else:
-                
-                QMessageBox.information(self, "Proceso exitoso", f"se edito con exito la {nombre_clave_dict}")
+            
                 
         else:
                     
@@ -569,7 +607,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
 
 
-    def cambiar_estilo_del_boton(self, qpushbutton):
+    def cambiar_estilo_del_boton(self, qpushbutton, opcion_predeterminada: bool = False):
         """
             ### Este metodo sirve para cambiar de estilo a los botones de áñadir elementos catalogo.
             
@@ -579,58 +617,136 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             - Si el boton tiene el texto de añadir: le da un fondo verder con el icono de mas (estilo por defecto)
             
             solo le pasamos como argumento el boton que queremos modificar y listo
+            
+            el parametro opcion_predeterminada, por defecto siempre va a ser false ya que si este esta en true, le da a los botones el estilo inicial
         
         
         """
+        
+        if opcion_predeterminada == False:
+        
+            try:
+                
+                
+                
+                
+                if qpushbutton.text() == " Editar":
+                    
+                    qpushbutton.setText(" Añadir")
+                    qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+                    
+                    
+                    qpushbutton.setStyleSheet(""" 
+                                            
+                                            QPushButton{
+
+                                                    background-color: #008a47;
+
+                                                    color: rgb(255, 255, 255);
+                                                    border-radius:12px;
+
+                                                }
+
+                                                QPushButton:hover{
+
+                                                    
+                                                    background-color: rgb(0, 56, 10);
+
+                                                }
+                                            
+                                            """)
+                    
+                    
+                elif qpushbutton.text() == " Añadir":
+                
+                    qpushbutton.setText(" Editar")
+                    qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
+
+
+                    qpushbutton.setStyleSheet("""
+                                                QPushButton {
+                                                    background-color: rgb(244, 131, 2);
+                                                    color: white;
+                                                    border-radius:12px;
+                                                }
+                                                QPushButton:hover {
+                                                    background-color: rgb(191, 64, 0);
+                                                }
+                                            """)
+
+
+
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+                
+                
+        else:
+            
+            qpushbutton.setText(" Añadir")
+            qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+                            
+            qpushbutton.setStyleSheet(""" 
+                                            
+                                            QPushButton{
+
+                                                    background-color: #008a47;
+
+                                                    color: rgb(255, 255, 255);
+                                                    border-radius:12px;
+
+                                                }
+
+                                                QPushButton:hover{
+
+                                                    
+                                                    background-color: rgb(0, 56, 10);
+
+                                                }
+                                            
+                                            """)
+            
+                
+            
+    def restaurar_botones_de_registrar(self):
+        
+        
+        """
+            ### Este Metodo es para dejar los botones de registrar nuevo elemento con su configuracion inicial despues de cancelar la edicion o la eliminacion del elemento
+        
+        
+        """
+        
         try:
             
+            botones = [self.boton_registrar_especialidad, self.boton_registrar_cargo_empleado, self.boton_registrar_diagnostico, self.boton_registrar_enfermedad]
             
-            if qpushbutton.text() == " Editar":
+            for boton in botones:
                 
-                qpushbutton.setText(" Añadir")
-                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-                
-                
-                qpushbutton.setStyleSheet(""" 
-                                          
-                                          QPushButton{
-
-                                                background-color: #008a47;
-
-                                                color: rgb(255, 255, 255);
-                                                border-radius:12px;
-
-                                            }
-
-                                            QPushButton:hover{
-
-                                                
-                                                background-color: rgb(0, 56, 10);
-
-                                            }
-                                          
-                                          """)
+                self.cambiar_estilo_del_boton(boton, True)
                 
                 
-            elif qpushbutton.text() == " Añadir":
+            self.desconectar_botones()
+
             
-                qpushbutton.setText(" Editar")
-                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
+            # Conectando señales para añadir elementos a los catalogos
+        
+            self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
+            self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
+            self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
+            self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
 
-
-                qpushbutton.setStyleSheet("""
-                                            QPushButton {
-                                                background-color: rgb(244, 131, 2);
-                                                color: white;
-                                                border-radius:12px;
-                                            }
-                                            QPushButton:hover {
-                                                background-color: rgb(191, 64, 0);
-                                            }
-                                        """)
-
-
-
+                
+            
+            
         except Exception as e:
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+            FuncionSistema.mostrar_errores_por_excepcion(e,"restaurar_botones_de_registrar")
+            
+            
+    def desconectar_botones(self):
+        
+        self.boton_registrar_especialidad.clicked.disconnect()
+        self.boton_registrar_diagnostico.clicked.disconnect()
+        self.boton_registrar_enfermedad.clicked.disconnect()
+        self.boton_registrar_funcion_cargo.clicked.disconnect()
