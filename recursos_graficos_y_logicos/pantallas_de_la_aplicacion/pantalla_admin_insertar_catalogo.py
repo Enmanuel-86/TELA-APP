@@ -515,7 +515,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
 
 
-                elif nombre_clave_dict.lower() == "enfermedade_cronica":
+                elif nombre_clave_dict.lower() == "enfermedad_cronica":
                     
                     enfermedad_cronica_servicio.eliminar_enfermedad_cronica(id_elemento)
                     
@@ -645,24 +645,21 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             if elemento in self.lista_especialidades:
                 
-                
-                
                 self.eliminar_elemeto_del_catalogo(elemento[0], "especialidad", self.lista_especialidades)
             
             
             
             elif elemento in self.lista_diagnosticos:
                 
-                
-        
                 self.eliminar_elemeto_del_catalogo(elemento[0], "diagnostico", self.lista_diagnosticos)
                 
                 
                 
             elif elemento in self.lista_enfermedades:
                 
-
                 self.eliminar_elemeto_del_catalogo(elemento[0], "enfermedad_cronica", self.lista_enfermedades)
+            
+            
             
             elif elemento in self.lista_funcion_cargo:
                 
