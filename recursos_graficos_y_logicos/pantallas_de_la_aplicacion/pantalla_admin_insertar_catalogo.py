@@ -88,7 +88,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         
-        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice))
+        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla() if indice == 14 else self.restaurar_botones_de_registrar() )
         
         
         # Conectando señales para añadir elementos a los catalogos
@@ -100,7 +100,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
 
 
-    def activar_pantalla(self, indice):
+    def activar_pantalla(self):
         
         """
             ### Este metodo sirve para activar toda la funcion de la pantalla cuando el estamos en ella.
@@ -119,30 +119,24 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         """
         
         
-        if indice == 14:
-            
-            # Listas catalogo
-            self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
-            self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
-            self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
-            self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
-            self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-            self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
-            
-            
-            # Cargando listas catalogos a los QListwidget
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
-            self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
-            
-        else:
-            
-            self.restaurar_botones_de_registrar()
-              
         
-
+        # Listas catalogo
+        self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+        self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+        self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        
+        
+        # Cargando listas catalogos a los QListwidget
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+        
+    
 
         
         
@@ -480,6 +474,96 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
                 
                 
+    
+    def eliminar_elemeto_del_catalogo(self,  id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
+        
+    
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText(f"¿Seguro que quiere eliminar esta {nombre_clave_dict} ?")
+        self.msg_box.setIcon(QMessageBox.Question)
+
+        
+
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+        
+            
+            try:
+                
+                    
+                
+                
+                # en el caso de que sea especialidad
+                if nombre_clave_dict.lower() == "especialidad":
+                    
+                    especialidad_servicio.eliminar_especialidad(id_elemento)
+                    
+                    lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+
+
+                elif nombre_clave_dict.lower() == "diagnostico":
+                    
+                    diagnostico_servicio.eliminar_diagnostico(id_elemento)
+                    
+                    lista_catalogo = diagnostico_servicio.obtener_todos_diagnosticos()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
+
+
+
+                elif nombre_clave_dict.lower() == "enfermedade_cronica":
+                    
+                    enfermedad_cronica_servicio.eliminar_enfermedad_cronica(id_elemento)
+                    
+                    lista_catalogo = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
+  
+  
+  
+                elif nombre_clave_dict.lower() == "funcion_cargo":
+                    
+                    funcion_cargo_servicio.eliminar_funcion_cargo(id_elemento)
+                    
+                    lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
+  
+                
+                
+                
+                  
+                    
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_elemento_del_catalogo" )
+                QMessageBox.information(self, "error", f"Error: {e}")
+                
+                
+            else:
+                
+                QMessageBox.information(self, "Proceso exitoso", f"se elimino con exito la {nombre_clave_dict}")
+   
+        
+        
+        elif self.msg_box.clickedButton() == self.boton_no:
+            
+            
+            
+            self.restaurar_botones_de_registrar()
+            
+        
+            
+        else:
+                    
+            QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
+            
+        
+            
             
     def accion_editar_catalogo(self, elemento, qlistwidget, item):
         """
@@ -553,6 +637,44 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         """Prueba del botón borrar"""
         print(f"[BORRAR] Elemento:", elemento)
         qlistwidget.setCurrentItem(item)  # Hace foco en el elemento
+        
+        
+        
+        try:
+            
+            
+            if elemento in self.lista_especialidades:
+                
+                
+                
+                self.eliminar_elemeto_del_catalogo(elemento[0], "especialidad", self.lista_especialidades)
+            
+            
+            
+            elif elemento in self.lista_diagnosticos:
+                
+                
+        
+                self.eliminar_elemeto_del_catalogo(elemento[0], "diagnostico", self.lista_diagnosticos)
+                
+                
+                
+            elif elemento in self.lista_enfermedades:
+                
+
+                self.eliminar_elemeto_del_catalogo(elemento[0], "enfermedad_cronica", self.lista_enfermedades)
+            
+            elif elemento in self.lista_funcion_cargo:
+                
+        
+                self.eliminar_elemeto_del_catalogo(elemento[0], "funcion_cargo", self.lista_funcion_cargo)
+            
+            
+
+            
+        except Exception as e:
+            
+            QMessageBox.information(self, "aviso", f"paso algo malo {e}") 
 
 
 
