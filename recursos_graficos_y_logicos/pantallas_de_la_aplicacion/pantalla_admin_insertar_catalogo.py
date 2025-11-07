@@ -97,6 +97,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
+        self.boton_registrar_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_cargo_empleado, "cargo", self.lista_cargo, self.input_codigo_cargo_empleado))
         self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_tipo_cargo_empleado, "tipo_cargo", self.lista_tipo_cargo, None, self.input_hora_cargo_empleado))
         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
 
@@ -282,6 +283,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         
                         
                         
+                    # Casos especiales
+                    
                     if nombre_clave_dict.lower() == "tipo_cargo" and hora_tipo_cargo != None:
                         
                         
@@ -303,9 +306,32 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
 
+                        self.input_hora_cargo_empleado.clear()
                         
+                        
+                    if nombre_clave_dict.lower() == "cargo" and codigo_cargo != None:
+                        
+                        
+                        codigo_cargo = self.input_codigo_cargo_empleado.text().upper()
+                        cargo = self.input_cargo_empleado.text().capitalize()                        
+                        
+                        
+                        campos_cargos_empleados = {
+                                "codigo_cargo": codigo_cargo,
+                                "cargo": cargo
+                                }
+                        
+                            
+                        
+                        cargo_empleado_servicio.registrar_cargo_empleado(campos_cargos_empleados)
+                        
+                        lista_catalogo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, lista_catalogo)
+
+                        self.input_codigo_cargo_empleado.clear()
                     
-                        
+                    
                         
                         
                     qlineedit.clear()
