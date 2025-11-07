@@ -155,7 +155,10 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             - especialidades
             - diagnosticos
             - enfermedades
+            - cargos
+            - tipo de cargo
             - funcion de cargo
+            
         
             ya que comparten la misma estructura de:
             
@@ -181,12 +184,9 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
               y lo que hace el metodo es variar el nombre clave del diccionario por el de enfermedades, diagnostico y especialidades
                 
             - se pide la lista para que la refresque y con esta misma usamos de nuevo el metodo de agregar_elemento_a_la_vista_previa para actualizar el QListWidget
+
+
             
-            
-            
-        """
-        
-        """
             verificamos si el input/QlineEdit tiene algun valor.
             
             si lo tiene:
@@ -198,8 +198,16 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             si no tiene valor:
             
             - lanza un aviso de que el campo esta vacio
-        
+
+
+            En casos especiales como el tipo de cargo y los cargos, como tienen otro campo, en este metodo estan dos valores con valor None, es decir son opcionales
+            si a estos se les llega a pasar uno de los QLineEdit del campo adicional de estos catalogos, este accede a un if especial que verifica si este tiene algun valor
+            y si lo tiene crea un diccionario a parte y registra el nuevo elemento al catalogo
+
+
+            
         """
+        
         
         
         
@@ -293,13 +301,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         
                         lista_catalogo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
 
-
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
 
-                        self.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "añadir")
-                        self.boton_registrar_tipo_cargo_empleado.clicked.disconnect()
-                        
-                        self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_tipo_cargo_empleado, "tipo_cargo", self.lista_tipo_cargo) )
                         
                     
                         
@@ -347,6 +350,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             - especialidades
             - enfermededades
             - diagnosticos
+            - cargos
+            - tipo de cargo
             - funcion de cargo
             
             
@@ -432,7 +437,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
                         
                     
-                    # en el caso de que sea especialidad
+                    # en el caso de que sea un diagnostico
                     if nombre_clave_dict.lower() == "diagnostico":
                         
                         diagnostico_servicio.actualizar_diagnostico(id_elemento, diccionario_registrar)
@@ -446,7 +451,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.boton_registrar_diagnostico.clicked.disconnect()
                         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
                         
-                    
+                    # en el caso que se una enfermedad cronica
                     if nombre_clave_dict.lower() == "enfermedad_cronica":
                         
                         enfermedad_cronica_servicio.actualizar_enfermedad_cronica(id_elemento, diccionario_registrar)
@@ -460,7 +465,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.boton_registrar_enfermedad.clicked.disconnect()
                         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
                         
-                    
+                    # en el caso que se una funcion de cargo
                     if nombre_clave_dict.lower() == "funcion_cargo":
                         
                         funcion_cargo_servicio.actualizar_funcion_cargo(id_elemento, diccionario_registrar)
@@ -508,7 +513,21 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 
     
     def eliminar_elemeto_del_catalogo(self,  id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
-        
+        """
+            Este metodo sirve para eliminar el elemento del catalogo seleccionado
+
+            a este metodo se le pasa el:
+            
+            - id del elemento seleccionado
+            - el nombre clave de diccionaro 
+            - la lista donde pertenece ese elemento
+
+
+            a partir del id se elemina el elemento del catalogo con su correspondiente servicio
+
+
+
+        """
     
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText(f"¿Seguro que quiere eliminar esta {nombre_clave_dict} ?")
