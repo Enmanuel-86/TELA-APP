@@ -2,6 +2,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import  (QWidget, QPushButton, QListWidgetItem,
                               QHBoxLayout, QLabel, QMessageBox, QApplication)
 from PyQt5 import QtGui, QtCore
+from datetime import time
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInsertarCatalogoBD
 from ..utilidades.funciones_sistema import FuncionSistema
@@ -96,6 +97,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos))
         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_cronica", self.lista_enfermedades))
+        self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_tipo_cargo_empleado, "tipo_cargo", self.lista_tipo_cargo, None, self.input_hora_cargo_empleado))
         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo))
 
 
@@ -133,16 +135,17 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, self.lista_especialidades)
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, self.lista_diagnosticos)
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, self.lista_enfermedades)
-        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, self.lista_cargo, 2)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, self.lista_tipo_cargo)
+        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, self.lista_funcion_cargo)
+        
         
     
 
-        
-        
+        self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda: print(f"hora: {self.input_hora_cargo_empleado.time().hour()} \n minuto: {self.input_hora_cargo_empleado.time().minute()}"))        
    
         
-    def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list):
+    def agregar_nuevo_elemento_al_catalogo(self, qlineedit, nombre_clave_dict:str, lista_catalogo:list, codigo_cargo = None, hora_tipo_cargo = None):
         
         """
             ### Metodo para registrar nuevo elemento al catalogo.
@@ -270,6 +273,38 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
                         
                         
+                        
+                    if nombre_clave_dict.lower() == "tipo_cargo" and hora_tipo_cargo != None:
+                        
+                        
+                        tipo_cargo = self.input_tipo_cargo_empleado.text().capitalize()                        
+                        
+                        hora = hora_tipo_cargo.time().hour()
+                        minuto = hora_tipo_cargo.time().minute()
+                        
+                        campos_tipo_cargo = {
+                            "tipo_cargo": tipo_cargo,
+                            "horario_llegada": time(hora, minuto,0,0)
+                        }
+                        
+                            
+                        
+                        tipo_cargo_servicio.registrar_tipo_cargo(campos_tipo_cargo)
+                        
+                        lista_catalogo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+
+
+                        self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
+
+                        self.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "añadir")
+                        self.boton_registrar_tipo_cargo_empleado.clicked.disconnect()
+                        
+                        self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_tipo_cargo_empleado, "tipo_cargo", self.lista_tipo_cargo) )
+                        
+                    
+                        
+                        
+                        
                     qlineedit.clear()
 
 
@@ -304,7 +339,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
         
         
-    def actualizar_elemento_del_catalogo(self, qlineedit, id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
+    def actualizar_elemento_del_catalogo(self, qlineedit, id_elemento:int, nombre_clave_dict: str, lista_catalogo:list, codigo_cargo=None, hora_tipo_cargo = None):
         
         """
             ### Este metodo sirve para actualizar/editar el elemento de los siguientes catalogos
@@ -438,9 +473,6 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "añadir")
                         self.boton_registrar_funcion_cargo.clicked.disconnect()
                         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
-                        
-                    
-                    
                         
                     qlineedit.clear()
 
@@ -627,6 +659,17 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.boton_registrar_funcion_cargo.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_funcion_cargo, elemento[0], "funcion_cargo", self.lista_funcion_cargo))
             
             
+            """"elif elemento in self.lista_tipo_cargo:
+                
+                self.input_cargo_empleado.setText(elemento[2])
+                self.input_cargo_empleado.setFocus(True)
+                
+                
+                self.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "editar")
+                self.boton_registrar_cargo_empleado.clicked.disconnect()
+                self.boton_registrar_cargo_empleado.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_cargo_empleado, elemento[0], "tipo_cargo", self.lista_tipo_cargo, self.input_codigo_cargo_empleado))
+            
+            """
             
         except Exception as e:
             
@@ -761,7 +804,6 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             - si es "añadir" le da el estilo por defecto
             - si es "editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
-            - si es "borrar" le cambia el texto por borrar, le cambia el fondo a rojo y le cambia el icono de mas por un icono de basurero
             
             
             ***Ejemplo***
@@ -825,22 +867,6 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                                         """)
 
             
-            elif estilo_opcion == "Borrar":
-                
-                
-                qpushbutton.setText(" Borrar")
-                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
-
-                qpushbutton.setStyleSheet("""
-                    QPushButton {
-                        background-color: rgb(255, 0, 0);
-                        color: white;
-                    }
-                    QPushButton:hover {
-                        background-color: rgb(147, 0, 0);
-                    }
-                """)
-                
             
             
 
