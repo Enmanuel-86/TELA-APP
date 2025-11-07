@@ -677,6 +677,25 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 
                 
                 
+                elif nombre_clave_dict.lower() == "tipo_cargo":
+                    
+                    tipo_cargo_servicio.eliminar_tipo_cargo(id_elemento)
+                    
+                    lista_catalogo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
+                    
+                    
+                    
+                elif nombre_clave_dict.lower() == "cargo":
+                    
+                    cargo_empleado_servicio.eliminar_cargo_empleado(id_elemento)
+                    
+                    lista_catalogo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+
+                    self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, lista_catalogo)
+  
+                
                   
                     
             except Exception as e:
@@ -833,6 +852,23 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 
         
                 self.eliminar_elemeto_del_catalogo(elemento[0], "funcion_cargo", self.lista_funcion_cargo)
+                
+            
+            
+            elif elemento in self.lista_tipo_cargo:
+                
+        
+                self.eliminar_elemeto_del_catalogo(elemento[0], "tipo_cargo", self.lista_tipo_cargo)
+                
+                
+                
+            elif elemento in self.lista_cargo:
+                
+        
+                self.eliminar_elemeto_del_catalogo(elemento[0], "cargo", self.lista_cargo)
+                
+                
+             
             
             
 
