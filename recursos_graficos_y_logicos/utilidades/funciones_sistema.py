@@ -226,7 +226,7 @@ class FuncionesDelSistema:
     
     
     # Metodos para limpiar los inputs 
-    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: list, lista_qradiobuttons: list = []) -> None:
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = ()) -> None:
         
         """
             ### Este metodo sirve para limpiar los inputs mas relevante como los:
