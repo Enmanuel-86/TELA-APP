@@ -6,7 +6,7 @@ from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
 from ..utilidades.base_de_datos import especialidad_servicio
-
+from ..utilidades.funciones_sistema import FuncionSistema
 
 ##################################
 # importaciones de base de datos #
@@ -61,7 +61,7 @@ info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_rep
 ##################################
 
 
-lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+
 
 #lista_alumnos = alumnos_servicio.obtener_todos_alumnos()
 
@@ -76,146 +76,137 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice))
+        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice) if indice == 2 else FuncionSistema.limpiar_inputs_de_qt((self.boton_especialidades, self.barra_de_busqueda, self.label_contador)))
+        
+        
+        
+        # Estableciendo estilo de la tabla
+            
+        #self.tabla_ver_alumnos.setColumnWidth(6, 300) 
+
+        self.tabla_ver_alumnos.horizontalHeader().setVisible(True)
+        self.tabla_ver_alumnos.horizontalHeader().setMinimumHeight(50)
+        self.tabla_ver_alumnos.horizontalHeader().setMinimumWidth(10)
+        self.tabla_ver_alumnos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tabla_ver_alumnos.horizontalHeader().setSectionsClickable(False)
+        
+        self.tabla_ver_alumnos.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.tabla_ver_alumnos.verticalHeader().setVisible(True)
+        self.tabla_ver_alumnos.verticalHeader().setMinimumWidth(40)
+        self.tabla_ver_alumnos.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+
+        #esto me da el valor de la cedula al darle click a la persona que quiero
+        self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
+
+        # Opcional: desactivar clic en el encabezado vertical
+        self.tabla_ver_alumnos.verticalHeader().setSectionsClickable(True)
+
+        # Activar filas alternadas y aplicar estilo si quieres
+        #self.tabla_ver_alumnos.setAlternatingRowColors(True)
+        
+        
+
+        # Estilo de encabezados
+        self.tabla_ver_alumnos.horizontalHeader().setStyleSheet("""
+
+            QHeaderView{
+                        
+                        background:#ffffff;    
+                        border-radius:0px;
+                        border:none;
+                    }
+                    
+
+
+            QHeaderView::section {
+                background-color: #008e3e;
+                color: white;
+                padding: 0px;
+                font: 75 14pt "Arial";
+                
+            
+            }
+        """)
+
+        self.tabla_ver_alumnos.verticalHeader().setStyleSheet("""
+                    
+                    QHeaderView{
+                        
+                        background:#ffffff;    
+                        border-radius:0px;
+                        border:none;
+                    }
+                    
+                    QHeaderView::section {
+                        background-color: #ffffff;
+                        font: 75 14pt "Arial";
+
+
+
+                    }
+                """)
+
+
+        self.tabla_ver_alumnos.setStyleSheet("""
+                            QTableView {
+                                
+                                gridline-color: 5px black;
+                                border-radius:0px;
+                                background-color:white;
+                                font: 75 14pt "Arial";
+                                margin:10px;
+                            }
+                        
+                            QHeaderView::section {
+                                
+                                font-weight: bold;  
+                            }
+                        """)
+        
+    
+        # conexion de botones
+        self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro)
+        self.boton_buscar.clicked.connect(lambda _: self.acceder_al_perfil_alumno)
+        self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno)
+        self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes)
+        
+        self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
+
+        
+        
+        # Conectar señal de doble click
+        self.tabla_ver_alumnos.doubleClicked.connect(self.on_double_click)
+        
+        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
+        
+        
+        # Lista de coincidencias
+        self.resultados = QListWidget(self)
+        self.resultados.setFocusPolicy(Qt.NoFocus)
+        self.resultados.setMouseTracking(True)
+        self.resultados.setStyleSheet("background-color: white; border: 1px solid gray;border-radius:0px; padding:10px;")
+        self.resultados.itemClicked.connect(self.seleccionar_item)
+        self.resultados.hide() 
+        
 
     def activar_pantalla(self, indice_pantalla):
         
         if indice_pantalla == 2:
-
-            ## Ruta relativa de las imagenes ##
-            self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
-            self.boton_generar_informe.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","generar_informe.png")))
-            self.boton_asistencia_alumnos.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","control_de_llegada.png")))
-            self.boton_crear_nuevo_registro.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","nuevo_registro.png")))
-            self.imagen_contador.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
-
-            
-            
-            
-            
-            self.actualizar_lista_busqueda()
-            
-            #self.tabla_ver_alumnos.setColumnWidth(6, 300) 
-
-            self.tabla_ver_alumnos.horizontalHeader().setVisible(True)
-            
-            
-            
-
-            self.tabla_ver_alumnos.horizontalHeader().setMinimumHeight(50)
-            self.tabla_ver_alumnos.horizontalHeader().setMinimumWidth(10)
-            self.tabla_ver_alumnos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-            self.tabla_ver_alumnos.horizontalHeader().setSectionsClickable(False)
-            
-            self.tabla_ver_alumnos.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
-            
-            
-
-            self.tabla_ver_alumnos.verticalHeader().setVisible(True)
-            self.tabla_ver_alumnos.verticalHeader().setMinimumWidth(40)
-            self.tabla_ver_alumnos.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
-
-            #esto me da el valor de la cedula al darle click a la persona que quiero
-            self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
-
-            # Opcional: desactivar clic en el encabezado vertical
-            self.tabla_ver_alumnos.verticalHeader().setSectionsClickable(True)
-
-            # Activar filas alternadas y aplicar estilo si quieres
-            #self.tabla_ver_alumnos.setAlternatingRowColors(True)
-            
-            
-
-            # Estilo de encabezados
-            self.tabla_ver_alumnos.horizontalHeader().setStyleSheet("""
-
-                QHeaderView{
-                            
-                            background:#ffffff;    
-                            border-radius:0px;
-                            border:none;
-                        }
                         
-
-
-                QHeaderView::section {
-                    background-color: #008e3e;
-                    color: white;
-                    padding: 0px;
-                    font: 75 14pt "Arial";
-                    
-                
-                }
-            """)
-
-            self.tabla_ver_alumnos.verticalHeader().setStyleSheet("""
+            
+            
+            self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+            self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
                         
-                        QHeaderView{
-                            
-                            background:#ffffff;    
-                            border-radius:0px;
-                            border:none;
-                        }
-                        
-                        QHeaderView::section {
-                            background-color: #ffffff;
-                            font: 75 14pt "Arial";
-
-
-
-                        }
-                    """)
-
-
-            self.tabla_ver_alumnos.setStyleSheet("""
-                                QTableView {
-                                    
-                                    gridline-color: 5px black;
-                                    border-radius:0px;
-                                    background-color:white;
-                                    font: 75 14pt "Arial";
-                                    margin:10px;
-                                }
-                            
-                                QHeaderView::section {
-                                    
-                                    font-weight: bold;  
-                                }
-                            """)
             
             
-            
-            #self.ventana_diagnostico = VentanaMostrarDiagnostico() 
-            
-            self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
-            
-            # Conectar señal de doble click
-            self.tabla_ver_alumnos.doubleClicked.connect(self.on_double_click)
-            
-            self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
             
             # Carga las especialidades al boton deplegable
-            self.cargar_especialidades()
-            
-
-            self.boton_crear_nuevo_registro.clicked.connect(self.ir_crear_nuevo_registro)
-            
-            self.boton_buscar.clicked.connect(self.acceder_al_perfil_alumno)
-            
-            self.boton_asistencia_alumnos.clicked.connect(self.ir_asistencia_alumno)
-            
-            self.boton_generar_informe.clicked.connect(self.ir_a_generar_informes_y_reportes)
+            FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
             
             
             
-            # Lista de coincidencias
-            self.resultados = QListWidget(self)
-            self.resultados.setFocusPolicy(Qt.NoFocus)
-            self.resultados.setMouseTracking(True)
-            self.resultados.setStyleSheet("background-color: white; border: 1px solid gray;border-radius:0px; padding:10px;")
-            self.resultados.itemClicked.connect(self.seleccionar_item)
-            self.resultados.hide() 
-        
+            
         
         
         
@@ -229,14 +220,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     ################################################################################################################################ 
     ################################################################################################################################
 
-    # Metodos para la busqueda dianamica
-    
-    def actualizar_lista_busqueda(self):
 
-        self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
-    
-    
-    
     
     def filtrar_resultados(self, texto):
         texto = texto.strip().lower()
@@ -329,16 +313,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
     
     
-    
 
-    # Metodo para cargar las especialidades en el boton de especialidades   
-    def cargar_especialidades(self):
-        
-        #print(lista_especialidades)
-        for especialidad in lista_especialidades:
-            
-            self.boton_especialidades.addItem(especialidad[1])
-    
     
     # Metodo para filtrar por especialidad
     def filtrar_por_especialidad(self):
@@ -351,7 +326,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             if self.boton_especialidades.currentText():
                 
                 # Iteramos todas las especialidades, ejemplo (1,"ceramica")
-                for especialidad in lista_especialidades:
+                for especialidad in self.lista_especialidades:
                     
                     # si el boton esta en X especialidad entonces
                     if especialidad_selec in especialidad:
@@ -493,15 +468,29 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
     # Metodo para acceder a la información del alumno
     def acceder_al_perfil_alumno(self):
+        """
         
+            Este metodo sirve para acceder al perfil del alumno usando la barra de busqueda, y esta funciona asi:
+            
+            1. verificamos que en la barra de busqueda tenga algun valor
+            2. iteramos cada alumno que esta en la lista_alumnos con un for
+            3. verificamos si el alumno iterado es igual a lo que esta en la barra de busque, en este caso se comparan las cedulas
+            4. si son iguales cambiamos de pantalla, guardamos el id del alumno y se lo pasamos al metodo mostrar_la_info_alumno y limpiamos la barra de busqueda
+            
+            El metodo de mostrar_la_info_alumno lo que hace es mostrar la informacion del alumno en su pantalla correspodiente
+        
+        
+        """
         
         try:
             
+            # 1
             if self.barra_de_busqueda.text().strip():
                 
+                # 2 
                 for alumno in self.lista_alumnos_actual:
                     
-                    
+                    # 3 
                     if self.barra_de_busqueda.text() == alumno[1]:
                         
                         alumno_id = alumno[0]
@@ -534,6 +523,18 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
     # Metodo para acceder a la informacion del alumno
     def mostrar_la_info_alumno(self, alumno_id: int):
+        
+        """
+        
+            Este metodo sirve para ver toda la informacion del alumno en su correspondiente pantalla, esto funciona asi:
+            
+            1. en una variable accedemos a la pantalla de ver_perfil_alumno
+            2. usamos todos los metodos de la base de datos para acceder a la informacion del alumno con el id que pedimos en la barra de busqueda o en la tabla de la vista previa
+            3. se cargan los datos a cada QLineEdit, QRadioButton, QListWidget, QLabel, etc, de cada segmento
+        
+        
+        """
+        
         
         global pantalla_perfil_alumno
         
@@ -892,6 +893,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
 
 
+    
 
 
     
