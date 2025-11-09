@@ -165,10 +165,10 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
     
         # conexion de botones
-        self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro)
-        self.boton_buscar.clicked.connect(lambda _: self.acceder_al_perfil_alumno)
-        self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno)
-        self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes)
+        self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro())
+        self.boton_buscar.clicked.connect(lambda _: self.acceder_al_perfil_alumno())
+        self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
+        self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
         
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
 
