@@ -114,8 +114,8 @@ class Login(QWidget, Ui_Login):
 
         self.mensajes_usuario()
         
-        #self.input_usuario.setText("douglas345")
-        #self.input_contrasena.setText("1234")
+        self.input_usuario.setText("douglas345")
+        self.input_contrasena.setText("1234")
         
 
         self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
@@ -161,7 +161,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
         ## Mostrar ventana emergente a traves de esta funcion ##
         ## Procurar activarlo al final ##
-        self.mostrar_advertencia()
+        #self.mostrar_advertencia()
         
         
         
