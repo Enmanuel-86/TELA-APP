@@ -937,7 +937,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     self.input_apellido_paterno.clear()
                                     self.input_apellido_materno.clear()
                                     self.input_cedula.clear()
-                                    self.label_mostrar_fecha.clear()
+                                    
                                     # Desactivar temporalmente la auto-exclusividad
                                     self.input_sexo_masculino.setAutoExclusive(False)
                                     self.input_sexo_femenino.setAutoExclusive(False)
