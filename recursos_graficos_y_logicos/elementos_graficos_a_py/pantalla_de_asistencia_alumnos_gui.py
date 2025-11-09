@@ -197,104 +197,45 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.gridLayout.setContentsMargins(20, 20, 20, 20)
         self.gridLayout.setSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label_motivo_de_inasistencia = QtWidgets.QLabel(self.espacio_para_el_formulario)
-        self.label_motivo_de_inasistencia.setEnabled(True)
+        self.estado_de_asistencia = QtWidgets.QGroupBox(self.espacio_para_el_formulario)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.label_motivo_de_inasistencia.setFont(font)
-        self.label_motivo_de_inasistencia.setStyleSheet("QLabel{\n"
+        self.estado_de_asistencia.setFont(font)
+        self.estado_de_asistencia.setStyleSheet("QGroupBox{\n"
 "\n"
-"    \n"
-"    color: rgb(0, 0, 0);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"    border:none;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_motivo_de_inasistencia.setScaledContents(False)
-        self.label_motivo_de_inasistencia.setObjectName("label_motivo_de_inasistencia")
-        self.verticalLayout_7.addWidget(self.label_motivo_de_inasistencia, 0, QtCore.Qt.AlignLeft)
-        self.input_motivo_de_inasistencia = QtWidgets.QLineEdit(self.espacio_para_el_formulario)
-        self.input_motivo_de_inasistencia.setEnabled(True)
-        self.input_motivo_de_inasistencia.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(12)
-        self.input_motivo_de_inasistencia.setFont(font)
-        self.input_motivo_de_inasistencia.setStyleSheet("QLineEdit{\n"
-"    \n"
 "    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
 "\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QLineEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-" ")
-        self.input_motivo_de_inasistencia.setText("")
-        self.input_motivo_de_inasistencia.setObjectName("input_motivo_de_inasistencia")
-        self.verticalLayout_7.addWidget(self.input_motivo_de_inasistencia)
-        self.gridLayout.addLayout(self.verticalLayout_7, 3, 0, 1, 2)
-        self.boton_agregar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
-        self.boton_agregar.setMinimumSize(QtCore.QSize(120, 40))
-        self.boton_agregar.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.boton_agregar.setFont(font)
-        self.boton_agregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_agregar.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(0, 183, 72);\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
 "\n"
 "}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_agregar.setIcon(icon1)
-        self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
-        self.boton_agregar.setObjectName("boton_agregar")
-        self.gridLayout.addWidget(self.boton_agregar, 4, 0, 1, 2, QtCore.Qt.AlignHCenter)
+        self.estado_de_asistencia.setObjectName("estado_de_asistencia")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.estado_de_asistencia)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.input_asistente = QtWidgets.QRadioButton(self.estado_de_asistencia)
+        self.input_asistente.setMinimumSize(QtCore.QSize(2, 0))
+        self.input_asistente.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.input_asistente.setStyleSheet("QRadioButton{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    font: 75 10pt \"Arial\";\n"
+"\n"
+"}")
+        self.input_asistente.setObjectName("input_asistente")
+        self.verticalLayout_2.addWidget(self.input_asistente)
+        self.input_inasistente = QtWidgets.QRadioButton(self.estado_de_asistencia)
+        self.input_inasistente.setMinimumSize(QtCore.QSize(2, 0))
+        self.input_inasistente.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.input_inasistente.setStyleSheet("QRadioButton{\n"
+"\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    font: 75 10pt \"Arial\";\n"
+"\n"
+"}")
+        self.input_inasistente.setObjectName("input_inasistente")
+        self.verticalLayout_2.addWidget(self.input_inasistente)
+        self.gridLayout.addWidget(self.estado_de_asistencia, 1, 1, 1, 1)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -367,45 +308,6 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.input_cedula_alumno.setObjectName("input_cedula_alumno")
         self.verticalLayout_3.addWidget(self.input_cedula_alumno, 0, QtCore.Qt.AlignLeft)
         self.gridLayout.addLayout(self.verticalLayout_3, 1, 0, 1, 1)
-        self.estado_de_asistencia = QtWidgets.QGroupBox(self.espacio_para_el_formulario)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.estado_de_asistencia.setFont(font)
-        self.estado_de_asistencia.setStyleSheet("QGroupBox{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"\n"
-"\n"
-"}")
-        self.estado_de_asistencia.setObjectName("estado_de_asistencia")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.estado_de_asistencia)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.input_asistente = QtWidgets.QRadioButton(self.estado_de_asistencia)
-        self.input_asistente.setMinimumSize(QtCore.QSize(2, 0))
-        self.input_asistente.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.input_asistente.setStyleSheet("QRadioButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    font: 75 10pt \"Arial\";\n"
-"\n"
-"}")
-        self.input_asistente.setObjectName("input_asistente")
-        self.verticalLayout_2.addWidget(self.input_asistente)
-        self.input_inasistente = QtWidgets.QRadioButton(self.estado_de_asistencia)
-        self.input_inasistente.setMinimumSize(QtCore.QSize(2, 0))
-        self.input_inasistente.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.input_inasistente.setStyleSheet("QRadioButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    font: 75 10pt \"Arial\";\n"
-"\n"
-"}")
-        self.input_inasistente.setObjectName("input_inasistente")
-        self.verticalLayout_2.addWidget(self.input_inasistente)
-        self.gridLayout.addWidget(self.estado_de_asistencia, 1, 1, 1, 1)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
@@ -515,6 +417,37 @@ class Ui_PantallaAsistenciaAlumnos(object):
         self.boton_especialidades.setObjectName("boton_especialidades")
         self.verticalLayout_6.addWidget(self.boton_especialidades, 0, QtCore.Qt.AlignTop)
         self.gridLayout.addLayout(self.verticalLayout_6, 0, 0, 1, 1)
+        self.boton_agregar = QtWidgets.QPushButton(self.espacio_para_el_formulario)
+        self.boton_agregar.setMinimumSize(QtCore.QSize(120, 40))
+        self.boton_agregar.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.boton_agregar.setFont(font)
+        self.boton_agregar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.boton_agregar.setStyleSheet("QPushButton{\n"
+"\n"
+"    background-color: rgb(0, 183, 72);\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"    border-radius:12px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"\n"
+"    \n"
+"    background-color: rgb(0, 56, 10);\n"
+"\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_agregar.setIcon(icon1)
+        self.boton_agregar.setIconSize(QtCore.QSize(26, 26))
+        self.boton_agregar.setObjectName("boton_agregar")
+        self.gridLayout.addWidget(self.boton_agregar, 3, 0, 1, 2, QtCore.Qt.AlignHCenter)
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
@@ -704,15 +637,13 @@ class Ui_PantallaAsistenciaAlumnos(object):
         PantallaAsistenciaAlumnos.setWindowTitle(_translate("PantallaAsistenciaAlumnos", "Form"))
         self.label_control_de_llegada.setText(_translate("PantallaAsistenciaAlumnos", "Asistencia de los alumnos"))
         self.label_fecha_actual.setText(_translate("PantallaAsistenciaAlumnos", "Fecha actual"))
-        self.label_motivo_de_inasistencia.setText(_translate("PantallaAsistenciaAlumnos", " Motivo de la inasistencia "))
-        self.input_motivo_de_inasistencia.setPlaceholderText(_translate("PantallaAsistenciaAlumnos", "....."))
-        self.boton_agregar.setText(_translate("PantallaAsistenciaAlumnos", " Agregar"))
-        self.label_cedula_empleado.setText(_translate("PantallaAsistenciaAlumnos", "Cédula o nombre del estudiante"))
-        self.input_cedula_alumno.setPlaceholderText(_translate("PantallaAsistenciaAlumnos", "....."))
         self.estado_de_asistencia.setTitle(_translate("PantallaAsistenciaAlumnos", "Estado de asistencia"))
         self.input_asistente.setText(_translate("PantallaAsistenciaAlumnos", "Asistente"))
         self.input_inasistente.setText(_translate("PantallaAsistenciaAlumnos", "Inasistente"))
+        self.label_cedula_empleado.setText(_translate("PantallaAsistenciaAlumnos", "Cédula o nombre del estudiante"))
+        self.input_cedula_alumno.setPlaceholderText(_translate("PantallaAsistenciaAlumnos", "....."))
         self.titulo_de_boton_de_opciones.setText(_translate("PantallaAsistenciaAlumnos", "Especialidad ocupacional"))
+        self.boton_agregar.setText(_translate("PantallaAsistenciaAlumnos", " Agregar"))
         self.label_estado_boton_desplegable.setText(_translate("PantallaAsistenciaAlumnos", "Estado del boton desplegable"))
         self.checkbox_estado_combobox.setText(_translate("PantallaAsistenciaAlumnos", "poner activado o desactivado"))
         self.label_titulo_asistencia.setText(_translate("PantallaAsistenciaAlumnos", "Lista de asistencia actual: n personas"))
