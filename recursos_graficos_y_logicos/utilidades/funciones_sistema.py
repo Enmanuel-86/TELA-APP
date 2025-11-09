@@ -1,6 +1,7 @@
 import traceback
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+from datetime import datetime
 
 
 """
@@ -401,6 +402,23 @@ class FuncionesDelSistema:
         except Exception as e:
             print(f"Error al cargar estilos: {e}")
 
+
+    def fecha_de_str_a_date(self, fecha_string):
+        # Convertir el string a objeto date
+        try:
+            # Primero eliminar espacios y normalizar el formato
+            fecha_limpia = fecha_string.replace(" ", "")  # Eliminar espacios
+            fecha_limpia = fecha_limpia.replace("/", "-")  # Reemplazar / por -
+            
+            # Si el formato original era "2000/04/02" ahora será "2000-04-02"
+            # Verificar que tenga el formato correcto para datetime
+            fecha_date = datetime.strptime(fecha_limpia, "%Y-%m-%d").date()
+            
+            return fecha_date
+    
+        except ValueError as e:
+            print(f"Error al convertir la fecha: {e}")
+            return None  
 
             
             
