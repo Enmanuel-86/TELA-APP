@@ -114,8 +114,8 @@ class Login(QWidget, Ui_Login):
 
         self.mensajes_usuario()
         
-        self.input_usuario.setText("douglas345")
-        self.input_contrasena.setText("1234")
+        #self.input_usuario.setText("douglas345")
+        #self.input_contrasena.setText("1234")
         
 
         self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
@@ -161,7 +161,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
         ## Mostrar ventana emergente a traves de esta funcion ##
         ## Procurar activarlo al final ##
-        #self.mostrar_advertencia()
+        self.mostrar_advertencia()
         
         
         
@@ -241,7 +241,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         self.stacked_widget.setCurrentIndex(0)
     
-        #self.area_scroll_side_bar.hide()
+        self.area_scroll_side_bar.hide()
         
         self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
         self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget:  self.boton_principal.setChecked(True) if indice_stackedwidget == 1 else None)
@@ -382,18 +382,11 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         msg.setIcon(QMessageBox.Warning)
 
         msg.setWindowTitle("Verificación de hora del sistema")
-        msg.setText("La hora de su PC debe estar actualizada")
+        msg.setText("Bienvenido al TELA-APP, esta es una versión de prueba, pueden haber errores, por favor tenga la hora de su dispositivo (su computadora) actualizada para que los registros no tengan errores")
 
 
-        msg.setInformativeText(
-            """
-            <p style='text-align: justify;'>
-            Para realizar los registros de manera coherente, verifique que la fecha y hora de su computadora
-            sean correctas al dia de hoy.
-            </p>
-            """
-        )
-        msg.setIconPixmap(QPixmap(icono_reloj_azul))
+        
+        msg.setIconPixmap(QPixmap(icono_reloj))
         msg.setWindowIcon(QIcon(icono_reloj))
 
 
