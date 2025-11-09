@@ -134,7 +134,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         
         coincidencias = [
             persona for persona in self.lista_empleados_actual
-            if texto in persona[5] or texto in persona[1].lower()
+            if texto in persona[6] or texto in persona[1].lower()
         ]
 
         if not coincidencias:
