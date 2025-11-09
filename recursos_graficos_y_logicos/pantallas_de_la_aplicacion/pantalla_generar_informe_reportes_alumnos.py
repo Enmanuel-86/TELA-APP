@@ -6,7 +6,7 @@ import os
 from ..elementos_graficos_a_py import Ui_PantallaGenerarInformesReportesAlumnos
 
 
-##################################
+"""##################################
 # Importaciones de base de datos #
 ##################################
 
@@ -20,6 +20,7 @@ from excepciones.base_datos_error import BaseDatosError
 reporte_asistencia_mensual_alumnos = ReporteAsistenciaMensualAlumnos()
 asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
 especialidad_repositorio = EspecialidadRepositorio()
+"""
 
 
 class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformesReportesAlumnos):
@@ -28,7 +29,7 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         
         self.stacked_widget = stacked_widget
         self.setupUi(self)
-        
+    """   
         self.boton_generar_reporte_asistencia.clicked.connect(self.generar_reporte_de_asistencia)
         
         
@@ -56,4 +57,4 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         else:
             
             
-            QMessageBox.information(self, "AVISO", f"Generado con exito")
+            QMessageBox.information(self, "AVISO", f"Generado con exito")"""
