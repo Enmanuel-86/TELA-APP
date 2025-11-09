@@ -5,7 +5,8 @@ from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_PantallaAsistenciaAlumnos
-from datetime import datetime, time
+from ..utilidades.funciones_sistema import FuncionSistema
+from datetime import datetime, date
 
 
 ##################################
@@ -17,13 +18,14 @@ from datetime import datetime, time
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
 from repositorios.alumnos.alumno_repositorio import AlumnoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
+from repositorios.alumnos.asistencia_alumno_repositorio import AsistenciaAlumnoRepositorio
 
 # Servicios
 
 from servicios.especialidades.especialidad_servicio import EspecialidadServicio
 from servicios.alumnos.alumno_servicio import AlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
-
+from servicios.alumnos.asistencia_alumno_servicio import AsistenciaAlumnoServicio
 
 # Instanacias Repositorios
 
@@ -33,6 +35,8 @@ alumnos_repositorio = AlumnoRepositorio()
 
 inscripcion_repositorio = InscripcionRepositorio()
 
+asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
+
 
 # Instancia Servicios
 
@@ -41,6 +45,8 @@ especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
 alumnos_servicio = AlumnoServicio(alumnos_repositorio)
 
 inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
+
+asistencia_alumno_servicio = AsistenciaAlumnoServicio(asistencia_alumno_repositorio)
 
 
 
@@ -92,7 +98,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         # esto es para el metodo de agregar al empleado a la lista 
         self.indice = 0
         
-        self.lista_qlineedits = [self.input_cedula_alumno,  self.input_motivo_de_inasistencia]
+        self.lista_qlineedits = [self.input_cedula_alumno]
         self.lista_radiobuttons = [self.input_asistente, self.input_inasistente]
         
         
@@ -113,9 +119,10 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         
         self.input_cedula_alumno.setDisabled(True)
         
-        self.cargar_especialidades()
+        
         
         # Conexion de funciones a botones
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
         self.boton_especialidades.currentIndexChanged.connect(self.actualizar_lista_busqueda)
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.input_cedula_alumno.textChanged.connect(self.filtrar_resultados)
@@ -428,26 +435,19 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                     alumno_n.append(estado_asistencia)
                     
                     
-                    
-                # 3) Motivo de inasistencia
-                if self.input_motivo_de_inasistencia.text().strip():
-                    motivo_inasistencia = self.input_motivo_de_inasistencia.text().strip()
-                    alumno_n.append(motivo_inasistencia)
-                else:
-                    alumno_n.append(None)
                 
-                # 4) cedula
+                # 3) cedula
                 alumno_n.append(cedula)
                 
-                #5) nombre
+                #4) nombre
                 alumno_n.append(alumno[2])
                 
-                #6) apellido
+                #5) apellido
                 alumno_n.append(alumno[3])
                 
                 
                 # el texto que quiero mostrar en la lista de asistencias es : Cedula - Nombre Apellido
-                texto_a_mostrar = f"{alumno_n[4]} - {alumno_n[5]} {alumno_n[6]}"
+                texto_a_mostrar = f"{alumno_n[3]} - {alumno_n[4]} {alumno_n[5]}"
                 
                 # lo transformamos en un tupla
                 alumno_n = tuple(alumno_n)
@@ -508,7 +508,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                     
                     # Verificamos si la cedula del alumno de la lista alumno_n, esta en la lista de asistencia buscando por indice y por cedula
                     # si no esta lo agregamos, si lo esta no lo agregamos
-                    if not alumno_n[4] in self.lista_de_asistencias[self.indice][4] or not alumno_n[4] == self.lista_de_asistencias[self.indice][4]:
+                    if not alumno_n[3] in self.lista_de_asistencias[self.indice][3] or not alumno_n[3] == self.lista_de_asistencias[self.indice][3]:
                         
                         # si no esta los agrega a la lista de asistencia
                         self.lista_de_asistencias.append(alumno_n)
@@ -542,6 +542,8 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 # esto es para actualizar cuantas personas hay 
                 self.contador_de_asistencias += 1
                 self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                self.input_cedula_alumno.clear()
+                
                 
                 
 
@@ -551,8 +553,63 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
     
     # Metodo para administrar la informacion a la base de datos
     def suministrar_info(self):
+        """
+            Este metodo sirve para cargar el registro de asistencia de los alumnos a la base de datos
+            
+            este metodo funciona asi:
+            
+            - un for va a recorrer self.lista_de_asistencias, que contiene todo lo que se ve en el qlistwidget
+            - self.lista_de_asistencias sigue la siguiente estructura:
+            
+            
+            
+            self.lista_de_asistencias = [(1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares'),
+                                         (1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares'),
+                                         (1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares')]
+                                         
+            donde tenemos: el ID del alumno, la fecha de actual, el estado de asistencia, la cedula, nombre y apellido del alumno
+            
+            - con el for vamos a pasar el id, la fecha, el estado de asistencia, y el dia laborable (todavia no esta habilitado)
+            - y en cada iteracion cargamos cada alumno con le metodo de la base de datos
         
-        QMessageBox.information(self, "Todavia no", "Todavia no se puede, proximamente en el proximo DLC")
+        
+        """
+        
+        try:
+            
+            for alumno in self.lista_de_asistencias:
+                
+                id_alumno = alumno[0]
+                estado_asistencia = 1 if alumno[2] == "PRESENTE" else 0
+                
+                
+                
+                campos_asistencia_alumnos = {
+                    "inscripcion_id": id_alumno,
+                    "fecha_asistencia": date.today(),
+                    "estado_asistencia": estado_asistencia,
+                    "dia_no_laborable": None
+                }
+                
+                asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
+            
+        
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "funcion_suministrar")
+            QMessageBox.warning(self, "Error", "Algo salio mal, revise la consola")
+            
+        
+        else:
+            
+            
+            QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia")
+    
+    
+    
+    
+    
+    
     
     # Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
     # esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
@@ -704,16 +761,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
 
         
         
-    # Metodo para cargar las especialidades en el boton de especialidades   
-    def cargar_especialidades(self):
-        
-        #print(lista_especialidades)
-        self.boton_especialidades.addItem("Selecciona aqui")
-        for especialidad in lista_especialidades:
-            
-            self.boton_especialidades.addItem(especialidad[1])
     
-        
     
     # Metodo para buscar el id del empleado 
     def buscar_id_alumno(self, cedula):
