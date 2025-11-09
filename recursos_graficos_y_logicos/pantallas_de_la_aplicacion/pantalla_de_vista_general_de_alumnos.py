@@ -177,7 +177,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Conectar señal de doble click
         self.tabla_ver_alumnos.doubleClicked.connect(self.on_double_click)
         
-        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
+        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados) 
         
         
         # Lista de coincidencias
