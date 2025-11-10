@@ -98,8 +98,8 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         # esto es para el metodo de agregar al empleado a la lista 
         self.indice = 0
         
-        self.lista_qlineedits = [self.input_cedula_alumno]
-        self.lista_radiobuttons = [self.input_asistente, self.input_inasistente]
+        self.lista_qlineedits = [self.input_cedula_alumno, self.input_dia_feriado]
+        self.lista_radiobuttons = [self.input_asistente, self.input_inasistente, self.input_check_dia_feriado]
         
         
         self.checkbox_estado_combobox.setText("Activado")
@@ -129,6 +129,11 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias_con_boton)
         self.boton_suministrar.clicked.connect(self.suministrar_info)
         self.checkbox_estado_combobox.clicked.connect(self.verficacion_combobox)
+        
+        self.input_check_dia_feriado.toggled.connect(lambda estado: self.comprobar_si_es_feriado(estado))
+        
+        
+        
         
         # Lista de coincidencias
         self.resultados = QListWidget(self)
@@ -427,11 +432,11 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 
                 # 2) Estado de asistencia
                 if self.input_asistente.isChecked():
-                    estado_asistencia = "PRESENTE"
+                    estado_asistencia = 1
                     alumno_n.append(estado_asistencia)
                 
                 elif self.input_inasistente.isChecked():
-                    estado_asistencia = "AUSENTE"
+                    estado_asistencia = 0
                     alumno_n.append(estado_asistencia)
                     
                     
@@ -551,6 +556,148 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             print(f"Error al agregar la informacion: {e}")
     
     
+    
+    def comprobar_si_es_feriado(self, estado_boton):
+        """
+            Este metodo sirve para verificar si el dia es o se considera feriado
+            
+            ***Ejemplo***
+            
+            12 de octubre dia del descubrimiento de America
+            
+            El usuario marca que es feriado, y pasara lo siguiente:
+            
+            1. Se le preguntara al usuario si esta seguro de que es feriado
+            2. si dice que si se deshabilitara el input de cedula y se habilitara el input de dia feriado feriado
+               y al boton de agregar se le dara un metodo que registre a todos con el dia feriado y cambiara del boton en vez de agregar por sumistrar 
+            3. si dice que no, no pasa nada y continua con su registro normal
+        
+        """
+        
+        if estado_boton:
+            
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText(f"¿Seguro que quiere habilitar para registrar todo como dia feriado?")
+            self.msg_box.setIcon(QMessageBox.Question)
+            
+            
+            QApplication.beep()
+            self.msg_box.exec_()
+            
+            if self.msg_box.clickedButton() == self.boton_si:
+                
+                self.input_cedula_alumno.setEnabled(False)
+                self.input_dia_feriado.setEnabled(True)
+                self.boton_especialidades.setEnabled(False)
+                self.checkbox_estado_combobox.setEnabled(False)
+                
+                self.boton_agregar.clicked.disconnect()
+                self.boton_agregar.setText("Suministrar")
+                self.boton_agregar.clicked.connect(self.suministrar_info_cuando_sea_feriado)
+                
+            if self.msg_box.clickedButton() == self.boton_no:
+                
+                self.input_check_dia_feriado.setAutoExclusive(False)
+                self.input_check_dia_feriado.setChecked(False)
+                self.input_check_dia_feriado.setAutoExclusive(True)
+                
+                
+                
+            
+        else:
+            
+            self.input_dia_feriado.setEnabled(False)
+            self.boton_especialidades.setEnabled(True)
+            self.checkbox_estado_combobox.setEnabled(True)
+            
+            
+            self.boton_agregar.clicked.disconnect()
+            self.boton_agregar.setText(" Agregar")
+            self.boton_agregar.clicked.connect(self.suministrar_info)
+        
+        
+        
+        
+        
+    def suministrar_info_cuando_sea_feriado(self):
+        
+        if self.input_dia_feriado.text().strip():
+            
+            try:
+                
+                
+                self.msg_box.setWindowTitle("Confirmar acción")
+                self.msg_box.setText(f"¿Seguro que quiere registrar todo como dia feriado?")
+                self.msg_box.setIcon(QMessageBox.Question)
+                
+                
+                QApplication.beep()
+                self.msg_box.exec_()
+                
+                if self.msg_box.clickedButton() == self.boton_si:
+                    
+                    dia_no_laborable = self.input_dia_feriado.text().strip().capitalize()
+                    
+                    for especialidad in lista_especialidades:
+                        
+                        especialidad_id = especialidad[0]
+                        self.lista_alumnos_actual = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id)
+                        
+                        
+                        for alumno in self.lista_alumnos_actual:
+                    
+                            id_alumno = alumno[0]
+                
+            
+                            campos_asistencia_alumnos = {
+                                "inscripcion_id": id_alumno,
+                                "fecha_asistencia": date.today(),
+                                "estado_asistencia": None,
+                                "dia_no_laborable": dia_no_laborable
+                            }
+                            
+                            asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
+                                
+                        
+                
+                if self.msg_box.clickedButton() == self.boton_no:
+                    
+                    return
+
+                
+                
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "funcion_suministrar")
+                QMessageBox.warning(self, "Error", "Algo salio mal, revise la consola")
+                
+            
+            else:
+                
+                
+                QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia con el dia feriado")
+                
+                self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+        
+        else:
+            
+            QMessageBox.information(self, "Aviso", "El campo dia feriado esta vacio, por favor escriba si ayer, hoy o mañana se considera dia feriado")
+            
+            
+            
+            
+            
+            
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
     # Metodo para administrar la informacion a la base de datos
     def suministrar_info(self):
         """
@@ -580,7 +727,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             for alumno in self.lista_de_asistencias:
                 
                 id_alumno = alumno[0]
-                estado_asistencia = 1 if alumno[2] == "PRESENTE" else 0
+                estado_asistencia = alumno[2]
                 
                 
                 
