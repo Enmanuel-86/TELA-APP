@@ -46,7 +46,7 @@
      <widget class="QWidget" name="scrollAreaWidgetContents_2">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>-56</x>
         <y>0</y>
         <width>1079</width>
         <height>700</height>
@@ -384,7 +384,7 @@ QPushButton:hover{
                <property name="minimumSize">
                 <size>
                  <width>500</width>
-                 <height>0</height>
+                 <height>300</height>
                 </size>
                </property>
                <property name="styleSheet">
@@ -402,223 +402,12 @@ QPushButton:hover{
                 <enum>QFrame::Raised</enum>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <property name="leftMargin">
-                 <number>20</number>
-                </property>
-                <property name="topMargin">
-                 <number>20</number>
-                </property>
-                <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>20</number>
-                </property>
-                <property name="spacing">
-                 <number>20</number>
-                </property>
-                <item row="1" column="1">
-                 <widget class="QGroupBox" name="estado_de_asistencia">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QGroupBox{
-
-	background-color: rgb(255, 255, 255);
-
-
-}</string>
-                  </property>
-                  <property name="title">
-                   <string>Estado de asistencia</string>
-                  </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_2">
-                   <item>
-                    <widget class="QRadioButton" name="input_asistente">
-                     <property name="minimumSize">
-                      <size>
-                       <width>2</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QRadioButton{
-
-	background-color: rgb(255, 255, 255);
-	font: 75 10pt &quot;Arial&quot;;
-
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Asistente</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QRadioButton" name="input_inasistente">
-                     <property name="minimumSize">
-                      <size>
-                       <width>2</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QRadioButton{
-
-	background-color: rgb(255, 255, 255);
-	font: 75 10pt &quot;Arial&quot;;
-
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Inasistente</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_3">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item alignment="Qt::AlignLeft">
-                   <widget class="QLabel" name="label_cedula_empleado">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel{
-
-	
-	color: rgb(0,0,0);
-
-	border-color: #ffffff;
-	border:none;
-
-
-}
-</string>
-                    </property>
-                    <property name="text">
-                     <string>Cédula o nombre del estudiante</string>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_nombre_alumno_guia">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>10</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>15</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border:none;</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignLeft">
-                   <widget class="QLineEdit" name="input_cedula_alumno">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>220</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>12</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-QLineEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
- </string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>.....</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
                 <item row="0" column="0">
                  <layout class="QVBoxLayout" name="verticalLayout_6">
                   <property name="spacing">
                    <number>0</number>
                   </property>
-                  <item alignment="Qt::AlignLeft|Qt::AlignBottom">
+                  <item alignment="Qt::AlignLeft|Qt::AlignTop">
                    <widget class="QLabel" name="titulo_de_boton_de_opciones">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -776,63 +565,6 @@ QComboBox QAbstractItemView::item:hover {
                   </item>
                  </layout>
                 </item>
-                <item row="3" column="0" colspan="2" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="boton_agregar">
-                  <property name="minimumSize">
-                   <size>
-                    <width>120</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>120</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: rgb(0, 183, 72);
-	
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> Agregar</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>26</width>
-                    <height>26</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="1">
                  <layout class="QVBoxLayout" name="verticalLayout_8">
                   <property name="spacing">
@@ -892,6 +624,373 @@ QPushButton:hover{
                    </widget>
                   </item>
                  </layout>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                   <widget class="QLabel" name="label_cedula_empleado">
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+
+	
+	color: rgb(0,0,0);
+
+	border-color: #ffffff;
+	border:none;
+
+
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Cédula o nombre del estudiante</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QLabel" name="label_nombre_alumno_guia">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>15</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border:none;</string>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignLeft|Qt::AlignTop">
+                   <widget class="QLineEdit" name="input_cedula_alumno">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>220</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+
+QLineEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+ </string>
+                    </property>
+                    <property name="placeholderText">
+                     <string>.....</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QGroupBox" name="estado_de_asistencia">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QGroupBox{
+
+	background-color: rgb(255, 255, 255);
+
+
+}</string>
+                  </property>
+                  <property name="title">
+                   <string>Estado de asistencia</string>
+                  </property>
+                  <layout class="QFormLayout" name="formLayout">
+                   <item row="0" column="0">
+                    <widget class="QRadioButton" name="input_asistente">
+                     <property name="minimumSize">
+                      <size>
+                       <width>2</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QRadioButton{
+
+	background-color: rgb(255, 255, 255);
+	font: 75 10pt &quot;Arial&quot;;
+
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Asistente</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QRadioButton" name="input_check_dia_feriado">
+                     <property name="minimumSize">
+                      <size>
+                       <width>2</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QRadioButton{
+
+	background-color: rgb(255, 255, 255);
+	font: 75 10pt &quot;Arial&quot;;
+
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Dia Feriado</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QRadioButton" name="input_inasistente">
+                     <property name="minimumSize">
+                      <size>
+                       <width>2</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QRadioButton{
+
+	background-color: rgb(255, 255, 255);
+	font: 75 10pt &quot;Arial&quot;;
+
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Inasistente</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_dia_feriado">
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+
+	
+	color: rgb(0,0,0);
+
+	border-color: #ffffff;
+	border:none;
+
+
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Dia feriado</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="input_dia_feriado">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+
+QLineEdit:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+ </string>
+                    </property>
+                    <property name="placeholderText">
+                     <string>.....</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="3" column="0" colspan="2" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="boton_agregar">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>120</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: rgb(0, 183, 72);
+	
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string> Agregar</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
