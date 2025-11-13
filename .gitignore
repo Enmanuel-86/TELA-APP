@@ -10,3 +10,5 @@ token.txt
 # carpetas
 extras/
 pruebas_de_widgets/
+
+__pycache__
