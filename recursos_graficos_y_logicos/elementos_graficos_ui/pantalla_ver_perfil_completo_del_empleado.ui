@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1171</width>
+    <width>1192</width>
     <height>647</height>
    </rect>
   </property>
@@ -206,7 +206,7 @@ QPushButton:hover{
               <x>20</x>
               <y>160</y>
               <width>361</width>
-              <height>391</height>
+              <height>426</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_6">
@@ -724,7 +724,7 @@ QLineEdit:focus{
                 <string notr="true">border:none;</string>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="mostrar_fecha_nacimiento">
                 <layout class="QVBoxLayout" name="verticalLayout_38">
@@ -825,59 +825,26 @@ QLineEdit:focus{
                 </layout>
                </widget>
                <widget class="QWidget" name="page_2">
-                <layout class="QVBoxLayout" name="verticalLayout_37">
-                 <property name="spacing">
-                  <number>0</number>
+                <widget class="QLabel" name="label_cedula_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>2</x>
+                   <y>-7</y>
+                   <width>134</width>
+                   <height>25</height>
+                  </rect>
                  </property>
-                 <property name="leftMargin">
-                  <number>0</number>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <italic>false</italic>
+                   <bold>true</bold>
+                  </font>
                  </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QFrame" name="espacio_fecha_nacimiento">
-                   <property name="minimumSize">
-                    <size>
-                     <width>180</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border:none;</string>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_7">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0" colspan="2" alignment="Qt::AlignLeft">
-                     <widget class="QLabel" name="label_cedula_2">
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <italic>false</italic>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
 	
 	
 	color: rgb(80, 80, 80);
@@ -887,90 +854,95 @@ QLineEdit:focus{
 
 }
 </string>
-                      </property>
-                      <property name="text">
-                       <string>Fecha de nacimiento</string>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>false</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QPushButton" name="boton_para_agregar_fecha">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>110</width>
-                        <height>70</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton{
-
-	border: 1px solid black;
-	border-radius:10px;
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Agregar fecha</string>
-                      </property>
-                      <property name="icon">
-                       <iconset>
-                        <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                      </property>
-                      <property name="iconSize">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1" alignment="Qt::AlignLeft">
-                     <widget class="QLabel" name="label_mostrar_fecha">
-                      <property name="minimumSize">
-                       <size>
-                        <width>80</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>80</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Arial</family>
-                        <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
+                 </property>
+                 <property name="text">
+                  <string>Fecha de nacimiento</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+                <widget class="QDateEdit" name="dateedit_fecha_ingreso_tela_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>20</y>
+                   <width>171</width>
+                   <height>40</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <italic>false</italic>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="toolTip">
+                  <string>Año/Mes/Dia</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border:1px solid black;</string>
+                 </property>
+                 <property name="wrapping">
+                  <bool>false</bool>
+                 </property>
+                 <property name="frame">
+                  <bool>true</bool>
+                 </property>
+                 <property name="accelerated">
+                  <bool>true</bool>
+                 </property>
+                 <property name="keyboardTracking">
+                  <bool>true</bool>
+                 </property>
+                 <property name="showGroupSeparator" stdset="0">
+                  <bool>true</bool>
+                 </property>
+                 <property name="currentSection">
+                  <enum>QDateTimeEdit::YearSection</enum>
+                 </property>
+                 <property name="displayFormat">
+                  <string>yyyy / MM / dd</string>
+                 </property>
+                 <property name="calendarPopup">
+                  <bool>true</bool>
+                 </property>
+                 <property name="currentSectionIndex">
+                  <number>0</number>
+                 </property>
+                 <property name="date">
+                  <date>
+                   <year>2000</year>
+                   <month>1</month>
+                   <day>26</day>
+                  </date>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>11</x>
+                   <y>17</y>
+                   <width>101</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Año    / Mes / Dia</string>
+                 </property>
+                </widget>
                </widget>
               </widget>
              </item>
@@ -1508,8 +1480,8 @@ QLineEdit:focus{
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>727</width>
+           <y>-12</y>
+           <width>748</width>
            <height>1812</height>
           </rect>
          </property>
@@ -3711,7 +3683,7 @@ QLineEdit:focus{
                       <string notr="true">background-color: rgb(255, 255, 255);</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="mostrar_fecha_tela">
                       <layout class="QVBoxLayout" name="verticalLayout_35">
@@ -3830,31 +3802,31 @@ QLineEdit:focus{
                       </layout>
                      </widget>
                      <widget class="QWidget" name="editar_fecha_tela">
-                      <layout class="QVBoxLayout" name="verticalLayout_36">
-                       <item>
-                        <widget class="QFrame" name="espacio_ingresar_fecha_tela">
-                         <property name="styleSheet">
-                          <string notr="true">border:none;</string>
-                         </property>
-                         <layout class="QGridLayout" name="gridLayout_9">
-                          <item row="0" column="0" colspan="2">
-                           <widget class="QLabel" name="label_fecha_de_ingreso_tela">
-                            <property name="maximumSize">
-                             <size>
-                              <width>16777215</width>
-                              <height>40</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QLabel{
+                      <widget class="QLabel" name="label_fecha_de_ingreso_tela">
+                       <property name="geometry">
+                        <rect>
+                         <x>3</x>
+                         <y>0</y>
+                         <width>174</width>
+                         <height>16</height>
+                        </rect>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
 	
 	color: rgb(80, 80, 80);
 
@@ -3863,72 +3835,95 @@ QLineEdit:focus{
 
 }
 </string>
-                            </property>
-                            <property name="text">
-                             <string>Fecha de ingreso al T.E.L.A</string>
-                            </property>
-                            <property name="scaledContents">
-                             <bool>false</bool>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QPushButton" name="boton_fecha_de_ingreso_tela">
-                            <property name="minimumSize">
-                             <size>
-                              <width>110</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
-
-	border: 1px solid black;
-	border-radius:12px;
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-                            </property>
-                            <property name="text">
-                             <string>Agregar fecha</string>
-                            </property>
-                            <property name="icon">
-                             <iconset>
-                              <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>20</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="1">
-                           <widget class="QLabel" name="label_mostrar_fecha_de_ingreso_tela">
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                      </layout>
+                       </property>
+                       <property name="text">
+                        <string>Fecha de ingreso al T.E.L.A</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                      <widget class="QDateEdit" name="dateedit_fecha_ingreso_tela">
+                       <property name="geometry">
+                        <rect>
+                         <x>5</x>
+                         <y>23</y>
+                         <width>181</width>
+                         <height>40</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <italic>false</italic>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="toolTip">
+                        <string>Año/Mes/Dia</string>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border:1px solid black;</string>
+                       </property>
+                       <property name="wrapping">
+                        <bool>false</bool>
+                       </property>
+                       <property name="frame">
+                        <bool>true</bool>
+                       </property>
+                       <property name="accelerated">
+                        <bool>true</bool>
+                       </property>
+                       <property name="keyboardTracking">
+                        <bool>true</bool>
+                       </property>
+                       <property name="showGroupSeparator" stdset="0">
+                        <bool>true</bool>
+                       </property>
+                       <property name="currentSection">
+                        <enum>QDateTimeEdit::YearSection</enum>
+                       </property>
+                       <property name="displayFormat">
+                        <string>yyyy / MM / dd</string>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="currentSectionIndex">
+                        <number>0</number>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>2000</year>
+                         <month>1</month>
+                         <day>26</day>
+                        </date>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label">
+                       <property name="geometry">
+                        <rect>
+                         <x>16</x>
+                         <y>20</y>
+                         <width>101</width>
+                         <height>16</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Año    / Mes / Dia</string>
+                       </property>
+                      </widget>
                      </widget>
                     </widget>
                    </item>
@@ -3938,7 +3933,7 @@ QPushButton:hover{
                       <string notr="true">border:none;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="mostrar_fecha_ministerio">
                       <layout class="QVBoxLayout" name="verticalLayout_45">
@@ -4057,31 +4052,31 @@ QLineEdit:focus{
                       </layout>
                      </widget>
                      <widget class="QWidget" name="editar_fecha_ministerio">
-                      <layout class="QVBoxLayout" name="verticalLayout_46">
-                       <property name="bottomMargin">
-                        <number>9</number>
+                      <widget class="QLabel" name="label_fecha_de_ingreso_del_minis">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>193</width>
+                         <height>16</height>
+                        </rect>
                        </property>
-                       <item>
-                        <widget class="QFrame" name="espacio_fecha_ministerio">
-                         <layout class="QGridLayout" name="gridLayout_11">
-                          <item row="0" column="0" colspan="2">
-                           <widget class="QLabel" name="label_fecha_de_ingreso_del_minis">
-                            <property name="maximumSize">
-                             <size>
-                              <width>16777215</width>
-                              <height>40</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QLabel{
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QLabel{
 	
 	color: rgb(80, 80, 80);
 
@@ -4090,72 +4085,95 @@ QLineEdit:focus{
 
 }
 </string>
-                            </property>
-                            <property name="text">
-                             <string>Fecha de ingreso al ministerio</string>
-                            </property>
-                            <property name="scaledContents">
-                             <bool>false</bool>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="0">
-                           <widget class="QPushButton" name="boton_para_agregar_fecha_de_ingreso_del_minis">
-                            <property name="minimumSize">
-                             <size>
-                              <width>110</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="cursor">
-                             <cursorShape>PointingHandCursor</cursorShape>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
-
-	border: 1px solid black;
-	border-radius:12px;
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-                            </property>
-                            <property name="text">
-                             <string>Agregar fecha</string>
-                            </property>
-                            <property name="icon">
-                             <iconset>
-                              <normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/calendario.png</iconset>
-                            </property>
-                            <property name="iconSize">
-                             <size>
-                              <width>20</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </widget>
-                          </item>
-                          <item row="1" column="1">
-                           <widget class="QLabel" name="label_mostrar_fecha_de_ingreso_del_minis">
-                            <property name="font">
-                             <font>
-                              <family>Arial</family>
-                              <pointsize>10</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string/>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                      </layout>
+                       </property>
+                       <property name="text">
+                        <string>Fecha de ingreso al ministerio</string>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>11</x>
+                         <y>17</y>
+                         <width>101</width>
+                         <height>16</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Año    / Mes / Dia</string>
+                       </property>
+                      </widget>
+                      <widget class="QDateEdit" name="dateedit_fecha_ingreso_ministerio">
+                       <property name="geometry">
+                        <rect>
+                         <x>1</x>
+                         <y>20</y>
+                         <width>181</width>
+                         <height>40</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Arial</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <italic>false</italic>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="toolTip">
+                        <string>Año/Mes/Dia</string>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border:1px solid black;</string>
+                       </property>
+                       <property name="wrapping">
+                        <bool>false</bool>
+                       </property>
+                       <property name="frame">
+                        <bool>true</bool>
+                       </property>
+                       <property name="accelerated">
+                        <bool>true</bool>
+                       </property>
+                       <property name="keyboardTracking">
+                        <bool>true</bool>
+                       </property>
+                       <property name="showGroupSeparator" stdset="0">
+                        <bool>true</bool>
+                       </property>
+                       <property name="currentSection">
+                        <enum>QDateTimeEdit::YearSection</enum>
+                       </property>
+                       <property name="displayFormat">
+                        <string>yyyy / MM / dd</string>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                       <property name="currentSectionIndex">
+                        <number>0</number>
+                       </property>
+                       <property name="date">
+                        <date>
+                         <year>2000</year>
+                         <month>1</month>
+                         <day>26</day>
+                        </date>
+                       </property>
+                      </widget>
                      </widget>
                     </widget>
                    </item>
