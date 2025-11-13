@@ -317,7 +317,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.login.input_contrasena.clear()
                     self.stacked_widget.setCurrentIndex(1)
                     self.area_scroll_side_bar.show()
-                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
+                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario} al sistema de información TELA-APP")
 
 
                 elif usuario[5] == "SUB-DIRECTOR":
