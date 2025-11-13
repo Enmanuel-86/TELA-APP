@@ -305,29 +305,35 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         
     
-
+    def eliminar_empleado(self, fila):
+        
+        pass
         
         
         
         
-    def funcion_editar(self, fila):
+    def habilitar_edicion(self, fila):
         
         try:
-            cedula = modelo.item(fila, 0).text()
+            #cedula = modelo.item(fila, 0).text()
             
-            empleado_id = self.buscar_id_empleado(cedula)
+            #empleado_id = self.buscar_id_empleado(cedula)
             
-            self.stacked_widget.setCurrentIndex(11)
-            self.mostra_info_empleado(empleado_id)
+            self.stacked_widget.setCurrentIndex(8)
             
-            self.habilitar_inputs(lista_qlineedits)
             
+            #self.mostra_info_empleado(empleado_id)
+            
+            
+            
+
             
         except Exception as e:
             print(f"Algo paso: {e}")
             
-        
-        
+    
+            
+
     
     
         
@@ -357,7 +363,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 
                 self.stacked_widget.setCurrentIndex(11)
                 
-                self.mostra_info_empleado(empleado_id)
+                pantalla_perfil_empleado = self.stacked_widget.widget(11)
+                        
+                pantalla_perfil_empleado.mostra_info_empleado(empleado_id)
                 
                 self.barra_de_busqueda.clear()
                 
@@ -395,7 +403,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         
                         self.stacked_widget.setCurrentIndex(11)
                         
-                        self.mostra_info_empleado(empleado_id)
+                        pantalla_perfil_empleado = self.stacked_widget.widget(11)
+                        
+                        pantalla_perfil_empleado.mostra_info_empleado(empleado_id)
                         
                         self.barra_de_busqueda.clear()
                         
@@ -415,266 +425,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             return
         
     
-    def mostra_info_empleado(self, empleado_id):
-        
-        
-        ## info basica del empleado
-        
-        try:
-            global pantalla_perfil_empleado
-            
-            info_basica = empleado_servicio.obtener_empleado_por_id(empleado_id)
-        
-            pantalla_perfil_empleado = self.stacked_widget.widget(11)
-            
-            
-        
-            pantalla_perfil_empleado.input_mostrar_primer_nombre.setText(info_basica[1])
-            
-            segundo_nombre = self.comprobar_si_hay_valor(info_basica[2])
-            pantalla_perfil_empleado.input_mostrar_segundo_nombre.setText(segundo_nombre)
-            
-            tercer_nombre = self.comprobar_si_hay_valor(info_basica[3])
-            pantalla_perfil_empleado.input_mostrar_tercer_nombre.setText(tercer_nombre)
-            
-            pantalla_perfil_empleado.input_mostrar_apellido_paterno.setText(info_basica[4])
-            
-            apellido_materno = self.comprobar_si_hay_valor(info_basica[5])
-            pantalla_perfil_empleado.input_mostrar_apellido_materno.setText(apellido_materno)
-            
-            pantalla_perfil_empleado.input_mostrar_cedula.setText(info_basica[6])
-            pantalla_perfil_empleado.input_mostrar_fecha_nacimiento.setText(info_basica[7])
-            
-            pantalla_perfil_empleado.input_mostrar_edad.setText(str(info_basica[8]))
-            
-            pantalla_perfil_empleado.label_mostrar_estado.setText(str(info_basica[9]))
-            
-            
-            
-            
-            
-            
-            if info_basica[10] == 'M' or info_basica[10] == 'm':
-                
-                pantalla_perfil_empleado.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "imagen_personal_m.png")))
-                pantalla_perfil_empleado.input_sexo_masculino.setChecked(True)
-                pantalla_perfil_empleado.input_sexo_femenino.setChecked(False)
-                
-            if info_basica[10] == 'F' or info_basica[10] == 'f':
-                
-                pantalla_perfil_empleado.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "imagen_personal_f.png")))
-                pantalla_perfil_empleado.input_sexo_masculino.setChecked(False)
-                pantalla_perfil_empleado.input_sexo_femenino.setChecked(True)
-                
-        
-            
-            if info_basica[11] == 1:
-                
-                pantalla_perfil_empleado.input_si.setChecked(True)
-                pantalla_perfil_empleado.input_no.setChecked(False)
-                
-                
-            else:
-                
-                pantalla_perfil_empleado.input_si.setChecked(False)
-                pantalla_perfil_empleado.input_no.setChecked(True)
-                
-            
-        except Exception as e:
-            print(f"Algo paso en info basica: {e}")
-            
-       
-       
-        try:
-            
-            ## info de contacto del empleado
-            info_contacto = empleado_servicio.obtener_info_contacto_empleado(empleado_id)
-            
-            print(info_contacto)
-            pantalla_perfil_empleado.input_mostrar_numero_telefono.setText(info_contacto[1])
-            
-            num_telefono_adicional = self.comprobar_si_hay_valor(info_contacto[2])
-            pantalla_perfil_empleado.input_mostrar_numero_telefono_adicional.setText(num_telefono_adicional)
-            
-            pantalla_perfil_empleado.input_mostrar_correo.setText(info_contacto[3])
-            
-            correo_adicional = self.comprobar_si_hay_valor(info_contacto[4])
-            pantalla_perfil_empleado.input_mostrar_correo_adicional.setText(correo_adicional)
-
-
-            
-        except Exception as e:
-            print(f"Algo paso en info contacto: {e}")
-            
-            
-        
-        ## info medidas 
-        
-        try:
-            
-            info_medidas = empleado_servicio.obtener_medidas_empleado(empleado_id)
-
-
-            pantalla_perfil_empleado.input_mostrar_talla_camisa.setText(info_medidas[1])
-            pantalla_perfil_empleado.input_mostrar_talla_pantalon.setText(str(info_medidas[2]))
-            pantalla_perfil_empleado.input_mostrar_talla_zapatos.setText(str(info_medidas[3]))
-                
-        except Exception as e:
-            print(f"Algo paso en info medica: {e}")
-            
-        
-        
-        
-        ## info geografica
-        
-        
-        try:
-            
-            info_geografica = empleado_servicio.obtener_info_geografica_empleado(empleado_id)
-        
-        
-            pantalla_perfil_empleado.input_mostrar_estado_residente.setText(str(info_geografica[1]))
-            pantalla_perfil_empleado.input_mostrar_municipio.setText(str(info_geografica[2]))
-            pantalla_perfil_empleado.input_mostrar_direccion_residente.setText(str(info_geografica[3]))
-            
-            
-            
-            
-        except Exception as e:
-            print(f"Algo paso info geografica: {e}")
-            
-        
-        
-        ## info detalles del cargo
-        
-        
-        try:
-            
-            info_detalles_cargos = detalle_cargo_servicio.obtener_detalles_cargo(empleado_id)
-        
-        
-            pantalla_perfil_empleado.input_mostrar_codigo_cargo.setText(info_detalles_cargos[1])
-            pantalla_perfil_empleado.input_mostrar_cargo.setText(info_detalles_cargos[2])
-            pantalla_perfil_empleado.input_mostrar_funcion_cargo.setText(info_detalles_cargos[3])
-            pantalla_perfil_empleado.input_mostrar_tipo_cargo.setText(info_detalles_cargos[4])
-            pantalla_perfil_empleado.input_mostrar_titulo_cargo.setText(info_detalles_cargos[5])
-            
-            labores = self.comprobar_si_hay_valor(info_detalles_cargos[6])
-            pantalla_perfil_empleado.input_mostrar_labores_que_realiza.setText(labores)
-            pantalla_perfil_empleado.input_mostrar_fecha_del_tela.setText(info_detalles_cargos[7])
-            pantalla_perfil_empleado.input_mostrar_fecha_ministerio.setText(info_detalles_cargos[8])
-            pantalla_perfil_empleado.input_mostrar_tiempo_servicio.setText(str(info_detalles_cargos[9]) + " años")
-            pantalla_perfil_empleado.input_mostrar_especialidad.setText(info_detalles_cargos[10])
-
-            
-
-            
-            
-            if not pantalla_perfil_empleado.input_mostrar_tipo_cargo.text() == "DOCENTE" and not pantalla_perfil_empleado.input_mostrar_tipo_cargo.text() == "Docente":
-                
-                pantalla_perfil_empleado.label_especialidad.hide()
-                pantalla_perfil_empleado.input_mostrar_especialidad.hide()
-            
-            else:
-                pantalla_perfil_empleado.label_especialidad.show()
-                pantalla_perfil_empleado.input_mostrar_especialidad.show()
-            
-            global lista_qlineedits
-            
-            lista_qlineedits = [
-                
-                    pantalla_perfil_empleado.input_mostrar_primer_nombre,
-                    pantalla_perfil_empleado.input_mostrar_segundo_nombre,
-                    pantalla_perfil_empleado.input_mostrar_apellido_paterno,
-                    pantalla_perfil_empleado.input_mostrar_apellido_materno,
-                    pantalla_perfil_empleado.input_mostrar_cedula,
-                    pantalla_perfil_empleado.input_mostrar_fecha_nacimiento,
-                    pantalla_perfil_empleado.input_mostrar_edad,
-                    
-                    pantalla_perfil_empleado.input_mostrar_numero_telefono,
-                    pantalla_perfil_empleado.input_mostrar_correo,
-                    
-                    pantalla_perfil_empleado.input_mostrar_estado_residente,
-                    pantalla_perfil_empleado.input_mostrar_municipio,
-                    pantalla_perfil_empleado.input_mostrar_direccion_residente,
-                    
-                    pantalla_perfil_empleado.input_mostrar_talla_camisa,
-                    pantalla_perfil_empleado.input_mostrar_talla_pantalon,
-                    pantalla_perfil_empleado.input_mostrar_talla_zapatos,
-                    
-                    pantalla_perfil_empleado.input_mostrar_codigo_cargo,
-                    pantalla_perfil_empleado.input_mostrar_cargo,
-                    pantalla_perfil_empleado.input_mostrar_funcion_cargo,
-                    pantalla_perfil_empleado.input_mostrar_tipo_cargo,
-                    pantalla_perfil_empleado.input_mostrar_titulo_cargo,
-                    pantalla_perfil_empleado.input_mostrar_labores_que_realiza,
-                    pantalla_perfil_empleado.input_mostrar_fecha_del_tela,
-                    pantalla_perfil_empleado.input_mostrar_fecha_ministerio,
-                    pantalla_perfil_empleado.input_mostrar_tiempo_servicio,
-                    pantalla_perfil_empleado.input_mostrar_especialidad,
-            ]
-            
-            
-            self.ver_cursor_posicion_cero(lista_qlineedits)
-        
-        
-        except Exception as e:
-            print(f"Algo paso detalles del cargo: {e}")
-            
-        
-        
-        
-        
-        ### info medica
     
-        try:
-            
-            lista_historial_enferm = histotial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
-            print(lista_historial_enferm)
-            
-            for enfermedad in lista_historial_enferm:
-                
-                pantalla_perfil_empleado.mostrar_enfermedades.addItem(enfermedad[2])
-                
-        except Exception as e:
-            print(f"Algo paso info medica: {e}")
-            
-        
-        
-        # info diagnostico
-        try:
-            lista_info_clinica = info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(empleado_id)
-
-            
-
-            for diagnostico in lista_info_clinica:
-            
-                pantalla_perfil_empleado.mostrar_diagnosticos.addItem(diagnostico[2])
-
-        
-            
-        except Exception as e:
-            print(f"Algo paso info diagnostico: {e}")
-            
-            
-    # Metodo para ver lo QlineEdits(los inputs) se vean desde su posicion cero (ojo no hablo de ninguna posicion
-    # de alguna lista o tupla) hablo de esto:
-    #   * El texto que tiene en el QlineEdit "avenida fuerzas armadas, calle 2, residencia 1 etc"               
-    #   pero en la interfaz se ve "adas, calle 2, residencia 1 etc" y hay que ponerle la posicion 0 para que se vea:
-    #   "avenida fuerzas armadas, calle 2"
-    def ver_cursor_posicion_cero(self, lista_qlineedit:list):
-        
-        # iteramos cada input para darle la posicion 0
-        for qlineedit in lista_qlineedit:
-            
-            qlineedit.setCursorPosition(0)
-            
-            
-    def habilitar_inputs(self, lista_qlineedit:list):
-        
-        for qlineedit in lista_qlineedit:
-            
-            qlineedit.setReadOnly(False)
+    
         
     # Metodo para la busqueda dinamica
     ##########################################################################################################################
@@ -698,11 +450,12 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 
                 return empleado_id
                 
-                break
+                
             
             else:
                 
                 pass
+    
     
     def cargar_tipos_cargos(self):
         
@@ -721,6 +474,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         for especialidad in lista_especialidades:
             
             self.boton_especialidades.addItem(especialidad[1])
+    
     
     #Metodo para filtrar por tipo de cargo
     def filtrar_por_tipo_cargo(self):
@@ -933,7 +687,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
             # Conectar botones
-            boton_editar.clicked.connect(lambda _, r=fila: self.funcion_editar(r))
+            boton_editar.clicked.connect(lambda _, r=fila: self.habilitar_edicion(r))
             #btn_delete.clicked.connect(lambda _, r=fila: self.borrar_alumno(r))
 
             layout.addWidget(boton_editar)
@@ -967,16 +721,5 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
 
 
-    # Metodo para comprobar y hay valor por asignar en la variable o se asigna None
-    # Este metodo sirve para comprobar esos valores que pueden ser None
-    def comprobar_si_hay_valor(self, elemento_lista):
-        
-        if elemento_lista == None:
-                
-            return "No tiene"
-                
-        else:
-            
-            return elemento_lista
-            
+    
 
