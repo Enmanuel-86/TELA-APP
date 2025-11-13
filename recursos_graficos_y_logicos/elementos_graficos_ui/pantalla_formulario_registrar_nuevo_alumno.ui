@@ -6,12 +6,141 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1125</width>
-    <height>2783</height>
+    <width>887</width>
+    <height>2635</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Estilo principal para el fondo */
+QFrame[tipo= &quot;espacio_principal&quot;]{
+
+   
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:1,
+        stop:0 #3fea87, stop:1 #00770e);
+
+}
+
+/* Estilo para el frame que contiene el titulo del formulario  */
+QFrame[tipo= &quot;espacio_titulo_form&quot;]{
+
+	
+	background-color: rgb(0, 92, 47);
+	border:15px outset rgb(0, 59, 30);
+	border-radius:20px;
+
+	
+}
+
+
+/*estilo para los frame que cotienen las preguntas en los formularios*/
+QFrame[tipo=&quot;espacio_preguntas_form&quot;]{
+	background-color: rgb(255, 255, 255);
+	padding:20px;
+	border:5px solid #e1e5e9;
+	border-radius:20px;
+	
+	
+	
+}
+
+
+QLabel[tipo=&quot;titulo_form&quot;]{
+
+	
+	color: rgb(255, 255, 255);
+	font: 4-pt &quot;Franklin Gothic Demi Cond&quot;;
+
+}
+
+
+
+
+/*************************************************************************/
+
+/* Estilo para los qlineedit */
+QLineEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;          /* Gris más oscuro para verse en fondo blanco */
+    border-radius: 5px;
+    padding: 8px 2px;
+    font-size: 14px;
+    color: #2A2A2A;
+	
+    /* Para que se vea vivo al seleccionar texto */
+    selection-background-color: #BBDEFB;  
+	border-bottom:2px solid black;
+}
+
+/* Hover más marcado para que se note */
+QLineEdit:hover {
+    border: 2px solid #9E9E9E;          
+}
+
+/* Focus azul vibrante tipo Material/Windows */
+QLineEdit:focus {
+    border: 2px solid #2196F3;          /* Azul Material 500 */
+    background-color: #F3F9FF;          /* Un glow suave azul */
+    color: #0D47A1;
+}
+
+/* Placeholder más visible, moderno */
+QLineEdit::placeholder {
+    color: #7F8C8D;
+    font-style: italic;
+}
+
+/* Estilo para QLineEdit cuando está deshabilitado */
+QLineEdit:disabled {
+    background-color: #F0F0F0;    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid #C0C0C0;    /* Borde más apagado */
+    color: #A0A0A0;               /* Texto gris tenue */
+    border-bottom: 2px solid #B0B0B0; /* Mantener línea inferior sutil */
+}
+
+/**********************************************************************************/
+
+/*Estilo para los combobox*/
+/* Estilo general para QComboBox */
+QComboBox {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    padding: 5px 10px;       /* Ajuste para texto y botón */
+    font-size: 14px;
+    color: #2A2A2A;
+    min-height: 28px;        /* Para que se vea consistente */
+}
+
+/* Hover y Focus igual que QLineEdit */
+QComboBox:hover {
+    border: 2px solid #9E9E9E;
+}
+
+QComboBox:focus {
+    border: 2px solid #2196F3;
+    background-color: #F3F9FF;
+    color: #0D47A1;
+}
+
+
+
+/* QDateEdit interno */
+QDateEdit {
+    background-color: transparent;  /* Para que no tape la fecha */
+    border: none;                    /* Evitar borde duplicado */
+    padding-left: 5px;
+    color: #2A2A2A;
+}
+
+/* Placeholder de QComboBox */
+QComboBox QLineEdit {
+    color: #7F8C8D;
+    font-style: italic;
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_12">
    <property name="spacing">
@@ -48,8 +177,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1125</width>
-        <height>2783</height>
+        <width>1062</width>
+        <height>2731</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -71,21 +200,16 @@
        <item>
         <widget class="QFrame" name="espacio_principal">
          <property name="styleSheet">
-          <string notr="true">
-QFrame{
-
-   
-    background: qlineargradient(
-        x1:0, y1:0, x2:1, y2:1,
-        stop:0 #3fea87, stop:1 #00770e);
-
-}</string>
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
+         </property>
+         <property name="tipo" stdset="0">
+          <string>espacio_principal</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="spacing">
@@ -152,13 +276,7 @@ QPushButton:hover{
           <item>
            <widget class="QFrame" name="espacio_preguntas">
             <property name="styleSheet">
-             <string notr="true">
-QFrame{
-
-   
-    background: none
-
-}</string>
+             <string notr="true"/>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -190,22 +308,16 @@ QFrame{
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-
-	
-	background-color: rgb(0, 92, 47);
-	border:15px outset rgb(0, 59, 30);
-	
-
-
-
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_titulo_form</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
@@ -229,7 +341,7 @@ QFrame{
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string/>
@@ -258,28 +370,27 @@ QFrame{
                   </property>
                   <property name="font">
                    <font>
-                    <family>Arial</family>
-                    <pointsize>39</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <family>Franklin Gothic Demi Cond</family>
+                    <pointsize>42</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-
-	color: rgb(255, 255, 255);
-	border:none;
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>Formulario de registro</string>
+                   <string>Formulario para registrar un nuevo alumno</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_form</string>
                   </property>
                  </widget>
                 </item>
@@ -351,16 +462,16 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="topMargin">
@@ -389,18 +500,7 @@ QPushButton:hover{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-	border:none;
-	padding-left:2px;
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Datos del alumno</string>
@@ -419,8 +519,7 @@ QPushButton:hover{
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -429,6 +528,15 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
                    <property name="horizontalSpacing">
                     <number>20</number>
                    </property>
@@ -454,15 +562,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Cédula</string>
@@ -492,32 +592,11 @@ border:none;</string>
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -546,6 +625,9 @@ QLineEdit:focus{
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <layout class="QGridLayout" name="gridLayout_2">
                       <item row="1" column="0" alignment="Qt::AlignLeft">
                        <widget class="QRadioButton" name="input_sexo_femenino">
@@ -562,13 +644,7 @@ QLineEdit:focus{
                          </size>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>Femenino</string>
@@ -590,13 +666,7 @@ QLineEdit:focus{
                          </size>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>Masculino</string>
@@ -626,15 +696,7 @@ QLineEdit:focus{
                          </font>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>Sexo</string>
@@ -666,15 +728,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Segundo nombre</string>
@@ -704,32 +758,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -757,15 +790,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Apellido paterno</string>
@@ -795,7 +820,7 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -848,15 +873,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Tercer nombre</string>
@@ -886,32 +903,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>(si es que lo tiene)</string>
@@ -927,6 +923,9 @@ QLineEdit:focus{
                        <width>200</width>
                        <height>60</height>
                       </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string/>
                      </property>
                      <layout class="QFormLayout" name="formLayout_3">
                       <property name="horizontalSpacing">
@@ -949,15 +948,7 @@ QLineEdit:focus{
                          </font>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>IMT</string>
@@ -973,13 +964,7 @@ QLineEdit:focus{
                       <item row="1" column="0">
                        <widget class="QRadioButton" name="input_imt_si">
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>Si</string>
@@ -989,13 +974,7 @@ QLineEdit:focus{
                       <item row="1" column="1">
                        <widget class="QRadioButton" name="input_imt_no">
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>No</string>
@@ -1030,15 +1009,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Relación con el representante</string>
@@ -1068,32 +1039,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -1109,6 +1059,9 @@ QLineEdit:focus{
                        <width>200</width>
                        <height>0</height>
                       </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string/>
                      </property>
                      <widget class="QLabel" name="label_cedula_2">
                       <property name="geometry">
@@ -1129,16 +1082,7 @@ QLineEdit:focus{
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Fecha de nacimiento</string>
@@ -1175,127 +1119,7 @@ QLineEdit:focus{
                        <string>Año/Mes/Dia</string>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit{
-
-	padding-left:10px;
-	padding-top:10px;
-	border:1px solid #000000 ;
-
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QDateEdit QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QDateEdit QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QDateEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-QCalendarWidget {
-                background-color: white;
-                border: 1px solid #d0d0d0;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Barra superior con mes y año */
-            QCalendarWidget QWidget#qt_calendar_navigationbar {
-                background-color: #4a90e2;
-                color: white;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-            }
-            
-            /* Botones de navegación */
-            QCalendarWidget QToolButton {
-                background-color: transparent;
-                color: white;
-                font-weight: bold;
-                border: none;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            
-            QCalendarWidget QToolButton:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-            
-            /* Días de la semana */
-            QCalendarWidget QHeaderView::section {
-                background-color: #f8f9fa;
-                color: #555555;
-                font-weight: bold;
-                padding: 8px;
-                border: none;
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Días normales */
-            QCalendarWidget QAbstractItemView:enabled {
-                color: #333333;
-                background-color: white;
-                selection-background-color: #4a90e2;
-                selection-color: white;
-                outline: none;
-                border: none;
-            }
-            
-            /* Día actual */
-            QCalendarWidget QAbstractItemView:enabled:focus {
-                background-color: #e8f4fd;
-                color: #4a90e2;
-                font-weight: bold;
-            }
-            
-            /* Días de otros meses */
-            QCalendarWidget QAbstractItemView:enabled:!selected {
-                color: #aaaaaa;
-            }
-            
-            /* Efecto hover sobre los días */
-            QCalendarWidget QAbstractItemView:enabled:hover {
-                background-color: #f0f7ff;
-            }
-            
-            /* Fines de semana */
-            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
-                background-color: #4a90e2;
-                color: white;
-            }
-
-
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -1335,14 +1159,14 @@ QCalendarWidget {
                      <widget class="QLabel" name="label_6">
                       <property name="geometry">
                        <rect>
-                        <x>20</x>
-                        <y>20</y>
+                        <x>15</x>
+                        <y>17</y>
                         <width>101</width>
                         <height>16</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:none;</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Año    / Mes / Dia</string>
@@ -1369,15 +1193,7 @@ QCalendarWidget {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Situación</string>
@@ -1404,32 +1220,11 @@ QCalendarWidget {
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -1457,15 +1252,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Primer nombre</string>
@@ -1492,32 +1279,14 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -1545,15 +1314,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Apellido materno</string>
@@ -1583,32 +1344,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -1631,6 +1371,9 @@ QLineEdit:focus{
                        <height>60</height>
                       </size>
                      </property>
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <layout class="QFormLayout" name="formLayout">
                       <property name="horizontalSpacing">
                        <number>50</number>
@@ -1652,15 +1395,7 @@ QLineEdit:focus{
                          </font>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>CMA</string>
@@ -1673,13 +1408,7 @@ QLineEdit:focus{
                       <item row="1" column="0">
                        <widget class="QRadioButton" name="input_cma_si">
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>Si</string>
@@ -1689,13 +1418,7 @@ QLineEdit:focus{
                       <item row="1" column="1">
                        <widget class="QRadioButton" name="input_cma_no">
                         <property name="styleSheet">
-                         <string notr="true">QRadioButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:#ffffff;
-
-}</string>
+                         <string notr="true"/>
                         </property>
                         <property name="text">
                          <string>No</string>
@@ -1707,6 +1430,9 @@ QLineEdit:focus{
                    </item>
                    <item row="3" column="1">
                     <widget class="QFrame" name="frame_2">
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <widget class="QLabel" name="label_fecha_de_ingreso_tela">
                       <property name="geometry">
                        <rect>
@@ -1737,15 +1463,7 @@ QLineEdit:focus{
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Fecha de ingreso al T.E.L.A</string>
@@ -1782,127 +1500,7 @@ QLineEdit:focus{
                        <string>Año/Mes/Dia</string>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit{
-
-	padding-left:10px;
-	padding-top:10px;
-	border:1px solid #000000 ;
-
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QDateEdit QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QDateEdit QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QDateEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-QCalendarWidget {
-                background-color: white;
-                border: 1px solid #d0d0d0;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Barra superior con mes y año */
-            QCalendarWidget QWidget#qt_calendar_navigationbar {
-                background-color: #4a90e2;
-                color: white;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-            }
-            
-            /* Botones de navegación */
-            QCalendarWidget QToolButton {
-                background-color: transparent;
-                color: white;
-                font-weight: bold;
-                border: none;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            
-            QCalendarWidget QToolButton:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-            
-            /* Días de la semana */
-            QCalendarWidget QHeaderView::section {
-                background-color: #f8f9fa;
-                color: #555555;
-                font-weight: bold;
-                padding: 8px;
-                border: none;
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Días normales */
-            QCalendarWidget QAbstractItemView:enabled {
-                color: #333333;
-                background-color: white;
-                selection-background-color: #4a90e2;
-                selection-color: white;
-                outline: none;
-                border: none;
-            }
-            
-            /* Día actual */
-            QCalendarWidget QAbstractItemView:enabled:focus {
-                background-color: #e8f4fd;
-                color: #4a90e2;
-                font-weight: bold;
-            }
-            
-            /* Días de otros meses */
-            QCalendarWidget QAbstractItemView:enabled:!selected {
-                color: #aaaaaa;
-            }
-            
-            /* Efecto hover sobre los días */
-            QCalendarWidget QAbstractItemView:enabled:hover {
-                background-color: #f0f7ff;
-            }
-            
-            /* Fines de semana */
-            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
-                background-color: #4a90e2;
-                color: white;
-            }
-
-
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -1942,14 +1540,14 @@ QCalendarWidget {
                      <widget class="QLabel" name="label">
                       <property name="geometry">
                        <rect>
-                        <x>21</x>
-                        <y>20</y>
+                        <x>15</x>
+                        <y>18</y>
                         <width>101</width>
                         <height>16</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:none;</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Año    / Mes / Dia</string>
@@ -1976,15 +1574,7 @@ QCalendarWidget {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Lugar de nacimiento</string>
@@ -2014,32 +1604,11 @@ QCalendarWidget {
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -2069,16 +1638,16 @@ QLineEdit:focus{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout">
                 <property name="topMargin">
@@ -2113,19 +1682,7 @@ QLineEdit:focus{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-padding-left:1px;
-border:none;
-
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Información académica</string>
@@ -2144,8 +1701,7 @@ border:none;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -2156,6 +1712,18 @@ border:none;</string>
                   <layout class="QFormLayout" name="formLayout_2">
                    <property name="horizontalSpacing">
                     <number>20</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
                    </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_40">
@@ -2176,15 +1744,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string> Escolaridad </string>
@@ -2211,32 +1771,11 @@ border:none;</string>
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -2264,15 +1803,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string> Procedencia </string>
@@ -2302,32 +1833,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -2357,16 +1867,16 @@ QLineEdit:focus{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
                 <property name="topMargin">
@@ -2395,18 +1905,7 @@ QLineEdit:focus{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-	border:none;
-	border-color: #ffffff;
-	
-	padding-left:2px;
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Datos del representante</string>
@@ -2425,8 +1924,7 @@ QLineEdit:focus{
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string>border-radius:0px;
-border:none;</string>
+                   <string/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -2435,6 +1933,21 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_11">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>0</number>
+                   </property>
                    <property name="verticalSpacing">
                     <number>20</number>
                    </property>
@@ -2451,15 +1964,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Cédula del representante</string>
@@ -2486,32 +1991,11 @@ border:none;</string>
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2545,21 +2029,7 @@ QLineEdit:focus{
                         <cursorShape>PointingHandCursor</cursorShape>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPushButton{
-
-	background-color: rgb(0, 183, 72);
-	font: 75 14pt &quot;Arial&quot;;
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Comprobar</string>
@@ -2591,15 +2061,7 @@ QPushButton:hover{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Nombre</string>
@@ -2629,44 +2091,11 @@ QPushButton:hover{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2694,15 +2123,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Apellido</string>
@@ -2732,44 +2153,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -2791,15 +2179,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Número de teléfono</string>
@@ -2829,44 +2209,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -2888,15 +2235,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Número de teléfono adicional</string>
@@ -2926,44 +2265,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>(Opcional)</string>
@@ -2985,15 +2291,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Estado civil </string>
@@ -3023,44 +2321,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3082,15 +2347,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string> Carga familiar </string>
@@ -3120,44 +2377,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3180,15 +2404,7 @@ background: rgb(152, 152, 152)
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Dirección de residencia</string>
@@ -3218,44 +2434,11 @@ background: rgb(152, 152, 152)
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-
-
-QLineEdit:disabled{
-
-
-
-border: 1px solid rgb(31, 31, 31);
-
-background: rgb(152, 152, 152)
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3285,16 +2468,16 @@ background: rgb(152, 152, 152)
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_8">
                 <property name="leftMargin">
@@ -3332,21 +2515,7 @@ background: rgb(152, 152, 152)
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-	border:none;
-	padding-left:2px;
-
-	
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Información medidas del alumno</string>
@@ -3365,8 +2534,7 @@ background: rgb(152, 152, 152)
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -3378,8 +2546,17 @@ border:none;</string>
                    <property name="leftMargin">
                     <number>0</number>
                    </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <property name="horizontalSpacing">
-                    <number>9</number>
+                    <number>0</number>
                    </property>
                    <property name="verticalSpacing">
                     <number>20</number>
@@ -3403,15 +2580,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Talla de camisa</string>
@@ -3441,32 +2610,11 @@ border:none;</string>
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3494,15 +2642,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Talla de zapatos</string>
@@ -3532,32 +2672,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3585,15 +2704,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Talla de pantalón </string>
@@ -3623,32 +2734,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3676,15 +2766,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Peso</string>
@@ -3714,32 +2796,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3767,15 +2828,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Estatura</string>
@@ -3802,32 +2855,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -3857,16 +2889,16 @@ QLineEdit:focus{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_9">
                 <property name="topMargin">
@@ -3895,18 +2927,7 @@ QLineEdit:focus{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-	border:none;
-	padding-left:2px;
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Información bancaria del alumno</string>
@@ -3925,8 +2946,7 @@ QLineEdit:focus{
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -3935,6 +2955,18 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_10">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <property name="horizontalSpacing">
                     <number>20</number>
                    </property>
@@ -3957,15 +2989,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Tipo de cuenta </string>
@@ -3995,32 +3019,11 @@ border:none;</string>
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -4048,15 +3051,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string> Número de cuenta </string>
@@ -4086,32 +3081,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -4138,6 +3112,9 @@ QLineEdit:focus{
                          <bold>true</bold>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string/>
+                       </property>
                        <property name="text">
                         <string>Lista de cuentas</string>
                        </property>
@@ -4154,12 +3131,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                        <string notr="true"/>
                        </property>
                       </widget>
                      </item>
@@ -4183,22 +3155,7 @@ QLineEdit:focus{
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:rgb(0, 0, 0);
-	border:2px solid;
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(184, 184, 184);
-
-}</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Añadir </string>
@@ -4236,16 +3193,16 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_10">
                 <property name="topMargin">
@@ -4274,17 +3231,7 @@ QPushButton:hover{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-	
-	padding-left:2px;
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Diagnóstico del alumno</string>
@@ -4312,8 +3259,7 @@ QPushButton:hover{
                    <cursorShape>ArrowCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -4322,6 +3268,18 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_5">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_34">
                      <item>
@@ -4341,15 +3299,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Diagnóstico</string>
@@ -4370,47 +3320,11 @@ border:none;</string>
                        <property name="minimumSize">
                         <size>
                          <width>280</width>
-                         <height>40</height>
+                         <height>42</height>
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QComboBox{
-
-	font: 75 10pt &quot;Arial&quot;;
-	padding-left:15px;
-	border:1px solid #000000 ;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}</string>
+                        <string notr="true"/>
                        </property>
                        <property name="editable">
                         <bool>false</bool>
@@ -4459,15 +3373,7 @@ QComboBox QAbstractItemView::item:hover {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Otro diagnóstico</string>
@@ -4494,35 +3400,14 @@ QComboBox QAbstractItemView::item:hover {
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	font: 15pt &quot;Arial&quot;;
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>¿otro diagnostico?</string>
@@ -4550,22 +3435,7 @@ QLineEdit:focus{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPushButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	
-	border:2px solid;
-	border-radius:15px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(184, 184, 184);
-
-}</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string/>
@@ -4618,12 +3488,7 @@ QPushButton:hover{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-
-}</string>
+                        <string notr="true"/>
                        </property>
                       </widget>
                      </item>
@@ -4634,6 +3499,9 @@ QPushButton:hover{
                          <family>Arial</family>
                          <pointsize>10</pointsize>
                         </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string/>
                        </property>
                        <property name="text">
                         <string>Si añadio un diagnostico de más o quiere eliminar haga click en el boton eliminar</string>
@@ -4673,15 +3541,7 @@ QPushButton:hover{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Medico tratante </string>
@@ -4711,32 +3571,11 @@ QPushButton:hover{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -4770,15 +3609,7 @@ QLineEdit:focus{
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Medicación </string>
@@ -4808,32 +3639,11 @@ QLineEdit:focus{
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -4844,6 +3654,9 @@ QLineEdit:focus{
                    </item>
                    <item row="2" column="0">
                     <widget class="QFrame" name="espacio_fecha_diagnostico">
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <widget class="QDateEdit" name="dateedit_fecha_diagnostico">
                       <property name="geometry">
                        <rect>
@@ -4872,127 +3685,7 @@ QLineEdit:focus{
                        <string>Año/Mes/Dia</string>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit{
-
-	padding-left:10px;
-	padding-top:10px;
-	border:1px solid #000000 ;
-
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QDateEdit QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QDateEdit QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QDateEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-QCalendarWidget {
-                background-color: white;
-                border: 1px solid #d0d0d0;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Barra superior con mes y año */
-            QCalendarWidget QWidget#qt_calendar_navigationbar {
-                background-color: #4a90e2;
-                color: white;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-            }
-            
-            /* Botones de navegación */
-            QCalendarWidget QToolButton {
-                background-color: transparent;
-                color: white;
-                font-weight: bold;
-                border: none;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            
-            QCalendarWidget QToolButton:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-            
-            /* Días de la semana */
-            QCalendarWidget QHeaderView::section {
-                background-color: #f8f9fa;
-                color: #555555;
-                font-weight: bold;
-                padding: 8px;
-                border: none;
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Días normales */
-            QCalendarWidget QAbstractItemView:enabled {
-                color: #333333;
-                background-color: white;
-                selection-background-color: #4a90e2;
-                selection-color: white;
-                outline: none;
-                border: none;
-            }
-            
-            /* Día actual */
-            QCalendarWidget QAbstractItemView:enabled:focus {
-                background-color: #e8f4fd;
-                color: #4a90e2;
-                font-weight: bold;
-            }
-            
-            /* Días de otros meses */
-            QCalendarWidget QAbstractItemView:enabled:!selected {
-                color: #aaaaaa;
-            }
-            
-            /* Efecto hover sobre los días */
-            QCalendarWidget QAbstractItemView:enabled:hover {
-                background-color: #f0f7ff;
-            }
-            
-            /* Fines de semana */
-            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
-                background-color: #4a90e2;
-                color: white;
-            }
-
-
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -5032,14 +3725,14 @@ QCalendarWidget {
                      <widget class="QLabel" name="label_2">
                       <property name="geometry">
                        <rect>
-                        <x>21</x>
-                        <y>30</y>
+                        <x>15</x>
+                        <y>29</y>
                         <width>101</width>
                         <height>16</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:none;</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Año    / Mes / Dia</string>
@@ -5069,15 +3762,7 @@ QCalendarWidget {
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Fecha del diagnóstico</string>
@@ -5107,15 +3792,7 @@ QCalendarWidget {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Certificación de discapacidad </string>
@@ -5145,32 +3822,11 @@ QCalendarWidget {
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -5181,6 +3837,9 @@ QLineEdit:focus{
                    </item>
                    <item row="3" column="0">
                     <widget class="QFrame" name="espacio_fecha_certificado">
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <widget class="QDateEdit" name="dateedit_fecha_vencimiento_certificado">
                       <property name="geometry">
                        <rect>
@@ -5209,127 +3868,7 @@ QLineEdit:focus{
                        <string>Año/Mes/Dia</string>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit{
-
-	padding-left:10px;
-	padding-top:10px;
-	border:1px solid #000000 ;
-
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QDateEdit QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QDateEdit QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QDateEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-QCalendarWidget {
-                background-color: white;
-                border: 1px solid #d0d0d0;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Barra superior con mes y año */
-            QCalendarWidget QWidget#qt_calendar_navigationbar {
-                background-color: #4a90e2;
-                color: white;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-            }
-            
-            /* Botones de navegación */
-            QCalendarWidget QToolButton {
-                background-color: transparent;
-                color: white;
-                font-weight: bold;
-                border: none;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            
-            QCalendarWidget QToolButton:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-            
-            /* Días de la semana */
-            QCalendarWidget QHeaderView::section {
-                background-color: #f8f9fa;
-                color: #555555;
-                font-weight: bold;
-                padding: 8px;
-                border: none;
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Días normales */
-            QCalendarWidget QAbstractItemView:enabled {
-                color: #333333;
-                background-color: white;
-                selection-background-color: #4a90e2;
-                selection-color: white;
-                outline: none;
-                border: none;
-            }
-            
-            /* Día actual */
-            QCalendarWidget QAbstractItemView:enabled:focus {
-                background-color: #e8f4fd;
-                color: #4a90e2;
-                font-weight: bold;
-            }
-            
-            /* Días de otros meses */
-            QCalendarWidget QAbstractItemView:enabled:!selected {
-                color: #aaaaaa;
-            }
-            
-            /* Efecto hover sobre los días */
-            QCalendarWidget QAbstractItemView:enabled:hover {
-                background-color: #f0f7ff;
-            }
-            
-            /* Fines de semana */
-            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
-                background-color: #4a90e2;
-                color: white;
-            }
-
-
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -5369,14 +3908,14 @@ QCalendarWidget {
                      <widget class="QLabel" name="label_4">
                       <property name="geometry">
                        <rect>
-                        <x>21</x>
-                        <y>30</y>
+                        <x>15</x>
+                        <y>28</y>
                         <width>101</width>
                         <height>16</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:none;</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Año    / Mes / Dia</string>
@@ -5400,15 +3939,7 @@ QCalendarWidget {
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Fecha que vence el certificado </string>
@@ -5438,15 +3969,7 @@ QCalendarWidget {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Observación adicional</string>
@@ -5476,32 +3999,11 @@ QCalendarWidget {
                        <property name="font">
                         <font>
                          <family>Arial</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>-1</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:5px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-	border-bottom:2px solid black  ;
-	border-top: 2px solid rgb(202, 202, 202);
-	border-left: 2px solid rgb(202, 202, 202);
-	border-right: 2px solid rgb(202, 202, 202);
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="placeholderText">
                         <string>.....</string>
@@ -5534,24 +4036,7 @@ QLineEdit:focus{
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	
-	font: 75 10pt &quot;Arial&quot;;
-	border-color:rgb(0, 0, 0);
-	border:2px solid;
-	border-radius:12px;
-
-
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(184, 184, 184);
-
-}</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Añadir </string>
@@ -5589,16 +4074,16 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
-	background-color: rgb(255, 255, 255);
-	border:10px ridge rgb(122, 59, 33);
-}</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_preguntas_form</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_11">
                 <property name="topMargin">
@@ -5621,16 +4106,7 @@ QPushButton:hover{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-	border:none;
-	border-color: #ffffff;
-	padding-left:2px;
-
-
-}
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Especialidad por inscribir</string>
@@ -5643,8 +4119,7 @@ QPushButton:hover{
                 <item>
                  <widget class="QFrame" name="preguntas_especialidad_inscribit">
                   <property name="styleSheet">
-                   <string notr="true">border-radius:0px;
-border:none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -5653,6 +4128,18 @@ border:none;</string>
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_7">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item row="0" column="0">
                     <layout class="QVBoxLayout" name="verticalLayout_41">
                      <property name="spacing">
@@ -5678,15 +4165,7 @@ border:none;</string>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Especialidad</string>
@@ -5710,56 +4189,11 @@ border:none;</string>
                        <property name="minimumSize">
                         <size>
                          <width>300</width>
-                         <height>40</height>
+                         <height>42</height>
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QComboBox{
-
-	font: 75 10pt &quot;Arial&quot;;
-	padding-left:15px;
-	border:1px solid #000000 ;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QComboBox:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="editable">
                         <bool>false</bool>
@@ -5814,15 +4248,7 @@ QComboBox:disabled {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Periodo escolar</string>
@@ -5864,15 +4290,7 @@ QComboBox:disabled {
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-		
-	color: #000000;
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string/>
@@ -5889,6 +4307,9 @@ QComboBox:disabled {
                    </item>
                    <item row="1" column="0">
                     <widget class="QFrame" name="espacio_fecha_especialidad">
+                     <property name="styleSheet">
+                      <string/>
+                     </property>
                      <widget class="QLabel" name="label_fecha_de_ingreso_especialidad">
                       <property name="geometry">
                        <rect>
@@ -5913,15 +4334,7 @@ QComboBox:disabled {
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel{
-	
-	color: rgb(80, 80, 80);
-
-	border-color: #ffffff;
-
-
-}
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Fecha de ingreso de la especialidad</string>
@@ -5958,127 +4371,7 @@ QComboBox:disabled {
                        <string>Año/Mes/Dia</string>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit{
-
-	padding-left:10px;
-	padding-top:10px;
-	border:1px solid #000000 ;
-
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QDateEdit:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QDateEdit QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QDateEdit QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QDateEdit:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-QCalendarWidget {
-                background-color: white;
-                border: 1px solid #d0d0d0;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Barra superior con mes y año */
-            QCalendarWidget QWidget#qt_calendar_navigationbar {
-                background-color: #4a90e2;
-                color: white;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                padding: 5px;
-            }
-            
-            /* Botones de navegación */
-            QCalendarWidget QToolButton {
-                background-color: transparent;
-                color: white;
-                font-weight: bold;
-                border: none;
-                padding: 5px;
-                border-radius: 3px;
-            }
-            
-            QCalendarWidget QToolButton:hover {
-                background-color: rgba(255, 255, 255, 0.2);
-            }
-            
-            /* Días de la semana */
-            QCalendarWidget QHeaderView::section {
-                background-color: #f8f9fa;
-                color: #555555;
-                font-weight: bold;
-                padding: 8px;
-                border: none;
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Días normales */
-            QCalendarWidget QAbstractItemView:enabled {
-                color: #333333;
-                background-color: white;
-                selection-background-color: #4a90e2;
-                selection-color: white;
-                outline: none;
-                border: none;
-            }
-            
-            /* Día actual */
-            QCalendarWidget QAbstractItemView:enabled:focus {
-                background-color: #e8f4fd;
-                color: #4a90e2;
-                font-weight: bold;
-            }
-            
-            /* Días de otros meses */
-            QCalendarWidget QAbstractItemView:enabled:!selected {
-                color: #aaaaaa;
-            }
-            
-            /* Efecto hover sobre los días */
-            QCalendarWidget QAbstractItemView:enabled:hover {
-                background-color: #f0f7ff;
-            }
-            
-            /* Fines de semana */
-            QCalendarWidget QAbstractItemView:enabled:selected:alternate {
-                background-color: #4a90e2;
-                color: white;
-            }
-
-
-</string>
+                       <string notr="true"/>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -6118,14 +4411,14 @@ QCalendarWidget {
                      <widget class="QLabel" name="label_5">
                       <property name="geometry">
                        <rect>
-                        <x>21</x>
-                        <y>30</y>
+                        <x>15</x>
+                        <y>27</y>
                         <width>101</width>
                         <height>16</height>
                        </rect>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">background:none;</string>
+                       <string notr="true"/>
                       </property>
                       <property name="text">
                        <string>Año    / Mes / Dia</string>
@@ -6151,21 +4444,7 @@ QCalendarWidget {
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	font: 75 14pt &quot;Arial&quot;;
-	background-color: rgb(0, 138, 71);
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string>Finallizar</string>
