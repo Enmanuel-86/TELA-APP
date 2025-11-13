@@ -51,6 +51,8 @@ class FuncionesDelSistema:
                 boton.setEnabled(True)
                 
                 
+                
+                
     # Metodo para salir al login con el sidebar
     def salir_al_login_con_sidebar(self, stacked_widget, sidebar):
         
@@ -94,6 +96,8 @@ class FuncionesDelSistema:
         except Exception as e:
             
             self.mostrar_errores_por_excepcion(e, "moverse_de_pantalla")
+            
+            
             
             
     # Metodo para buscar el id por la cedula del estudiante o empleado
@@ -159,6 +163,8 @@ class FuncionesDelSistema:
         except Exception as e:
             
             self.mostrar_errores_por_excepcion(e, "buscar_id_por_cedula")
+        
+        
         
         
     # Metodo para cargar catalogo en los combobox
@@ -403,6 +409,9 @@ class FuncionesDelSistema:
             print(f"Error al cargar estilos: {e}")
 
 
+
+
+
     def fecha_de_str_a_date(self, fecha_string):
         # Convertir el string a objeto date
         try:
@@ -424,13 +433,45 @@ class FuncionesDelSistema:
             
            
             
+    def ver_cursor_posicion_cero(self, lista_qlineedit:list):
+        
+        """
+            Este metodo sirve para que el cursor del qlineedit este en la posicion 0, es decir que el texto que esta en el qlineedit
+            se vea desde el principio del lado izquierdo.
             
+            Metodo para ver lo QlineEdits(los inputs) se vean desde su posicion cero (ojo no hablo de ninguna posicion
+            de alguna lista o tupla) hablo de esto:
+              * El texto que tiene en el QlineEdit "avenida fuerzas armadas, calle 2, residencia 1 etc"               
+              pero en la interfaz se ve "adas, calle 2, residencia 1 etc" y hay que ponerle la posicion 0 para que se vea:
+              "avenida fuerzas armadas, calle 2"
+        
+        """
+        
+        # iteramos cada input para darle la posicion 0
+        for qlineedit in lista_qlineedit:
+            
+            qlineedit.setCursorPosition(0)
             
             
             
         
         
        
+    def comprobar_si_hay_valor(self, variable):
+        
+        """
+        Metodo para comprobar y hay valor por asignar en la variable o se asigna None
+        Este metodo sirve para comprobar esos valores que pueden ser None
+    
+        """
+        
+        if variable == None:
+                
+            return "No tiene"
+                
+        else:
+            
+            return variable
         
         
         
