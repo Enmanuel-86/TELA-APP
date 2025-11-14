@@ -151,10 +151,6 @@ class FuncionesDelSistema:
                 
                 
                 
-                # Si no hay coincidencias, que siga buscando o que de por si no haga nada    
-                else:
-                    
-                    return
                     
             
             
@@ -484,7 +480,7 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
 
 FuncionSistema = FuncionesDelSistema()
 
-#print(funciones_comunes.buscar_id_por_cedula("175362562", lista_prueba))
+#print(FuncionSistema.buscar_id_por_cedula("5017497", lista_prueba))
 #print(funciones_comunes.cargar_elementos_para_el_combobox())
 
 
