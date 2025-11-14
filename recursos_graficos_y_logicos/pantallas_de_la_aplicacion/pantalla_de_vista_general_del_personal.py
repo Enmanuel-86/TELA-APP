@@ -318,14 +318,20 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     def habilitar_edicion(self, fila):
         
         try:
-            #cedula = modelo.item(fila, 0).text()
+            cedula = modelo.item(fila, 0).text()
             
-            #empleado_id = self.buscar_id_empleado(cedula)
+            empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_empleados_actual)
             
             self.stacked_widget.setCurrentIndex(8)
             
+            pantalla_editar_empleado = self.stacked_widget.widget(8)
             
-            #self.mostra_info_empleado(empleado_id)
+            pantalla_editar_empleado.editar_datos_empleado(empleado_id)
+            
+            
+            
+            
+            
             
             
             
