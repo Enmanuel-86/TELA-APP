@@ -1,10 +1,12 @@
 from PyQt5.QtCore import Qt,QPoint
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout, 
-                             QMessageBox, QListWidget, QListWidgetItem, QPushButton)
+                             QMessageBox, QListWidget, QListWidgetItem, 
+                             QPushButton, QApplication)
 from PyQt5 import QtGui
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
+from ..utilidades.funciones_sistema import FuncionSistema
 
 
 ##################################
@@ -105,6 +107,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         
         self.setupUi(self)
+        
+        self.msg_box = QMessageBox(self)
+        
+        # Crear botones personalizados
+        self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
+        self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
+        
         
         #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
         self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
@@ -223,10 +232,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         
         # cargar catalogo de los tipos de cargos
-        self.cargar_tipos_cargos()
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
         
-        # cargar catalogos de las especialidades
-        self.cargar_especialidades()
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_tipo_cargo, self.boton_de_opciones, 1, 0)
         
         ######################################################################
         # Para cargar la lista de empleados, el metodo para cargar empleados #
@@ -305,11 +313,6 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         
     
-    def eliminar_empleado(self, fila):
-        
-        pass
-        
-        
         
         
     def habilitar_edicion(self, fila):
@@ -331,12 +334,54 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         except Exception as e:
             print(f"Algo paso: {e}")
             
-    
             
-
-    
-    
+    def eliminar_empleado_de_la_bd(self, fila):
         
+        """
+            Este metodo sirve para eliminar al empleado de la base de datos
+
+        """
+        
+        cedula = modelo.item(fila, 0).text()
+                
+        empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_empleados_actual)
+        
+        empleado = empleado_servicio.obtener_empleado_por_id(empleado_id)  
+
+        
+        self.msg_box.setWindowTitle("Advertencia")
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        # si le da a SI, verificamos primero
+        if self.msg_box.clickedButton() == self.boton_si:
+    
+    
+            try:
+
+
+                empleado_servicio.eliminar_empleado(empleado_id)
+        
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_empleado_de_la_bd")   
+
+            else:
+                
+                QMessageBox.information(self, "Proceso exitoso", f"Se borro exitosamente a {empleado[1]} {empleado[4]}")
+        
+    
+        elif self.msg_box.clickedButton() == self.boton_no:
+            
+            return
+            
+            
+            
+            
+            
     # esta funcion es para que el usuario le de dobleclick a la fila del empleado
     # ponga la cedula en la barra de busqueda    
     def on_double_click(self, index):
@@ -437,44 +482,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     ################################################################################################################33
     
     
-    #Metodos para la tabla de base de datos
     
-    # Metodo para buscar al empleado por su id
-    def buscar_id_empleado(self, cedula):
-        
-        for empleado in self.lista_empleados_actual:
-            
-            if cedula in empleado:
-                
-                empleado_id = empleado[0]
-                
-                return empleado_id
-                
-                
-            
-            else:
-                
-                pass
-    
-    
-    def cargar_tipos_cargos(self):
-        
-        
-        for tipo_cargo in lista_tipo_cargo:
-            
-            self.boton_de_opciones.addItem(tipo_cargo[1])
-            
-            
-            
-    #Metodo para cargar la lista de especialidades
-    def cargar_especialidades(self):
-        
-        self.boton_especialidades.addItem("Seleccione aqui")
-        #print(lista_especialidades)
-        for especialidad in lista_especialidades:
-            
-            self.boton_especialidades.addItem(especialidad[1])
-    
+ 
     
     #Metodo para filtrar por tipo de cargo
     def filtrar_por_tipo_cargo(self):
@@ -688,7 +697,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
             # Conectar botones
             boton_editar.clicked.connect(lambda _, r=fila: self.habilitar_edicion(r))
-            #btn_delete.clicked.connect(lambda _, r=fila: self.borrar_alumno(r))
+            boton_borrar.clicked.connect(lambda _, r=fila: self.eliminar_empleado_de_la_bd(r))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
