@@ -1,5 +1,5 @@
 from datetime import datetime
-from PyQt5.QtCore import QRegExp
+from PyQt5.QtCore import QRegExp, QDate
 from PyQt5.QtGui import QRegExpValidator, QIntValidator
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
@@ -555,9 +555,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
         
 
-        global primer_nombre, segundo_nombre, apellido_paterno, tiene_hijos_menores, talla_camisa, sexo, talla_pantalon, fecha_nacimiento, apellido_materno, municipio, estado_reside, num_telefono, enferm_cronica_id, correo_electronico, diagnostico_id, funcion_cargo, institucion_labora, direccion_residencia, talla_zapatos, cod_depend_cobra, campos_info_clinica_empleado, campos_historial_enferm_cronicas, cedula
-
-
         
             
         try:    
@@ -1016,9 +1013,86 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
 
     
+    def editar_datos_empleado(self, empleado_id):
+        """
+            Este metodo sirve para editar la informacion del empleado en cuestion, se reutiliza esta pantalla es para aprobechar mejor todas las funciones y metodos que ya estan
+        
+        
+        """
+
+        info_basica = empleado_servicio.obtener_empleado_por_id(empleado_id)
+        
+        # Info basica
+        self.input_primer_nombre.setText(info_basica[1])
+        self.input_segundo_nombre.setText(info_basica[2])
+        self.input_tercer_nombre.setText("" if info_basica[3] == None else info_basica[3])
+        self.input_apellido_paterno.setText(info_basica[4])
+        self.input_apellido_materno.setText(info_basica[5])
+        self.input_cedula.setText(info_basica[6])
+        
+        self.dateedit_fecha_nacimiento.setDate(QDate.fromString(info_basica[7], 'yyyy-dd-MM'))
 
 
 
+        if info_basica[10] == 'M':
+            
+            self.input_sexo_masculino.setChecked(True)
+        
+        
+        elif info_basica[10] == 'F':
+            
+            self.input_sexo_femenino.setChecked(True)
+            
+            
+            
+            
+        if info_basica[11] == 0:
+            
+            self.input_no.setChecked(True)
+        
+        if info_basica[11] == 1:
+            
+            self.input_si.setChecked(True)
+        
+        
+        
+        
+        # Info medidas
+        
+        info_medidas = empleado_servicio.obtener_medidas_empleado(empleado_id)
+        
+        self.input_talla_de_camisa.setText(info_medidas[1])
+        self.input_talla_de_pantalon.setText(str(info_medidas[2]))
+        self.input_talla_de_zapatos.setText(str(info_medidas[3]))
+        
+        
+        # Info geografica
+        
+        info_geografica = empleado_servicio.obtener_info_geografica_empleado(empleado_id)
+        
+        print(info_geografica)
+        self.input_estado_residente.setText(info_geografica[1])
+        self.input_municipio.setText(info_geografica[2])
+        self.input_direccion_residencia.setText(info_geografica[3])
+        
+        
+        
+        # Info contacto
+        
+        info_contacto = empleado_servicio.obtener_info_contacto_empleado(empleado_id)
+            
+            
+            
+        self.input_numero_de_telefono.setText(info_contacto[1])
+        
+        self.input_numero_de_telefono_adicional.setText("" if info_contacto[2] == None else info_contacto[2])
+        
+        self.input_correo_electronico.setText(info_contacto[3])
+        
+        self.input_correo_electronico_adicional.setText("" if info_contacto[4] == None else info_contacto[4])
+    
+        
+        
 
     ## Metodos para  salir del formulario ##
     def salir_del_formulario_empleado(self):
