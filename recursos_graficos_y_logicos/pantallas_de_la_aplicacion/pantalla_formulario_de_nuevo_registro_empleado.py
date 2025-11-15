@@ -328,32 +328,58 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         print(self.lista_carrito_enfermedades)
 
 
+
+
+
     ## Metodo para añadir un diagnostico al "carrito"
     def anadir_diagnostico(self):
 
-        diagnostico = None
+        
+        carrito_diagnostico = []
+        
         
         # si el combo box tiene texto y no el indice del mismo no el 0
         if self.boton_diagnostico.currentText() and not self.boton_diagnostico.currentIndex() == 0:
             
             diagnostico = self.boton_diagnostico.currentText()
+            diagnostico_id = self.buscar_id_de_la_lista_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0)
             
-            self.lista_carrito_diagnosticos.append(diagnostico)
+            carrito_diagnostico.append(diagnostico_id)
+            carrito_diagnostico.append(diagnostico)
+            
+            carrito_diagnostico = tuple(carrito_diagnostico)
+            
+            self.lista_carrito_diagnosticos.append(carrito_diagnostico)
 
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico)
+            texto_mostrar = carrito_diagnostico[1]
+            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, texto_mostrar)
 
         
             
         elif self.input_otro_diagnostico.text().strip():
             
             diagnostico = self.input_otro_diagnostico.text().strip().capitalize()
-            self.lista_carrito_diagnosticos.append(diagnostico)
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico ,diagnostico)
+            nuevo_diagnostico = {"diagnostico": diagnostico}
+            diagnostico_servicio.registrar_diagnostico(nuevo_diagnostico)
+            
+            self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
+            
+            diagnostico_id = self.buscar_id_de_la_lista_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0, self.input_otro_diagnostico)
+            
+            carrito_diagnostico.append(diagnostico_id)
+            carrito_diagnostico.append(diagnostico)
+            
+            carrito_diagnostico = tuple(carrito_diagnostico)
+            
+            self.lista_carrito_diagnosticos.append(carrito_diagnostico)
+
+            texto_mostrar = carrito_diagnostico[1]
+            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, texto_mostrar)
 
         
-            nuevo_diagnostico = {"diagnostico": diagnostico}
             
-            diagnostico_servicio.registrar_diagnostico(nuevo_diagnostico)
             
             #self.boton_diagnostico.addItem(diagnostico)
             
@@ -504,7 +530,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         
     # Metodo para buscar el id que esta en la tupla de la lista que arroja la base de datos
-    def buscar_id_de_la_lista_del_combobox(self, boton_seleccionado, lista_elementos, indice_nombre_del_elemento, indice_id_del_elemento, qlineedit_elemento_nuevo):
+    def buscar_id_de_la_lista_del_combobox(self, boton_seleccionado, lista_elementos, indice_nombre_del_elemento, indice_id_del_elemento, qlineedit_elemento_nuevo= None):
             
         seleccion = boton_seleccionado.currentText()
 
@@ -892,22 +918,14 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                         # se itera cada diagnostico
                                         for diagnostico in self.lista_carrito_diagnosticos:
                                             
-                                            for id_diagnostico, nombre_diagnostico in self.lista_diagnostico:
-                                                
-                                                
-                                                if diagnostico == nombre_diagnostico:
+                                            diagnostico_id = diagnostico[0]
                                                     
-                                                    diagnostico_id = id_diagnostico
-                                                    
-                                                    campos_info_clinica_empleado["diagnostico_id"] = diagnostico_id
-                                                
-                                                    info_clinica_empleado_servicio.registrar_info_clinica_empleado(campos_info_clinica_empleado)
+                                            campos_info_clinica_empleado["diagnostico_id"] = diagnostico_id
+                                        
+                                            info_clinica_empleado_servicio.registrar_info_clinica_empleado(campos_info_clinica_empleado)
 
                                         
-                                    else:
-                                        pass
-                                        
-                                        
+                                    
                                     
                                             
                                         
@@ -915,15 +933,13 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                         
                                         for enfermedad in self.lista_carrito_enfermedades:
                                             
-                                                for id_enfermedad, nombre_enfermedad in self.lista_enfermedades:
-                                                    
-                                                    if enfermedad == nombre_enfermedad:
-                                                        
-                                                        enferm_cronica_id = id_enfermedad
-                                                        
-                                                        campos_historial_enferm_cronicas["enferm_cronica_id"] = enferm_cronica_id
-                                                        
-                                                        historial_enferm_cronicas_servicio.registrar_historial_enferm_cronica(campos_historial_enferm_cronicas)
+                                                
+                                                
+                                            enferm_cronica_id = enfermedad[0]
+                                            
+                                            campos_historial_enferm_cronicas["enferm_cronica_id"] = enferm_cronica_id
+                                            
+                                            historial_enferm_cronicas_servicio.registrar_historial_enferm_cronica(campos_historial_enferm_cronicas)
 
                                                         
                                     else:
@@ -1130,23 +1146,25 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_correo_electronico_adicional.setText("" if info_contacto[4] == None else info_contacto[4])
         
 
-        # enfermedade
+        # enfermedades
         
-        info_enferm = enfermedad_cronica_servicio.obtener_enfermedad_cronica_por_id(empleado_id)
+        self.lista_carrito_enfermedades = historial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
 
-        #(2, 'Diabetes')
+        #[(1, 1, 'Artritis'), (2, 1, 'Diabetes')]
         
-        lista_enfermedades_empleados = []
-        if len(info_enferm) > 0:
+        if len(self.lista_carrito_enfermedades) > 0:
+        
+            for enfermedad in self.lista_carrito_enfermedades:
             
-            for enfermedad in info_enferm:
-                
-                lista_enfermedades_empleados.append(enfermedad[1])
-                
-                
-                 
-        self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, info_enferm[1])
-        
+                self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2])
+         
+         
+         
+         
+         
+         
+         
+            
 
     ## Metodos para  salir del formulario ##
     def salir_del_formulario_empleado(self):
