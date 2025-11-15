@@ -366,31 +366,34 @@ class ReporteGeneralAlumnos(ReporteBase):
                 documento.add_page_break()
     
     def exportar(self, datos: List):
-        self.RUTA_REPORTES_GENERALES_ALUMNOS.mkdir(exist_ok = True)
-        
-        lista_dict_data_alumnos = datos[0]
-        
-        # Crear el documento
-        documento = self.crear_documento()
-        
-        # Cargar las configuraciones del documento
-        self.cargar_configuraciones_excel(documento)
-        
-        # Cargar el cintillo
-        self.cargar_cintillo(documento)
-        
-        # Cargar el título
-        self.cargar_titulo(documento)
-        
-        # Nombre del documento
-        fecha_actual = int(datetime.now().date().year)
-        nombre_archivo = f"CARACTERIZACIÓN GENERAL TELA {fecha_actual}-{fecha_actual + 1}"
-        
-        # Cargar toda la data de todos los alumnos
-        self.cargar_data_alumnos(documento, lista_dict_data_alumnos)
-        
-        # Guardar el documento
-        documento.save(f"{self.RUTA_REPORTES_GENERALES_ALUMNOS}/{nombre_archivo}.docx")
+        try:
+            self.RUTA_REPORTES_GENERALES_ALUMNOS.mkdir(exist_ok = True)
+            
+            lista_dict_data_alumnos = datos[0]
+            
+            # Crear el documento
+            documento = self.crear_documento()
+            
+            # Cargar las configuraciones del documento
+            self.cargar_configuraciones_excel(documento)
+            
+            # Cargar el cintillo
+            self.cargar_cintillo(documento)
+            
+            # Cargar el título
+            self.cargar_titulo(documento)
+            
+            # Nombre del documento
+            fecha_actual = int(datetime.now().date().year)
+            nombre_archivo = f"CARACTERIZACIÓN GENERAL TELA {fecha_actual}-{fecha_actual + 1}"
+            
+            # Cargar toda la data de todos los alumnos
+            self.cargar_data_alumnos(documento, lista_dict_data_alumnos)
+            
+            # Guardar el documento
+            documento.save(f"{self.RUTA_REPORTES_GENERALES_ALUMNOS}/{nombre_archivo}.docx")
+        except Exception as error:
+            raise error
 
 
 
