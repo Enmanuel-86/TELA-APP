@@ -1146,25 +1146,68 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_correo_electronico_adicional.setText("" if info_contacto[4] == None else info_contacto[4])
         
 
+
+
+        
         # enfermedades
         
         self.lista_carrito_enfermedades = historial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
 
         #[(1, 1, 'Artritis'), (2, 1, 'Diabetes')]
         
-        if len(self.lista_carrito_enfermedades) > 0:
+        if self.lista_carrito_enfermedades:
         
             for enfermedad in self.lista_carrito_enfermedades:
             
                 self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2])
-         
-         
-         
-         
-         
-         
-         
+        
+        else:
+
+            pass
+        
+        
+        
+        # diagnosticos
+        
+        self.lista_carrito_diagnosticos = info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(empleado_id)
+        
+        
+        if self.lista_carrito_diagnosticos:
             
+            for diagnostico in self.lista_carrito_diagnosticos:
+                
+                self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico[2])
+        
+        else:
+
+            pass
+        
+        
+        # Info laboral
+        
+        info_laboral = info_laboral_servicio.obtener_info_laboral_por_empleado_id(empleado_id)
+        
+    
+        
+        self.input_codigo_por_donde_cobra.setText(info_laboral[4])
+        self.input_institucion_donde_laboral.setText(info_laboral[5])
+        
+        
+            
+        # detalles del cargo
+        
+        info_detalles_cargo = detalle_cargo_servicio.obtener_detalles_cargo(empleado_id)
+        #(2, '100000C', 'BACHILLER CONTRATADO', 'SUB-DIRECTOR ENCARGADO', 'ADMINISTRATIVO', 'BACHILLER', 'Hacer tal cosa', '2025-09-06', '2007-07-19', 18, None)
+        
+        print(info_detalles_cargo)
+        self.boton_de_cargos.setCurrentText(info_detalles_cargo[2])
+        self.boton_funcion_cargos.setCurrentText(info_detalles_cargo[3])
+        self.boton_tipo_de_cargo.setCurrentText(info_detalles_cargo[4])
+        
+        
+        
+        
+        
 
     ## Metodos para  salir del formulario ##
     def salir_del_formulario_empleado(self):
