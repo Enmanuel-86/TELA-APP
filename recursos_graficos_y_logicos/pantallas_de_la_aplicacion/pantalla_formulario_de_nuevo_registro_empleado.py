@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
                              QPushButton, QApplication)
 
 from ..elementos_graficos_a_py import Ui_PantallaFormularioEmpleado
+from ..utilidades.funciones_sistema import FuncionSistema
 
 
 ##################################
@@ -151,19 +152,19 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         # lista de las base de datos
         self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()       
-        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
 
 
 
         # cargar catalogo de enfermedades
-        self.cargar_lista_para_el_combobox(self.lista_enfermedades, self.boton_enfermedades, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_enfermedades_cronicas, self.boton_enfermedades, 1, 1)
          
         # cargar catalogo de diagnosticos
-        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1, 1)
 
         # listas carrito
-        self.lista_de_enfermedades = []
-        self.lista_de_diagnosticos = []
+        self.lista_carrito_enfermedades = []
+        self.lista_carrito_diagnosticos = []
 
         
 
@@ -256,34 +257,58 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
     ## Metodo para añadir una enfermedad al "carrito"
     def anadir_enfermedad(self):
 
-        enfermedad = None
         
+        
+        carrito_enfermedad = []
             
         if self.boton_enfermedades.currentText() and not self.boton_enfermedades.currentIndex() == 0:
             
             enfermedad = self.boton_enfermedades.currentText()
             
-            self.lista_de_enfermedades.append(enfermedad)
+            enfermedad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_enfermedades, self.lista_enfermedades_cronicas, 1, 0)
             
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_de_enfermedades, self.boton_enfermedades, enfermedad)
+            carrito_enfermedad.append(enfermedad_id)
+            carrito_enfermedad.append(enfermedad)
+            
+            carrito_enfermedad = tuple(carrito_enfermedad)
+            
+            self.lista_carrito_enfermedades.append(carrito_enfermedad)
+            
+            texto_mostrar = carrito_enfermedad[1]
+            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, texto_mostrar)
         
             
-        elif self.input_otra_enfermedad.text():
+        elif self.input_otra_enfermedad.text() :
             
+            # Registra
             enfermedad = self.input_otra_enfermedad.text().strip().capitalize()
-            
-            self.lista_de_enfermedades.append(enfermedad)
-            
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_de_enfermedades, self.boton_enfermedades, enfermedad)
-
             nueva_enfermedad = {"enfermedad_cronica": enfermedad.capitalize()}
+            enfermedad_cronica_servicio.registrar_enfermedad_cronica(nueva_enfermedad) 
             
-            enfermedad_cronica_servicio.registrar_enfermedad_cronica(nueva_enfermedad)
+            # actualiza la lista
+            self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
             
-            #self.boton_enfermedades.addItem(enfermedad)
+            # Actualiza la lista catalogo
+            enfermedad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_enfermedades, self.lista_enfermedades_cronicas, 1, 0, self.input_otra_enfermedad)
+            
+            carrito_enfermedad.append(enfermedad_id)
+            carrito_enfermedad.append(enfermedad)
+            
+            carrito_enfermedad = tuple(carrito_enfermedad)
+            
+            self.lista_carrito_enfermedades.append(carrito_enfermedad)
+            
+            texto_mostrar = carrito_enfermedad[1]
+            
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, texto_mostrar)
+        
+
+
             
             
-            print(self.lista_enfermedades)
+            
+            print("Nuevas enfermedade: ",self.lista_enfermedades_cronicas)
             
         
         else:
@@ -291,16 +316,16 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         self.boton_enfermedades.clear()
         
-        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
         
-        self.cargar_lista_para_el_combobox(self.lista_enfermedades, self.boton_enfermedades, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_enfermedades_cronicas, self.boton_enfermedades, 1, 1)
 
 
 
         # Limpiar el QLineEdit después de añadir
         self.input_otra_enfermedad.clear()
         self.boton_enfermedades.setCurrentIndex(0)
-        print(self.lista_de_enfermedades)
+        print(self.lista_carrito_enfermedades)
 
 
     ## Metodo para añadir un diagnostico al "carrito"
@@ -313,17 +338,17 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
             diagnostico = self.boton_diagnostico.currentText()
             
-            self.lista_de_diagnosticos.append(diagnostico)
+            self.lista_carrito_diagnosticos.append(diagnostico)
 
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos, self.boton_diagnostico, diagnostico)
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico)
 
         
             
         elif self.input_otro_diagnostico.text().strip():
             
             diagnostico = self.input_otro_diagnostico.text().strip().capitalize()
-            self.lista_de_diagnosticos.append(diagnostico)
-            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_de_diagnosticos, self.boton_diagnostico ,diagnostico)
+            self.lista_carrito_diagnosticos.append(diagnostico)
+            self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico ,diagnostico)
 
         
             nuevo_diagnostico = {"diagnostico": diagnostico}
@@ -355,7 +380,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # Limpiar el QLineEdit después de añadir
         self.input_otro_diagnostico.clear()
         self.boton_diagnostico.setCurrentIndex(0)
-        print(self.lista_de_diagnosticos)
+        print(self.lista_carrito_diagnosticos)
 
 
 
@@ -479,7 +504,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         
     # Metodo para buscar el id que esta en la tupla de la lista que arroja la base de datos
-    def buscar_id_de_la_lista_del_combobox(self, boton_seleccionado, lista_elementos, indice_nombre_del_elemento, indice_id_del_elemento):
+    def buscar_id_de_la_lista_del_combobox(self, boton_seleccionado, lista_elementos, indice_nombre_del_elemento, indice_id_del_elemento, qlineedit_elemento_nuevo):
             
         seleccion = boton_seleccionado.currentText()
 
@@ -489,7 +514,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
             for elemento in lista_elementos:
                 
-                if seleccion.upper() == elemento[indice_nombre_del_elemento] or seleccion.lower() == elemento[indice_nombre_del_elemento] or seleccion.capitalize() == elemento[indice_nombre_del_elemento]:
+                if seleccion.lower() == elemento[indice_nombre_del_elemento].lower():
                     
                     id_del_elemento = elemento[indice_id_del_elemento]  
                     
@@ -498,14 +523,28 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     return id_del_elemento
                     
                         
-                else:
-                    pass   
-
+        elif boton_seleccionado.currentIndex() == 0 and qlineedit_elemento_nuevo.text().strip():
+            
+            
+            for elemento in lista_elementos:
+                
+                if qlineedit_elemento_nuevo.text().lower() == elemento[indice_nombre_del_elemento].lower():
+                    
+                    id_del_elemento = elemento[indice_id_del_elemento]  
+                    
+                    id_del_elemento = int(id_del_elemento)
+                    
+                    return id_del_elemento
+            
+            
+            
+            
+            
+                            
+                        
         
-        else:
-            
-            
-            pass
+        
+        
 
     
     # Método para cambiar de str a date (solo usar para las fechas)
@@ -848,10 +887,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     
                                     
                                     # se ve si la lista esta llena
-                                    if self.lista_de_diagnosticos:
+                                    if self.lista_carrito_diagnosticos:
                                         
                                         # se itera cada diagnostico
-                                        for diagnostico in self.lista_de_diagnosticos:
+                                        for diagnostico in self.lista_carrito_diagnosticos:
                                             
                                             for id_diagnostico, nombre_diagnostico in self.lista_diagnostico:
                                                 
@@ -872,9 +911,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     
                                             
                                         
-                                    if self.lista_de_enfermedades:
+                                    if self.lista_carrito_enfermedades:
                                         
-                                        for enfermedad in self.lista_de_enfermedades:
+                                        for enfermedad in self.lista_carrito_enfermedades:
                                             
                                                 for id_enfermedad, nombre_enfermedad in self.lista_enfermedades:
                                                     
@@ -1070,7 +1109,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         info_geografica = empleado_servicio.obtener_info_geografica_empleado(empleado_id)
         
-        print(info_geografica)
         self.input_estado_residente.setText(info_geografica[1])
         self.input_municipio.setText(info_geografica[2])
         self.input_direccion_residencia.setText(info_geografica[3])
@@ -1090,8 +1128,24 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_correo_electronico.setText(info_contacto[3])
         
         self.input_correo_electronico_adicional.setText("" if info_contacto[4] == None else info_contacto[4])
-    
         
+
+        # enfermedade
+        
+        info_enferm = enfermedad_cronica_servicio.obtener_enfermedad_cronica_por_id(empleado_id)
+
+        #(2, 'Diabetes')
+        
+        lista_enfermedades_empleados = []
+        if len(info_enferm) > 0:
+            
+            for enfermedad in info_enferm:
+                
+                lista_enfermedades_empleados.append(enfermedad[1])
+                
+                
+                 
+        self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, info_enferm[1])
         
 
     ## Metodos para  salir del formulario ##
