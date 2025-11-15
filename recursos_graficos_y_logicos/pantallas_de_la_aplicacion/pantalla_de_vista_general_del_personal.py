@@ -338,7 +338,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
             
         except Exception as e:
-            print(f"Algo paso: {e}")
+            print(f"Algo paso en habilitar edicion: {e} ")
             
             
     def eliminar_empleado_de_la_bd(self, fila):
