@@ -653,41 +653,44 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
             fila_actual += 1
     
     def exportar(self, datos: List):
-        self.RUTA_REPORTES_ASISTENCIA.mkdir(exist_ok = True)
+        try:
+            self.RUTA_REPORTES_ASISTENCIA.mkdir(exist_ok = True)
+                
+            fuente_negrita = self.cargar_configuraciones_excel()[0]
+            alineacion_centrada = self.cargar_configuraciones_excel()[1]
+            fuente_titulo = self.cargar_configuraciones_excel()[2]
+            relleno_encabezados = self.cargar_configuraciones_excel()[3]
+            relleno_fines_semana = self.cargar_configuraciones_excel()[4]
+            borde_celda = self.cargar_configuraciones_excel()[5]
+                
+            mes_especifico = datos[1]
+            anio_especifico = datos[2]
+            nombre_especialidad = datos[3]
+            lista_dict_asistencia_mensual_alumnos = datos[4]
+            lista_dict_sumatoria_asistencia_inasistencia_alumnos = datos[5]
+            lista_dict_matricula_completa_alumnos = datos[6]
+            lista_dict_promedio_asistencia_inasistencia_alumnos = datos[7]
+            lista_dict_porcentaje_asistencia_inasistencia_alumnos = datos[8]
+            dias_habiles = datos[9]
+                
+            libro, hoja = self.crear_libro_y_hoja()
+                
+            hoja.title = f"ASISTENCIA {mes_especifico.upper()}-{anio_especifico}"
+            nombre_archivo = f"REPORTE_ASISTENCIA_ALUMNOS_{nombre_especialidad.upper()}_{mes_especifico.upper()}-{anio_especifico}"
+            ruta_archivo = f"{self.RUTA_REPORTES_ASISTENCIA}/{nombre_archivo}.xlsx"
+                
+            self.cargar_encabezados_asistencia_mensual(hoja, nombre_especialidad, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada)
+            self.cargar_datos_asistencia_inasistencia_alumnos(hoja, lista_dict_asistencia_mensual_alumnos, borde_celda, alineacion_centrada, relleno_fines_semana)
+            self.cargar_datos_sumatoria_asistencia_inasistencia_alumnos(hoja, lista_dict_sumatoria_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
+            self.cargar_datos_matricula_alumnos(hoja, lista_dict_matricula_completa_alumnos, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
+            self.cargar_datos_dias_habiles(hoja, dias_habiles, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
+            self.cargar_encabezados_promedio_porcentaje_asistencia_inasistencia_alumnos(hoja, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
+            self.cargar_datos_promedio_asistencia_inasistencia_alumnos(hoja, lista_dict_promedio_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
+            self.cargar_datos_porcentaje_asistencia_inasistencia_alumnos(hoja, lista_dict_porcentaje_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
             
-        fuente_negrita = self.cargar_configuraciones_excel()[0]
-        alineacion_centrada = self.cargar_configuraciones_excel()[1]
-        fuente_titulo = self.cargar_configuraciones_excel()[2]
-        relleno_encabezados = self.cargar_configuraciones_excel()[3]
-        relleno_fines_semana = self.cargar_configuraciones_excel()[4]
-        borde_celda = self.cargar_configuraciones_excel()[5]
-            
-        mes_especifico = datos[1]
-        anio_especifico = datos[2]
-        nombre_especialidad = datos[3]
-        lista_dict_asistencia_mensual_alumnos = datos[4]
-        lista_dict_sumatoria_asistencia_inasistencia_alumnos = datos[5]
-        lista_dict_matricula_completa_alumnos = datos[6]
-        lista_dict_promedio_asistencia_inasistencia_alumnos = datos[7]
-        lista_dict_porcentaje_asistencia_inasistencia_alumnos = datos[8]
-        dias_habiles = datos[9]
-            
-        libro, hoja = self.crear_libro_y_hoja()
-            
-        hoja.title = f"ASISTENCIA {mes_especifico.upper()}-{anio_especifico}"
-        nombre_archivo = f"REPORTE_ASISTENCIA_ALUMNOS_{nombre_especialidad.upper()}_{mes_especifico.upper()}-{anio_especifico}"
-        ruta_archivo = f"{self.RUTA_REPORTES_ASISTENCIA}/{nombre_archivo}.xlsx"
-            
-        self.cargar_encabezados_asistencia_mensual(hoja, nombre_especialidad, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada)
-        self.cargar_datos_asistencia_inasistencia_alumnos(hoja, lista_dict_asistencia_mensual_alumnos, borde_celda, alineacion_centrada, relleno_fines_semana)
-        self.cargar_datos_sumatoria_asistencia_inasistencia_alumnos(hoja, lista_dict_sumatoria_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
-        self.cargar_datos_matricula_alumnos(hoja, lista_dict_matricula_completa_alumnos, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
-        self.cargar_datos_dias_habiles(hoja, dias_habiles, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
-        self.cargar_encabezados_promedio_porcentaje_asistencia_inasistencia_alumnos(hoja, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
-        self.cargar_datos_promedio_asistencia_inasistencia_alumnos(hoja, lista_dict_promedio_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
-        self.cargar_datos_porcentaje_asistencia_inasistencia_alumnos(hoja, lista_dict_porcentaje_asistencia_inasistencia_alumnos, alineacion_centrada, borde_celda)
-        
-        libro.save(ruta_archivo)
+            libro.save(ruta_archivo)
+        except Exception as error:
+            raise error
 
 
 if __name__ == "__main__":
