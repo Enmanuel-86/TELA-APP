@@ -592,86 +592,89 @@ class ReporteGeneralEmpleados(ReporteBase):
             print(f"ERROR AL CARGAR LOS DATOS: {error}")
     
     def exportar(self, datos: List):
-        self.RUTA_REPORTES_GENERALES_EMPLEADOS.mkdir(exist_ok = True)
-        
-        libro = self.crear_libro()
-        hoja_1, hoja_2 = self.crear_hojas(libro)
-        
-        fuente_negrita = Font(bold = True)
-        fuente_seccion_personal = Font(color = "00FF00", bold = True)
-        relleno_encabezados = PatternFill(start_color = "D9D9D9", end_color = "D9D9D9", fill_type = "solid")
-        relleno_seccion_personal = PatternFill(start_color = "000000", end_color = "000000", fill_type = "solid")
-        relleno_sub_totales = PatternFill(start_color = "A6A6A6", end_color = "A6A6A6", fill_type = "solid")
-        relleno_totales = PatternFill(start_color = "808080", end_color = "808080", fill_type = "solid")
-        alineacion_centrada = Alignment(horizontal = "center", vertical = "center", wrap_text = True)
-
-        tipo_borde = Side(border_style="thin", color="000000")
-        borde_celda = Border(
-            left = tipo_borde,
-            right = tipo_borde,
-            top = tipo_borde,
-            bottom = tipo_borde
-        )
-        
-        lista_dict_data_personal = datos[0]
-        lista_dict_conteo_personal = datos[1]
-        lista_dict_matricula_personal = datos[2]
-        
-        self.cargar_configuracion_excel(hoja_1)
-        self.cargar_cintillo(hoja_1)
-        
-        self.cargar_encabezados_info_personal(
-            hoja_1,
-            borde_celda,
-            fuente_negrita,
-            alineacion_centrada,
-            relleno_encabezados
-        )
-        
-        self.cargar_data_personal(
-            hoja_1,
-            lista_dict_data_personal,
-            fuente_seccion_personal,
-            relleno_seccion_personal,
-            alineacion_centrada,
-            borde_celda
-        )
-        
-        self.cargar_encabezados_resumen_personal(
-            hoja_2,
-            fuente_negrita,
-            alineacion_centrada
-        )
-        
-        self.cargar_conteo_personal(
-            hoja_2,
-            lista_dict_conteo_personal,
-            borde_celda,
-            fuente_negrita,
-            alineacion_centrada,
-            relleno_sub_totales,
-            relleno_totales
-        )
-        
-        self.cargar_matricula_personal(
-            hoja_2,
-            lista_dict_matricula_personal,
-            borde_celda,
-            fuente_negrita,
-            alineacion_centrada,
-            relleno_totales
-        )
-        
-        self.cargar_datos_institucion(
-            hoja_2,
-            fuente_negrita,
-            alineacion_centrada
-        )
-        
-        fecha_actual = int(datetime.now().date().year)
-        nombre_archivo = f"REPORTE DE PERSONAL ACTIVO - {fecha_actual}"
-        
-        libro.save(f"{self.RUTA_REPORTES_GENERALES_EMPLEADOS}/{nombre_archivo}.xlsx")
+        try:
+            self.RUTA_REPORTES_GENERALES_EMPLEADOS.mkdir(exist_ok = True)
+            
+            libro = self.crear_libro()
+            hoja_1, hoja_2 = self.crear_hojas(libro)
+            
+            fuente_negrita = Font(bold = True)
+            fuente_seccion_personal = Font(color = "00FF00", bold = True)
+            relleno_encabezados = PatternFill(start_color = "D9D9D9", end_color = "D9D9D9", fill_type = "solid")
+            relleno_seccion_personal = PatternFill(start_color = "000000", end_color = "000000", fill_type = "solid")
+            relleno_sub_totales = PatternFill(start_color = "A6A6A6", end_color = "A6A6A6", fill_type = "solid")
+            relleno_totales = PatternFill(start_color = "808080", end_color = "808080", fill_type = "solid")
+            alineacion_centrada = Alignment(horizontal = "center", vertical = "center", wrap_text = True)
+    
+            tipo_borde = Side(border_style="thin", color="000000")
+            borde_celda = Border(
+                left = tipo_borde,
+                right = tipo_borde,
+                top = tipo_borde,
+                bottom = tipo_borde
+            )
+            
+            lista_dict_data_personal = datos[0]
+            lista_dict_conteo_personal = datos[1]
+            lista_dict_matricula_personal = datos[2]
+            
+            self.cargar_configuracion_excel(hoja_1)
+            self.cargar_cintillo(hoja_1)
+            
+            self.cargar_encabezados_info_personal(
+                hoja_1,
+                borde_celda,
+                fuente_negrita,
+                alineacion_centrada,
+                relleno_encabezados
+            )
+            
+            self.cargar_data_personal(
+                hoja_1,
+                lista_dict_data_personal,
+                fuente_seccion_personal,
+                relleno_seccion_personal,
+                alineacion_centrada,
+                borde_celda
+            )
+            
+            self.cargar_encabezados_resumen_personal(
+                hoja_2,
+                fuente_negrita,
+                alineacion_centrada
+            )
+            
+            self.cargar_conteo_personal(
+                hoja_2,
+                lista_dict_conteo_personal,
+                borde_celda,
+                fuente_negrita,
+                alineacion_centrada,
+                relleno_sub_totales,
+                relleno_totales
+            )
+            
+            self.cargar_matricula_personal(
+                hoja_2,
+                lista_dict_matricula_personal,
+                borde_celda,
+                fuente_negrita,
+                alineacion_centrada,
+                relleno_totales
+            )
+            
+            self.cargar_datos_institucion(
+                hoja_2,
+                fuente_negrita,
+                alineacion_centrada
+            )
+            
+            fecha_actual = int(datetime.now().date().year)
+            nombre_archivo = f"REPORTE DE PERSONAL ACTIVO - {fecha_actual}"
+            
+            libro.save(f"{self.RUTA_REPORTES_GENERALES_EMPLEADOS}/{nombre_archivo}.xlsx")
+        except Exception as error:
+            raise error
 
 
 if __name__ == "__main__":
