@@ -597,32 +597,35 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
             print(f"ERROR AL CARGAR LOS DATOS: {error}")
     
     def exportar(self, datos: List):
-        self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS.mkdir(exist_ok = True)
-        
-        nombre_especialidad_ocupacional = datos[0].upper()
-        mes_actual = self.cargar_mes().upper()
-        lista_dict_alumnos = datos[1]
-        lista_dict_firmantes = datos[2]
-        
-        documento = self.crear_documento()
-        fecha_actual = int(datetime.now().date().year)
-        
-        self.cargar_cintillo(documento)
-        self.cargar_info_alumnos(documento, lista_dict_alumnos, lista_dict_firmantes)
-        
-        nombre_archivo = f"INFORME EDUCATIVO INTEGRAL DE {nombre_especialidad_ocupacional} {mes_actual}-{fecha_actual}"
-        
-        documento.save(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
-        
-        documento_final = Document(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
-
-        if (len(documento_final.paragraphs) > 0):
-            ultimo_parrafo = documento_final.paragraphs[-1]
+        try:
+            self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS.mkdir(exist_ok = True)
             
-            if (ultimo_parrafo.text.strip() == ""):
-                documento_final._element.body.remove(ultimo_parrafo._element)
-
-        documento_final.save(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
+            nombre_especialidad_ocupacional = datos[0].upper()
+            mes_actual = self.cargar_mes().upper()
+            lista_dict_alumnos = datos[1]
+            lista_dict_firmantes = datos[2]
+            
+            documento = self.crear_documento()
+            fecha_actual = int(datetime.now().date().year)
+            
+            self.cargar_cintillo(documento)
+            self.cargar_info_alumnos(documento, lista_dict_alumnos, lista_dict_firmantes)
+            
+            nombre_archivo = f"INFORME EDUCATIVO INTEGRAL DE {nombre_especialidad_ocupacional} {mes_actual}-{fecha_actual}"
+            
+            documento.save(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
+            
+            documento_final = Document(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
+    
+            if (len(documento_final.paragraphs) > 0):
+                ultimo_parrafo = documento_final.paragraphs[-1]
+                
+                if (ultimo_parrafo.text.strip() == ""):
+                    documento_final._element.body.remove(ultimo_parrafo._element)
+    
+            documento_final.save(f"{self.RUTA_REPORTES_INFORMES_EDUCATIVOS_ALUMNOS}/{nombre_archivo}.docx")
+        except Exception as error:
+            raise error
 
 
 if __name__ == "__main__":
