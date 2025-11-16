@@ -117,102 +117,83 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        # Inicialización de variables 
-        self.calendario = None  # Usa 'calendario' en todo el código
-        self.current_label = None
+        
+        # Se que se tratan de tuplas, pero las nombre LISTA para que fuera rapido de asociar
+        
+        # AQui estan las listas carrito y los qlistwidget ya que pueden usar tambien el .clear()
+        self.lista_qlineedit = (
+                                self.input_primer_nombre, self.input_segundo_nombre, self.input_tercer_nombre, self.input_apellido_paterno,
+                                self.input_apellido_materno, self.input_cedula, self.input_talla_de_camisa, self.input_talla_de_pantalon,
+                                self.input_talla_de_zapatos, self.input_estado_residente, self.input_municipio, self.input_direccion_residencia,
+                                self.input_numero_de_telefono, self.input_numero_de_telefono_adicional, self.input_correo_electronico, self.input_correo_electronico_adicional,
+                                self.input_otra_enfermedad, self.input_otro_diagnostico, self.ver_lista_diagnostico, self.ver_lista_enfermedades,
+                                self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral, self.input_titulo_del_cargo, self.label_labores_que_realiza,
+                                self.ver_lista_diagnostico, self.ver_lista_enfermedades
+                                )
+        
+        
+        self.lista_qradiobutton = (
+                                    self.input_sexo_femenino, self.input_sexo_masculino, self.input_si, self.input_no
+                                )
+        
 
-        
-        ## Rutas relativas para las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "flecha_izquierda_2.png")))
-        self.foto_anadir_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "registro_personal.png")))
-        self.boton_anadir_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
-        self.boton_anadir_enfermedad.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
-
-        ###############################################################################################################
-        # Detalles para los inputs info basica #
-        ## aqui ponemos que el campo de cedula solo pida numeros ##
-        self.input_cedula.setValidator(QRegExpValidator(QRegExp("[0-9]{12}")))
-
-
-        ###############################################################################################################
-        # Detalles para los inputs info medidas #
-        
-        self.input_talla_de_pantalon.setValidator(QIntValidator())
-        self.input_talla_de_zapatos.setValidator(QIntValidator())
-        
-        ###############################################################################################################
-        # Detalles para los input info contactos #
-        
-        self.input_numero_de_telefono.setMaxLength(12)
-        
-        
-        
-        ###############################################################################################################
-        # Detalles para info medica #
+        self.lista_qcombobox = ( self.boton_enfermedades, self.boton_diagnostico, self.boton_de_especialidad, self.boton_de_cargos,
+                                self.boton_funcion_cargos, self.boton_tipo_de_cargo
+                                )
         
         # lista de las base de datos
         self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()       
         self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
-
-
-
-        # cargar catalogo de enfermedades
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_enfermedades_cronicas, self.boton_enfermedades, 1, 1)
-         
-        # cargar catalogo de diagnosticos
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1, 1)
 
         # listas carrito
         self.lista_carrito_enfermedades = []
         self.lista_carrito_diagnosticos = []
 
         
-
-        self.boton_anadir_enfermedad.clicked.connect(self.anadir_enfermedad)
-        self.boton_anadir_diagnostico.clicked.connect(self.anadir_diagnostico)
-
-        ###############################################################################################################
+        
         # Detalles para detalles de cargo
-        self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.currentDate())
+        self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.currentDate()) # esto le coloca la fecha actual
         
-        
-        
-        self.input_labores_que_realiza.clear()
-        
-        # Cargamos al boton la lista de los cargos
-        self.cargar_lista_para_el_combobox(lista_cargo, self.boton_de_cargos, 2)
 
-        # Cargando al boton la lista de tipo de cargo
-        self.cargar_lista_para_el_combobox(lista_tipo_cargo, self.boton_tipo_de_cargo, 1)
-
-        # Cargando al boton la lista de funcion de cargo
-        self.cargar_lista_para_el_combobox(lista_funcion_cargo, self.boton_funcion_cargos, 1)
-
-        # Cargamos al boton la lista de especialidades
-        self.cargar_lista_para_el_combobox(lista_especialidades, self.boton_de_especialidad, 1)
         
         self.boton_de_especialidad.setEnabled(False)
         
-        self.boton_tipo_de_cargo.currentIndexChanged.connect(self.habilitar_boton_especialidades)
-
-
-
-
-
+    
+        # Conectar Botones a los metodos
+        self.boton_anadir_enfermedad.clicked.connect(self.anadir_enfermedad)
+        self.boton_anadir_diagnostico.clicked.connect(self.anadir_diagnostico)
+        self.boton_tipo_de_cargo.currentIndexChanged.connect(self.habilitar_boton_especialidades)    
         
-        
-        ###############################################################################################################
-        ## Boton de siguiente para ir cambiando las preguntas ##
+        ## Boton para registrar toda la informacion a la base de datos##
         self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
-        
-        
-        
-        
 
         ## Boton de regreso para retroceder a la pregunta previa o salir del formulario ##
         self.boton_de_regreso.clicked.connect(self.salir_del_formulario_empleado)
         
-    
+
+
+        # Cargar catalogos a los combobox
+        
+        # cargar catalogo de enfermedades
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_enfermedades_cronicas, self.boton_enfermedades, 1, 1)
+        
+        # cargar catalogo de diagnosticos
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1, 1)
+        
+        # Cargamos al boton la lista de los cargos
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_cargo, self.boton_de_cargos, 2, 1)
+
+        # Cargando al boton la lista de tipo de cargo
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_tipo_cargo, self.boton_tipo_de_cargo, 1, 1)
+
+        # Cargando al boton la lista de funcion de cargo
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_funcion_cargo, self.boton_funcion_cargos, 1, 1)
+
+        # Cargamos al boton la lista de especialidades
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_de_especialidad, 1, 1)
+
+        
+
         
         ### Esto es de prueba, esto asigna un valor a los input
         
@@ -257,25 +238,51 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
     ## Metodo para añadir una enfermedad al "carrito"
     def anadir_enfermedad(self):
 
+        """
+            Este metodo sirve para agregar las enfermedades al carrito de enfermedades.
+            
+            este metodo funciona asi:
+            
+            Si el combobox de las enfermedades tiene texto y no esta en la posicion 0 
+            - Primero declaramos una lista vacia
+            - a esa lista le agregamos el nombre de la enfermedad segun el combobox
+            - luego buscamos y agregamos el id de esa enfermedad
+            - luego la lista se transforma en tupla
+            - y por ultimo mandamos esto a el qlistwidget para que lo muestre por pantalla
+            
+            Si el QlineEdit otra enfermedad tiene texto
+            - registramos la enfermedad
+            - se hace el mismo proceso descrito anteriormente
+            
+        
+        
+        """
         
         
         carrito_enfermedad = []
             
         if self.boton_enfermedades.currentText() and not self.boton_enfermedades.currentIndex() == 0:
             
+            # Nombre de la enfermedad
             enfermedad = self.boton_enfermedades.currentText()
             
+            # Id de la enfermedad
             enfermedad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_enfermedades, self.lista_enfermedades_cronicas, 1, 0)
             
+            # Se añade los elementos a la lista "Carrito pequeño"
             carrito_enfermedad.append(enfermedad_id)
             carrito_enfermedad.append(enfermedad)
             
+            # lo transformamos en tupla
             carrito_enfermedad = tuple(carrito_enfermedad)
             
+            # Lo agregamos al carrito que se utilizara para el final
             self.lista_carrito_enfermedades.append(carrito_enfermedad)
             
+            # esto es lo que se mostrara en el qlistwidget
             texto_mostrar = carrito_enfermedad[1]
             
+            # se agrega en el qlistwidget
             self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, texto_mostrar)
         
             
@@ -305,15 +312,11 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
 
 
-            
-            
-            
-            print("Nuevas enfermedade: ",self.lista_enfermedades_cronicas)
-            
         
         else:
             return
         
+        # Actualizamos el combobox, limpiandolo y dandole la lista nueva
         self.boton_enfermedades.clear()
         
         self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
@@ -334,6 +337,25 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
     ## Metodo para añadir un diagnostico al "carrito"
     def anadir_diagnostico(self):
 
+        """
+            Este metodo sirve para agregar los diagnosticos al carrito de diagnosticos.
+            
+            este metodo funciona asi:
+            
+            Si el combobox de los diagnosticos tiene texto y no esta en la posicion 0 
+            - Primero declaramos una lista vacia
+            - a esa lista le agregamos el nombre del diagnostico segun el combobox
+            - luego buscamos y agregamos el id de ese diagnostico
+            - luego la lista se transforma en tupla
+            - y por ultimo mandamos esto a el qlistwidget para que lo muestre por pantalla
+            
+            Si el QlineEdit otra diagnostico tiene texto
+            - registramos el diagnostico
+            - se hace el mismo proceso descrito anteriormente
+            
+        
+        
+        """
         
         carrito_diagnostico = []
         
@@ -341,28 +363,38 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # si el combo box tiene texto y no el indice del mismo no el 0
         if self.boton_diagnostico.currentText() and not self.boton_diagnostico.currentIndex() == 0:
             
+            # Nombre del diagnostico
             diagnostico = self.boton_diagnostico.currentText()
+            
+            # Id del diagnostico
             diagnostico_id = self.buscar_id_de_la_lista_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0)
             
+            # se añaden al carrito temporal
             carrito_diagnostico.append(diagnostico_id)
             carrito_diagnostico.append(diagnostico)
             
+            # se transforma en tupla
             carrito_diagnostico = tuple(carrito_diagnostico)
             
+            # Lo añadimos al carrito que nos servira para el final
             self.lista_carrito_diagnosticos.append(carrito_diagnostico)
 
+            # Esto es lo que se va a mostrar en pantalla
             texto_mostrar = carrito_diagnostico[1]
             
+            # Lo agregamos al qlistwidget
             self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, texto_mostrar)
 
         
             
         elif self.input_otro_diagnostico.text().strip():
             
+            # Se registra
             diagnostico = self.input_otro_diagnostico.text().strip().capitalize()
             nuevo_diagnostico = {"diagnostico": diagnostico}
             diagnostico_servicio.registrar_diagnostico(nuevo_diagnostico)
             
+            # 
             self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
             
             diagnostico_id = self.buscar_id_de_la_lista_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0, self.input_otro_diagnostico)
@@ -380,12 +412,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
         
             
-            
-            #self.boton_diagnostico.addItem(diagnostico)
-            
-            
-            
-            #print(lista_diagnostico)
+   
         
         else:
             return
@@ -401,12 +428,11 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
         
-        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1, 1)
 
         # Limpiar el QLineEdit después de añadir
         self.input_otro_diagnostico.clear()
         self.boton_diagnostico.setCurrentIndex(0)
-        print(self.lista_carrito_diagnosticos)
 
 
 
@@ -983,59 +1009,11 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                     self.stacked_widget.setCurrentIndex(7)
 
 
-                                    ## Borrar todo lo que esta en el formulario 1 info basica ##
-                                    self.input_primer_nombre.clear()
-                                    self.input_segundo_nombre.clear()
-                                    self.input_apellido_paterno.clear()
-                                    self.input_apellido_materno.clear()
-                                    self.input_cedula.clear()
+                                    FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
                                     
-                                    # Desactivar temporalmente la auto-exclusividad
-                                    self.input_sexo_masculino.setAutoExclusive(False)
-                                    self.input_sexo_femenino.setAutoExclusive(False)
-
-                                    # Desmarcar ambos
-                                    self.input_sexo_masculino.setChecked(False)
-                                    self.input_sexo_femenino.setChecked(False)
-
-                                    # Reactivar la auto-exclusividad (comportamiento normal)
-                                    self.input_sexo_masculino.setAutoExclusive(True)
-                                    self.input_sexo_femenino.setAutoExclusive(True)
-
-                                    # Desactivar temporalmente la auto-exclusividad
-                                    self.input_si.setAutoExclusive(False)
-                                    self.input_no.setAutoExclusive(False)
-
-                                    # Desmarcar ambos
-                                    self.input_si.setChecked(False)
-                                    self.input_no.setChecked(False)
-
-                                    # Reactivar la auto-exclusividad (comportamiento normal)
-                                    self.input_si.setAutoExclusive(True)
-                                    self.input_no.setAutoExclusive(True)
-
-                                    ## Borrar todo lo del formulario 2 info medidas ##
-
-                                    self.input_talla_de_camisa.clear()
-                                    self.input_talla_de_zapatos.clear()
-                                    self.input_talla_de_pantalon.clear()
-
-
-                                    ## Borrar todo lo del formulario 4 info geografica  ##
-
-                                    self.input_municipio.clear()
-                                    self.input_estado_residente.clear()
-                                    self.input_direccion_residencia.clear()
-
-                                    ## Borrar todo lo del formulario 5 info de contacto  ##
-
-                                    self.input_numero_de_telefono.clear()
-                                    self.input_correo_electronico.clear()
-
-                                    ## Borrar todo lo del formulario 7 info del cargo ##
-
-                                    self.input_institucion_donde_laboral.clear()
-                                    self.input_codigo_por_donde_cobra.clear()
+                                    
+                                    self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
+                                    self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
 
 
 
@@ -1149,6 +1127,51 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
 
         
+        
+        
+        
+        # Info laboral
+        
+        info_laboral = info_laboral_servicio.obtener_info_laboral_por_empleado_id(empleado_id)
+        
+        if info_laboral != None:
+            
+            self.input_codigo_por_donde_cobra.setText(info_laboral[4])
+            self.input_institucion_donde_laboral.setText(info_laboral[5])
+            
+        else:
+            
+            pass
+            
+        # detalles del cargo
+        
+        info_detalles_cargo = detalle_cargo_servicio.obtener_detalles_cargo(empleado_id)
+        #(2, '100000C', 'BACHILLER CONTRATADO', 'SUB-DIRECTOR ENCARGADO', 'ADMINISTRATIVO', 'BACHILLER', 'Hacer tal cosa', '2025-09-06', '2007-07-19', 18, None)
+        
+        print("Informacion detalles del cargo ",info_detalles_cargo)
+        self.boton_de_cargos.setCurrentText(info_detalles_cargo[2])
+        self.boton_funcion_cargos.setCurrentText(info_detalles_cargo[3])
+        self.boton_tipo_de_cargo.setCurrentText(info_detalles_cargo[4])
+        
+        
+        if info_detalles_cargo[4].lower() == "docente":
+            
+            self.boton_de_especialidad.setCurrentText(info_detalles_cargo[10])
+            
+        else: 
+            
+            pass
+        
+        self.input_titulo_del_cargo.setText(info_detalles_cargo[5])
+        self.input_labores_que_realiza.setText(info_detalles_cargo[6])
+        
+        self.dateedit_fecha_ingreso_tela.setDate(QDate.fromString(info_detalles_cargo[7], 'yyyy-dd-MM'))
+        self.dateedit_fecha_ingreso_ministerio.setDate(QDate.fromString(info_detalles_cargo[8], 'yyyy-dd-MM'))
+        
+        
+            # Se coloca esto aqui de manera provicional, ya que hay un error cuando el empleado no tiene ni diagnostico ni enfermedad
+        # no retorna ni un none o algo por el estilo, da un error
+        
         # enfermedades
         
         self.lista_carrito_enfermedades = historial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
@@ -1183,26 +1206,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             pass
         
         
-        # Info laboral
-        
-        info_laboral = info_laboral_servicio.obtener_info_laboral_por_empleado_id(empleado_id)
-        
-    
-        
-        self.input_codigo_por_donde_cobra.setText(info_laboral[4])
-        self.input_institucion_donde_laboral.setText(info_laboral[5])
         
         
-            
-        # detalles del cargo
         
-        info_detalles_cargo = detalle_cargo_servicio.obtener_detalles_cargo(empleado_id)
-        #(2, '100000C', 'BACHILLER CONTRATADO', 'SUB-DIRECTOR ENCARGADO', 'ADMINISTRATIVO', 'BACHILLER', 'Hacer tal cosa', '2025-09-06', '2007-07-19', 18, None)
-        
-        print(info_detalles_cargo)
-        self.boton_de_cargos.setCurrentText(info_detalles_cargo[2])
-        self.boton_funcion_cargos.setCurrentText(info_detalles_cargo[3])
-        self.boton_tipo_de_cargo.setCurrentText(info_detalles_cargo[4])
         
         
         
@@ -1232,68 +1238,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # si el boton pulsado es "si" se regresa y borra todo el registro
         if msg_box.clickedButton() == boton_si:
             
-            self.ver_lista_diagnostico.clear()
-            self.ver_lista_enfermedades.clear()
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
             
-            ## Borrar todo lo que esta en el formulario 1 info basica ##
-            self.input_primer_nombre.clear()
-            self.input_segundo_nombre.clear()
-            self.input_apellido_paterno.clear()
-            self.input_apellido_materno.clear()
-            self.input_cedula.clear()
-            # Desactivar temporalmente la auto-exclusividad
-            self.input_sexo_masculino.setAutoExclusive(False)
-            self.input_sexo_femenino.setAutoExclusive(False)
-
-            # Desmarcar ambos
-            self.input_sexo_masculino.setChecked(False)
-            self.input_sexo_femenino.setChecked(False)
-
-            # Reactivar la auto-exclusividad (comportamiento normal)
-            self.input_sexo_masculino.setAutoExclusive(True)
-            self.input_sexo_femenino.setAutoExclusive(True)
-
-            # Desactivar temporalmente la auto-exclusividad
-            self.input_si.setAutoExclusive(False)
-            self.input_no.setAutoExclusive(False)
-
-            # Desmarcar ambos
-            self.input_si.setChecked(False)
-            self.input_no.setChecked(False)
-
-            # Reactivar la auto-exclusividad (comportamiento normal)
-            self.input_si.setAutoExclusive(True)
-            self.input_no.setAutoExclusive(True)
-
-            ## Borrar todo info medidas ##
-
-            self.input_talla_de_camisa.clear()
-            self.input_talla_de_zapatos.clear()
-            self.input_talla_de_pantalon.clear()
-
-
-
-        
-
-            ## Borrar todo lo del formulario 4 info geografica  ##
-
-            self.input_municipio.clear()
-            self.input_estado_residente.clear()
-            self.input_direccion_residencia.clear()
-
-            ## Borrar todo  info de contacto  ##
-
-            self.input_numero_de_telefono.clear()
-            self.input_correo_electronico.clear()
-            self.input_numero_de_telefono_adicional.clear()
-            self.input_correo_electronico_adicional.clear()
-
-        
-
-            ##  info del cargo ##
-
-            self.input_institucion_donde_laboral.clear()
-            self.input_codigo_por_donde_cobra.clear()
 
             self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
