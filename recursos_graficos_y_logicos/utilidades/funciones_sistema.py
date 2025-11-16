@@ -229,7 +229,7 @@ class FuncionesDelSistema:
     
     
     # Metodos para limpiar los inputs 
-    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = ()) -> None:
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = ()) -> None:
         
         """
             ### Este metodo sirve para limpiar los inputs mas relevante como los:
@@ -237,7 +237,9 @@ class FuncionesDelSistema:
             * QLineEdit
             * QLabel
             * QRadioButton
-            
+            * QListWidget
+            * QComboBox
+            * lista normales de python
             
             Para usar la funcion solo haga una lista agrupando todos los QLabel y QLineEdit en una lista y los QRadioButton en otra.
             
@@ -247,7 +249,7 @@ class FuncionesDelSistema:
             
             **Ejemplo**
             
-            lista_qlabel_qlineedit = [input_1, input_2, input_3, ......]
+            lista_qlabel_qlineedit = [input_1, input_2, input_3, label_4, ......]
             
             lista_qradiobutton = [radiobuton_1, radiobuton_2, ........]
             
@@ -256,7 +258,7 @@ class FuncionesDelSistema:
             ### Limpia los inputs (usarlo para salir de una pantalla o terminar una tarea)
             
             
-            
+            Tambien este metodo sirve para restablecer los combobox a su indice 0 es decir, si el combobox tiene "seleccionar aqui" lo devuelve a esa posicion
             
             
         
@@ -272,13 +274,20 @@ class FuncionesDelSistema:
                 
             # Limpiamos los RadioButtons
             
-            if len(lista_qradiobuttons) >= 0: 
+            if len(lista_qradiobuttons) > 0: 
                 
                 for radiobutton in lista_qradiobuttons:
                     
                     radiobutton.setAutoExclusive(False)
                     radiobutton.setChecked(False)
                     radiobutton.setAutoExclusive(True)
+                    
+                    
+            if len(lista_qcombobox) > 0:
+                
+                for combobox in lista_qcombobox:
+                    
+                    combobox.setCurrentIndex(0)
                 
             
 
