@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1083</width>
-    <height>2732</height>
+    <width>1065</width>
+    <height>2706</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,35 +43,29 @@ QFrame[tipo=&quot;espacio_preguntas_form&quot;]{
 /*************************************************************************/
 
 /* Estilo para los qlineedit */
-QLineEdit {
-    background-color: #FFFFFF;
-    border: 2px solid #D0D0D0;          /* Gris más oscuro para verse en fondo blanco */
-    border-radius: 5px;
-    padding: 8px 12px;
-    font-size: 14px;
-    color: #2A2A2A;
+QLineEdit{
+
 	
-    /* Para que se vea vivo al seleccionar texto */
-    selection-background-color: #BBDEFB;  
-	border-bottom:2px solid black;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	border:1px solid #1e1e1e;
+	padding:5px 10px;
+	font: 16pt &quot;Segoe UI&quot;;
+	border-radius:12px;
+
+
 }
 
-/* Hover más marcado para que se note */
+
 QLineEdit:hover {
-    border: 2px solid #9E9E9E;          
+    border: 2px solid #00aa61;       
 }
 
 /* Focus azul vibrante tipo Material/Windows */
 QLineEdit:focus {
-    border: 2px solid #2196F3;          /* Azul Material 500 */
-    background-color: #F3F9FF;          /* Un glow suave azul */
-    color: #0D47A1;
-}
-
-/* Placeholder más visible, moderno */
-QLineEdit::placeholder {
-    color: #7F8C8D;
-    font-style: italic;
+    border: 2px solid rgb(25, 213, 100);          /* Azul Material 500 */
+    background-color: rgb(239, 239, 239);          /* Un glow suave azul */
+    /*color: #0D47A1;*/
 }
 
 /* Estilo para QLineEdit cuando está deshabilitado */
@@ -158,8 +152,8 @@ QComboBox QLineEdit {
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1083</width>
-        <height>2732</height>
+        <width>1065</width>
+        <height>2706</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -544,8 +538,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -710,8 +707,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -772,8 +772,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -834,8 +837,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -970,8 +976,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1151,8 +1160,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1210,8 +1222,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1272,8 +1287,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1532,8 +1550,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1687,8 +1708,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1749,8 +1773,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1892,8 +1919,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -1992,8 +2022,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2054,8 +2087,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2110,8 +2146,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2166,8 +2205,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2222,8 +2264,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2278,8 +2323,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2335,8 +2383,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2502,8 +2553,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2564,8 +2618,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2626,8 +2683,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2688,8 +2748,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2747,8 +2810,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2899,8 +2965,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -2961,8 +3030,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -3268,8 +3340,8 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -3439,8 +3511,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -3507,8 +3582,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -3690,8 +3768,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -3867,8 +3948,11 @@ QPushButton:hover{
                        </property>
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>-1</pointsize>
+                         <family>Segoe UI</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
