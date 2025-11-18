@@ -197,13 +197,12 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         ### Esto es de prueba, esto asigna un valor a los input
         
-        """
-        self.input_primer_nombre.setText("Ligia")
+        
+        self.input_primer_nombre.setText("Marla")
         self.input_apellido_paterno.setText("Garcia")
         self.input_cedula.setText("24345231")
         self.input_sexo_femenino.setChecked(True)
         self.input_si.setChecked(True)
-        self.label_mostrar_fecha.setText("2000-03-02")
         
         self.input_talla_de_camisa.setText("s")
         self.input_talla_de_pantalon.setText("23")
@@ -219,7 +218,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         self.input_codigo_por_donde_cobra.setText("123123123")
         self.input_institucion_donde_laboral.setText("Escuela de tal")
-        """
+        
         
     
     def habilitar_boton_especialidades(self):
@@ -575,19 +574,21 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     return id_del_elemento
                     
                         
-        elif boton_seleccionado.currentIndex() == 0 and qlineedit_elemento_nuevo.text().strip():
+        if not qlineedit_elemento_nuevo == None:
             
-            
-            for elemento in lista_elementos:
+            if boton_seleccionado.currentIndex() == 0 and qlineedit_elemento_nuevo.text().strip():
                 
-                if qlineedit_elemento_nuevo.text().lower() == elemento[indice_nombre_del_elemento].lower():
+                
+                for elemento in lista_elementos:
                     
-                    id_del_elemento = elemento[indice_id_del_elemento]  
-                    
-                    id_del_elemento = int(id_del_elemento)
-                    
-                    return id_del_elemento
-            
+                    if qlineedit_elemento_nuevo.text().lower() == elemento[indice_nombre_del_elemento].lower():
+                        
+                        id_del_elemento = elemento[indice_id_del_elemento]  
+                        
+                        id_del_elemento = int(id_del_elemento)
+                        
+                        return id_del_elemento
+                
             
             
             
