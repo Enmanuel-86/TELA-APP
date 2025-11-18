@@ -198,6 +198,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ### Esto es de prueba, esto asigna un valor a los input
         
         
+        """
         self.input_primer_nombre.setText("Marla")
         self.input_apellido_paterno.setText("Garcia")
         self.input_cedula.setText("24345231")
@@ -218,6 +219,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         self.input_codigo_por_donde_cobra.setText("123123123")
         self.input_institucion_donde_laboral.setText("Escuela de tal")
+        
+        
+        """
         
         
     
@@ -833,13 +837,22 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                         
                             
                             
-                            if especialidad_id == None:
-                                
-                                # buscamos el id de la especialidad que esta en la lista del boton 
-                                especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
+                            if self.boton_tipo_de_cargo.currentText().lower() == "docente" and not self.boton_de_especialidad.currentIndex() == 0:
+            
+                                if especialidad_id == None:
+                                    
+                                    # buscamos el id de la especialidad que esta en la lista del boton 
+                                    especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
 
+                            
+                            elif self.boton_tipo_de_cargo.currentText().lower() == "docente" and  self.boton_de_especialidad.currentIndex() == 0:
+                                
+                                QMessageBox.warning(self, "Aviso", "Si es docente eliga una especialidad")
+                                return
+                                
                             else:
                                 especialidad_id = None
+                                
                                 
 
                             
@@ -1340,7 +1353,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_ministerio.text())
             
 
-            situacion = None  # Por defecto es Activo
+            situacion = "Activo"  # Por defecto es Activo
 
             titulo_cargo = self.input_titulo_del_cargo.text()
             
@@ -1360,15 +1373,23 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
                         
                             
-                            
-            if especialidad_id == None:
-                
-                # buscamos el id de la especialidad que esta en la lista del boton 
-                especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
+            if self.boton_tipo_de_cargo.currentText().lower() == "docente" and not self.boton_de_especialidad.currentIndex() == 0:
+            
+                if especialidad_id == None:
+                    
+                    # buscamos el id de la especialidad que esta en la lista del boton 
+                    especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
 
+            
+            elif self.boton_tipo_de_cargo.currentText().lower() == "docente" and  self.boton_de_especialidad.currentIndex() == 0:
+                
+                QMessageBox.warning(self, "Aviso", "Si es docente eliga una especialidad")
+                return
+                    
             else:
                 especialidad_id = None
-                
+                                
+                                
 
                         
 
@@ -1496,7 +1517,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                 
                 pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
             
-                self.stacked_widget.setCurrentIndex(7)
+                
 
 
                 FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
@@ -1511,8 +1532,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                 QMessageBox.information(self, "No se pudo", f"{str(e)}")
                 return
-                #self.cambio.setCurrentIndex(0)
-                #self.stacked_widget.setCurrentIndex(2)
+                
 
             else:
                 
@@ -1533,7 +1553,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         else:
             
             QMessageBox.information(self, "Proceso exitoso", "Se realizo la edicion correctamente")
-    
+            self.stacked_widget.setCurrentIndex(7)
     
     
         
