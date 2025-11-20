@@ -575,12 +575,12 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
 "\n"
 "")
         self.dateedit_fecha_reporte_asistencia.setWrapping(False)
-        self.dateedit_fecha_reporte_asistencia.setFrame(True)
+        self.dateedit_fecha_reporte_asistencia.setFrame(False)
         self.dateedit_fecha_reporte_asistencia.setAccelerated(True)
         self.dateedit_fecha_reporte_asistencia.setKeyboardTracking(True)
         self.dateedit_fecha_reporte_asistencia.setProperty("showGroupSeparator", True)
         self.dateedit_fecha_reporte_asistencia.setCurrentSection(QtWidgets.QDateTimeEdit.YearSection)
-        self.dateedit_fecha_reporte_asistencia.setCalendarPopup(True)
+        self.dateedit_fecha_reporte_asistencia.setCalendarPopup(False)
         self.dateedit_fecha_reporte_asistencia.setCurrentSectionIndex(0)
         self.dateedit_fecha_reporte_asistencia.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_reporte_asistencia.setObjectName("dateedit_fecha_reporte_asistencia")
@@ -648,5 +648,5 @@ class Ui_PantallaGenerarInformesReportesAlumnos(object):
         self.label_titulo_reporte_asistencia.setText(_translate("PantallaGenerarInformesReportesAlumnos", "Generar reporte de asistencia \n"
 " mensual"))
         self.dateedit_fecha_reporte_asistencia.setToolTip(_translate("PantallaGenerarInformesReportesAlumnos", "Año/Mes/Dia"))
-        self.dateedit_fecha_reporte_asistencia.setDisplayFormat(_translate("PantallaGenerarInformesReportesAlumnos", "yyyy / MM / dd"))
+        self.dateedit_fecha_reporte_asistencia.setDisplayFormat(_translate("PantallaGenerarInformesReportesAlumnos", "yyyy / MM "))
         self.boton_generar_reporte_asistencia.setText(_translate("PantallaGenerarInformesReportesAlumnos", "  Generar reporte de asistencia"))
