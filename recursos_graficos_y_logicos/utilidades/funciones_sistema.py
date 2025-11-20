@@ -2,7 +2,8 @@ import traceback
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 from datetime import datetime
-
+import platform
+import os
 
 """
 Este archivo contiene todas las funciones que suelen repetirse, esto ayuda a evitar copiar y pegar
@@ -222,7 +223,85 @@ class FuncionesDelSistema:
             
             self.mostrar_errores_por_excepcion(e, "Cargar elementos para el combobox")
             
+    
+    def obtener_id_del_elemento_del_combobox(self, boton_seleccionado, lista_elementos: list, indice_nombre_del_elemento: int, indice_id_del_elemento:int, seleccionar_aqui: bool = False ) -> int :
+            
+        """
+            Este metodo sirve buscar el id del elemento seleccionado en el combobox
+            
+            En este metodo se le pasa:
+            
+            - El combobox donde se selecciono el elemento
+            - La lista de elementos que se uso para cargar el combobox
+            - El indice donde se encuentra el nombre del elemento en la lista
+            - El indice donde se encuentra el id del elemento en la lista
+            - Si el combobox tiene la palabra "seleccionar aqui" en la posicion 0, se le pasa True si la tiene, si no se le pasa False
+            
+            Este metodo funciona asi:
+            
+            1. el usuario selecciona un elemento del combobox
+            2. se obtiene el texto del elemento seleccionado
+            3. se recorre la lista de elementos (la misma que se uso para cargar el combobox)
+            4. se compara el texto seleccionado con el nombre de cada elemento en la lista
+            5. cuando se encuentra una coincidencia, se obtiene el id correspondiente de ese elemento
+            6. se retorna el id encontrado
+            
+            **Ejemplo**
+
+            lista_especialidades = [(1, 'Medicina General'), (2, 'Enfermeria'), (3, 'Odontologia')]
+            
+            boton_seleccionado = QCombobox() # con 'Enfermeria' seleccionado
+            
+            id_especialidad = buscar_id_de_la_lista_del_combobox(boton_seleccionado, lista_especialidades, 1, 0)
         
+        """    
+        # Obtener el texto seleccionado del combobox
+        seleccion = boton_seleccionado.currentText()
+
+        
+        # si el combobox tiene "seleccionar aqui", omitimos la primera posicion
+        if seleccionar_aqui == True:
+            
+            # si la seleccion no es vacia y no es "seleccionar aqui"
+            if  seleccion and not boton_seleccionado.currentIndex() == 0:
+                
+                # iteramos la lista de elementos
+                for elemento in lista_elementos:
+                    
+                    # comparamos el texto seleccionado con el nombre del elemento en la lista
+                    if seleccion.lower() == elemento[indice_nombre_del_elemento].lower():
+                        
+                        # obtenemos el id del elemento correspondiente
+                        id_del_elemento = elemento[indice_id_del_elemento]  
+                        
+                        # aseguramos que el id sea un entero
+                        id_del_elemento = int(id_del_elemento)
+                        
+                        # retornamos el id encontrado
+                        return id_del_elemento
+                    
+        # si el combobox no tiene "seleccionar aqui", solo buscamos el id normal
+        elif seleccionar_aqui == False:
+            
+            # si hay una seleccion del combobox
+            if  seleccion:
+                
+                # iteramos la lista de elementos
+                for elemento in lista_elementos:
+                    
+                    # comparamos el texto seleccionado con el nombre del elemento en la lista
+                    if seleccion.lower() == elemento[indice_nombre_del_elemento].lower():
+                        
+                        # obtenemos el id del elemento correspondiente
+                        id_del_elemento = elemento[indice_id_del_elemento]  
+                        
+                        # aseguramos que el id sea un entero
+                        id_del_elemento = int(id_del_elemento)
+                        
+                        # retornamos el id encontrado
+                        return id_del_elemento
+        
+            
     
     # Metodos para limpiar los inputs 
     def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = ()) -> None:
@@ -476,6 +555,32 @@ class FuncionesDelSistema:
         
         
         
+        
+    def abrir_carpeta_contenedora_de_archivos(self, ruta_carpeta: str) -> None:
+        
+        """
+            Este metodo sirve para abrir la carpeta contenedora de archivos en el explorador de archivos del sistema operativo
+        
+        """
+        
+        try:
+            
+            if not os.path.exists(ruta_carpeta):
+                QMessageBox.warning(self, "Error", f"No se encontró la carpeta:\n{ruta_carpeta}")
+                return
+            
+            
+            # 4. Abrir la carpeta
+            if platform.system() == "Windows":
+                os.startfile(ruta_carpeta)
+            elif platform.system() == "Darwin":  # macOS
+                os.system(f'open "{ruta_carpeta}"')
+            else:  # Linux
+                os.system(f'xdg-open "{ruta_carpeta}"')
+            
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Error al abrir la carpeta:\n{str(e)}")  
+            
         
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
