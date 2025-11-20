@@ -75,9 +75,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
         self.stacked_widget = stacked_widget
         self.setupUi(self)
-        
-        self.stacked_widget.currentChanged.connect(lambda indice: self.activar_pantalla(indice) if indice == 2 else FuncionSistema.limpiar_inputs_de_qt((self.boton_especialidades, self.barra_de_busqueda, self.label_contador)))
-        
+                
         
         
         # Estableciendo estilo de la tabla
@@ -169,15 +167,21 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_buscar.clicked.connect(lambda _: self.acceder_al_perfil_alumno())
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
         self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
-        
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
-
-        
-        
-        # Conectar señal de doble click
         self.tabla_ver_alumnos.doubleClicked.connect(self.on_double_click)
-        
         self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados) 
+        
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
+                    
+        
+        
+        
+        # Carga las especialidades al boton deplegable
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
+        
+        
+            
         
         
         # Lista de coincidencias
@@ -189,20 +193,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.resultados.hide() 
         
 
-    def activar_pantalla(self, indice_pantalla):
-        
-        if indice_pantalla == 2:
+  
                         
-            
-            
-            self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-            self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
-                        
-            
-            
-            
-            # Carga las especialidades al boton deplegable
-            FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
             
             
             
@@ -453,18 +445,23 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
     
     
+   
+
+
+
+##########################################################################################################################
+    def actualizar_lista_busqueda(self):
+
+        self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
+
     # Metodo para actualizar la tabla
     def actualizar_tabla(self, especialidad_id = None):
         
             alumnos_actuales = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id)
             self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos_actuales)
             self.label_contador.setText(str(len(alumnos_actuales)))
-            
-        
 
 
-
-##########################################################################################################################
 
     # Metodo para acceder a la información del alumno
     def acceder_al_perfil_alumno(self):
