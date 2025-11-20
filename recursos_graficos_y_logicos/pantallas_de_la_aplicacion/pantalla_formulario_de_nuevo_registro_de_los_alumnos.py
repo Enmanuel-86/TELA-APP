@@ -1384,6 +1384,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     pantalla_tabla_alumnos = self.stacked_widget.widget(2)
         
                                                     pantalla_tabla_alumnos.actualizar_tabla(1)
+                                                    pantalla_tabla_alumnos.actualizar_lista_busqueda()
                                                     
                                                     pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                 
@@ -1722,6 +1723,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         pantalla_tabla_alumnos = self.stacked_widget.widget(2)
             
                                                         pantalla_tabla_alumnos.actualizar_tabla(1)
+                                                        pantalla_tabla_alumnos.actualizar_lista_busqueda()
                                                                                                                 
                                                         pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                     
