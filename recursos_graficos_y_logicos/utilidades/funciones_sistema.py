@@ -167,7 +167,7 @@ class FuncionesDelSistema:
     # Metodo para cargar catalogo en los combobox
     def cargar_elementos_para_el_combobox(self, lista_catalogo: list, boton_desplegable, indice_nombre_elemento:int, anadir_seleccionar_aqui: int = 0) -> None:
         """
-            Este metodo sirve para cargar los elementos de una lista a un combobox, indicandole:
+            Este metodo sirve para cargar los elementos de una lista a un combobox o actualizar el combobox, indicandole:
             
             - La lista con los elementos a añadir
             - El boton desplegable (el QCombobox)
@@ -192,11 +192,14 @@ class FuncionesDelSistema:
             * nombre_item_3     *
             * nombre_item_n     *
             
+            
+            Si se quiere actualizar porque hay un nuevo elemento en la base de datos, solo se vuelve a llamar la funcion
+            
         
         """
         try:    
             
-            
+            boton_desplegable.clear()
             
             if anadir_seleccionar_aqui == 1:
                 # agregamos la palabra seleccionar aqui
