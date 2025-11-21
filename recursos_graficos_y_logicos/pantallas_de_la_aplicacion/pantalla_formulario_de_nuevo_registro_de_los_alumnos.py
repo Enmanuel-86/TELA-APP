@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
+from ..utilidades.funciones_sistema import FuncionSistema
                                      
 ##################################
 # importaciones de base de datos #
@@ -77,7 +78,7 @@ inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
 
 # Lista de la bd
 
-lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+
 
 
 
@@ -123,6 +124,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                       self.input_imt_si, self.input_imt_no
                                       ]
         
+        
+        # Se cargar la lista catalogo
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()   
+        
+        
         # Message box para usarlos en cualquier lado
         self.msg_box = QMessageBox(self)
         
@@ -153,14 +160,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.label_mostrar_periodo_escolar.setText(str(año_actual) + "-" + str(año_actual + 1))
         
         
-        # lista de la base de datos
-        self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()   
+       
         
         # cargar catalogo de diagnosticos
-        self.cargar_lista_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1,1)
         
         # cargar catalogos de las especialidades
-        self.cargar_lista_para_el_combobox(lista_especialidades, self.boton_de_especialidad, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_de_especialidad, 1,1)
         
         
         
@@ -232,30 +238,34 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         """
         
         
+    def actualizar_listas_catalogo(self):
         
-       
-       
-        
-    # Metodo para cargar catalogo en los combobox
-    def cargar_lista_para_el_combobox(self, lista_catalogo, boton_desplegable, indice_nombre_elemento:int):
-        
-        try:    
-            boton_desplegable.addItem("Seleccione aqui")
-                
-        
+        """
+            Este metodo es para actualizar las listas de los catalogos y a su vez actualizar los comboboxes
             
-            for elemento_iterado in lista_catalogo:
-                
-                boton_desplegable.addItem(elemento_iterado[indice_nombre_elemento])
+            este metodo se utilizara unicamente en la pantalla de registrar elementos catalogos
+            
+            actualiza los combobox ya que son las listas que se usan para cargar los comboboxes
         
-        except Exception as e:
-            
-            print(f"Ocurrio un error: {e}")
-            
-        #else: 
-            
-            #print(f"\nLa lista para el/los boton cargo correctamente")
+        """    
+    
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
         
+        
+        self.boton_de_especialidad.clear()
+        self.boton_diagnostico.clear()
+        
+        # cargar catalogo de diagnosticos
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1,1)
+        
+        # cargar catalogos de las especialidades
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_de_especialidad, 1,1)
+          
+            
+            
+    
+
             
     # Metodo para buscar el id que esta en la tupla de la lista que arroja la base de datos
     def buscar_id_de_la_lista_del_combobox(self, boton_seleccionado, lista_elementos, indice_nombre_del_elemento, indice_id_del_elemento):
@@ -1260,7 +1270,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         
                                         # Incripcion 
                                 
-                                        especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
+                                        especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, self.lista_especialidades, 1, 0)
                                         periodo_escolar = str(año_actual) + "-" + str(año_actual + 1)
                                         
                                         
@@ -1595,7 +1605,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             # Incripcion 
                                     
-                                            especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
+                                            especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, self.lista_especialidades, 1, 0)
                                             periodo_escolar = str(año_actual) + "-" + str(año_actual + 1)
                                             
                                             
