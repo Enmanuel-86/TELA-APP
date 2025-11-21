@@ -246,6 +246,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+                        
+                        self.actualizar_comboboxs_especialidades()
 
                         
                         
@@ -461,7 +463,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "añadir")
                         self.boton_registrar_especialidad.clicked.disconnect()                   
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-                        
+                        self.actualizar_comboboxs_especialidades()
                     
                     # en el caso de que sea un diagnostico
                     if nombre_clave_dict.lower() == "diagnostico":
@@ -602,7 +604,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 
                 
     
-    def eliminar_elemeto_del_catalogo(self,  id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
+    def eliminar_elemento_del_catalogo(self,  id_elemento:int, nombre_clave_dict: str, lista_catalogo:list):
         """
             Este metodo sirve para eliminar el elemento del catalogo seleccionado
 
@@ -644,6 +646,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+                    self.actualizar_comboboxs_especialidades()
 
 
                 elif nombre_clave_dict.lower() == "diagnostico":
@@ -719,7 +722,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         
             
         else:
-                    
+            
             QMessageBox.warning(self, "Aviso", f"El campo {nombre_clave_dict} esta vacio")
             
         
@@ -832,40 +835,40 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             if elemento in self.lista_especialidades:
                 
-                self.eliminar_elemeto_del_catalogo(elemento[0], "especialidad", self.lista_especialidades)
+                self.eliminar_elemento_del_catalogo(elemento[0], "especialidad", self.lista_especialidades)
             
             
             
             elif elemento in self.lista_diagnosticos:
                 
-                self.eliminar_elemeto_del_catalogo(elemento[0], "diagnostico", self.lista_diagnosticos)
+                self.eliminar_elemento_del_catalogo(elemento[0], "diagnostico", self.lista_diagnosticos)
                 
                 
                 
             elif elemento in self.lista_enfermedades:
                 
-                self.eliminar_elemeto_del_catalogo(elemento[0], "enfermedad_cronica", self.lista_enfermedades)
+                self.eliminar_elemento_del_catalogo(elemento[0], "enfermedad_cronica", self.lista_enfermedades)
             
             
             
             elif elemento in self.lista_funcion_cargo:
                 
         
-                self.eliminar_elemeto_del_catalogo(elemento[0], "funcion_cargo", self.lista_funcion_cargo)
+                self.eliminar_elemento_del_catalogo(elemento[0], "funcion_cargo", self.lista_funcion_cargo)
                 
             
             
             elif elemento in self.lista_tipo_cargo:
                 
         
-                self.eliminar_elemeto_del_catalogo(elemento[0], "tipo_cargo", self.lista_tipo_cargo)
+                self.eliminar_elemento_del_catalogo(elemento[0], "tipo_cargo", self.lista_tipo_cargo)
                 
                 
                 
             elif elemento in self.lista_cargo:
                 
         
-                self.eliminar_elemeto_del_catalogo(elemento[0], "cargo", self.lista_cargo)
+                self.eliminar_elemento_del_catalogo(elemento[0], "cargo", self.lista_cargo)
                 
                 
              
@@ -1082,3 +1085,25 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_registrar_diagnostico.clicked.disconnect()
         self.boton_registrar_enfermedad.clicked.disconnect()
         self.boton_registrar_funcion_cargo.clicked.disconnect()
+
+
+    def actualizar_comboboxs_especialidades(self):
+        
+        """
+            Este metodo sirve actualizar los comboboxs de especialidades en las otras pantallas de la aplicacion
+            
+            ***Ejemplo***
+            
+            la pantalla de formulario de alumno y empleado utilizan los catalogos de especialidades
+            la pantalla de asistencia de alumnos utiliza el catalogo de especialidades
+            
+            
+            Esto se hace con fin de actualizar cada lista en las otras pantallas cuando sea necesario 
+        
+        
+        """
+        
+        
+        pantalla_vista_general_alumnos = self.stacked_widget.widget(2)
+        pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
+        
