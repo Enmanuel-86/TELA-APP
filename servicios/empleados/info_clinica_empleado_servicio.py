@@ -18,7 +18,10 @@ class InfoClinicaEmpleadoServicio:
         return self.repositorio.obtener_por_id(info_clin_empleado_id)
     
     def obtener_info_clinica_por_empleado_id(self, empleado_id: int) -> List[Tuple]:
-        return self.repositorio.obtener_por_empleado_id(empleado_id)
+        try:
+            return self.repositorio.obtener_por_empleado_id(empleado_id)
+        except BaseDatosError as error:
+            raise error
     
     def actualizar_info_clinica(self, info_clin_empleado_id: int, campos_info_clinica_empleado: Dict) -> None:
         self.repositorio.actualizar(info_clin_empleado_id, campos_info_clinica_empleado)
@@ -66,3 +69,9 @@ if __name__ == "__main__":
     info_clinica_empleado_servicio.actualizar_info_clinica(3, campos_info_clinica_empleado)"""
     
     #info_clinica_empleado_servicio.eliminar_info_clinica(3)
+    
+    
+    """try:
+        print(info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(2))
+    except BaseDatosError as error:
+        print(error)"""
