@@ -80,7 +80,12 @@ class InfoClinicaEmpleadoRepositorio(RepositorioBase):
                     """
                 ), {"empleado_id": empleado_id}).fetchall()
                 
+                if not(info_clinica_empleado):
+                    raise BaseDatosError("EMPLEADO_NO_TIENE_INFO_CLINICA", "Este empleado no posee información clínica.")
+                
                 return info_clinica_empleado
+        except BaseDatosError as error:
+            raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA INFO CLÍNICA DEL EMPLEADO: {error}")
     
