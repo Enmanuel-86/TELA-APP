@@ -1,10 +1,10 @@
-from PyQt5.QtCore import Qt,QPoint
+from PyQt5.QtCore import Qt,QPoint, QSortFilterProxyModel
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (QWidget, QHeaderView, QStyledItemDelegate, QVBoxLayout, 
+from PyQt5.QtWidgets import (QWidget, QHeaderView,  QVBoxLayout, 
                              QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
 from PyQt5 import QtGui, QtCore
 import os
-from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos, Ui_VentanaMostrarDiagnosticoRegistrado
+from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos
 from ..utilidades.base_de_datos import especialidad_servicio
 from ..utilidades.funciones_sistema import FuncionSistema
 
@@ -76,7 +76,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
                 
-        
         
         # Estableciendo estilo de la tabla
             
@@ -164,7 +163,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
         # conexion de botones
         self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro())
-        self.boton_buscar.clicked.connect(lambda _: self.acceder_al_perfil_alumno())
+        self.boton_buscar.clicked.connect(lambda _: self.aplicar_filtro(self.barra_de_busqueda.text()))
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
         self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
@@ -173,7 +172,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
-                    
+        
+        self.barra_de_busqueda.textChanged.connect(lambda :  self.filtrar_por_especialidad() if self.barra_de_busqueda.text() == "" else None)
+        
         
         
         
@@ -192,9 +193,12 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.resultados.itemClicked.connect(self.seleccionar_item)
         self.resultados.hide() 
         
-
+        
   
-                        
+    def actualizar_combobox_especialidades(self):
+        
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
             
             
             
@@ -215,34 +219,80 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
     
     def filtrar_resultados(self, texto):
+        # Limpiamos espacios y convertimos todo a minúsculas
         texto = texto.strip().lower()
+
+        # Limpiamos los resultados anteriores del QListWidget
         self.resultados.clear()
 
+        # Si el campo está vacío, ocultamos la lista y salimos
         if not texto:
             self.resultados.hide()
             return
-        
 
-        
-        coincidencias = [
-            persona for persona in self.lista_alumnos_actual
-            if texto in persona[1] or texto in persona[2].lower()
-        ]
+        # --------------------------------------------------------------------
+        # NUEVO: Buscar según el PROXY (lo que ve el usuario en la tabla)
+        # --------------------------------------------------------------------
+        coincidencias = []
 
+        # Cantidad de filas visibles en el proxy
+        filas_visibles = self.proxy.rowCount()
+
+        # Recorremos fila por fila del modelo filtrado (proxy)
+        for fila in range(filas_visibles):
+
+            # Obtenemos el índice del proxy
+            index_proxy = self.proxy.index(fila, 0)
+
+            # Convertimos el índice del proxy al índice original del modelo
+            index_modelo = self.proxy.mapToSource(index_proxy)
+
+            # Obtenemos la cédula desde la columna 1 del modelo
+            cedula = modelo.index(index_modelo.row(), 1).data()
+
+            # Obtenemos nombre desde la columna 2
+            nombre = modelo.index(index_modelo.row(), 2).data()
+
+            # Obtenemos apellido desde la columna 3
+            apellido = modelo.index(index_modelo.row(), 3).data()
+
+            # Convertimos todo a minúsculas para comparar
+            cedula_lower = str(cedula).lower()
+            nombre_lower = str(nombre).lower()
+            apellido_lower = str(apellido).lower()
+
+            # Si coincide con cedula, nombre o apellido lo agregamos a resultados
+            if texto in cedula_lower or texto in nombre_lower or texto in apellido_lower:
+
+                # Guardamos la información exacta del modelo para mostrarla luego
+                coincidencias.append({
+                    "cedula": cedula,
+                    "nombre": nombre,
+                    "apellido": apellido
+                })
+
+        # Si no hubo coincidencias, ocultamos lista y salimos
         if not coincidencias:
             self.resultados.hide()
             return
 
+        # --------------------------------------------------------------------
+        # Llenamos el QListWidget con las coincidencias encontradas
+        # --------------------------------------------------------------------
         for persona in coincidencias:
-            item = f'{persona[1]} - {persona[2]} {persona[5]}'
+
+            # Texto que se mostrará en la lista desplegable
+            item = f'{persona["cedula"]} - {persona["nombre"]} {persona["apellido"]}'
+
+            # Agregamos el item al QListWidget
             self.resultados.addItem(QListWidgetItem(item))
 
-        # Ocultar si hay una coincidencia exacta por cédula
-        if len(coincidencias) == 1 and coincidencias[0][2] == texto:
+        # Si solo hay una coincidencia exacta por cédula, se oculta la lista
+        if len(coincidencias) == 1 and coincidencias[0]["cedula"].lower() == texto:
             self.resultados.hide()
         else:
+            # Si hay varias coincidencias, mostramos la lista de sugerencias
             self.mostrar_lista()
-
 
 
 
@@ -258,6 +308,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     def seleccionar_item(self, item):
         cedula = item.text().split(" - ")[0]
         self.barra_de_busqueda.setText(cedula)
+        self.aplicar_filtro(cedula)
         self.resultados.hide()
         
         
@@ -284,10 +335,10 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     
                     # luego nos vamos a la pantalla del perfil del alumno
                     self.stacked_widget.setCurrentIndex(6)
-                    
+                    self.barra_de_busqueda.clear()
                     self.mostrar_la_info_alumno(alumno_id= alumno[0])
                     
-                    self.barra_de_busqueda.clear()
+                    
                     
                     break
             
@@ -328,6 +379,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                         
                         alumnos_especialidad = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id = especialidad_id)
                         
+                        self.configurar_filtro()
+                        
                         self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos_especialidad)
                         
                         self.actualizar_tabla(especialidad_id)
@@ -340,9 +393,33 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             modelo.clear()
             self.label_contador.setText("0")
-            QMessageBox.information(self, "Error", f"{e}")
             
-            print("Error en la funcion filtrar_por_especialidad", f"{e}")
+            FuncionSistema.mostrar_errores_por_excepcion(e, "filrar_por_especialidad")
+    
+    
+    
+    def configurar_filtro(self):
+        # Crear el filtro proxy (modelo intermedio entre el modelo real y la tabla)
+        self.proxy = QSortFilterProxyModel()
+
+        # Permitir búsqueda en todas las columnas
+        self.proxy.setFilterKeyColumn(-1)  
+
+        # Hacer el filtrado sin distinguir mayúsculas/minúsculas
+        self.proxy.setFilterCaseSensitivity(Qt.CaseInsensitive)
+
+        # Conectar el QLineEdit al filtro
+        #self.barra_de_busqueda.textChanged.connect(self.aplicar_filtro)
+
+    
+    
+    
+    def aplicar_filtro(self, texto):
+        # Cada vez que escribes algo, el proxy actualizará las filas visibles
+        self.proxy.setFilterFixedString(texto)
+        self.resultados.hide()
+
+        
     
     
     
@@ -360,17 +437,24 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Primero cargamos los datos
         for indice, alumno in enumerate(alumnos):
             datos_visibles = [
-                alumno[5], alumno[1], alumno[2],
-                alumno[3], alumno[9] 
+            alumno[5],  # Matricula
+            alumno[1],  # Cedula
+            alumno[2],  # Primer Nombre
+            alumno[3],  # Apellido
+            alumno[9]   # Situacion
             ]
+
 
             items = []
             for dato in datos_visibles:
                 item = QStandardItem(str(dato) if dato is not None else "")
+                # Evita edición del usuario
                 item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
                 items.append(item)
 
+            # Agregar la fila completa
             modelo.appendRow(items)
+            
             
             for fila in range(modelo.rowCount()):
                 tabla.setRowHeight(fila, 40)
@@ -382,6 +466,15 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
         #  Muy importante: asignar modelo primero
         tabla.setModel(modelo)
+        
+        
+        # PROXY --------------------------------------------
+        # Asociar el modelo original al proxy
+        self.proxy.setSourceModel(modelo)
+
+        # Establecer que la tabla use el proxy y no el modelo directo
+        tabla.setModel(self.proxy)
+
 
         #  Ahora sí añadimos los botones fila por fila
         for fila in range(modelo.rowCount()):
@@ -432,8 +525,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
 
             # Conectar botones
-            #btn_edit.clicked.connect(lambda _, r=fila: self.editar_alumno(r))
-            #btn_delete.clicked.connect(lambda _, r=fila: self.borrar_alumno(r))
+            boton_editar.clicked.connect(lambda _, r=fila: print(r))
+            boton_borrar.clicked.connect(lambda _, r=fila: print(r))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
@@ -442,9 +535,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
             index = modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
             tabla.setIndexWidget(index, widget)
+       
+
+            # Insertar el widget usando el índice convertido para el proxy
+            proxy_index = self.proxy.mapFromSource(index)
+
+            tabla.setIndexWidget(proxy_index, widget)
         
-    
-    
+        
    
 
 
@@ -453,6 +551,13 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     def actualizar_lista_busqueda(self):
 
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
+        
+    
+    def actualizar_especialidades(self):
+
+        self.boton_especialidades.clear()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
 
     # Metodo para actualizar la tabla
     def actualizar_tabla(self, especialidad_id = None):
