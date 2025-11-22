@@ -86,7 +86,7 @@ class HistorialEnfermCronicasRepositorio(RepositorioBase):
                 ), {"empleado_id": empleado_id}).fetchall()
                 
                 if not(historial_enfermedades_cronicas):
-                    raise BaseDatosError("HISTORIAL_ENFERM_CRONICA_NO_EXISTE", "No hay una enfermedad crónica registrada en el historial")
+                    raise BaseDatosError("HISTORIAL_ENFERM_CRONICA_NO_EXISTE", "Este empleado no posee un historial de enfermedades crónicas.")
                 
                 return historial_enfermedades_cronicas
         except BaseDatosError as error:
