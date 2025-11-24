@@ -127,7 +127,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                 self.input_talla_de_zapatos, self.input_estado_residente, self.input_municipio, self.input_direccion_residencia,
                                 self.input_numero_de_telefono, self.input_numero_de_telefono_adicional, self.input_correo_electronico, self.input_correo_electronico_adicional,
                                 self.input_otra_enfermedad, self.input_otro_diagnostico, self.ver_lista_diagnostico, self.ver_lista_enfermedades,
-                                self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral, self.input_titulo_del_cargo, self.label_labores_que_realiza,
+                                self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral, self.input_titulo_del_cargo, self.input_labores_que_realiza,
                                 self.ver_lista_diagnostico, self.ver_lista_enfermedades
                                 )
         
@@ -1166,7 +1166,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         info_detalles_cargo = detalle_cargo_servicio.obtener_detalles_cargo(empleado_id)
         #(2, '100000C', 'BACHILLER CONTRATADO', 'SUB-DIRECTOR ENCARGADO', 'ADMINISTRATIVO', 'BACHILLER', 'Hacer tal cosa', '2025-09-06', '2007-07-19', 18, None)
         
-        print("Informacion detalles del cargo ",info_detalles_cargo)
+        #print("Informacion detalles del cargo ",info_detalles_cargo)
         self.boton_de_cargos.setCurrentText(info_detalles_cargo[2])
         self.boton_funcion_cargos.setCurrentText(info_detalles_cargo[3])
         self.boton_tipo_de_cargo.setCurrentText(info_detalles_cargo[4])
@@ -1190,39 +1190,59 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             # Se coloca esto aqui de manera provicional, ya que hay un error cuando el empleado no tiene ni diagnostico ni enfermedad
         # no retorna ni un none o algo por el estilo, da un error
         
-        # enfermedades
         
-        self.lista_carrito_enfermedades = historial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
-
-        #[(1, 1, 'Artritis'), (2, 1, 'Diabetes')]
         
-        if self.lista_carrito_enfermedades:
-        
-            for enfermedad in self.lista_carrito_enfermedades:
+        try:
+            # enfermedades
             
-                self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2])
-        
-        else:
+            self.lista_carrito_enfermedades = historial_enferm_cronicas_servicio.obtener_historial_enferm_cronica_por_empleado_id(empleado_id)
 
-            pass
-        
-        
-        
-        # diagnosticos
-        
-        self.lista_carrito_diagnosticos = info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(empleado_id)
-        
-        
-        if self.lista_carrito_diagnosticos:
+            #[(1, 1, 'Artritis'), (2, 1, 'Diabetes')]
             
-            for diagnostico in self.lista_carrito_diagnosticos:
+            if self.lista_carrito_enfermedades:
+            
+                for enfermedad in self.lista_carrito_enfermedades:
                 
-                self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico[2])
-        
-        else:
+                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2])
+            
+            else:
 
-            pass
+                pass
+            
+        except Exception as e:
+            
+            print("No tiene enfermedades")
+            
+        else:
+            
+            print("si tiene enfermedades") 
+            
+            
+        try:
         
+            # diagnosticos
+            
+            self.lista_carrito_diagnosticos = info_clinica_empleado_servicio.obtener_info_clinica_por_empleado_id(empleado_id)
+            
+            
+            if self.lista_carrito_diagnosticos:
+                
+                for diagnostico in self.lista_carrito_diagnosticos:
+                    
+                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico[2])
+            
+            else:
+
+                pass
+        
+        
+        except Exception as e:
+            
+            print("No tiene diagnosticos")
+            
+        else:
+            
+            print("Si tiene diagnostico")
         
         
         
@@ -1342,11 +1362,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
             
 
-            #cargo_id = None
-            #funcion_cargo_id = None
-            #tipo_cargo_id = None
-            
-            labores_cargo = self.input_labores_que_realiza.text()
+           
 
             fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())  # Por defecto se establece la fecha actual
 
@@ -1357,8 +1373,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
             titulo_cargo = self.input_titulo_del_cargo.text()
             
-            especialidad_id = None
-
+            labores_cargo = self.input_labores_que_realiza.text()
+            
+            
             #cargo_id, funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1,1
             #funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1
 
@@ -1371,32 +1388,34 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             # buscamos el id en la lista del tipo de cargo del boton seleccionado 
             tipo_cargo_id = self.buscar_id_de_la_lista_del_combobox(self.boton_tipo_de_cargo, lista_tipo_cargo, 1, 0)
         
-                        
+            
+            #especialidad_id = None
+            
+            # si esta habilitado
+            if self.boton_de_especialidad.isEnabled() and not self.boton_de_especialidad.currentIndex() == 0: 
                             
-            if self.boton_tipo_de_cargo.currentText().lower() == "docente" and not self.boton_de_especialidad.currentIndex() == 0:
-            
-                if especialidad_id == None:
-                    
-                    # buscamos el id de la especialidad que esta en la lista del boton 
-                    especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades, 1, 0)
-
-            
-            elif self.boton_tipo_de_cargo.currentText().lower() == "docente" and  self.boton_de_especialidad.currentIndex() == 0:
+                if self.boton_tipo_de_cargo.currentText().lower() == "docente":
                 
-                QMessageBox.warning(self, "Aviso", "Si es docente eliga una especialidad")
-                return
                     
+                    especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, lista_especialidades,1, 0)
+                    print(especialidad_id)
+                
+                elif self.boton_tipo_de_cargo.currentText().lower() == "docente" and  self.boton_de_especialidad.currentIndex() == 0:
+                    
+                    QMessageBox.warning(self, "Aviso", "Si es docente eliga una especialidad")
+                    return
             else:
+                
+                
                 especialidad_id = None
-                                
+                
+                
                                 
 
                         
 
 
         
-            
-            
             try:
                 # esto es para ver si los datos se guardan y mostrarlos por consola
                 
@@ -1428,22 +1447,48 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                 
                 # Actualizamos los datos de info basica del empleado
-                empleado_id = empleado_servicio.actualizar_empleado(empleado_id, campos_empleado)
+                empleado_servicio.actualizar_empleado(empleado_id, campos_empleado)
 
+                
+                
+                campos_info_laboral = {
+                    "cod_depend_cobra": cod_depend_cobra,
+                    "institucion_labora": institucion_labora
+                }
+                
+                info_laboral_servicio.actualizar_info_laboral(empleado_id, campos_info_laboral)
+
+                campos_detalle_cargo = {
+                    "cargo_id": cargo_id,
+                    "funcion_cargo_id": funcion_cargo_id,
+                    "especialidad_id": especialidad_id,
+                    "tipo_cargo_id": tipo_cargo_id,
+                    "titulo_cargo": titulo_cargo,
+                    "labores_cargo": labores_cargo
+                }
+                
+
+                
+                detalle_cargo_servicio.actualizar_detalle_cargo(empleado_id, campos_detalle_cargo)
+
+                
+                
+                
+                
                 # Acá con esto es para más adelante comprobar que si
                 # Si la lista de diagnosticos o la lista de enfermedades crónicas
                 # no está vacía entonces se hace el proceso de asociar el empleado con sus enfermedades o discapacidades
                 # en caso de que alguna esté vacía entonces ese registro en concreto (por ejemplo, si la de discapaciades
                 # está vacía) no se hace
+                """
                 
+                    
                 campos_info_clinica_empleado = {
-                    "empleado_id": empleado_id,
                     "diagnostico_id": None
                 }
                 
                 # declaramos el diccionario
                 campos_historial_enferm_cronicas = {
-                        "empleado_id": empleado_id,
                         "enferm_cronica_id": None
                     }
                 
@@ -1486,27 +1531,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                         
                     
                 
-
-                campos_info_laboral = {
-                    "empleado_id": empleado_id,
-                    "cod_depend_cobra": cod_depend_cobra,
-                    "institucion_labora": institucion_labora
-                }
-
-                campos_detalle_cargo = {
-                    "empleado_id": empleado_id,
-                    "cargo_id": cargo_id,
-                    "funcion_cargo_id": funcion_cargo_id,
-                    "especialidad_id": especialidad_id,
-                    "tipo_cargo_id": tipo_cargo_id,
-                    "titulo_cargo": titulo_cargo,
-                    "labores_cargo": labores_cargo
-                }
-
-                info_laboral_servicio.actualizar_info_laboral(empleado_id, campos_info_laboral)
-                detalle_cargo_servicio.actualizar_detalle_cargo(empleado_id, campos_detalle_cargo)
-
                 
+                """
+                
+
 
                 pantalla_tabla = self.stacked_widget.widget(7)
                 
