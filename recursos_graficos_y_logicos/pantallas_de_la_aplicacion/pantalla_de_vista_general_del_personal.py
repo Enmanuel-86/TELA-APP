@@ -375,6 +375,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
             except Exception as e:
                 
+                QMessageBox.critical(self, "Error", f"No se pudo eliminar a {empleado[1]} {empleado[4]}, {e}")
                 FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_empleado_de_la_bd")   
 
             else:
