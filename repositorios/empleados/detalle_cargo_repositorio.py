@@ -341,7 +341,7 @@ class DetalleCargoRepositorio(RepositorioBase):
                         SELECT
                             especialidades.especialidad
                         FROM tb_detalles_cargo AS detalles_cargo
-                        INNER JOIN tb_especialidades AS especialidades ON detalles_cargo.especialidad_id = especialidades.especialidad_id
+                        LEFT JOIN tb_especialidades AS especialidades ON detalles_cargo.especialidad_id = especialidades.especialidad_id
                         INNER JOIN tb_empleados AS empleados ON detalles_cargo.empleado_id = empleados.empleado_id
                         WHERE empleados.empleado_id = :empleado_id;
                     """
