@@ -372,7 +372,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
                 empleado_servicio.eliminar_empleado(empleado_id)
-        
+                
+                
             except Exception as e:
                 
                 QMessageBox.critical(self, "Error", f"No se pudo eliminar a {empleado[1]} {empleado[4]}, {e}")
@@ -381,7 +382,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             else:
                 
                 QMessageBox.information(self, "Proceso exitoso", f"Se borro exitosamente a {empleado[1]} {empleado[4]}")
-        
+                self.filtrar_por_tipo_cargo()
     
         elif self.msg_box.clickedButton() == self.boton_no:
             
