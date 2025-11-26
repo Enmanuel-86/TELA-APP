@@ -407,14 +407,14 @@ class EmpleadoServicio:
         self, primer_nombre: str,
         segundo_nombre: str, tercer_nombre: str, apellido_paterno: str,
         apellido_materno: str, cedula: str, 
-        fecha_nacimiento: date
+        fecha_nacimiento: date, empleado_id: int
     ) -> List[str]:
         error_primer_nombre = self.validar_primer_nombre(primer_nombre)
         error_segundo_nombre = self.validar_segundo_nombre(segundo_nombre)
         error_tercer_nombre = self.validar_tercer_nombre(tercer_nombre)
         error_apellido_paterno = self.validar_apellido_paterno(apellido_paterno)
         error_apellido_materno = self.validar_apellido_materno(apellido_materno)
-        error_cedula = self.validar_cedula(cedula)
+        error_cedula = self.validar_cedula(cedula, empleado_id)
         error_fecha_nacimiento = self.validar_fecha_nacimiento(fecha_nacimiento)
         
         errores_totales = error_primer_nombre + error_segundo_nombre + error_tercer_nombre + error_apellido_paterno + error_apellido_materno + error_cedula + error_fecha_nacimiento
@@ -439,12 +439,12 @@ class EmpleadoServicio:
         
         return errores_totales
     
-    def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str) -> List[str]:
-        error_num_telefono = self.validar_numero_telefono(num_telefono)
-        error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional)
+    def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str, empleado_id: int) -> List[str]:
+        error_num_telefono = self.validar_numero_telefono(num_telefono, num_telefono_adicional, empleado_id)
+        error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional, num_telefono, empleado_id)
         
-        error_correo_electronico = self.validar_correo_electronico(correo_electronico)
-        error_correo_electronico_adicional = self.validar_correo_electronico_adicional(correo_electronico_adicional)
+        error_correo_electronico = self.validar_correo_electronico(correo_electronico, correo_electronico_adicional, empleado_id)
+        error_correo_electronico_adicional = self.validar_correo_electronico_adicional(correo_electronico_adicional, correo_electronico, empleado_id)
         
         errores_totales = error_num_telefono + error_num_telefono_adicional + error_correo_electronico + error_correo_electronico_adicional
         
