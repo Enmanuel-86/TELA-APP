@@ -230,7 +230,7 @@ class EmpleadoServicio:
         
         return errores
     
-    def validar_numero_telefono(self, num_telefono: str, num_telefono_adicional: str) -> List[str]:
+    def validar_numero_telefono(self, num_telefono: str) -> List[str]:
         errores = []
         
         if not(num_telefono):
@@ -244,10 +244,6 @@ class EmpleadoServicio:
                 
             if not(contiene_numeros):
                 errores.append("Número de teléfono: No debe contener letras, espacios o caracteres especiales.")
-            
-            if (num_telefono_adicional):
-                if (num_telefono == num_telefono_adicional):
-                    errores.append("Número de teléfono: El teléfono principal no puede ser igual que el secundario.")
                 
             if (len(num_telefono) > 15):
                 errores.append("Número de teléfono: No puede contener más de 15 caracteres.")
@@ -393,7 +389,7 @@ class EmpleadoServicio:
         return errores_totales
     
     def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str, empleado_id: Optional[int] = None) -> List[str]:
-        error_num_telefono = self.validar_numero_telefono(num_telefono, num_telefono_adicional)
+        error_num_telefono = self.validar_numero_telefono(num_telefono)
         error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional, num_telefono)
         
         error_correo_electronico = self.validar_correo_electronico(correo_electronico, empleado_id)
