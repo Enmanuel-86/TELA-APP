@@ -534,28 +534,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         print(f"lista actualizada: {nombre_lista}")
     
 
-
-
-    ## Metodo para cargar la lista en los botones desplegables de cargo, tipo cargo, funcion de cargo y especialidad
-    ## para las enfermedades y diagnostico ya sirve
-    def cargar_lista_para_el_combobox(self, lista_catalogo, boton_desplegable, indice_nombre_elemento:int):
-        
-        try:    
-            boton_desplegable.addItem("Seleccione aqui")
-                
-        
-            
-            for elemento_iterado in lista_catalogo:
-                
-                boton_desplegable.addItem(elemento_iterado[indice_nombre_elemento])
-        
-        except Exception as e:
-            
-            print(f"Ocurrio un error: {e}")
-            
-        #else: 
-            
-            #print(f"\nLa lista para el/los boton cargo correctamente")
         
         
     # Metodo para buscar el id que esta en la tupla de la lista que arroja la base de datos
@@ -738,9 +716,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     ## info cgeografica" que verifique si falta un campo requerido  ##
                     
 
-                    estado_reside = self.input_estado_residente.text()
-                    municipio = self.input_municipio.text()
-                    direccion_residencia = self.input_direccion_residencia.text()
+                    estado_reside = self.input_estado_residente.text().capitalize()
+                    municipio = self.input_municipio.text().capitalize()
+                    direccion_residencia = self.input_direccion_residencia.text().capitalize()
 
                     errores_info_geografica = empleado_servicio.validar_info_geografica_empleado(
                         estado_reside, municipio,
@@ -757,10 +735,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     ## "info contactos" que verifique si falta un campo requerido  ##
                     
 
-                    num_telefono = self.input_numero_de_telefono.text().strip()
+                    num_telefono = self.input_numero_de_telefono.text().strip().capitalize()
                     num_telefono_adicional = self.comprobar_si_hay_valor(self.input_numero_de_telefono_adicional)
                     
-                    correo_electronico = self.input_correo_electronico.text().strip()
+                    correo_electronico = self.input_correo_electronico.text().strip().capitalize()
                     correo_electronico_adicional = self.comprobar_si_hay_valor(self.input_correo_electronico_adicional)
 
                     errores_info_contacto = empleado_servicio.validar_info_contacto_empleado(num_telefono, num_telefono_adicional, correo_electronico, correo_electronico_adicional)
@@ -783,8 +761,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                         ## "info laboral" que verifique si falta un campo requerido  ##
                         
-                        cod_depend_cobra = self.input_codigo_por_donde_cobra.text()
-                        institucion_labora = self.input_institucion_donde_laboral.text()
+                        cod_depend_cobra = self.input_codigo_por_donde_cobra.text().strip()
+                        institucion_labora = self.input_institucion_donde_laboral.text().capitalize().strip()
 
 
                         errores_info_laboral = info_laboral_servicio.validar_campos_info_laboral(
@@ -809,7 +787,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                             #funcion_cargo_id = None
                             #tipo_cargo_id = None
                             
-                            labores_cargo = self.input_labores_que_realiza.text()
+                            labores_cargo = self.input_labores_que_realiza.text().capitalize().strip()
 
                             fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())  # Por defecto se establece la fecha actual
 
@@ -818,7 +796,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                             situacion = None  # Por defecto es Activo
 
-                            titulo_cargo = self.input_titulo_del_cargo.text()
+                            titulo_cargo = self.input_titulo_del_cargo.text().capitalize().strip()
                             
                             especialidad_id = None
 
@@ -1265,7 +1243,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             tercer_nombre = self.comprobar_si_hay_valor(self.input_tercer_nombre)
             apellido_paterno = self.input_apellido_paterno.text().capitalize()
             apellido_materno = self.comprobar_si_hay_valor(self.input_apellido_materno)
-            cedula = self.input_cedula.text().capitalize()
+            cedula = self.input_cedula.text()
             
             fecha_nacimiento = self.fecha_de_str_a_date(self.dateedit_fecha_nacimiento.text())
 
@@ -1324,9 +1302,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             ## info cgeografica" que verifique si falta un campo requerido  ##
             
 
-            estado_reside = self.input_estado_residente.text()
-            municipio = self.input_municipio.text()
-            direccion_residencia = self.input_direccion_residencia.text()
+            estado_reside = self.input_estado_residente.text().capitalize()
+            municipio = self.input_municipio.text().capitalize()
+            direccion_residencia = self.input_direccion_residencia.text().capitalize()
 
                    
             ## "info contactos" que verifique si falta un campo requerido  ##
@@ -1350,7 +1328,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             ## "info laboral" que verifique si falta un campo requerido  ##
             
             cod_depend_cobra = self.input_codigo_por_donde_cobra.text()
-            institucion_labora = self.input_institucion_donde_laboral.text()
+            institucion_labora = self.input_institucion_donde_laboral.text().capitalize()
 
 
                         
@@ -1371,9 +1349,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
             situacion = "Activo"  # Por defecto es Activo
 
-            titulo_cargo = self.input_titulo_del_cargo.text()
+            titulo_cargo = self.input_titulo_del_cargo.text().capitalize()
             
-            labores_cargo = self.input_labores_que_realiza.text()
+            labores_cargo = self.input_labores_que_realiza.text().capitalize()
             
             
             #cargo_id, funcion_cargo_id, tipo_cargo_id, especialidad_id = 1,1,1,1
