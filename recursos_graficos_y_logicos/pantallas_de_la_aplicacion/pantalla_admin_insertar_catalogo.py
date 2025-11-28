@@ -7,6 +7,7 @@ import os
 from ..elementos_graficos_a_py import Ui_PantallaInsertarCatalogoBD
 from ..utilidades.funciones_sistema import FuncionSistema
 
+
 ##################################
 # importaciones de base de datos #
 ##################################
@@ -247,7 +248,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
                         
-                        self.actualizar_comboboxs_especialidades()
+                        self.actualizar_especialidades()
 
                         
                         
@@ -646,7 +647,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
-                    self.actualizar_comboboxs_especialidades()
+                    self.actualizar_especialidades()
 
 
                 elif nombre_clave_dict.lower() == "diagnostico":
@@ -1087,23 +1088,17 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         self.boton_registrar_funcion_cargo.clicked.disconnect()
 
 
-    def actualizar_comboboxs_especialidades(self):
-        
+    def actualizar_especialidades(self):
         """
-            Este metodo sirve actualizar los comboboxs de especialidades en las otras pantallas de la aplicacion
-            
-            ***Ejemplo***
-            
-            la pantalla de formulario de alumno y empleado utilizan los catalogos de especialidades
-            la pantalla de asistencia de alumnos utiliza el catalogo de especialidades
-            
-            
-            Esto se hace con fin de actualizar cada lista en las otras pantallas cuando sea necesario 
-        
+            Este metodo sirve para actualizar las especialidades en las pantallas qe utilicen esta lista catalogo
+
         
         """
         
         
         pantalla_vista_general_alumnos = self.stacked_widget.widget(2)
-        pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
+        pantalla_vista_general_personal = self.stacked_widget.widget(7)
         
+        
+        pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
+        pantalla_vista_general_personal.actualizar_especialidades()

@@ -85,11 +85,7 @@ info_clinica_empleado_servicio = InfoClinicaEmpleadoServicio(info_clinica_emplea
 ##################################
 
 
-lista_cargos = cargo_empleado_servicio.obtener_todos_cargos_empleados()
-lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
 
-
-lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
 
 # este es por cargo
 #lista_cargo_actual = detalle_cargo_servicio.obtener_todos_detalles_cargo()
@@ -104,10 +100,14 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
         
         self.stacked_widget = stacked_widget
-        
-        
         self.setupUi(self)
         
+        
+        self.lista_cargos = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+                
+                
         self.msg_box = QMessageBox(self)
         
         # Crear botones personalizados
@@ -118,6 +118,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
         self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                    indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
+        
+        
         ## Ruta relativa de las imagenes ##
         self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
         self.boton_control_de_llegada.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","control_de_llegada.png")))
@@ -228,13 +230,11 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         ## logica de Base de datos para mostrar a los empleados
         
         self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
-        
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         
         # cargar catalogo de los tipos de cargos
-        FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
-        
-        FuncionSistema.cargar_elementos_para_el_combobox(lista_tipo_cargo, self.boton_de_opciones, 1, 0)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 0)
         
         ######################################################################
         # Para cargar la lista de empleados, el metodo para cargar empleados #
@@ -257,9 +257,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
     ##########################################################################################################################
     ##########################################################################################################################
+    def actualizar_especialidades(self):
+    
+        """
+            Este metodo es de uso exclusivo para la pantalla de inserta_catalogo.py
+        """
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 1)
+    
+    
     # Metodo para la busqueda dinamica
-    
-    
     def actualizar_lista_busqueda(self):
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
@@ -329,18 +336,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             pantalla_editar_empleado.editar_datos_empleado(empleado_id)
             
             
-            
-            
-            
-            
-            
-            
-
-            
         except Exception as e:
             
             
             FuncionSistema.mostrar_errores_por_excepcion(e, "Habilitar_edicion")
+
+    
+    
             
             
     def eliminar_empleado_de_la_bd(self, fila):
@@ -372,7 +374,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
                 empleado_servicio.eliminar_empleado(empleado_id)
-        
+                
+                
             except Exception as e:
                 
                 QMessageBox.critical(self, "Error", f"No se pudo eliminar a {empleado[1]} {empleado[4]}, {e}")
@@ -381,7 +384,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             else:
                 
                 QMessageBox.information(self, "Proceso exitoso", f"Se borro exitosamente a {empleado[1]} {empleado[4]}")
-        
+                self.filtrar_por_tipo_cargo()
     
         elif self.msg_box.clickedButton() == self.boton_no:
             
@@ -505,7 +508,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             # print("\n",self.boton_de_opciones.currentText())
             
             # aqui se obtiene el id del tipo de cargo que esta en el combobox boton_de_opciones
-            for tipo_cargo in lista_tipo_cargo:
+            for tipo_cargo in self.lista_tipo_cargo:
                 
                 # si la seleccion esta en el catalogo
                 if tipo_cargo_selec in tipo_cargo:
@@ -539,7 +542,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
         
         # buscar en la base de datos el tipo de cargo docente
-        for tipo_cargo in lista_tipo_cargo:
+        for tipo_cargo in self.lista_tipo_cargo:
                 
             # si el cargo es docente que me guarde el id
             if "docente" in tipo_cargo[1].lower():
@@ -555,7 +558,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             if self.boton_especialidades.currentText() and self.boton_especialidades.isEnabled() and not self.boton_especialidades.currentIndex() == 0:
                 
                 # iteramos cada tupla de la lista
-                for especialidad in lista_especialidades:
+                for especialidad in self.lista_especialidades:
                     
                     # comparamos si la especialidad seleecionada esta en la tupla ejemplo:
                     # "ceramicas" esta en (1,"ceramica")? si es verdadero realiza las instrucciones
