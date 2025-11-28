@@ -88,14 +88,14 @@ class EmpleadoServicio:
         
         return errores
     
-    def validar_cedula(self, cedula: str) -> List[str]:
+    def validar_cedula(self, cedula: str, empleado_id: Optional[int] = None) -> List[str]:
         errores = []
         
         if (not(cedula)):
             errores.append("Cédula: No puede estar vacío.")
         elif (cedula):
             cedula_sin_espacios = cedula.replace(" ", "")
-            ya_existe_cedula = self.repositorio.obtener_por_cedula(cedula)
+            empleado_a_actualizar_info = None
             contiene_numeros = all(caracter in digits for caracter in cedula)
             if (len(cedula_sin_espacios) == 0):
                 errores.append("Cédula: No puede estar vacío.")
@@ -103,8 +103,23 @@ class EmpleadoServicio:
             if not(contiene_numeros):
                 errores.append("Cédula: No debe contener letras, espacios o caracteres especiales.")
             
-            if (ya_existe_cedula):
-                errores.append("Cédula: Esta cédula ya está registrada.")
+            if (empleado_id):
+                empleado_a_actualizar_info = self.obtener_empleado_por_id(empleado_id)
+                
+            try:
+                empleado_ya_existe = self.repositorio.obtener_por_cedula(cedula)
+                    
+                if (empleado_ya_existe):
+                    if (empleado_id is None):
+                        errores.append("Cédula: Esta cédula ya está registrada.")
+                    elif (empleado_a_actualizar_info):
+                        id_empleado_ya_existente = empleado_ya_existe[0]
+                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                            
+                        if (id_empleado_ya_existente != id_empleado_a_actualizar):
+                            errores.append("Cédula: Esta cédula ya está registrada.")
+            except BaseDatosError:
+                pass
             
             if (len(cedula) > 10):
                 errores.append("Cédula: No puede contener más de 10 caracteres.")
@@ -223,8 +238,10 @@ class EmpleadoServicio:
         elif (num_telefono):
             num_telefono_sin_espacios = num_telefono.replace(" ", "")
             contiene_numeros = all(caracter in digits for caracter in num_telefono)
+            
             if (len(num_telefono_sin_espacios) == 0):
                 errores.append("Número de teléfono: No puede estar vacío.")
+                
             if not(contiene_numeros):
                 errores.append("Número de teléfono: No debe contener letras, espacios o caracteres especiales.")
                 
@@ -233,60 +250,102 @@ class EmpleadoServicio:
         
         return errores
     
-    def validar_numero_telefono_adicional(self, num_telefono_adicional: str) -> List[str]:
+    def validar_numero_telefono_adicional(self, num_telefono_adicional: str, num_telefono_principal: str) -> List[str]:
         errores = []
         
         if (num_telefono_adicional):
             num_telefono_adicional_sin_espacios = num_telefono_adicional.replace(" ", "")
             contiene_numeros = all(caracter in digits for caracter in num_telefono_adicional)
+            
             if (len(num_telefono_adicional_sin_espacios) == 0):
                 errores.append("Número de teléfono adicional: No puede estar vacío.")
+                
             if not(contiene_numeros):
                 errores.append("Número de teléfono adicional: No debe contener letras, espacios o caracteres especiales.")
+            
+            if (num_telefono_principal):
+                if (num_telefono_principal == num_telefono_adicional):
+                    errores.append("Número de teléfono adicional: El teléfono secundario no puede ser igual que el principal.")
                 
             if (len(num_telefono_adicional) > 15):
                 errores.append("Número de teléfono adicional: No puede contener más de 15 caracteres.")
         
         return errores
     
-    def validar_correo_electronico(self, correo_electronico: str) -> List[str]:
+    def validar_correo_electronico(self, correo_electronico: str, empleado_id: Optional[int]) -> List[str]:
         errores = []
         
         if (not(correo_electronico)):
             errores.append("Correo electrónico: No puede estar vacío.")
         elif (correo_electronico):
             correo_electronico_sin_espacios = correo_electronico.replace(" ", "")
-            ya_existe_correo_electronico = self.repositorio.obtener_por_correo(correo_electronico)
+            empleado_a_actualizar_info = None
             estructura_correo_electronico = re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$", correo_electronico)
+            
             if (len(correo_electronico_sin_espacios) == 0):
                 errores.append("Correo electrónico: No puede estar vacío.")
-        
+            
             if not(estructura_correo_electronico):
                 errores.append("Correo electrónico: La estructura del correo electrónico es inválida.")
             
-            if (ya_existe_correo_electronico):
-                errores.append("Correo electrónico: Este correo electrónico ya está registrado.")
+            if (empleado_id):
+                empleado_a_actualizar_info = self.obtener_empleado_por_id(empleado_id)
+            
+            try:
+                empleado_ya_existe_correo_principal = self.repositorio.obtener_por_correo(correo_electronico)
+                
+                if (empleado_ya_existe_correo_principal):
+                    if (empleado_id is None):
+                        errores.append("Correo electrónico: Este correo electrónico ya está registrado.")
+                    elif (empleado_a_actualizar_info):
+                        id_empleado_existente_correo_principal = empleado_ya_existe_correo_principal[0]
+                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                        
+                        if (id_empleado_existente_correo_principal != id_empleado_a_actualizar):
+                            errores.append("Correo electrónico: Este correo electrónico ya está registrado.")
+            except Exception:
+                pass
             
             if (len(correo_electronico) > 50):
                 errores.append("Correo electrónico: No puede contener más de 50 caracteres.")
         
         return errores
     
-    def validar_correo_electronico_adicional(self, correo_electronico_adicional: str) -> List[str]:
+    def validar_correo_electronico_adicional(self, correo_electronico_adicional: str, correo_principal: str, empleado_id: Optional[int] = None) -> List[str]:
         errores = []
         
         if (correo_electronico_adicional):
             correo_electronico_adicional_sin_espacios = correo_electronico_adicional.replace(" ", "")
-            ya_existe_correo_electronico = self.repositorio.obtener_por_correo_adicional(correo_electronico_adicional)
+            empleado_a_actualizar_info = None
             estructura_correo_electronico = re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$", correo_electronico_adicional)
+            
             if (len(correo_electronico_adicional_sin_espacios) == 0):
                 errores.append("Correo electrónico adicional: No puede estar vacío.")
         
             if not(estructura_correo_electronico):
                 errores.append("Correo electrónico adicional: La estructura del correo electrónico es inválida.")
             
-            if (ya_existe_correo_electronico):
-                errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
+            if (empleado_id):
+                empleado_a_actualizar_info = self.obtener_empleado_por_id(empleado_id)
+            
+            if (correo_principal):
+                if (correo_principal == correo_electronico_adicional):
+                    errores.append("Correo electrónico adicional: Tu correo secundario no puede ser igual que el principal.")
+            
+            try:
+                empleado_ya_existe_correo_adicional = self.repositorio.obtener_por_correo_adicional(correo_electronico_adicional)
+                
+                if (empleado_ya_existe_correo_adicional):
+                    if (empleado_id is None):
+                        errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
+                    elif (empleado_a_actualizar_info):
+                        id_empleado_existente_correo_adicional = empleado_ya_existe_correo_adicional[0]
+                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                        
+                        if (id_empleado_existente_correo_adicional != id_empleado_a_actualizar):
+                            errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
+            except Exception:
+                pass
             
             if (len(correo_electronico_adicional) > 50):
                 errores.append("Correo electrónico adicional: No puede contener más de 50 caracteres.")
@@ -297,14 +356,14 @@ class EmpleadoServicio:
         self, primer_nombre: str,
         segundo_nombre: str, tercer_nombre: str, apellido_paterno: str,
         apellido_materno: str, cedula: str, 
-        fecha_nacimiento: date
+        fecha_nacimiento: date, empleado_id: Optional[int] = None
     ) -> List[str]:
         error_primer_nombre = self.validar_primer_nombre(primer_nombre)
         error_segundo_nombre = self.validar_segundo_nombre(segundo_nombre)
         error_tercer_nombre = self.validar_tercer_nombre(tercer_nombre)
         error_apellido_paterno = self.validar_apellido_paterno(apellido_paterno)
         error_apellido_materno = self.validar_apellido_materno(apellido_materno)
-        error_cedula = self.validar_cedula(cedula)
+        error_cedula = self.validar_cedula(cedula, empleado_id)
         error_fecha_nacimiento = self.validar_fecha_nacimiento(fecha_nacimiento)
         
         errores_totales = error_primer_nombre + error_segundo_nombre + error_tercer_nombre + error_apellido_paterno + error_apellido_materno + error_cedula + error_fecha_nacimiento
@@ -329,12 +388,12 @@ class EmpleadoServicio:
         
         return errores_totales
     
-    def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str) -> List[str]:
+    def validar_info_contacto_empleado(self, num_telefono: str, num_telefono_adicional: str, correo_electronico: str, correo_electronico_adicional: str, empleado_id: Optional[int] = None) -> List[str]:
         error_num_telefono = self.validar_numero_telefono(num_telefono)
-        error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional)
+        error_num_telefono_adicional = self.validar_numero_telefono_adicional(num_telefono_adicional, num_telefono)
         
-        error_correo_electronico = self.validar_correo_electronico(correo_electronico)
-        error_correo_electronico_adicional = self.validar_correo_electronico_adicional(correo_electronico_adicional)
+        error_correo_electronico = self.validar_correo_electronico(correo_electronico, empleado_id)
+        error_correo_electronico_adicional = self.validar_correo_electronico_adicional(correo_electronico_adicional, correo_electronico, empleado_id)
         
         errores_totales = error_num_telefono + error_num_telefono_adicional + error_correo_electronico + error_correo_electronico_adicional
         
@@ -499,3 +558,93 @@ if __name__ == "__main__":
         print("\n".join(errores_totales))
     else:
         print("Registro de la info de contacto exitosa")"""
+    
+    
+    """empleado_a_actualizar = {
+        "id": 1,
+        "cedula": "17536256"
+    }
+    
+    id_empleado_a_actualizar = empleado_a_actualizar.get("id")
+    nueva_cedula = "17536256"
+    
+    errores = empleado_servicio.validar_cedula(nueva_cedula, id_empleado_a_actualizar)
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("Eres el mismo empleado, todo bien")"""
+    
+    """empleado_a_actualizar = {
+        "id": 1,
+        "correo_principal": "lazarinadedios@hotmail.com"
+    }
+    
+    id_empleado_a_actualizar = empleado_a_actualizar.get("id")
+    nuevo_correo_principal = "lazarinadedios@hotmail.com"
+    
+    errores = empleado_servicio.validar_correo_electronico(nuevo_correo_principal, id_empleado_a_actualizar)
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("Eres el mismo empleado, todo bien con el correo")"""
+    
+    
+    
+    
+    """empleado_a_actualizar = {
+        "id": 1,
+        "correo_principal": "lazarinadedios@hotmail.com",
+        "correo_adicional": "lazarinadedios@hotmail.com"
+    }
+    
+    correo_principal_empleadao = empleado_a_actualizar.get("correo_principal")
+    correo_secundario_empleado = empleado_a_actualizar.get("correo_adicional")
+    id_empleado_a_actualizar = empleado_a_actualizar.get("id")
+    
+    errores = empleado_servicio.validar_correo_electronico(
+        correo_principal_empleadao,
+        correo_secundario_empleado,
+        id_empleado_a_actualizar
+    )
+    
+    errores = empleado_servicio.validar_correo_electronico_adicional(
+        correo_secundario_empleado,
+        correo_principal_empleadao,
+        id_empleado_a_actualizar
+    )
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("Todo bien.")"""
+    
+    
+    
+    """empleado_a_actualizar = {
+        "id": 1,
+        "num_principal": "04160839587",
+        "num_secundario": "04160839587"
+    }
+    
+    num_principal_empleado = empleado_a_actualizar.get("num_principal")
+    num_secundario_empleado = empleado_a_actualizar.get("num_secundario")
+    id_empleado_a_actualizar = empleado_a_actualizar.get("id")
+    
+    errores = empleado_servicio.validar_numero_telefono(
+        num_principal_empleado,
+        num_secundario_empleado,
+        id_empleado_a_actualizar
+    )
+    
+    errores = empleado_servicio.validar_numero_telefono_adicional(
+        num_secundario_empleado,
+        num_principal_empleado,
+        id_empleado_a_actualizar
+    )
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("todo bien")"""
