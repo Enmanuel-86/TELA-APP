@@ -13,18 +13,18 @@ class RepresentanteServicio:
         errores = []
         
         if not(cedula):
-            errores.append("Cédula: No puede estar vacío.")
+            errores.append("Cédula del representante: No puede estar vacío.")
         elif (cedula):
             cedula_sin_espacios = cedula.replace(" ", "")
             contiene_numeros = all(caracter in digits for caracter in cedula)
             if (len(cedula_sin_espacios) == 0):
-                errores.append("Cédula: No puede estar vacío.")
+                errores.append("Cédula del representante: No puede estar vacío.")
             
             if not(contiene_numeros):
-                errores.append("Cédula: No debe contener letras, espacios o caracteres especiales.")
+                errores.append("Cédula del representante: No debe contener letras, espacios o caracteres especiales.")
             
             if (len(cedula) > 10):
-                errores.append("Cédula: No puede contener más de 10 caracteres.")
+                errores.append("Cédula del representante: No puede contener más de 10 caracteres.")
         
         return errores
     

@@ -11,24 +11,40 @@ class AlumnoServicio:
     def __init__(self, repositorio: RepositorioBase):
         self.repositorio = repositorio
     
-    def validar_cedula(self, cedula: str) -> List[str]:
+    def validar_cedula(self, cedula: str, alumno_id: Optional[int] = None) -> List[str]:
         errores = []
         
         if (cedula):
             cedula_sin_espacios = cedula.replace(" ", "")
-            ya_existe_cedula = self.obtener_alumno_por_cedula(cedula)
+            alumno_a_actualizar = None
             contiene_numeros = all(caracter in digits for caracter in cedula)
-            if (ya_existe_cedula):
-                errores.append("Cédula: Esta cédula ya está registrada.")
+            
+            if (alumno_id):
+                alumno_a_actualizar = self.obtener_alumno_por_id(alumno_id)
+            
+            try:
+                alumno_ya_existe = self.obtener_alumno_por_cedula(cedula)
+                
+                if (alumno_ya_existe):
+                    if (alumno_id is None):
+                        errores.append("Cédula del alumno: Esta cédula ya está registrada.")
+                    elif (alumno_a_actualizar):
+                        id_alumno_existente = alumno_ya_existe[0]
+                        id_alumno_a_actualizar = alumno_a_actualizar[0]
+                        
+                        if (id_alumno_existente != id_alumno_a_actualizar):
+                            errores.append("Cédula del alumno: Esta cédula ya está registrada.")
+            except BaseDatosError:
+                pass
             
             if (len(cedula_sin_espacios) == 0):
-                errores.append("Cédula: No puede contener solo espacios vacíos.")
+                errores.append("Cédula del alumno: No puede contener solo espacios vacíos.")
             
             if not(contiene_numeros):
-                errores.append("Cédula: No debe contener letras, espacios o caracteres especiales.")
+                errores.append("Cédula del alumno: No debe contener letras, espacios o caracteres especiales.")
             
             if (len(cedula) > 10):
-                errores.append("Cédula: No puede contener más de 10 caracteres.")
+                errores.append("Cédula del alumno: No puede contener más de 10 caracteres.")
         
         return errores
     
@@ -177,9 +193,9 @@ class AlumnoServicio:
         self, cedula: str,
         primer_nombre: str, segundo_nombre: str, tercer_nombre: str,
         apellido_paterno: str, apellido_materno: str,
-        relacion_con_rep: str, fecha_ingreso_institucion: date
+        relacion_con_rep: str, fecha_ingreso_institucion: date, alumno_id: Optional[int] = None
     ) -> List[str]:
-        error_cedula = self.validar_cedula(cedula)
+        error_cedula = self.validar_cedula(cedula, alumno_id)
         error_primer_nombre = self.validar_primer_nombre(primer_nombre)
         error_segundo_nombre = self.validar_segundo_nombre(segundo_nombre)
         error_tercer_nombre = self.validar_tercer_nombre(tercer_nombre)
