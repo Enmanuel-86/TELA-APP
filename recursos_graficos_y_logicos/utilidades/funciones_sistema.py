@@ -543,8 +543,33 @@ class FuncionesDelSistema:
     def comprobar_si_hay_valor(self, variable):
         
         """
-        Metodo para comprobar y hay valor por asignar en la variable o se asigna None
-        Este metodo sirve para comprobar esos valores que pueden ser None
+        Metodo para comprobar si la variable tiene un valor para mostrar en pantalla
+        
+        Este metodo sirve en el caso de mostrar una informacion en pantalla teniendo en cuenta que la base de datos puede retornar o un valor o none
+        
+        ***Ejemplo***
+        
+        Si es None retornamos a "No tiene"
+        
+        Si tiene algun valor retornamos el valor de la variable
+        
+        
+        
+        alumnos = [ Manuel,    #1er nombre
+                    Alejandro, #2do nombre
+                    Perez,     #1er apellido
+                    None,      #2do apellido
+                    102031203  #cedula
+                    ]
+                    
+                    
+        mostrar_datos_en_pantalla(alumnos) # resultado: muestra todos los campos y el que esta en None lo muestra como "No tiene"
+        
+        
+        esto se hace para no confundirlo con un error
+        
+        
+        
     
         """
         
