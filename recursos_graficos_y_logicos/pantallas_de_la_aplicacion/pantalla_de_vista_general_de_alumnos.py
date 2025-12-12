@@ -168,7 +168,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         self.tabla_ver_alumnos.doubleClicked.connect(self.acceder_al_prefil_del_alumno_desde_la_tabla)
-        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados) 
+        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
+        self.barra_de_busqueda.returnPressed.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()) )
         
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
@@ -532,8 +533,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
 
             # Conectar botones
-            boton_editar.clicked.connect(lambda _, r=fila: print(r))
-            boton_borrar.clicked.connect(lambda _, r=fila: print(r))
+            boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
+            boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
@@ -576,9 +577,68 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
 
     
-            
-                
+    def habilitar_edicion_alumno(self, fila):
         
+        """
+            Este Metodo sirve para acceder a la pantalla del formulario del alumno pero con la informacion ya registradra
+            para asi poder editarla.
+            
+            
+        """
+        
+        try: 
+            
+            # Obtener el texto de la primera columna (nombre)
+            cedula = modelo.item(fila, 1).text()
+            
+            alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+            
+            
+            
+            pantalla_perfil_alumno = self.stacked_widget.widget(3)
+            
+            
+            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_alumno")
+            
+        else:
+            
+            self.stacked_widget.setCurrentIndex(3)
+            
+            # metodo para mandar el id del alumno y colocar la info en los inputs
+            
+            
+        
+        
+                
+    def eliminar_alumno_de_la_bd(self, fila):
+        
+        """
+            Este metodo sirve para eliminar al alumno de la base de datos
+        
+        """
+        
+        try: 
+            
+            # Obtener el texto de la primera columna (nombre)
+            cedula = modelo.item(fila, 1).text()
+            
+            alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+            
+            
+            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
+            
+        else:
+            
+            alumnos_servicio.eliminar_alumno(alumno_id)
+            
+            
+            
 
     
     
