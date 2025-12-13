@@ -1,6 +1,7 @@
 from datetime import datetime, date
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import QDate
 import traceback
 import os
 from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
@@ -1753,3 +1754,76 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         except Exception as e:
             
             self.mostrar_errores_por_excepcion(e)
+            
+            
+            
+    def editar_datos_alumno(self, alumno_id: int):
+        
+        """
+            Este metodo sirve para editar los datos del alumno
+            se hace desde la pantalla del formulario de registro del alumno para aprovechar algunos metodos ya prestablecidos
+        
+        """
+        
+        info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
+        
+        info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
+        
+        info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
+        
+        info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
+        
+        
+        try:
+            
+            # Información Basica
+            #(1, '30466351', 'Ariana', 'G', None, 'Mijares', 'G', '2000-08-21', 25, 'Barcelona', 'F', 1, 1, '2025-09-06', 'Ingresado')
+            self.input_cedula.setText(info_basica[1])
+            self.input_primer_nombre.setText(info_basica[2])
+            self.input_segundo_nombre.setText(info_basica[3])
+            self.input_tercer_nombre.setText("" if not info_basica[4] else info_basica[4])
+            self.input_apellido_paterno.setText(info_basica[5])
+            self.input_apellido_materno.setText("" if not info_basica[6] else info_basica[6])
+            
+            self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.fromString(info_basica[7], 'yyyy-dd-MM'))
+            
+            self.input_lugar_de_nacimiento.setText(info_basica[9])
+            
+            if info_basica[10] == 'M':
+                self.input_sexo_masculino.setChecked(True)
+                
+            elif info_basica[10] == 'F':
+                
+                self.input_sexo_femenino.setChecked(True) 
+                
+                
+            
+            if info_basica[11] == 1:
+                
+                self.input_cma_si.setChecked(True)
+                
+            elif info_basica[11] == 0:
+                
+                self.input_cma_no.setChecked(True)
+                
+            
+            if info_basica[12] == 1:
+                
+                self.input_imt_si.setChecked(True)
+                
+            elif info_basica[12] == 0:
+                
+                self.input_imt_no.setChecked(True)
+                
+                
+            
+            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion basica")
+            
+        
+        
+        
+        
+                
