@@ -612,7 +612,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             self.stacked_widget.setCurrentIndex(3)
             
-            # metodo para mandar el id del alumno y colocar la info en los inputs
+            pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
             
             
         
