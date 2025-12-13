@@ -383,7 +383,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
             else:
                 
-                QMessageBox.information(self, "Proceso exitoso", f"Se borro exitosamente a {empleado[1]} {empleado[4]}")
+                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {empleado[1]} {empleado[4]} con exito")
                 self.filtrar_por_tipo_cargo()
     
         elif self.msg_box.clickedButton() == self.boton_no:
