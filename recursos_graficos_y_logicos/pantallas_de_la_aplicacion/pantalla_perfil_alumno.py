@@ -43,7 +43,7 @@ info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 # Instancia Servicios
 
 
-alumnos_servicio = AlumnoServicio(alumnos_repositorio)
+alumno_servicio = AlumnoServicio(alumnos_repositorio)
 
 inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
 
@@ -106,12 +106,12 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         
         # cargamos todos la infomacion del alumno
-        info_basica = alumnos_servicio.obtener_alumno_por_id(alumno_id)
+        info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
         
-        datos_representante = alumnos_servicio.obtener_datos_representante(alumno_id)
+        datos_representante = alumno_servicio.obtener_datos_representante(alumno_id)
         
         
-        info_academica = alumnos_servicio.obtener_info_academica_alumno(alumno_id)
+        info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
         
         info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
         
