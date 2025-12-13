@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt,QPoint, QSortFilterProxyModel
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QWidget, QHeaderView,  QVBoxLayout, 
-                             QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
+                             QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel, QApplication)
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos
@@ -76,6 +76,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
                 
+        self.msg_box = QMessageBox(self)
+        
+        # Crear botones personalizados
+        self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
+        self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         # Estableciendo estilo de la tabla
             
@@ -619,24 +624,39 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             Este metodo sirve para eliminar al alumno de la base de datos
         
         """
+        cedula = modelo.item(fila, 1).text()
         
-        try: 
+        alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+        
+        alumno = alumnos_servicio.obtener_alumno_por_id(alumno_id)
+        print(alumno)
+        
+        self.msg_box.setWindowTitle("Advertencia")
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}?")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        # si le da a SI, verificamos primero
+        if self.msg_box.clickedButton() == self.boton_si:
+            try: 
+                                
+                alumnos_servicio.eliminar_alumno(alumno_id)
+                
+                
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
+                
+            else:
+                
+                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {alumno[2]} {alumno[5]} con exito")
+                self.filtrar_por_especialidad()
+                
+        elif self.msg_box.clickedButton() == self.boton_no: 
             
-            # Obtener el texto de la primera columna (nombre)
-            cedula = modelo.item(fila, 1).text()
-            
-            alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
-            
-            
-            
-        except Exception as e:
-            
-            FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
-            
-        else:
-            
-            alumnos_servicio.eliminar_alumno(alumno_id)
-            
+            return  
             
             
 
