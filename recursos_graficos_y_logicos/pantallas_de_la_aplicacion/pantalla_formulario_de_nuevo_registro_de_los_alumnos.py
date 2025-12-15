@@ -139,9 +139,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
 
 
-        # Inicialización de variables (asegúrate de que los nombres coincidan)
-        self.calendario = None  # Usa 'calendario' en todo el código
-        self.current_label = None
+        
         
         # esta variable es para almacenar el id del representate para el registro del alumno
         self.representante_id = None
@@ -174,8 +172,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         today = datetime.now()
         dia_de_hoy = today.strftime("%Y-%m-%d")
         
-        self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.currentDate())
-        self.dateedit_fecha_ingreso_especialidad.setDate(QtCore.QDate.currentDate())
+        self.dateedit_fecha_ingreso_tela.setDate(QDate.currentDate())
+        self.dateedit_fecha_ingreso_especialidad.setDate(QDate.currentDate())
         
         
         self.boton_buscar_cedula_representante.clicked.connect(self.comprobar_representante_registrado)
@@ -1767,6 +1765,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
         
+        info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
+        
         info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
         
         info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
@@ -1785,7 +1785,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.input_apellido_paterno.setText(info_basica[5])
             self.input_apellido_materno.setText("" if not info_basica[6] else info_basica[6])
             
-            self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate.fromString(info_basica[7], 'yyyy-dd-MM'))
+            self.dateedit_fecha_nacimiento.setDate(QDate.fromString(info_basica[7], 'yyyy-MM-dd'))
             
             self.input_lugar_de_nacimiento.setText(info_basica[9])
             
@@ -1816,14 +1816,38 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 self.input_imt_no.setChecked(True)
                 
                 
+            self.dateedit_fecha_ingreso_tela.setDate(QDate.fromString(info_basica[13], 'yyyy-MM-dd'))
             
+            self.input_situacion.setText(info_basica[14])
+                
+        
             
         except Exception as e:
             
             FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion basica")
             
+        else:
+            
+            print("La informacion basica cargo correctamente")
         
         
         
+        try:
+            
+            # Info medidas del alumno
+            # (1, 1, 1.42, 56.9, 'M', 30, 36)
+            
+            self.input_estatura.setText("" if not info_medidas[2] else str(info_medidas[2]))
+            self.input_peso.setText("" if not info_medidas[3] else str(info_medidas[3]))
+            self.input_talla_camisa.setText("" if not info_medidas[4] else str(info_medidas[4]))
+            self.input_talla_pantalon.setText("" if not info_medidas[5] else str(info_medidas[5]))
+            self.input_talla_zapatos.setText("" if not info_medidas[6] else str(info_medidas[6]))
+            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion de las medidas")
+            
+        else:
+            
+            print("La informacion sobre las medidas del alumno cargo correctamente")
         
-                
