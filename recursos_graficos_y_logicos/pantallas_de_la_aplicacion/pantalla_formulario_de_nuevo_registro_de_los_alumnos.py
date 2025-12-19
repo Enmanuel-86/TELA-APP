@@ -575,7 +575,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     # usamos el metodo para que se vea en la vista previa de cuantos
                     # diagnostico tiene el alumno
-                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_carrito_diagnosticos, self.boton_diagnostico, lista_diagnostico[1])
+                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_carrito_diagnosticos, lista_diagnostico[1])
                     
                     lista_diagnostico = tuple(lista_diagnostico)
                     
@@ -1761,14 +1761,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
         
-        info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
-        
-        info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
-        
-        
-        
-        info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
-        
         info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
         print(f"Edicion de los datos del alumnos {info_basica[2]} {info_basica[5]}")
@@ -1829,7 +1821,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # Info academica
         try:
-
+            info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
             self.input_escolaridad.setText(info_academica[1])
             self.input_escolaridad.setText(info_academica[2])
             
@@ -1848,7 +1840,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         try:
 
             # (1, 1, 1.42, 56.9, 'M', 30, 36)
-            
+            info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
             self.input_estatura.setText("" if not info_medidas[2] else str(info_medidas[2]))
             self.input_peso.setText("" if not info_medidas[3] else str(info_medidas[3]))
             self.input_talla_camisa.setText("" if not info_medidas[4] else str(info_medidas[4]))
@@ -1889,13 +1881,31 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 texto_mostrar = cuenta_bancaria[2] + " " + cuenta_bancaria[3]
                 
                 self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, texto_a_mostrar= texto_mostrar)
-            
-            
-
+                
         except:
             
             #FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion bancaria")
             print("No posee informacion bancaria")
+            
         else:
             
             print("La informacion bancaria del alumno cargo correctamente")
+            
+            
+        # Diagnostico del alumno
+        try:
+            info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
+            #(2, 2, 'Espectro Autista leve', datetime.date(2013, 5, 14), 'Dr Jose', 'D-365515', datetime.date(2016, 11, 15), 'Carbamazepina', None)
+            self.lista_carrito_diagnosticos.clear()
+            
+            for diagnostico in info_clinica:
+                
+                self.lista_carrito_diagnosticos.append(diagnostico)
+                
+                self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, self.lista_carrito_diagnosticos, diagnostico[2] )
+                
+        except:
+            print("error al cargar los diagnosticos del alumno")
+        else:
+            
+            print("Los diagnosticos cargaron correctamente")
