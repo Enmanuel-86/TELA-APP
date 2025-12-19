@@ -303,7 +303,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     # Metodo para comprobar que el representante esta registrado o no, para evitar redundancia/no repetir los datos
     def comprobar_representante_registrado(self):
         
+        """
+            Este metodo sirve para comprobar si el representante esta registrado en la base de datos usando su cedula
+            
+            Si esta registrado: Se asocia con el alumno con quien se va a registrar
+            
+            Si no esta registrado: Se registra el representante
         
+        """
         
         cedula_representante = self.input_buscar_por_cedula.text().strip()
         
@@ -448,7 +455,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
                 
-                self.cargar_lista_para_el_combobox(self.lista_diagnostico, self.boton_diagnostico, 1)
+                FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico, self.boton_diagnostico, 1, 1)
                 
                 self.boton_diagnostico.setCurrentIndex(0)
                 
@@ -674,7 +681,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
 
     # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input = None, texto_a_mostrar=None):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)
@@ -1769,14 +1776,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
         
+        
+        
         info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
         
         info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
-        
+        print(f"Edicion de los datos del alumnos {info_basica[2]} {info_basica[5]}")
+        # Información Basica
         try:
-            
-            # Información Basica
+             
             #(1, '30466351', 'Ariana', 'G', None, 'Mijares', 'G', '2000-08-21', 25, 'Barcelona', 'F', 1, 1, '2025-09-06', 'Ingresado')
             self.input_cedula.setText(info_basica[1])
             self.input_primer_nombre.setText(info_basica[2])
@@ -1819,22 +1828,36 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.dateedit_fecha_ingreso_tela.setDate(QDate.fromString(info_basica[13], 'yyyy-MM-dd'))
             
             self.input_situacion.setText(info_basica[14])
-                
-        
+                            
+        except:
             
-        except Exception as e:
-            
-            FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion basica")
+            print("Error al cargar la Informacion basica")
             
         else:
             
             print("La informacion basica cargo correctamente")
         
         
-        
+        # Info academica
         try:
+
+            self.input_escolaridad.setText(info_academica[1])
+            self.input_escolaridad.setText(info_academica[2])
             
-            # Info medidas del alumno
+        except:
+            
+            print("Error al cargar la Informacion academica")
+            
+        else:
+            
+            print("La informacion academica cargo correctamente")
+        
+        
+        
+        
+        # Info medidas del alumno
+        try:
+
             # (1, 1, 1.42, 56.9, 'M', 30, 36)
             
             self.input_estatura.setText("" if not info_medidas[2] else str(info_medidas[2]))
@@ -1843,11 +1866,37 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.input_talla_pantalon.setText("" if not info_medidas[5] else str(info_medidas[5]))
             self.input_talla_zapatos.setText("" if not info_medidas[6] else str(info_medidas[6]))
             
-        except Exception as e:
+        except:
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion de las medidas")
+            print("Error al cargar la Informacion de las medidas")
             
         else:
             
-            print("La informacion sobre las medidas del alumno cargo correctamente")
+            print("La informacion medidas del alumno cargo correctamente")
+
+
+        # deshabilitamos los campos del representante ya que eso se edita en otra pantalla
+        self.input_buscar_por_cedula.setDisabled(True)
+        self.input_nombre_del_representante.setDisabled(True)
+        self.input_apellido_del_representante.setDisabled(True)
+        self.input_carga_familiar.setDisabled(True)
+        self.input_direccion_residencia.setDisabled(True)
+        self.input_numero_de_telefono.setDisabled(True)
+        self.input_numero_de_telefono_adicional.setDisabled(True)
+        self.input_estado_civil.setDisabled(True)
         
+        
+        # info bancaria
+        try:
+            info_banacaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
+            print(info_banacaria)
+            
+            
+
+        except:
+            
+            #FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion bancaria")
+            print("No posee informacion bancaria")
+        else:
+            
+            print("La informacion bancaria del alumno cargo correctamente")
