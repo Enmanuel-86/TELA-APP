@@ -151,8 +151,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # lista vacia para agrupar los diagnosticos de manera temporal
         
-        self.lista_diagnostico_regitrados = []
-        self.cuentas_bancarias_alumno = []
+        self.lista_carrito_diagnosticos = []
+        self.lista_carrito_cuentas_bancarias = []
         
         
         # periodo escolar
@@ -575,15 +575,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     # usamos el metodo para que se vea en la vista previa de cuantos
                     # diagnostico tiene el alumno
-                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_diagnostico_regitrados, self.boton_diagnostico, lista_diagnostico[1])
+                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_carrito_diagnosticos, self.boton_diagnostico, lista_diagnostico[1])
                     
                     lista_diagnostico = tuple(lista_diagnostico)
                     
                     
                     
-                    self.lista_diagnostico_regitrados.append(lista_diagnostico)
+                    self.lista_carrito_diagnosticos.append(lista_diagnostico)
                     
-                    print(f"Lista de diagnostico: {self.lista_diagnostico_regitrados}")
+                    print(f"Lista de diagnostico: {self.lista_carrito_diagnosticos}")
                     
                     
                     #  limpia los inputs
@@ -653,19 +653,19 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     # agregamos la lista de cuenta a la lista donde van a estar todas las cuentas de banco
                     cuenta = tuple(cuenta)
                     
-                    self.cuentas_bancarias_alumno.append(cuenta)
+                    self.lista_carrito_cuentas_bancarias.append(cuenta)
                     
                     mostrar_texto = cuenta[0] + " " + cuenta [1]
                     
                     # Mandamos los datos a la funcion que los agrega a la vista previa
-                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.cuentas_bancarias_alumno, self.input_tipo_de_cuenta ,mostrar_texto)
+                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, mostrar_texto)
                 
                     # limpiamos los inputs
                     self.input_tipo_de_cuenta.clear()
                     self.input_numero_de_cuenta.clear()
                     
                     
-                    print(f"Lista de cuentas: {self.cuentas_bancarias_alumno}")
+                    print(f"Lista de cuentas: {self.lista_carrito_cuentas_bancarias}")
                 
                 
             else :
@@ -675,13 +675,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             
         except Exception as e:
-            
-            print("error")
+            FuncionSistema.mostrar_errores_por_excepcion(e, "anadir_cuentas_bancarias_alumno")
+            print("Error en la funcion añadir cuentas bancarias del alumno")
             
     
 
     # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input = None, texto_a_mostrar=None):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, texto_a_mostrar=None):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)
@@ -733,7 +733,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     
                                     """)
         
-        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
         row_layout.addWidget(delete_button)
 
         # Asignar el widget al QListWidgetItem
@@ -744,7 +744,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
 
     # Metodo para borrar diagnostico a la vista previa
-    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item):
+    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista,  item):
         
         
         # Logica para borrar el registro del diagnostico de la lista
@@ -759,7 +759,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
         
         
-        enfoca_input.setFocus()
+        
         
         
         
@@ -899,8 +899,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             # Limpiamos la listas "carrito"
             
-            self.lista_diagnostico_regitrados.clear()
-            self.cuentas_bancarias_alumno.clear()
+            self.lista_carrito_diagnosticos.clear()
+            self.lista_carrito_cuentas_bancarias.clear()
             
         except Exception as e:
             self.mostrar_errores_por_excepcion(e)
@@ -926,18 +926,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print(f"error en un segmento: {e}")
     
     
-    # Metodo para comprobar si la input tiene texto o valor
-    # si es SI: guarda el valor
-    # si es NO: guarda NONE
-    def comprobar_si_hay_valor(self, elemento_a_comprobar):
-        
-        if elemento_a_comprobar.text().strip():
-            
-            return elemento_a_comprobar.text().strip().capitalize()
-        
-        else:
-            
-            return None
+
     
     
     # Metodo para guardar todos los datos del Alumno en la BD
@@ -953,13 +942,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             # vamos guardando los valores de los inputs en las varibles
             
             primer_nombre = self.input_primer_nombre.text().strip().capitalize()
-            segundo_nombre = self.comprobar_si_hay_valor(self.input_segundo_nombre)
-            tercer_nombre = self.comprobar_si_hay_valor(self.input_tercer_nombre)
+            segundo_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_segundo_nombre)
+            tercer_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_tercer_nombre)
             
             
             
             apellido_paterno = self.input_apellido_paterno.text().strip().capitalize()
-            apellido_materno = self.comprobar_si_hay_valor(self.input_apellido_materno)
+            apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno)
             cedula = self.input_cedula.text().strip()
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
             situacion = self.input_situacion.text().strip().capitalize()
@@ -1253,7 +1242,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     
                                     # comprobamos si la lista de diagnostico por lo menos tenga un diagnostico registrado
                                     
-                                    if not self.lista_diagnostico_regitrados:
+                                    if not self.lista_carrito_diagnosticos:
                                         
                                         # si no tiene un registro que le muestre un mensaje de que no a registrado un diagnostico para el alumno
                                         QMessageBox.warning(self, "Aviso", f"El alumno {primer_nombre} {apellido_paterno}, no tiene diagnosticos registrados")
@@ -1338,10 +1327,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                     }
                                                     
                                                     # si la lista de cuentas de banco esta llena
-                                                    if self.cuentas_bancarias_alumno:
+                                                    if self.lista_carrito_cuentas_bancarias:
                                                         
                                                         # quiero que itere cada tupla y me de los valores y los registre
-                                                        for cuenta_n in self.cuentas_bancarias_alumno:
+                                                        for cuenta_n in self.lista_carrito_cuentas_bancarias:
                                                             
                                                             campos_info_bancaria_alumno["alumno_id"] = alumno_id
                                                             campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_n[0]
@@ -1365,9 +1354,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                         }
                                                     
                                                     # si hay diagnosticos en el "carrito" de diagnosticos
-                                                    if self.lista_diagnostico_regitrados:
+                                                    if self.lista_carrito_diagnosticos:
                                                         
-                                                        for diagnostico in self.lista_diagnostico_regitrados:
+                                                        for diagnostico in self.lista_carrito_diagnosticos:
                                                             
                                                             
                                                             campos_info_clinica_alumno["alumno_id"] = alumno_id
@@ -1588,7 +1577,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         
                                         # comprobamos si la lista de diagnostico por lo menos tenga un diagnostico registrado
                                         
-                                        if not self.lista_diagnostico_regitrados:
+                                        if not self.lista_carrito_diagnosticos:
                                             
                                             # si no tiene un registro que le muestre un mensaje de que no a registrado un diagnostico para el alumno
                                             QMessageBox.warning(self, "Aviso", f"El alumno {primer_nombre} {apellido_paterno}, no tiene diagnosticos registrados")
@@ -1672,10 +1661,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                         }
                                                         
                                                         # si la lista de cuentas de banco esta llena
-                                                        if self.cuentas_bancarias_alumno:
+                                                        if self.lista_carrito_cuentas_bancarias:
                                                             
                                                             # quiero que itere cada tupla y me de los valores y los registre
-                                                            for cuenta_n in self.cuentas_bancarias_alumno:
+                                                            for cuenta_n in self.lista_carrito_cuentas_bancarias:
                                                                 
                                                                 campos_info_bancaria_alumno["alumno_id"] = alumno_id
                                                                 campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_n[0]
@@ -1699,9 +1688,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                             }
                                                         
                                                         # si hay diagnosticos en el "carrito" de diagnosticos
-                                                        if self.lista_diagnostico_regitrados:
+                                                        if self.lista_carrito_diagnosticos:
                                                             
-                                                            for diagnostico in self.lista_diagnostico_regitrados:
+                                                            for diagnostico in self.lista_carrito_diagnosticos:
                                                                 
                                                                 
                                                                 campos_info_clinica_alumno["alumno_id"] = alumno_id
@@ -1890,6 +1879,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         try:
             info_banacaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
             print(info_banacaria)
+            
+            self.lista_carrito_cuentas_bancarias.clear()
+            
+            for cuenta_bancaria in info_banacaria:
+                
+                self.lista_carrito_cuentas_bancarias.append(cuenta_bancaria)
+                
+                texto_mostrar = cuenta_bancaria[2] + " " + cuenta_bancaria[3]
+                
+                self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, texto_a_mostrar= texto_mostrar)
             
             
 
