@@ -660,25 +660,13 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             
 
-    
-    
-        
-    
-        
-
-    
-        
-        
-        
-
-
-
-    
-
 
     # Metodo para ir a la pantalla para registrar un alumno
     def ir_crear_nuevo_registro(self):
         self.stacked_widget.setCurrentIndex(3)
+        pantalla_perfil_alumno = self.stacked_widget.widget(3)
+        
+        pantalla_perfil_alumno.boton_finalizar.setText("Guardar")
         
     # Metodo para ir a la pantalla de asistenca de alumnos
     def ir_asistencia_alumno(self):
