@@ -45,25 +45,24 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.espacio_superior.setMaximumSize(QtCore.QSize(16777215, 100))
         self.espacio_superior.setStyleSheet("background:none;")
         self.espacio_superior.setObjectName("espacio_superior")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.espacio_superior)
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_superior)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.espacio_para_las_opciones = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_las_opciones.sizePolicy().hasHeightForWidth())
         self.espacio_para_las_opciones.setSizePolicy(sizePolicy)
-        self.espacio_para_las_opciones.setMinimumSize(QtCore.QSize(330, 90))
-        self.espacio_para_las_opciones.setMaximumSize(QtCore.QSize(500, 16777215))
+        self.espacio_para_las_opciones.setMinimumSize(QtCore.QSize(461, 90))
+        self.espacio_para_las_opciones.setMaximumSize(QtCore.QSize(461, 90))
         self.espacio_para_las_opciones.setSizeIncrement(QtCore.QSize(0, 0))
         self.espacio_para_las_opciones.setStyleSheet("background:none;")
         self.espacio_para_las_opciones.setFrameShadow(QtWidgets.QFrame.Plain)
         self.espacio_para_las_opciones.setObjectName("espacio_para_las_opciones")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.espacio_para_las_opciones)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.titulo_de_boton_de_opciones = QtWidgets.QLabel(self.espacio_para_las_opciones)
+        self.titulo_de_boton_de_opciones.setGeometry(QtCore.QRect(230, 10, 257, 24))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(30)
@@ -73,7 +72,7 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.titulo_de_boton_de_opciones.setMaximumSize(QtCore.QSize(500, 16777215))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(19)
+        font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.titulo_de_boton_de_opciones.setFont(font)
@@ -82,8 +81,8 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    color: rgb(255, 255, 255);\n"
 "}")
         self.titulo_de_boton_de_opciones.setObjectName("titulo_de_boton_de_opciones")
-        self.verticalLayout_6.addWidget(self.titulo_de_boton_de_opciones, 0, QtCore.Qt.AlignTop)
         self.boton_especialidades = QtWidgets.QComboBox(self.espacio_para_las_opciones)
+        self.boton_especialidades.setGeometry(QtCore.QRect(230, 40, 220, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -92,6 +91,70 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_especialidades.setMinimumSize(QtCore.QSize(220, 40))
         self.boton_especialidades.setMaximumSize(QtCore.QSize(200, 16777215))
         self.boton_especialidades.setStyleSheet("QComboBox{\n"
+"\n"
+"    font: 75 12pt \"Arial\";\n"
+"    padding-left:15px;\n"
+"background:white;\n"
+"    border:1px solid black;\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
+"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: 1px solid #ccc;\n"
+"    background-color: white;\n"
+"    color: #333;\n"
+"    padding: 5px;  /* Margen interno de la lista */\n"
+"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    padding: 8px; /* Espaciado interno de cada elemento */\n"
+"    margin: 4px; /* Separación entre los elementos */\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {\n"
+"    background-color: #c5c1c1;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"        background-color:rgb(189, 189, 189);\n"
+"        color: #808080;\n"
+"        border: 1px solid rgb(127, 127, 127);\n"
+"    }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.boton_especialidades.setEditable(False)
+        self.boton_especialidades.setCurrentText("")
+        self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
+        self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
+        self.boton_especialidades.setPlaceholderText("")
+        self.boton_especialidades.setObjectName("boton_especialidades")
+        self.boton_entidades = QtWidgets.QComboBox(self.espacio_para_las_opciones)
+        self.boton_entidades.setGeometry(QtCore.QRect(0, 40, 220, 40))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.boton_entidades.sizePolicy().hasHeightForWidth())
+        self.boton_entidades.setSizePolicy(sizePolicy)
+        self.boton_entidades.setMinimumSize(QtCore.QSize(220, 40))
+        self.boton_entidades.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.boton_entidades.setStyleSheet("QComboBox{\n"
 "\n"
 "    font: 75 12pt \"Arial\";\n"
 "    padding-left:15px;\n"
@@ -133,28 +196,49 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "\n"
 "")
-        self.boton_especialidades.setEditable(False)
-        self.boton_especialidades.setCurrentText("")
-        self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
-        self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
-        self.boton_especialidades.setPlaceholderText("")
-        self.boton_especialidades.setObjectName("boton_especialidades")
-        self.verticalLayout_6.addWidget(self.boton_especialidades, 0, QtCore.Qt.AlignTop)
-        self.horizontalLayout_2.addWidget(self.espacio_para_las_opciones, 0, QtCore.Qt.AlignTop)
+        self.boton_entidades.setEditable(False)
+        self.boton_entidades.setCurrentText("")
+        self.boton_entidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
+        self.boton_entidades.setIconSize(QtCore.QSize(40, 40))
+        self.boton_entidades.setPlaceholderText("")
+        self.boton_entidades.setObjectName("boton_entidades")
+        self.titulo_de_boton_de_opciones_2 = QtWidgets.QLabel(self.espacio_para_las_opciones)
+        self.titulo_de_boton_de_opciones_2.setGeometry(QtCore.QRect(0, 10, 51, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(30)
+        sizePolicy.setHeightForWidth(self.titulo_de_boton_de_opciones_2.sizePolicy().hasHeightForWidth())
+        self.titulo_de_boton_de_opciones_2.setSizePolicy(sizePolicy)
+        self.titulo_de_boton_de_opciones_2.setMinimumSize(QtCore.QSize(0, 0))
+        self.titulo_de_boton_de_opciones_2.setMaximumSize(QtCore.QSize(500, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.titulo_de_boton_de_opciones_2.setFont(font)
+        self.titulo_de_boton_de_opciones_2.setStyleSheet("QLabel{\n"
+"    \n"
+"    color: rgb(255, 255, 255);\n"
+"}")
+        self.titulo_de_boton_de_opciones_2.setObjectName("titulo_de_boton_de_opciones_2")
+        self.horizontalLayout.addWidget(self.espacio_para_las_opciones)
+        spacerItem = QtWidgets.QSpacerItem(41, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.espacio_para_barra_de_busqueda = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_barra_de_busqueda.sizePolicy().hasHeightForWidth())
         self.espacio_para_barra_de_busqueda.setSizePolicy(sizePolicy)
-        self.espacio_para_barra_de_busqueda.setMinimumSize(QtCore.QSize(450, 90))
+        self.espacio_para_barra_de_busqueda.setMinimumSize(QtCore.QSize(421, 90))
+        self.espacio_para_barra_de_busqueda.setMaximumSize(QtCore.QSize(421, 90))
         self.espacio_para_barra_de_busqueda.setStyleSheet("background:none;")
         self.espacio_para_barra_de_busqueda.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_para_barra_de_busqueda.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_barra_de_busqueda.setObjectName("espacio_para_barra_de_busqueda")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.espacio_para_barra_de_busqueda)
-        self.horizontalLayout.setObjectName("horizontalLayout")
         self.barra_de_busqueda = QtWidgets.QLineEdit(self.espacio_para_barra_de_busqueda)
+        self.barra_de_busqueda.setGeometry(QtCore.QRect(10, 40, 300, 40))
         self.barra_de_busqueda.setMinimumSize(QtCore.QSize(300, 40))
         self.barra_de_busqueda.setMaximumSize(QtCore.QSize(300, 40))
         font = QtGui.QFont()
@@ -166,8 +250,9 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.barra_de_busqueda.setStyleSheet("QLineEdit{\n"
 "    \n"
 "    background-color: rgb(255, 255, 255);\n"
-"    border-radius:10px;\n"
-"    padding-left: 5px;\n"
+"    border-top-left-radius:10px;    \n"
+"    border-bottom-left-radius:10px;\n"
+"    padding-left: 10px;\n"
 " padding-right:5px;\n"
 "    padding-top:1px;\n"
 "    border:1px solid black  ;\n"
@@ -183,10 +268,10 @@ class Ui_VistaGeneralDeAlumnos(object):
 "\n"
 "}\n"
 "")
-        self.barra_de_busqueda.setAlignment(QtCore.Qt.AlignCenter)
+        self.barra_de_busqueda.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.barra_de_busqueda.setObjectName("barra_de_busqueda")
-        self.horizontalLayout.addWidget(self.barra_de_busqueda, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
         self.boton_buscar = QtWidgets.QPushButton(self.espacio_para_barra_de_busqueda)
+        self.boton_buscar.setGeometry(QtCore.QRect(310, 40, 100, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(20)
         sizePolicy.setVerticalStretch(20)
@@ -206,7 +291,9 @@ class Ui_VistaGeneralDeAlumnos(object):
 "    background-color: #008a47;\n"
 "\n"
 "    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
+"    \n"
+"    border-top-right-radius:10px;    \n"
+"    border-bottom-right-radius:10px;\n"
 "\n"
 "}\n"
 "\n"
@@ -221,8 +308,9 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_buscar.setIcon(icon)
         self.boton_buscar.setIconSize(QtCore.QSize(25, 25))
         self.boton_buscar.setObjectName("boton_buscar")
-        self.horizontalLayout.addWidget(self.boton_buscar, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
-        self.horizontalLayout_2.addWidget(self.espacio_para_barra_de_busqueda)
+        self.horizontalLayout.addWidget(self.espacio_para_barra_de_busqueda)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.contador = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -230,29 +318,11 @@ class Ui_VistaGeneralDeAlumnos(object):
         sizePolicy.setHeightForWidth(self.contador.sizePolicy().hasHeightForWidth())
         self.contador.setSizePolicy(sizePolicy)
         self.contador.setMinimumSize(QtCore.QSize(160, 0))
-        self.contador.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.contador.setMaximumSize(QtCore.QSize(160, 86))
         self.contador.setStyleSheet("background:transparent;")
         self.contador.setObjectName("contador")
         self.gridLayout = QtWidgets.QGridLayout(self.contador)
         self.gridLayout.setObjectName("gridLayout")
-        self.label_contador = QtWidgets.QLabel(self.contador)
-        self.label_contador.setMinimumSize(QtCore.QSize(50, 0))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(17)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_contador.setFont(font)
-        self.label_contador.setStyleSheet("QLabel{\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    \n"
-"    \n"
-"\n"
-"}")
-        self.label_contador.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_contador.setObjectName("label_contador")
-        self.gridLayout.addWidget(self.label_contador, 1, 1, 1, 1, QtCore.Qt.AlignHCenter)
         self.imagen_contador = QtWidgets.QLabel(self.contador)
         self.imagen_contador.setMaximumSize(QtCore.QSize(40, 40))
         self.imagen_contador.setStyleSheet("color: rgb(255, 255, 255);")
@@ -279,7 +349,25 @@ class Ui_VistaGeneralDeAlumnos(object):
 "}")
         self.label_titulo_contador.setObjectName("label_titulo_contador")
         self.gridLayout.addWidget(self.label_titulo_contador, 0, 0, 1, 2, QtCore.Qt.AlignHCenter)
-        self.horizontalLayout_2.addWidget(self.contador, 0, QtCore.Qt.AlignRight)
+        self.label_contador = QtWidgets.QLabel(self.contador)
+        self.label_contador.setMinimumSize(QtCore.QSize(50, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(17)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_contador.setFont(font)
+        self.label_contador.setStyleSheet("QLabel{\n"
+"\n"
+"    color: rgb(255, 255, 255);\n"
+"    \n"
+"    \n"
+"\n"
+"}")
+        self.label_contador.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_contador.setObjectName("label_contador")
+        self.gridLayout.addWidget(self.label_contador, 1, 1, 1, 1, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout.addWidget(self.contador)
         self.verticalLayout_4.addWidget(self.espacio_superior)
         self.espacio_central = QtWidgets.QFrame(self.espacio_principal)
         self.espacio_central.setStyleSheet("QFrame{\n"
@@ -358,8 +446,8 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_generar_informe.setIconSize(QtCore.QSize(26, 26))
         self.boton_generar_informe.setObjectName("boton_generar_informe")
         self.horizontalLayout_3.addWidget(self.boton_generar_informe)
-        spacerItem = QtWidgets.QSpacerItem(183, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
+        spacerItem2 = QtWidgets.QSpacerItem(183, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
         self.boton_crear_nuevo_registro = QtWidgets.QPushButton(self.espacio_botones)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -396,8 +484,8 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
         self.horizontalLayout_3.addWidget(self.boton_crear_nuevo_registro)
-        spacerItem1 = QtWidgets.QSpacerItem(182, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem1)
+        spacerItem3 = QtWidgets.QSpacerItem(182, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
         self.boton_asistencia_alumnos = QtWidgets.QPushButton(self.espacio_botones)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -442,16 +530,18 @@ class Ui_VistaGeneralDeAlumnos(object):
 
         self.retranslateUi(VistaGeneralDeAlumnos)
         self.boton_especialidades.setCurrentIndex(-1)
+        self.boton_entidades.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(VistaGeneralDeAlumnos)
 
     def retranslateUi(self, VistaGeneralDeAlumnos):
         _translate = QtCore.QCoreApplication.translate
         VistaGeneralDeAlumnos.setWindowTitle(_translate("VistaGeneralDeAlumnos", "Form"))
-        self.titulo_de_boton_de_opciones.setText(_translate("VistaGeneralDeAlumnos", "Especialidad ocupacional"))
+        self.titulo_de_boton_de_opciones.setText(_translate("VistaGeneralDeAlumnos", "Especialidad"))
+        self.titulo_de_boton_de_opciones_2.setText(_translate("VistaGeneralDeAlumnos", "Ente"))
         self.barra_de_busqueda.setPlaceholderText(_translate("VistaGeneralDeAlumnos", "Buscar alumno por su cédula"))
         self.boton_buscar.setText(_translate("VistaGeneralDeAlumnos", " Buscar"))
-        self.label_contador.setText(_translate("VistaGeneralDeAlumnos", "0"))
         self.label_titulo_contador.setText(_translate("VistaGeneralDeAlumnos", "N° Estudiantes"))
+        self.label_contador.setText(_translate("VistaGeneralDeAlumnos", "0"))
         self.boton_generar_informe.setText(_translate("VistaGeneralDeAlumnos", "  Generar informe"))
         self.boton_crear_nuevo_registro.setText(_translate("VistaGeneralDeAlumnos", "  Crear nuevo registro"))
         self.boton_asistencia_alumnos.setText(_translate("VistaGeneralDeAlumnos", "  Asistencia alumnos"))
