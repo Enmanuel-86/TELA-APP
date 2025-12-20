@@ -1761,10 +1761,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
         
-        info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
-        print(f"Edicion de los datos del alumnos {info_basica[2]} {info_basica[5]}")
-        # Información Basica
+        print("--------------------------------------------------------------------")
+        print(f"Edicion de los datos del alumno/a: {info_basica[2]} {info_basica[5]}")
+        # 1. Información Basica
         try:
              
             #(1, '30466351', 'Ariana', 'G', None, 'Mijares', 'G', '2000-08-21', 25, 'Barcelona', 'F', 1, 1, '2025-09-06', 'Ingresado')
@@ -1816,10 +1816,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("La informacion basica cargo correctamente")
+            print("1. La informacion basica cargo correctamente")
         
         
-        # Info academica
+        # 2. Info academica
         try:
             info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
             self.input_escolaridad.setText(info_academica[1])
@@ -1831,12 +1831,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("La informacion academica cargo correctamente")
+            print("2. La informacion academica cargo correctamente")
         
         
         
         
-        # Info medidas del alumno
+        # 3. Info medidas del alumno
         try:
 
             # (1, 1, 1.42, 56.9, 'M', 30, 36)
@@ -1853,7 +1853,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("La informacion medidas del alumno cargo correctamente")
+            print("3. La informacion medidas del alumno cargo correctamente")
 
 
         # deshabilitamos los campos del representante ya que eso se edita en otra pantalla
@@ -1867,10 +1867,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.input_estado_civil.setDisabled(True)
         
         
-        # info bancaria
+        # 4. info bancaria
         try:
             info_banacaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
-            print(info_banacaria)
             
             self.lista_carrito_cuentas_bancarias.clear()
             
@@ -1889,10 +1888,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("La informacion bancaria del alumno cargo correctamente")
+            print("4. La informacion bancaria del alumno cargo correctamente")
             
             
-        # Diagnostico del alumno
+        # 5. Diagnostico del alumno
         try:
             info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
             #(2, 2, 'Espectro Autista leve', datetime.date(2013, 5, 14), 'Dr Jose', 'D-365515', datetime.date(2016, 11, 15), 'Carbamazepina', None)
@@ -1908,4 +1907,24 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print("error al cargar los diagnosticos del alumno")
         else:
             
-            print("Los diagnosticos cargaron correctamente")
+            print("5. Los diagnosticos cargaron correctamente")
+            
+        
+        # 6. Especialidad por inscribir
+        try:
+            info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
+            #(1, '30466351', 'Ariana', 'Mijares', 'Artesanía', 'MAT-1234567', '2025-09-06', 0, '2025-2026', 'Ingresado', 'Padre')
+            
+            self.boton_de_especialidad.setCurrentText(info_inscripcion[4])
+            self.dateedit_fecha_ingreso_especialidad.setDate(QDate.fromString(info_inscripcion[6], 'yyyy-MM-dd'))
+            
+            
+        except:
+            
+            print("la especialidad por inscribir no cargo correctamente")
+            
+        else:
+            
+            print("6. la especialidad por inscribir cargo correctamente")
+            
+            
