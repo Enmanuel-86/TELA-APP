@@ -718,7 +718,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     
                                     QPushButton{
                                         background:red;
-                                        border-radius:20px;
+                                        border-radius:0px;
                                         icon-size:28px;
                                     
                                     }
@@ -1660,6 +1660,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             se hace desde la pantalla del formulario de registro del alumno para aprovechar algunos metodos ya prestablecidos
         
         """
+        self.boton_finalizar.setText("Editar")
         
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
         
