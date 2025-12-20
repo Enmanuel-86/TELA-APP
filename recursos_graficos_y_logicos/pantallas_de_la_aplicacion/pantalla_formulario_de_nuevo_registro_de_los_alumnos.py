@@ -844,13 +844,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             # vamos guardando los valores de los inputs en las varibles
             
             primer_nombre = self.input_primer_nombre.text().strip().capitalize()
-            segundo_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_segundo_nombre)
-            tercer_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_tercer_nombre)
+            segundo_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_segundo_nombre.text().strip().capitalize())
+            tercer_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_tercer_nombre.text().strip().capitalize())
             
             
             
             apellido_paterno = self.input_apellido_paterno.text().strip().capitalize()
-            apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno)
+            apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno.text().strip().capitalize())
             cedula = self.input_cedula.text().strip()
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
             situacion = self.input_situacion.text().strip().capitalize()
@@ -1303,7 +1303,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 
                                             except Exception as e:
                                                 
-                                                self.mostrar_errores_por_excepcion(e)
+                                                print("No se puedo guardar la informacion del alumno correctamente")
                                                 return
                             
                             
@@ -1661,9 +1661,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         """
         self.boton_finalizar.setText("Editar")
+        self.boton_finalizar.clicked.disconnect()
+        self.boton_finalizar.clicked.connect(lambda _: self.confirmar_edicion_datos_alumno(alumno_id))
         
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
-        
+        info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
         print("--------------------------------------------------------------------")
         print(f"Edicion de los datos del alumno/a: {info_basica[2]} {info_basica[5]}")
@@ -1671,12 +1673,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         try:
              
             #(1, '30466351', 'Ariana', 'G', None, 'Mijares', 'G', '2000-08-21', 25, 'Barcelona', 'F', 1, 1, '2025-09-06', 'Ingresado')
+            #(1, '30466351', 'Ariana', 'Mijares', 'Artesanía', 'MAT-1234567', '2025-09-06', 0, '2025-2026', 'Ingresado', 'Padre')
             self.input_cedula.setText(info_basica[1])
             self.input_primer_nombre.setText(info_basica[2])
             self.input_segundo_nombre.setText(info_basica[3])
             self.input_tercer_nombre.setText("" if not info_basica[4] else info_basica[4])
             self.input_apellido_paterno.setText(info_basica[5])
             self.input_apellido_materno.setText("" if not info_basica[6] else info_basica[6])
+            self.input_relacion_con_representante.setText(info_inscripcion[10])
             
             self.dateedit_fecha_nacimiento.setDate(QDate.fromString(info_basica[7], 'yyyy-MM-dd'))
             
@@ -1816,7 +1820,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # 6. Especialidad por inscribir
         try:
-            info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
+            
             #(1, '30466351', 'Ariana', 'Mijares', 'Artesanía', 'MAT-1234567', '2025-09-06', 0, '2025-2026', 'Ingresado', 'Padre')
             
             self.boton_de_especialidad.setCurrentText(info_inscripcion[4])
@@ -1832,3 +1836,493 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print("6. la especialidad por inscribir cargo correctamente")
             
             
+    def confirmar_edicion_datos_alumno(self, alumno_id):
+        """
+            Este metodo srve para tener todos los datos de los inputs subir o que se edito a la base de datos
+        
+        """
+        
+        
+            
+        try:
+            
+            ################################################################################################
+            # Primera parte
+            # Informacion del alumno
+            
+            # vamos guardando los valores de los inputs en las varibles
+            
+            primer_nombre = self.input_primer_nombre.text().strip().capitalize()
+            segundo_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_segundo_nombre.text().strip().capitalize())
+            tercer_nombre = FuncionSistema.comprobar_si_hay_valor(self.input_tercer_nombre.text().strip().capitalize())
+            
+            
+            
+            apellido_paterno = self.input_apellido_paterno.text().strip().capitalize()
+            apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno.text().strip().capitalize())
+            cedula = self.input_cedula.text().strip()
+            relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
+            situacion = self.input_situacion.text().strip().capitalize()
+            
+            fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
+            
+            
+            if self.input_sexo_masculino.isChecked():
+                
+                sexo = "M"
+                
+            elif self.input_sexo_femenino.isChecked():
+                
+                sexo = "F"
+                
+            else:
+                
+                sexo = None
+            
+            campos_datos_alumno_1 = {
+                "primer_nombre": primer_nombre,
+                "segundo_nombre": segundo_nombre,
+                "tercer_nombre": tercer_nombre,
+                "apellido_paterno": apellido_paterno,
+                "apellido_materno": apellido_materno,
+                "cedula": cedula,
+                "relacion_con_rep": relacion_con_rep,
+                "sexo": sexo,
+                "situacion": situacion,
+                "fecha_ingreso_institucion": fecha_ingreso_institucion
+                }
+            
+            errores_primera_info_alumno = alumno_servicio.validar_campos_primera_info_alumno(
+                    #campos_datos_alumno_1.get("cedula"),
+                    campos_datos_alumno_1.get("primer_nombre"),
+                    campos_datos_alumno_1.get("segundo_nombre"),
+                    campos_datos_alumno_1.get("tercer_nombre"),
+                    campos_datos_alumno_1.get("apellido_paterno"),
+                    campos_datos_alumno_1.get("apellido_materno"),
+                    campos_datos_alumno_1.get("relacion_con_rep"),
+                    campos_datos_alumno_1.get("fecha_ingreso_institucion")
+                )
+            
+            # verificamos que no hay errores
+            if errores_primera_info_alumno:
+                
+                self.mostrar_errores_antes_de_guardar(errores_primera_info_alumno, "Información del alumno")
+                return
+            
+            else:
+                # esto es para depuracion, es para ver si todo esta correcto
+                #print("\nAlumno")
+                #print(f"Nombres: {primer_nombre}, {segundo_nombre}")
+                #print(f"Apellidos: {apellido_paterno}, {apellido_materno}")
+                #print(f"Relacion con el representante: {relacion_con_rep}")
+                
+                # Primera parte sin errores
+                
+                ############################################################################################3
+                
+                # segunda parte
+                # Info alumno parte 2
+                
+                # vamos guardando los valores de los inputs en las varibles
+                
+                cma = None
+                imt = None
+                
+                if self.input_cma_si.isChecked():
+                    
+                    cma = True
+                    
+                elif self.input_cma_no.isChecked():
+                    
+                    cma = False
+                    
+                
+                else:
+                    
+                    cma = None
+                    
+                    
+                if self.input_imt_si.isChecked():
+                    imt = True
+                    
+                elif self.input_imt_no.isChecked():
+                    imt = False
+                    
+                else:
+                    
+                    imt = None
+                
+                
+                    
+                fecha_nacimiento = self.fecha_de_str_a_date(self.dateedit_fecha_nacimiento.text())
+                    
+                
+                
+                lugar_nacimiento = self.input_lugar_de_nacimiento.text()
+                
+                campos_datos_alumno_2 = {
+                    "cma": cma,
+                    "imt": imt,
+                    "fecha_nacimiento": fecha_nacimiento,
+                    "lugar_nacimiento": lugar_nacimiento
+                    }
+                
+                errores_segunda_info_alumno = alumno_servicio.validar_campos_segunda_info_alumno(
+                campos_datos_alumno_2.get("fecha_nacimiento"),
+                campos_datos_alumno_2.get("lugar_nacimiento")
+                )
+                
+                
+                # comprobamos si no hay errores
+                # si los hay que muestre el mensaje en la pantalla
+                if errores_segunda_info_alumno:
+                
+                    self.mostrar_errores_antes_de_guardar(errores_segunda_info_alumno, "Información del alumno")
+                    return
+                
+                else:
+                    
+                    # esto es para depuracion, es para ver si todo esta correcto
+                    #print("\nAlumno parte 2")
+                    #print(f"cma: {cma}")
+                    #print(f"imt: {imt}")
+                    #print(f"fecha de nacimiento {fecha_nacimiento}")
+                    #print(f"lugar de nacimiento: {lugar_nacimiento}")
+                    
+                    # segunda parte sin errores
+                    
+                    ########################################################################################3
+                    
+                    
+                    # tercera parte
+                    
+                    
+                    # Info academica
+            
+                    escolaridad = self.input_escolaridad.text().strip()
+                    procedencia = self.input_procendencia.text().strip()
+                    
+                    campos_info_academica = {
+                                "escolaridad": escolaridad,
+                                "procedencia": procedencia
+                            }
+                                    
+                    errores_info_academica = alumno_servicio.validar_info_academica(
+                        campos_info_academica.get("escolaridad"),
+                        campos_info_academica.get("procedencia")
+                    )
+                    
+                    # comprobamos si no hay errores
+                    if errores_info_academica:
+                        self.mostrar_errores_antes_de_guardar(errores_info_academica, "Información académica")
+                        return
+                    
+                    else:
+                        
+                        # esto es para depuracion, es para ver si todo esta correcto
+                        #print("\nInfo Académica Alumno")
+                        #print(f"procedencia: {procedencia} ")
+                        #print(f"escolaridad: {escolaridad} ")
+                        
+                        # Tercera parte sin erroes
+                        
+                    
+                        #######################################################################################################
+                        
+                        # Cuarta parte
+                        
+                        # info representante
+                    
+                    
+                        # Primero comprobamos si el usuario comprobo que el representante existe o no
+                        
+                        # comprobacion
+                        if not self.comprobacion:
+                            
+                            QMessageBox.warning(self, "Aviso", "Tiene que comprobar si el representante esta registrado o no")
+                            return
+                        
+                        # si hizo la comprobacion, puede seguir con lo demas 
+                        else:  
+                            
+                            
+                            # si el representante esta registrado
+                            if self.representante_registrado:
+                                
+                                # solo quiero el id del representante
+                                representante_id = self.representante_id
+                                
+                                
+                                # Quinta parte
+                                
+                                # proceso para asociar a el representate con el alumno
+                                
+                                # Recordar que para crear este diccionario y poder crear un registro en tb_alumnos
+                                # Tienes que tener los campos de su info básica e info académica para poder
+                                # crear registros en las tablas tb_medidas_alumnos, tb_info_bancaria_alumnos, tb_info_clinica_alumnos
+                                campos_alumno = {
+                                    "representante_id": representante_id,
+                                    "cedula": campos_datos_alumno_1.get("cedula"),
+                                    "primer_nombre": campos_datos_alumno_1.get("primer_nombre"),
+                                    "segundo_nombre": campos_datos_alumno_1.get("segundo_nombre"),
+                                    "tercer_nombre": campos_datos_alumno_1.get("tercer_nombre"),
+                                    "apellido_paterno": campos_datos_alumno_1.get("apellido_paterno"),
+                                    "apellido_materno": campos_datos_alumno_1.get("apellido_materno"),
+                                    "fecha_nacimiento": campos_datos_alumno_2.get("fecha_nacimiento"),
+                                    "lugar_nacimiento": campos_datos_alumno_2.get("lugar_nacimiento"),
+                                    "sexo": campos_datos_alumno_1.get("sexo"),
+                                    "cma": campos_datos_alumno_2.get("cma"),
+                                    "imt": campos_datos_alumno_2.get("imt"),
+                                    "relacion_con_rep": campos_datos_alumno_1.get("relacion_con_rep"),
+                                    "escolaridad": campos_info_academica.get("escolaridad"),
+                                    "procedencia": campos_info_academica.get("procedencia"),
+                                    "situacion": campos_datos_alumno_1.get("situacion")
+                                }
+                                
+                                # Acá guardo el alumno_id que retorno al crear un registro en la tabla tb_alumnos
+                                # y lo uso para asociarlo a las demás tablas        
+                                
+                                
+                                print(alumno_id)
+                                
+                                
+                                
+                                ###########################################################################
+                                
+                                # sexta parte
+                                # Info medidas del alumno
+                                
+                                # vamos guardando los valores de los inputs en las varibles
+                                estatura = None
+                                peso = None
+                                talla_camisa = self.input_talla_camisa.text().strip()
+                                talla_pantalon = None
+                                talla_zapatos = None
+                                
+                                estatura = self.de_str_a_int_o_float(estatura, self.input_estatura, float)
+                                peso = self.de_str_a_int_o_float(peso, self.input_peso, float)
+                                talla_pantalon = self.de_str_a_int_o_float(talla_pantalon, self.input_talla_pantalon, int)
+                                talla_zapatos = self.de_str_a_int_o_float(talla_zapatos, self.input_talla_zapatos, int)
+                                
+                                
+                                
+                                campos_medidas_alumno = {
+                                    "alumno_id": alumno_id,
+                                    "estatura": estatura,
+                                    "peso": peso,
+                                    "talla_camisa": talla_camisa.upper(),
+                                    "talla_pantalon": talla_pantalon,
+                                    "talla_zapatos": talla_zapatos
+                                }
+                            
+                                errores_medidas_alumnos = medidas_alumno_servicio.validar_campos_medidas_alumnos(
+                                    campos_medidas_alumno.get("estatura"),
+                                    campos_medidas_alumno.get("peso"),
+                                    campos_medidas_alumno.get("talla_camisa"),
+                                    campos_medidas_alumno.get("talla_pantalon"),
+                                    campos_medidas_alumno.get("talla_zapatos")
+                                )
+
+                                # comprobamos que no haigan errores
+                                if errores_medidas_alumnos:
+                                    
+                                    self.mostrar_errores_antes_de_guardar(errores_medidas_alumnos, "Información medidas del alumnos")
+                                    return
+                                
+                                else:
+                                    
+                                    # esto es para debugear y ver si todo esta correcto
+                                    
+                                    #print("\nMedidas del Alumno")
+                                    #print(f"ID Alumno: {alumno_id}")
+                                    #print(f"Estatura: {estatura}, {type(estatura)}")
+                                    #print(f"Peso: {peso}, {type(peso)}")
+                                    #print(f"Talla de camisa: {talla_camisa}, {type(talla_camisa)}")
+                                    #print(f"Talla de pantalon: {talla_pantalon}, {type(talla_pantalon)}")
+                                    #print(f"Talla de zapatos: {talla_zapatos}, {type(talla_zapatos)}")
+                                    
+                                    
+                                    # sexta parte sin erroes
+                                    
+                                    #####################################################################################
+                                    
+                                    # Septima parte
+                                    
+                                    
+                                    # cuentas del alumno y diagnostico del alumno
+                                    
+                                    # comprobamos si la lista de diagnostico por lo menos tenga un diagnostico registrado
+                                    
+                                    if not self.lista_carrito_diagnosticos:
+                                        
+                                        # si no tiene un registro que le muestre un mensaje de que no a registrado un diagnostico para el alumno
+                                        QMessageBox.warning(self, "Aviso", f"El alumno {primer_nombre} {apellido_paterno}, no tiene diagnosticos registrados")
+                                    
+                                    
+                                    
+                                    # si un o unos diagnostico entonces que siga 
+                                    else: 
+                                        
+                                    
+                                        # aqui no va la logica ya que esta en otra funcion
+                                        # mas a bajo tiene que registra todo lo que tenga el carrito de cada parte
+                                        
+                                        ######################################################################################
+                                        
+                                        # Novena parte 
+                                        
+                                        # Info especialida / info inscripcion
+                                        
+                                        
+                                        # Incripcion 
+                                
+                                        especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, self.lista_especialidades, 1, 0)
+                                        periodo_escolar = str(año_actual) + "-" + str(año_actual + 1)
+                                        
+                                        
+                                        
+                                        fecha_inscripcion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_especialidad.text())
+                                        
+                                        campos_inscripcion = {
+                                                            "num_matricula": None, #Esto es None para que internamente se modifique este valor por el que se va a generar automáticamente
+                                                            "alumno_id": alumno_id,
+                                                            "especialidad_id": especialidad_id,
+                                                            "fecha_inscripcion": fecha_inscripcion,
+                                                            "periodo_escolar": periodo_escolar
+                                                        }
+                                                        
+                                        errores_inscripcion = inscripcion_servicio.valdiar_campos_inscripcion(
+                                            campos_inscripcion.get("especialidad_id"),
+                                            campos_inscripcion.get("fecha_inscripcion"),
+                                            campos_inscripcion.get("periodo_escolar")
+                                        )
+                                        
+                                        # comprobamos errores
+                                        if errores_inscripcion:
+                                            self.mostrar_errores_antes_de_guardar(errores_inscripcion, "Especialidad por inscribir")
+                                            return
+                                        
+                                        else:
+                                            
+                                            # esto es para debugaer y ver si todo esta correcto
+                                            
+                                            #print("\nIncripcion alumno")
+                                            #print(f"ID alumno: {alumno_id}")
+                                            #print(f"ID Especialidad: {especialidad_id}, {type(especialidad_id)}")
+                                            #print(f"Fecha de inscripcion: {fecha_inscripcion}, {type(fecha_inscripcion)}")
+                                            #print(f"Periodo escolar: {periodo_escolar}")
+                                            
+                                            # novena parte si errores
+                                            
+                                            
+                                            try:
+                                                
+                                                QApplication.beep()
+                                                self.msg_box.setWindowTitle("Confirmar registro")
+                                                self.msg_box.setText("¿Seguro que quiere hacer este registro?")
+                                                self.msg_box.setIcon(QMessageBox.Question)
+
+                                                # Mostrar el cuadro de diálogo y esperar respuesta
+                                                self.msg_box.exec_()
+                                                
+                                                # si el boton pulsado es "si" guarda todo
+                                                if self.msg_box.clickedButton() == self.boton_si:
+                                                    alumno_servicio.actualizar_alumno(alumno_id, campos_alumno)
+                                                    """
+                                                    medidas_alumno_servicio.registrar_medidas_alumno(campos_medidas_alumno)
+                                
+                                                    # logica para agregar todas las cuentas que estan en la lista al diccionario
+                                                    campos_info_bancaria_alumno = {
+                                                                        "alumno_id": alumno_id,
+                                                                        "tipo_cuenta": None,
+                                                                        "num_cuenta": None
+                                                                    }
+                                                    
+                                                    # si la lista de cuentas de banco esta llena
+                                                    if self.lista_carrito_cuentas_bancarias:
+                                                        
+                                                        # quiero que itere cada tupla y me de los valores y los registre
+                                                        for cuenta_n in self.lista_carrito_cuentas_bancarias:
+                                                            
+                                                            campos_info_bancaria_alumno["alumno_id"] = alumno_id
+                                                            campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_n[0]
+                                                            campos_info_bancaria_alumno["num_cuenta"] = cuenta_n[1]
+                                                    
+                                                            info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
+                                                            
+                                                    else:
+                                                        
+                                                        pass
+                                                    
+                                                    
+                                                    campos_info_clinica_alumno = {
+                                                                            "alumno_id": alumno_id,
+                                                                            "diagnostico_id": None,
+                                                                            "fecha_diagnostico": None,
+                                                                            "medico_tratante": None,
+                                                                            "certificacion_discap": None,
+                                                                            "fecha_vencimiento_certif": None,
+                                                                            "medicacion": None
+                                                                        }
+                                                    
+                                                    # si hay diagnosticos en el "carrito" de diagnosticos
+                                                    if self.lista_carrito_diagnosticos:
+                                                        
+                                                        for diagnostico in self.lista_carrito_diagnosticos:
+                                                            
+                                                            
+                                                            campos_info_clinica_alumno["alumno_id"] = alumno_id
+                                                            campos_info_clinica_alumno["diagnostico_id"] = diagnostico[0]
+                                                            campos_info_clinica_alumno["medico_tratante"] = diagnostico[2]
+                                                            campos_info_clinica_alumno["fecha_diagnostico"] = diagnostico[3]
+                                                            campos_info_clinica_alumno["fecha_vencimiento_certif"] = diagnostico[4]
+                                                            campos_info_clinica_alumno["medicacion"] = diagnostico[5]
+                                                            campos_info_clinica_alumno["certificacion_discap"] = diagnostico[6]
+                                                            
+                                                                        
+                                                            info_clinica_alumno_servicio.registrar_info_clinica_alumno(campos_info_clinica_alumno)
+                                                            
+                                                            
+                                                            
+                                                    else:
+                                                        
+                                                        QMessageBox.warning(self, "Aviso", f"El joven {self.input_primer_nombre.text()} {self.input_apellido_paterno.text()}, no tiene diagnosticos registrados")
+                                                                
+                                                    
+                                                    """
+                                                        
+                                                    inscripcion_servicio.actualizar_inscripcion(campos_inscripcion)
+                                                    
+                                                    QMessageBox.information(self, "Bien hecho", "Registro exitoso")
+                                                
+                                                    # Parte final si esta registrado el representante
+                                                            
+                                                    # Limpiar todos los inputs
+                                                    self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
+                                                    
+                                                    pantalla_tabla_alumnos = self.stacked_widget.widget(2)
+        
+                                                    pantalla_tabla_alumnos.actualizar_tabla(1)
+                                                    pantalla_tabla_alumnos.actualizar_lista_busqueda()
+                                                    
+                                                    pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
+                                                
+                                                    self.stacked_widget.setCurrentIndex(2)
+                                                
+                                                ## si el boton "no" es pulsadoo, no hace nada
+                                                elif self.msg_box.clickedButton() == self.boton_no:
+                                                    return
+                                                
+                                            except Exception as e:
+                                                
+                                                self.mostrar_errores_por_excepcion(e)
+                                                return
+                                            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "confirmar_edicion_datos_alumno")
+            
+        
+        else:
+            
+            print("No hubo problemas al tomar los datos")
