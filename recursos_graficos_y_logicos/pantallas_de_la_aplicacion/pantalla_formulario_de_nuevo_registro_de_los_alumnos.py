@@ -1893,14 +1893,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 }
             
             errores_primera_info_alumno = alumno_servicio.validar_campos_primera_info_alumno(
-                    #campos_datos_alumno_1.get("cedula"),
+                    campos_datos_alumno_1.get("cedula"),
                     campos_datos_alumno_1.get("primer_nombre"),
                     campos_datos_alumno_1.get("segundo_nombre"),
                     campos_datos_alumno_1.get("tercer_nombre"),
                     campos_datos_alumno_1.get("apellido_paterno"),
                     campos_datos_alumno_1.get("apellido_materno"),
                     campos_datos_alumno_1.get("relacion_con_rep"),
-                    campos_datos_alumno_1.get("fecha_ingreso_institucion")
+                    campos_datos_alumno_1.get("fecha_ingreso_institucion"),
+                    alumno_id
                 )
             
             # verificamos que no hay errores

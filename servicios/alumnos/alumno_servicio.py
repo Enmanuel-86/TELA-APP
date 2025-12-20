@@ -359,3 +359,25 @@ if __name__ == "__main__":
         print("\n".join(errores_totales_info_academica))
     else:
         print("Registro de info académica exitosa")"""
+    
+    
+    # Si pongo la cédula: 029548939 (que ya está registrada en la base de datos) lanza el error que deberia lanzar
+    # Si pongo la cédula: 30466351 (que le corresponde al alumno_id de aquel alumno que estoy actualizando) no me lanza el error porque es el mismo alumno
+    alumno_a_actualizar = {
+        "cedula": "30466351",
+        "primer_nombre": "Ariana",
+        "segundo_nombre": "G",
+        "tercer_nombre": None,
+        "apellido_paterno": "Mijares",
+        "apellido_materno": "G",
+        "relacion_con_rep": "Padre",
+        "fecha_ingreso_institucion": date(2025, 9, 6),
+        "alumno_id": 1
+    }
+    
+    errores = alumno_servicio.validar_campos_primera_info_alumno(**alumno_a_actualizar)
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("primera info del alumno validada correctamente")
