@@ -108,7 +108,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
         # lista de inputs para usarlo en el metodo de limpiar inputs,
         # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
-        self.lista_de_inputs = [
+        self.lista_de_inputs = (
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
                                 self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
                                 self.input_situacion, self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
@@ -117,13 +117,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
                                 self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
                                 self.vista_previa_diagnostico
-                                ]
+                                )
         
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
-        self.lista_de_radiobuttons = [
+        self.lista_de_radiobuttons = (
                                       self.input_sexo_masculino, self.input_sexo_femenino, self.input_cma_si, self.input_cma_no,
                                       self.input_imt_si, self.input_imt_no
-                                      ]
+                                        )
         
         
         # Se cargar la lista catalogo
@@ -605,7 +605,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         except Exception as e:
             
-            self.mostrar_errores_por_excepcion(e)
+            FuncionSistema.mostrar_errores_por_excepcion(e, "añadir_diagnostico_alumno_a_lista")
     
     
     
@@ -758,14 +758,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # darle foco al input del segmento
         # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
         
-        
-        
-        
-        
-        
-        
-        
-        
         ##########################################################################
         # Obtener la fila del item y eliminarlo
         row = nombre_qlistwidget.row(item)
@@ -785,7 +777,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
     
     
-     # Metodo para salir del formulario
 
 
 
@@ -811,7 +802,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         
             self.stacked_widget.setCurrentIndex(2)
-            self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
         
         ## si el boton "no" es pulsadoo, no pasa nada #3
         elif self.msg_box.clickedButton() == self.boton_no:
@@ -837,95 +828,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             return nombre_variable
         
         
-        
-    # Metodo para limpiar los inputs, esto es para cuando le de a finalizar y cuando le de a regresar
-    def limpiar_los_valores_de_los_inputs(self, lista_de_inputs_que_usen_clear, lista_de_inputs_qradiobutton):
-        
-        try:
-            
-            
-            # aqui van a limpiar cada QLineEdit (son los inputs en donde escribe el usuario),
-            # cada QLabel (los label que muestran las fechas) y  cada QListWidget (los "carritos")
-            for input_qlineedit_qlabel_qlistwidget in lista_de_inputs_que_usen_clear:
-                
-                # aqui se itera cada input y va limpiado uno por uno
-                input_qlineedit_qlabel_qlistwidget.clear()
-                
-                
-                # la variable input_qlineedit_qlabel_qlistwidget, se llama asi porque abarca los QLineEdit, QLabel y QListWidget
-                # la variable lista_de_inputs_que_usen_clear, se llama asi porque los inputs que mencione usan .clear() para limpiar
-                
-            
-            # limpiamos los QRadioButtons uno por uno
-            for input_qradiobutton in lista_de_inputs_qradiobutton:
-                
-                # Desactivar temporalmente la auto-exclusividad
-                input_qradiobutton.setAutoExclusive(False)
-                input_qradiobutton.setAutoExclusive(False)
-
-                # Desmarcar ambos
-                input_qradiobutton.setChecked(False)
-                input_qradiobutton.setChecked(False)
-
-                # Reactivar la auto-exclusividad (comportamiento normal)
-                input_qradiobutton.setAutoExclusive(True)
-                input_qradiobutton.setAutoExclusive(True)
-                
-                
-            self.boton_de_especialidad.setCurrentIndex(0)
-            self.boton_diagnostico.setCurrentIndex(0)
-            
-            self.dateedit_fecha_vencimiento_certificado.setDate(QtCore.QDate(2000, 1, 1))
-            self.dateedit_fecha_diagnostico.setDate(QtCore.QDate(2000, 1, 1))
-                
-            # habilitamos los campos
-            self.input_nombre_del_representante.setEnabled(True)
-            self.input_apellido_del_representante.setEnabled(True)
-            self.input_carga_familiar.setEnabled(True)
-            self.input_direccion_residencia.setEnabled(True)
-            self.input_numero_de_telefono.setEnabled(True)
-            self.input_numero_de_telefono_adicional.setEnabled(True)
-            self.input_estado_civil.setEnabled(True)
-            
-            # limpiamos los campos
-            self.input_nombre_del_representante.clear()
-            self.input_apellido_del_representante.clear()
-            self.input_carga_familiar.clear()
-            self.input_direccion_residencia.clear()
-            self.input_numero_de_telefono.clear()
-            self.input_numero_de_telefono_adicional.clear()
-            self.input_estado_civil.clear()
-            
-            
-            # Limpiamos la listas "carrito"
-            
-            self.lista_carrito_diagnosticos.clear()
-            self.lista_carrito_cuentas_bancarias.clear()
-            
-        except Exception as e:
-            self.mostrar_errores_por_excepcion(e)
-            return
-        
-        
-        
-    
-    
-    # Metodo para mostrar errores de excepcion en consola y en pantalla con QMessageBox
-    # Esto muestra los errores en X linea 
-    def mostrar_errores_por_excepcion(self, e):
-        
-            QMessageBox.warning(self, "MODO DEBUG: ERROR/Esto deberia aparecer en consola", f"Esto es un error de excepcion: {e}")
-        
-            # Obtener el traceback completo como string
-            error_traceback = traceback.format_exc()
-        
-            # Mostrar en consola (para depuración)
-            print("\n\nError en la línea:", traceback.extract_tb(e.__traceback__)[-1].lineno)
-            print("Traceback completo:\n", error_traceback)
-            
-            print(f"error en un segmento: {e}")
-    
-    
 
     
     
@@ -1740,14 +1642,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
                                                 except Exception as e:
                                                     
-                                                    self.mostrar_errores_por_excepcion(e)
+                                                    print("Error al tratar de guardar la informacion del alumno")
                                                     return
                                                 
                                             
         
         except Exception as e:
             
-            self.mostrar_errores_por_excepcion(e)
+            FuncionSistema.mostrar_errores_por_excepcion(e, "guardar_informacion_alumno")
             
             
             
@@ -1822,8 +1724,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # 2. Info academica
         try:
             info_academica = alumno_servicio.obtener_info_academica_alumno(alumno_id)
+            
             self.input_escolaridad.setText(info_academica[1])
-            self.input_escolaridad.setText(info_academica[2])
+            self.input_procendencia.setText(info_academica[2])
             
         except:
             
