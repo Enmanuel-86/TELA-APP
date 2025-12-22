@@ -681,7 +681,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
 
     # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, texto_a_mostrar=None):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, texto_a_mostrar=None, editando:bool = False):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)
@@ -710,11 +710,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         row_layout.addWidget(label)
 
         # Botón para eliminar
-        delete_button = QPushButton()
-        delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
-        delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        delete_button.setFixedSize(40,40)
-        delete_button.setStyleSheet("""
+        boton_eliminar = QPushButton()
+        boton_eliminar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
+        boton_eliminar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        boton_eliminar.setFixedSize(40,40)
+        boton_eliminar.setStyleSheet("""
                                     
                                     QPushButton{
                                         background:red;
@@ -733,9 +733,28 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     
                                     """)
         
-        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
-        row_layout.addWidget(delete_button)
+        boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
+        row_layout.addWidget(boton_eliminar)
 
+        if editando:
+            # Botón para editar
+            boton_editar = QPushButton()
+            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "editar.png")))
+            boton_editar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            boton_editar.setFixedSize(40, 40)
+            boton_editar.setStyleSheet("""
+                QPushButton {
+                    background-color: rgb(244, 131, 2);
+                    color: white;
+                }
+                QPushButton:hover {
+                    background-color: rgb(191, 64, 0);
+                }
+            """)
+            
+            boton_editar.clicked.connect(lambda _, item=item, lista=nombre_lista:self.ver_elemento_de_la_lista_seleccionada(nombre_qlistwidget, lista, item))
+            row_layout.addWidget(boton_editar)
+            
         # Asignar el widget al QListWidgetItem
         item.setSizeHint(widget.sizeHint())
         nombre_qlistwidget.setItemWidget(item, widget)
@@ -827,10 +846,93 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
             return nombre_variable
         
+ 
+    def ver_elemento_de_la_lista_seleccionada(self,  nombre_qlistwidget, nombre_lista, item):
+        
+        """
+            Este metodo sirve para poder ver los elementos que se ven en la lista previa (QListWidget), segun de cual se elija
+            
+            por ejemplo si se elige un elemento de la vista previa de las cuentas bancarias de los alumno, se va a ver la infomacion del elemento seleccionado
+            lo mismo para los diagnosticos
+        """       
+        
+        if nombre_qlistwidget == self.vista_previa_diagnostico:
+            self.ver_diagnostico_seleccionado(nombre_qlistwidget, nombre_lista, item)
+            
+        elif nombre_qlistwidget == self.vista_previa_cuentas_bancarias:
+            
+            self.ver_cuenta_bancaria_seleccionada(nombre_qlistwidget, nombre_lista, item)
+        
+    
+    def ver_cuenta_bancaria_seleccionada(self, nombre_qlistwidget, nombre_lista, item):
+        
+        """
+            Este metodo sirve para ver la cuenta de banco seleccionda
+        """
+        
+        indice_vista_previa = nombre_qlistwidget.row(item)
+        
+        cuenta_bancaria_id = nombre_lista[indice_vista_previa][0]
+        
+        cuentas_bancarias = nombre_lista
+        
+        for cuenta_bancaria in cuentas_bancarias:
+            
+            if cuenta_bancaria[0] == cuenta_bancaria_id:
+                
+                self.input_tipo_de_cuenta.setText(cuenta_bancaria[2])
+                self.input_numero_de_cuenta.setText(cuenta_bancaria[3]) 
+                break
+        
+    def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
+        
+        """
+            Este metodo sirve para ver la infomacion que tiene el diagnostico para editarlo
+        
+        """
+        
+        #info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
+        
+        
+        indice_vista_previa = nombre_qlistwidget.row(item)
+        
+        info_clinica_id = nombre_lista[indice_vista_previa][0]
+        #print(f"indice del qlistwidget: {indice_vista_previa}")
+        #print(f"Indice del diagnostico: {info_clinica_id}")
+        
+        
         
 
-    
-    
+        info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
+        
+        try: 
+            for diagnostico in info_clinica:
+                
+                if diagnostico[1] == info_clinica_id:
+
+                    #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
+                    
+                    self.boton_diagnostico.setCurrentText(diagnostico[2])
+                    self.dateedit_fecha_diagnostico.setDate(diagnostico[3])
+                    self.input_medico_tratante.setText(diagnostico[4])
+                    self.input_certificado_discapacidad.setText(diagnostico[5])
+                    self.dateedit_fecha_vencimiento_certificado.setDate(diagnostico[6])
+                    self.input_medicacion.setText("" if not diagnostico[7] else diagnostico[7])
+                    self.input_observacion_adicional.setText("" if diagnostico[8] == None else diagnostico[8])
+                    
+                    break
+        
+        except:
+            print(f"El diagnostico {nombre_lista[indice_vista_previa][2]} no cargo correctamente")
+            
+        else:
+            
+            print(f"Diagnostico {nombre_lista[indice_vista_previa][2]}  cargado correctamente")
+            
+            
+            
+            
+              
     # Metodo para guardar todos los datos del Alumno en la BD
     # hasta los momentos nada (vamos a realizar todas las funciones, )
     def guardar_informacion_alumno(self):
@@ -1764,18 +1866,33 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print("3. La informacion medidas del alumno cargo correctamente")
 
 
-        # deshabilitamos los campos del representante ya que eso se edita en otra pantalla
-        self.input_buscar_por_cedula.setDisabled(True)
-        self.input_nombre_del_representante.setDisabled(True)
-        self.input_apellido_del_representante.setDisabled(True)
-        self.input_carga_familiar.setDisabled(True)
-        self.input_direccion_residencia.setDisabled(True)
-        self.input_numero_de_telefono.setDisabled(True)
-        self.input_numero_de_telefono_adicional.setDisabled(True)
-        self.input_estado_civil.setDisabled(True)
+
+        # 4. Info del representate
+        try:
+            
+            info_representante = alumno_servicio.obtener_datos_representante(alumno_id)
+            #print(info_representante)
+            #(1, 1, '12345', 'Juan', 'Mijares', 'Av. Juan de Urpín , C/ Rocal nº 21-18, Barcelona', '04142878970', None, 4, 'Casado/a')
+            
+            self.input_buscar_por_cedula.setText(info_representante[2])
+            self.input_nombre_del_representante.setText(info_representante[3])
+            self.input_apellido_del_representante.setText(info_representante[4])
+            self.input_direccion_residencia.setText(info_representante[5])
+            self.input_numero_de_telefono.setText(info_representante[6])
+            self.input_numero_de_telefono_adicional.setText("" if info_representante[7] == None else info_representante[7])
+            self.input_carga_familiar.setText(str(info_representante[8]))
+            self.input_estado_civil.setText(info_representante[9])
+            
+        except:
+            
+            print("La informacion del representante no cargo correctamente")
+            
+        else:
+        
+            print("4. La informacion del representante cargo correctamente")
         
         
-        # 4. info bancaria
+        # 5. info bancaria
         try:
             info_banacaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
             
@@ -1787,7 +1904,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 texto_mostrar = cuenta_bancaria[2] + " " + cuenta_bancaria[3]
                 
-                self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, texto_a_mostrar= texto_mostrar)
+                self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, texto_a_mostrar= texto_mostrar, editando=True)
                 
         except:
             
@@ -1796,10 +1913,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("4. La informacion bancaria del alumno cargo correctamente")
+            print("5. La informacion bancaria del alumno cargo correctamente")
             
             
-        # 5. Diagnostico del alumno
+        # 6. Diagnostico del alumno
         try:
             info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
             #(2, 2, 'Espectro Autista leve', datetime.date(2013, 5, 14), 'Dr Jose', 'D-365515', datetime.date(2016, 11, 15), 'Carbamazepina', None)
@@ -1809,16 +1926,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
                 self.lista_carrito_diagnosticos.append(diagnostico)
                 
-                self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, self.lista_carrito_diagnosticos, diagnostico[2] )
+                self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, self.lista_carrito_diagnosticos, diagnostico[2], editando= True )
                 
         except:
             print("error al cargar los diagnosticos del alumno")
         else:
             
-            print("5. Los diagnosticos cargaron correctamente")
+            print("6. Los diagnosticos cargaron correctamente")
             
         
-        # 6. Especialidad por inscribir
+        # 7. Especialidad por inscribir
         try:
             
             #(1, '30466351', 'Ariana', 'Mijares', 'Artesanía', 'MAT-1234567', '2025-09-06', 0, '2025-2026', 'Ingresado', 'Padre')
@@ -1833,7 +1950,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         else:
             
-            print("6. la especialidad por inscribir cargo correctamente")
+            print("7. la especialidad por inscribir cargo correctamente")
             
             
     def confirmar_edicion_datos_alumno(self, alumno_id):
