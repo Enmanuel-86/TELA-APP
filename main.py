@@ -370,7 +370,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
 
 
-
+    #hola desde antixlinux
 
 
 
