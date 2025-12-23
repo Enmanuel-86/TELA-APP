@@ -904,7 +904,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
 
         info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
-        
+        self.boton_anadir_diagnostico.clicked.disconnect()
+        self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, info_clinica_id))
         try: 
             for diagnostico in info_clinica:
                 
@@ -928,8 +929,45 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         else:
             
             print(f"Diagnostico {nombre_lista[indice_vista_previa][2]}  cargado correctamente")
+     
+    
+    def editar_diagnostico_seleccionado(self, nombre_lista, info_clinica_id):
+        
+        """
+            Este metodo sirve para editar el diagnostico seleccionado del alumno
+
+            Se tranformara la tupla que contiene el diagnostico en una lista y luego de su modificacion sera convertida en una tupla nuevamente
+        """       
+        
+        info_clinica = nombre_lista 
+            
+        for i in range(0, len(info_clinica), len(info_clinica) + 1):
             
             
+                if info_clinica[i][0] == info_clinica_id:
+
+                    #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
+                    print(f"antes: {info_clinica}")
+                    info_clinica[i] = list(info_clinica[i])
+                    
+                    info_clinica[i][2] = self.boton_diagnostico.currentText()
+                    #diagnostico[3] = self.dateedit_fecha_diagnostico.Date()
+                    info_clinica[i][4] = self.input_medico_tratante.text()
+                    #diagnostico[5] = self.input_certificado_discapacidad.text()
+                    #self.dateedit_fecha_vencimiento_certificado.setDate(diagnostico[6])
+                    #diagnostico[7] = self.input_medicacion.text()
+                    #diagnostico[8] = self.input_observacion_adicional.text()
+                    
+                    info_clinica[i] = tuple(info_clinica[i])
+                    print(f"\ndespues: {info_clinica}")
+                    
+                    #print(nombre_lista)
+                    
+                    break
+        
+
+        
+        
             
             
               
