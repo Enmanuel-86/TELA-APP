@@ -901,7 +901,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         #print(f"Indice del diagnostico: {info_clinica_id}")
         
         
-        
+        print(nombre_lista)
 
         info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
         self.boton_anadir_diagnostico.clicked.disconnect()
@@ -924,11 +924,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     break
         
         except:
-            print(f"El diagnostico {nombre_lista[indice_vista_previa][2]} no cargo correctamente")
+            print(f"ID: {info_clinica_id}, Diagnostico: {nombre_lista[indice_vista_previa][2]} no cargo correctamente")
             
         else:
             
-            print(f"Diagnostico {nombre_lista[indice_vista_previa][2]}  cargado correctamente")
+            print(f"ID: {info_clinica_id}, Diagnostico: {nombre_lista[indice_vista_previa][2]} cargado correctamente")
      
     
     def editar_diagnostico_seleccionado(self, nombre_lista, info_clinica_id):
@@ -938,10 +938,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
             Se tranformara la tupla que contiene el diagnostico en una lista y luego de su modificacion sera convertida en una tupla nuevamente
         """       
-        
+        #self.boton_diagnostico.clear()
+        #self.dateedit_fecha_diagnostico.clear()
+        #self.input_medico_tratante.clear()
+        #self.input_certificado_discapacidad.clear()
+        #self.dateedit_fecha_vencimiento_certificado.clear()
+        #self.input_medicacion.clear()
+        #
         info_clinica = nombre_lista 
             
-        for i in range(0, len(info_clinica), len(info_clinica) + 1):
+        for i in range(0, len(info_clinica) + 1):
             
             
                 if info_clinica[i][0] == info_clinica_id:
@@ -950,13 +956,18 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     print(f"antes: {info_clinica}")
                     info_clinica[i] = list(info_clinica[i])
                     
-                    info_clinica[i][2] = self.boton_diagnostico.currentText()
-                    #diagnostico[3] = self.dateedit_fecha_diagnostico.Date()
-                    info_clinica[i][4] = self.input_medico_tratante.text()
-                    #diagnostico[5] = self.input_certificado_discapacidad.text()
-                    #self.dateedit_fecha_vencimiento_certificado.setDate(diagnostico[6])
-                    #diagnostico[7] = self.input_medicacion.text()
-                    #diagnostico[8] = self.input_observacion_adicional.text()
+                    info_clinica[i][0] = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0, True )
+                    info_clinica[i][2] = self.boton_diagnostico.currentText().strip()
+                    info_clinica[i][3] = date(self.dateedit_fecha_diagnostico.date().year(),
+                                                    self.dateedit_fecha_diagnostico.date().month(),
+                                                    self.dateedit_fecha_diagnostico.date().day())
+                    info_clinica[i][4] = self.input_medico_tratante.text().strip()
+                    info_clinica[i][5] = self.input_certificado_discapacidad.text().strip()
+                    info_clinica[i][6] = date(self.dateedit_fecha_vencimiento_certificado.date().year(),
+                                                self.dateedit_fecha_vencimiento_certificado.date().month(),
+                                                self.dateedit_fecha_vencimiento_certificado.date().day())
+                    info_clinica[i][7] = self.input_medicacion.text().strip()
+                    info_clinica[i][8] = None if not self.input_observacion_adicional.text().strip() else self.input_observacion_adicional.text().strip()
                     
                     info_clinica[i] = tuple(info_clinica[i])
                     print(f"\ndespues: {info_clinica}")
