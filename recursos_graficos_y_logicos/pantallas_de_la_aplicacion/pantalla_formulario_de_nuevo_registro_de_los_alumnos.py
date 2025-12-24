@@ -887,15 +887,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
         
         """
-            Este metodo sirve para ver la infomacion que tiene el diagnostico para editarlo
+            Este metodo sirve para ver la infomacion que tiene el diagnostico para editarlo.
+            
+            Este metodo funciona asi:
+            
+            1. Tomamos el indice del qlistwidget para saber que elemento vamos a modificar
+            2. con el indice del qlistwidget lo usamos en la lista de info_clinica del alumno para acceder al nombre del diagnostico
+            3. conectamos el boton de añadir diagnostico a otro metodo que es para confirmar la edicion de los elementos del diagnostico seleccionado
+            4. con un for iteramos cada diagnostico
+            5. dentro del for hay un if que compara si el diagnostico iterado tiene el mismo valor que la variable nombre_diagnotico
+            6. si es verdadero mostramos los datos en pantalla de dicho diagnostico, si es falso no pasa nada
         
         """
         
         #info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
         
-        
+        # Este es el indice del QListWidget
         indice_vista_previa = nombre_qlistwidget.row(item)
         
+        # accedemos al nombre del diagnostico
         nombre_diagnostico = nombre_lista[indice_vista_previa][2]
         #print(f"indice del qlistwidget: {indice_vista_previa}")
         #print(f"Indice del diagnostico: {info_clinica_id}")
@@ -904,10 +914,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
 
         info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
+        
         self.boton_anadir_diagnostico.clicked.disconnect()
         self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, nombre_diagnostico))
         
         try: 
+            
             for i, diagnostico in enumerate(info_clinica):
                 
                 if diagnostico[2] == nombre_diagnostico:
@@ -937,15 +949,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         """
             Este metodo sirve para editar el diagnostico seleccionado del alumno
 
-            Se tranformara la tupla que contiene el diagnostico en una lista y luego de su modificacion sera convertida en una tupla nuevamente
+            Este metodo funciona asi:
+            
+            1. iteramos cada diagnostico otra vez para comparar si el diagnostico tiene el mismo valor que nombre_diagnostico
+            2. si es verdadero editamos, si es falso no pasaria nada
+            
         """       
-        #self.boton_diagnostico.clear()
-        #self.dateedit_fecha_diagnostico.clear()
-        #self.input_medico_tratante.clear()
-        #self.input_certificado_discapacidad.clear()
-        #self.dateedit_fecha_vencimiento_certificado.clear()
-        #self.input_medicacion.clear()
-        #
+       
         info_clinica = nombre_lista 
             
         for i, diagnostico in enumerate(info_clinica):
