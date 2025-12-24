@@ -896,20 +896,21 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         indice_vista_previa = nombre_qlistwidget.row(item)
         
-        info_clinica_id = nombre_lista[indice_vista_previa][0]
+        nombre_diagnostico = nombre_lista[indice_vista_previa][2]
         #print(f"indice del qlistwidget: {indice_vista_previa}")
         #print(f"Indice del diagnostico: {info_clinica_id}")
         
         
-        print(nombre_lista)
+        
 
         info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
         self.boton_anadir_diagnostico.clicked.disconnect()
-        self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, info_clinica_id))
+        self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, nombre_diagnostico))
+        
         try: 
-            for diagnostico in info_clinica:
+            for i, diagnostico in enumerate(info_clinica):
                 
-                if diagnostico[1] == info_clinica_id:
+                if diagnostico[2] == nombre_diagnostico:
 
                     #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
                     
@@ -924,14 +925,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     break
         
         except:
-            print(f"ID: {info_clinica_id}, Diagnostico: {nombre_lista[indice_vista_previa][2]} no cargo correctamente")
+            print(f"ID: {info_clinica[i][0]}, Diagnostico: {nombre_lista[indice_vista_previa][2]} no cargo correctamente")
             
         else:
             
-            print(f"ID: {info_clinica_id}, Diagnostico: {nombre_lista[indice_vista_previa][2]} cargado correctamente")
+            print(f"ID: {info_clinica[i][0]}, Diagnostico: {nombre_lista[indice_vista_previa][2]} cargado correctamente")
      
     
-    def editar_diagnostico_seleccionado(self, nombre_lista, info_clinica_id):
+    def editar_diagnostico_seleccionado(self, nombre_lista, nombre_diagnostico):
         
         """
             Este metodo sirve para editar el diagnostico seleccionado del alumno
@@ -947,16 +948,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         #
         info_clinica = nombre_lista 
             
-        for i in range(0, len(info_clinica) + 1):
+        for i, diagnostico in enumerate(info_clinica):
             
             
-                if info_clinica[i][0] == info_clinica_id:
+                if diagnostico[2] == nombre_diagnostico:
 
                     #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
                     print(f"antes: {info_clinica}")
                     info_clinica[i] = list(info_clinica[i])
                     
-                    info_clinica[i][0] = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_diagnostico, self.lista_diagnostico, 1, 0, True )
                     info_clinica[i][2] = self.boton_diagnostico.currentText().strip()
                     info_clinica[i][3] = date(self.dateedit_fecha_diagnostico.date().year(),
                                                     self.dateedit_fecha_diagnostico.date().month(),
@@ -1447,14 +1447,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                                 
                                                     self.stacked_widget.setCurrentIndex(2)
-                                                
+                                                    
                                                 ## si el boton "no" es pulsadoo, no hace nada
                                                 elif self.msg_box.clickedButton() == self.boton_no:
                                                     return
                                                 
                                             except Exception as e:
                                                 
-                                                print("No se puedo guardar la informacion del alumno correctamente")
+                                                print("No se puedo guardar la informacion del alumno correctamente cuando el representante esta registrado")
                                                 return
                             
                             
