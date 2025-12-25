@@ -876,13 +876,68 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         cuentas_bancarias = nombre_lista
         
+        
         for cuenta_bancaria in cuentas_bancarias:
             
             if cuenta_bancaria[0] == cuenta_bancaria_id:
                 
                 self.input_tipo_de_cuenta.setText(cuenta_bancaria[2])
-                self.input_numero_de_cuenta.setText(cuenta_bancaria[3]) 
+                self.input_numero_de_cuenta.setText(cuenta_bancaria[3])
+                
+                self.boton_anadir_cuenta_banco.clicked.disconnect()
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "editar")
+                self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.editar_cuenta_banaria_seleccionada(nombre_lista, cuenta_bancaria_id))
+
                 break
+            
+    def editar_cuenta_banaria_seleccionada(self, nombre_lista, cuenta_bancaria_id):
+        
+        """
+            Este metodo sirve para editar la cuenta de banco seleccionado y funciona asi:
+            
+            1. con un for iterando todas las cuentas de banco del alumno e ir comparando si es igual que la cuenta de banco que selecciono para poder editar la informacion
+            2. si es igual transformamos la tupla que contiene la cuenta de banco seleccionada en una lista para poder editar la informacion y luego de editar la transformamos en una tupla nuevamente
+            
+        
+        """
+        cuentas_bancarias = nombre_lista
+        ##  Creamos una ventana emergente para preguntar si de verdad se quiere salir ##
+        QApplication.beep()
+        
+        self.msg_box.setWindowTitle("Confirmar edicion de la cuenta de banco")
+        self.msg_box.setText("¿Seguro que quiere editar esta cuenta bancaria?")
+        self.msg_box.setIcon(QMessageBox.Question)
+
+        
+
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            for i, _ in enumerate(cuentas_bancarias):
+                
+                if cuentas_bancarias[i][0] == cuenta_bancaria_id: 
+                    print(f"antes: {cuentas_bancarias}")
+                    
+                    cuentas_bancarias[i] = list(cuentas_bancarias[i])
+                    
+                    cuentas_bancarias[i][2] = self.input_tipo_de_cuenta.text()
+                    cuentas_bancarias[i][3] = self.input_numero_de_cuenta.text()
+
+                    cuentas_bancarias[i] = tuple(cuentas_bancarias[i])
+                    
+                    
+                    
+                    print(f"Ahora: {cuentas_bancarias}")
+                    break
+                
+        elif self.msg_box.clickedButton() == self.boton_no:
+            
+            self.boton_anadir_cuenta_banco.clicked.disconnect()
+            self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "añadir")
         
     def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
         
