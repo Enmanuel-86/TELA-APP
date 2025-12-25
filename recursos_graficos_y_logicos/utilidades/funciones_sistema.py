@@ -1,6 +1,7 @@
 import traceback
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+from PyQt5.QtGui import QIcon
 from datetime import datetime
 import platform
 import os
@@ -609,6 +610,86 @@ class FuncionesDelSistema:
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Error al abrir la carpeta:\n{str(e)}")  
             
+            
+    def cambiar_estilo_del_boton(self, qpushbutton, estilo_opcion:str = "añadir") -> None:
+        """
+            ### Este metodo sirve para cambiar de estilo a los botones de registrar elementos catalogo.
+            
+            lo que hace es cambirle es el texto si el parametro estilo_opcion:
+            
+            - si es "añadir" le da el estilo por defecto
+            - si es "editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
+            
+            
+            ***Ejemplo***
+            
+            boton_registrar = QPushButton()
+            
+            self.cambiar_estilo_del_boton(boton, "editar") # estilo de editar
+            
+            
+        """
+        
+        
+    
+        try:
+            
+            
+            
+            
+            if estilo_opcion == "añadir":
+                
+                qpushbutton.setText(" Añadir")
+                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
+                
+                
+                qpushbutton.setStyleSheet(""" 
+                                        
+                                        QPushButton{
+
+                                                background-color: #008a47;
+
+                                                color: rgb(255, 255, 255);
+                                                border-radius:12px;
+
+                                            }
+
+                                            QPushButton:hover{
+
+                                                
+                                                background-color: rgb(0, 56, 10);
+
+                                            }
+                                        
+                                        """)
+                
+                
+            elif estilo_opcion == "editar":
+            
+                qpushbutton.setText(" Editar")
+                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
+
+
+                qpushbutton.setStyleSheet("""
+                                            QPushButton {
+                                                background-color: rgb(244, 131, 2);
+                                                color: white;
+                                                border-radius:12px;
+                                            }
+                                            QPushButton:hover {
+                                                background-color: rgb(191, 64, 0);
+                                            }
+                                        """)
+
+            
+            
+            
+
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+            
+                
         
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
