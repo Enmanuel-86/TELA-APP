@@ -951,6 +951,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.boton_anadir_cuenta_banco.clicked.disconnect()
             self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
             FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "añadir")
+            
+            self.input_tipo_de_cuenta.clear()
+            self.input_numero_de_cuenta.clear()
         
     def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
         
