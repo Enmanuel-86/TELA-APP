@@ -928,9 +928,22 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
                     cuentas_bancarias[i] = tuple(cuentas_bancarias[i])
                     
-                    
-                    
                     print(f"Ahora: {cuentas_bancarias}")
+                    
+                    self.input_tipo_de_cuenta.clear()
+                    self.input_numero_de_cuenta.clear()
+                    
+                    self.boton_anadir_cuenta_banco.clicked.disconnect()
+                    self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "añadir")
+                    
+                    self.vista_previa_cuentas_bancarias.clear()
+                    
+                    for cuenta_bancaria in cuentas_bancarias:
+                        
+                        texto_mostrar = cuenta_bancaria[2] + " " +cuenta_bancaria[3]
+                        self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, cuentas_bancarias,texto_mostrar, True )
+                            
                     break
                 
         elif self.msg_box.clickedButton() == self.boton_no:
@@ -947,10 +960,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             Este metodo funciona asi:
             
             1. Tomamos el indice del qlistwidget para saber que elemento vamos a modificar
-            2. con el indice del qlistwidget lo usamos en la lista de info_clinica del alumno para acceder al nombre del diagnostico
+            2. con el indice del qlistwidget lo usamos en la lista de info_clinica del alumno para acceder al id del diagnostico
             3. conectamos el boton de añadir diagnostico a otro metodo que es para confirmar la edicion de los elementos del diagnostico seleccionado
             4. con un for iteramos cada diagnostico
-            5. dentro del for hay un if que compara si el diagnostico iterado tiene el mismo valor que la variable nombre_diagnotico
+            5. dentro del for hay un if que compara si el diagnostico iterado tiene el mismo valor que la variable info_clinica_id
             6. si es verdadero mostramos los datos en pantalla de dicho diagnostico, si es falso no pasa nada
         
         """
@@ -961,7 +974,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         indice_vista_previa = nombre_qlistwidget.row(item)
         
         # accedemos al nombre del diagnostico
-        nombre_diagnostico = nombre_lista[indice_vista_previa][2]
+        info_clinica_id = nombre_lista[indice_vista_previa][0]
         #print(f"indice del qlistwidget: {indice_vista_previa}")
         #print(f"Indice del diagnostico: {info_clinica_id}")
         
@@ -971,23 +984,23 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         info_clinica = nombre_lista # le coloco en otra variable es para que sea mas entendible
         
         self.boton_anadir_diagnostico.clicked.disconnect()
-        self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, nombre_diagnostico))
+        self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, info_clinica_id))
         FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "editar")
         try: 
             
-            for i, diagnostico in enumerate(info_clinica):
+            for i, _ in enumerate(info_clinica):
                 
-                if diagnostico[2] == nombre_diagnostico:
+                if info_clinica[i][0] == info_clinica_id:
 
                     #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
                     
-                    self.boton_diagnostico.setCurrentText(diagnostico[2])
-                    self.dateedit_fecha_diagnostico.setDate(diagnostico[3])
-                    self.input_medico_tratante.setText(diagnostico[4])
-                    self.input_certificado_discapacidad.setText(diagnostico[5])
-                    self.dateedit_fecha_vencimiento_certificado.setDate(diagnostico[6])
-                    self.input_medicacion.setText("" if not diagnostico[7] else diagnostico[7])
-                    self.input_observacion_adicional.setText("" if diagnostico[8] == None else diagnostico[8])
+                    self.boton_diagnostico.setCurrentText(info_clinica[i][2])
+                    self.dateedit_fecha_diagnostico.setDate(info_clinica[i][3])
+                    self.input_medico_tratante.setText(info_clinica[i][4])
+                    self.input_certificado_discapacidad.setText(info_clinica[i][5])
+                    self.dateedit_fecha_vencimiento_certificado.setDate(info_clinica[i][6])
+                    self.input_medicacion.setText("" if not info_clinica[i][7] else info_clinica[i][7])
+                    self.input_observacion_adicional.setText("" if info_clinica[i][8] == None else info_clinica[i][8])
                     
                     break
         
@@ -999,14 +1012,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print(f"ID: {info_clinica[i][0]}, Diagnostico: {nombre_lista[indice_vista_previa][2]} cargado correctamente")
      
     
-    def editar_diagnostico_seleccionado(self, nombre_lista, nombre_diagnostico):
+    def editar_diagnostico_seleccionado(self, nombre_lista, info_clinica_id):
         
         """
             Este metodo sirve para editar el diagnostico seleccionado del alumno
 
             Este metodo funciona asi:
             
-            1. iteramos cada diagnostico otra vez para comparar si el diagnostico tiene el mismo valor que nombre_diagnostico
+            1. iteramos cada diagnostico otra vez para comparar si el diagnostico tiene el mismo valor que info_clinica_id
             2. si es verdadero editamos, si es falso no pasaria nada
             
         """       
@@ -1029,10 +1042,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         if self.msg_box.clickedButton() == self.boton_si:
             
         
-            for i, diagnostico in enumerate(info_clinica):
+            for i, _ in enumerate(info_clinica):
             
             
-                if diagnostico[2] == nombre_diagnostico:
+                if info_clinica[i][0] == info_clinica_id:
 
                     #[(1, 1, 'Sindrome de down', datetime.date(2012, 10, 11), 'Dr Alejandro', 'D-0321121', datetime.date(2015, 8, 14), 'No tiene', None)]
                     print(f"antes: {info_clinica}")
@@ -1053,6 +1066,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     info_clinica[i] = tuple(info_clinica[i])
                     print(f"\ndespues: {info_clinica}")
                     
+                    
+                    self.boton_diagnostico.setCurrentIndex(0)
+                    #self.dateedit_fecha_diagnostico.clear()
+                    self.input_medico_tratante.clear()
+                    self.input_certificado_discapacidad.clear()
+                    #self.dateedit_fecha_vencimiento_certificado.clear()
+                    self.input_medicacion.clear()
+                    self.input_observacion_adicional.clear()
+                    
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "añadir")
+                    self.boton_anadir_diagnostico.clicked.disconnect()
+                    self.boton_anadir_diagnostico.clicked.connect(lambda: self.anadir_diagnosticos_alumno_a_lista())
+                    
+                    self.vista_previa_diagnostico.clear()
+                    for diagnostico in info_clinica:
+                        
+                        self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, info_clinica, diagnostico[2], True)
+                            
+                    
                     #print(nombre_lista)
                     
                     break
@@ -1064,9 +1096,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.boton_anadir_diagnostico.clicked.disconnect()
             self.boton_anadir_diagnostico.clicked.connect(lambda: self.anadir_diagnosticos_alumno_a_lista())
             
-        
+            self.boton_diagnostico.setCurrentIndex(0)
+            #self.dateedit_fecha_diagnostico.clear()
+            self.input_medico_tratante.clear()
+            self.input_certificado_discapacidad.clear()
+            #self.dateedit_fecha_vencimiento_certificado.clear()
+            self.input_medicacion.clear()
+            self.input_observacion_adicional.clear()
 
-        
+
         
             
             
