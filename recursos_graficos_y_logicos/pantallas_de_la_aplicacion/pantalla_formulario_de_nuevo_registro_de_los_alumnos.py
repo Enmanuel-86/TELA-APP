@@ -917,7 +917,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.boton_anadir_diagnostico.clicked.disconnect()
         self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, nombre_diagnostico))
-        
+        FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "editar")
         try: 
             
             for i, diagnostico in enumerate(info_clinica):
@@ -957,8 +957,24 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         """       
        
         info_clinica = nombre_lista 
+        
+        ##  Creamos una ventana emergente para preguntar si de verdad se quiere salir ##
+        QApplication.beep()
+        
+        self.msg_box.setWindowTitle("Confirmar edicion de diagnostico")
+        self.msg_box.setText("¿Seguro que quiere editar este diagnostico?")
+        self.msg_box.setIcon(QMessageBox.Question)
+
+        
+
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        # si el boton pulsado es "si" se regresa y borra todo el registro
+        if self.msg_box.clickedButton() == self.boton_si:
             
-        for i, diagnostico in enumerate(info_clinica):
+        
+            for i, diagnostico in enumerate(info_clinica):
             
             
                 if diagnostico[2] == nombre_diagnostico:
@@ -985,6 +1001,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     #print(nombre_lista)
                     
                     break
+        
+        ## si el boton "no" es pulsadoo, no pasa nada #3
+        elif self.msg_box.clickedButton() == self.boton_no:
+            
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "añadir")
+            self.boton_anadir_diagnostico.clicked.disconnect()
+            self.boton_anadir_diagnostico.clicked.connect(lambda: self.anadir_diagnosticos_alumno_a_lista())
+            
         
 
         
