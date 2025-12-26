@@ -1,4 +1,5 @@
 from datetime import datetime, date
+from itertools import zip_longest
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QDate
@@ -411,7 +412,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         except Exception as e:
             
-            self.mostrar_errores_por_excepcion(e)
+            print("Error al comprobar si el representante esta registrado")
     
     
 
@@ -2087,7 +2088,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
         except:
             
-            #FuncionSistema.mostrar_errores_por_excepcion(e, "Informacion bancaria")
+            
             print("No posee informacion bancaria")
             
         else:
@@ -2336,8 +2337,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                         # comprobacion
                         if not self.comprobacion:
                             
-                            QMessageBox.warning(self, "Aviso", "Tiene que comprobar si el representante esta registrado o no")
+                            QMessageBox.warning(self, "Aviso", "Tiene que comprobar si el representante esta registrado o no para asociarlo al alumno")
                             return
+                        
                         
                         # si hizo la comprobacion, puede seguir con lo demas 
                         else:  
@@ -2473,7 +2475,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         
                                         # Incripcion 
                                 
-                                        especialidad_id = self.buscar_id_de_la_lista_del_combobox(self.boton_de_especialidad, self.lista_especialidades, 1, 0)
+                                        especialidad_id = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_de_especialidad, self.lista_especialidades, 1, 0 ,True)
                                         periodo_escolar = str(año_actual) + "-" + str(año_actual + 1)
                                         
                                         
@@ -2481,7 +2483,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         fecha_inscripcion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_especialidad.text())
                                         
                                         campos_inscripcion = {
-                                                            "num_matricula": None, #Esto es None para que internamente se modifique este valor por el que se va a generar automáticamente
                                                             "alumno_id": alumno_id,
                                                             "especialidad_id": especialidad_id,
                                                             "fecha_inscripcion": fecha_inscripcion,
@@ -2513,10 +2514,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             
                                             try:
+                                                info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
                                                 
                                                 QApplication.beep()
-                                                self.msg_box.setWindowTitle("Confirmar registro")
-                                                self.msg_box.setText("¿Seguro que quiere hacer este registro?")
+                                                self.msg_box.setWindowTitle("Confirmar edición")
+                                                self.msg_box.setText(f"¿Seguro que quiere editar a {info_basica[2]} {info_basica[5]}")
                                                 self.msg_box.setIcon(QMessageBox.Question)
 
                                                 # Mostrar el cuadro de diálogo y esperar respuesta
@@ -2525,33 +2527,57 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 # si el boton pulsado es "si" guarda todo
                                                 if self.msg_box.clickedButton() == self.boton_si:
                                                     alumno_servicio.actualizar_alumno(alumno_id, campos_alumno)
-                                                    """
-                                                    medidas_alumno_servicio.registrar_medidas_alumno(campos_medidas_alumno)
+                                                    
+                                                    medidas_alumno_servicio.actualizar_medidas_alumno(alumno_id, campos_medidas_alumno)
                                 
                                                     # logica para agregar todas las cuentas que estan en la lista al diccionario
                                                     campos_info_bancaria_alumno = {
-                                                                        "alumno_id": alumno_id,
+                                                                        
                                                                         "tipo_cuenta": None,
                                                                         "num_cuenta": None
                                                                     }
                                                     
+                                                    cuentas_bancarias_antiguas = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
+                                                    
                                                     # si la lista de cuentas de banco esta llena
                                                     if self.lista_carrito_cuentas_bancarias:
                                                         
-                                                        # quiero que itere cada tupla y me de los valores y los registre
-                                                        for cuenta_n in self.lista_carrito_cuentas_bancarias:
+                                                        # iteramos las cuentas de banco anteriores y cuenta editada
+                                                        for cuenta_editada, cuenta_antes in zip_longest( self.lista_carrito_cuentas_bancarias, cuentas_bancarias_antiguas, fillvalue="no hay"):
                                                             
-                                                            campos_info_bancaria_alumno["alumno_id"] = alumno_id
-                                                            campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_n[0]
-                                                            campos_info_bancaria_alumno["num_cuenta"] = cuenta_n[1]
-                                                    
-                                                            info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
                                                             
-                                                    else:
+                                                            # comparamos si son iguales y si tiene la misma longitud
+                                                            if not cuenta_antes == cuenta_editada and len(cuenta_antes) == len(cuenta_editada):
+                                                                
+                                                                campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_editada[2]
+                                                                campos_info_bancaria_alumno["num_cuenta"] = cuenta_editada[3]
                                                         
-                                                        pass
+                                                                info_bancaria_alumno_servicio.actualizar_info_bancaria(alumno_id, campos_info_bancaria_alumno)
+                                                        
+                                                            # si son iguales que siga 
+                                                            elif cuenta_antes == cuenta_editada:
+                                                                
+                                                                pass
+                                                            
+                                                            elif len(cuenta_antes) != len(cuenta_editada) and cuenta_antes == "no hay":
+                                                                
+                                                                campos_info_bancaria_alumno = {
+                                                                        "alumno_id": alumno_id,
+                                                                        "tipo_cuenta": None,
+                                                                        "num_cuenta": None
+                                                                    }
+                                                                print(f"cuenta nueva {cuenta_editada}")
+                                                                campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_editada[0]
+                                                                campos_info_bancaria_alumno["num_cuenta"] = cuenta_editada[1]
+                                                        
+                                                                info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
+                                                        
+                                                                
+                                                                
+                                                                
                                                     
                                                     
+                                                    """
                                                     campos_info_clinica_alumno = {
                                                                             "alumno_id": alumno_id,
                                                                             "diagnostico_id": None,
@@ -2588,7 +2614,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     
                                                     """
                                                         
-                                                    inscripcion_servicio.actualizar_inscripcion(campos_inscripcion)
+                                                    inscripcion_servicio.actualizar_inscripcion(alumno_id, campos_inscripcion)
                                                     
                                                     QMessageBox.information(self, "Bien hecho", "Registro exitoso")
                                                 
@@ -2612,7 +2638,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 
                                             except Exception as e:
                                                 
-                                                self.mostrar_errores_por_excepcion(e)
+                                                print("Error al guardar la informacion editada")
                                                 return
                                             
         except Exception as e:
