@@ -200,12 +200,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # info alumno
         
-        self.input_primer_nombre.setText("jario")
+        self.input_primer_nombre.setText("Mario")
         
         self.input_segundo_nombre.setText("Jose")
         self.input_apellido_paterno.setText("Merida")
         self.input_apellido_materno.setText("Lopez")
-        self.input_cedula.setText("40199022")
+        self.input_cedula.setText("4012322")
         self.input_relacion_con_representante.setText("hijo")
         self.input_sexo_masculino.setChecked(True)
         
@@ -1563,21 +1563,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                     inscripcion_servicio.registrar_inscripcion(campos_inscripcion)
                                                     
-                                                    QMessageBox.information(self, "Bien hecho", "Registro exitoso")
-                                                
-                                                    # Parte final si esta registrado el representante
-                                                            
-                                                    # Limpiar todos los inputs
-                                                    self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
                                                     
-                                                    pantalla_tabla_alumnos = self.stacked_widget.widget(2)
-        
-                                                    pantalla_tabla_alumnos.actualizar_tabla(1)
-                                                    pantalla_tabla_alumnos.actualizar_lista_busqueda()
-                                                    
-                                                    pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
-                                                
-                                                    self.stacked_widget.setCurrentIndex(2)
                                                     
                                                 ## si el boton "no" es pulsadoo, no hace nada
                                                 elif self.msg_box.clickedButton() == self.boton_no:
@@ -1731,7 +1717,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         campos_medidas_alumno.get("talla_zapatos")
                                     )
 
-                                    # comprobamos que no haigan errores
+                                    # comprobamos que no hayan errores
                                     if errores_medidas_alumnos:
                                         
                                         self.mostrar_errores_antes_de_guardar(errores_medidas_alumnos, "Información medidas del alumnos")
@@ -1897,26 +1883,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                             
                                                         inscripcion_servicio.registrar_inscripcion(campos_inscripcion)
                                                         
-                                                        
-                                                        QMessageBox.information(self, "Bien hecho", "Registro exitoso")
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                        # Parte final si No esta registrado el representante
-                                                            
-                                                        # Limpiar todos los inputs
-                                                        self.limpiar_los_valores_de_los_inputs(self.lista_de_inputs, self.lista_de_radiobuttons)
-                                                        
-                                                        pantalla_tabla_alumnos = self.stacked_widget.widget(2)
-            
-                                                        pantalla_tabla_alumnos.actualizar_tabla(1)
-                                                        pantalla_tabla_alumnos.actualizar_lista_busqueda()
-                                                                                                                
-                                                        pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
-                                                    
-                                                        self.stacked_widget.setCurrentIndex(2)
                                                     
                                                     ## si el boton "no" es pulsadoo, no hace nada
                                                     elif self.msg_box.clickedButton() == self.boton_no:
@@ -1933,7 +1899,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             FuncionSistema.mostrar_errores_por_excepcion(e, "guardar_informacion_alumno")
             
+        else:
             
+            QMessageBox.information(self, "Bien hecho", "Registro exitoso")
+            
+            # Limpiar todos los inputs
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            
+            
+            
+            pantalla_tabla_alumnos = self.stacked_widget.widget(2)
+
+            pantalla_tabla_alumnos.actualizar_tabla(1)
+            pantalla_tabla_alumnos.actualizar_lista_busqueda()
+                                                                    
+            pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
+        
+            
+            self.stacked_widget.setCurrentIndex(2)
+                                                        
             
     def editar_datos_alumno(self, alumno_id: int):
         
@@ -2597,7 +2581,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                         for diagnostico_actual, diagnostico_antiguo in zip_longest(self.lista_carrito_diagnosticos, info_clinica_antigua, fillvalue="no hay"):
                                                         
-                                                            print("Diagnostico antiguo: ",diagnostico_antiguo)
+                                                            
                                                             # Este if es para editar, ya que se comparan los actual y con lo antiguo
                                                             if not diagnostico_actual == diagnostico_antiguo and len(diagnostico_actual) == len(diagnostico_antiguo):
 
@@ -2634,13 +2618,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                         }
                                                                 
                                                                 
-                                                                campos_info_clinica_alumno["diagnostico_id"] = FuncionSistema.buscar_id_por_nombre_del_elemento(diagnostico_actual[2], self.lista_diagnostico)
+                                                                campos_info_clinica_alumno["diagnostico_id"] = diagnostico_actual[0]
                                                                 campos_info_clinica_alumno["fecha_diagnostico"] = diagnostico_actual[3]
-                                                                campos_info_clinica_alumno["medico_tratante"] = diagnostico_actual[4]
-                                                                campos_info_clinica_alumno["certificacion_discap"] = diagnostico_actual[5]
-                                                                campos_info_clinica_alumno["fecha_vencimiento_certif"] = diagnostico_actual[6]
-                                                                campos_info_clinica_alumno["medicacion"] = diagnostico_actual[7]
-                                                                campos_info_clinica_alumno["observacion_adicional"] = diagnostico_actual[8]
+                                                                campos_info_clinica_alumno["medico_tratante"] = diagnostico_actual[2]
+                                                                campos_info_clinica_alumno["certificacion_discap"] = diagnostico_actual[6]
+                                                                campos_info_clinica_alumno["fecha_vencimiento_certif"] = diagnostico_actual[4]
+                                                                campos_info_clinica_alumno["medicacion"] = diagnostico_actual[5]
+                                                                campos_info_clinica_alumno["observacion_adicional"] = diagnostico_actual[7]
                                                                 
                                                                 info_clinica_alumno_servicio.registrar_info_clinica_alumno(campos_info_clinica_alumno)
                                                                 
