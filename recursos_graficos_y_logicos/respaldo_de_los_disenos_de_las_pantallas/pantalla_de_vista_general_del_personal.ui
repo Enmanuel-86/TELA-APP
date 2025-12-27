@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VistaGeneralDelPersonal</class>
+ <widget class="QWidget" name="VistaGeneralDelPersonal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1175</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="area_de_scroll">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1173</width>
+        <height>569</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="espacio_principal">
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+	    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:1,
+        stop:0 #3fea87, stop:1 #00770e)
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QFrame" name="espacio_superior">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:transparent;</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="espacio_para_las_opciones">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>10</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>441</width>
+                 <height>94</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>441</width>
+                 <height>94</height>
+                </size>
+               </property>
+               <property name="sizeIncrement">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background:transparent;</string>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <layout class="QFormLayout" name="formLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_boton_opciones">
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>19</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	
+	color: rgb(255, 255, 255);
+	
+	background:transparent;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Personal</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_especialidades">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>19</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	
+	color: rgb(255, 255, 255);
+background:transparent;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Especialidad</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QComboBox" name="boton_de_opciones">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>220</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+
+	font: 75 12pt &quot;Arial&quot;;
+	padding-left:15px;
+	background:white;
+	border:1px solid black;
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+
+
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+
+
+</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="currentText">
+                   <string/>
+                  </property>
+                  <property name="currentIndex">
+                   <number>-1</number>
+                  </property>
+                  <property name="insertPolicy">
+                   <enum>QComboBox::NoInsert</enum>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="placeholderText">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="boton_especialidades">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+
+	font: 75 12pt &quot;Arial&quot;;
+	padding-left:15px;
+background:white;
+	border:1px solid black;
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+QComboBox:focus {
+    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
+    background-color: #e0f7ff;   /* Fondo azul claro */
+}
+
+
+
+
+QComboBox QAbstractItemView {
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    padding: 5px;  /* Margen interno de la lista */
+    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px; /* Espaciado interno de cada elemento */
+    margin: 4px; /* Separación entre los elementos */
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #c5c1c1;
+    color: white;
+}
+
+QComboBox:disabled {
+        background-color:rgb(189, 189, 189);
+        color: #808080;
+        border: 1px solid rgb(127, 127, 127);
+    }
+
+
+
+
+</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="currentText">
+                   <string/>
+                  </property>
+                  <property name="currentIndex">
+                   <number>-1</number>
+                  </property>
+                  <property name="insertPolicy">
+                   <enum>QComboBox::NoInsert</enum>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="placeholderText">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+               <zorder>boton_de_opciones</zorder>
+               <zorder>label_boton_opciones</zorder>
+               <zorder>boton_especialidades</zorder>
+               <zorder>label_especialidades</zorder>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>68</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QFrame" name="espacio_para_barra_de_busqueda">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>20</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>421</width>
+                 <height>90</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>421</width>
+                 <height>90</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background:transparent;</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <widget class="QLineEdit" name="barra_de_busqueda">
+                <property name="geometry">
+                 <rect>
+                  <x>10</x>
+                  <y>40</y>
+                  <width>300</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>14</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-top-left-radius:10px;	
+	border-bottom-left-radius:10px;
+	padding-left: 10px;
+ padding-right:5px;
+	padding-top:1px;
+	border:1px solid black  ;
+	
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192, 255)
+
+
+
+}
+</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Buscar empleado por su cédula</string>
+                </property>
+               </widget>
+               <widget class="QPushButton" name="boton_buscar">
+                <property name="geometry">
+                 <rect>
+                  <x>310</x>
+                  <y>40</y>
+                  <width>100</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>20</horstretch>
+                  <verstretch>20</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+
+	background-color: #008a47;
+
+	color: rgb(255, 255, 255);
+	
+	border-top-right-radius:10px;	
+	border-bottom-right-radius:10px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                </property>
+                <property name="text">
+                 <string> Buscar</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>25</width>
+                  <height>25</height>
+                 </size>
+                </property>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>67</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QFrame" name="contador">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>150</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background:transparent;</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_contador">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>17</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+
+	color: rgb(255, 255, 255);
+	
+	
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="imagen_contador">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap>../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_titulo_contador">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+
+	color: rgb(255, 255, 255);
+	
+	
+
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>N° Empleados</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="espacio_central">
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+
+	background-color: rgb(0, 112, 21);
+	border-radius:12px;
+	border:2px solid black;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QTableView" name="tabla_ver_personal">
+               <property name="styleSheet">
+                <string notr="true">
+
+background-color: rgb(255, 255, 255);
+border:none;</string>
+               </property>
+               <property name="autoScrollMargin">
+                <number>0</number>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::DoubleClicked</set>
+               </property>
+               <property name="dragDropOverwriteMode">
+                <bool>false</bool>
+               </property>
+               <property name="selectionBehavior">
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+               <property name="sortingEnabled">
+                <bool>true</bool>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="cornerButtonEnabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="espacio_botones">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>70</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:0xp;</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item alignment="Qt::AlignLeft">
+                 <widget class="QPushButton" name="boton_control_de_llegada">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>220</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>400</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: #008a47;
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>  Control de llegada</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="boton_control_de_reposos">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>220</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>400</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: #008a47;
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>  Control de reposos</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignRight">
+                 <widget class="QPushButton" name="boton_crear_nuevo_registro">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>230</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>250</width>
+                    <height>400</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+
+	background-color: #008a47;
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+
+}
+
+QPushButton:hover{
+
+	
+	background-color: rgb(0, 56, 10);
+
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>  Crear nuevo registro</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
