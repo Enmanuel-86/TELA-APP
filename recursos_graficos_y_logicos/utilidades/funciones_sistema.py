@@ -305,6 +305,45 @@ class FuncionesDelSistema:
                         # retornamos el id encontrado
                         return id_del_elemento
         
+    def buscar_id_por_nombre_del_elemento(self, nombre_elemeto:str, lista_de_elementos:list, indice_id:int = 0):
+        
+        """
+            Este metodo sirve para buscar el id del elemento que pertenezca a un catalogo.
+            
+            ***Ejemplo***
+            
+            si tenemos una variable que contiene una especialidad y queremos obtener su id para realizar una operacion usamos el metodo asi:
+            
+            lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
+            
+            mi_especialidad = "artesania"
+            
+            id_especialidad = FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades) # retorna 1
+            
+            normalmente el indice del id es 0 pero puedes colocar el indice en donde se encuentre el id
+            
+            
+        """     
+        
+        
+        try:
+            
+            for elemento in lista_de_elementos:
+                
+                if nombre_elemeto in elemento:
+                    
+                    return elemento[indice_id]
+                
+                else:
+                    
+                    pass
+                
+        except Exception as e:
+            
+            self.mostrar_errores_por_excepcion(e, "buscar_id_por_nombre_del_elemento")
+        else:
+            
+            print("buscar_id_por_nombre_del_elemento: se encontro el id con exito")
             
     
     # Metodos para limpiar los inputs 
@@ -698,6 +737,13 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
                 (5, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '26788123', '1985-10-28', 39, 'Activo', 'F', 0)]
 
 FuncionSistema = FuncionesDelSistema()
+
+
+#lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
+            
+mi_especialidad = "carpinteria"
+
+#print(FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades))
 
 #print(FuncionSistema.buscar_id_por_cedula("5017497", lista_prueba))
 #print(funciones_comunes.cargar_elementos_para_el_combobox())
