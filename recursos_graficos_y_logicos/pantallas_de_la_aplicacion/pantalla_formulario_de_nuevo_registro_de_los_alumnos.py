@@ -2494,7 +2494,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             QApplication.beep()
                                             self.msg_box.setWindowTitle("Confirmar edición")
-                                            self.msg_box.setText(f"¿Seguro que quiere editar a {info_basica[2]} {info_basica[5]}")
+                                            self.msg_box.setText(f"¿Seguro que quiere editar a {info_basica[2]} {info_basica[5]}?")
                                             self.msg_box.setIcon(QMessageBox.Question)
 
                                             # Mostrar el cuadro de diálogo y esperar respuesta
@@ -2513,50 +2513,71 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                     "num_cuenta": None
                                                                 }
                                                 
-                                                cuentas_bancarias_antiguas = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
                                                 
-                                                # si la lista de cuentas de banco esta llena
-                                                if self.lista_carrito_cuentas_bancarias:
+                                                
                                                     
-                                                    # iteramos las cuentas de banco anteriores y cuenta editada
-                                                    for cuenta_actual, cuenta_antigua in zip_longest( self.lista_carrito_cuentas_bancarias, cuentas_bancarias_antiguas, fillvalue="no hay"):
-                                                        
-                                                        campos_info_bancaria_alumno = {
-                                                                    
-                                                                    "tipo_cuenta": None,
-                                                                    "num_cuenta": None
-                                                                }
-                                                        
-                                                        # Este if es para editar, ya que se comparan los actual y con lo antiguo
-                                                        if not cuenta_antigua == cuenta_actual and len(cuenta_antigua) == len(cuenta_actual):
-                                                            
-                                                            info_banc_alumno_id = cuenta_actual[0]
-                                                            campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[2]
-                                                            campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[3]
+                                                try: 
+                                                    cuentas_bancarias_antiguas = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
                                                     
-                                                            info_bancaria_alumno_servicio.actualizar_info_bancaria(info_banc_alumno_id, campos_info_bancaria_alumno)
-                                                    
-                                                        # si son iguales que siga 
-                                                        elif cuenta_antigua == cuenta_actual:
-                                                            
-                                                            pass
+                                                    # si la lista de cuentas de banco esta llena
+                                                    if self.lista_carrito_cuentas_bancarias:
                                                         
-                                                        # este elif es para registrar
-                                                        elif len(cuenta_antigua) != len(cuenta_actual) and cuenta_antigua == "no hay":
+                                                        # iteramos las cuentas de banco anteriores y cuenta editada
+                                                        for cuenta_actual, cuenta_antigua in zip_longest( self.lista_carrito_cuentas_bancarias, cuentas_bancarias_antiguas, fillvalue="no hay"):
                                                             
                                                             campos_info_bancaria_alumno = {
+                                                                        
+                                                                        "tipo_cuenta": None,
+                                                                        "num_cuenta": None
+                                                                    }
+                                                            
+                                                            # Este if es para editar, ya que se comparan los actual y con lo antiguo
+                                                            if not cuenta_antigua == cuenta_actual and len(cuenta_antigua) == len(cuenta_actual):
+                                                                
+                                                                info_banc_alumno_id = cuenta_actual[0]
+                                                                campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[2]
+                                                                campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[3]
+                                                        
+                                                                info_bancaria_alumno_servicio.actualizar_info_bancaria(info_banc_alumno_id, campos_info_bancaria_alumno)
+                                                        
+                                                            # si son iguales que siga 
+                                                            elif cuenta_antigua == cuenta_actual:
+                                                                
+                                                                pass
+                                                            
+                                                            # este elif es para registrar
+                                                            elif len(cuenta_antigua) != len(cuenta_actual) and cuenta_antigua == "no hay":
+                                                                
+                                                                campos_info_bancaria_alumno = {
+                                                                        "alumno_id": alumno_id,
+                                                                        "tipo_cuenta": None,
+                                                                        "num_cuenta": None
+                                                                    }
+                                                                
+                                                                campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[0]
+                                                                campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[1]
+                                                        
+                                                                info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
+                                                        
+                                                        
+                                                except:
+                                                    
+                                                    print("Como no tiene cuenta de banco se le registra")
+                                                    
+                                                    
+                                                    campos_info_bancaria_alumno = {
                                                                     "alumno_id": alumno_id,
                                                                     "tipo_cuenta": None,
                                                                     "num_cuenta": None
                                                                 }
-                                                            
-                                                            campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[0]
-                                                            campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[1]
                                                     
-                                                            info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
-                                                    
-                                                            
-                                                            
+                                                    print(self.lista_carrito_cuentas_bancarias)
+                                                    for cuenta_actual in self.lista_carrito_cuentas_bancarias:
+                                                        campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[0]
+                                                        campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[1]
+                                                
+                                                        info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
+                                                
                                                             
                                                 
                                                 
