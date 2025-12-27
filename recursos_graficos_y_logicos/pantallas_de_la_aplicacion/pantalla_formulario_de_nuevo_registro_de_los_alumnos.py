@@ -2521,20 +2521,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     # iteramos las cuentas de banco anteriores y cuenta editada
                                                     for cuenta_actual, cuenta_antigua in zip_longest( self.lista_carrito_cuentas_bancarias, cuentas_bancarias_antiguas, fillvalue="no hay"):
                                                         
+                                                        campos_info_bancaria_alumno = {
+                                                                    
+                                                                    "tipo_cuenta": None,
+                                                                    "num_cuenta": None
+                                                                }
                                                         
                                                         # Este if es para editar, ya que se comparan los actual y con lo antiguo
                                                         if not cuenta_antigua == cuenta_actual and len(cuenta_antigua) == len(cuenta_actual):
                                                             
-                                                            print(f"se va a editar {cuenta_antigua} a {cuenta_actual}")
+                                                            info_banc_alumno_id = cuenta_actual[0]
                                                             campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[2]
                                                             campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[3]
                                                     
-                                                            info_bancaria_alumno_servicio.actualizar_info_bancaria(alumno_id, campos_info_bancaria_alumno)
+                                                            info_bancaria_alumno_servicio.actualizar_info_bancaria(info_banc_alumno_id, campos_info_bancaria_alumno)
                                                     
                                                         # si son iguales que siga 
                                                         elif cuenta_antigua == cuenta_actual:
                                                             
-                                                            print(f"no se va a editar porque son iguales {cuenta_antigua} == {cuenta_actual}")
+                                                            pass
                                                         
                                                         # este elif es para registrar
                                                         elif len(cuenta_antigua) != len(cuenta_actual) and cuenta_antigua == "no hay":
@@ -2544,7 +2549,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                     "tipo_cuenta": None,
                                                                     "num_cuenta": None
                                                                 }
-                                                            print(f"cuenta nueva {cuenta_actual}")
+                                                            
                                                             campos_info_bancaria_alumno["tipo_cuenta"] = cuenta_actual[0]
                                                             campos_info_bancaria_alumno["num_cuenta"] = cuenta_actual[1]
                                                     
@@ -2578,7 +2583,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         # Este if es para editar, ya que se comparan los actual y con lo antiguo
                                                         if not diagnostico_actual == diagnostico_antiguo and len(diagnostico_actual) == len(diagnostico_antiguo):
 
-                                                            
+                                                            info_clin_alumno_id = diagnostico_actual[0]
                                                             campos_info_clinica_alumno["diagnostico_id"] = FuncionSistema.buscar_id_por_nombre_del_elemento(diagnostico_actual[2], self.lista_diagnostico)
                                                             campos_info_clinica_alumno["fecha_diagnostico"] = diagnostico_actual[3]
                                                             campos_info_clinica_alumno["medico_tratante"] = diagnostico_actual[4]
@@ -2589,7 +2594,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                             
                                                             
                                                                         
-                                                            info_clinica_alumno_servicio.actualizar_info_clinica_alumno(alumno_id, campos_info_clinica_alumno)
+                                                            info_clinica_alumno_servicio.actualizar_info_clinica_alumno(info_clin_alumno_id ,campos_info_clinica_alumno)
                                                             
                                                             
                                                         elif diagnostico_actual == diagnostico_antiguo:
@@ -2651,16 +2656,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             
             # Limpiar todos los inputs
-            #FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
             
-            #pantalla_tabla_alumnos = self.stacked_widget.widget(2)
+            pantalla_tabla_alumnos = self.stacked_widget.widget(2)
 
-            #pantalla_tabla_alumnos.actualizar_tabla(1)
-            #pantalla_tabla_alumnos.actualizar_lista_busqueda()
+            pantalla_tabla_alumnos.actualizar_tabla(1)
+            pantalla_tabla_alumnos.actualizar_lista_busqueda()
             
-            #pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
+            pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
         
                                                 
             
-            #self.stacked_widget.setCurrentIndex(2)
+            self.stacked_widget.setCurrentIndex(2)
             print("No hubo problemas al tomar los datos")
