@@ -1,0 +1,33 @@
+/*Estilo para el sidebar*/
+QWidget[tipo="sidebar"]{
+	
+	background:rgb(0, 138, 71);
+
+
+}
+
+QPushButton[tipo="boton_sidebar"]{
+
+	background:transparent;
+	border:0px;
+	color:#ffffff;
+	font: 13pt "Segoe UI";
+	font-weight: 500;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+	
+}
+
+QPushButton[tipo="boton_sidebar"]:hover{
+	
+	background:   rgb(0, 89, 45);
+border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
+}	
+
+
+QPushButton[tipo="boton_sidebar"]:checked{
+
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+}
