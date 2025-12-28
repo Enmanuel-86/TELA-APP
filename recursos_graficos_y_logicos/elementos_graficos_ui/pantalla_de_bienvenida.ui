@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
+    <width>1248</width>
     <height>1045</height>
    </rect>
   </property>
@@ -14,42 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame[tipo=&quot;espacio_principal&quot;]{
-
-     background: qlineargradient(
-        x1:0, y1:0, x2:1, y2:1,
-        stop:0 #3fea87, stop:1 #00770e)
-
-
-}
-
-QFrame[tipo=&quot;espacio_contenido&quot;]{
-
-
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:20px;
-	padding:20px;
-
-
-
-}
-
-
-QLabel{
-
-	
-	font: 16pt &quot;Franklin Gothic Medium Cond&quot;;
-
-}
-
-QLabel[tipo=&quot;titulo_segmento&quot;]{
-
-	
-	font: 24pt &quot;Franklin Gothic Medium Cond&quot;;
-
-}
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -77,8 +42,8 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1050</width>
-        <height>1026</height>
+        <width>1246</width>
+        <height>1043</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -112,8 +77,11 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
           <string>espacio_principal</string>
          </property>
          <layout class="QGridLayout" name="gridLayout">
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
           <property name="spacing">
-           <number>20</number>
+           <number>10</number>
           </property>
           <item row="0" column="0">
            <widget class="QFrame" name="espacio_contenido">
@@ -129,6 +97,12 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
               <height>391</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>511</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
@@ -139,7 +113,7 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
              <enum>QFrame::Raised</enum>
             </property>
             <property name="tipo" stdset="0">
-             <string>espacio_contenido</string>
+             <string>espacio_form</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_2">
              <property name="horizontalSpacing">
@@ -148,28 +122,6 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
              <property name="verticalSpacing">
               <number>25</number>
              </property>
-             <item row="0" column="0" colspan="2">
-              <widget class="QLabel" name="label_titulo_del_segemeto_bienvenido">
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600;&quot;&gt;Bienvendio/a {usuario} al sistema de información TELA-APP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="scaledContents">
-                <bool>false</bool>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="tipo" stdset="0">
-                <string>titulo_segmento</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0" rowspan="2">
               <widget class="QLabel" name="label_logo_tela_app">
                <property name="minimumSize">
@@ -192,6 +144,28 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
                </property>
                <property name="scaledContents">
                 <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="2">
+              <widget class="QLabel" name="label_titulo_del_segemeto_bienvenido">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600;&quot;&gt;Bienvendio/a {usuario} al sistema de información TELA-APP&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>titulo_segmento</string>
                </property>
               </widget>
              </item>
@@ -241,7 +215,7 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
              <enum>QFrame::Raised</enum>
             </property>
             <property name="tipo" stdset="0">
-             <string>espacio_contenido</string>
+             <string>espacio_form</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <item>
@@ -315,9 +289,10 @@ QLabel[tipo=&quot;titulo_segmento&quot;]{
                  </property>
                  <property name="font">
                   <font>
-                   <family>Arial</family>
+                   <family>Segoe UI</family>
                    <pointsize>12</pointsize>
                    <weight>75</weight>
+                   <italic>false</italic>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -379,6 +354,12 @@ QPushButton:hover{
               <height>451</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>511</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -386,19 +367,16 @@ QPushButton:hover{
              <enum>QFrame::Raised</enum>
             </property>
             <property name="tipo" stdset="0">
-             <string>espacio_contenido</string>
+             <string>espacio_form</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <property name="spacing">
-              <number>30</number>
-             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <widget class="QLabel" name="label_titulo_alumno_3">
                <property name="text">
                 <string>¿Quieres saber como se hizo y como funciona el sistema?</string>
                </property>
                <property name="wordWrap">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="tipo" stdset="0">
                 <string>titulo_segmento</string>
@@ -406,95 +384,106 @@ QPushButton:hover{
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_3">
-               <item>
-                <widget class="QLabel" name="label_alumnos_5">
-                 <property name="text">
-                  <string>Si quieres saber sobre este sistema puedes acceder al repositorio de GitHub y ver el codigo fuente o descargar alguna actualización.
+              <widget class="QLabel" name="label_alumnos_5">
+               <property name="text">
+                <string>Si quieres saber sobre este sistema puedes acceder al repositorio de GitHub y ver el codigo fuente o descargar alguna actualización.
 </string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignTop</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>texto</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="label_4">
+                 <property name="minimumSize">
+                  <size>
+                   <width>400</width>
+                   <height>100</height>
+                  </size>
                  </property>
-                 <property name="alignment">
-                  <set>Qt::AlignJustify|Qt::AlignTop</set>
+                 <property name="maximumSize">
+                  <size>
+                   <width>430</width>
+                   <height>120</height>
+                  </size>
                  </property>
-                 <property name="wordWrap">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	border-radius:20px;
+
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap>../recursos_de_imagenes/github_logo.png</pixmap>
+                 </property>
+                 <property name="scaledContents">
                   <bool>true</bool>
                  </property>
                 </widget>
                </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_8">
-                 <property name="topMargin">
-                  <number>20</number>
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="label_5">
+                 <property name="font">
+                  <font>
+                   <family>Franklin Gothic Medium Cond</family>
+                   <pointsize>16</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
                  </property>
-                 <property name="bottomMargin">
-                  <number>20</number>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color:#0095f8	
+
+}</string>
                  </property>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="label_4">
-                   <property name="minimumSize">
-                    <size>
-                     <width>400</width>
-                     <height>100</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>400</width>
-                     <height>100</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>../recursos_de_imagenes/github_logo.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="label_5">
-                   <property name="font">
-                    <font>
-                     <family>Franklin Gothic Medium Cond</family>
-                     <pointsize>16</pointsize>
-                     <weight>50</weight>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Enmanuel-86/TELA-APP&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/Enmanuel-86/TELA-APP&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                   <property name="textFormat">
-                    <enum>Qt::MarkdownText</enum>
-                   </property>
-                   <property name="openExternalLinks">
-                    <bool>true</bool>
-                   </property>
-                   <property name="textInteractionFlags">
-                    <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_alumnos_6">
                  <property name="text">
-                  <string>Para realizar alguna revision comparta el codigo exclusivamente con otros desarrolladores que le quieran hacer una reingenieria en otro proyecto universitario para mejorar este sistema.</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Enmanuel-86/TELA-APP&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0095f8;&quot;&gt;https://github.com/Enmanuel-86/TELA-APP&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
-                 <property name="alignment">
-                  <set>Qt::AlignJustify|Qt::AlignTop</set>
+                 <property name="textFormat">
+                  <enum>Qt::MarkdownText</enum>
                  </property>
-                 <property name="wordWrap">
+                 <property name="openExternalLinks">
                   <bool>true</bool>
+                 </property>
+                 <property name="textInteractionFlags">
+                  <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse</set>
+                 </property>
+                 <property name="tipo" stdset="0">
+                  <string>texto</string>
                  </property>
                 </widget>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_alumnos_6">
+               <property name="text">
+                <string>Para realizar alguna revision comparta el codigo exclusivamente con otros desarrolladores que le quieran hacer una reingenieria en otro proyecto universitario para mejorar este sistema.</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignJustify|Qt::AlignTop</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>texto</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
