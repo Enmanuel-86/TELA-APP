@@ -1,0 +1,72 @@
+<RCC>
+  <qresource prefix="iconos">
+    <file>iconos_de_interfaz/agregar-usuario.png</file>
+    <file>iconos_de_interfaz/archivo.png</file>
+    <file>iconos_de_interfaz/base_de_datos.png</file>
+    <file>iconos_de_interfaz/borrar.png</file>
+    <file>iconos_de_interfaz/brocha.png</file>
+    <file>iconos_de_interfaz/calendario.png</file>
+    <file>iconos_de_interfaz/carpeta_abierta.png</file>
+    <file>iconos_de_interfaz/catalogar.png</file>
+    <file>iconos_de_interfaz/cerrar_sesion.png</file>
+    <file>iconos_de_interfaz/circulo_mas.png</file>
+    <file>iconos_de_interfaz/control_de_llegada.png</file>
+    <file>iconos_de_interfaz/control_de_llegada_negro.png</file>
+    <file>iconos_de_interfaz/control_de_reposos.png</file>
+    <file>iconos_de_interfaz/control_de_reposos_negro.png</file>
+    <file>iconos_de_interfaz/corazon.png</file>
+    <file>iconos_de_interfaz/editar.png</file>
+    <file>iconos_de_interfaz/empleado.png</file>
+    <file>iconos_de_interfaz/estudiantes.png</file>
+    <file>iconos_de_interfaz/exportar.png</file>
+    <file>iconos_de_interfaz/flecha_abajo.png</file>
+    <file>iconos_de_interfaz/flecha_izquierda.png</file>
+    <file>iconos_de_interfaz/flecha_izquierda_2.png</file>
+    <file>iconos_de_interfaz/generar_informe.png</file>
+    <file>iconos_de_interfaz/hogar.png</file>
+    <file>iconos_de_interfaz/icono_contraseña.png</file>
+    <file>iconos_de_interfaz/icono_de_usuario.png</file>
+    <file>iconos_de_interfaz/importar.png</file>
+    <file>iconos_de_interfaz/lupa_blanca.png</file>
+    <file>iconos_de_interfaz/lupa_de_busqueda.png</file>
+    <file>iconos_de_interfaz/mail.png</file>
+    <file>iconos_de_interfaz/mas.png</file>
+    <file>iconos_de_interfaz/mas_blanco.png</file>
+    <file>iconos_de_interfaz/menu.png</file>
+    <file>iconos_de_interfaz/no_ver_contraseña.png</file>
+    <file>iconos_de_interfaz/nuevo_registro.png</file>
+    <file>iconos_de_interfaz/nuevo_registro_negro.png</file>
+    <file>iconos_de_interfaz/reloj.png</file>
+    <file>iconos_de_interfaz/reloj_azul.png</file>
+    <file>iconos_de_interfaz/respaldo.png</file>
+    <file>iconos_de_interfaz/signo_de_interrogacion.png</file>
+    <file>iconos_de_interfaz/ver_contraseña.png</file>
+  </qresource>
+  <qresource prefix="imagenes_y_logos">
+    <file>estudiante_f.png</file>
+    <file>estudiante_m.png</file>
+    <file>foto_alumnos.png</file>
+    <file>foto_estudiantes_sin_fondo.png</file>
+    <file>foto_personal.png</file>
+    <file>github_logo.png</file>
+    <file>icono del sistema.png</file>
+    <file>icono.ico</file>
+    <file>icono_sistema_V3.ico</file>
+    <file>icono_sistema_V3.png</file>
+    <file>imagen_personal_f.png</file>
+    <file>imagen_personal_m.png</file>
+    <file>lista_de_verificacion.png</file>
+    <file>logo sistema V2.png</file>
+    <file>logo_del_sistemaVFinal.svg</file>
+    <file>logo_juventud.PNG</file>
+    <file>logo_pdf.png</file>
+    <file>logo_sistema_V3.png</file>
+    <file>logo_zona_educativa.PNG</file>
+    <file>membrete.PNG</file>
+    <file>registro_alumnos.png</file>
+    <file>registro_personal.png</file>
+    <file>respaldo.png</file>
+    <file>Tela.ico</file>
+    <file>Tela.png</file>
+  </qresource>
+</RCC>
