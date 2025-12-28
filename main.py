@@ -402,7 +402,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilos_default.qss')
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_default.qss')
     
     window.show()
     window.showMaximized()
