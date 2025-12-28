@@ -15,13 +15,19 @@ BASE_DIR = os.path.dirname(__file__)
 class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
-        Login.resize(726, 499)
-        Login.setStyleSheet("background-color: rgb(255, 255, 255);")
+        Login.resize(720, 586)
+        Login.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(Login)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.espacio_login = QtWidgets.QFrame(Login)
+        self.frame = QtWidgets.QFrame(Login)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.espacio_login = QtWidgets.QFrame(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(200)
@@ -30,43 +36,13 @@ class Ui_Login(object):
         self.espacio_login.setMinimumSize(QtCore.QSize(550, 300))
         self.espacio_login.setMaximumSize(QtCore.QSize(550, 300))
         self.espacio_login.setSizeIncrement(QtCore.QSize(1, 0))
-        self.espacio_login.setStyleSheet("QFrame{\n"
-"\n"
-"    background: qlineargradient(\n"
-"        x1:0, y1:0, x2:1, y2:1,\n"
-"        stop:0 #3fea87, stop:1 #00770e);\n"
-"\n"
-"    border-radius:20px;\n"
-"   \n"
-"\n"
-"\n"
-"}")
+        self.espacio_login.setStyleSheet("")
         self.espacio_login.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_login.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_login.setObjectName("espacio_login")
         self.input_contrasena = QtWidgets.QLineEdit(self.espacio_login)
         self.input_contrasena.setGeometry(QtCore.QRect(30, 160, 291, 41))
-        self.input_contrasena.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    font: 12pt \"Arial\";\n"
-"    border-radius:5px;\n"
-"    padding-left: 35px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}")
+        self.input_contrasena.setStyleSheet("padding-left:30px;")
         self.input_contrasena.setText("")
         self.input_contrasena.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_contrasena.setCursorMoveStyle(QtCore.Qt.VisualMoveStyle)
@@ -74,9 +50,10 @@ class Ui_Login(object):
         self.titulo_login = QtWidgets.QLabel(self.espacio_login)
         self.titulo_login.setGeometry(QtCore.QRect(30, 50, 81, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(22)
+        font.setFamily("Segoe UI")
+        font.setPointSize(20)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.titulo_login.setFont(font)
         self.titulo_login.setStyleSheet("QLabel{\n"
@@ -91,49 +68,15 @@ class Ui_Login(object):
         self.titulo_login.setObjectName("titulo_login")
         self.input_usuario = QtWidgets.QLineEdit(self.espacio_login)
         self.input_usuario.setGeometry(QtCore.QRect(30, 100, 291, 41))
-        self.input_usuario.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    font: 12pt \"Arial\";\n"
-"    border-radius:5px;\n"
-"    padding-left: 35px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}")
+        self.input_usuario.setStyleSheet("padding-left:30px;")
         self.input_usuario.setObjectName("input_usuario")
         self.boton_ingresar = QtWidgets.QPushButton(self.espacio_login)
         self.boton_ingresar.setGeometry(QtCore.QRect(130, 220, 91, 41))
         self.boton_ingresar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_ingresar.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #005c2f;\n"
-"    font: 75 14pt \"Arial\";\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.boton_ingresar.setStyleSheet("")
         self.boton_ingresar.setObjectName("boton_ingresar")
         self.icono_contrasena = QtWidgets.QLabel(self.espacio_login)
-        self.icono_contrasena.setGeometry(QtCore.QRect(40, 170, 21, 21))
+        self.icono_contrasena.setGeometry(QtCore.QRect(37, 171, 21, 21))
         self.icono_contrasena.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_contrasena.setText("")
@@ -141,7 +84,7 @@ class Ui_Login(object):
         self.icono_contrasena.setScaledContents(True)
         self.icono_contrasena.setObjectName("icono_contrasena")
         self.icono_usuario = QtWidgets.QLabel(self.espacio_login)
-        self.icono_usuario.setGeometry(QtCore.QRect(40, 110, 21, 21))
+        self.icono_usuario.setGeometry(QtCore.QRect(37, 111, 21, 21))
         self.icono_usuario.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_usuario.setText("")
@@ -149,7 +92,7 @@ class Ui_Login(object):
         self.icono_usuario.setScaledContents(True)
         self.icono_usuario.setObjectName("icono_usuario")
         self.boton_ver_contrasena = QtWidgets.QPushButton(self.espacio_login)
-        self.boton_ver_contrasena.setGeometry(QtCore.QRect(280, 170, 31, 21))
+        self.boton_ver_contrasena.setGeometry(QtCore.QRect(285, 171, 31, 21))
         self.boton_ver_contrasena.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.boton_ver_contrasena.setStyleSheet("QPushButton{\n"
 "    border: 0px;\n"
@@ -170,25 +113,27 @@ class Ui_Login(object):
         self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
         self.logo_del_tela.setScaledContents(True)
         self.logo_del_tela.setObjectName("logo_del_tela")
-        self.verticalLayout.addWidget(self.espacio_login, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
-        self.label_mensaje_usuario = QtWidgets.QLabel(Login)
+        self.verticalLayout_2.addWidget(self.espacio_login, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.label_mensaje_usuario = QtWidgets.QLabel(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_mensaje_usuario.sizePolicy().hasHeightForWidth())
         self.label_mensaje_usuario.setSizePolicy(sizePolicy)
         self.label_mensaje_usuario.setMinimumSize(QtCore.QSize(700, 40))
         self.label_mensaje_usuario.setMaximumSize(QtCore.QSize(700, 30))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(20)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_mensaje_usuario.setFont(font)
         self.label_mensaje_usuario.setAlignment(QtCore.Qt.AlignCenter)
         self.label_mensaje_usuario.setOpenExternalLinks(False)
         self.label_mensaje_usuario.setObjectName("label_mensaje_usuario")
-        self.verticalLayout.addWidget(self.label_mensaje_usuario, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
+        self.verticalLayout_2.addWidget(self.label_mensaje_usuario, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
+        self.verticalLayout.addWidget(self.frame)
 
         self.retranslateUi(Login)
         QtCore.QMetaObject.connectSlotsByName(Login)
@@ -199,8 +144,13 @@ class Ui_Login(object):
     def retranslateUi(self, Login):
         _translate = QtCore.QCoreApplication.translate
         Login.setWindowTitle(_translate("Login", "Form"))
+        self.frame.setProperty("tipo", _translate("Login", "espacio_principal"))
+        self.espacio_login.setProperty("tipo", _translate("Login", "espacio_form"))
         self.input_contrasena.setPlaceholderText(_translate("Login", "Contraseña"))
+        self.input_contrasena.setProperty("tipo", _translate("Login", "login"))
         self.titulo_login.setText(_translate("Login", "Login"))
         self.input_usuario.setPlaceholderText(_translate("Login", "Usuario"))
+        self.input_usuario.setProperty("tipo", _translate("Login", "login"))
         self.boton_ingresar.setText(_translate("Login", "Ingresar"))
         self.label_mensaje_usuario.setText(_translate("Login", "Mensaje"))
+        self.label_mensaje_usuario.setProperty("tipo", _translate("Login", "texto"))
