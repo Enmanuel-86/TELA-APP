@@ -31,3 +31,76 @@ QPushButton[tipo="boton_sidebar"]:checked{
 	border-left:3px solid rgb(0, 183, 72);
 	padding-left:4px;
 }
+
+/*Estilo para el sidebar*/
+QWidget[tipo="sidebar"]{
+	
+	background:rgb(0, 138, 71);
+
+
+}
+
+QPushButton[tipo="boton_sidebar"]{
+
+	background:transparent;
+	border:0px;
+	color:#ffffff;
+	font: 13pt "Segoe UI";
+	font-weight: 500;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+	
+}
+
+QPushButton[tipo="boton_sidebar"]:hover{
+	
+	background:   rgb(0, 89, 45);
+border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
+}	
+
+
+QPushButton[tipo="boton_sidebar"]:checked{
+
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+}
+
+
+/* estilo del login */
+QFrame[tipo="espacio_form"]{
+    background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:1,
+        stop:0 #3fea87, stop:1 #00770e);
+
+	border-radius:20px;
+}
+
+
+QLineEdit[tipo="login"]{
+	padding:5px 10px;
+	font: 16pt "Segoe UI";
+	border-radius:12px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}
+
+
+QPushButton{
+	background-color: #005c2f;
+	font: 75 14pt "Arial";
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+}
+
+QPushButton:hover{
+	background-color: rgb(0, 56, 10);
+}
+
+QLabel[tipo="texto"]{
+
+	font: 15pt "Segoe UI";
+	padding-left:1px;
+	font-weight: 500;
+
+}
