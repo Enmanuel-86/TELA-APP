@@ -1,6 +1,6 @@
 import traceback
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+from PyQt5.QtCore import QPropertyAnimation, QEasingCurve, QFile, QTextStream
 from PyQt5.QtGui import QIcon
 from datetime import datetime
 import platform
@@ -515,22 +515,15 @@ class FuncionesDelSistema:
             
             
     # Metodos para cambiar de estilos/TEMAS
-    def cargar_estilos(self):
+    def cargar_estilos(self, app, ruta_archivo):
         try:
-            ruta_estilos = 'recursos_graficos_y_logicos/estilos/tema_principal.qss'
-            
-            # LEER el archivo primero
-            with open(ruta_estilos, 'r', encoding='utf-8') as archivo:
-                estilo = archivo.read()
-            
-            # Aplicar el contenido leído
-            self.setStyleSheet(estilo)
-            
-        except FileNotFoundError:
-            print("Error: No se encontró el archivo estilos.qss")
+            archivo = QFile(ruta_archivo)
+            if archivo.open(QFile.ReadOnly | QFile.Text):
+                stream = QTextStream(archivo)
+                app.setStyleSheet(stream.readAll())
+                archivo.close()
         except Exception as e:
             print(f"Error al cargar estilos: {e}")
-
 
 
 
