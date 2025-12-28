@@ -7,11 +7,8 @@ from PyQt5.QtGui import QIcon, QPixmap
 
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
-
-
 from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
-
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
@@ -241,19 +238,19 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         self.stacked_widget.setCurrentIndex(0)
     
-        self.area_scroll_side_bar.hide()
+        self.sidebar.hide()
         
-        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
+        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.sidebar.hide())
         self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget:  self.boton_principal.setChecked(True) if indice_stackedwidget == 1 else None)
         
         # Funciones para los botones del sidebar
-        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.area_scroll_side_bar))
+        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.sidebar))
         self.boton_principal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
-        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.area_scroll_side_bar))
+        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
         
@@ -316,7 +313,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.login.input_usuario.clear()
                     self.login.input_contrasena.clear()
                     self.stacked_widget.setCurrentIndex(1)
-                    self.area_scroll_side_bar.show()
+                    self.sidebar.show()
                     self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario} al sistema de información TELA-APP")
 
 
@@ -331,7 +328,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.login.input_usuario.clear() #limpia el input de nombre de usuario
                     self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
                     self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
-                    self.area_scroll_side_bar.show()
+                    self.sidebar.show()
                     
                     self.boton_cargar_catologo.hide()
                     
@@ -405,7 +402,10 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilos_default.qss')
+    
     window.show()
     window.showMaximized()
+  
 
     sys.exit(app.exec_())
