@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
 from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
-from recursos_graficos_y_logicos.recursos_de_imagenes import recursos_de_imagenes_tela_app
+from recursos_graficos_y_logicos.recursos_de_imagenes import recursos_de_imagenes_tela_app_rc
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
@@ -101,12 +101,6 @@ class Login(QWidget, Ui_Login):
         super().__init__()
         self.setupUi(self)
 
-        # Rutas de las imagenes
-        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
-        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
-        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_contraseña.png")))
-        self.ojo_abierto = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","ver_contraseña.png")
-        self.ojo_cerrado = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","no_ver_contraseña.png")
 
         aplicar_sombra(self.espacio_login, 50, 255)
 
@@ -116,23 +110,23 @@ class Login(QWidget, Ui_Login):
         self.input_contrasena.setText("1234")
         
 
-        self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
+        self.boton_ver_contrasena.toggled.connect(lambda senal: self.cambiar_ver_contrasena(senal))
 
         # Estado inicial: contraseña oculta
         self.password_visible = False
         
     # metodo para cambiar el boton de ver contraseña
-    def cambiar_ver_contrasena(self):
-        if self.password_visible:
+    def cambiar_ver_contrasena(self, contrasena_visible):
+        if contrasena_visible:
             # Ocultar la contraseña
             self.input_contrasena.setEchoMode(QLineEdit.Password)
-            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_cerrado))
-            self.password_visible = False
+            
+            
         else:
             # Mostrar la contraseña
             self.input_contrasena.setEchoMode(QLineEdit.Normal)
-            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_abierto))
-            self.password_visible = True
+            
+            
             
     def mensajes_usuario(self):
         self.label_mensaje_usuario.setText(random.choice(mensajes_bienvenida))
@@ -184,8 +178,6 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         # instancia del login y el cintillo
         #self.stacked_widget = QStackedWidget()
         self.login = Login()
-
-        self.login.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.login.ojo_cerrado))
 
 
 
@@ -403,7 +395,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_default.qss')
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
     
     window.show()
     window.showMaximized()
