@@ -8,8 +8,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
-BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_Login(object):
@@ -77,42 +75,35 @@ class Ui_Login(object):
         self.boton_ingresar.setObjectName("boton_ingresar")
         self.icono_contrasena = QtWidgets.QLabel(self.espacio_login)
         self.icono_contrasena.setGeometry(QtCore.QRect(37, 171, 21, 21))
-        self.icono_contrasena.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius:10px;")
+        self.icono_contrasena.setStyleSheet("")
         self.icono_contrasena.setText("")
-        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_contraseña.png")))
         self.icono_contrasena.setScaledContents(True)
         self.icono_contrasena.setObjectName("icono_contrasena")
         self.icono_usuario = QtWidgets.QLabel(self.espacio_login)
         self.icono_usuario.setGeometry(QtCore.QRect(37, 111, 21, 21))
-        self.icono_usuario.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius:10px;")
+        self.icono_usuario.setStyleSheet("")
         self.icono_usuario.setText("")
-        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
         self.icono_usuario.setScaledContents(True)
         self.icono_usuario.setObjectName("icono_usuario")
-        self.boton_ver_contrasena = QtWidgets.QPushButton(self.espacio_login)
-        self.boton_ver_contrasena.setGeometry(QtCore.QRect(285, 171, 31, 21))
-        self.boton_ver_contrasena.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_ver_contrasena.setStyleSheet("QPushButton{\n"
-"    border: 0px;\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"\n"
-"}")
-        self.boton_ver_contrasena.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/ver_contraseña.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_ver_contrasena.setIcon(icon)
-        self.boton_ver_contrasena.setIconSize(QtCore.QSize(25, 25))
-        self.boton_ver_contrasena.setObjectName("boton_ver_contrasena")
         self.logo_del_tela = QtWidgets.QLabel(self.espacio_login)
         self.logo_del_tela.setGeometry(QtCore.QRect(340, 60, 181, 171))
-        self.logo_del_tela.setStyleSheet("background:transparent;")
+        self.logo_del_tela.setStyleSheet("")
         self.logo_del_tela.setText("")
-        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/Tela.png")))
+        self.logo_del_tela.setPixmap(QtGui.QPixmap(":/imagenes_y_logos/Tela.png"))
         self.logo_del_tela.setScaledContents(True)
         self.logo_del_tela.setObjectName("logo_del_tela")
+        self.boton_ver_contrasena = QtWidgets.QToolButton(self.espacio_login)
+        self.boton_ver_contrasena.setGeometry(QtCore.QRect(281, 166, 31, 31))
+        self.boton_ver_contrasena.setStyleSheet("")
+        self.boton_ver_contrasena.setText("")
+        self.boton_ver_contrasena.setCheckable(True)
+        self.boton_ver_contrasena.setChecked(False)
+        self.boton_ver_contrasena.setAutoRepeat(False)
+        self.boton_ver_contrasena.setPopupMode(QtWidgets.QToolButton.DelayedPopup)
+        self.boton_ver_contrasena.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
+        self.boton_ver_contrasena.setAutoRaise(False)
+        self.boton_ver_contrasena.setArrowType(QtCore.Qt.NoArrow)
+        self.boton_ver_contrasena.setObjectName("boton_ver_contrasena")
         self.verticalLayout_2.addWidget(self.espacio_login, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.label_mensaje_usuario = QtWidgets.QLabel(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
@@ -124,12 +115,13 @@ class Ui_Login(object):
         self.label_mensaje_usuario.setMaximumSize(QtCore.QSize(700, 30))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
-        font.setPointSize(20)
+        font.setPointSize(15)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.label_mensaje_usuario.setFont(font)
         self.label_mensaje_usuario.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_mensaje_usuario.setWordWrap(True)
         self.label_mensaje_usuario.setOpenExternalLinks(False)
         self.label_mensaje_usuario.setObjectName("label_mensaje_usuario")
         self.verticalLayout_2.addWidget(self.label_mensaje_usuario, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
@@ -138,19 +130,22 @@ class Ui_Login(object):
         self.retranslateUi(Login)
         QtCore.QMetaObject.connectSlotsByName(Login)
         Login.setTabOrder(self.input_usuario, self.input_contrasena)
-        Login.setTabOrder(self.input_contrasena, self.boton_ver_contrasena)
-        Login.setTabOrder(self.boton_ver_contrasena, self.boton_ingresar)
+        Login.setTabOrder(self.input_contrasena, self.boton_ingresar)
 
     def retranslateUi(self, Login):
         _translate = QtCore.QCoreApplication.translate
         Login.setWindowTitle(_translate("Login", "Form"))
         self.frame.setProperty("tipo", _translate("Login", "espacio_principal"))
         self.espacio_login.setProperty("tipo", _translate("Login", "espacio_form"))
+        self.input_contrasena.setToolTip(_translate("Login", "Escriba su contraseña"))
         self.input_contrasena.setPlaceholderText(_translate("Login", "Contraseña"))
         self.input_contrasena.setProperty("tipo", _translate("Login", "login"))
         self.titulo_login.setText(_translate("Login", "Login"))
+        self.input_usuario.setToolTip(_translate("Login", "Escriba su nombre de usuario aqui"))
         self.input_usuario.setPlaceholderText(_translate("Login", "Usuario"))
         self.input_usuario.setProperty("tipo", _translate("Login", "login"))
         self.boton_ingresar.setText(_translate("Login", "Ingresar"))
         self.label_mensaje_usuario.setText(_translate("Login", "Mensaje"))
         self.label_mensaje_usuario.setProperty("tipo", _translate("Login", "texto"))
+import os
+BASE_DIR = os.path.dirname(__file__)
