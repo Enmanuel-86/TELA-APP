@@ -104,3 +104,25 @@ QLabel[tipo="texto"]{
 	font-weight: 500;
 
 }
+
+
+/* estilo para elementos del login*/
+
+QLabel#icono_usuario{
+	image: url(:/iconos/iconos_de_interfaz/circle-user-round.png);
+}
+
+QLabel#icono_contrasena{
+	image: url(:/iconos/iconos_de_interfaz/lock-keyhole.png);
+}
+
+QPushButton#boton_ver_contrasena{
+	padding:0px;
+	background:none;
+	image:url(:/iconos/iconos_de_interfaz/eye.png)
+}
+
+QPushButton#boton_ver_contrasena:hover{
+	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
+	border-radius:5px;
+}
