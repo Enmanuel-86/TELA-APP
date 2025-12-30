@@ -72,6 +72,22 @@ background:transparent;
     image: url(:/iconos/iconos_de_interfaz/eye-white.png);
 }
 
+/* botones segun su acción  */
+
+/* boton de regresar */
+QPushButton[tipo="boton_regresar"]{
+	icon: url(:/iconos/iconos_de_interfaz/arrow-left.png);
+}
+
+QPushButton[tipo="boton_anadir"]{
+	icon: url(:/iconos/iconos_de_interfaz/circle-plus-white.png);
+}
+
+QPushButton[tipo="boton_buscar"]{
+	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
+}
+
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -114,7 +130,7 @@ QLineEdit{
 	border:2px solid #1e1e1e;
 	color: rgb(255, 255, 255);
 	padding:5px 10px;
-	font: 16pt "Segoe UI";
+	font: 14pt "Segoe UI";
 	border-radius:12px;
 
 
@@ -201,10 +217,15 @@ QLabel[tipo="texto"]{
 /*Este label son los que le dan un titulo a un segmento*/
 QLabel[tipo="titulo_segmento"]{
 	font: 25pt "Segoe UI" bold;
-	padding-left:1px;
-	font-weight: 600;
+	font-weight: 500;
 }
 
+QLabel[tipo="titulo_qdateedit"]{
+	font: 8pt "Segoe UI";
+	padding-left:1px;
+	font-weight: 500;
+
+}
 
 
 
@@ -237,7 +258,7 @@ QPushButton:hover{
 
 /*Estilo para el combobox*/
 
-QComboBox[tipo="combobox_tema_oscuro"]{
+QComboBox{
 	background:rgb(30, 30, 30);
 	font: 14pt "Segoe UI";
 	border-radius:12px;	
@@ -246,15 +267,15 @@ QComboBox[tipo="combobox_tema_oscuro"]{
 	color: rgb(143, 143, 143);
 }
 
-QComboBox[tipo="combobox_tema_oscuro"]::drop-down {
+QComboBox::drop-down {
 	width:35px;
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
-	image: url(:/iconos/imagenes/chevron-down.png);
+	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
 }
 
-QComboBox[tipo="combobox_tema_oscuro"] QAbstractItemView {
+QComboBox QAbstractItemView {
     background: rgb(66, 62, 64);
 	color:#ffffff;
 	padding: 10px 5px;
@@ -264,16 +285,16 @@ QComboBox[tipo="combobox_tema_oscuro"] QAbstractItemView {
     selection-background-color: rgb(60, 56, 214);
 }
 
-QComboBox[tipo="combobox_tema_oscuro"]:focus {
+QComboBox:focus {
     border: 2px solid rgb(25, 213, 100);         
     background-color: rgb(48, 48, 48); 
 }
 
-QComboBox[tipo="combobox_tema_oscuro"]::drop-down:pressed{
+QComboBox::drop-down:pressed{
 	background-color: rgb(0, 170, 97);
 }
 
-QComboBox[tipo="combobox_tema_oscuro"]::drop-down:hover{
+QComboBox::drop-down:hover{
 background: rgb(2, 150, 84);
 }
 
@@ -322,13 +343,13 @@ QComboBox[tipo="combobox_tema_claro"]::drop-down:pressed{
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 
-/* QRadioButtons */
+/* 7. QRadioButtons */
 /*Estilo para el QRadioButton*/
 
 QRadioButton {
     color: #ecf0f1;
     spacing: 8px;
-    padding: 5px;
+    padding: 0px;
 	font: 10pt "Segoe UI";
 }
 
@@ -351,5 +372,78 @@ QRadioButton::indicator:hover {
 QRadioButton::indicator:checked:hover {
     border:  3px solid #00aa61;;
 
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 8. QDateEdit */
+
+/* CONTENEDOR PRINCIPAL */
+QDateEdit {
+    background: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font: 14px "Segoe UI";
+	font-weight: 500;
+    border-radius: 12px;
+    padding: 4px 6px;
+}
+
+
+/* FOCUS */
+QDateEdit:focus {
+   border: 2px solid rgb(25, 213, 100);        
+    background-color: rgb(48, 48, 48);
+}
+
+
+/* BOTONES DE SUBIR Y BAJAR */
+QDateEdit::up-button {
+    width: 35px;
+    background: red;
+    border: none;
+	margin:0px;
+	border-top-right-radius:10px;
+	image: url(:/iconos/imagenes/chevron-up.png);
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+}
+
+
+QDateEdit::down-button{
+    width: 35px;
+    background: red;
+    border: none;
+	border-bottom-right-radius:10px;
+	image: url(:/iconos/imagenes/chevron-down.png);
+background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+
+}
+
+
+
+/* HOVER A LOS BOTONES */
+QDateEdit::up-button:hover {
+    background: rgb(2, 150, 84);
+}
+
+
+QDateEdit::down-button:hover{
+     background: rgb(2, 150, 84);
+}
+
+
+QDateEdit::drop-down {
+	width:35px;
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+
+QDateEdit::drop-down:hover {
+	width:35px;
+	background:rgb(6, 179, 100)
 }
 
