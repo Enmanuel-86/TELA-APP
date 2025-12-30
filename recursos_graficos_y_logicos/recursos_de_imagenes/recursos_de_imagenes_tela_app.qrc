@@ -28,6 +28,10 @@
     <file>Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>iconos_de_interfaz/arrow-left.png</file>
+    <file>iconos_de_interfaz/save.png</file>
+    <file>iconos_de_interfaz/circle-plus.png</file>
+    <file>iconos_de_interfaz/circle-plus-white.png</file>
     <file>iconos_de_interfaz/moon.png</file>
     <file>iconos_de_interfaz/chevron-down.png</file>
     <file>iconos_de_interfaz/chevron-up.png</file>
@@ -43,7 +47,6 @@
     <file>iconos_de_interfaz/cerrar_sesion.png</file>
     <file>iconos_de_interfaz/circle-user-round.png</file>
     <file>iconos_de_interfaz/circle-user-round-white.png</file>
-    <file>iconos_de_interfaz/circulo_mas.png</file>
     <file>iconos_de_interfaz/control_de_llegada.png</file>
     <file>iconos_de_interfaz/control_de_llegada_negro.png</file>
     <file>iconos_de_interfaz/control_de_reposos.png</file>
@@ -63,18 +66,15 @@
     <file>iconos_de_interfaz/file-white.png</file>
     <file>iconos_de_interfaz/flecha_abajo.png</file>
     <file>iconos_de_interfaz/flecha_izquierda.png</file>
-    <file>iconos_de_interfaz/flecha_izquierda_2.png</file>
     <file>iconos_de_interfaz/generar_informe.png</file>
+    <file>iconos_de_interfaz/search.png</file>
+    <file>iconos_de_interfaz/search-white.png</file>
     <file>iconos_de_interfaz/hogar.png</file>
-    <file>iconos_de_interfaz/icono_contraseña.png</file>
     <file>iconos_de_interfaz/importar.png</file>
     <file>iconos_de_interfaz/lock-keyhole.png</file>
     <file>iconos_de_interfaz/lock-keyhole-white.png</file>
-    <file>iconos_de_interfaz/lupa_blanca.png</file>
-    <file>iconos_de_interfaz/lupa_de_busqueda.png</file>
     <file>iconos_de_interfaz/mail.png</file>
     <file>iconos_de_interfaz/mas.png</file>
-    <file>iconos_de_interfaz/mas_blanco.png</file>
     <file>iconos_de_interfaz/menu.png</file>
     <file>iconos_de_interfaz/nuevo_registro.png</file>
     <file>iconos_de_interfaz/nuevo_registro_negro.png</file>
