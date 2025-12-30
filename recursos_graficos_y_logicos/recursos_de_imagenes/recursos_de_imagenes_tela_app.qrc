@@ -29,6 +29,7 @@
   </qresource>
   <qresource prefix="iconos">
     <file>iconos_de_interfaz/arrow-left.png</file>
+    <file>iconos_de_interfaz/arrow-left-white.png</file>
     <file>iconos_de_interfaz/save.png</file>
     <file>iconos_de_interfaz/circle-plus.png</file>
     <file>iconos_de_interfaz/circle-plus-white.png</file>
@@ -81,7 +82,7 @@
     <file>iconos_de_interfaz/reloj.png</file>
     <file>iconos_de_interfaz/reloj_azul.png</file>
     <file>iconos_de_interfaz/respaldo.png</file>
-    <file>iconos_de_interfaz/signo_de_interrogacion.png</file>
     <file>iconos_de_interfaz/trash-2.png</file>
+    <file>iconos_de_interfaz/circle-question-mark.png</file>
   </qresource>
 </RCC>
