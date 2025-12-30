@@ -8,18 +8,17 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
-BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_FormularioNuevoRegistroAlumnos(object):
     def setupUi(self, FormularioNuevoRegistroAlumnos):
         FormularioNuevoRegistroAlumnos.setObjectName("FormularioNuevoRegistroAlumnos")
-        FormularioNuevoRegistroAlumnos.resize(1125, 2783)
-        self.verticalLayout_12 = QtWidgets.QVBoxLayout(FormularioNuevoRegistroAlumnos)
-        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_12.setSpacing(0)
-        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        FormularioNuevoRegistroAlumnos.resize(1357, 2696)
+        FormularioNuevoRegistroAlumnos.setStyleSheet("")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(FormularioNuevoRegistroAlumnos)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.area_de_scroll = QtWidgets.QScrollArea(FormularioNuevoRegistroAlumnos)
         self.area_de_scroll.setStyleSheet("")
         self.area_de_scroll.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -27,22 +26,14 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1125, 2783))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1340, 2747))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.espacio_principal = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.espacio_principal.setStyleSheet("\n"
-"QFrame{\n"
-"\n"
-"   \n"
-"    background: qlineargradient(\n"
-"        x1:0, y1:0, x2:1, y2:1,\n"
-"        stop:0 #3fea87, stop:1 #00770e);\n"
-"\n"
-"}")
+        self.espacio_principal.setStyleSheet("")
         self.espacio_principal.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_principal.setObjectName("espacio_principal")
@@ -54,60 +45,33 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_de_regreso.setMinimumSize(QtCore.QSize(40, 40))
         self.boton_de_regreso.setMaximumSize(QtCore.QSize(40, 40))
         self.boton_de_regreso.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_de_regreso.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius: 20px ;\n"
-"    border:2px solid;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color: rgb(199, 199, 199)\n"
-"}")
+        self.boton_de_regreso.setStyleSheet("")
         self.boton_de_regreso.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
         self.horizontalLayout.addWidget(self.boton_de_regreso, 0, QtCore.Qt.AlignTop)
         self.espacio_preguntas = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_preguntas.setStyleSheet("\n"
-"QFrame{\n"
-"\n"
-"   \n"
-"    background: none\n"
-"\n"
-"}")
+        self.espacio_preguntas.setStyleSheet("")
         self.espacio_preguntas.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_preguntas.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_preguntas.setObjectName("espacio_preguntas")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.espacio_preguntas)
-        self.verticalLayout_3.setSpacing(12)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.espacio_preguntas)
+        self.verticalLayout_12.setSpacing(20)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.mensaje_bienvenida = QtWidgets.QFrame(self.espacio_preguntas)
-        self.mensaje_bienvenida.setMinimumSize(QtCore.QSize(1000, 200))
-        self.mensaje_bienvenida.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.mensaje_bienvenida.setMinimumSize(QtCore.QSize(971, 200))
+        self.mensaje_bienvenida.setMaximumSize(QtCore.QSize(1000, 200))
         font = QtGui.QFont()
         font.setPointSize(1)
         self.mensaje_bienvenida.setFont(font)
-        self.mensaje_bienvenida.setStyleSheet("QFrame{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 92, 47);\n"
-"    border:15px outset rgb(0, 59, 30);\n"
-"    \n"
-"\n"
-"\n"
-"\n"
-"}")
+        self.mensaje_bienvenida.setStyleSheet("")
         self.mensaje_bienvenida.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.mensaje_bienvenida.setFrameShadow(QtWidgets.QFrame.Raised)
         self.mensaje_bienvenida.setObjectName("mensaje_bienvenida")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.mensaje_bienvenida)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
         self.foto_anadir_alumno = QtWidgets.QLabel(self.mensaje_bienvenida)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -116,9 +80,9 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.foto_anadir_alumno.setSizePolicy(sizePolicy)
         self.foto_anadir_alumno.setMinimumSize(QtCore.QSize(0, 0))
         self.foto_anadir_alumno.setMaximumSize(QtCore.QSize(160, 140))
-        self.foto_anadir_alumno.setStyleSheet("border:none;")
+        self.foto_anadir_alumno.setStyleSheet("")
         self.foto_anadir_alumno.setText("")
-        self.foto_anadir_alumno.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/registro_alumnos.png")))
+        self.foto_anadir_alumno.setPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/estudiantes.png"))
         self.foto_anadir_alumno.setScaledContents(True)
         self.foto_anadir_alumno.setObjectName("foto_anadir_alumno")
         self.horizontalLayout_2.addWidget(self.foto_anadir_alumno)
@@ -130,29 +94,28 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_titulo_formulario.setSizePolicy(sizePolicy)
         self.label_titulo_formulario.setMinimumSize(QtCore.QSize(600, 0))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(39)
+        font.setFamily("Segoe UI")
+        font.setPointSize(32)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_titulo_formulario.setFont(font)
-        self.label_titulo_formulario.setStyleSheet("QLabel{\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    border:none;\n"
-"\n"
-"}")
+        self.label_titulo_formulario.setStyleSheet("")
         self.label_titulo_formulario.setAlignment(QtCore.Qt.AlignCenter)
         self.label_titulo_formulario.setWordWrap(True)
         self.label_titulo_formulario.setObjectName("label_titulo_formulario")
-        self.horizontalLayout_2.addWidget(self.label_titulo_formulario, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_2.addWidget(self.label_titulo_formulario)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem1)
         self.boton_ayuda = QtWidgets.QPushButton(self.mensaje_bienvenida)
-        self.boton_ayuda.setMinimumSize(QtCore.QSize(50, 50))
-        self.boton_ayuda.setMaximumSize(QtCore.QSize(50, 50))
+        self.boton_ayuda.setMinimumSize(QtCore.QSize(41, 41))
+        self.boton_ayuda.setMaximumSize(QtCore.QSize(41, 41))
         self.boton_ayuda.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.boton_ayuda.setStyleSheet("QPushButton{\n"
 "\n"
 "    background-color: rgb(85, 85, 255);\n"
-"    border-radius:25px;\n"
+"    border-radius:20px;\n"
+"    padding:10px;\n"
 "\n"
 "\n"
 "}\n"
@@ -166,24 +129,22 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
 "}\n"
 "")
         self.boton_ayuda.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/signo_de_interrogacion.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_ayuda.setIcon(icon1)
-        self.boton_ayuda.setIconSize(QtCore.QSize(45, 45))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/circle-question-mark.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_ayuda.setIcon(icon)
+        self.boton_ayuda.setIconSize(QtCore.QSize(37, 37))
         self.boton_ayuda.setObjectName("boton_ayuda")
         self.horizontalLayout_2.addWidget(self.boton_ayuda, 0, QtCore.Qt.AlignTop)
-        self.verticalLayout_3.addWidget(self.mensaje_bienvenida, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.verticalLayout_12.addWidget(self.mensaje_bienvenida)
         self.datos_del_alumno = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.datos_del_alumno.sizePolicy().hasHeightForWidth())
         self.datos_del_alumno.setSizePolicy(sizePolicy)
-        self.datos_del_alumno.setMinimumSize(QtCore.QSize(1000, 420))
-        self.datos_del_alumno.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.datos_del_alumno.setMinimumSize(QtCore.QSize(971, 420))
+        self.datos_del_alumno.setMaximumSize(QtCore.QSize(1001, 420))
+        self.datos_del_alumno.setStyleSheet("")
         self.datos_del_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.datos_del_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.datos_del_alumno.setObjectName("datos_del_alumno")
@@ -194,34 +155,24 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segmento_datos_del_alumno.setMinimumSize(QtCore.QSize(0, 30))
         self.label_segmento_datos_del_alumno.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segmento_datos_del_alumno.setFont(font)
-        self.label_segmento_datos_del_alumno.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"    border:none;\n"
-"    padding-left:2px;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segmento_datos_del_alumno.setStyleSheet("")
         self.label_segmento_datos_del_alumno.setScaledContents(False)
         self.label_segmento_datos_del_alumno.setObjectName("label_segmento_datos_del_alumno")
         self.verticalLayout_4.addWidget(self.label_segmento_datos_del_alumno)
         self.preguntas_datos_alumno = QtWidgets.QFrame(self.datos_del_alumno)
         self.preguntas_datos_alumno.setMinimumSize(QtCore.QSize(460, 300))
-        self.preguntas_datos_alumno.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.preguntas_datos_alumno.setStyleSheet("")
         self.preguntas_datos_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_datos_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_datos_alumno.setObjectName("preguntas_datos_alumno")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.preguntas_datos_alumno)
+        self.gridLayout_6.setContentsMargins(0, 0, 0, -1)
         self.gridLayout_6.setHorizontalSpacing(20)
         self.gridLayout_6.setVerticalSpacing(10)
         self.gridLayout_6.setObjectName("gridLayout_6")
@@ -230,20 +181,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_cedula = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_cedula.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_cedula.setFont(font)
-        self.label_cedula.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_cedula.setStyleSheet("")
         self.label_cedula.setTextFormat(QtCore.Qt.PlainText)
         self.label_cedula.setScaledContents(True)
         self.label_cedula.setObjectName("label_cedula")
@@ -256,31 +200,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_cedula.setSizePolicy(sizePolicy)
         self.input_cedula.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_cedula.setFont(font)
-        self.input_cedula.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_cedula.setStyleSheet("")
         self.input_cedula.setObjectName("input_cedula")
         self.verticalLayout_13.addWidget(self.input_cedula)
         self.gridLayout_6.addLayout(self.verticalLayout_13, 1, 1, 1, 1)
@@ -292,31 +218,20 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.espacio_sexo.setSizePolicy(sizePolicy)
         self.espacio_sexo.setMinimumSize(QtCore.QSize(0, 60))
         self.espacio_sexo.setMaximumSize(QtCore.QSize(16777215, 0))
+        self.espacio_sexo.setStyleSheet("")
         self.espacio_sexo.setObjectName("espacio_sexo")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.espacio_sexo)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.input_sexo_femenino = QtWidgets.QRadioButton(self.espacio_sexo)
         self.input_sexo_femenino.setMinimumSize(QtCore.QSize(0, 0))
         self.input_sexo_femenino.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.input_sexo_femenino.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_sexo_femenino.setStyleSheet("")
         self.input_sexo_femenino.setObjectName("input_sexo_femenino")
         self.gridLayout_2.addWidget(self.input_sexo_femenino, 1, 0, 1, 1, QtCore.Qt.AlignLeft)
         self.input_sexo_masculino = QtWidgets.QRadioButton(self.espacio_sexo)
         self.input_sexo_masculino.setMinimumSize(QtCore.QSize(0, 0))
         self.input_sexo_masculino.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.input_sexo_masculino.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_sexo_masculino.setStyleSheet("")
         self.input_sexo_masculino.setObjectName("input_sexo_masculino")
         self.gridLayout_2.addWidget(self.input_sexo_masculino, 1, 1, 1, 1)
         self.label_sexo = QtWidgets.QLabel(self.espacio_sexo)
@@ -327,20 +242,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_sexo.setSizePolicy(sizePolicy)
         self.label_sexo.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_sexo.setFont(font)
-        self.label_sexo.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_sexo.setStyleSheet("")
         self.label_sexo.setScaledContents(False)
         self.label_sexo.setObjectName("label_sexo")
         self.gridLayout_2.addWidget(self.label_sexo, 0, 0, 1, 1, QtCore.Qt.AlignTop)
@@ -350,20 +258,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segundo_nombre = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_segundo_nombre.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segundo_nombre.setFont(font)
-        self.label_segundo_nombre.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segundo_nombre.setStyleSheet("")
         self.label_segundo_nombre.setTextFormat(QtCore.Qt.PlainText)
         self.label_segundo_nombre.setScaledContents(True)
         self.label_segundo_nombre.setObjectName("label_segundo_nombre")
@@ -376,31 +277,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_segundo_nombre.setSizePolicy(sizePolicy)
         self.input_segundo_nombre.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_segundo_nombre.setFont(font)
-        self.input_segundo_nombre.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_segundo_nombre.setStyleSheet("")
         self.input_segundo_nombre.setObjectName("input_segundo_nombre")
         self.verticalLayout_6.addWidget(self.input_segundo_nombre)
         self.gridLayout_6.addLayout(self.verticalLayout_6, 0, 1, 1, 1)
@@ -409,20 +292,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_apellido_paterno = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_apellido_paterno.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_apellido_paterno.setFont(font)
-        self.label_apellido_paterno.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_apellido_paterno.setStyleSheet("")
         self.label_apellido_paterno.setTextFormat(QtCore.Qt.PlainText)
         self.label_apellido_paterno.setScaledContents(True)
         self.label_apellido_paterno.setObjectName("label_apellido_paterno")
@@ -435,31 +311,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_apellido_paterno.setSizePolicy(sizePolicy)
         self.input_apellido_paterno.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_apellido_paterno.setFont(font)
-        self.input_apellido_paterno.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_apellido_paterno.setStyleSheet("")
         self.input_apellido_paterno.setObjectName("input_apellido_paterno")
         self.verticalLayout_15.addWidget(self.input_apellido_paterno)
         self.gridLayout_6.addLayout(self.verticalLayout_15, 0, 3, 1, 1)
@@ -468,20 +326,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segundo_nombre_2 = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_segundo_nombre_2.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segundo_nombre_2.setFont(font)
-        self.label_segundo_nombre_2.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segundo_nombre_2.setStyleSheet("")
         self.label_segundo_nombre_2.setTextFormat(QtCore.Qt.PlainText)
         self.label_segundo_nombre_2.setScaledContents(True)
         self.label_segundo_nombre_2.setObjectName("label_segundo_nombre_2")
@@ -494,36 +345,19 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_tercer_nombre.setSizePolicy(sizePolicy)
         self.input_tercer_nombre.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_tercer_nombre.setFont(font)
-        self.input_tercer_nombre.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_tercer_nombre.setStyleSheet("")
         self.input_tercer_nombre.setObjectName("input_tercer_nombre")
         self.verticalLayout_16.addWidget(self.input_tercer_nombre)
         self.gridLayout_6.addLayout(self.verticalLayout_16, 0, 2, 1, 1)
         self.espacio_imt = QtWidgets.QFrame(self.preguntas_datos_alumno)
         self.espacio_imt.setMaximumSize(QtCore.QSize(200, 60))
+        self.espacio_imt.setStyleSheet("")
         self.espacio_imt.setObjectName("espacio_imt")
         self.formLayout_3 = QtWidgets.QFormLayout(self.espacio_imt)
         self.formLayout_3.setHorizontalSpacing(50)
@@ -531,42 +365,23 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_imt = QtWidgets.QLabel(self.espacio_imt)
         self.label_imt.setMaximumSize(QtCore.QSize(120, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_imt.setFont(font)
-        self.label_imt.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_imt.setStyleSheet("")
         self.label_imt.setTextFormat(QtCore.Qt.PlainText)
         self.label_imt.setScaledContents(True)
         self.label_imt.setObjectName("label_imt")
         self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_imt)
         self.input_imt_si = QtWidgets.QRadioButton(self.espacio_imt)
-        self.input_imt_si.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_imt_si.setStyleSheet("")
         self.input_imt_si.setObjectName("input_imt_si")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.input_imt_si)
         self.input_imt_no = QtWidgets.QRadioButton(self.espacio_imt)
-        self.input_imt_no.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_imt_no.setStyleSheet("")
         self.input_imt_no.setObjectName("input_imt_no")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.input_imt_no)
         self.gridLayout_6.addWidget(self.espacio_imt, 2, 2, 1, 1)
@@ -580,20 +395,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_relacion_con_representante.setSizePolicy(sizePolicy)
         self.label_relacion_con_representante.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_relacion_con_representante.setFont(font)
-        self.label_relacion_con_representante.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_relacion_con_representante.setStyleSheet("")
         self.label_relacion_con_representante.setTextFormat(QtCore.Qt.PlainText)
         self.label_relacion_con_representante.setScaledContents(True)
         self.label_relacion_con_representante.setObjectName("label_relacion_con_representante")
@@ -606,189 +414,42 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_relacion_con_representante.setSizePolicy(sizePolicy)
         self.input_relacion_con_representante.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_relacion_con_representante.setFont(font)
-        self.input_relacion_con_representante.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_relacion_con_representante.setStyleSheet("")
         self.input_relacion_con_representante.setObjectName("input_relacion_con_representante")
         self.verticalLayout_14.addWidget(self.input_relacion_con_representante)
         self.gridLayout_6.addLayout(self.verticalLayout_14, 1, 2, 1, 1)
         self.espacio_fecha_nacimiento = QtWidgets.QFrame(self.preguntas_datos_alumno)
         self.espacio_fecha_nacimiento.setMinimumSize(QtCore.QSize(200, 0))
+        self.espacio_fecha_nacimiento.setStyleSheet("")
         self.espacio_fecha_nacimiento.setObjectName("espacio_fecha_nacimiento")
         self.label_cedula_2 = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
-        self.label_cedula_2.setGeometry(QtCore.QRect(0, 0, 134, 16))
+        self.label_cedula_2.setGeometry(QtCore.QRect(4, -2, 161, 16))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setWeight(75)
-        self.label_cedula_2.setFont(font)
-        self.label_cedula_2.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_cedula_2.setScaledContents(False)
-        self.label_cedula_2.setObjectName("label_cedula_2")
-        self.dateedit_fecha_nacimiento = QtWidgets.QDateEdit(self.espacio_fecha_nacimiento)
-        self.dateedit_fecha_nacimiento.setGeometry(QtCore.QRect(0, 19, 211, 40))
-        self.dateedit_fecha_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Segoe UI")
         font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
+        self.label_cedula_2.setFont(font)
+        self.label_cedula_2.setStyleSheet("")
+        self.label_cedula_2.setScaledContents(False)
+        self.label_cedula_2.setObjectName("label_cedula_2")
+        self.dateedit_fecha_nacimiento = QtWidgets.QDateEdit(self.espacio_fecha_nacimiento)
+        self.dateedit_fecha_nacimiento.setGeometry(QtCore.QRect(2, 18, 211, 41))
+        self.dateedit_fecha_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
         self.dateedit_fecha_nacimiento.setFont(font)
-        self.dateedit_fecha_nacimiento.setStyleSheet("QDateEdit{\n"
-"\n"
-"    padding-left:10px;\n"
-"    padding-top:10px;\n"
-"    border:1px solid #000000 ;\n"
-"\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QDateEdit QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QDateEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"QCalendarWidget {\n"
-"                background-color: white;\n"
-"                border: 1px solid #d0d0d0;\n"
-"                border-radius: 8px;\n"
-"                font-family: Arial, sans-serif;\n"
-"            }\n"
-"            \n"
-"            /* Barra superior con mes y año */\n"
-"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"                border-top-left-radius: 7px;\n"
-"                border-top-right-radius: 7px;\n"
-"                padding: 5px;\n"
-"            }\n"
-"            \n"
-"            /* Botones de navegación */\n"
-"            QCalendarWidget QToolButton {\n"
-"                background-color: transparent;\n"
-"                color: white;\n"
-"                font-weight: bold;\n"
-"                border: none;\n"
-"                padding: 5px;\n"
-"                border-radius: 3px;\n"
-"            }\n"
-"            \n"
-"            QCalendarWidget QToolButton:hover {\n"
-"                background-color: rgba(255, 255, 255, 0.2);\n"
-"            }\n"
-"            \n"
-"            /* Días de la semana */\n"
-"            QCalendarWidget QHeaderView::section {\n"
-"                background-color: #f8f9fa;\n"
-"                color: #555555;\n"
-"                font-weight: bold;\n"
-"                padding: 8px;\n"
-"                border: none;\n"
-"                border-bottom: 1px solid #e0e0e0;\n"
-"            }\n"
-"            \n"
-"            /* Días normales */\n"
-"            QCalendarWidget QAbstractItemView:enabled {\n"
-"                color: #333333;\n"
-"                background-color: white;\n"
-"                selection-background-color: #4a90e2;\n"
-"                selection-color: white;\n"
-"                outline: none;\n"
-"                border: none;\n"
-"            }\n"
-"            \n"
-"            /* Día actual */\n"
-"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
-"                background-color: #e8f4fd;\n"
-"                color: #4a90e2;\n"
-"                font-weight: bold;\n"
-"            }\n"
-"            \n"
-"            /* Días de otros meses */\n"
-"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
-"                color: #aaaaaa;\n"
-"            }\n"
-"            \n"
-"            /* Efecto hover sobre los días */\n"
-"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
-"                background-color: #f0f7ff;\n"
-"            }\n"
-"            \n"
-"            /* Fines de semana */\n"
-"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"            }\n"
-"\n"
-"\n"
-"")
+        self.dateedit_fecha_nacimiento.setStyleSheet("")
         self.dateedit_fecha_nacimiento.setWrapping(False)
         self.dateedit_fecha_nacimiento.setFrame(True)
         self.dateedit_fecha_nacimiento.setAccelerated(True)
@@ -800,29 +461,25 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_nacimiento.setObjectName("dateedit_fecha_nacimiento")
         self.label_6 = QtWidgets.QLabel(self.espacio_fecha_nacimiento)
-        self.label_6.setGeometry(QtCore.QRect(20, 20, 101, 16))
-        self.label_6.setStyleSheet("background:none;")
+        self.label_6.setGeometry(QtCore.QRect(15, 18, 101, 16))
+        self.label_6.setStyleSheet("")
         self.label_6.setObjectName("label_6")
+        self.dateedit_fecha_nacimiento.raise_()
+        self.label_6.raise_()
+        self.label_cedula_2.raise_()
         self.gridLayout_6.addWidget(self.espacio_fecha_nacimiento, 1, 3, 1, 1)
         self.verticalLayout_38 = QtWidgets.QVBoxLayout()
         self.verticalLayout_38.setObjectName("verticalLayout_38")
         self.label_situacion = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_situacion.setMaximumSize(QtCore.QSize(120, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_situacion.setFont(font)
-        self.label_situacion.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_situacion.setStyleSheet("")
         self.label_situacion.setScaledContents(True)
         self.label_situacion.setObjectName("label_situacion")
         self.verticalLayout_38.addWidget(self.label_situacion)
@@ -834,31 +491,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_situacion.setSizePolicy(sizePolicy)
         self.input_situacion.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_situacion.setFont(font)
-        self.input_situacion.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_situacion.setStyleSheet("")
         self.input_situacion.setObjectName("input_situacion")
         self.verticalLayout_38.addWidget(self.input_situacion)
         self.gridLayout_6.addLayout(self.verticalLayout_38, 2, 0, 1, 1)
@@ -867,20 +506,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_primer_nombre = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_primer_nombre.setMaximumSize(QtCore.QSize(120, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_primer_nombre.setFont(font)
-        self.label_primer_nombre.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_primer_nombre.setStyleSheet("")
         self.label_primer_nombre.setScaledContents(True)
         self.label_primer_nombre.setObjectName("label_primer_nombre")
         self.verticalLayout_5.addWidget(self.label_primer_nombre)
@@ -892,31 +524,14 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_primer_nombre.setSizePolicy(sizePolicy)
         self.input_primer_nombre.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_primer_nombre.setFont(font)
-        self.input_primer_nombre.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_primer_nombre.setStyleSheet("")
+        self.input_primer_nombre.setText("")
         self.input_primer_nombre.setObjectName("input_primer_nombre")
         self.verticalLayout_5.addWidget(self.input_primer_nombre)
         self.gridLayout_6.addLayout(self.verticalLayout_5, 0, 0, 1, 1)
@@ -925,20 +540,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_apellido_materno = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_apellido_materno.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_apellido_materno.setFont(font)
-        self.label_apellido_materno.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_apellido_materno.setStyleSheet("")
         self.label_apellido_materno.setTextFormat(QtCore.Qt.PlainText)
         self.label_apellido_materno.setScaledContents(True)
         self.label_apellido_materno.setObjectName("label_apellido_materno")
@@ -951,37 +559,20 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_apellido_materno.setSizePolicy(sizePolicy)
         self.input_apellido_materno.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_apellido_materno.setFont(font)
-        self.input_apellido_materno.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_apellido_materno.setStyleSheet("")
         self.input_apellido_materno.setObjectName("input_apellido_materno")
         self.verticalLayout_19.addWidget(self.input_apellido_materno)
         self.gridLayout_6.addLayout(self.verticalLayout_19, 1, 0, 1, 1)
         self.espacio_cma = QtWidgets.QFrame(self.preguntas_datos_alumno)
         self.espacio_cma.setMinimumSize(QtCore.QSize(0, 60))
         self.espacio_cma.setMaximumSize(QtCore.QSize(200, 60))
+        self.espacio_cma.setStyleSheet("")
         self.espacio_cma.setObjectName("espacio_cma")
         self.formLayout = QtWidgets.QFormLayout(self.espacio_cma)
         self.formLayout.setHorizontalSpacing(50)
@@ -989,48 +580,30 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_cma = QtWidgets.QLabel(self.espacio_cma)
         self.label_cma.setMaximumSize(QtCore.QSize(120, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_cma.setFont(font)
-        self.label_cma.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_cma.setStyleSheet("")
         self.label_cma.setScaledContents(True)
         self.label_cma.setObjectName("label_cma")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_cma)
         self.input_cma_si = QtWidgets.QRadioButton(self.espacio_cma)
-        self.input_cma_si.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_cma_si.setStyleSheet("")
         self.input_cma_si.setObjectName("input_cma_si")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.input_cma_si)
         self.input_cma_no = QtWidgets.QRadioButton(self.espacio_cma)
-        self.input_cma_no.setStyleSheet("QRadioButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:#ffffff;\n"
-"\n"
-"}")
+        self.input_cma_no.setStyleSheet("")
         self.input_cma_no.setObjectName("input_cma_no")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.input_cma_no)
         self.gridLayout_6.addWidget(self.espacio_cma, 2, 3, 1, 1)
         self.frame_2 = QtWidgets.QFrame(self.preguntas_datos_alumno)
+        self.frame_2.setStyleSheet("")
         self.frame_2.setObjectName("frame_2")
         self.label_fecha_de_ingreso_tela = QtWidgets.QLabel(self.frame_2)
-        self.label_fecha_de_ingreso_tela.setGeometry(QtCore.QRect(0, 0, 174, 16))
+        self.label_fecha_de_ingreso_tela.setGeometry(QtCore.QRect(1, 8, 191, 16))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
@@ -1038,153 +611,25 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_fecha_de_ingreso_tela.setSizePolicy(sizePolicy)
         self.label_fecha_de_ingreso_tela.setMaximumSize(QtCore.QSize(200, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_fecha_de_ingreso_tela.setFont(font)
-        self.label_fecha_de_ingreso_tela.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_fecha_de_ingreso_tela.setScaledContents(False)
-        self.label_fecha_de_ingreso_tela.setObjectName("label_fecha_de_ingreso_tela")
-        self.dateedit_fecha_ingreso_tela = QtWidgets.QDateEdit(self.frame_2)
-        self.dateedit_fecha_ingreso_tela.setGeometry(QtCore.QRect(0, 19, 221, 40))
-        self.dateedit_fecha_ingreso_tela.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Segoe UI")
         font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
+        self.label_fecha_de_ingreso_tela.setFont(font)
+        self.label_fecha_de_ingreso_tela.setStyleSheet("")
+        self.label_fecha_de_ingreso_tela.setScaledContents(False)
+        self.label_fecha_de_ingreso_tela.setObjectName("label_fecha_de_ingreso_tela")
+        self.dateedit_fecha_ingreso_tela = QtWidgets.QDateEdit(self.frame_2)
+        self.dateedit_fecha_ingreso_tela.setGeometry(QtCore.QRect(2, 27, 211, 41))
+        self.dateedit_fecha_ingreso_tela.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
         self.dateedit_fecha_ingreso_tela.setFont(font)
-        self.dateedit_fecha_ingreso_tela.setStyleSheet("QDateEdit{\n"
-"\n"
-"    padding-left:10px;\n"
-"    padding-top:10px;\n"
-"    border:1px solid #000000 ;\n"
-"\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QDateEdit QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QDateEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"QCalendarWidget {\n"
-"                background-color: white;\n"
-"                border: 1px solid #d0d0d0;\n"
-"                border-radius: 8px;\n"
-"                font-family: Arial, sans-serif;\n"
-"            }\n"
-"            \n"
-"            /* Barra superior con mes y año */\n"
-"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"                border-top-left-radius: 7px;\n"
-"                border-top-right-radius: 7px;\n"
-"                padding: 5px;\n"
-"            }\n"
-"            \n"
-"            /* Botones de navegación */\n"
-"            QCalendarWidget QToolButton {\n"
-"                background-color: transparent;\n"
-"                color: white;\n"
-"                font-weight: bold;\n"
-"                border: none;\n"
-"                padding: 5px;\n"
-"                border-radius: 3px;\n"
-"            }\n"
-"            \n"
-"            QCalendarWidget QToolButton:hover {\n"
-"                background-color: rgba(255, 255, 255, 0.2);\n"
-"            }\n"
-"            \n"
-"            /* Días de la semana */\n"
-"            QCalendarWidget QHeaderView::section {\n"
-"                background-color: #f8f9fa;\n"
-"                color: #555555;\n"
-"                font-weight: bold;\n"
-"                padding: 8px;\n"
-"                border: none;\n"
-"                border-bottom: 1px solid #e0e0e0;\n"
-"            }\n"
-"            \n"
-"            /* Días normales */\n"
-"            QCalendarWidget QAbstractItemView:enabled {\n"
-"                color: #333333;\n"
-"                background-color: white;\n"
-"                selection-background-color: #4a90e2;\n"
-"                selection-color: white;\n"
-"                outline: none;\n"
-"                border: none;\n"
-"            }\n"
-"            \n"
-"            /* Día actual */\n"
-"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
-"                background-color: #e8f4fd;\n"
-"                color: #4a90e2;\n"
-"                font-weight: bold;\n"
-"            }\n"
-"            \n"
-"            /* Días de otros meses */\n"
-"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
-"                color: #aaaaaa;\n"
-"            }\n"
-"            \n"
-"            /* Efecto hover sobre los días */\n"
-"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
-"                background-color: #f0f7ff;\n"
-"            }\n"
-"            \n"
-"            /* Fines de semana */\n"
-"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"            }\n"
-"\n"
-"\n"
-"")
+        self.dateedit_fecha_ingreso_tela.setStyleSheet("")
         self.dateedit_fecha_ingreso_tela.setWrapping(False)
         self.dateedit_fecha_ingreso_tela.setFrame(True)
         self.dateedit_fecha_ingreso_tela.setAccelerated(True)
@@ -1196,8 +641,15 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.dateedit_fecha_ingreso_tela.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_ingreso_tela.setObjectName("dateedit_fecha_ingreso_tela")
         self.label = QtWidgets.QLabel(self.frame_2)
-        self.label.setGeometry(QtCore.QRect(21, 20, 101, 16))
-        self.label.setStyleSheet("background:none;")
+        self.label.setGeometry(QtCore.QRect(14, 26, 121, 16))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(8)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("")
         self.label.setObjectName("label")
         self.gridLayout_6.addWidget(self.frame_2, 3, 1, 1, 1)
         self.verticalLayout_18 = QtWidgets.QVBoxLayout()
@@ -1205,20 +657,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_lugar_de_nacimiento = QtWidgets.QLabel(self.preguntas_datos_alumno)
         self.label_lugar_de_nacimiento.setMaximumSize(QtCore.QSize(150, 120))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_lugar_de_nacimiento.setFont(font)
-        self.label_lugar_de_nacimiento.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_lugar_de_nacimiento.setStyleSheet("")
         self.label_lugar_de_nacimiento.setTextFormat(QtCore.Qt.PlainText)
         self.label_lugar_de_nacimiento.setScaledContents(True)
         self.label_lugar_de_nacimiento.setObjectName("label_lugar_de_nacimiento")
@@ -1231,47 +676,27 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_lugar_de_nacimiento.setSizePolicy(sizePolicy)
         self.input_lugar_de_nacimiento.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_lugar_de_nacimiento.setFont(font)
-        self.input_lugar_de_nacimiento.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_lugar_de_nacimiento.setStyleSheet("")
         self.input_lugar_de_nacimiento.setObjectName("input_lugar_de_nacimiento")
         self.verticalLayout_18.addWidget(self.input_lugar_de_nacimiento, 0, QtCore.Qt.AlignTop)
         self.gridLayout_6.addLayout(self.verticalLayout_18, 3, 0, 1, 1)
         self.verticalLayout_4.addWidget(self.preguntas_datos_alumno, 0, QtCore.Qt.AlignVCenter)
-        self.verticalLayout_3.addWidget(self.datos_del_alumno, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.datos_del_alumno)
         self.info_academica = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_academica.sizePolicy().hasHeightForWidth())
         self.info_academica.setSizePolicy(sizePolicy)
-        self.info_academica.setMinimumSize(QtCore.QSize(1000, 170))
-        self.info_academica.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.info_academica.setMinimumSize(QtCore.QSize(971, 195))
+        self.info_academica.setMaximumSize(QtCore.QSize(1001, 195))
+        self.info_academica.setStyleSheet("")
         self.info_academica.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.info_academica.setFrameShadow(QtWidgets.QFrame.Raised)
         self.info_academica.setObjectName("info_academica")
@@ -1287,35 +712,24 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_titulo_info_academica.setMinimumSize(QtCore.QSize(0, 40))
         self.label_titulo_info_academica.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_titulo_info_academica.setFont(font)
-        self.label_titulo_info_academica.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"padding-left:1px;\n"
-"border:none;\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_titulo_info_academica.setStyleSheet("")
         self.label_titulo_info_academica.setScaledContents(False)
         self.label_titulo_info_academica.setObjectName("label_titulo_info_academica")
         self.verticalLayout.addWidget(self.label_titulo_info_academica, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.preguntas_info_academica = QtWidgets.QFrame(self.info_academica)
         self.preguntas_info_academica.setMinimumSize(QtCore.QSize(460, 100))
-        self.preguntas_info_academica.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.preguntas_info_academica.setStyleSheet("")
         self.preguntas_info_academica.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_academica.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_academica.setObjectName("preguntas_info_academica")
         self.formLayout_2 = QtWidgets.QFormLayout(self.preguntas_info_academica)
+        self.formLayout_2.setContentsMargins(0, 0, 0, 0)
         self.formLayout_2.setHorizontalSpacing(20)
         self.formLayout_2.setObjectName("formLayout_2")
         self.verticalLayout_40 = QtWidgets.QVBoxLayout()
@@ -1323,20 +737,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_escolaridad = QtWidgets.QLabel(self.preguntas_info_academica)
         self.label_escolaridad.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_escolaridad.setFont(font)
-        self.label_escolaridad.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_escolaridad.setStyleSheet("")
         self.label_escolaridad.setScaledContents(True)
         self.label_escolaridad.setObjectName("label_escolaridad")
         self.verticalLayout_40.addWidget(self.label_escolaridad)
@@ -1348,31 +755,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_escolaridad.setSizePolicy(sizePolicy)
         self.input_escolaridad.setMinimumSize(QtCore.QSize(300, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_escolaridad.setFont(font)
-        self.input_escolaridad.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_escolaridad.setStyleSheet("")
         self.input_escolaridad.setObjectName("input_escolaridad")
         self.verticalLayout_40.addWidget(self.input_escolaridad)
         self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.LabelRole, self.verticalLayout_40)
@@ -1381,20 +770,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_procendencia = QtWidgets.QLabel(self.preguntas_info_academica)
         self.label_procendencia.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_procendencia.setFont(font)
-        self.label_procendencia.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_procendencia.setStyleSheet("")
         self.label_procendencia.setTextFormat(QtCore.Qt.PlainText)
         self.label_procendencia.setScaledContents(True)
         self.label_procendencia.setObjectName("label_procendencia")
@@ -1407,47 +789,27 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_procendencia.setSizePolicy(sizePolicy)
         self.input_procendencia.setMinimumSize(QtCore.QSize(300, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_procendencia.setFont(font)
-        self.input_procendencia.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_procendencia.setStyleSheet("")
         self.input_procendencia.setObjectName("input_procendencia")
         self.verticalLayout_39.addWidget(self.input_procendencia)
         self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_39)
         self.verticalLayout.addWidget(self.preguntas_info_academica)
-        self.verticalLayout_3.addWidget(self.info_academica, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.info_academica)
         self.datos_del_representante = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.datos_del_representante.sizePolicy().hasHeightForWidth())
         self.datos_del_representante.setSizePolicy(sizePolicy)
-        self.datos_del_representante.setMinimumSize(QtCore.QSize(1000, 350))
-        self.datos_del_representante.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.datos_del_representante.setMinimumSize(QtCore.QSize(971, 350))
+        self.datos_del_representante.setMaximumSize(QtCore.QSize(1001, 350))
+        self.datos_del_representante.setStyleSheet("")
         self.datos_del_representante.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.datos_del_representante.setFrameShadow(QtWidgets.QFrame.Raised)
         self.datos_del_representante.setObjectName("datos_del_representante")
@@ -1458,52 +820,38 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segmento_datos_del_representante.setMinimumSize(QtCore.QSize(0, 30))
         self.label_segmento_datos_del_representante.setMaximumSize(QtCore.QSize(16777215, 25))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segmento_datos_del_representante.setFont(font)
-        self.label_segmento_datos_del_representante.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"    border:none;\n"
-"    border-color: #ffffff;\n"
-"    \n"
-"    padding-left:2px;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segmento_datos_del_representante.setStyleSheet("")
         self.label_segmento_datos_del_representante.setScaledContents(False)
         self.label_segmento_datos_del_representante.setObjectName("label_segmento_datos_del_representante")
         self.verticalLayout_7.addWidget(self.label_segmento_datos_del_representante)
         self.preguntas_info_medidas = QtWidgets.QFrame(self.datos_del_representante)
         self.preguntas_info_medidas.setMinimumSize(QtCore.QSize(460, 200))
+        self.preguntas_info_medidas.setStyleSheet("")
         self.preguntas_info_medidas.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_medidas.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_medidas.setObjectName("preguntas_info_medidas")
         self.gridLayout_11 = QtWidgets.QGridLayout(self.preguntas_info_medidas)
+        self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_11.setHorizontalSpacing(0)
         self.gridLayout_11.setVerticalSpacing(20)
         self.gridLayout_11.setObjectName("gridLayout_11")
         self.gridLayout_3 = QtWidgets.QGridLayout()
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.label_primer_nombre_2 = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_primer_nombre_2.setFont(font)
-        self.label_primer_nombre_2.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_primer_nombre_2.setStyleSheet("")
         self.label_primer_nombre_2.setScaledContents(True)
         self.label_primer_nombre_2.setObjectName("label_primer_nombre_2")
         self.gridLayout_3.addWidget(self.label_primer_nombre_2, 0, 0, 1, 1)
@@ -1515,31 +863,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_buscar_por_cedula.setSizePolicy(sizePolicy)
         self.input_buscar_por_cedula.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_buscar_por_cedula.setFont(font)
-        self.input_buscar_por_cedula.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_buscar_por_cedula.setStyleSheet("")
         self.input_buscar_por_cedula.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.input_buscar_por_cedula.setObjectName("input_buscar_por_cedula")
         self.gridLayout_3.addWidget(self.input_buscar_por_cedula, 1, 0, 1, 1, QtCore.Qt.AlignLeft)
@@ -1552,25 +882,11 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_buscar_cedula_representante.setMinimumSize(QtCore.QSize(140, 0))
         self.boton_buscar_cedula_representante.setMaximumSize(QtCore.QSize(130, 200))
         self.boton_buscar_cedula_representante.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_buscar_cedula_representante.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(0, 183, 72);\n"
-"    font: 75 14pt \"Arial\";\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/lupa_de_busqueda.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_buscar_cedula_representante.setIcon(icon2)
-        self.boton_buscar_cedula_representante.setIconSize(QtCore.QSize(25, 25))
+        self.boton_buscar_cedula_representante.setStyleSheet("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_de_busqueda.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_buscar_cedula_representante.setIcon(icon1)
+        self.boton_buscar_cedula_representante.setIconSize(QtCore.QSize(28, 28))
         self.boton_buscar_cedula_representante.setObjectName("boton_buscar_cedula_representante")
         self.gridLayout_3.addWidget(self.boton_buscar_cedula_representante, 1, 1, 1, 1, QtCore.Qt.AlignLeft)
         self.gridLayout_11.addLayout(self.gridLayout_3, 0, 0, 1, 2)
@@ -1578,20 +894,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.label_nombre_del_representante = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_nombre_del_representante.setFont(font)
-        self.label_nombre_del_representante.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_nombre_del_representante.setStyleSheet("")
         self.label_nombre_del_representante.setScaledContents(True)
         self.label_nombre_del_representante.setObjectName("label_nombre_del_representante")
         self.verticalLayout_20.addWidget(self.label_nombre_del_representante)
@@ -1604,43 +913,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_nombre_del_representante.setSizePolicy(sizePolicy)
         self.input_nombre_del_representante.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_nombre_del_representante.setFont(font)
-        self.input_nombre_del_representante.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_nombre_del_representante.setStyleSheet("")
         self.input_nombre_del_representante.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.input_nombre_del_representante.setCursorMoveStyle(QtCore.Qt.LogicalMoveStyle)
         self.input_nombre_del_representante.setObjectName("input_nombre_del_representante")
@@ -1650,20 +929,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_23.setObjectName("verticalLayout_23")
         self.label_apellido_del_representante = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_apellido_del_representante.setFont(font)
-        self.label_apellido_del_representante.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_apellido_del_representante.setStyleSheet("")
         self.label_apellido_del_representante.setTextFormat(QtCore.Qt.PlainText)
         self.label_apellido_del_representante.setScaledContents(True)
         self.label_apellido_del_representante.setObjectName("label_apellido_del_representante")
@@ -1676,43 +948,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_apellido_del_representante.setSizePolicy(sizePolicy)
         self.input_apellido_del_representante.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_apellido_del_representante.setFont(font)
-        self.input_apellido_del_representante.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_apellido_del_representante.setStyleSheet("")
         self.input_apellido_del_representante.setObjectName("input_apellido_del_representante")
         self.verticalLayout_23.addWidget(self.input_apellido_del_representante)
         self.gridLayout_11.addLayout(self.verticalLayout_23, 1, 1, 1, 1)
@@ -1720,20 +962,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_24.setObjectName("verticalLayout_24")
         self.label_numero_de_telefono = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_numero_de_telefono.setFont(font)
-        self.label_numero_de_telefono.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_numero_de_telefono.setStyleSheet("")
         self.label_numero_de_telefono.setTextFormat(QtCore.Qt.PlainText)
         self.label_numero_de_telefono.setScaledContents(True)
         self.label_numero_de_telefono.setObjectName("label_numero_de_telefono")
@@ -1746,43 +981,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_numero_de_telefono.setSizePolicy(sizePolicy)
         self.input_numero_de_telefono.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_numero_de_telefono.setFont(font)
-        self.input_numero_de_telefono.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_numero_de_telefono.setStyleSheet("")
         self.input_numero_de_telefono.setObjectName("input_numero_de_telefono")
         self.verticalLayout_24.addWidget(self.input_numero_de_telefono)
         self.gridLayout_11.addLayout(self.verticalLayout_24, 1, 2, 1, 1)
@@ -1790,20 +995,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_46.setObjectName("verticalLayout_46")
         self.label_numero_de_telefono_adicional = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_numero_de_telefono_adicional.setFont(font)
-        self.label_numero_de_telefono_adicional.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_numero_de_telefono_adicional.setStyleSheet("")
         self.label_numero_de_telefono_adicional.setTextFormat(QtCore.Qt.PlainText)
         self.label_numero_de_telefono_adicional.setScaledContents(True)
         self.label_numero_de_telefono_adicional.setObjectName("label_numero_de_telefono_adicional")
@@ -1816,43 +1014,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_numero_de_telefono_adicional.setSizePolicy(sizePolicy)
         self.input_numero_de_telefono_adicional.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_numero_de_telefono_adicional.setFont(font)
-        self.input_numero_de_telefono_adicional.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_numero_de_telefono_adicional.setStyleSheet("")
         self.input_numero_de_telefono_adicional.setObjectName("input_numero_de_telefono_adicional")
         self.verticalLayout_46.addWidget(self.input_numero_de_telefono_adicional)
         self.gridLayout_11.addLayout(self.verticalLayout_46, 1, 3, 1, 1)
@@ -1860,20 +1028,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_25.setObjectName("verticalLayout_25")
         self.label_estado_civil = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_estado_civil.setFont(font)
-        self.label_estado_civil.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_estado_civil.setStyleSheet("")
         self.label_estado_civil.setTextFormat(QtCore.Qt.PlainText)
         self.label_estado_civil.setScaledContents(True)
         self.label_estado_civil.setObjectName("label_estado_civil")
@@ -1886,43 +1047,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_estado_civil.setSizePolicy(sizePolicy)
         self.input_estado_civil.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_estado_civil.setFont(font)
-        self.input_estado_civil.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_estado_civil.setStyleSheet("")
         self.input_estado_civil.setObjectName("input_estado_civil")
         self.verticalLayout_25.addWidget(self.input_estado_civil)
         self.gridLayout_11.addLayout(self.verticalLayout_25, 2, 0, 1, 1)
@@ -1930,20 +1061,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_21.setObjectName("verticalLayout_21")
         self.label_carga_familiar = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_carga_familiar.setFont(font)
-        self.label_carga_familiar.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_carga_familiar.setStyleSheet("")
         self.label_carga_familiar.setTextFormat(QtCore.Qt.PlainText)
         self.label_carga_familiar.setScaledContents(True)
         self.label_carga_familiar.setObjectName("label_carga_familiar")
@@ -1956,43 +1080,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_carga_familiar.setSizePolicy(sizePolicy)
         self.input_carga_familiar.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_carga_familiar.setFont(font)
-        self.input_carga_familiar.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_carga_familiar.setStyleSheet("")
         self.input_carga_familiar.setObjectName("input_carga_familiar")
         self.verticalLayout_21.addWidget(self.input_carga_familiar)
         self.gridLayout_11.addLayout(self.verticalLayout_21, 2, 1, 1, 1)
@@ -2000,21 +1094,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.verticalLayout_22.setObjectName("verticalLayout_22")
         self.label_direccion_residencia = QtWidgets.QLabel(self.preguntas_info_medidas)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.label_direccion_residencia.setFont(font)
-        self.label_direccion_residencia.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_direccion_residencia.setStyleSheet("")
         self.label_direccion_residencia.setTextFormat(QtCore.Qt.PlainText)
         self.label_direccion_residencia.setScaledContents(True)
         self.label_direccion_residencia.setObjectName("label_direccion_residencia")
@@ -2027,59 +1113,27 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_direccion_residencia.setSizePolicy(sizePolicy)
         self.input_direccion_residencia.setMinimumSize(QtCore.QSize(463, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_direccion_residencia.setFont(font)
-        self.input_direccion_residencia.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit:disabled{\n"
-"\n"
-"\n"
-"\n"
-"border: 1px solid rgb(31, 31, 31);\n"
-"\n"
-"background: rgb(152, 152, 152)\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_direccion_residencia.setStyleSheet("")
         self.input_direccion_residencia.setObjectName("input_direccion_residencia")
         self.verticalLayout_22.addWidget(self.input_direccion_residencia)
         self.gridLayout_11.addLayout(self.verticalLayout_22, 2, 2, 1, 2)
         self.verticalLayout_7.addWidget(self.preguntas_info_medidas, 0, QtCore.Qt.AlignVCenter)
-        self.verticalLayout_3.addWidget(self.datos_del_representante, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.datos_del_representante)
         self.info_medidas_alumno = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_medidas_alumno.sizePolicy().hasHeightForWidth())
         self.info_medidas_alumno.setSizePolicy(sizePolicy)
-        self.info_medidas_alumno.setMinimumSize(QtCore.QSize(1000, 280))
-        self.info_medidas_alumno.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.info_medidas_alumno.setMinimumSize(QtCore.QSize(971, 280))
+        self.info_medidas_alumno.setMaximumSize(QtCore.QSize(1000, 280))
+        self.info_medidas_alumno.setStyleSheet("")
         self.info_medidas_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.info_medidas_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.info_medidas_alumno.setObjectName("info_medidas_alumno")
@@ -2095,39 +1149,25 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segmento_info_medidas_alumno.setMinimumSize(QtCore.QSize(0, 40))
         self.label_segmento_info_medidas_alumno.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segmento_info_medidas_alumno.setFont(font)
-        self.label_segmento_info_medidas_alumno.setStyleSheet("QLabel{\n"
-"    \n"
-"\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"    border:none;\n"
-"    padding-left:2px;\n"
-"\n"
-"    \n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segmento_info_medidas_alumno.setStyleSheet("")
         self.label_segmento_info_medidas_alumno.setScaledContents(False)
         self.label_segmento_info_medidas_alumno.setObjectName("label_segmento_info_medidas_alumno")
         self.verticalLayout_8.addWidget(self.label_segmento_info_medidas_alumno)
         self.preguntas_info_medidas_2 = QtWidgets.QFrame(self.info_medidas_alumno)
         self.preguntas_info_medidas_2.setMinimumSize(QtCore.QSize(460, 100))
-        self.preguntas_info_medidas_2.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.preguntas_info_medidas_2.setStyleSheet("")
         self.preguntas_info_medidas_2.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_medidas_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_medidas_2.setObjectName("preguntas_info_medidas_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.preguntas_info_medidas_2)
-        self.gridLayout_4.setContentsMargins(0, -1, -1, -1)
-        self.gridLayout_4.setHorizontalSpacing(9)
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_4.setHorizontalSpacing(0)
         self.gridLayout_4.setVerticalSpacing(20)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.verticalLayout_26 = QtWidgets.QVBoxLayout()
@@ -2135,20 +1175,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_talla_camisa = QtWidgets.QLabel(self.preguntas_info_medidas_2)
         self.label_talla_camisa.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_talla_camisa.setFont(font)
-        self.label_talla_camisa.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_talla_camisa.setStyleSheet("")
         self.label_talla_camisa.setTextFormat(QtCore.Qt.PlainText)
         self.label_talla_camisa.setScaledContents(True)
         self.label_talla_camisa.setObjectName("label_talla_camisa")
@@ -2161,31 +1194,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_talla_camisa.setSizePolicy(sizePolicy)
         self.input_talla_camisa.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_talla_camisa.setFont(font)
-        self.input_talla_camisa.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_talla_camisa.setStyleSheet("")
         self.input_talla_camisa.setObjectName("input_talla_camisa")
         self.verticalLayout_26.addWidget(self.input_talla_camisa)
         self.gridLayout_4.addLayout(self.verticalLayout_26, 0, 0, 1, 1)
@@ -2194,20 +1209,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_talla_zapatos = QtWidgets.QLabel(self.preguntas_info_medidas_2)
         self.label_talla_zapatos.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_talla_zapatos.setFont(font)
-        self.label_talla_zapatos.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_talla_zapatos.setStyleSheet("")
         self.label_talla_zapatos.setTextFormat(QtCore.Qt.PlainText)
         self.label_talla_zapatos.setScaledContents(True)
         self.label_talla_zapatos.setObjectName("label_talla_zapatos")
@@ -2220,31 +1228,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_talla_zapatos.setSizePolicy(sizePolicy)
         self.input_talla_zapatos.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_talla_zapatos.setFont(font)
-        self.input_talla_zapatos.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_talla_zapatos.setStyleSheet("")
         self.input_talla_zapatos.setObjectName("input_talla_zapatos")
         self.verticalLayout_29.addWidget(self.input_talla_zapatos)
         self.gridLayout_4.addLayout(self.verticalLayout_29, 0, 1, 1, 1)
@@ -2253,20 +1243,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_talla_pantalon = QtWidgets.QLabel(self.preguntas_info_medidas_2)
         self.label_talla_pantalon.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_talla_pantalon.setFont(font)
-        self.label_talla_pantalon.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_talla_pantalon.setStyleSheet("")
         self.label_talla_pantalon.setTextFormat(QtCore.Qt.PlainText)
         self.label_talla_pantalon.setScaledContents(True)
         self.label_talla_pantalon.setObjectName("label_talla_pantalon")
@@ -2279,31 +1262,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_talla_pantalon.setSizePolicy(sizePolicy)
         self.input_talla_pantalon.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_talla_pantalon.setFont(font)
-        self.input_talla_pantalon.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_talla_pantalon.setStyleSheet("")
         self.input_talla_pantalon.setObjectName("input_talla_pantalon")
         self.verticalLayout_30.addWidget(self.input_talla_pantalon)
         self.gridLayout_4.addLayout(self.verticalLayout_30, 0, 2, 1, 1)
@@ -2312,20 +1277,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_peso = QtWidgets.QLabel(self.preguntas_info_medidas_2)
         self.label_peso.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_peso.setFont(font)
-        self.label_peso.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_peso.setStyleSheet("")
         self.label_peso.setTextFormat(QtCore.Qt.PlainText)
         self.label_peso.setScaledContents(True)
         self.label_peso.setObjectName("label_peso")
@@ -2338,31 +1296,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_peso.setSizePolicy(sizePolicy)
         self.input_peso.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_peso.setFont(font)
-        self.input_peso.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_peso.setStyleSheet("")
         self.input_peso.setObjectName("input_peso")
         self.verticalLayout_28.addWidget(self.input_peso)
         self.gridLayout_4.addLayout(self.verticalLayout_28, 0, 3, 1, 1)
@@ -2371,20 +1311,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_estatura = QtWidgets.QLabel(self.preguntas_info_medidas_2)
         self.label_estatura.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_estatura.setFont(font)
-        self.label_estatura.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_estatura.setStyleSheet("")
         self.label_estatura.setScaledContents(True)
         self.label_estatura.setObjectName("label_estatura")
         self.verticalLayout_27.addWidget(self.label_estatura)
@@ -2396,47 +1329,27 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_estatura.setSizePolicy(sizePolicy)
         self.input_estatura.setMinimumSize(QtCore.QSize(220, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_estatura.setFont(font)
-        self.input_estatura.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_estatura.setStyleSheet("")
         self.input_estatura.setObjectName("input_estatura")
         self.verticalLayout_27.addWidget(self.input_estatura)
         self.gridLayout_4.addLayout(self.verticalLayout_27, 1, 0, 1, 1)
         self.verticalLayout_8.addWidget(self.preguntas_info_medidas_2)
-        self.verticalLayout_3.addWidget(self.info_medidas_alumno, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.info_medidas_alumno)
         self.info_bancaria_alumno = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_bancaria_alumno.sizePolicy().hasHeightForWidth())
         self.info_bancaria_alumno.setSizePolicy(sizePolicy)
-        self.info_bancaria_alumno.setMinimumSize(QtCore.QSize(1000, 340))
-        self.info_bancaria_alumno.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.info_bancaria_alumno.setMinimumSize(QtCore.QSize(971, 340))
+        self.info_bancaria_alumno.setMaximumSize(QtCore.QSize(1000, 340))
+        self.info_bancaria_alumno.setStyleSheet("")
         self.info_bancaria_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.info_bancaria_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.info_bancaria_alumno.setObjectName("info_bancaria_alumno")
@@ -2447,114 +1360,38 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_segmento_info_bancaria_alumno.setMinimumSize(QtCore.QSize(0, 30))
         self.label_segmento_info_bancaria_alumno.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_segmento_info_bancaria_alumno.setFont(font)
-        self.label_segmento_info_bancaria_alumno.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"    border:none;\n"
-"    padding-left:2px;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_segmento_info_bancaria_alumno.setStyleSheet("")
         self.label_segmento_info_bancaria_alumno.setScaledContents(False)
         self.label_segmento_info_bancaria_alumno.setObjectName("label_segmento_info_bancaria_alumno")
         self.verticalLayout_9.addWidget(self.label_segmento_info_bancaria_alumno)
         self.preguntas_info_bancaria_alumno = QtWidgets.QFrame(self.info_bancaria_alumno)
         self.preguntas_info_bancaria_alumno.setMinimumSize(QtCore.QSize(460, 170))
-        self.preguntas_info_bancaria_alumno.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.preguntas_info_bancaria_alumno.setStyleSheet("")
         self.preguntas_info_bancaria_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_bancaria_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_info_bancaria_alumno.setObjectName("preguntas_info_bancaria_alumno")
         self.gridLayout_10 = QtWidgets.QGridLayout(self.preguntas_info_bancaria_alumno)
+        self.gridLayout_10.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_10.setHorizontalSpacing(20)
         self.gridLayout_10.setObjectName("gridLayout_10")
-        self.verticalLayout_31 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_31.setObjectName("verticalLayout_31")
-        self.label_tipo_de_cuenta = QtWidgets.QLabel(self.preguntas_info_bancaria_alumno)
-        self.label_tipo_de_cuenta.setMaximumSize(QtCore.QSize(100, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_tipo_de_cuenta.setFont(font)
-        self.label_tipo_de_cuenta.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.label_tipo_de_cuenta.setScaledContents(True)
-        self.label_tipo_de_cuenta.setObjectName("label_tipo_de_cuenta")
-        self.verticalLayout_31.addWidget(self.label_tipo_de_cuenta, 0, QtCore.Qt.AlignTop)
-        self.input_tipo_de_cuenta = QtWidgets.QLineEdit(self.preguntas_info_bancaria_alumno)
-        self.input_tipo_de_cuenta.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(30)
-        sizePolicy.setHeightForWidth(self.input_tipo_de_cuenta.sizePolicy().hasHeightForWidth())
-        self.input_tipo_de_cuenta.setSizePolicy(sizePolicy)
-        self.input_tipo_de_cuenta.setMinimumSize(QtCore.QSize(240, 40))
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
-        self.input_tipo_de_cuenta.setFont(font)
-        self.input_tipo_de_cuenta.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.input_tipo_de_cuenta.setObjectName("input_tipo_de_cuenta")
-        self.verticalLayout_31.addWidget(self.input_tipo_de_cuenta, 0, QtCore.Qt.AlignTop)
-        self.gridLayout_10.addLayout(self.verticalLayout_31, 0, 0, 1, 1)
         self.verticalLayout_32 = QtWidgets.QVBoxLayout()
         self.verticalLayout_32.setObjectName("verticalLayout_32")
         self.label_numero_de_cuenta = QtWidgets.QLabel(self.preguntas_info_bancaria_alumno)
         self.label_numero_de_cuenta.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_numero_de_cuenta.setFont(font)
-        self.label_numero_de_cuenta.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_numero_de_cuenta.setStyleSheet("")
         self.label_numero_de_cuenta.setTextFormat(QtCore.Qt.PlainText)
         self.label_numero_de_cuenta.setScaledContents(True)
         self.label_numero_de_cuenta.setObjectName("label_numero_de_cuenta")
@@ -2567,44 +1404,62 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_numero_de_cuenta.setSizePolicy(sizePolicy)
         self.input_numero_de_cuenta.setMinimumSize(QtCore.QSize(240, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_numero_de_cuenta.setFont(font)
-        self.input_numero_de_cuenta.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_numero_de_cuenta.setStyleSheet("")
         self.input_numero_de_cuenta.setObjectName("input_numero_de_cuenta")
         self.verticalLayout_32.addWidget(self.input_numero_de_cuenta, 0, QtCore.Qt.AlignTop)
         self.gridLayout_10.addLayout(self.verticalLayout_32, 0, 1, 1, 1)
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.label_tipo_de_cuenta = QtWidgets.QLabel(self.preguntas_info_bancaria_alumno)
+        self.label_tipo_de_cuenta.setMaximumSize(QtCore.QSize(100, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.label_tipo_de_cuenta.setFont(font)
+        self.label_tipo_de_cuenta.setStyleSheet("")
+        self.label_tipo_de_cuenta.setScaledContents(True)
+        self.label_tipo_de_cuenta.setObjectName("label_tipo_de_cuenta")
+        self.verticalLayout_31.addWidget(self.label_tipo_de_cuenta, 0, QtCore.Qt.AlignTop)
+        self.input_tipo_de_cuenta = QtWidgets.QLineEdit(self.preguntas_info_bancaria_alumno)
+        self.input_tipo_de_cuenta.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(30)
+        sizePolicy.setHeightForWidth(self.input_tipo_de_cuenta.sizePolicy().hasHeightForWidth())
+        self.input_tipo_de_cuenta.setSizePolicy(sizePolicy)
+        self.input_tipo_de_cuenta.setMinimumSize(QtCore.QSize(240, 40))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.input_tipo_de_cuenta.setFont(font)
+        self.input_tipo_de_cuenta.setStyleSheet("")
+        self.input_tipo_de_cuenta.setObjectName("input_tipo_de_cuenta")
+        self.verticalLayout_31.addWidget(self.input_tipo_de_cuenta, 0, QtCore.Qt.AlignTop)
+        self.gridLayout_10.addLayout(self.verticalLayout_31, 0, 0, 1, 1)
         self.verticalLayout_42 = QtWidgets.QVBoxLayout()
         self.verticalLayout_42.setObjectName("verticalLayout_42")
         self.label_mensaje_info_bancaria = QtWidgets.QLabel(self.preguntas_info_bancaria_alumno)
         self.label_mensaje_info_bancaria.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_mensaje_info_bancaria.setFont(font)
+        self.label_mensaje_info_bancaria.setStyleSheet("")
         self.label_mensaje_info_bancaria.setObjectName("label_mensaje_info_bancaria")
         self.verticalLayout_42.addWidget(self.label_mensaje_info_bancaria, 0, QtCore.Qt.AlignTop)
         self.vista_previa_cuentas_bancarias = QtWidgets.QListWidget(self.preguntas_info_bancaria_alumno)
@@ -2614,12 +1469,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         font.setBold(False)
         font.setWeight(50)
         self.vista_previa_cuentas_bancarias.setFont(font)
-        self.vista_previa_cuentas_bancarias.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_cuentas_bancarias.setStyleSheet("")
         self.vista_previa_cuentas_bancarias.setObjectName("vista_previa_cuentas_bancarias")
         self.verticalLayout_42.addWidget(self.vista_previa_cuentas_bancarias)
         self.gridLayout_10.addLayout(self.verticalLayout_42, 0, 2, 2, 1)
@@ -2629,43 +1479,23 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.boton_anadir_cuenta_banco.sizePolicy().hasHeightForWidth())
         self.boton_anadir_cuenta_banco.setSizePolicy(sizePolicy)
-        self.boton_anadir_cuenta_banco.setMinimumSize(QtCore.QSize(0, 40))
+        self.boton_anadir_cuenta_banco.setMinimumSize(QtCore.QSize(100, 40))
         self.boton_anadir_cuenta_banco.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_anadir_cuenta_banco.setStyleSheet("QPushButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:rgb(0, 0, 0);\n"
-"    border:2px solid;\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(184, 184, 184);\n"
-"\n"
-"}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_anadir_cuenta_banco.setIcon(icon3)
-        self.boton_anadir_cuenta_banco.setIconSize(QtCore.QSize(40, 20))
+        self.boton_anadir_cuenta_banco.setStyleSheet("")
+        self.boton_anadir_cuenta_banco.setIconSize(QtCore.QSize(30, 30))
         self.boton_anadir_cuenta_banco.setObjectName("boton_anadir_cuenta_banco")
-        self.gridLayout_10.addWidget(self.boton_anadir_cuenta_banco, 1, 1, 1, 1, QtCore.Qt.AlignRight)
+        self.gridLayout_10.addWidget(self.boton_anadir_cuenta_banco, 1, 1, 1, 1)
         self.verticalLayout_9.addWidget(self.preguntas_info_bancaria_alumno, 0, QtCore.Qt.AlignVCenter)
-        self.verticalLayout_3.addWidget(self.info_bancaria_alumno, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.info_bancaria_alumno)
         self.info_diagnostico_alumno = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.info_diagnostico_alumno.sizePolicy().hasHeightForWidth())
         self.info_diagnostico_alumno.setSizePolicy(sizePolicy)
-        self.info_diagnostico_alumno.setMinimumSize(QtCore.QSize(1000, 480))
-        self.info_diagnostico_alumno.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.info_diagnostico_alumno.setMinimumSize(QtCore.QSize(971, 480))
+        self.info_diagnostico_alumno.setMaximumSize(QtCore.QSize(1001, 480))
+        self.info_diagnostico_alumno.setStyleSheet("")
         self.info_diagnostico_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.info_diagnostico_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.info_diagnostico_alumno.setObjectName("info_diagnostico_alumno")
@@ -2676,22 +1506,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_titulo_info_medica.setMinimumSize(QtCore.QSize(0, 45))
         self.label_titulo_info_medica.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_titulo_info_medica.setFont(font)
-        self.label_titulo_info_medica.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"    \n"
-"    padding-left:2px;\n"
-"\n"
-"}\n"
-"")
+        self.label_titulo_info_medica.setStyleSheet("")
         self.label_titulo_info_medica.setScaledContents(False)
         self.label_titulo_info_medica.setAlignment(QtCore.Qt.AlignCenter)
         self.label_titulo_info_medica.setWordWrap(False)
@@ -2700,32 +1521,26 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.pregunta_diagnostico_alumno = QtWidgets.QFrame(self.info_diagnostico_alumno)
         self.pregunta_diagnostico_alumno.setMinimumSize(QtCore.QSize(460, 360))
         self.pregunta_diagnostico_alumno.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.pregunta_diagnostico_alumno.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.pregunta_diagnostico_alumno.setStyleSheet("")
         self.pregunta_diagnostico_alumno.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.pregunta_diagnostico_alumno.setFrameShadow(QtWidgets.QFrame.Raised)
         self.pregunta_diagnostico_alumno.setObjectName("pregunta_diagnostico_alumno")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.pregunta_diagnostico_alumno)
-        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.gridLayout = QtWidgets.QGridLayout(self.pregunta_diagnostico_alumno)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(10)
+        self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_34 = QtWidgets.QVBoxLayout()
         self.verticalLayout_34.setObjectName("verticalLayout_34")
         self.label_diagnostico_2 = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         self.label_diagnostico_2.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_diagnostico_2.setFont(font)
-        self.label_diagnostico_2.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_diagnostico_2.setStyleSheet("")
         self.label_diagnostico_2.setScaledContents(False)
         self.label_diagnostico_2.setObjectName("label_diagnostico_2")
         self.verticalLayout_34.addWidget(self.label_diagnostico_2)
@@ -2736,43 +1551,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         sizePolicy.setHeightForWidth(self.boton_diagnostico.sizePolicy().hasHeightForWidth())
         self.boton_diagnostico.setSizePolicy(sizePolicy)
         self.boton_diagnostico.setMinimumSize(QtCore.QSize(280, 40))
-        self.boton_diagnostico.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}")
+        self.boton_diagnostico.setStyleSheet("")
         self.boton_diagnostico.setEditable(False)
         self.boton_diagnostico.setCurrentText("")
         self.boton_diagnostico.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
@@ -2780,27 +1559,20 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_diagnostico.setPlaceholderText("")
         self.boton_diagnostico.setObjectName("boton_diagnostico")
         self.verticalLayout_34.addWidget(self.boton_diagnostico)
-        self.gridLayout_5.addLayout(self.verticalLayout_34, 0, 0, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_34, 0, 0, 1, 1)
         self.gridLayout_14 = QtWidgets.QGridLayout()
         self.gridLayout_14.setHorizontalSpacing(10)
         self.gridLayout_14.setObjectName("gridLayout_14")
         self.label_otro_diagnostico = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         self.label_otro_diagnostico.setMaximumSize(QtCore.QSize(16777215, 20))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_otro_diagnostico.setFont(font)
-        self.label_otro_diagnostico.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_otro_diagnostico.setStyleSheet("")
         self.label_otro_diagnostico.setScaledContents(False)
         self.label_otro_diagnostico.setObjectName("label_otro_diagnostico")
         self.gridLayout_14.addWidget(self.label_otro_diagnostico, 0, 0, 1, 1)
@@ -2812,34 +1584,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_otro_diagnostico.setSizePolicy(sizePolicy)
         self.input_otro_diagnostico.setMinimumSize(QtCore.QSize(280, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
         self.input_otro_diagnostico.setFont(font)
-        self.input_otro_diagnostico.setStyleSheet("QLineEdit{\n"
-"    font: 15pt \"Arial\";\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_otro_diagnostico.setStyleSheet("")
         self.input_otro_diagnostico.setObjectName("input_otro_diagnostico")
         self.gridLayout_14.addWidget(self.input_otro_diagnostico, 1, 0, 1, 1)
         self.boton_anadir_otro_diagnostico = QtWidgets.QPushButton(self.pregunta_diagnostico_alumno)
@@ -2850,38 +1601,22 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_anadir_otro_diagnostico.setSizePolicy(sizePolicy)
         self.boton_anadir_otro_diagnostico.setMinimumSize(QtCore.QSize(30, 30))
         self.boton_anadir_otro_diagnostico.setMaximumSize(QtCore.QSize(30, 30))
-        self.boton_anadir_otro_diagnostico.setStyleSheet("QPushButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    \n"
-"    border:2px solid;\n"
-"    border-radius:15px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(184, 184, 184);\n"
-"\n"
-"}")
+        self.boton_anadir_otro_diagnostico.setStyleSheet("border-radius:15px;\n"
+"padding:0px;")
         self.boton_anadir_otro_diagnostico.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/mas.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_anadir_otro_diagnostico.setIcon(icon4)
         self.boton_anadir_otro_diagnostico.setIconSize(QtCore.QSize(25, 25))
         self.boton_anadir_otro_diagnostico.setObjectName("boton_anadir_otro_diagnostico")
         self.gridLayout_14.addWidget(self.boton_anadir_otro_diagnostico, 1, 1, 1, 1)
-        self.gridLayout_5.addLayout(self.gridLayout_14, 0, 1, 1, 1)
+        self.gridLayout.addLayout(self.gridLayout_14, 0, 1, 1, 1)
         self.verticalLayout_37 = QtWidgets.QVBoxLayout()
         self.verticalLayout_37.setObjectName("verticalLayout_37")
         self.label_mensaje_1 = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         self.label_mensaje_1.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_mensaje_1.setFont(font)
         self.label_mensaje_1.setObjectName("label_mensaje_1")
@@ -2893,26 +1628,25 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         font.setBold(False)
         font.setWeight(50)
         self.vista_previa_diagnostico.setFont(font)
-        self.vista_previa_diagnostico.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"\n"
-"}")
+        self.vista_previa_diagnostico.setStyleSheet("")
         self.vista_previa_diagnostico.setObjectName("vista_previa_diagnostico")
         self.verticalLayout_37.addWidget(self.vista_previa_diagnostico)
         self.label_mensaje_2 = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
         self.label_mensaje_2.setFont(font)
+        self.label_mensaje_2.setStyleSheet("")
         self.label_mensaje_2.setScaledContents(False)
         self.label_mensaje_2.setWordWrap(True)
         self.label_mensaje_2.setObjectName("label_mensaje_2")
         self.verticalLayout_37.addWidget(self.label_mensaje_2)
-        self.gridLayout_5.addLayout(self.verticalLayout_37, 0, 2, 4, 1)
-        self.verticalLayout_33 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_33.setObjectName("verticalLayout_33")
+        self.gridLayout.addLayout(self.verticalLayout_37, 0, 2, 4, 1)
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
         self.label_medico_tratante = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2921,24 +1655,17 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_medico_tratante.setSizePolicy(sizePolicy)
         self.label_medico_tratante.setMaximumSize(QtCore.QSize(150, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_medico_tratante.setFont(font)
-        self.label_medico_tratante.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_medico_tratante.setStyleSheet("")
         self.label_medico_tratante.setTextFormat(QtCore.Qt.PlainText)
         self.label_medico_tratante.setScaledContents(True)
         self.label_medico_tratante.setObjectName("label_medico_tratante")
-        self.verticalLayout_33.addWidget(self.label_medico_tratante, 0, QtCore.Qt.AlignBottom)
+        self.verticalLayout_17.addWidget(self.label_medico_tratante)
         self.input_medico_tratante = QtWidgets.QLineEdit(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -2947,36 +1674,18 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_medico_tratante.setSizePolicy(sizePolicy)
         self.input_medico_tratante.setMinimumSize(QtCore.QSize(280, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_medico_tratante.setFont(font)
-        self.input_medico_tratante.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_medico_tratante.setStyleSheet("")
         self.input_medico_tratante.setObjectName("input_medico_tratante")
-        self.verticalLayout_33.addWidget(self.input_medico_tratante, 0, QtCore.Qt.AlignBottom)
-        self.gridLayout_5.addLayout(self.verticalLayout_33, 1, 0, 1, 1)
-        self.verticalLayout_36 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_36.setObjectName("verticalLayout_36")
+        self.verticalLayout_17.addWidget(self.input_medico_tratante)
+        self.gridLayout.addLayout(self.verticalLayout_17, 1, 0, 1, 1)
+        self.verticalLayout_33 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_33.setObjectName("verticalLayout_33")
         self.label_medicacion = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2985,24 +1694,17 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_medicacion.setSizePolicy(sizePolicy)
         self.label_medicacion.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_medicacion.setFont(font)
-        self.label_medicacion.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_medicacion.setStyleSheet("")
         self.label_medicacion.setTextFormat(QtCore.Qt.PlainText)
         self.label_medicacion.setScaledContents(True)
         self.label_medicacion.setObjectName("label_medicacion")
-        self.verticalLayout_36.addWidget(self.label_medicacion, 0, QtCore.Qt.AlignBottom)
+        self.verticalLayout_33.addWidget(self.label_medicacion)
         self.input_medicacion = QtWidgets.QLineEdit(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3011,167 +1713,29 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_medicacion.setSizePolicy(sizePolicy)
         self.input_medicacion.setMinimumSize(QtCore.QSize(280, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_medicacion.setFont(font)
-        self.input_medicacion.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_medicacion.setStyleSheet("")
         self.input_medicacion.setObjectName("input_medicacion")
-        self.verticalLayout_36.addWidget(self.input_medicacion, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
-        self.gridLayout_5.addLayout(self.verticalLayout_36, 1, 1, 1, 1)
+        self.verticalLayout_33.addWidget(self.input_medicacion)
+        self.gridLayout.addLayout(self.verticalLayout_33, 1, 1, 1, 1)
         self.espacio_fecha_diagnostico = QtWidgets.QFrame(self.pregunta_diagnostico_alumno)
+        self.espacio_fecha_diagnostico.setStyleSheet("")
         self.espacio_fecha_diagnostico.setObjectName("espacio_fecha_diagnostico")
         self.dateedit_fecha_diagnostico = QtWidgets.QDateEdit(self.espacio_fecha_diagnostico)
-        self.dateedit_fecha_diagnostico.setGeometry(QtCore.QRect(0, 30, 221, 40))
+        self.dateedit_fecha_diagnostico.setGeometry(QtCore.QRect(0, 30, 271, 40))
         self.dateedit_fecha_diagnostico.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
+        font.setFamily("Segoe UI")
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.dateedit_fecha_diagnostico.setFont(font)
-        self.dateedit_fecha_diagnostico.setStyleSheet("QDateEdit{\n"
-"\n"
-"    padding-left:10px;\n"
-"    padding-top:10px;\n"
-"    border:1px solid #000000 ;\n"
-"\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QDateEdit QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QDateEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"QCalendarWidget {\n"
-"                background-color: white;\n"
-"                border: 1px solid #d0d0d0;\n"
-"                border-radius: 8px;\n"
-"                font-family: Arial, sans-serif;\n"
-"            }\n"
-"            \n"
-"            /* Barra superior con mes y año */\n"
-"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"                border-top-left-radius: 7px;\n"
-"                border-top-right-radius: 7px;\n"
-"                padding: 5px;\n"
-"            }\n"
-"            \n"
-"            /* Botones de navegación */\n"
-"            QCalendarWidget QToolButton {\n"
-"                background-color: transparent;\n"
-"                color: white;\n"
-"                font-weight: bold;\n"
-"                border: none;\n"
-"                padding: 5px;\n"
-"                border-radius: 3px;\n"
-"            }\n"
-"            \n"
-"            QCalendarWidget QToolButton:hover {\n"
-"                background-color: rgba(255, 255, 255, 0.2);\n"
-"            }\n"
-"            \n"
-"            /* Días de la semana */\n"
-"            QCalendarWidget QHeaderView::section {\n"
-"                background-color: #f8f9fa;\n"
-"                color: #555555;\n"
-"                font-weight: bold;\n"
-"                padding: 8px;\n"
-"                border: none;\n"
-"                border-bottom: 1px solid #e0e0e0;\n"
-"            }\n"
-"            \n"
-"            /* Días normales */\n"
-"            QCalendarWidget QAbstractItemView:enabled {\n"
-"                color: #333333;\n"
-"                background-color: white;\n"
-"                selection-background-color: #4a90e2;\n"
-"                selection-color: white;\n"
-"                outline: none;\n"
-"                border: none;\n"
-"            }\n"
-"            \n"
-"            /* Día actual */\n"
-"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
-"                background-color: #e8f4fd;\n"
-"                color: #4a90e2;\n"
-"                font-weight: bold;\n"
-"            }\n"
-"            \n"
-"            /* Días de otros meses */\n"
-"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
-"                color: #aaaaaa;\n"
-"            }\n"
-"            \n"
-"            /* Efecto hover sobre los días */\n"
-"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
-"                background-color: #f0f7ff;\n"
-"            }\n"
-"            \n"
-"            /* Fines de semana */\n"
-"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"            }\n"
-"\n"
-"\n"
-"")
+        self.dateedit_fecha_diagnostico.setStyleSheet("")
         self.dateedit_fecha_diagnostico.setWrapping(False)
         self.dateedit_fecha_diagnostico.setFrame(True)
         self.dateedit_fecha_diagnostico.setAccelerated(True)
@@ -3183,53 +1747,39 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.dateedit_fecha_diagnostico.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_diagnostico.setObjectName("dateedit_fecha_diagnostico")
         self.label_2 = QtWidgets.QLabel(self.espacio_fecha_diagnostico)
-        self.label_2.setGeometry(QtCore.QRect(21, 30, 101, 16))
-        self.label_2.setStyleSheet("background:none;")
+        self.label_2.setGeometry(QtCore.QRect(13, 29, 101, 16))
+        self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
         self.label_fecha_diagnostico = QtWidgets.QLabel(self.espacio_fecha_diagnostico)
         self.label_fecha_diagnostico.setGeometry(QtCore.QRect(0, 10, 206, 16))
         self.label_fecha_diagnostico.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_fecha_diagnostico.setFont(font)
-        self.label_fecha_diagnostico.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_fecha_diagnostico.setStyleSheet("")
         self.label_fecha_diagnostico.setScaledContents(False)
         self.label_fecha_diagnostico.setObjectName("label_fecha_diagnostico")
-        self.gridLayout_5.addWidget(self.espacio_fecha_diagnostico, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.espacio_fecha_diagnostico, 2, 0, 1, 1)
         self.verticalLayout_35 = QtWidgets.QVBoxLayout()
         self.verticalLayout_35.setObjectName("verticalLayout_35")
         self.label_certificado = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         self.label_certificado.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_certificado.setFont(font)
-        self.label_certificado.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_certificado.setStyleSheet("")
         self.label_certificado.setTextFormat(QtCore.Qt.PlainText)
         self.label_certificado.setScaledContents(True)
         self.label_certificado.setObjectName("label_certificado")
-        self.verticalLayout_35.addWidget(self.label_certificado, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
+        self.verticalLayout_35.addWidget(self.label_certificado)
         self.input_certificado_discapacidad = QtWidgets.QLineEdit(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3238,167 +1788,29 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_certificado_discapacidad.setSizePolicy(sizePolicy)
         self.input_certificado_discapacidad.setMinimumSize(QtCore.QSize(280, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_certificado_discapacidad.setFont(font)
-        self.input_certificado_discapacidad.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_certificado_discapacidad.setStyleSheet("")
         self.input_certificado_discapacidad.setObjectName("input_certificado_discapacidad")
         self.verticalLayout_35.addWidget(self.input_certificado_discapacidad)
-        self.gridLayout_5.addLayout(self.verticalLayout_35, 2, 1, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_35, 2, 1, 1, 1)
         self.espacio_fecha_certificado = QtWidgets.QFrame(self.pregunta_diagnostico_alumno)
+        self.espacio_fecha_certificado.setStyleSheet("")
         self.espacio_fecha_certificado.setObjectName("espacio_fecha_certificado")
         self.dateedit_fecha_vencimiento_certificado = QtWidgets.QDateEdit(self.espacio_fecha_certificado)
-        self.dateedit_fecha_vencimiento_certificado.setGeometry(QtCore.QRect(0, 30, 221, 40))
+        self.dateedit_fecha_vencimiento_certificado.setGeometry(QtCore.QRect(0, 30, 271, 40))
         self.dateedit_fecha_vencimiento_certificado.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
+        font.setFamily("Segoe UI")
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.dateedit_fecha_vencimiento_certificado.setFont(font)
-        self.dateedit_fecha_vencimiento_certificado.setStyleSheet("QDateEdit{\n"
-"\n"
-"    padding-left:10px;\n"
-"    padding-top:10px;\n"
-"    border:1px solid #000000 ;\n"
-"\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QDateEdit QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QDateEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"QCalendarWidget {\n"
-"                background-color: white;\n"
-"                border: 1px solid #d0d0d0;\n"
-"                border-radius: 8px;\n"
-"                font-family: Arial, sans-serif;\n"
-"            }\n"
-"            \n"
-"            /* Barra superior con mes y año */\n"
-"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"                border-top-left-radius: 7px;\n"
-"                border-top-right-radius: 7px;\n"
-"                padding: 5px;\n"
-"            }\n"
-"            \n"
-"            /* Botones de navegación */\n"
-"            QCalendarWidget QToolButton {\n"
-"                background-color: transparent;\n"
-"                color: white;\n"
-"                font-weight: bold;\n"
-"                border: none;\n"
-"                padding: 5px;\n"
-"                border-radius: 3px;\n"
-"            }\n"
-"            \n"
-"            QCalendarWidget QToolButton:hover {\n"
-"                background-color: rgba(255, 255, 255, 0.2);\n"
-"            }\n"
-"            \n"
-"            /* Días de la semana */\n"
-"            QCalendarWidget QHeaderView::section {\n"
-"                background-color: #f8f9fa;\n"
-"                color: #555555;\n"
-"                font-weight: bold;\n"
-"                padding: 8px;\n"
-"                border: none;\n"
-"                border-bottom: 1px solid #e0e0e0;\n"
-"            }\n"
-"            \n"
-"            /* Días normales */\n"
-"            QCalendarWidget QAbstractItemView:enabled {\n"
-"                color: #333333;\n"
-"                background-color: white;\n"
-"                selection-background-color: #4a90e2;\n"
-"                selection-color: white;\n"
-"                outline: none;\n"
-"                border: none;\n"
-"            }\n"
-"            \n"
-"            /* Día actual */\n"
-"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
-"                background-color: #e8f4fd;\n"
-"                color: #4a90e2;\n"
-"                font-weight: bold;\n"
-"            }\n"
-"            \n"
-"            /* Días de otros meses */\n"
-"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
-"                color: #aaaaaa;\n"
-"            }\n"
-"            \n"
-"            /* Efecto hover sobre los días */\n"
-"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
-"                background-color: #f0f7ff;\n"
-"            }\n"
-"            \n"
-"            /* Fines de semana */\n"
-"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"            }\n"
-"\n"
-"\n"
-"")
+        self.dateedit_fecha_vencimiento_certificado.setStyleSheet("")
         self.dateedit_fecha_vencimiento_certificado.setWrapping(False)
         self.dateedit_fecha_vencimiento_certificado.setFrame(True)
         self.dateedit_fecha_vencimiento_certificado.setAccelerated(True)
@@ -3410,52 +1822,38 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.dateedit_fecha_vencimiento_certificado.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_vencimiento_certificado.setObjectName("dateedit_fecha_vencimiento_certificado")
         self.label_4 = QtWidgets.QLabel(self.espacio_fecha_certificado)
-        self.label_4.setGeometry(QtCore.QRect(21, 30, 101, 16))
-        self.label_4.setStyleSheet("background:none;")
+        self.label_4.setGeometry(QtCore.QRect(14, 28, 101, 16))
+        self.label_4.setStyleSheet("")
         self.label_4.setObjectName("label_4")
         self.label_fecha_del_certificado = QtWidgets.QLabel(self.espacio_fecha_certificado)
-        self.label_fecha_del_certificado.setGeometry(QtCore.QRect(0, 10, 200, 16))
+        self.label_fecha_del_certificado.setGeometry(QtCore.QRect(0, 10, 251, 16))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_fecha_del_certificado.setFont(font)
-        self.label_fecha_del_certificado.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_fecha_del_certificado.setStyleSheet("")
         self.label_fecha_del_certificado.setScaledContents(False)
         self.label_fecha_del_certificado.setObjectName("label_fecha_del_certificado")
-        self.gridLayout_5.addWidget(self.espacio_fecha_certificado, 3, 0, 1, 1)
-        self.verticalLayout_45 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_45.setObjectName("verticalLayout_45")
+        self.gridLayout.addWidget(self.espacio_fecha_certificado, 3, 0, 1, 1)
+        self.verticalLayout_36 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_36.setObjectName("verticalLayout_36")
         self.label_observacion_adicional = QtWidgets.QLabel(self.pregunta_diagnostico_alumno)
         self.label_observacion_adicional.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_observacion_adicional.setFont(font)
-        self.label_observacion_adicional.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_observacion_adicional.setStyleSheet("")
         self.label_observacion_adicional.setTextFormat(QtCore.Qt.PlainText)
         self.label_observacion_adicional.setScaledContents(True)
         self.label_observacion_adicional.setObjectName("label_observacion_adicional")
-        self.verticalLayout_45.addWidget(self.label_observacion_adicional, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
+        self.verticalLayout_36.addWidget(self.label_observacion_adicional)
         self.input_observacion_adicional = QtWidgets.QLineEdit(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3464,78 +1862,40 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.input_observacion_adicional.setSizePolicy(sizePolicy)
         self.input_observacion_adicional.setMinimumSize(QtCore.QSize(280, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(15)
+        font.setFamily("Segoe UI")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.input_observacion_adicional.setFont(font)
-        self.input_observacion_adicional.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:5px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border-bottom:2px solid black  ;\n"
-"    border-top: 2px solid rgb(202, 202, 202);\n"
-"    border-left: 2px solid rgb(202, 202, 202);\n"
-"    border-right: 2px solid rgb(202, 202, 202);\n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.input_observacion_adicional.setStyleSheet("")
         self.input_observacion_adicional.setObjectName("input_observacion_adicional")
-        self.verticalLayout_45.addWidget(self.input_observacion_adicional)
-        self.gridLayout_5.addLayout(self.verticalLayout_45, 3, 1, 1, 1)
+        self.verticalLayout_36.addWidget(self.input_observacion_adicional)
+        self.gridLayout.addLayout(self.verticalLayout_36, 3, 1, 1, 1)
         self.boton_anadir_diagnostico = QtWidgets.QPushButton(self.pregunta_diagnostico_alumno)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.boton_anadir_diagnostico.sizePolicy().hasHeightForWidth())
         self.boton_anadir_diagnostico.setSizePolicy(sizePolicy)
-        self.boton_anadir_diagnostico.setMinimumSize(QtCore.QSize(0, 40))
+        self.boton_anadir_diagnostico.setMinimumSize(QtCore.QSize(100, 40))
         self.boton_anadir_diagnostico.setBaseSize(QtCore.QSize(0, 0))
         self.boton_anadir_diagnostico.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_anadir_diagnostico.setStyleSheet("QPushButton{\n"
-"\n"
-"    \n"
-"    font: 75 10pt \"Arial\";\n"
-"    border-color:rgb(0, 0, 0);\n"
-"    border:2px solid;\n"
-"    border-radius:12px;\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(184, 184, 184);\n"
-"\n"
-"}")
-        self.boton_anadir_diagnostico.setIcon(icon3)
-        self.boton_anadir_diagnostico.setIconSize(QtCore.QSize(40, 20))
+        self.boton_anadir_diagnostico.setStyleSheet("")
+        self.boton_anadir_diagnostico.setIconSize(QtCore.QSize(30, 30))
         self.boton_anadir_diagnostico.setObjectName("boton_anadir_diagnostico")
-        self.gridLayout_5.addWidget(self.boton_anadir_diagnostico, 4, 1, 1, 1)
+        self.gridLayout.addWidget(self.boton_anadir_diagnostico, 4, 1, 1, 1)
         self.verticalLayout_10.addWidget(self.pregunta_diagnostico_alumno)
-        self.verticalLayout_3.addWidget(self.info_diagnostico_alumno, 0, QtCore.Qt.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.info_diagnostico_alumno)
         self.especialidad_incribir = QtWidgets.QFrame(self.espacio_preguntas)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(10)
         sizePolicy.setHeightForWidth(self.especialidad_incribir.sizePolicy().hasHeightForWidth())
         self.especialidad_incribir.setSizePolicy(sizePolicy)
-        self.especialidad_incribir.setMinimumSize(QtCore.QSize(1000, 320))
-        self.especialidad_incribir.setStyleSheet("QFrame{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border:10px ridge rgb(122, 59, 33);\n"
-"}")
+        self.especialidad_incribir.setMinimumSize(QtCore.QSize(971, 320))
+        self.especialidad_incribir.setMaximumSize(QtCore.QSize(1000, 320))
+        self.especialidad_incribir.setStyleSheet("")
         self.especialidad_incribir.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.especialidad_incribir.setFrameShadow(QtWidgets.QFrame.Raised)
         self.especialidad_incribir.setObjectName("especialidad_incribir")
@@ -3545,31 +1905,23 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_titulo_especialidad_incribrir = QtWidgets.QLabel(self.especialidad_incribir)
         self.label_titulo_especialidad_incribrir.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(18)
+        font.setFamily("Segoe UI 13")
+        font.setPointSize(25)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_titulo_especialidad_incribrir.setFont(font)
-        self.label_titulo_especialidad_incribrir.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"    border:none;\n"
-"    border-color: #ffffff;\n"
-"    padding-left:2px;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_titulo_especialidad_incribrir.setStyleSheet("")
         self.label_titulo_especialidad_incribrir.setScaledContents(False)
         self.label_titulo_especialidad_incribrir.setObjectName("label_titulo_especialidad_incribrir")
         self.verticalLayout_11.addWidget(self.label_titulo_especialidad_incribrir, 0, QtCore.Qt.AlignLeft)
         self.preguntas_especialidad_inscribit = QtWidgets.QFrame(self.especialidad_incribir)
-        self.preguntas_especialidad_inscribit.setStyleSheet("border-radius:0px;\n"
-"border:none;")
+        self.preguntas_especialidad_inscribit.setStyleSheet("")
         self.preguntas_especialidad_inscribit.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_especialidad_inscribit.setFrameShadow(QtWidgets.QFrame.Raised)
         self.preguntas_especialidad_inscribit.setObjectName("preguntas_especialidad_inscribit")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.preguntas_especialidad_inscribit)
+        self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.verticalLayout_41 = QtWidgets.QVBoxLayout()
         self.verticalLayout_41.setSpacing(0)
@@ -3578,20 +1930,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_especialidad_incribir.setEnabled(True)
         self.label_especialidad_incribir.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_especialidad_incribir.setFont(font)
-        self.label_especialidad_incribir.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_especialidad_incribir.setStyleSheet("")
         self.label_especialidad_incribir.setScaledContents(False)
         self.label_especialidad_incribir.setObjectName("label_especialidad_incribir")
         self.verticalLayout_41.addWidget(self.label_especialidad_incribir)
@@ -3603,52 +1948,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         sizePolicy.setHeightForWidth(self.boton_de_especialidad.sizePolicy().hasHeightForWidth())
         self.boton_de_especialidad.setSizePolicy(sizePolicy)
         self.boton_de_especialidad.setMinimumSize(QtCore.QSize(300, 40))
-        self.boton_de_especialidad.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 10pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    border:1px solid #000000 ;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"")
+        self.boton_de_especialidad.setStyleSheet("")
         self.boton_de_especialidad.setEditable(False)
         self.boton_de_especialidad.setCurrentText("")
         self.boton_de_especialidad.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
@@ -3665,20 +1965,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_periodo_escolar = QtWidgets.QLabel(self.preguntas_especialidad_inscribit)
         self.label_periodo_escolar.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_periodo_escolar.setFont(font)
-        self.label_periodo_escolar.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_periodo_escolar.setStyleSheet("")
         self.label_periodo_escolar.setTextFormat(QtCore.Qt.PlainText)
         self.label_periodo_escolar.setScaledContents(True)
         self.label_periodo_escolar.setObjectName("label_periodo_escolar")
@@ -3692,20 +1985,13 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.label_mostrar_periodo_escolar.setMinimumSize(QtCore.QSize(200, 0))
         self.label_mostrar_periodo_escolar.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(13)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_mostrar_periodo_escolar.setFont(font)
-        self.label_mostrar_periodo_escolar.setStyleSheet("QLabel{\n"
-"        \n"
-"    color: #000000;\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_mostrar_periodo_escolar.setStyleSheet("")
         self.label_mostrar_periodo_escolar.setText("")
         self.label_mostrar_periodo_escolar.setTextFormat(QtCore.Qt.PlainText)
         self.label_mostrar_periodo_escolar.setScaledContents(True)
@@ -3713,158 +1999,31 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.horizontalLayout_3.addWidget(self.label_mostrar_periodo_escolar, 0, QtCore.Qt.AlignLeft)
         self.gridLayout_7.addLayout(self.horizontalLayout_3, 0, 1, 1, 1)
         self.espacio_fecha_especialidad = QtWidgets.QFrame(self.preguntas_especialidad_inscribit)
+        self.espacio_fecha_especialidad.setStyleSheet("")
         self.espacio_fecha_especialidad.setObjectName("espacio_fecha_especialidad")
         self.label_fecha_de_ingreso_especialidad = QtWidgets.QLabel(self.espacio_fecha_especialidad)
         self.label_fecha_de_ingreso_especialidad.setGeometry(QtCore.QRect(0, 9, 231, 16))
         self.label_fecha_de_ingreso_especialidad.setMaximumSize(QtCore.QSize(300, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(10)
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
         font.setBold(True)
+        font.setItalic(False)
         font.setWeight(75)
         self.label_fecha_de_ingreso_especialidad.setFont(font)
-        self.label_fecha_de_ingreso_especialidad.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(80, 80, 80);\n"
-"\n"
-"    border-color: #ffffff;\n"
-"\n"
-"\n"
-"}\n"
-"")
+        self.label_fecha_de_ingreso_especialidad.setStyleSheet("")
         self.label_fecha_de_ingreso_especialidad.setScaledContents(False)
         self.label_fecha_de_ingreso_especialidad.setObjectName("label_fecha_de_ingreso_especialidad")
         self.dateedit_fecha_ingreso_especialidad = QtWidgets.QDateEdit(self.espacio_fecha_especialidad)
         self.dateedit_fecha_ingreso_especialidad.setGeometry(QtCore.QRect(0, 29, 221, 40))
         self.dateedit_fecha_ingreso_especialidad.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
-        font.setFamily("Arial")
-        font.setPointSize(11)
+        font.setFamily("Segoe UI")
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.dateedit_fecha_ingreso_especialidad.setFont(font)
-        self.dateedit_fecha_ingreso_especialidad.setStyleSheet("QDateEdit{\n"
-"\n"
-"    padding-left:10px;\n"
-"    padding-top:10px;\n"
-"    border:1px solid #000000 ;\n"
-"\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QDateEdit:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QDateEdit QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QDateEdit QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QDateEdit:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"QCalendarWidget {\n"
-"                background-color: white;\n"
-"                border: 1px solid #d0d0d0;\n"
-"                border-radius: 8px;\n"
-"                font-family: Arial, sans-serif;\n"
-"            }\n"
-"            \n"
-"            /* Barra superior con mes y año */\n"
-"            QCalendarWidget QWidget#qt_calendar_navigationbar {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"                border-top-left-radius: 7px;\n"
-"                border-top-right-radius: 7px;\n"
-"                padding: 5px;\n"
-"            }\n"
-"            \n"
-"            /* Botones de navegación */\n"
-"            QCalendarWidget QToolButton {\n"
-"                background-color: transparent;\n"
-"                color: white;\n"
-"                font-weight: bold;\n"
-"                border: none;\n"
-"                padding: 5px;\n"
-"                border-radius: 3px;\n"
-"            }\n"
-"            \n"
-"            QCalendarWidget QToolButton:hover {\n"
-"                background-color: rgba(255, 255, 255, 0.2);\n"
-"            }\n"
-"            \n"
-"            /* Días de la semana */\n"
-"            QCalendarWidget QHeaderView::section {\n"
-"                background-color: #f8f9fa;\n"
-"                color: #555555;\n"
-"                font-weight: bold;\n"
-"                padding: 8px;\n"
-"                border: none;\n"
-"                border-bottom: 1px solid #e0e0e0;\n"
-"            }\n"
-"            \n"
-"            /* Días normales */\n"
-"            QCalendarWidget QAbstractItemView:enabled {\n"
-"                color: #333333;\n"
-"                background-color: white;\n"
-"                selection-background-color: #4a90e2;\n"
-"                selection-color: white;\n"
-"                outline: none;\n"
-"                border: none;\n"
-"            }\n"
-"            \n"
-"            /* Día actual */\n"
-"            QCalendarWidget QAbstractItemView:enabled:focus {\n"
-"                background-color: #e8f4fd;\n"
-"                color: #4a90e2;\n"
-"                font-weight: bold;\n"
-"            }\n"
-"            \n"
-"            /* Días de otros meses */\n"
-"            QCalendarWidget QAbstractItemView:enabled:!selected {\n"
-"                color: #aaaaaa;\n"
-"            }\n"
-"            \n"
-"            /* Efecto hover sobre los días */\n"
-"            QCalendarWidget QAbstractItemView:enabled:hover {\n"
-"                background-color: #f0f7ff;\n"
-"            }\n"
-"            \n"
-"            /* Fines de semana */\n"
-"            QCalendarWidget QAbstractItemView:enabled:selected:alternate {\n"
-"                background-color: #4a90e2;\n"
-"                color: white;\n"
-"            }\n"
-"\n"
-"\n"
-"")
+        self.dateedit_fecha_ingreso_especialidad.setStyleSheet("")
         self.dateedit_fecha_ingreso_especialidad.setWrapping(False)
         self.dateedit_fecha_ingreso_especialidad.setFrame(True)
         self.dateedit_fecha_ingreso_especialidad.setAccelerated(True)
@@ -3876,8 +2035,8 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.dateedit_fecha_ingreso_especialidad.setDate(QtCore.QDate(2000, 1, 26))
         self.dateedit_fecha_ingreso_especialidad.setObjectName("dateedit_fecha_ingreso_especialidad")
         self.label_5 = QtWidgets.QLabel(self.espacio_fecha_especialidad)
-        self.label_5.setGeometry(QtCore.QRect(21, 30, 101, 16))
-        self.label_5.setStyleSheet("background:none;")
+        self.label_5.setGeometry(QtCore.QRect(14, 27, 101, 16))
+        self.label_5.setStyleSheet("")
         self.label_5.setObjectName("label_5")
         self.gridLayout_7.addWidget(self.espacio_fecha_especialidad, 1, 0, 1, 1)
         self.boton_finalizar = QtWidgets.QPushButton(self.preguntas_especialidad_inscribit)
@@ -3888,29 +2047,19 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_finalizar.setSizePolicy(sizePolicy)
         self.boton_finalizar.setMinimumSize(QtCore.QSize(150, 50))
         self.boton_finalizar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_finalizar.setStyleSheet("QPushButton{\n"
-"\n"
-"    font: 75 14pt \"Arial\";\n"
-"    background-color: rgb(0, 138, 71);\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.boton_finalizar.setStyleSheet("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_finalizar.setIcon(icon2)
+        self.boton_finalizar.setIconSize(QtCore.QSize(30, 30))
         self.boton_finalizar.setObjectName("boton_finalizar")
         self.gridLayout_7.addWidget(self.boton_finalizar, 2, 2, 1, 1)
         self.verticalLayout_11.addWidget(self.preguntas_especialidad_inscribit)
-        self.verticalLayout_3.addWidget(self.especialidad_incribir, 0, QtCore.Qt.AlignHCenter)
-        self.horizontalLayout.addWidget(self.espacio_preguntas)
+        self.verticalLayout_12.addWidget(self.especialidad_incribir)
+        self.horizontalLayout.addWidget(self.espacio_preguntas, 0, QtCore.Qt.AlignHCenter)
         self.verticalLayout_2.addWidget(self.espacio_principal)
         self.area_de_scroll.setWidget(self.scrollAreaWidgetContents)
-        self.verticalLayout_12.addWidget(self.area_de_scroll)
+        self.verticalLayout_3.addWidget(self.area_de_scroll)
 
         self.retranslateUi(FormularioNuevoRegistroAlumnos)
         self.boton_diagnostico.setCurrentIndex(-1)
@@ -3973,114 +2122,187 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
     def retranslateUi(self, FormularioNuevoRegistroAlumnos):
         _translate = QtCore.QCoreApplication.translate
         FormularioNuevoRegistroAlumnos.setWindowTitle(_translate("FormularioNuevoRegistroAlumnos", "Form"))
-        self.label_titulo_formulario.setText(_translate("FormularioNuevoRegistroAlumnos", "Formulario de registro"))
+        self.espacio_principal.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_principal"))
+        self.boton_de_regreso.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "boton_regresar"))
+        self.mensaje_bienvenida.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_titulo_form"))
+        self.label_titulo_formulario.setText(_translate("FormularioNuevoRegistroAlumnos", "Formulario para registrar un nuevo alumno"))
+        self.label_titulo_formulario.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_form"))
+        self.datos_del_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_segmento_datos_del_alumno.setText(_translate("FormularioNuevoRegistroAlumnos", "Datos del alumno"))
+        self.label_segmento_datos_del_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_cedula.setText(_translate("FormularioNuevoRegistroAlumnos", "Cédula"))
+        self.label_cedula.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_cedula.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.input_sexo_femenino.setText(_translate("FormularioNuevoRegistroAlumnos", "Femenino"))
         self.input_sexo_masculino.setText(_translate("FormularioNuevoRegistroAlumnos", "Masculino"))
         self.label_sexo.setText(_translate("FormularioNuevoRegistroAlumnos", "Sexo"))
+        self.label_sexo.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_segundo_nombre.setText(_translate("FormularioNuevoRegistroAlumnos", "Segundo nombre"))
+        self.label_segundo_nombre.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_segundo_nombre.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_apellido_paterno.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido paterno"))
+        self.label_apellido_paterno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_apellido_paterno.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_segundo_nombre_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Tercer nombre"))
+        self.label_segundo_nombre_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_tercer_nombre.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "(si es que lo tiene)"))
         self.label_imt.setText(_translate("FormularioNuevoRegistroAlumnos", "IMT"))
+        self.label_imt.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_imt_si.setText(_translate("FormularioNuevoRegistroAlumnos", "Si"))
         self.input_imt_no.setText(_translate("FormularioNuevoRegistroAlumnos", "No"))
         self.label_relacion_con_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Relación con el representante"))
+        self.label_relacion_con_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_relacion_con_representante.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_cedula_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha de nacimiento"))
+        self.label_cedula_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.dateedit_fecha_nacimiento.setToolTip(_translate("FormularioNuevoRegistroAlumnos", "Año/Mes/Dia"))
         self.dateedit_fecha_nacimiento.setDisplayFormat(_translate("FormularioNuevoRegistroAlumnos", "yyyy / MM / dd"))
         self.label_6.setText(_translate("FormularioNuevoRegistroAlumnos", "Año    / Mes / Dia"))
+        self.label_6.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qdateedit"))
         self.label_situacion.setText(_translate("FormularioNuevoRegistroAlumnos", "Situación"))
+        self.label_situacion.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_situacion.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_primer_nombre.setText(_translate("FormularioNuevoRegistroAlumnos", "Primer nombre"))
+        self.label_primer_nombre.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_primer_nombre.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_apellido_materno.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido materno"))
+        self.label_apellido_materno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_apellido_materno.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_cma.setText(_translate("FormularioNuevoRegistroAlumnos", "CMA"))
+        self.label_cma.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_cma_si.setText(_translate("FormularioNuevoRegistroAlumnos", "Si"))
         self.input_cma_no.setText(_translate("FormularioNuevoRegistroAlumnos", "No"))
         self.label_fecha_de_ingreso_tela.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha de ingreso al T.E.L.A"))
+        self.label_fecha_de_ingreso_tela.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.dateedit_fecha_ingreso_tela.setToolTip(_translate("FormularioNuevoRegistroAlumnos", "Año/Mes/Dia"))
         self.dateedit_fecha_ingreso_tela.setDisplayFormat(_translate("FormularioNuevoRegistroAlumnos", "yyyy / MM / dd"))
         self.label.setText(_translate("FormularioNuevoRegistroAlumnos", "Año    / Mes / Dia"))
+        self.label.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qdateedit"))
         self.label_lugar_de_nacimiento.setText(_translate("FormularioNuevoRegistroAlumnos", "Lugar de nacimiento"))
+        self.label_lugar_de_nacimiento.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_lugar_de_nacimiento.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.info_academica.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_titulo_info_academica.setText(_translate("FormularioNuevoRegistroAlumnos", "Información académica"))
+        self.label_titulo_info_academica.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_escolaridad.setText(_translate("FormularioNuevoRegistroAlumnos", " Escolaridad "))
+        self.label_escolaridad.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_escolaridad.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_procendencia.setText(_translate("FormularioNuevoRegistroAlumnos", " Procedencia "))
+        self.label_procendencia.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_procendencia.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.datos_del_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_segmento_datos_del_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Datos del representante"))
-        self.preguntas_info_medidas.setStyleSheet(_translate("FormularioNuevoRegistroAlumnos", "border-radius:0px;\n"
-"border:none;"))
+        self.label_segmento_datos_del_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_primer_nombre_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Cédula del representante"))
+        self.label_primer_nombre_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_buscar_por_cedula.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "..."))
         self.boton_buscar_cedula_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Comprobar"))
+        self.boton_buscar_cedula_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "boton_buscar"))
         self.label_nombre_del_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Nombre"))
+        self.label_nombre_del_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_nombre_del_representante.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_apellido_del_representante.setText(_translate("FormularioNuevoRegistroAlumnos", "Apellido"))
+        self.label_apellido_del_representante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_apellido_del_representante.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_numero_de_telefono.setText(_translate("FormularioNuevoRegistroAlumnos", "Número de teléfono"))
+        self.label_numero_de_telefono.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_numero_de_telefono.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_numero_de_telefono_adicional.setText(_translate("FormularioNuevoRegistroAlumnos", "Número de teléfono adicional"))
+        self.label_numero_de_telefono_adicional.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_numero_de_telefono_adicional.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "(Opcional)"))
         self.label_estado_civil.setText(_translate("FormularioNuevoRegistroAlumnos", "Estado civil "))
+        self.label_estado_civil.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_estado_civil.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_carga_familiar.setText(_translate("FormularioNuevoRegistroAlumnos", " Carga familiar "))
+        self.label_carga_familiar.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_carga_familiar.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_direccion_residencia.setText(_translate("FormularioNuevoRegistroAlumnos", "Dirección de residencia"))
+        self.label_direccion_residencia.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_direccion_residencia.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.info_medidas_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_segmento_info_medidas_alumno.setText(_translate("FormularioNuevoRegistroAlumnos", "Información medidas del alumno"))
+        self.label_segmento_info_medidas_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_talla_camisa.setText(_translate("FormularioNuevoRegistroAlumnos", "Talla de camisa"))
+        self.label_talla_camisa.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_talla_camisa.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_talla_zapatos.setText(_translate("FormularioNuevoRegistroAlumnos", "Talla de zapatos"))
+        self.label_talla_zapatos.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_talla_zapatos.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_talla_pantalon.setText(_translate("FormularioNuevoRegistroAlumnos", "Talla de pantalón "))
+        self.label_talla_pantalon.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_talla_pantalon.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_peso.setText(_translate("FormularioNuevoRegistroAlumnos", "Peso"))
+        self.label_peso.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_peso.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_estatura.setText(_translate("FormularioNuevoRegistroAlumnos", "Estatura"))
+        self.label_estatura.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_estatura.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.info_bancaria_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_segmento_info_bancaria_alumno.setText(_translate("FormularioNuevoRegistroAlumnos", "Información bancaria del alumno"))
-        self.label_tipo_de_cuenta.setText(_translate("FormularioNuevoRegistroAlumnos", "Tipo de cuenta "))
-        self.input_tipo_de_cuenta.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.label_segmento_info_bancaria_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_numero_de_cuenta.setText(_translate("FormularioNuevoRegistroAlumnos", " Número de cuenta "))
+        self.label_numero_de_cuenta.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_numero_de_cuenta.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
+        self.label_tipo_de_cuenta.setText(_translate("FormularioNuevoRegistroAlumnos", "Tipo de cuenta "))
+        self.label_tipo_de_cuenta.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
+        self.input_tipo_de_cuenta.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_mensaje_info_bancaria.setText(_translate("FormularioNuevoRegistroAlumnos", "Lista de cuentas"))
+        self.label_mensaje_info_bancaria.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.boton_anadir_cuenta_banco.setText(_translate("FormularioNuevoRegistroAlumnos", "Añadir "))
+        self.boton_anadir_cuenta_banco.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "boton_anadir"))
+        self.info_diagnostico_alumno.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_titulo_info_medica.setText(_translate("FormularioNuevoRegistroAlumnos", "Diagnóstico del alumno"))
+        self.label_titulo_info_medica.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_diagnostico_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Diagnóstico"))
+        self.label_diagnostico_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_otro_diagnostico.setText(_translate("FormularioNuevoRegistroAlumnos", "Otro diagnóstico"))
+        self.label_otro_diagnostico.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_otro_diagnostico.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "¿otro diagnostico?"))
+        self.boton_anadir_otro_diagnostico.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "boton_anadir"))
         self.label_mensaje_1.setText(_translate("FormularioNuevoRegistroAlumnos", "Lista de diagnosticos"))
+        self.label_mensaje_1.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_mensaje_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Si añadio un diagnostico de más o quiere eliminar haga click en el boton eliminar"))
+        self.label_mensaje_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_medico_tratante.setText(_translate("FormularioNuevoRegistroAlumnos", "Medico tratante "))
+        self.label_medico_tratante.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_medico_tratante.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.label_medicacion.setText(_translate("FormularioNuevoRegistroAlumnos", "Medicación "))
+        self.label_medicacion.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_medicacion.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.dateedit_fecha_diagnostico.setToolTip(_translate("FormularioNuevoRegistroAlumnos", "Año/Mes/Dia"))
         self.dateedit_fecha_diagnostico.setDisplayFormat(_translate("FormularioNuevoRegistroAlumnos", "yyyy / MM / dd"))
         self.label_2.setText(_translate("FormularioNuevoRegistroAlumnos", "Año    / Mes / Dia"))
+        self.label_2.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qdateedit"))
         self.label_fecha_diagnostico.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha del diagnóstico"))
+        self.label_fecha_diagnostico.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_certificado.setText(_translate("FormularioNuevoRegistroAlumnos", "Certificación de discapacidad "))
+        self.label_certificado.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_certificado_discapacidad.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.dateedit_fecha_vencimiento_certificado.setToolTip(_translate("FormularioNuevoRegistroAlumnos", "Año/Mes/Dia"))
         self.dateedit_fecha_vencimiento_certificado.setDisplayFormat(_translate("FormularioNuevoRegistroAlumnos", "yyyy / MM / dd"))
         self.label_4.setText(_translate("FormularioNuevoRegistroAlumnos", "Año    / Mes / Dia"))
+        self.label_4.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qdateedit"))
         self.label_fecha_del_certificado.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha que vence el certificado "))
+        self.label_fecha_del_certificado.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_observacion_adicional.setText(_translate("FormularioNuevoRegistroAlumnos", "Observación adicional"))
+        self.label_observacion_adicional.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.input_observacion_adicional.setPlaceholderText(_translate("FormularioNuevoRegistroAlumnos", "....."))
         self.boton_anadir_diagnostico.setText(_translate("FormularioNuevoRegistroAlumnos", "Añadir "))
+        self.boton_anadir_diagnostico.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "boton_anadir"))
+        self.especialidad_incribir.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "espacio_form"))
         self.label_titulo_especialidad_incribrir.setText(_translate("FormularioNuevoRegistroAlumnos", "Especialidad por inscribir"))
+        self.label_titulo_especialidad_incribrir.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_segmento"))
         self.label_especialidad_incribir.setText(_translate("FormularioNuevoRegistroAlumnos", "Especialidad"))
+        self.label_especialidad_incribir.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_periodo_escolar.setText(_translate("FormularioNuevoRegistroAlumnos", "Periodo escolar"))
+        self.label_periodo_escolar.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
+        self.label_mostrar_periodo_escolar.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.label_fecha_de_ingreso_especialidad.setText(_translate("FormularioNuevoRegistroAlumnos", "Fecha de ingreso de la especialidad"))
+        self.label_fecha_de_ingreso_especialidad.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qlineedit"))
         self.dateedit_fecha_ingreso_especialidad.setToolTip(_translate("FormularioNuevoRegistroAlumnos", "Año/Mes/Dia"))
         self.dateedit_fecha_ingreso_especialidad.setDisplayFormat(_translate("FormularioNuevoRegistroAlumnos", "yyyy / MM / dd"))
         self.label_5.setText(_translate("FormularioNuevoRegistroAlumnos", "Año    / Mes / Dia"))
+        self.label_5.setProperty("tipo", _translate("FormularioNuevoRegistroAlumnos", "titulo_qdateedit"))
         self.boton_finalizar.setText(_translate("FormularioNuevoRegistroAlumnos", "Finallizar"))
+import os
+BASE_DIR = os.path.dirname(__file__)
