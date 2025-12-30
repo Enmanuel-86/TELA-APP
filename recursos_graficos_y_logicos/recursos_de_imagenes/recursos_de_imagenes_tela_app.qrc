@@ -28,6 +28,10 @@
     <file>Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>iconos_de_interfaz/moon.png</file>
+    <file>iconos_de_interfaz/chevron-down.png</file>
+    <file>iconos_de_interfaz/chevron-up.png</file>
+    <file>iconos_de_interfaz/sun.png</file>
     <file>iconos_de_interfaz/agregar-usuario.png</file>
     <file>iconos_de_interfaz/archivo.png</file>
     <file>iconos_de_interfaz/base_de_datos.png</file>
