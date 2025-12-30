@@ -97,15 +97,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        ## Rutas relativas para las imagenes ##
-        
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "flecha_izquierda_2.png")))
-        self.boton_ayuda.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "signo_de_interrogacion.png")))
-        self.boton_buscar_cedula_representante.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "lupa_de_busqueda.png")))
-        self.boton_anadir_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "circulo_mas.png")))
-        self.foto_anadir_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "registro_alumnos.png")))
-        self.boton_anadir_otro_diagnostico.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "mas.png")))
-        
 
         # lista de inputs para usarlo en el metodo de limpiar inputs,
         # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
