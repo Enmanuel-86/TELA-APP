@@ -76,7 +76,7 @@ background:transparent;
 
 /* boton de regresar */
 QPushButton[tipo="boton_regresar"]{
-	icon: url(:/iconos/iconos_de_interfaz/arrow-left.png);
+	icon: url(:/iconos/iconos_de_interfaz/arrow-left-white.png);
 }
 
 QPushButton[tipo="boton_anadir"]{
@@ -298,46 +298,7 @@ QComboBox::drop-down:hover{
 background: rgb(2, 150, 84);
 }
 
-QComboBox[tipo="combobox_tema_claro"]{
-	background:#ffffff;
-	font: 14pt "Segoe UI";
-	border-radius:12px;	
-	border:1px solid #1e1e1e;
-	padding-left:10px;
-}
 
-QComboBox[tipo="combobox_tema_claro"]::drop-down {
-	width:35px;
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364,stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
-	image: url(:/iconos/imagenes/chevron-down.png);
-	border-top-right-radius:10px;
-	border-bottom-right-radius:10px;
-}
-
-QComboBox[tipo="combobox_tema_claro"] QAbstractItemView {
-    background: #ffffff;
-	color:#000000;
-	padding: 10px 5px;
-	border-left:2px solid rgb(25, 213, 100);
-	border-right:2px solid rgb(25, 213, 100);
-	border-bottom:2px solid rgb(25, 213, 100);
-    selection-background-color: rgb(60, 56, 214);
-}
-
-QComboBox[tipo="combobox_tema_claro"]:hover {
-    border: 2px solid rgb(25, 213, 100);   
-	border-radius:12px;    
-}
-
-/* Focus azul vibrante tipo Material/Windows */
-QComboBox[tipo="combobox_tema_claro"]:focus {
-    border: 2px solid rgb(25, 213, 100);       
-    /*color: #0D47A1;*/
-}
-
-QComboBox[tipo="combobox_tema_claro"]::drop-down:pressed{
-	background-color: rgb(0, 170, 97);
-}
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/

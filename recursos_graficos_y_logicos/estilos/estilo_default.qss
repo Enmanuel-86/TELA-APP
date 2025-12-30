@@ -127,6 +127,28 @@ background:transparent;
     image: url(:/iconos/iconos_de_interfaz/eye.png);
 }
 
+/* botones segun su acción  */
+
+/* boton de regresar */
+QPushButton[tipo="boton_regresar"]{
+	icon: url(:/iconos/iconos_de_interfaz/arrow-left.png);
+	background:#ffffff;
+	border:2px solid black;
+}
+
+QPushButton[tipo="boton_regresar"]:hover{
+	background:rgb(185, 185, 185);
+}
+
+QPushButton[tipo="boton_anadir"]{
+	icon: url(:/iconos/iconos_de_interfaz/circle-plus-white.png);
+}
+
+QPushButton[tipo="boton_buscar"]{
+	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
+}
+
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -143,7 +165,7 @@ QFrame[tipo="espacio_principal"]{
 
 /*Este Frame es el que generalemnte tiene el titulo del formulario*/
 QFrame[tipo="espacio_titulo_form"]{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 	stop:0 	rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
+	background-color: rgb(0, 92, 47);
 	border-radius:20px;
 
 }
@@ -166,9 +188,9 @@ QFrame[tipo="espacio_form"]{
 QLineEdit{
 	background-color: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
-	border:2px solid #1e1e1e;
+	border:1px solid #1e1e1e;
 	padding:5px 10px;
-	font: 16pt "Segoe UI";
+	font: 14pt "Segoe UI";
 	border-radius:12px;
 }
 
@@ -224,15 +246,19 @@ QLabel[tipo="titulo_qlineedit"]{
 
 QLabel[tipo="titulo_form"]{
 	font: 32pt "Segoe UI";
-	padding-left:1px;
 	font-weight: 500;
 	color:#ffffff;
 }
 
 QLabel[tipo="titulo_segmento"]{
 	font: 25pt "Segoe UI" bold;
+	font-weight: 500;
+}
+
+QLabel[tipo="titulo_qdateedit"]{
+	font: 8pt "Segoe UI";
 	padding-left:1px;
-	font-weight: 600;
+	font-weight: 500;
 }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -242,15 +268,18 @@ QLabel[tipo="titulo_segmento"]{
 /* 5. QLabels */
 
 QPushButton{
-	background-color: #005c2f;
-	font: 75 14pt "Arial";
+	background-color: #008a47;
+	border-radius:20px;
+	font: 12pt "Segoe UI";
+	font-weight: 500;
 	color: rgb(255, 255, 255);
-	border-radius:12px;
+	padding:10px;
 }
 
 QPushButton:hover{
-	background-color: rgb(0, 56, 10);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
 }
+
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -259,8 +288,124 @@ QPushButton:hover{
 /* 6. QComboBoxs */
 
 
+QComboBox{
+	background:#ffffff;
+	font: 14pt "Segoe UI";
+	border-radius:12px;	
+	border:1px solid #1e1e1e;
+	padding-left:10px;
+}
+
+QComboBox::drop-down {
+	width:35px;
+	background:qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
+	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+
+QComboBox QAbstractItemView {
+    background: #ffffff;
+	color:#000000;
+	padding: 10px 5px;
+	border-left:2px solid rgb(25, 213, 100);
+	border-right:2px solid rgb(25, 213, 100);
+	border-bottom:2px solid rgb(25, 213, 100);
+    selection-background-color: rgb(60, 56, 214);
+}
+
+QComboBox:hover {
+    border: 2px solid rgb(25, 213, 100);   
+	border-radius:12px;    
+}
+
+/* Focus azul vibrante tipo Material/Windows */
+QComboBox:focus {
+    border: 2px solid rgb(25, 213, 100);       
+    /*color: #0D47A1;*/
+}
+
+QComboBox::drop-down:pressed{
+	background-color: rgb(0, 170, 97);
+}
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 
 /* 6. QRadioButton */
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 8. QDateEdit */
+
+/* CONTENEDOR PRINCIPAL */
+QDateEdit {
+    background: rgb(255,255,255);
+    color: rgb(0, 0, 0);
+	border:1px solid black;
+    font: 14px "Segoe UI";
+	font-weight: 500;
+    border-radius: 12px;
+    padding: 4px 6px;
+}
+
+
+/* FOCUS */
+QDateEdit:focus {
+   border: 2px solid rgb(25, 213, 100);         
+    background-color: rgb(239, 239, 239);
+}
+
+
+/* BOTONES DE SUBIR Y BAJAR */
+QDateEdit::up-button {
+    width: 35px;
+    background: red;
+    border: none;
+	margin:0px;
+	border-top-right-radius:10px;
+	image: url(:/iconos/imagenes/chevron-up.png);
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+}
+
+
+QDateEdit::down-button{
+    width: 35px;
+    background: red;
+    border: none;
+	border-bottom-right-radius:10px;
+	image: url(:/iconos/imagenes/chevron-down.png);
+background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+
+}
+
+
+
+/* HOVER A LOS BOTONES */
+QDateEdit::up-button:hover {
+    background: rgb(2, 150, 84);
+}
+
+
+QDateEdit::down-button:hover{
+     background: rgb(2, 150, 84);
+}
+
+
+QDateEdit::drop-down {
+	width:35px;
+	background:qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
+	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+
+QDateEdit::drop-down:hover {
+	width:35px;
+	background:rgb(6, 179, 100)
+}
+
