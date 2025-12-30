@@ -243,6 +243,8 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
+        self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_default.qss'))
+        self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss'))
         self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
@@ -395,7 +397,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
+    #FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_default.qss')
     
     window.show()
     window.showMaximized()
