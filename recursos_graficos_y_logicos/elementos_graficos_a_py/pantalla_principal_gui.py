@@ -8,8 +8,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
-BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_VentanaPrincipal(object):
@@ -220,6 +218,31 @@ class Ui_VentanaPrincipal(object):
         self.verticalLayout_2.addWidget(self.boton_cargar_catologo)
         spacerItem2 = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem2)
+        self.frame = QtWidgets.QFrame(self.sidebar_contenido)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.boton_tema_claro = QtWidgets.QPushButton(self.frame)
+        self.boton_tema_claro.setText("")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/sun.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_tema_claro.setIcon(icon6)
+        self.boton_tema_claro.setIconSize(QtCore.QSize(25, 25))
+        self.boton_tema_claro.setObjectName("boton_tema_claro")
+        self.horizontalLayout_2.addWidget(self.boton_tema_claro)
+        spacerItem3 = QtWidgets.QSpacerItem(76, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem3)
+        self.boton_tema_oscuro = QtWidgets.QPushButton(self.frame)
+        self.boton_tema_oscuro.setText("")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/moon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_tema_oscuro.setIcon(icon7)
+        self.boton_tema_oscuro.setIconSize(QtCore.QSize(25, 25))
+        self.boton_tema_oscuro.setObjectName("boton_tema_oscuro")
+        self.horizontalLayout_2.addWidget(self.boton_tema_oscuro)
+        self.verticalLayout_2.addWidget(self.frame)
         self.boton_salir = QtWidgets.QPushButton(self.sidebar_contenido)
         font = QtGui.QFont()
         font.setFamily("Franklin Gothic Demi Cond")
@@ -228,9 +251,9 @@ class Ui_VentanaPrincipal(object):
         font.setWeight(50)
         self.boton_salir.setFont(font)
         self.boton_salir.setStyleSheet("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_salir.setIcon(icon6)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_salir.setIcon(icon8)
         self.boton_salir.setIconSize(QtCore.QSize(30, 30))
         self.boton_salir.setCheckable(False)
         self.boton_salir.setObjectName("boton_salir")
@@ -267,5 +290,10 @@ class Ui_VentanaPrincipal(object):
         self.boton_respaldo.setProperty("tipo", _translate("VentanaPrincipal", "boton_sidebar"))
         self.boton_cargar_catologo.setText(_translate("VentanaPrincipal", "  Cargar catalogo"))
         self.boton_cargar_catologo.setProperty("tipo", _translate("VentanaPrincipal", "boton_sidebar"))
+        self.boton_tema_claro.setProperty("tipo", _translate("VentanaPrincipal", "boton_sidebar"))
+        self.boton_tema_oscuro.setProperty("tipo", _translate("VentanaPrincipal", "boton_sidebar"))
         self.boton_salir.setText(_translate("VentanaPrincipal", "salir"))
         self.boton_salir.setProperty("tipo", _translate("VentanaPrincipal", "boton_sidebar"))
+
+import os
+BASE_DIR = os.path.dirname(__file__)

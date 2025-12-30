@@ -556,6 +556,71 @@
          </spacer>
         </item>
         <item>
+         <widget class="QFrame" name="frame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="boton_tema_claro">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+               <normaloff>:/iconos/iconos_de_interfaz/sun.png</normaloff>:/iconos/iconos_de_interfaz/sun.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="tipo" stdset="0">
+              <string>boton_sidebar</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>76</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_tema_oscuro">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+               <normaloff>:/iconos/iconos_de_interfaz/moon.png</normaloff>:/iconos/iconos_de_interfaz/moon.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="tipo" stdset="0">
+              <string>boton_sidebar</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="boton_salir">
           <property name="font">
            <font>
@@ -602,6 +667,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+ </resources>
  <connections/>
 </ui>
