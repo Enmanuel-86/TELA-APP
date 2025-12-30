@@ -33,7 +33,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="espacio_principal">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -41,7 +41,7 @@
       <enum>QFrame::Raised</enum>
      </property>
      <property name="tipo" stdset="0">
-      <string>espacio_principal</string>
+      <string>espacio_principal_login</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -80,7 +80,7 @@
          <enum>QFrame::Raised</enum>
         </property>
         <property name="tipo" stdset="0">
-         <string>espacio_form</string>
+         <string>espacio_login</string>
         </property>
         <widget class="QLineEdit" name="input_contrasena">
          <property name="geometry">
