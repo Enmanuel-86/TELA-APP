@@ -28,7 +28,19 @@ QPushButton[tipo="boton_sidebar"]:checked{
 	background: rgb(66, 62, 64)
 }
 
-/* estilo para elementos del login*/
+
+
+/* estilo del login */
+
+QFrame[tipo="espacio_login"]{
+    background-color: rgb(66, 62, 64);
+	padding:10px;
+	border-radius:20px;
+}
+
+QFrame[tipo="espacio_principal_login"]{
+	background-color: rgb(30, 30, 30);;
+}
 
 QLabel#icono_usuario{
 	image: url(:/iconos/iconos_de_interfaz/circle-user-round-white.png);
@@ -60,7 +72,9 @@ background:transparent;
     image: url(:/iconos/iconos_de_interfaz/eye-white.png);
 }
 
-/*********************************************************************************************************************************************************/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
 
 /* 2. QFrames y QWidgets*/
 
@@ -167,8 +181,6 @@ QLabel{
 QLabel[tipo="titulo_qlineedit"]{
 	font: 11pt "Segoe UI";
 	font-weight: 500;
-	
-
 }
 
 /*Este label son los que le dan un titulo del formulario*/

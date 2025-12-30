@@ -34,14 +34,10 @@ QPushButton[tipo="boton_sidebar"]:checked{
 
 /*Estilo para el sidebar*/
 QWidget[tipo="sidebar"]{
-	
 	background:rgb(0, 138, 71);
-
-
 }
 
 QPushButton[tipo="boton_sidebar"]{
-
 	background:transparent;
 	border:0px;
 	color:#ffffff;
@@ -49,18 +45,15 @@ QPushButton[tipo="boton_sidebar"]{
 	font-weight: 500;
 	text-align: left;
 	padding: 5px 5px 5px 5px;
-	
 }
 
 QPushButton[tipo="boton_sidebar"]:hover{
-	
 	background:   rgb(0, 89, 45);
-border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
+	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
 }	
 
 
 QPushButton[tipo="boton_sidebar"]:checked{
-
 	background-color: rgb(0, 89, 45);
 	border-left:3px solid rgb(0, 183, 72);
 	padding-left:4px;
@@ -68,45 +61,30 @@ QPushButton[tipo="boton_sidebar"]:checked{
 
 
 /* estilo del login */
-QFrame[tipo="espacio_form"]{
+
+QFrame[tipo="espacio_login"]{
     background: qlineargradient(
         x1:0, y1:0, x2:1, y2:1,
         stop:0 #3fea87, stop:1 #00770e);
-
 	border-radius:20px;
 }
 
+QFrame[tipo="espacio_principal_login"]{
+	background-color: rgb(255, 255, 255);
+}
 
 QLineEdit[tipo="login"]{
 	padding:5px 10px;
 	font: 16pt "Segoe UI";
 	border-radius:12px;
+	border:none;
 	background-color: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
 }
 
-
-QPushButton{
-	background-color: #005c2f;
-	font: 75 14pt "Arial";
-	color: rgb(255, 255, 255);
-	border-radius:12px;
+QLineEdit[tipo="login"]:hover{
+	border:none;
 }
-
-QPushButton:hover{
-	background-color: rgb(0, 56, 10);
-}
-
-QLabel[tipo="texto"]{
-
-	font: 15pt "Segoe UI";
-	padding-left:1px;
-	font-weight: 500;
-
-}
-
-
-/* estilo para elementos del login*/
 
 QLabel#icono_usuario{
 	image: url(:/iconos/iconos_de_interfaz/circle-user-round.png);
@@ -126,3 +104,163 @@ QPushButton#boton_ver_contrasena:hover{
 	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
 	border-radius:5px;
 }
+
+QToolButton#boton_ver_contrasena{
+	padding:0px;
+	background:transparent;
+	image:url(:/iconos/iconos_de_interfaz/eye.png)
+}
+
+QToolButton#boton_ver_contrasena:hover{
+	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
+	border-radius:5px;
+}
+
+QToolButton#boton_ver_contrasena:checked {
+    image: url(:/iconos/iconos_de_interfaz/eye-off.png);
+	background:transparent;
+}
+
+/* OJO ABIERTO */
+QToolButton#boton_ver_contrasena:!checked {
+background:transparent;
+    image: url(:/iconos/iconos_de_interfaz/eye.png);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 2. QFrames y QWidgets*/
+
+/*Este Frame es para el fondo el fondo*/
+QFrame[tipo="espacio_principal"]{
+	background: qlineargradient(
+        x1:0, y1:0, x2:1, y2:1,
+        stop:0 #3fea87, stop:1 #00770e);
+}
+
+
+/*Este Frame es el que generalemnte tiene el titulo del formulario*/
+QFrame[tipo="espacio_titulo_form"]{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 	stop:0 	rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
+	border-radius:20px;
+
+}
+
+
+/*Este frame es aquel que tiene un fondo gris, este frame sirve contener widgets*/
+QFrame[tipo="espacio_form"]{
+	background-color: rgb(255, 255, 255);
+	padding:10px;
+	border-radius:20px;
+
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 3. QLineEdits */
+
+QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	border:2px solid #1e1e1e;
+	padding:5px 10px;
+	font: 16pt "Segoe UI";
+	border-radius:12px;
+}
+
+QLineEdit:hover {
+    border: 2px solid #00aa61;       
+}
+
+QLineEdit:focus {
+    border: 2px solid rgb(25, 213, 100);         
+    background-color: rgb(239, 239, 239);  
+}
+
+/* Placeholder más visible, moderno */
+QLineEdit::placeholder {
+    color: #7F8C8D;
+    font-style: italic;
+}
+
+/* Estilo para QLineEdit cuando está deshabilitado */
+QLineEdit:disabled {
+    background-color: #F0F0F0;    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid #C0C0C0;    /* Borde más apagado */
+    color: #A0A0A0;               /* Texto gris tenue */
+    border-bottom: 2px solid #B0B0B0; /* Mantener línea inferior sutil */
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 4. QLabels */
+
+
+QLabel{
+	color: rgb(0, 0, 0);
+	border:none;
+	background:none;
+	font: 20pt "Segoe UI";
+	font-weight:500;
+}
+
+QLabel[tipo="texto"]{
+	font: 15pt "Segoe UI";
+	padding-left:1px;
+	font-weight: 500;
+}
+
+/*Este label son los que le dan un titulo a un qlineedit*/
+QLabel[tipo="titulo_qlineedit"]{
+	font: 11pt "Segoe UI";
+	font-weight: 500;
+}
+
+QLabel[tipo="titulo_form"]{
+	font: 32pt "Segoe UI";
+	padding-left:1px;
+	font-weight: 500;
+	color:#ffffff;
+}
+
+QLabel[tipo="titulo_segmento"]{
+	font: 25pt "Segoe UI" bold;
+	padding-left:1px;
+	font-weight: 600;
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 5. QLabels */
+
+QPushButton{
+	background-color: #005c2f;
+	font: 75 14pt "Arial";
+	color: rgb(255, 255, 255);
+	border-radius:12px;
+}
+
+QPushButton:hover{
+	background-color: rgb(0, 56, 10);
+}
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 6. QComboBoxs */
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 6. QRadioButton */
