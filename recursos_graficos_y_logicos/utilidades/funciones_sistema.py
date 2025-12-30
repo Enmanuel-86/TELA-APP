@@ -520,7 +520,13 @@ class FuncionesDelSistema:
             archivo = QFile(ruta_archivo)
             if archivo.open(QFile.ReadOnly | QFile.Text):
                 stream = QTextStream(archivo)
+                
+                # Limpiamos primero el estilo
+                app.setStyleSheet("")
+                
+                # asignamos el estilo
                 app.setStyleSheet(stream.readAll())
+                
                 archivo.close()
         except Exception as e:
             print(f"Error al cargar estilos: {e}")
