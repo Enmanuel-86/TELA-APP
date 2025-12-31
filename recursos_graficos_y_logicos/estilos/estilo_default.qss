@@ -149,6 +149,11 @@ QPushButton[tipo="boton_buscar"]{
 	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
 }
 
+/* vista general de alumno y empleados*/
+
+QLabel#imagen_contador{
+	image:url(:/iconos/iconos_de_interfaz/circle-user-round.png);
+}
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
