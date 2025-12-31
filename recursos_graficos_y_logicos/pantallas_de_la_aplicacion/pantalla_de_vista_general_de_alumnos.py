@@ -170,7 +170,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro())
         self.boton_buscar.clicked.connect(lambda _: self.aplicar_filtro(self.barra_de_busqueda.text()))
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
-        self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         self.tabla_ver_alumnos.doubleClicked.connect(self.acceder_al_prefil_del_alumno_desde_la_tabla)
         self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
@@ -672,11 +671,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     def ir_asistencia_alumno(self):
         
         self.stacked_widget.setCurrentIndex(4)
-        
-        
-    def ir_a_generar_informes_y_reportes(self):
-    
-        self.stacked_widget.setCurrentIndex(5)
         
 
  
