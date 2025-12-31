@@ -28,6 +28,9 @@
     <file>Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>iconos_de_interfaz/reportes.png</file>
+    <file>iconos_de_interfaz/clipboard-plus-white.png</file>
+    <file>iconos_de_interfaz/clipboard-plus.png</file>
     <file>iconos_de_interfaz/arrow-left.png</file>
     <file>iconos_de_interfaz/arrow-left-white.png</file>
     <file>iconos_de_interfaz/save.png</file>
@@ -48,10 +51,6 @@
     <file>iconos_de_interfaz/cerrar_sesion.png</file>
     <file>iconos_de_interfaz/circle-user-round.png</file>
     <file>iconos_de_interfaz/circle-user-round-white.png</file>
-    <file>iconos_de_interfaz/control_de_llegada.png</file>
-    <file>iconos_de_interfaz/control_de_llegada_negro.png</file>
-    <file>iconos_de_interfaz/control_de_reposos.png</file>
-    <file>iconos_de_interfaz/control_de_reposos_negro.png</file>
     <file>iconos_de_interfaz/corazon.png</file>
     <file>iconos_de_interfaz/database.png</file>
     <file>iconos_de_interfaz/database-white.png</file>
@@ -67,7 +66,6 @@
     <file>iconos_de_interfaz/file-white.png</file>
     <file>iconos_de_interfaz/flecha_abajo.png</file>
     <file>iconos_de_interfaz/flecha_izquierda.png</file>
-    <file>iconos_de_interfaz/generar_informe.png</file>
     <file>iconos_de_interfaz/search.png</file>
     <file>iconos_de_interfaz/search-white.png</file>
     <file>iconos_de_interfaz/hogar.png</file>
@@ -77,11 +75,13 @@
     <file>iconos_de_interfaz/mail.png</file>
     <file>iconos_de_interfaz/mas.png</file>
     <file>iconos_de_interfaz/menu.png</file>
-    <file>iconos_de_interfaz/nuevo_registro.png</file>
-    <file>iconos_de_interfaz/nuevo_registro_negro.png</file>
-    <file>iconos_de_interfaz/reloj.png</file>
-    <file>iconos_de_interfaz/reloj_azul.png</file>
     <file>iconos_de_interfaz/respaldo.png</file>
+    <file>iconos_de_interfaz/book-text-white.png</file>
+    <file>iconos_de_interfaz/book-text.png</file>
+    <file>iconos_de_interfaz/user-round-plus.png</file>
+    <file>iconos_de_interfaz/user-round-plus-white.png</file>
+    <file>iconos_de_interfaz/clock-3-white.png</file>
+    <file>iconos_de_interfaz/clock-3.png</file>
     <file>iconos_de_interfaz/trash-2.png</file>
     <file>iconos_de_interfaz/circle-question-mark.png</file>
   </qresource>
