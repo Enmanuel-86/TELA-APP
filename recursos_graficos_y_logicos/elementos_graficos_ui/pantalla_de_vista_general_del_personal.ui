@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1175</width>
-    <height>571</height>
+    <width>1078</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,9 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -48,8 +51,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1173</width>
-        <height>569</height>
+        <width>1076</width>
+        <height>572</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -74,17 +77,16 @@
        <item>
         <widget class="QFrame" name="espacio_principal">
          <property name="styleSheet">
-          <string notr="true">QFrame{
-	    background: qlineargradient(
-        x1:0, y1:0, x2:1, y2:1,
-        stop:0 #3fea87, stop:1 #00770e)
-}</string>
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
+         </property>
+         <property name="tipo" stdset="0">
+          <string>espacio_principal</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -102,7 +104,10 @@
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background:transparent;</string>
+             <string notr="true"/>
+            </property>
+            <property name="tipo" stdset="0">
+             <string>espacio_form</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <property name="spacing">
@@ -147,7 +152,7 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background:transparent;</string>
+                <string notr="true"/>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Plain</enum>
@@ -170,15 +175,13 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	color: rgb(255, 255, 255);
-	
-	background:transparent;
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Personal</string>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_qlineedit</string>
                   </property>
                  </widget>
                 </item>
@@ -193,13 +196,13 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-	
-	color: rgb(255, 255, 255);
-background:transparent;}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Especialidad</string>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_qlineedit</string>
                   </property>
                  </widget>
                 </item>
@@ -218,48 +221,7 @@ background:transparent;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QComboBox{
-
-	font: 75 12pt &quot;Arial&quot;;
-	padding-left:15px;
-	background:white;
-	border:1px solid black;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-
-
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="editable">
                    <bool>false</bool>
@@ -302,55 +264,7 @@ QComboBox QAbstractItemView::item:hover {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QComboBox{
-
-	font: 75 12pt &quot;Arial&quot;;
-	padding-left:15px;
-background:white;
-	border:1px solid black;
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-QComboBox:focus {
-    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */
-    background-color: #e0f7ff;   /* Fondo azul claro */
-}
-
-
-
-
-QComboBox QAbstractItemView {
-    border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
-    padding: 5px;  /* Margen interno de la lista */
-    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */
-}
-
-QComboBox QAbstractItemView::item {
-    padding: 8px; /* Espaciado interno de cada elemento */
-    margin: 4px; /* Separación entre los elementos */
-}
-
-QComboBox QAbstractItemView::item:hover {
-    background-color: #c5c1c1;
-    color: white;
-}
-
-QComboBox:disabled {
-        background-color:rgb(189, 189, 189);
-        color: #808080;
-        border: 1px solid rgb(127, 127, 127);
-    }
-
-
-
-
-</string>
+                   <string notr="true"/>
                   </property>
                   <property name="editable">
                    <bool>false</bool>
@@ -416,7 +330,7 @@ QComboBox:disabled {
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background:transparent;</string>
+                <string notr="true"/>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -462,32 +376,18 @@ QComboBox:disabled {
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-top-left-radius:10px;	
-	border-bottom-left-radius:10px;
-	padding-left: 10px;
- padding-right:5px;
-	padding-top:1px;
-	border:1px solid black  ;
-	
-
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+	border-bottom-right-radius:0px;
+	border-top-right-radius:0px;
+}</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                 </property>
                 <property name="placeholderText">
                  <string>Buscar empleado por su cédula</string>
+                </property>
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
                 </property>
                </widget>
                <widget class="QPushButton" name="boton_buscar">
@@ -530,25 +430,12 @@ QLineEdit:focus{
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
-
-	background-color: #008a47;
-
-	color: rgb(255, 255, 255);
-	
-	border-top-right-radius:10px;	
-	border-bottom-right-radius:10px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
+	border-bottom-left-radius:0px;
+	border-top-left-radius:0px;
 }</string>
                 </property>
                 <property name="text">
-                 <string> Buscar</string>
+                 <string>Buscar</string>
                 </property>
                 <property name="icon">
                  <iconset>
@@ -556,9 +443,12 @@ QPushButton:hover{
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>25</width>
-                  <height>25</height>
+                  <width>22</width>
+                  <height>22</height>
                  </size>
+                </property>
+                <property name="tipo" stdset="0">
+                 <string>boton_buscar</string>
                 </property>
                </widget>
               </widget>
@@ -597,7 +487,7 @@ QPushButton:hover{
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">background:transparent;</string>
+                <string notr="true"/>
                </property>
                <layout class="QGridLayout" name="gridLayout">
                 <item row="1" column="1" alignment="Qt::AlignHCenter">
@@ -617,13 +507,7 @@ QPushButton:hover{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-
-	color: rgb(255, 255, 255);
-	
-	
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>0</string>
@@ -635,10 +519,10 @@ QPushButton:hover{
                 </item>
                 <item row="1" column="0" alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="imagen_contador">
-                  <property name="maximumSize">
+                  <property name="minimumSize">
                    <size>
                     <width>40</width>
-                    <height>40</height>
+                    <height>0</height>
                    </size>
                   </property>
                   <property name="styleSheet">
@@ -667,17 +551,13 @@ QPushButton:hover{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-
-	color: rgb(255, 255, 255);
-	
-	
-
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>N° Empleados</string>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_qlineedit</string>
                   </property>
                  </widget>
                 </item>
@@ -690,18 +570,16 @@ QPushButton:hover{
           <item>
            <widget class="QFrame" name="espacio_central">
             <property name="styleSheet">
-             <string notr="true">QFrame{
-
-	background-color: rgb(0, 112, 21);
-	border-radius:12px;
-	border:2px solid black;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
+            </property>
+            <property name="tipo" stdset="0">
+             <string>espacio_form</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
@@ -732,6 +610,9 @@ border:none;</string>
                </property>
                <property name="cornerButtonEnabled">
                 <bool>false</bool>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>tabla_mostrar_registro</string>
                </property>
               </widget>
              </item>
@@ -779,27 +660,14 @@ border:none;</string>
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: #008a47;
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>  Control de llegada</string>
                   </property>
                   <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png</iconset>
+                   <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/iconos_de_interfaz/clock-3-white.png</normaloff>:/iconos/iconos_de_interfaz/clock-3-white.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -841,27 +709,14 @@ QPushButton:hover{
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: #008a47;
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>  Control de reposos</string>
                   </property>
                   <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png</iconset>
+                   <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/iconos_de_interfaz/clipboard-plus-white.png</normaloff>:/iconos/iconos_de_interfaz/clipboard-plus-white.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -903,27 +758,14 @@ QPushButton:hover{
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: #008a47;
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>  Crear nuevo registro</string>
                   </property>
                   <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png</iconset>
+                   <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/iconos_de_interfaz/user-round-plus-white.png</normaloff>:/iconos/iconos_de_interfaz/user-round-plus-white.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -948,6 +790,8 @@ QPushButton:hover{
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+ </resources>
  <connections/>
 </ui>

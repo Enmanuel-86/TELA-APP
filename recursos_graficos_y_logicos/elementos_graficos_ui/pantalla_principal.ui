@@ -293,8 +293,8 @@
            <string>  MENU</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/menu.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/menu.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/menu.png</normaloff>:/iconos/iconos_de_interfaz/menu.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -339,8 +339,8 @@
            <string>  Principal</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/hogar.png</normaloff>:/iconos/iconos_de_interfaz/hogar.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -382,8 +382,8 @@
            <string>  Estudiantes</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/estudiantes.png</normaloff>:/iconos/iconos_de_interfaz/estudiantes.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -434,8 +434,8 @@
            <string>  Personal</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/empleado.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/empleado.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/empleado.png</normaloff>:/iconos/iconos_de_interfaz/empleado.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -480,8 +480,54 @@
            <string>  Respaldos</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/respaldo.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/respaldo.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/respaldo.png</normaloff>:/iconos/iconos_de_interfaz/respaldo.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="tipo" stdset="0">
+           <string>boton_sidebar</string>
+          </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="boton_generar_reporte">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Franklin Gothic Demi Cond</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>  Generar reporte</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/reportes.png</normaloff>:/iconos/iconos_de_interfaz/reportes.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -526,8 +572,8 @@
            <string>  Cargar catalogo</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/catalogar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/catalogar.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/catalogar.png</normaloff>:/iconos/iconos_de_interfaz/catalogar.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -652,8 +698,8 @@
            <string>  salir</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</iconset>
+           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/iconos_de_interfaz/cerrar_sesion.png</normaloff>:/iconos/iconos_de_interfaz/cerrar_sesion.png</iconset>
           </property>
           <property name="iconSize">
            <size>
