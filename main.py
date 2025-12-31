@@ -242,6 +242,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_estudiante.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
+        self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
         self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_default.qss'))
         self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss'))
