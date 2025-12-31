@@ -87,6 +87,11 @@ QPushButton[tipo="boton_buscar"]{
 	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
 }
 
+/* vista general de alumno y empleados*/
+
+QLabel#imagen_contador{
+	image:url(:/iconos/iconos_de_interfaz/circle-user-round-white.png);
+}
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -264,7 +269,7 @@ QComboBox{
 	border-radius:12px;	
 	border:1px solid #1e1e1e;
 	padding-left:10px;
-	color: rgb(143, 143, 143);
+	color:#ffffff;
 }
 
 QComboBox::drop-down {
