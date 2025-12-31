@@ -360,6 +360,9 @@
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
           </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
+          </property>
          </widget>
         </item>
         <item>
@@ -409,6 +412,9 @@
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
           </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
+          </property>
          </widget>
         </item>
         <item>
@@ -452,6 +458,9 @@
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
           </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
+          </property>
          </widget>
         </item>
         <item>
@@ -491,6 +500,9 @@
           </property>
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
+          </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
           </property>
          </widget>
         </item>
@@ -534,6 +546,9 @@
           </property>
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
+          </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
           </property>
          </widget>
         </item>
@@ -634,7 +649,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>salir</string>
+           <string>  salir</string>
           </property>
           <property name="icon">
            <iconset>
@@ -651,6 +666,9 @@
           </property>
           <property name="tipo" stdset="0">
            <string>boton_sidebar</string>
+          </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
           </property>
          </widget>
         </item>
