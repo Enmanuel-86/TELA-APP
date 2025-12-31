@@ -15,6 +15,7 @@ QPushButton[tipo="boton_sidebar"]{
 	font-weight: 500;
 	text-align: left;
 	padding: 5px 5px 5px 5px;
+	border-radius:0px;
 	
 }
 
@@ -290,7 +291,7 @@ QPushButton:hover{
 
 QComboBox{
 	background:#ffffff;
-	font: 14pt "Segoe UI";
+	font: 12pt "Segoe UI";
 	border-radius:12px;	
 	border:1px solid #1e1e1e;
 	padding-left:10px;

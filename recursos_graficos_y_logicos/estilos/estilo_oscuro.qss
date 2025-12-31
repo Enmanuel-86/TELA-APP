@@ -260,7 +260,7 @@ QPushButton:hover{
 
 QComboBox{
 	background:rgb(30, 30, 30);
-	font: 14pt "Segoe UI";
+	font: 12pt "Segoe UI";
 	border-radius:12px;	
 	border:1px solid #1e1e1e;
 	padding-left:10px;
