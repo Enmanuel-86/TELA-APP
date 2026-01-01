@@ -106,64 +106,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Activar filas alternadas y aplicar estilo si quieres
         #self.tabla_ver_alumnos.setAlternatingRowColors(True)
         
-        
 
-        # Estilo de encabezados
-        self.tabla_ver_alumnos.horizontalHeader().setStyleSheet("""
-
-            QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-
-
-            QHeaderView::section {
-                background-color: #008e3e;
-                color: white;
-                padding: 0px;
-                font: 75 14pt "Arial";
-                
-            
-            }
-        """)
-
-        self.tabla_ver_alumnos.verticalHeader().setStyleSheet("""
-                    
-                    QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-                    QHeaderView::section {
-                        background-color: #ffffff;
-                        font: 75 14pt "Arial";
-
-
-
-                    }
-                """)
-
-
-        self.tabla_ver_alumnos.setStyleSheet("""
-                            QTableView {
-                                
-                                gridline-color: 5px black;
-                                border-radius:0px;
-                                background-color:white;
-                                font: 75 14pt "Arial";
-                                margin:10px;
-                            }
-                        
-                            QHeaderView::section {
-                                
-                                font-weight: bold;  
-                            }
-                        """)
         
     
         # conexion de botones
