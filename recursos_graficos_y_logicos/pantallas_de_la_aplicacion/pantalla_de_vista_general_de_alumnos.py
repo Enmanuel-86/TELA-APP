@@ -96,6 +96,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.tabla_ver_alumnos.verticalHeader().setVisible(True)
         self.tabla_ver_alumnos.verticalHeader().setMinimumWidth(40)
         self.tabla_ver_alumnos.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.tabla_ver_alumnos.verticalHeader().setFixedWidth(20)
 
         #esto me da el valor de la cedula al darle click a la persona que quiero
         self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
@@ -437,47 +438,12 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             layout = QHBoxLayout(widget)
             boton_editar = QPushButton("Editar")
             boton_editar.setFixedSize(60, 30) 
+            boton_editar.setProperty("tipo", "boton_editar")
             boton_borrar = QPushButton("Borrar")
             boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
             
             
-            boton_editar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                            
-                                            background-color: rgb(244, 131, 2);
-                                            
-                                            color: rgb(255, 255, 255);
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background-color: rgb(191, 64, 0);
-                                        }
-
-                                    """)
-            
-            boton_borrar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                        
-                                        background-color: rgb(255, 0, 0);
-                                        
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    
-                                    QPushButton:hover{
-                                    
-                                        background-color: rgb(147, 0, 0);
-                                    }
-                                    
-                                    """)
-            
-            boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
-
 
             # Conectar botones
             boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
