@@ -297,7 +297,7 @@ QLabel[tipo="titulo_qdateedit"]{
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 
-/* 5. QLabels */
+/* 5. QPushButtons */
 
 QPushButton{
 	background-color: #008a47;
@@ -445,7 +445,7 @@ QCalendarWidget QWidget {
         background-color: blue; 
         color: white; 
     }
-	
+
 QCalendarWidget QAbstractItemView:enabled {
 	color: black;
 	background-color: white;
@@ -523,7 +523,7 @@ QHeaderView::section:vertical {
 	padding:0px;
 }
 
-/* BOTÓN DE ESQUINA (esquina superior izquierda) */
 QTableView QTableCornerButton::section {
-    background-color: transparent;        /* Mismo color que los headers */
+    background-color: #008a47;
+    border:1px solid #000000;
 }
