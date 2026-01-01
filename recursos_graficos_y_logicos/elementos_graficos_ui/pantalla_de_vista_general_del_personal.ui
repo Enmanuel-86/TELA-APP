@@ -585,10 +585,7 @@
              <item>
               <widget class="QTableView" name="tabla_ver_personal">
                <property name="styleSheet">
-                <string notr="true">
-
-background-color: rgb(255, 255, 255);
-border:none;</string>
+                <string notr="true"/>
                </property>
                <property name="autoScrollMargin">
                 <number>0</number>
