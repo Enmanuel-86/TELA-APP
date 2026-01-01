@@ -307,7 +307,7 @@ QComboBox::drop-down {
 }
 
 QComboBox QAbstractItemView {
-    background: rgb(66, 62, 64);
+    background: rgb(30, 30, 30);
 	color:#ffffff;
 	padding: 10px 5px;
 	border-left:2px solid rgb(25, 213, 100);
@@ -439,6 +439,17 @@ QDateEdit::drop-down:hover {
 	background:rgb(6, 179, 100)
 }
 
+QCalendarWidget QWidget { 
+        background-color: blue; 
+        color: white; 
+    }
+QCalendarWidget QAbstractItemView:enabled {
+	color: black;
+	background-color: white;
+	selection-background-color: #0078d7;
+	selection-color: white;
+}
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -446,7 +457,7 @@ QDateEdit::drop-down:hover {
 
 /* 9. QTableView */
 
-QTableView[tipo="tabla_mostrar_registro"]{
+QTableView{
     /* COLORES DE FONDO */
     background-color: rgb(30, 30, 30);           /* Color de fondo principal */
     alternate-background-color: #f5f5f5; /* Color filas alternas (necesita setAlternatingRowColors(True)) */
@@ -457,7 +468,7 @@ QTableView[tipo="tabla_mostrar_registro"]{
 
     /* TEXTO */
     color: white;                     /* Color del texto */
-    font: 10pt "Segoe UI";
+    font: 12pt "Segoe UI";
     
     /* SELECCIÓN (si no se especifica en ::item:selected) */
     selection-background-color: blue; /* Fondo al seleccionar */
@@ -508,7 +519,7 @@ QHeaderView::section:vertical {
 	padding:0px;
 }
 
-/* BOTÓN DE ESQUINA (esquina superior izquierda) */
 QTableView QTableCornerButton::section {
-    background-color: transparent;        /* Mismo color que los headers */
+    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255)) ;        /* Color de fondo */
+    border:1px solid #ffffff;
 }
