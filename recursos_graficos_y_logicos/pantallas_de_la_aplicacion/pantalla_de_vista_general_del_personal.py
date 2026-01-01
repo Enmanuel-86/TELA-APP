@@ -139,7 +139,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         #self.tabla_ver_personal.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tabla_ver_personal.verticalHeader().setMinimumWidth(20)
         self.tabla_ver_personal.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
-
+        self.tabla_ver_personal.verticalHeader().setFixedWidth(20)
         #esto me da el valor de la cedula al darle click a la persona que quiero
         self.tabla_ver_personal.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
 
