@@ -28,6 +28,8 @@
     <file>Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>iconos_de_interfaz/pencil-white.png</file>
+    <file>iconos_de_interfaz/pencil.png</file>
     <file>iconos_de_interfaz/reportes.png</file>
     <file>iconos_de_interfaz/clipboard-plus-white.png</file>
     <file>iconos_de_interfaz/clipboard-plus.png</file>
@@ -54,7 +56,6 @@
     <file>iconos_de_interfaz/corazon.png</file>
     <file>iconos_de_interfaz/database.png</file>
     <file>iconos_de_interfaz/database-white.png</file>
-    <file>iconos_de_interfaz/editar.png</file>
     <file>iconos_de_interfaz/empleado.png</file>
     <file>iconos_de_interfaz/estudiantes.png</file>
     <file>iconos_de_interfaz/exportar.png</file>
