@@ -83,6 +83,32 @@ QPushButton[tipo="boton_anadir"]{
 	icon: url(:/iconos/iconos_de_interfaz/circle-plus-white.png);
 }
 
+QPushButton[tipo="boton_editar"]{
+	font-size:11px;
+	icon: url(:/iconos/iconos_de_interfaz/pencil-white.png);
+	background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(217, 199, 0, 255), stop:1 rgba(192, 107, 0, 255)) ;	border-radius:20px;
+	color: rgb(255, 255, 255);
+	padding:0px;
+}
+
+QPushButton[tipo="boton_editar"]:hover{
+	background-color: rgb(199, 133, 0);
+}
+
+QPushButton[tipo="boton_borrar"]{
+	font-size:11px;
+	icon: url(:/iconos/iconos_de_interfaz/trash-2.png);
+	background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 0, 0, 255), stop:1 rgba(255, 0, 36, 255)) ;
+	border-radius:20px;
+	color: rgb(255, 255, 255);
+	padding:0px;
+}
+
+QPushButton[tipo="boton_borrar"]:hover{
+	background-color: rgb(158, 0, 3);
+}
+
+
 QPushButton[tipo="boton_buscar"]{
 	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
 }
@@ -413,3 +439,76 @@ QDateEdit::drop-down:hover {
 	background:rgb(6, 179, 100)
 }
 
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 9. QTableView */
+
+QTableView[tipo="tabla_mostrar_registro"]{
+    /* COLORES DE FONDO */
+    background-color: rgb(30, 30, 30);           /* Color de fondo principal */
+    alternate-background-color: #f5f5f5; /* Color filas alternas (necesita setAlternatingRowColors(True)) */
+    
+    /* BORDES Y LÍNEAS */
+    border: 1px solid #ccc;           
+    gridline-color: #ddd;
+
+    /* TEXTO */
+    color: white;                     /* Color del texto */
+    font: 10pt "Segoe UI";
+    
+    /* SELECCIÓN (si no se especifica en ::item:selected) */
+    selection-background-color: blue; /* Fondo al seleccionar */
+    selection-color: white;           /* Color texto al seleccionar */
+}
+
+
+
+QHeaderView {
+    background-color: transparent;     /* Fondo del header view */
+    border: none;                     /* Sin borde */
+}
+
+/* CADA SECCIÓN DE ENCABEZADO (cada columna) */
+QHeaderView::section {
+    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255)) ;        /* Color de fondo */
+    color: white;                     /* Color del texto */
+    border: 1px solid #ffffff;        /* Borde de cada sección */
+    border-left: none;                /* Quitar borde izquierdo */
+    font: 11pt "Segoe UI";
+	font-weight: 600;
+	
+    
+    /* Alineación del texto */
+    text-align: center;                 /* left, center, right */
+    
+}
+
+/* Sección cuando se pasa el mouse */
+QHeaderView::section:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));;
+}
+
+/* Sección cuando se presiona */
+QHeaderView::section:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));;
+}
+
+/* Para la última sección (última columna) */
+QHeaderView::section:last {
+    border-right: none;               /* Quitar borde derecho del último */
+}
+
+QHeaderView::section:vertical {
+	color: white;
+	text-align: center;
+	font-size:12px;
+	padding:0px;
+}
+
+/* BOTÓN DE ESQUINA (esquina superior izquierda) */
+QTableView QTableCornerButton::section {
+    background-color: transparent;        /* Mismo color que los headers */
+}
