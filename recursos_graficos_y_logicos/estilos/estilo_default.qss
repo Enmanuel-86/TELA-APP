@@ -243,10 +243,9 @@ QLineEdit::placeholder {
 
 /* Estilo para QLineEdit cuando está deshabilitado */
 QLineEdit:disabled {
-    background-color: #F0F0F0;    /* Gris claro para diferenciarlo del blanco activo */
-    border: 2px solid #C0C0C0;    /* Borde más apagado */
-    color: #A0A0A0;               /* Texto gris tenue */
-    border-bottom: 2px solid #B0B0B0; /* Mantener línea inferior sutil */
+    background-color: rgb(194, 194, 194);    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid rgb(153, 153, 153);    /* Borde más apagado */
+    color: rgb(91, 91, 91);               /* Texto gris tenue */
 }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -309,7 +308,7 @@ QPushButton{
 }
 
 QPushButton:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
+	background-color:rgb(0, 92, 47); 
 }
 
 
@@ -360,6 +359,18 @@ QComboBox:focus {
 QComboBox::drop-down:pressed{
 	background-color: rgb(0, 170, 97);
 }
+
+QComboBox:disabled {
+    background-color: rgb(194, 194, 194);    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid rgb(153, 153, 153);    /* Borde más apagado */
+    color: rgb(91, 91, 91);               /* Texto gris tenue */
+}
+
+QComboBox::drop-down:disabled {
+    background-color: rgb(168, 168, 168);    /* Gris claro para diferenciarlo del blanco activo */
+    color: rgb(91, 91, 91);               /* Texto gris tenue */
+}
+
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -454,6 +465,16 @@ QCalendarWidget QAbstractItemView:enabled {
 }
 
 
+QDateEdit:disabled {
+    background-color: rgb(194, 194, 194);    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid rgb(153, 153, 153);    /* Borde más apagado */
+    color: rgb(91, 91, 91);               /* Texto gris tenue */
+}
+
+QDateEdit::drop-down:disabled {
+    background-color: rgb(168, 168, 168);    /* Gris claro para diferenciarlo del blanco activo */
+    color: rgb(91, 91, 91);               /* Texto gris tenue */
+}
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
@@ -527,3 +548,30 @@ QTableView QTableCornerButton::section {
     background-color: #008a47;
     border:1px solid #000000;
 }
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 10. QListWidget */
+
+QListWidget{
+	background:#ffffff;
+	border:1px solid #000000;
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 11. QScrollArea */
+QScrollArea {
+        background-color: transparent;
+ }
+
+ QScrollArea > QWidget > QWidget {
+        background-color: transparent;
+ }
