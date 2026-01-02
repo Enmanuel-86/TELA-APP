@@ -330,6 +330,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QFrame" name="espacio_cma">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Tiene Certificado de Manipulación de Alimentos?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -543,6 +546,9 @@
            </item>
            <item row="5" column="1">
             <widget class="QFrame" name="espacio_imt">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Está Inscrito en el Ministerio de Trabajo?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -1274,7 +1280,7 @@
                          <string notr="true"/>
                         </property>
                         <property name="text">
-                         <string>Medico Tratante</string>
+                         <string>Médico Tratante</string>
                         </property>
                         <property name="scaledContents">
                          <bool>true</bool>
@@ -2406,7 +2412,7 @@
 }</string>
                   </property>
                   <property name="text">
-                   <string>Para ver más a detalle cada diagnóstico, debe dar click al boton del ojo para ver toda la información sobre el diagnostico seleccionado.</string>
+                   <string>Para ver más a detalle cada diagnóstico, debe dar click al botón del ojo para ver toda la información sobre el diagnóstico seleccionado.</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignJustify|Qt::AlignTop</set>

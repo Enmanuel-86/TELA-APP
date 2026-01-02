@@ -829,10 +829,13 @@ QPushButton:hover{
                        <height>60</height>
                       </size>
                      </property>
+                     <property name="toolTip">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Está inscrito en el Ministerio de Trabajo?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
                      <property name="styleSheet">
                       <string/>
                      </property>
-                     <layout class="QFormLayout" name="formLayout_3">
+                     <layout class="QGridLayout" name="gridLayout_5">
                       <property name="horizontalSpacing">
                        <number>50</number>
                       </property>
@@ -872,6 +875,12 @@ QPushButton:hover{
                       </item>
                       <item row="1" column="0">
                        <widget class="QRadioButton" name="input_imt_si">
+                        <property name="maximumSize">
+                         <size>
+                          <width>40</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true"/>
                         </property>
@@ -882,6 +891,12 @@ QPushButton:hover{
                       </item>
                       <item row="1" column="1">
                        <widget class="QRadioButton" name="input_imt_no">
+                        <property name="maximumSize">
+                         <size>
+                          <width>40</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true"/>
                         </property>
@@ -1315,6 +1330,9 @@ QPushButton:hover{
                        <width>200</width>
                        <height>60</height>
                       </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Tiene Certificado de Manipulación de Alimentos?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                      <property name="styleSheet">
                       <string/>
@@ -3566,7 +3584,7 @@ QPushButton:hover{
                         <string notr="true"/>
                        </property>
                        <property name="placeholderText">
-                        <string>¿otro diagnostico?</string>
+                        <string>¿otro diagnóstico?</string>
                        </property>
                       </widget>
                      </item>
@@ -3630,7 +3648,7 @@ padding:0px;</string>
                         </font>
                        </property>
                        <property name="text">
-                        <string>Lista de diagnosticos</string>
+                        <string>Lista de diagnósticos</string>
                        </property>
                        <property name="tipo" stdset="0">
                         <string>titulo_qlineedit</string>
@@ -3667,7 +3685,7 @@ padding:0px;</string>
                         <string/>
                        </property>
                        <property name="text">
-                        <string>Si añadio un diagnostico de más o quiere eliminar haga click en el boton eliminar</string>
+                        <string>Si añadió un diagnóstico de más o quiere eliminar haga click en el boton eliminar</string>
                        </property>
                        <property name="scaledContents">
                         <bool>false</bool>
