@@ -707,25 +707,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         boton_eliminar = QPushButton()
         boton_eliminar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
         boton_eliminar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        boton_eliminar.setFixedSize(40,40)
-        boton_eliminar.setStyleSheet("""
-                                    
-                                    QPushButton{
-                                        background:red;
-                                        border-radius:0px;
-                                        icon-size:28px;
-                                    
-                                    }
-                                    
-                                    QPushButton:hover{
-                                        
-                                        background:#9e0000
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                    """)
+        boton_eliminar.setFixedSize(30,30)
+        boton_eliminar.setProperty("tipo", "boton_borrar")
         
         boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
         row_layout.addWidget(boton_eliminar)
@@ -733,18 +716,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         if editando:
             # Botón para editar
             boton_editar = QPushButton()
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "editar.png")))
             boton_editar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-            boton_editar.setFixedSize(40, 40)
-            boton_editar.setStyleSheet("""
-                QPushButton {
-                    background-color: rgb(244, 131, 2);
-                    color: white;
-                }
-                QPushButton:hover {
-                    background-color: rgb(191, 64, 0);
-                }
-            """)
+            boton_editar.setFixedSize(30, 30)
+            boton_editar.setProperty("tipo", "boton_editar")
+            
             
             boton_editar.clicked.connect(lambda _, item=item, lista=nombre_lista:self.ver_elemento_de_la_lista_seleccionada(nombre_qlistwidget, lista, item))
             row_layout.addWidget(boton_editar)

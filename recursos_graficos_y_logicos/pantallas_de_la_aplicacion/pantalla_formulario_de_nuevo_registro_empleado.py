@@ -476,27 +476,9 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
         # Botón para eliminar
         delete_button = QPushButton()
-        delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
         delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        delete_button.setFixedSize(40,40)
-        delete_button.setStyleSheet("""
-                                    
-                                    QPushButton{
-                                        background:red;
-                                        border-radius:20px;
-                                        icon-size:28px;
-                                    
-                                    }
-                                    
-                                    QPushButton:hover{
-                                        
-                                        background:#9e0000
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                    """)
+        delete_button.setFixedSize(30,30)
+        delete_button.setProperty("tipo", "boton_borrar")
         
         delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
         row_layout.addWidget(delete_button)
