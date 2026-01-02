@@ -613,3 +613,64 @@ QScrollArea {
  QScrollArea > QWidget > QWidget {
         background-color: transparent;
  }
+
+
+
+ /*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+/* 12. QTimeEdit */
+
+/* CONTENEDOR PRINCIPAL */
+QTimeEdit {
+    background: rgb(255,255,255);
+    color: rgb(0, 0, 0);
+	border:1px solid black;
+    font: 14px "Segoe UI";
+	font-weight: 500;
+    border-radius: 12px;
+    padding: 4px 6px;
+}
+
+
+/* FOCUS */
+QTimeEdit:focus {
+   border: 2px solid rgb(25, 213, 100);         
+    background-color: rgb(239, 239, 239);
+}
+
+
+/* BOTONES DE SUBIR Y BAJAR */
+QTimeEdit::up-button {
+    width: 35px;
+    background: red;
+    border: none;
+	margin:0px;
+	border-top-right-radius:10px;
+	image:  url(:/iconos/iconos_de_interfaz/chevron-up.png);
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+}
+
+
+QTimeEdit::down-button{
+    width: 35px;
+    background: red;
+    border: none;
+	border-bottom-right-radius:10px;
+	image:  url(:/iconos/iconos_de_interfaz/chevron-down.png);
+background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+
+}
+
+
+
+/* HOVER A LOS BOTONES */
+QTimeEdit::up-button:hover {
+    background: rgb(2, 150, 84);
+}
+
+
+QTimeEdit::down-button:hover{
+     background: rgb(2, 150, 84);
+}
