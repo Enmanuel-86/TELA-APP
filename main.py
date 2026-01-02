@@ -4,12 +4,14 @@ import random
 from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
                              QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
 from PyQt5.QtGui import QIcon, QPixmap
+import recursos_graficos_y_logicos.recursos_de_imagenes.recursos_de_imagenes_tela_app_rc as recursos_de_imagenes_tela_app_rc
+sys.modules["recursos_de_imagenes_tela_app_rc"] = recursos_de_imagenes_tela_app_rc
 
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
 from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
-from recursos_graficos_y_logicos.recursos_de_imagenes import recursos_de_imagenes_tela_app_rc
+
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
                                         PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
