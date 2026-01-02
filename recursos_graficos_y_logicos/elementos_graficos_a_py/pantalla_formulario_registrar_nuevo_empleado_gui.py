@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_PantallaFormularioEmpleado(object):
     def setupUi(self, PantallaFormularioEmpleado):
         PantallaFormularioEmpleado.setObjectName("PantallaFormularioEmpleado")
-        PantallaFormularioEmpleado.resize(1096, 2440)
+        PantallaFormularioEmpleado.resize(1096, 2414)
         PantallaFormularioEmpleado.setStyleSheet("")
         self.gridLayout_6 = QtWidgets.QGridLayout(PantallaFormularioEmpleado)
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -24,7 +24,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1096, 2440))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1079, 2419))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -156,6 +156,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_titulo_del_segmento_info_basica.setObjectName("label_titulo_del_segmento_info_basica")
         self.verticalLayout_4.addWidget(self.label_titulo_del_segmento_info_basica)
         self.preguntas_info_basica = QtWidgets.QFrame(self.info_basica)
+        self.preguntas_info_basica.setEnabled(True)
         self.preguntas_info_basica.setStyleSheet("")
         self.preguntas_info_basica.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.preguntas_info_basica.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -254,6 +255,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_tercer_nombre.setObjectName("label_tercer_nombre")
         self.verticalLayout_17.addWidget(self.label_tercer_nombre, 0, QtCore.Qt.AlignLeft)
         self.input_tercer_nombre = QtWidgets.QLineEdit(self.preguntas_info_basica)
+        self.input_tercer_nombre.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -401,6 +403,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_sexo.setObjectName("label_sexo")
         self.verticalLayout_5.addWidget(self.label_sexo)
         self.input_sexo_masculino = QtWidgets.QRadioButton(self.espacio_sexo)
+        self.input_sexo_masculino.setEnabled(True)
         self.input_sexo_masculino.setStyleSheet("")
         self.input_sexo_masculino.setObjectName("input_sexo_masculino")
         self.verticalLayout_5.addWidget(self.input_sexo_masculino, 0, QtCore.Qt.AlignLeft)
@@ -499,6 +502,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_fecha_de_nacimiento.setScaledContents(False)
         self.label_fecha_de_nacimiento.setObjectName("label_fecha_de_nacimiento")
         self.dateedit_fecha_nacimiento = QtWidgets.QDateEdit(self.espacio_fecha_nacimiento)
+        self.dateedit_fecha_nacimiento.setEnabled(True)
         self.dateedit_fecha_nacimiento.setGeometry(QtCore.QRect(1, 14, 211, 40))
         self.dateedit_fecha_nacimiento.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
@@ -1184,6 +1188,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.label_diagnostico.setScaledContents(False)
         self.label_diagnostico.setObjectName("label_diagnostico")
         self.boton_enfermedades = QtWidgets.QComboBox(self.preguntas_info_medica)
+        self.boton_enfermedades.setEnabled(True)
         self.boton_enfermedades.setGeometry(QtCore.QRect(10, 50, 300, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1199,6 +1204,7 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_enfermedades.setPlaceholderText("")
         self.boton_enfermedades.setObjectName("boton_enfermedades")
         self.boton_diagnostico = QtWidgets.QComboBox(self.preguntas_info_medica)
+        self.boton_diagnostico.setEnabled(True)
         self.boton_diagnostico.setGeometry(QtCore.QRect(370, 50, 300, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1291,19 +1297,11 @@ class Ui_PantallaFormularioEmpleado(object):
         self.boton_anadir_enfermedad.setObjectName("boton_anadir_enfermedad")
         self.ver_lista_enfermedades = QtWidgets.QListWidget(self.preguntas_info_medica)
         self.ver_lista_enfermedades.setGeometry(QtCore.QRect(15, 196, 291, 181))
-        self.ver_lista_enfermedades.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"}")
+        self.ver_lista_enfermedades.setStyleSheet("")
         self.ver_lista_enfermedades.setObjectName("ver_lista_enfermedades")
         self.ver_lista_diagnostico = QtWidgets.QListWidget(self.preguntas_info_medica)
         self.ver_lista_diagnostico.setGeometry(QtCore.QRect(369, 193, 301, 192))
-        self.ver_lista_diagnostico.setStyleSheet("QListWidget{\n"
-"\n"
-"    border:1px solid black;\n"
-"\n"
-"}")
+        self.ver_lista_diagnostico.setStyleSheet("")
         self.ver_lista_diagnostico.setObjectName("ver_lista_diagnostico")
         self.verticalLayout_10.addWidget(self.preguntas_info_medica)
         self.verticalLayout_3.addWidget(self.info_medica)

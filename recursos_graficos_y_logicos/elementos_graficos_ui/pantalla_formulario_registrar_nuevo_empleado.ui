@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1096</width>
-    <height>2440</height>
+    <height>2414</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,8 +45,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1096</width>
-        <height>2440</height>
+        <width>1079</width>
+        <height>2419</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -389,6 +389,9 @@ QPushButton:hover{
                 </item>
                 <item>
                  <widget class="QFrame" name="preguntas_info_basica">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true"/>
                   </property>
@@ -605,6 +608,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_tercer_nombre">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -927,6 +933,9 @@ QPushButton:hover{
                       </item>
                       <item alignment="Qt::AlignLeft">
                        <widget class="QRadioButton" name="input_sexo_masculino">
+                        <property name="enabled">
+                         <bool>true</bool>
+                        </property>
                         <property name="styleSheet">
                          <string notr="true"/>
                         </property>
@@ -1117,6 +1126,9 @@ QLineEdit:focus{
                       </property>
                      </widget>
                      <widget class="QDateEdit" name="dateedit_fecha_nacimiento">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
                       <property name="geometry">
                        <rect>
                         <x>1</x>
@@ -2473,6 +2485,9 @@ QLineEdit:focus{
                    </property>
                   </widget>
                   <widget class="QComboBox" name="boton_enfermedades">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="geometry">
                     <rect>
                      <x>10</x>
@@ -2519,6 +2534,9 @@ QLineEdit:focus{
                    </property>
                   </widget>
                   <widget class="QComboBox" name="boton_diagnostico">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="geometry">
                     <rect>
                      <x>370</x>
@@ -2776,11 +2794,7 @@ QLineEdit:focus{
                     </rect>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                   <widget class="QListWidget" name="ver_lista_diagnostico">
@@ -2793,11 +2807,7 @@ QLineEdit:focus{
                     </rect>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">QListWidget{
-
-	border:1px solid black;
-
-}</string>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </widget>
