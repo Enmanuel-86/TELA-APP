@@ -46,16 +46,22 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item alignment="Qt::AlignTop">
        <widget class="QFrame" name="espacio_personal">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>426</width>
-          <height>681</height>
+          <height>631</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>426</width>
-          <height>681</height>
+          <height>631</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -71,6 +77,21 @@
          <string>espacio_form</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="boton_de_regreso">
            <property name="minimumSize">
@@ -365,7 +386,7 @@
               <item alignment="Qt::AlignTop">
                <widget class="QRadioButton" name="input_sexo_femenino">
                 <property name="enabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="minimumSize">
                  <size>
@@ -380,7 +401,7 @@
                  <string>Femenino</string>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="checked">
                  <bool>false</bool>
@@ -390,7 +411,7 @@
               <item alignment="Qt::AlignTop">
                <widget class="QRadioButton" name="input_sexo_masculino">
                 <property name="enabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="minimumSize">
                  <size>
@@ -405,7 +426,7 @@
                  <string>Masculino</string>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="checked">
                  <bool>false</bool>
@@ -650,7 +671,7 @@
               <item alignment="Qt::AlignTop">
                <widget class="QRadioButton" name="input_si">
                 <property name="enabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="minimumSize">
                  <size>
@@ -671,7 +692,7 @@
                  <string>Si</string>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="checked">
                  <bool>false</bool>
@@ -687,7 +708,7 @@
               <item alignment="Qt::AlignTop">
                <widget class="QRadioButton" name="input_no">
                 <property name="enabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="minimumSize">
                  <size>
@@ -708,7 +729,7 @@
                  <string>No</string>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                 <property name="checked">
                  <bool>false</bool>
@@ -879,7 +900,7 @@
                <property name="font">
                 <font>
                  <family>Segoe UI</family>
-                 <pointsize>20</pointsize>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <italic>false</italic>
                  <bold>true</bold>
@@ -893,6 +914,9 @@
                </property>
                <property name="scaledContents">
                 <bool>false</bool>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>titulo_qlineedit</string>
                </property>
               </widget>
              </item>
@@ -979,8 +1003,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>689</width>
-           <height>1823</height>
+           <width>691</width>
+           <height>1805</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -989,6 +1013,18 @@
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <property name="spacing">
            <number>15</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
           <item>
            <widget class="QFrame" name="espacio_info_contacto">
