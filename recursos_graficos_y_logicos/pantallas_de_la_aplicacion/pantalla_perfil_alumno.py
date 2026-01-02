@@ -62,7 +62,6 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
     
         # Ruta relativa de las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
         self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "estudiante_m.png")))
         
         self.dockWidget_diagnostico.hide()
@@ -444,12 +443,12 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             self.dockWidget_diagnostico.setWindowTitle(f"{titulo}: {nombre_diag}")
             self.titulo.setText(titulo)
-            self.label_mostrar_diagnostico.setText(nombre_diag)
-            self.label_mostrar_fecha_diagnostico.setText(fecha_diag)
-            self.label_mostrar_medico_tratante.setText(medico)
-            self.label_mostrar_certificado_discap.setText(certificado)
-            self.label_mostrar_fecha_venc_certificado.setText(fecha_venc)
-            self.label_mostrar_medicacion.setText(medicacion)
+            self.input_mostrar_diagnostico.setText(nombre_diag)
+            self.input_mostrar_fecha_diagnostico.setText(fecha_diag)
+            self.input_mostrar_medico_tratante.setText(medico)
+            self.input_mostrar_certificado_discap.setText(certificado)
+            self.input_mostrar_fecha_venc_certificado.setText(fecha_venc)
+            self.input_mostrar_medicacion.setText(medicacion)
             
             self.dockWidget_diagnostico.show()
             self.dockWidget_diagnostico.setFloating(True)
