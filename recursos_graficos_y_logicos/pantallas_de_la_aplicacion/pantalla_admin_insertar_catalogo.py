@@ -461,7 +461,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
 
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "boton_anadir")
                         self.boton_registrar_especialidad.clicked.disconnect()                   
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
                         self.actualizar_comboboxs_especialidades()
@@ -476,7 +476,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "boton_anadir")
                         self.boton_registrar_diagnostico.clicked.disconnect()
                         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
                         
@@ -490,7 +490,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "boton_anadir")
                         self.boton_registrar_enfermedad.clicked.disconnect()
                         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
                         
@@ -504,7 +504,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "boton_anadir")
                         self.boton_registrar_funcion_cargo.clicked.disconnect()
                         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
                         
@@ -530,7 +530,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_cargo_empleado, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_cargo_empleado, "boton_anadir")
                         self.boton_registrar_cargo_empleado.clicked.disconnect()
                         self.boton_registrar_cargo_empleado.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_cargo_empleado, "cargo", self.lista_cargo, self.input_codigo_cargo_empleado))
                          
@@ -559,7 +559,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
 
-                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "añadir")
+                        FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "boton_anadir")
                        
                         self.boton_registrar_tipo_cargo_empleado.clicked.disconnect()
                         
@@ -755,7 +755,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_especialidad.setText(elemento[1])
                 self.input_especialidad.setFocus(True)
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "boton_editar")
                 
                 self.boton_registrar_especialidad.clicked.disconnect()
                 self.boton_registrar_especialidad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_especialidad, elemento[0], "especialidad", self.lista_especialidades))
@@ -766,7 +766,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_diagnostico.setText(elemento[1])
                 self.input_diagnostico.setFocus(True)
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "boton_editar")
                 self.boton_registrar_diagnostico.clicked.disconnect()
                 self.boton_registrar_diagnostico.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_diagnostico, elemento[0], "diagnostico", self.lista_diagnosticos))
             
@@ -776,7 +776,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_enfermedad.setText(elemento[1])
                 self.input_enfermedad.setFocus(True)
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "boton_editar")
                 self.boton_registrar_enfermedad.clicked.disconnect()
                 self.boton_registrar_enfermedad.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_enfermedad, elemento[0], "enfermedad_cronica", self.lista_enfermedades))
             
@@ -786,7 +786,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_funcion_cargo.setText(elemento[1])
                 self.input_funcion_cargo.setFocus(True)
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "boton_editar")
                 self.boton_registrar_funcion_cargo.clicked.disconnect()
                 self.boton_registrar_funcion_cargo.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_funcion_cargo, elemento[0], "funcion_cargo", self.lista_funcion_cargo))
             
@@ -799,7 +799,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_codigo_cargo_empleado.setFocus(True)
                 
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_cargo_empleado, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_cargo_empleado, "boton_editar")
                 self.boton_registrar_cargo_empleado.clicked.disconnect()
                 self.boton_registrar_cargo_empleado.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_cargo_empleado, elemento[0], "cargo", self.lista_cargo, self.input_codigo_cargo_empleado))
             
@@ -812,7 +812,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                 self.input_tipo_cargo_empleado.setFocus(True)
                 
                 
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_tipo_cargo_empleado, "boton_editar")
                 self.boton_registrar_tipo_cargo_empleado.clicked.disconnect()
                 self.boton_registrar_tipo_cargo_empleado.clicked.connect(lambda: self.actualizar_elemento_del_catalogo(self.input_tipo_cargo_empleado, elemento[0], "tipo_cargo", self.lista_tipo_cargo, None,self.input_hora_cargo_empleado))
             
@@ -922,18 +922,10 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
             # --- Botón Editar ---
             boton_editar = QPushButton()
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "editar.png")))
             boton_editar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             boton_editar.setFixedSize(40, 30)
-            boton_editar.setStyleSheet("""
-                QPushButton {
-                    background-color: rgb(244, 131, 2);
-                    color: white;
-                }
-                QPushButton:hover {
-                    background-color: rgb(191, 64, 0);
-                }
-            """)
+            boton_editar.setProperty("tipo", "boton_editar")
+            
             # Capturamos las variables actuales en la lambda
             boton_editar.clicked.connect(lambda _, elem=elemento_catalogo, item=item: self.accion_editar_catalogo(elem, nombre_qlistwidget, item))
             row_layout.addWidget(boton_editar)
@@ -943,15 +935,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
             boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             boton_borrar.setFixedSize(40, 30)
-            boton_borrar.setStyleSheet("""
-                QPushButton {
-                    background-color: rgb(255, 0, 0);
-                    color: white;
-                }
-                QPushButton:hover {
-                    background-color: rgb(147, 0, 0);
-                }
-            """)
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            
             boton_borrar.clicked.connect(lambda _, elem=elemento_catalogo, item=item: self.accion_borrar_catalogo(elem, nombre_qlistwidget, item))
             row_layout.addWidget(boton_borrar)
 
@@ -981,7 +966,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
             
             for boton in botones:
                 
-                FuncionSistema.cambiar_estilo_del_boton(boton, "añadir")
+                FuncionSistema.cambiar_estilo_del_boton(boton, "boton_anadir")
                 
                 
             self.desconectar_botones()
