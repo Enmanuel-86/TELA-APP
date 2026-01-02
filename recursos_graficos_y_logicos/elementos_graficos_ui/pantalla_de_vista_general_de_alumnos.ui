@@ -499,6 +499,9 @@
                   <height>25</height>
                  </size>
                 </property>
+                <property name="tipo" stdset="0">
+                 <string>boton_buscar</string>
+                </property>
                </widget>
               </widget>
              </item>
@@ -794,19 +797,6 @@
                    </size>
                   </property>
                  </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>182</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </widget>
