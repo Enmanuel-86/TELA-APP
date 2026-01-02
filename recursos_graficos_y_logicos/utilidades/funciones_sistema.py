@@ -649,21 +649,22 @@ class FuncionesDelSistema:
             QMessageBox.critical(self, "Error", f"Error al abrir la carpeta:\n{str(e)}")  
             
             
-    def cambiar_estilo_del_boton(self, qpushbutton, estilo_opcion:str = "añadir") -> None:
+    def cambiar_estilo_del_boton(self, qpushbutton, tipo:str = "boton_anadir") -> None:
         """
             ### Este metodo sirve para cambiar de estilo a los botones de registrar elementos catalogo.
             
-            lo que hace es cambirle es el texto si el parametro estilo_opcion:
+            lo que hace es cambirle es el texto si el parametro tipo es:
             
-            - si es "añadir" le da el estilo por defecto
-            - si es "editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
+            - "boton_anadir" le da el estilo por defecto
+            - "boton_editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
             
+            Lo que hace este metodo es cambiarle la propiedad dinamica para que tome el estilo segun la hoja de estilo usada
             
             ***Ejemplo***
             
             boton_registrar = QPushButton()
             
-            self.cambiar_estilo_del_boton(boton, "editar") # estilo de editar
+            self.cambiar_estilo_del_boton(boton, "boton_editar") # estilo de editar
             
             
         """
@@ -675,52 +676,21 @@ class FuncionesDelSistema:
             
             
             
-            if estilo_opcion == "añadir":
+            if tipo == "boton_anadir":
                 
-                qpushbutton.setText(" Añadir")
-                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-                
-                
-                qpushbutton.setStyleSheet(""" 
-                                        
-                                        QPushButton{
-
-                                                background-color: #008a47;
-
-                                                color: rgb(255, 255, 255);
-                                                border-radius:12px;
-
-                                            }
-
-                                            QPushButton:hover{
-
-                                                
-                                                background-color: rgb(0, 56, 10);
-
-                                            }
-                                        
-                                        """)
+                qpushbutton.setText(" Anadir")
+                qpushbutton.setProperty("tipo", tipo)
                 
                 
-            elif estilo_opcion == "editar":
+            elif tipo == "boton_editar":
             
                 qpushbutton.setText(" Editar")
-                qpushbutton.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
-
-
-                qpushbutton.setStyleSheet("""
-                                            QPushButton {
-                                                background-color: rgb(244, 131, 2);
-                                                color: white;
-                                                border-radius:12px;
-                                            }
-                                            QPushButton:hover {
-                                                background-color: rgb(191, 64, 0);
-                                            }
-                                        """)
-
+                qpushbutton.setProperty("tipo", tipo)
             
             
+            
+            qpushbutton.style().unpolish(qpushbutton)
+            qpushbutton.style().polish(qpushbutton)
             
 
         except Exception as e:
