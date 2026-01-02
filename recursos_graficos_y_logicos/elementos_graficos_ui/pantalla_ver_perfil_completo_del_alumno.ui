@@ -1203,7 +1203,7 @@
                       <property name="font">
                        <font>
                         <family>Segoe UI 13</family>
-                        <pointsize>-1</pointsize>
+                        <pointsize>25</pointsize>
                         <weight>75</weight>
                         <italic>false</italic>
                         <bold>true</bold>
@@ -1212,7 +1212,7 @@
                       <property name="styleSheet">
                        <string notr="true">QLabel{
 
-	font-size:30px;
+	font-size:25pt;
 
 }</string>
                       </property>
@@ -2386,8 +2386,14 @@
                 <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_4">
-                <item>
+                <item alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="label">
+                  <property name="minimumSize">
+                   <size>
+                    <width>581</width>
+                    <height>94</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>581</width>
@@ -2404,12 +2410,7 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QLabel{
-
-	border:none;
-
-
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>Para ver más a detalle cada diagnóstico, debe dar click al botón del ojo para ver toda la información sobre el diagnóstico seleccionado.</string>

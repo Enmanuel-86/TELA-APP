@@ -40,7 +40,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.boton_de_regreso.setStyleSheet("")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:/Users/Hp/Desktop/2-UPTJAA/Proyecto IV/2. Aplicación/App/proyecto-tela/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -516,14 +516,14 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.titulo.setMaximumSize(QtCore.QSize(483, 63))
         font = QtGui.QFont()
         font.setFamily("Segoe UI 13")
-        font.setPointSize(-1)
+        font.setPointSize(25)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
         self.titulo.setFont(font)
         self.titulo.setStyleSheet("QLabel{\n"
 "\n"
-"    font-size:30px;\n"
+"    font-size:25pt;\n"
 "\n"
 "}")
         self.titulo.setAlignment(QtCore.Qt.AlignCenter)
@@ -1063,6 +1063,7 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.mostrar_datos_diagnostico)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.label = QtWidgets.QLabel(self.mostrar_datos_diagnostico)
+        self.label.setMinimumSize(QtCore.QSize(581, 94))
         self.label.setMaximumSize(QtCore.QSize(581, 94))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
@@ -1071,16 +1072,11 @@ class Ui_PantallaInfoCompletaDelAlumno(object):
         font.setItalic(False)
         font.setWeight(75)
         self.label.setFont(font)
-        self.label.setStyleSheet("QLabel{\n"
-"\n"
-"    border:none;\n"
-"\n"
-"\n"
-"}")
+        self.label.setStyleSheet("")
         self.label.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
-        self.verticalLayout_4.addWidget(self.label)
+        self.verticalLayout_4.addWidget(self.label, 0, QtCore.Qt.AlignHCenter)
         self.lista_diagnostico_alumno = QtWidgets.QListWidget(self.mostrar_datos_diagnostico)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
