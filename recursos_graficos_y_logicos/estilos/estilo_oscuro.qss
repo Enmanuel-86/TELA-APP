@@ -202,7 +202,7 @@ QLineEdit::placeholder {
 QLineEdit:disabled {
     background-color: rgb(67, 67, 67);    /* Gris claro para diferenciarlo del blanco activo */
     border: 2px solid rgb(30, 30, 30);
-    color: #000000;               /* Texto gris tenue */
+    color: #ffffff;               /* Texto gris tenue */
 }
 
 /*Estilo oscuro para los QLineEdits*/
@@ -353,11 +353,13 @@ QRadioButton {
 	font: 10pt "Segoe UI";
 }
 
+
+
 QRadioButton::indicator {
-    width: 12px;
-    height: 12px;
-    border-radius:8px;
-    border: 2px solid rgb(143, 143, 143);
+    width: 5px;
+    height: 5px;
+    border-radius:5px;
+    border: 3px solid rgb(143, 143, 143);
     background-color: rgb(30, 30, 30);
 }
 
@@ -366,7 +368,7 @@ QRadioButton::indicator:checked {
 }
 
 QRadioButton::indicator:hover {
-    border:  2px solid #00aa61;
+    border:  3px solid #00aa61;
 }
 
 QRadioButton::indicator:checked:hover {

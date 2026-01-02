@@ -378,6 +378,44 @@ QComboBox::drop-down:disabled {
 
 /* 6. QRadioButton */
 
+QRadioButton::indicator {
+    /* Estilo igual que el indicador normal */
+    border: 3px solid #A0A0A0;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+	width: 5px;   /* Tamaño del círculo */
+    height:5px;  /* Tamaño del círculo */
+}
+
+QRadioButton::indicator:hover {
+    border: 3px solid rgb(62, 157, 215);
+}
+
+QRadioButton::indicator:checked {
+    border: 3px solid #0078D7;
+    background-color: #FFFFFF;
+}
+
+
+
+QRadioButton::indicator:disabled {
+    /* Estilo igual que el indicador normal */
+    border: 3px solid #A0A0A0;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+	width: 5px;   /* Tamaño del círculo */
+    height:5px;  /* Tamaño del círculo */
+	
+
+}
+
+QRadioButton::indicator:checked:disabled {
+    border: 3px solid #0078D7;
+    background-color: #FFFFFF;
+    image: url(:/qss_icons/rc/radio_checked.png);  /* Mantiene el punto de selección */
+
+}
+
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
