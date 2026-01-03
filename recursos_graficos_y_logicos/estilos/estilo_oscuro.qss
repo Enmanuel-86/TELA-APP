@@ -113,6 +113,20 @@ QPushButton[tipo="boton_buscar"]{
 	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
 }
 
+QPushButton[tipo="boton_limpiar"]{
+	background-color: rgb(85, 85, 255);
+	font-size:10pt;
+	font-weight:500;
+	icon:url(:/iconos/iconos_de_interfaz/brush-cleaning-white.png);
+	color: rgb(255, 255, 255);
+	padding:0px;
+}
+
+QPushButton[tipo="boton_limpiar"]:hover{
+	background-color: rgb(34, 26, 143);
+}
+
+
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
@@ -218,7 +232,7 @@ QLabel{
 	color: rgb(255, 255, 255);
 	border:none;
 	background:none;
-	font: 20pt "Segoe UI";
+	font: 10pt "Segoe UI";
 	font-weight:500;
 }
 
@@ -290,7 +304,7 @@ QPushButton:hover{
 
 QComboBox{
 	background:rgb(30, 30, 30);
-	font: 12pt "Segoe UI";
+	font: 10pt "Segoe UI";
 	border-radius:12px;	
 	border:1px solid #1e1e1e;
 	padding-left:10px;
@@ -631,3 +645,29 @@ QTimeEdit::down-button:hover{
      background: rgb(2, 150, 84);
 }
 
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 13. QCheckBox */
+
+QCheckBox{
+	color:#ffffff;
+
+}
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 14. QGroupBox */
+
+QGroupBox{
+	background:transparent;
+	border:none;
+	color:#ffffff;
+}
