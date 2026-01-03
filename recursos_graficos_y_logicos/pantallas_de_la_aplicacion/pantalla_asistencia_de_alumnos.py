@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
                             QLabel, QHBoxLayout, QPushButton )
-from PyQt5.QtCore import QTime, QPoint, Qt
+from PyQt5.QtCore import QTime, QPoint, Qt, QDate
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
@@ -72,13 +72,6 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.setupUi(self)
         
         
-        # Ruta relativa de las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
-        self.boton_limpiar_lista.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","brocha.png")))
-        self.boton_agregar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_suministrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","exportar.png")))
-
-
         
         # variable para contar las asistencias
         self.contador_de_asistencias = 0
@@ -113,8 +106,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
 
 
-        self.boton_de_regreso.clicked.connect(self.volver)
-        self.label_mostrar_fecha.setText(dia_de_hoy)
+        self.dateedit_fecha_actual.setDate(QDate.currentDate())
         
         
         self.input_cedula_alumno.setDisabled(True)
@@ -426,7 +418,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
                 alumno_n.append(alumno_id)
                 
                 # 1) Fecha de asistencia
-                dia_actual = self.fecha_de_str_a_date(dia_de_hoy)
+                dia_actual = date(self.dateedit_fecha_actual.date().year(), self.dateedit_fecha_actual.date().month(), self.dateedit_fecha_actual.date().day())
                 alumno_n.append(dia_actual)
                 
                 
