@@ -460,10 +460,10 @@ class FuncionesDelSistema:
 
 
     # Metodo para minizar el side bar/barra lateral
-    def cambiar_tamano_side_bar(self, side_bar):
+    def cambiar_tamano_side_bar(self, side_bar, frame_botones_temas):
         
         """
-            Este metodo minizar el sidebar a un 200 de ancho
+            Este metodo minizar el sidebar a un 200 de ancho y tambien al minizarce este oculta el frame que tiene los botones con los temas
         
         """
         
@@ -488,6 +488,7 @@ class FuncionesDelSistema:
             self.minimizado = True
             #side_bar.setFixedWidth(55)
             
+            frame_botones_temas.hide()
             self.estado_sidebar  = False
             
             
@@ -504,7 +505,7 @@ class FuncionesDelSistema:
             
             
             #side_bar.setFixedWidth(190)
-            
+            frame_botones_temas.show()
             self.estado_sidebar = True
             
             
