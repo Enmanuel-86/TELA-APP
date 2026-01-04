@@ -130,60 +130,7 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
     
     
         
-    def confirmar_edicion(self, edicion: bool = False):
-        
-        if edicion:
-            
-            self.stackedwidget_fecha_ministerio.setCurrentIndex(1)
-            self.stackedwidget_fecha_nacimiento.setCurrentIndex(1)
-            self.stackedWidget_fecha_tela.setCurrentIndex(1)
-        
-        
-    def editar_informacion(self):
-        
-        
-        cedula = self.input_mostrar_cedula.text().strip().capitalize()
-        primer_nombre = self.input_mostrar_primer_nombre.text().strip().capitalize()
-        segundo_nombre = self.input_mostrar_segundo_nombre.text().strip().capitalize()
-        tercer_nombre = self.input_mostrar_tercer_nombre.text().strip().capitalize()
-        apellido_paterno = self.input_mostrar_apellido_materno.text().strip().capitalize()
-        apellido_materno = self.input_mostrar_apellido_materno.text().strip().capitalize()
-        fecha_nacimiento = FuncionSistema.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
-        #sexo = se
-        
-        
-        
-        
-        """
-        campos_empleado = {
-                            "cedula": cedula,
-                            "primer_nombre": primer_nombre,
-                            "segundo_nombre": segundo_nombre,
-                            "tercer_nombre": tercer_nombre,
-                            "apellido_paterno": apellido_paterno,
-                            "apellido_materno": apellido_materno,
-                            "fecha_nacimiento": fecha_nacimiento,
-                            "sexo": sexo,
-                            "tiene_hijos_menores": tiene_hijos_menores,
-                            "fecha_ingreso_institucion": fecha_ingreso_institucion,
-                            "fecha_ingreso_ministerio": fecha_ingreso_ministerio,
-                            "talla_camisa": talla_camisa,
-                            "talla_pantalon": talla_pantalon,
-                            "talla_zapatos": talla_zapatos,
-                            "num_telefono": num_telefono,
-                            "num_telefono_adicional": num_telefono_adicional,
-                            "correo_electronico": correo_electronico,
-                            "correo_electronico_adicional": correo_electronico_adicional,
-                            "estado_reside": estado_reside,
-                            "municipio": municipio,
-                            "direccion_residencia": direccion_residencia,
-                            "situacion": situacion
-                            }
-
-        
-        
-        """
-        
+    
         
     def mostra_info_empleado(self, empleado_id):
         
