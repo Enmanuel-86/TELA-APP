@@ -117,9 +117,9 @@
          <property name="geometry">
           <rect>
            <x>30</x>
-           <y>50</y>
-           <width>81</width>
-           <height>41</height>
+           <y>32</y>
+           <width>121</width>
+           <height>61</height>
           </rect>
          </property>
          <property name="font">
@@ -132,20 +132,16 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel{
-	
-	
-	color: rgb(255, 255, 255);
-	background:transparent;
-	
-
-}</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Login</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+         <property name="tipo" stdset="0">
+          <string>titulo_form</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="input_usuario">

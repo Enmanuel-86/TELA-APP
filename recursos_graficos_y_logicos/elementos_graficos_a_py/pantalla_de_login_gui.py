@@ -46,7 +46,7 @@ class Ui_Login(object):
         self.input_contrasena.setCursorMoveStyle(QtCore.Qt.VisualMoveStyle)
         self.input_contrasena.setObjectName("input_contrasena")
         self.titulo_login = QtWidgets.QLabel(self.espacio_login)
-        self.titulo_login.setGeometry(QtCore.QRect(30, 50, 81, 41))
+        self.titulo_login.setGeometry(QtCore.QRect(30, 32, 121, 61))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(20)
@@ -54,14 +54,7 @@ class Ui_Login(object):
         font.setItalic(False)
         font.setWeight(75)
         self.titulo_login.setFont(font)
-        self.titulo_login.setStyleSheet("QLabel{\n"
-"    \n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"    background:transparent;\n"
-"    \n"
-"\n"
-"}")
+        self.titulo_login.setStyleSheet("")
         self.titulo_login.setAlignment(QtCore.Qt.AlignCenter)
         self.titulo_login.setObjectName("titulo_login")
         self.input_usuario = QtWidgets.QLineEdit(self.espacio_login)
@@ -141,11 +134,13 @@ class Ui_Login(object):
         self.input_contrasena.setPlaceholderText(_translate("Login", "Contraseña"))
         self.input_contrasena.setProperty("tipo", _translate("Login", "login"))
         self.titulo_login.setText(_translate("Login", "Login"))
+        self.titulo_login.setProperty("tipo", _translate("Login", "titulo_form"))
         self.input_usuario.setToolTip(_translate("Login", "Escriba su nombre de usuario aqui"))
         self.input_usuario.setPlaceholderText(_translate("Login", "Usuario"))
         self.input_usuario.setProperty("tipo", _translate("Login", "login"))
         self.boton_ingresar.setText(_translate("Login", "Ingresar"))
         self.label_mensaje_usuario.setText(_translate("Login", "Mensaje"))
         self.label_mensaje_usuario.setProperty("tipo", _translate("Login", "texto"))
+import recursos_de_imagenes_tela_app_rc
 import os
 BASE_DIR = os.path.dirname(__file__)

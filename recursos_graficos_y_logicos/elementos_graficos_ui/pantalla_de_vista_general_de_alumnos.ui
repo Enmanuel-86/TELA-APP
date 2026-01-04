@@ -146,7 +146,7 @@
                 <property name="geometry">
                  <rect>
                   <x>230</x>
-                  <y>10</y>
+                  <y>1</y>
                   <width>257</width>
                   <height>24</height>
                  </rect>
@@ -191,7 +191,7 @@
                 <property name="geometry">
                  <rect>
                   <x>230</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>220</width>
                   <height>40</height>
                  </rect>
@@ -263,7 +263,7 @@
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>220</width>
                   <height>40</height>
                  </rect>
@@ -315,7 +315,7 @@
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>10</y>
+                  <y>1</y>
                   <width>51</width>
                   <height>24</height>
                  </rect>
@@ -404,7 +404,7 @@
                 <property name="geometry">
                  <rect>
                   <x>10</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>300</width>
                   <height>40</height>
                  </rect>
@@ -446,7 +446,7 @@
                 <property name="geometry">
                  <rect>
                   <x>310</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>100</width>
                   <height>40</height>
                  </rect>
@@ -597,19 +597,24 @@
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>17</pointsize>
+                    <pointsize>18</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">QLabel{
+	font-size:18pt;
+}</string>
                   </property>
                   <property name="text">
                    <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_qlineedit</string>
                   </property>
                  </widget>
                 </item>

@@ -157,139 +157,161 @@
                <property name="frameShadow">
                 <enum>QFrame::Plain</enum>
                </property>
-               <layout class="QFormLayout" name="formLayout">
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_boton_opciones">
-                  <property name="minimumSize">
-                   <size>
-                    <width>200</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>19</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Personal</string>
-                  </property>
-                  <property name="tipo" stdset="0">
-                   <string>titulo_qlineedit</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLabel" name="label_especialidades">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>19</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Especialidad</string>
-                  </property>
-                  <property name="tipo" stdset="0">
-                   <string>titulo_qlineedit</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QComboBox" name="boton_de_opciones">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>220</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="currentText">
-                   <string/>
-                  </property>
-                  <property name="currentIndex">
-                   <number>-1</number>
-                  </property>
-                  <property name="insertPolicy">
-                   <enum>QComboBox::NoInsert</enum>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="placeholderText">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QComboBox" name="boton_especialidades">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>200</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="currentText">
-                   <string/>
-                  </property>
-                  <property name="currentIndex">
-                   <number>-1</number>
-                  </property>
-                  <property name="insertPolicy">
-                   <enum>QComboBox::NoInsert</enum>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="placeholderText">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <widget class="QLabel" name="label_boton_opciones">
+                <property name="geometry">
+                 <rect>
+                  <x>9</x>
+                  <y>0</y>
+                  <width>200</width>
+                  <height>30</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>19</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Personal</string>
+                </property>
+                <property name="tipo" stdset="0">
+                 <string>titulo_qlineedit</string>
+                </property>
+               </widget>
+               <widget class="QLabel" name="label_especialidades">
+                <property name="geometry">
+                 <rect>
+                  <x>235</x>
+                  <y>9</y>
+                  <width>84</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>19</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Especialidad</string>
+                </property>
+                <property name="tipo" stdset="0">
+                 <string>titulo_qlineedit</string>
+                </property>
+               </widget>
+               <widget class="QComboBox" name="boton_de_opciones">
+                <property name="geometry">
+                 <rect>
+                  <x>8</x>
+                  <y>30</y>
+                  <width>220</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>220</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="editable">
+                 <bool>false</bool>
+                </property>
+                <property name="currentText">
+                 <string/>
+                </property>
+                <property name="currentIndex">
+                 <number>-1</number>
+                </property>
+                <property name="insertPolicy">
+                 <enum>QComboBox::NoInsert</enum>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="placeholderText">
+                 <string/>
+                </property>
+               </widget>
+               <widget class="QComboBox" name="boton_especialidades">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="geometry">
+                 <rect>
+                  <x>235</x>
+                  <y>30</y>
+                  <width>200</width>
+                  <height>40</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="editable">
+                 <bool>false</bool>
+                </property>
+                <property name="currentText">
+                 <string/>
+                </property>
+                <property name="currentIndex">
+                 <number>-1</number>
+                </property>
+                <property name="insertPolicy">
+                 <enum>QComboBox::NoInsert</enum>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>40</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="placeholderText">
+                 <string/>
+                </property>
+               </widget>
                <zorder>boton_de_opciones</zorder>
                <zorder>label_boton_opciones</zorder>
                <zorder>boton_especialidades</zorder>
@@ -342,7 +364,7 @@
                 <property name="geometry">
                  <rect>
                   <x>10</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>300</width>
                   <height>40</height>
                  </rect>
@@ -394,7 +416,7 @@
                 <property name="geometry">
                  <rect>
                   <x>310</x>
-                  <y>40</y>
+                  <y>29</y>
                   <width>100</width>
                   <height>40</height>
                  </rect>
@@ -490,7 +512,7 @@
                 <string notr="true"/>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                <item row="1" column="1" alignment="Qt::AlignLeft">
                  <widget class="QLabel" name="label_contador">
                   <property name="minimumSize">
                    <size>
@@ -501,19 +523,24 @@
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>17</pointsize>
+                    <pointsize>18</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">QLabel{
+	font-size:18pt;
+}</string>
                   </property>
                   <property name="text">
                    <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_qlineedit</string>
                   </property>
                  </widget>
                 </item>

@@ -485,7 +485,7 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
+                <string notr="true">QFrame#espacio_para_tabla_empleados{
 	border-top-left-radius:0px;
 	border-top-right-radius:0px
 }</string>
@@ -530,7 +530,7 @@
                    <enum>QFrame::Raised</enum>
                   </property>
                   <property name="tipo" stdset="0">
-                   <string>espacio_form</string>
+                   <string/>
                   </property>
                   <layout class="QGridLayout" name="gridLayout">
                    <item row="0" column="0">
@@ -742,10 +742,10 @@
                         <string notr="true">border:none;</string>
                        </property>
                        <property name="text">
-                        <string/>
+                        <string>ss</string>
                        </property>
                        <property name="tipo" stdset="0">
-                        <string>titulo_qlineedit</string>
+                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -803,7 +803,7 @@
                        <rect>
                         <x>9</x>
                         <y>23</y>
-                        <width>62</width>
+                        <width>100</width>
                         <height>16</height>
                        </rect>
                       </property>
@@ -829,9 +829,9 @@
                      <widget class="QRadioButton" name="input_check_dia_feriado">
                       <property name="geometry">
                        <rect>
-                        <x>86</x>
-                        <y>23</y>
-                        <width>71</width>
+                        <x>120</x>
+                        <y>20</y>
+                        <width>100</width>
                         <height>16</height>
                        </rect>
                       </property>
@@ -859,7 +859,7 @@
                        <rect>
                         <x>9</x>
                         <y>56</y>
-                        <width>71</width>
+                        <width>91</width>
                         <height>16</height>
                        </rect>
                       </property>
@@ -1005,7 +1005,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="tipo" stdset="0">
-                   <string>espacio_form</string>
+                   <string/>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_10">
                    <item>
