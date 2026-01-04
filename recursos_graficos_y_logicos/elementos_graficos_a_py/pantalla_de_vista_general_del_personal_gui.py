@@ -8,19 +8,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
-BASE_DIR = os.path.dirname(__file__)
 
 
 class Ui_VistaGeneralDelPersonal(object):
     def setupUi(self, VistaGeneralDelPersonal):
         VistaGeneralDelPersonal.setObjectName("VistaGeneralDelPersonal")
-        VistaGeneralDelPersonal.resize(1175, 571)
+        VistaGeneralDelPersonal.resize(1078, 574)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(VistaGeneralDelPersonal.sizePolicy().hasHeightForWidth())
         VistaGeneralDelPersonal.setSizePolicy(sizePolicy)
+        VistaGeneralDelPersonal.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(VistaGeneralDelPersonal)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -30,7 +29,7 @@ class Ui_VistaGeneralDelPersonal(object):
         self.area_de_scroll.setWidgetResizable(True)
         self.area_de_scroll.setObjectName("area_de_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1173, 569))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1076, 572))
         self.scrollAreaWidgetContents.setStyleSheet("")
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
@@ -38,11 +37,7 @@ class Ui_VistaGeneralDelPersonal(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.espacio_principal = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.espacio_principal.setStyleSheet("QFrame{\n"
-"        background: qlineargradient(\n"
-"        x1:0, y1:0, x2:1, y2:1,\n"
-"        stop:0 #3fea87, stop:1 #00770e)\n"
-"}")
+        self.espacio_principal.setStyleSheet("")
         self.espacio_principal.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_principal.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_principal.setObjectName("espacio_principal")
@@ -51,26 +46,26 @@ class Ui_VistaGeneralDelPersonal(object):
         self.espacio_superior = QtWidgets.QFrame(self.espacio_principal)
         self.espacio_superior.setMinimumSize(QtCore.QSize(0, 0))
         self.espacio_superior.setMaximumSize(QtCore.QSize(16777215, 100))
-        self.espacio_superior.setStyleSheet("background:transparent;")
+        self.espacio_superior.setStyleSheet("")
         self.espacio_superior.setObjectName("espacio_superior")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.espacio_superior)
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_4.setSpacing(0)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.espacio_superior)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.espacio_para_las_opciones = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(10)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_las_opciones.sizePolicy().hasHeightForWidth())
         self.espacio_para_las_opciones.setSizePolicy(sizePolicy)
-        self.espacio_para_las_opciones.setMinimumSize(QtCore.QSize(500, 90))
+        self.espacio_para_las_opciones.setMinimumSize(QtCore.QSize(441, 94))
+        self.espacio_para_las_opciones.setMaximumSize(QtCore.QSize(441, 94))
         self.espacio_para_las_opciones.setSizeIncrement(QtCore.QSize(0, 0))
-        self.espacio_para_las_opciones.setStyleSheet("background:transparent;")
+        self.espacio_para_las_opciones.setStyleSheet("")
         self.espacio_para_las_opciones.setFrameShadow(QtWidgets.QFrame.Plain)
         self.espacio_para_las_opciones.setObjectName("espacio_para_las_opciones")
-        self.formLayout = QtWidgets.QFormLayout(self.espacio_para_las_opciones)
-        self.formLayout.setObjectName("formLayout")
         self.label_boton_opciones = QtWidgets.QLabel(self.espacio_para_las_opciones)
+        self.label_boton_opciones.setGeometry(QtCore.QRect(9, 0, 200, 30))
         self.label_boton_opciones.setMinimumSize(QtCore.QSize(200, 30))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -78,166 +73,70 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_boton_opciones.setFont(font)
-        self.label_boton_opciones.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"    \n"
-"    background:transparent;\n"
-"}")
+        self.label_boton_opciones.setStyleSheet("")
         self.label_boton_opciones.setObjectName("label_boton_opciones")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_boton_opciones)
         self.label_especialidades = QtWidgets.QLabel(self.espacio_para_las_opciones)
+        self.label_especialidades.setGeometry(QtCore.QRect(235, 9, 84, 20))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(19)
         font.setBold(True)
         font.setWeight(75)
         self.label_especialidades.setFont(font)
-        self.label_especialidades.setStyleSheet("QLabel{\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"background:transparent;}")
+        self.label_especialidades.setStyleSheet("")
         self.label_especialidades.setObjectName("label_especialidades")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.label_especialidades)
         self.boton_de_opciones = QtWidgets.QComboBox(self.espacio_para_las_opciones)
+        self.boton_de_opciones.setGeometry(QtCore.QRect(8, 30, 220, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.boton_de_opciones.sizePolicy().hasHeightForWidth())
         self.boton_de_opciones.setSizePolicy(sizePolicy)
         self.boton_de_opciones.setMinimumSize(QtCore.QSize(220, 40))
-        self.boton_de_opciones.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 12pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"    background:white;\n"
-"    border:1px solid black;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
+        self.boton_de_opciones.setStyleSheet("")
         self.boton_de_opciones.setEditable(False)
         self.boton_de_opciones.setCurrentText("")
         self.boton_de_opciones.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_de_opciones.setIconSize(QtCore.QSize(40, 40))
         self.boton_de_opciones.setPlaceholderText("")
         self.boton_de_opciones.setObjectName("boton_de_opciones")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.boton_de_opciones)
         self.boton_especialidades = QtWidgets.QComboBox(self.espacio_para_las_opciones)
         self.boton_especialidades.setEnabled(False)
+        self.boton_especialidades.setGeometry(QtCore.QRect(235, 30, 200, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.boton_especialidades.sizePolicy().hasHeightForWidth())
         self.boton_especialidades.setSizePolicy(sizePolicy)
         self.boton_especialidades.setMinimumSize(QtCore.QSize(200, 40))
-        self.boton_especialidades.setStyleSheet("QComboBox{\n"
-"\n"
-"    font: 75 12pt \"Arial\";\n"
-"    padding-left:15px;\n"
-"background:white;\n"
-"    border:1px solid black;\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"QComboBox:focus {\n"
-"    border: 2px solid #0078d7;   /* Borde azul cuando está en foco */\n"
-"    background-color: #e0f7ff;   /* Fondo azul claro */\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"QComboBox QAbstractItemView {\n"
-"    border: 1px solid #ccc;\n"
-"    background-color: white;\n"
-"    color: #333;\n"
-"    padding: 5px;  /* Margen interno de la lista */\n"
-"    spacing: 10px; /* Espaciado entre los elementos (algunas versiones de Qt lo admiten) */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item {\n"
-"    padding: 8px; /* Espaciado interno de cada elemento */\n"
-"    margin: 4px; /* Separación entre los elementos */\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    background-color: #c5c1c1;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {\n"
-"        background-color:rgb(189, 189, 189);\n"
-"        color: #808080;\n"
-"        border: 1px solid rgb(127, 127, 127);\n"
-"    }\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"")
+        self.boton_especialidades.setStyleSheet("")
         self.boton_especialidades.setEditable(False)
         self.boton_especialidades.setCurrentText("")
         self.boton_especialidades.setInsertPolicy(QtWidgets.QComboBox.NoInsert)
         self.boton_especialidades.setIconSize(QtCore.QSize(40, 40))
         self.boton_especialidades.setPlaceholderText("")
         self.boton_especialidades.setObjectName("boton_especialidades")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.boton_especialidades)
         self.boton_de_opciones.raise_()
         self.label_boton_opciones.raise_()
         self.boton_especialidades.raise_()
         self.label_especialidades.raise_()
-        self.horizontalLayout_4.addWidget(self.espacio_para_las_opciones, 0, QtCore.Qt.AlignLeft)
+        self.horizontalLayout_3.addWidget(self.espacio_para_las_opciones)
+        spacerItem = QtWidgets.QSpacerItem(68, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
         self.espacio_para_barra_de_busqueda = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(20)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.espacio_para_barra_de_busqueda.sizePolicy().hasHeightForWidth())
         self.espacio_para_barra_de_busqueda.setSizePolicy(sizePolicy)
-        self.espacio_para_barra_de_busqueda.setMinimumSize(QtCore.QSize(450, 90))
-        self.espacio_para_barra_de_busqueda.setStyleSheet("background:transparent;")
+        self.espacio_para_barra_de_busqueda.setMinimumSize(QtCore.QSize(421, 90))
+        self.espacio_para_barra_de_busqueda.setMaximumSize(QtCore.QSize(421, 90))
+        self.espacio_para_barra_de_busqueda.setStyleSheet("")
         self.espacio_para_barra_de_busqueda.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_para_barra_de_busqueda.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_para_barra_de_busqueda.setObjectName("espacio_para_barra_de_busqueda")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.espacio_para_barra_de_busqueda)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.barra_de_busqueda = QtWidgets.QLineEdit(self.espacio_para_barra_de_busqueda)
+        self.barra_de_busqueda.setGeometry(QtCore.QRect(10, 29, 300, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -253,29 +152,14 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setWeight(50)
         self.barra_de_busqueda.setFont(font)
         self.barra_de_busqueda.setStyleSheet("QLineEdit{\n"
-"    \n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border-radius:10px;\n"
-"    padding-left: 5px;\n"
-" padding-right:5px;\n"
-"    padding-top:1px;\n"
-"    border:1px solid black  ;\n"
-"    \n"
-"\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"\n"
-"    border: 2px solid rgb(17, 192, 255)\n"
-"\n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.barra_de_busqueda.setAlignment(QtCore.Qt.AlignCenter)
+"    border-bottom-right-radius:0px;\n"
+"    border-top-right-radius:0px;\n"
+"}")
+        self.barra_de_busqueda.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.barra_de_busqueda.setClearButtonEnabled(True)
         self.barra_de_busqueda.setObjectName("barra_de_busqueda")
-        self.horizontalLayout_3.addWidget(self.barra_de_busqueda, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignBottom)
         self.boton_buscar = QtWidgets.QPushButton(self.espacio_para_barra_de_busqueda)
+        self.boton_buscar.setGeometry(QtCore.QRect(310, 29, 100, 40))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(20)
         sizePolicy.setVerticalStretch(20)
@@ -291,26 +175,17 @@ class Ui_VistaGeneralDelPersonal(object):
         self.boton_buscar.setFont(font)
         self.boton_buscar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.boton_buscar.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
+"    border-bottom-left-radius:0px;\n"
+"    border-top-left-radius:0px;\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_buscar.setIcon(icon)
-        self.boton_buscar.setIconSize(QtCore.QSize(25, 25))
+        self.boton_buscar.setIconSize(QtCore.QSize(22, 22))
         self.boton_buscar.setObjectName("boton_buscar")
-        self.horizontalLayout_3.addWidget(self.boton_buscar, 0, QtCore.Qt.AlignLeft|QtCore.Qt.AlignBottom)
-        self.horizontalLayout_4.addWidget(self.espacio_para_barra_de_busqueda, 0, QtCore.Qt.AlignLeft)
+        self.horizontalLayout_3.addWidget(self.espacio_para_barra_de_busqueda)
+        spacerItem1 = QtWidgets.QSpacerItem(67, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
         self.contador = QtWidgets.QFrame(self.espacio_superior)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -319,7 +194,7 @@ class Ui_VistaGeneralDelPersonal(object):
         self.contador.setSizePolicy(sizePolicy)
         self.contador.setMinimumSize(QtCore.QSize(150, 0))
         self.contador.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.contador.setStyleSheet("background:transparent;")
+        self.contador.setStyleSheet("")
         self.contador.setObjectName("contador")
         self.gridLayout = QtWidgets.QGridLayout(self.contador)
         self.gridLayout.setObjectName("gridLayout")
@@ -327,25 +202,21 @@ class Ui_VistaGeneralDelPersonal(object):
         self.label_contador.setMinimumSize(QtCore.QSize(50, 0))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(17)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.label_contador.setFont(font)
         self.label_contador.setStyleSheet("QLabel{\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    \n"
-"    \n"
-"\n"
+"    font-size:18pt;\n"
 "}")
         self.label_contador.setAlignment(QtCore.Qt.AlignCenter)
         self.label_contador.setObjectName("label_contador")
-        self.gridLayout.addWidget(self.label_contador, 1, 1, 1, 1, QtCore.Qt.AlignHCenter)
+        self.gridLayout.addWidget(self.label_contador, 1, 1, 1, 1, QtCore.Qt.AlignLeft)
         self.imagen_contador = QtWidgets.QLabel(self.contador)
-        self.imagen_contador.setMaximumSize(QtCore.QSize(40, 40))
+        self.imagen_contador.setMinimumSize(QtCore.QSize(40, 0))
         self.imagen_contador.setStyleSheet("color: rgb(255, 255, 255);")
         self.imagen_contador.setText("")
-        self.imagen_contador.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
+        self.imagen_contador.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
         self.imagen_contador.setScaledContents(True)
         self.imagen_contador.setObjectName("imagen_contador")
         self.gridLayout.addWidget(self.imagen_contador, 1, 0, 1, 1, QtCore.Qt.AlignHCenter)
@@ -357,35 +228,20 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setItalic(False)
         font.setWeight(75)
         self.label_titulo_contador.setFont(font)
-        self.label_titulo_contador.setStyleSheet("QLabel{\n"
-"\n"
-"    color: rgb(255, 255, 255);\n"
-"    \n"
-"    \n"
-"\n"
-"\n"
-"}")
+        self.label_titulo_contador.setStyleSheet("")
         self.label_titulo_contador.setObjectName("label_titulo_contador")
         self.gridLayout.addWidget(self.label_titulo_contador, 0, 0, 1, 2, QtCore.Qt.AlignHCenter)
-        self.horizontalLayout_4.addWidget(self.contador, 0, QtCore.Qt.AlignHCenter)
+        self.horizontalLayout_3.addWidget(self.contador)
         self.verticalLayout_4.addWidget(self.espacio_superior)
         self.espacio_central = QtWidgets.QFrame(self.espacio_principal)
-        self.espacio_central.setStyleSheet("QFrame{\n"
-"\n"
-"    background-color: rgb(0, 112, 21);\n"
-"    border-radius:12px;\n"
-"    border:2px solid black;\n"
-"}")
+        self.espacio_central.setStyleSheet("")
         self.espacio_central.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.espacio_central.setFrameShadow(QtWidgets.QFrame.Raised)
         self.espacio_central.setObjectName("espacio_central")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.espacio_central)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.tabla_ver_personal = QtWidgets.QTableView(self.espacio_central)
-        self.tabla_ver_personal.setStyleSheet("\n"
-"\n"
-"background-color: rgb(255, 255, 255);\n"
-"border:none;")
+        self.tabla_ver_personal.setStyleSheet("")
         self.tabla_ver_personal.setAutoScrollMargin(0)
         self.tabla_ver_personal.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked)
         self.tabla_ver_personal.setDragDropOverwriteMode(False)
@@ -416,22 +272,9 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setWeight(75)
         self.boton_control_de_llegada.setFont(font)
         self.boton_control_de_llegada.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_control_de_llegada.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.boton_control_de_llegada.setStyleSheet("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/control_de_llegada.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/clock-3-white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_control_de_llegada.setIcon(icon1)
         self.boton_control_de_llegada.setIconSize(QtCore.QSize(26, 26))
         self.boton_control_de_llegada.setObjectName("boton_control_de_llegada")
@@ -451,22 +294,9 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setWeight(75)
         self.boton_control_de_reposos.setFont(font)
         self.boton_control_de_reposos.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_control_de_reposos.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.boton_control_de_reposos.setStyleSheet("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/clipboard-plus-white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_control_de_reposos.setIcon(icon2)
         self.boton_control_de_reposos.setIconSize(QtCore.QSize(26, 26))
         self.boton_control_de_reposos.setObjectName("boton_control_de_reposos")
@@ -486,22 +316,9 @@ class Ui_VistaGeneralDelPersonal(object):
         font.setWeight(75)
         self.boton_crear_nuevo_registro.setFont(font)
         self.boton_crear_nuevo_registro.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_crear_nuevo_registro.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: #008a47;\n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.boton_crear_nuevo_registro.setStyleSheet("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/nuevo_registro.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/user-round-plus-white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_crear_nuevo_registro.setIcon(icon3)
         self.boton_crear_nuevo_registro.setIconSize(QtCore.QSize(26, 26))
         self.boton_crear_nuevo_registro.setObjectName("boton_crear_nuevo_registro")
@@ -520,12 +337,24 @@ class Ui_VistaGeneralDelPersonal(object):
     def retranslateUi(self, VistaGeneralDelPersonal):
         _translate = QtCore.QCoreApplication.translate
         VistaGeneralDelPersonal.setWindowTitle(_translate("VistaGeneralDelPersonal", "Form"))
+        self.espacio_principal.setProperty("tipo", _translate("VistaGeneralDelPersonal", "espacio_principal"))
+        self.espacio_superior.setProperty("tipo", _translate("VistaGeneralDelPersonal", "espacio_form"))
         self.label_boton_opciones.setText(_translate("VistaGeneralDelPersonal", "Personal"))
+        self.label_boton_opciones.setProperty("tipo", _translate("VistaGeneralDelPersonal", "titulo_qlineedit"))
         self.label_especialidades.setText(_translate("VistaGeneralDelPersonal", "Especialidad"))
+        self.label_especialidades.setProperty("tipo", _translate("VistaGeneralDelPersonal", "titulo_qlineedit"))
         self.barra_de_busqueda.setPlaceholderText(_translate("VistaGeneralDelPersonal", "Buscar empleado por su cédula"))
-        self.boton_buscar.setText(_translate("VistaGeneralDelPersonal", " Buscar"))
+        self.boton_buscar.setText(_translate("VistaGeneralDelPersonal", "Buscar"))
+        self.boton_buscar.setProperty("tipo", _translate("VistaGeneralDelPersonal", "boton_buscar"))
         self.label_contador.setText(_translate("VistaGeneralDelPersonal", "0"))
+        self.label_contador.setProperty("tipo", _translate("VistaGeneralDelPersonal", "titulo_qlineedit"))
         self.label_titulo_contador.setText(_translate("VistaGeneralDelPersonal", "N° Empleados"))
+        self.label_titulo_contador.setProperty("tipo", _translate("VistaGeneralDelPersonal", "titulo_qlineedit"))
+        self.espacio_central.setProperty("tipo", _translate("VistaGeneralDelPersonal", "espacio_form"))
+        self.tabla_ver_personal.setProperty("tipo", _translate("VistaGeneralDelPersonal", "tabla_mostrar_registro"))
         self.boton_control_de_llegada.setText(_translate("VistaGeneralDelPersonal", "  Control de llegada"))
         self.boton_control_de_reposos.setText(_translate("VistaGeneralDelPersonal", "  Control de reposos"))
         self.boton_crear_nuevo_registro.setText(_translate("VistaGeneralDelPersonal", "  Crear nuevo registro"))
+import recursos_de_imagenes_tela_app_rc
+import os
+BASE_DIR = os.path.dirname(__file__)

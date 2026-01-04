@@ -118,15 +118,6 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
         self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                    indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
-        
-        
-        ## Ruta relativa de las imagenes ##
-        self.boton_buscar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","lupa_blanca.png")))
-        self.boton_control_de_llegada.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","control_de_llegada.png")))
-        self.boton_control_de_reposos.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "control_de_reposos.png")))
-        self.boton_crear_nuevo_registro.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","nuevo_registro.png")))
-        self.imagen_contador.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","icono_de_usuario.png")))
-
 
 
         #print(self.lista_cargo_actual[1])
@@ -146,9 +137,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.tabla_ver_personal.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
         self.tabla_ver_personal.verticalHeader().setVisible(True)
         #self.tabla_ver_personal.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.tabla_ver_personal.verticalHeader().setMinimumWidth(40)
+        self.tabla_ver_personal.verticalHeader().setMinimumWidth(20)
         self.tabla_ver_personal.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
-
+        self.tabla_ver_personal.verticalHeader().setFixedWidth(20)
         #esto me da el valor de la cedula al darle click a la persona que quiero
         self.tabla_ver_personal.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
 
@@ -159,64 +150,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         #self.tabla_ver_personal.setAlternatingRowColors(True)
 
 
-        # Estilo de encabezados
-        self.tabla_ver_personal.horizontalHeader().setStyleSheet("""
 
-            QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-
-
-            QHeaderView::section {
-                background-color: #008e3e;
-                color: white;
-                padding: 0px;
-                font: 75 14pt "Arial";
-                
-            
-            }
-        """)
-
-        self.tabla_ver_personal.verticalHeader().setStyleSheet("""
-                    
-                    QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-                    QHeaderView::section {
-                        background-color: #ffffff;
-                        font: 75 14pt "Arial";
-
-
-
-                    }
-                """)
-
-
-        self.tabla_ver_personal.setStyleSheet("""
-                            QTableView {
-                                
-                                gridline-color: 5px black;
-                                border-radius:0px;
-                                background-color:white;
-                                font: 75 14pt "Arial";
-                                margin:10px;
-                            }
-                        
-                            QHeaderView::section {
-                                
-                                font-weight: bold;  
-                            }
-                        """)
-        
-        
 
 
 
@@ -360,7 +294,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
         
         self.msg_box.setWindowTitle("Advertencia")
-        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}? ")
         QApplication.beep()
         
         # Mostrar el cuadro de diálogo y esperar respuesta
@@ -383,7 +318,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
             else:
                 
-                QMessageBox.information(self, "Proceso exitoso", f"Se borro exitosamente a {empleado[1]} {empleado[4]}")
+                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {empleado[1]} {empleado[4]} con exito")
                 self.filtrar_por_tipo_cargo()
     
         elif self.msg_box.clickedButton() == self.boton_no:
@@ -665,47 +600,23 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             layout = QHBoxLayout(widget)
             boton_editar = QPushButton("Editar")
             boton_editar.setFixedSize(60, 30) 
-            boton_borrar = QPushButton("Borrar")
-            boton_borrar.setFixedSize(60, 30) 
-            
-            
+            boton_editar.setProperty("tipo", "boton_editar")
             boton_editar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                            
-                                            background-color: rgb(244, 131, 2);
-                                            
-                                            color: rgb(255, 255, 255);
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background-color: rgb(191, 64, 0);
-                                        }
-
-                                    """)
-            
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30)
+            boton_borrar.setProperty("tipo", "boton_borrar") 
             boton_borrar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                        
-                                        background-color: rgb(255, 0, 0);
-                                        
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    
-                                    QPushButton:hover{
-                                    
-                                        background-color: rgb(147, 0, 0);
-                                    }
-                                    
-                                    """)
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             
-            boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
-
+            
+            
 
             # Conectar botones
             boton_editar.clicked.connect(lambda _, r=fila: self.habilitar_edicion(r))

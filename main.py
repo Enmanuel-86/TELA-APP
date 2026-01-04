@@ -4,11 +4,11 @@ import random
 from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
                              QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
 from PyQt5.QtGui import QIcon, QPixmap
+import recursos_graficos_y_logicos.recursos_de_imagenes.recursos_de_imagenes_tela_app_rc as recursos_de_imagenes_tela_app_rc
+sys.modules["recursos_de_imagenes_tela_app_rc"] = recursos_de_imagenes_tela_app_rc
 
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from PyQt5.QtGui import QColor
-
-
 from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
 
@@ -103,12 +103,6 @@ class Login(QWidget, Ui_Login):
         super().__init__()
         self.setupUi(self)
 
-        # Rutas de las imagenes
-        self.logo_del_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
-        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_de_usuario.png")))
-        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "icono_contraseña.png")))
-        self.ojo_abierto = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","ver_contraseña.png")
-        self.ojo_cerrado = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz","no_ver_contraseña.png")
 
         aplicar_sombra(self.espacio_login, 50, 255)
 
@@ -118,23 +112,23 @@ class Login(QWidget, Ui_Login):
         self.input_contrasena.setText("1234")
         
 
-        self.boton_ver_contrasena.clicked.connect(self.cambiar_ver_contrasena)
+        self.boton_ver_contrasena.toggled.connect(lambda senal: self.cambiar_ver_contrasena(senal))
 
         # Estado inicial: contraseña oculta
         self.password_visible = False
         
     # metodo para cambiar el boton de ver contraseña
-    def cambiar_ver_contrasena(self):
-        if self.password_visible:
+    def cambiar_ver_contrasena(self, contrasena_visible):
+        if contrasena_visible:
             # Ocultar la contraseña
             self.input_contrasena.setEchoMode(QLineEdit.Password)
-            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_cerrado))
-            self.password_visible = False
+            
+            
         else:
             # Mostrar la contraseña
             self.input_contrasena.setEchoMode(QLineEdit.Normal)
-            self.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.ojo_abierto))
-            self.password_visible = True
+            
+            
             
     def mensajes_usuario(self):
         self.label_mensaje_usuario.setText(random.choice(mensajes_bienvenida))
@@ -167,18 +161,12 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         # Rutas relativas de la imagenes
         
-        ## cintillo ##
-        ## Rutas relativas de la imagenes ##
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_zona_educativa.png")))
-        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "membrete.png")))
-        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
-        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
 
         
         self.botones_sidebar = (self.boton_principal, self.boton_estudiante, self.boton_personal, 
-                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_salir)
+                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_generar_reporte ,self.boton_salir)
         
-        self.pantallas_importantes = (3,8)
+        self.pantallas_importantes = (3, 8, 11, 6)
         
         
         
@@ -186,8 +174,6 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         # instancia del login y el cintillo
         #self.stacked_widget = QStackedWidget()
         self.login = Login()
-
-        self.login.boton_ver_contrasena.setIcon(QIcon.fromTheme(self.login.ojo_cerrado))
 
 
 
@@ -241,19 +227,22 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         self.stacked_widget.setCurrentIndex(0)
     
-        self.area_scroll_side_bar.hide()
+        self.sidebar.hide()
         
-        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.area_scroll_side_bar.hide())
+        self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget: FuncionSistema.bloquear_botones_sidebar(indice_stackedwidget, self.pantallas_importantes, self.botones_sidebar) if indice_stackedwidget > 0 else self.sidebar.hide())
         self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget:  self.boton_principal.setChecked(True) if indice_stackedwidget == 1 else None)
         
         # Funciones para los botones del sidebar
-        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.area_scroll_side_bar))
+        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.sidebar, self.espacio_botones_temas))
         self.boton_principal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
+        self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
-        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.area_scroll_side_bar))
+        self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_default.qss'))
+        self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss'))
+        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
         
@@ -316,7 +305,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.login.input_usuario.clear()
                     self.login.input_contrasena.clear()
                     self.stacked_widget.setCurrentIndex(1)
-                    self.area_scroll_side_bar.show()
+                    self.sidebar.show()
                     self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario} al sistema de información TELA-APP")
 
 
@@ -331,7 +320,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.login.input_usuario.clear() #limpia el input de nombre de usuario
                     self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
                     self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
-                    self.area_scroll_side_bar.show()
+                    self.sidebar.show()
                     
                     self.boton_cargar_catologo.hide()
                     
@@ -370,7 +359,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
 
 
-
+    #hola desde antixlinux
 
 
 
@@ -405,7 +394,10 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
+    
     window.show()
     window.showMaximized()
+  
 
     sys.exit(app.exec_())

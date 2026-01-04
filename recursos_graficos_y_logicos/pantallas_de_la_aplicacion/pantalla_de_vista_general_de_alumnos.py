@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt,QPoint, QSortFilterProxyModel
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QWidget, QHeaderView,  QVBoxLayout, 
-                             QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel)
+                             QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel, QApplication)
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos
@@ -76,6 +76,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
                 
+        self.msg_box = QMessageBox(self)
+        
+        # Crear botones personalizados
+        self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
+        self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         # Estableciendo estilo de la tabla
             
@@ -91,6 +96,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.tabla_ver_alumnos.verticalHeader().setVisible(True)
         self.tabla_ver_alumnos.verticalHeader().setMinimumWidth(40)
         self.tabla_ver_alumnos.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.tabla_ver_alumnos.verticalHeader().setFixedWidth(20)
 
         #esto me da el valor de la cedula al darle click a la persona que quiero
         self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
@@ -101,74 +107,17 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Activar filas alternadas y aplicar estilo si quieres
         #self.tabla_ver_alumnos.setAlternatingRowColors(True)
         
-        
 
-        # Estilo de encabezados
-        self.tabla_ver_alumnos.horizontalHeader().setStyleSheet("""
-
-            QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-
-
-            QHeaderView::section {
-                background-color: #008e3e;
-                color: white;
-                padding: 0px;
-                font: 75 14pt "Arial";
-                
-            
-            }
-        """)
-
-        self.tabla_ver_alumnos.verticalHeader().setStyleSheet("""
-                    
-                    QHeaderView{
-                        
-                        background:#ffffff;    
-                        border-radius:0px;
-                        border:none;
-                    }
-                    
-                    QHeaderView::section {
-                        background-color: #ffffff;
-                        font: 75 14pt "Arial";
-
-
-
-                    }
-                """)
-
-
-        self.tabla_ver_alumnos.setStyleSheet("""
-                            QTableView {
-                                
-                                gridline-color: 5px black;
-                                border-radius:0px;
-                                background-color:white;
-                                font: 75 14pt "Arial";
-                                margin:10px;
-                            }
-                        
-                            QHeaderView::section {
-                                
-                                font-weight: bold;  
-                            }
-                        """)
         
     
         # conexion de botones
         self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro())
         self.boton_buscar.clicked.connect(lambda _: self.aplicar_filtro(self.barra_de_busqueda.text()))
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
-        self.boton_generar_informe.clicked.connect(lambda _: self.ir_a_generar_informes_y_reportes())
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
-        self.tabla_ver_alumnos.doubleClicked.connect(self.on_double_click)
-        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados) 
+        self.tabla_ver_alumnos.doubleClicked.connect(self.acceder_al_prefil_del_alumno_desde_la_tabla)
+        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
+        self.barra_de_busqueda.returnPressed.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()) )
         
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
@@ -316,7 +265,13 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
     # esta funcion es para que el usuario le de dobleclick a la fila del empleado
     # para que lo lleve a la pantalla de perfil del alumno
-    def on_double_click(self, index):
+    def acceder_al_prefil_del_alumno_desde_la_tabla(self, index):
+        
+        """
+            Este Metodo sirve para acceder al perfil del alumno desde la tabla que se muestra en pantalla
+            
+            Tomamos la fila y si hace el doble click este accede al perfil del alumno
+        """
          
         # Obtener la fila donde se hizo doble click
         row = index.row()
@@ -336,7 +291,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     # luego nos vamos a la pantalla del perfil del alumno
                     self.stacked_widget.setCurrentIndex(6)
                     self.barra_de_busqueda.clear()
-                    self.mostrar_la_info_alumno(alumno_id= alumno[0])
+                    pantalla_perfil_alumno = self.stacked_widget.widget(6)
+                    pantalla_perfil_alumno.mostrar_la_info_alumno(alumno_id= alumno[0])
                     
                     
                     
@@ -345,7 +301,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
         except Exception as e:
             
-            print("Error en la funcion on_double_click", f"{e}")
+            print("Error en la funcion acceder_al_prefil_del_alumno_desde_la_tabla", f"{e}")
     
 
     ################################################################################################################    
@@ -481,52 +437,26 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             widget = QWidget()
             layout = QHBoxLayout(widget)
             boton_editar = QPushButton("Editar")
-            boton_editar.setFixedSize(60, 30) 
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
             boton_borrar = QPushButton("Borrar")
             boton_borrar.setFixedSize(60, 30) 
-            
-            
-            boton_editar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                            
-                                            background-color: rgb(244, 131, 2);
-                                            
-                                            color: rgb(255, 255, 255);
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background-color: rgb(191, 64, 0);
-                                        }
-
-                                    """)
-            
+            boton_borrar.setProperty("tipo", "boton_borrar")
             boton_borrar.setStyleSheet("""
-                                        QPushButton{
-
-                                        
-                                        
-                                        background-color: rgb(255, 0, 0);
-                                        
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    
-                                    QPushButton:hover{
-                                    
-                                        background-color: rgb(147, 0, 0);
-                                    }
-                                    
-                                    """)
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             
-            boton_borrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","borrar.png")))
-            boton_editar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), "..","recursos_de_imagenes", "iconos_de_interfaz","editar.png")))
-
 
             # Conectar botones
-            boton_editar.clicked.connect(lambda _, r=fila: print(r))
-            boton_borrar.clicked.connect(lambda _, r=fila: print(r))
+            boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
+            boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
@@ -568,452 +498,98 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
 
 
-    # Metodo para acceder a la información del alumno
-    def acceder_al_perfil_alumno(self):
-        """
-        
-            Este metodo sirve para acceder al perfil del alumno usando la barra de busqueda, y esta funciona asi:
-            
-            1. verificamos que en la barra de busqueda tenga algun valor
-            2. iteramos cada alumno que esta en la lista_alumnos con un for
-            3. verificamos si el alumno iterado es igual a lo que esta en la barra de busque, en este caso se comparan las cedulas
-            4. si son iguales cambiamos de pantalla, guardamos el id del alumno y se lo pasamos al metodo mostrar_la_info_alumno y limpiamos la barra de busqueda
-            
-            El metodo de mostrar_la_info_alumno lo que hace es mostrar la informacion del alumno en su pantalla correspodiente
-        
-        
-        """
-        
-        try:
-            
-            # 1
-            if self.barra_de_busqueda.text().strip():
-                
-                # 2 
-                for alumno in self.lista_alumnos_actual:
-                    
-                    # 3 
-                    if self.barra_de_busqueda.text() == alumno[1]:
-                        
-                        alumno_id = alumno[0]
-                        
-                        print(f"\nel alumno es: \nNombre:{alumno[2]}\nID:{alumno[0]}")
-                        
-                        
-                        self.stacked_widget.setCurrentIndex(6)
-                        
-                        self.mostrar_la_info_alumno(alumno_id= alumno_id)
-                        
-                        self.barra_de_busqueda.clear()
-                        
-                        break
-                
-                
-                
-            else:
-                
-                QMessageBox.critical(self, "Error ", "La barra de busqueda esta vacia")
-
-                return
-            
-                
-        except:
-            
-            QMessageBox.critical(self, "Error en la funcion acceder_al_perfil_alumno", "Cédula no encontrada")
-            return
-        
-
-    # Metodo para acceder a la informacion del alumno
-    def mostrar_la_info_alumno(self, alumno_id: int):
-        
-        """
-        
-            Este metodo sirve para ver toda la informacion del alumno en su correspondiente pantalla, esto funciona asi:
-            
-            1. en una variable accedemos a la pantalla de ver_perfil_alumno
-            2. usamos todos los metodos de la base de datos para acceder a la informacion del alumno con el id que pedimos en la barra de busqueda o en la tabla de la vista previa
-            3. se cargan los datos a cada QLineEdit, QRadioButton, QListWidget, QLabel, etc, de cada segmento
-        
-        
-        """
-        
-        
-        global pantalla_perfil_alumno
-        
-        pantalla_perfil_alumno = self.stacked_widget.widget(6)
     
-    
-        if pantalla_perfil_alumno.lista_cuentas_alumno.count() == 0:
-            
-            pantalla_perfil_alumno.lista_cuentas_alumno.addItem("No tiene cuentas bancarias registradas")
-            
+    def habilitar_edicion_alumno(self, fila):
         
-        
-        # cargamos todos la infomacion del alumno
-        info_basica = alumnos_servicio.obtener_alumno_por_id(alumno_id)
-        
-        datos_representante = alumnos_servicio.obtener_datos_representante(alumno_id)
-        
-        
-        info_academica = alumnos_servicio.obtener_info_academica_alumno(alumno_id)
-        
-        info_clinica = info_clinica_alumno_servicio.obtener_info_clinica_por_alumno_id(alumno_id)
-        
-        info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
-        
-        
-        try:
+        """
+            Este Metodo sirve para acceder a la pantalla del formulario del alumno pero con la informacion ya registradra
+            para asi poder editarla.
             
             
-            # info basica
-            pantalla_perfil_alumno.input_mostrar_cedula.setText(info_basica[1])
-            pantalla_perfil_alumno.input_mostrar_primer_nombre.setText(info_basica[2])
-            
-            segundo_nombre = self.comprobar_si_hay_valor(info_basica[3])
-            pantalla_perfil_alumno.input_mostrar_segundo_nombre.setText(segundo_nombre)
-            
-            
-            tercer_nombre = self.comprobar_si_hay_valor(info_basica[4])
-            pantalla_perfil_alumno.input_mostrar_tercer_nombre.setText(tercer_nombre)
-            
-            
-            pantalla_perfil_alumno.input_mostrar_apellido_paterno.setText(info_basica[5])
-            
-            apellido_materno = self.comprobar_si_hay_valor(info_basica[6])
-            pantalla_perfil_alumno.input_mostrar_apellido_materno.setText(apellido_materno)
-            pantalla_perfil_alumno.input_mostrar_fecha_nacimiento.setText(info_basica[7])
-            pantalla_perfil_alumno.input_mostrar_edad.setText(str(info_basica[8]))
-            pantalla_perfil_alumno.input_mostrar_lugar_nacimiento.setText(info_basica[9])
-            
-            pantalla_perfil_alumno.label_mostrar_estado.setText(info_basica[14])
-            
-            
-            if info_basica[10] == 'F':
-                    
-                pantalla_perfil_alumno.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_f.png")))
-                
-                pantalla_perfil_alumno.input_sexo_femenino.setChecked(True)
-                pantalla_perfil_alumno.input_sexo_masculino.setChecked(False)
-                
-                
-            elif info_basica[10] == 'M':
-                
-                
-                pantalla_perfil_alumno.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_m.png")))
-                pantalla_perfil_alumno.input_sexo_masculino.setChecked(True)
-                pantalla_perfil_alumno.input_sexo_femenino.setChecked(False)
-        
-        
-        
-            if info_basica[11] == 1:
-                
-                pantalla_perfil_alumno.input_si_cma.setChecked(True)
-                pantalla_perfil_alumno.input_no_cma.setChecked(False)
-                
-            elif info_basica[11] == 0:
-                
-                pantalla_perfil_alumno.input_no_cma.setChecked(True)
-                pantalla_perfil_alumno.input_si_cma.setChecked(False)
-                
-                
-                
-            if info_basica[12] == 1:
-                
-                pantalla_perfil_alumno.input_si_imt.setChecked(True)
-                pantalla_perfil_alumno.input_no_imt.setChecked(False)
-                
-            elif info_basica[12] == 0:
-                
-                pantalla_perfil_alumno.input_no_imt.setChecked(True)
-                pantalla_perfil_alumno.input_si_imt.setChecked(False)
-                
-        except Exception as e:
-            
-            print(f"Algo malo paso en la info basica: {e}")  
-            
-            
-        
-        try:    
-            # Datos del representante
-                
-            
-            
-            pantalla_perfil_alumno.input_mostrar_nombre.setText(datos_representante[3])
-            pantalla_perfil_alumno.input_mostrar_apellido.setText(datos_representante[4])   
-            pantalla_perfil_alumno.input_mostrar_relacion_alumno.setText(info_inscripcion[10])
-            pantalla_perfil_alumno.input_mostrar_cedula_representante.setText(datos_representante[2])
-            
-            pantalla_perfil_alumno.input_mostrar_direccion_residencial.setText(datos_representante[5])
-            pantalla_perfil_alumno.input_mostrar_numero_telefono.setText(datos_representante[6])
-            
-            if datos_representante[7] == None:
-                pantalla_perfil_alumno.input_mostrar_numero_telefono_adicional.setText("No tiene")
-            
-            else:
-                pantalla_perfil_alumno.input_mostrar_numero_telefono_adicional.setText(datos_representante[7])
-            
-            pantalla_perfil_alumno.input_mostrar_carga_familiar.setText(str(datos_representante[8]))   
-            pantalla_perfil_alumno.input_mostrar_estado_civil.setText(datos_representante[9])
-            
-        except Exception as e:
-            print(f"Algo paso en datos del representante: {e}")
-            
-            
-        
+        """
         
         try: 
-        
-            # Info bancaria del alumno
-            info_bancaria = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
             
-            if info_bancaria:
-                
-                print("tiene cuenta en el banco")
-                print(info_bancaria)
-                pantalla_perfil_alumno.lista_cuentas_alumno.clear()
-                self.agregar_elementos_a_la_vista_previa_cuentas_alumno(pantalla_perfil_alumno.lista_cuentas_alumno, info_bancaria)
-                
-                
+            # Obtener el texto de la primera columna (nombre)
+            cedula = modelo.item(fila, 1).text()
             
-        except Exception as e:
-            
-            print(f"Algo paso en info bancaria: {e}")
-    
-            
-            
-        
-        
-        
-        
-        try:
-            
-            
-            # info escolaridad
-            
-            pantalla_perfil_alumno.input_mostrar_escolaridad.setText(info_academica[1])
-            pantalla_perfil_alumno.input_mostrar_procedencia.setText(info_academica[2])
-            
-            
-        except Exception as e:
-            print(f"Algo paso en escolaridad: {e}")
+            alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
             
             
             
-        try:
-            
-            
-            # info clinica
-            self.agregar_elementos_a_la_vista_previa_diagnostico_alumno(pantalla_perfil_alumno.lista_diagnostico_alumno, info_clinica)
-            
-        except Exception as e:
-            print(f"Algo paso en info clinia: {e}")
-            
-            
-        try:
-            
-            
-            # info inscripcion
-            pantalla_perfil_alumno.input_mostrar_especialidad.setText(info_inscripcion[4])
-            pantalla_perfil_alumno.input_mostrar_matricula.setText(info_inscripcion[5])
-            pantalla_perfil_alumno.input_mostrar_fecha_ingreso.setText(str(info_inscripcion[6]))
-            pantalla_perfil_alumno.input_mostrar_tiempo.setText("1 año")
+            pantalla_perfil_alumno = self.stacked_widget.widget(3)
             
             
             
         except Exception as e:
-            print(f"Algo paso en info inscripcion: {e}")
             
+            FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_alumno")
             
-
-    
-        
-    # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa_cuentas_alumno(self, nombre_qlistwidget, nombre_lista):
-        
-        
-        for cuenta in nombre_lista:
-            
-            texto_a_mostrar = cuenta[2] + " " + cuenta[3] 
-    
-            # Crear un QListWidgetItem
-            item = QListWidgetItem()
-            nombre_qlistwidget.addItem(item)
-            
-            
-
-            # Crear un widget personalizado para la fila
-            widget = QWidget()
-            row_layout = QHBoxLayout()
-            widget.setLayout(row_layout)
-
-            # Label para el texto
-            label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:none;
-                                    font-family: 'Arial';
-                                    font-size: 14pt;
-                                    
-                                    
-                                }
-                                
-                                """)
-            row_layout.addWidget(label)
-
-            # Asignar el widget al QListWidgetItem
-            item.setSizeHint(widget.sizeHint())
-            nombre_qlistwidget.setItemWidget(item, widget)
-            
-            
-        
-    # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa_diagnostico_alumno(self, nombre_qlistwidget, nombre_lista):
-        
-        i = 1
-        for diagnostico in nombre_lista:
-            
-            
-            
-            texto_a_mostrar = f"{i}) " + diagnostico[2]
-            
-            i += 1
-            
-            # Crear un QListWidgetItem
-            item = QListWidgetItem()
-            nombre_qlistwidget.addItem(item)
-            
-            
-
-            # Crear un widget personalizado para la fila
-            widget = QWidget()
-            row_layout = QHBoxLayout()
-            widget.setLayout(row_layout)
-
-            # Label para el texto
-            label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:none;
-                                    font-family: 'Arial';
-                                    font-size: 14pt;
-                                    
-                                    
-                                }
-                                
-                                """)
-            row_layout.addWidget(label)
-
-            # Botón para eliminar
-            boton_ver = QPushButton()
-            boton_ver.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "ver_contraseña.png")))
-            boton_ver.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-            boton_ver.setFixedSize(40,40)
-            boton_ver.setStyleSheet("""
-                                        
-                                        QPushButton{
-                                            background:#ffffff;
-                                            border-radius:12px;
-                                            icon-size:28px;
-                                            border:1px solid black;
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background:#acacac
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        """)
-            
-            row_layout.addWidget(boton_ver)
-            
-            boton_ver.clicked.connect(
-            lambda  _, item=item, lista=nombre_lista: self.ver_diagnostico_seleccionado(nombre_qlistwidget, lista, item)
-        )
-        
-            # Asignar el widget al QListWidgetItem
-            item.setSizeHint(widget.sizeHint())
-            nombre_qlistwidget.setItemWidget(item, widget)
-
-
-        
-
-    # Metodo para borrar diagnostico a la vista previa
-    def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista,  item):
-        
-        
-        # Logica para borrar el registro del diagnostico de la lista
-        
-        # indice del listwidget
-        indice_vista_previa = nombre_qlistwidget.row(item)
-        
-        info_clinica_id = nombre_lista[indice_vista_previa][0]
-        
-        print(f"Indice del diagnostico: {info_clinica_id}")
-        
-        try:
-        
-            diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
-            
-            if pantalla_perfil_alumno.dockWidget_diagnostico.show():
-                
-                pantalla_perfil_alumno.dockWidget_diagnostico.hide()
-                
-            elif pantalla_perfil_alumno.dockWidget_diagnostico.hide():
-                
-                pantalla_perfil_alumno.dockWidget_diagnostico.show()
-                
-                
-                
-            
-            
-            pantalla_perfil_alumno.mostrar(f"Diagnóstico N° {indice_vista_previa + 1}",diagnostico[2],str(diagnostico[3]),diagnostico[4],diagnostico[5],str(diagnostico[6]),diagnostico[7])
-        
-        except Exception as e:
-            
-            print(f"algo paso: {e}")
-        
-        
-        
-    # Metodo para comprobar y hay valor por asignar en la variable o se asigna None
-    # Este metodo sirve para comprobar esos valores que pueden ser None
-    def comprobar_si_hay_valor(self, elemento_lista):
-        
-        if elemento_lista == None:
-                
-            return "No tiene"
-                
         else:
             
-            return elemento_lista
+            self.stacked_widget.setCurrentIndex(3)
             
-
-
-    
-
-
-    
+            pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
+            
+            
+        
+        
+                
+    def eliminar_alumno_de_la_bd(self, fila):
+        
+        """
+            Este metodo sirve para eliminar al alumno de la base de datos
+        
+        """
+        cedula = modelo.item(fila, 1).text()
+        
+        alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+        
+        alumno = alumnos_servicio.obtener_alumno_por_id(alumno_id)
+        print(alumno)
+        
+        self.msg_box.setWindowTitle("Advertencia")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}? ")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        # si le da a SI, verificamos primero
+        if self.msg_box.clickedButton() == self.boton_si:
+            try: 
+                                
+                alumnos_servicio.eliminar_alumno(alumno_id)
+                
+                
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
+                
+            else:
+                
+                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {alumno[2]} {alumno[5]} con exito")
+                self.filtrar_por_especialidad()
+                
+        elif self.msg_box.clickedButton() == self.boton_no: 
+            
+            return  
+            
+            
 
 
     # Metodo para ir a la pantalla para registrar un alumno
     def ir_crear_nuevo_registro(self):
         self.stacked_widget.setCurrentIndex(3)
+        pantalla_perfil_alumno = self.stacked_widget.widget(3)
+        
+        pantalla_perfil_alumno.boton_finalizar.setText("Guardar")
         
     # Metodo para ir a la pantalla de asistenca de alumnos
     def ir_asistencia_alumno(self):
         
         self.stacked_widget.setCurrentIndex(4)
-        
-        
-    def ir_a_generar_informes_y_reportes(self):
-    
-        self.stacked_widget.setCurrentIndex(5)
         
 
  

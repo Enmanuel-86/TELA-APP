@@ -1,6 +1,7 @@
 import traceback
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
+from PyQt5.QtCore import QPropertyAnimation, QEasingCurve, QFile, QTextStream
+from PyQt5.QtGui import QIcon
 from datetime import datetime
 import platform
 import os
@@ -304,6 +305,45 @@ class FuncionesDelSistema:
                         # retornamos el id encontrado
                         return id_del_elemento
         
+    def buscar_id_por_nombre_del_elemento(self, nombre_elemeto:str, lista_de_elementos:list, indice_id:int = 0):
+        
+        """
+            Este metodo sirve para buscar el id del elemento que pertenezca a un catalogo.
+            
+            ***Ejemplo***
+            
+            si tenemos una variable que contiene una especialidad y queremos obtener su id para realizar una operacion usamos el metodo asi:
+            
+            lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
+            
+            mi_especialidad = "artesania"
+            
+            id_especialidad = FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades) # retorna 1
+            
+            normalmente el indice del id es 0 pero puedes colocar el indice en donde se encuentre el id
+            
+            
+        """     
+        
+        
+        try:
+            
+            for elemento in lista_de_elementos:
+                
+                if nombre_elemeto in elemento:
+                    
+                    return elemento[indice_id]
+                
+                else:
+                    
+                    pass
+                
+        except Exception as e:
+            
+            self.mostrar_errores_por_excepcion(e, "buscar_id_por_nombre_del_elemento")
+        else:
+            
+            print("buscar_id_por_nombre_del_elemento: se encontro el id con exito")
             
     
     # Metodos para limpiar los inputs 
@@ -420,10 +460,10 @@ class FuncionesDelSistema:
 
 
     # Metodo para minizar el side bar/barra lateral
-    def cambiar_tamano_side_bar(self, side_bar):
+    def cambiar_tamano_side_bar(self, side_bar, frame_botones_temas):
         
         """
-            Este metodo minizar el sidebar a un 200 de ancho
+            Este metodo minizar el sidebar a un 200 de ancho y tambien al minizarce este oculta el frame que tiene los botones con los temas
         
         """
         
@@ -448,6 +488,7 @@ class FuncionesDelSistema:
             self.minimizado = True
             #side_bar.setFixedWidth(55)
             
+            frame_botones_temas.hide()
             self.estado_sidebar  = False
             
             
@@ -464,7 +505,7 @@ class FuncionesDelSistema:
             
             
             #side_bar.setFixedWidth(190)
-            
+            frame_botones_temas.show()
             self.estado_sidebar = True
             
             
@@ -475,22 +516,21 @@ class FuncionesDelSistema:
             
             
     # Metodos para cambiar de estilos/TEMAS
-    def cargar_estilos(self):
+    def cargar_estilos(self, app, ruta_archivo):
         try:
-            ruta_estilos = 'recursos_graficos_y_logicos/estilos/tema_principal.qss'
-            
-            # LEER el archivo primero
-            with open(ruta_estilos, 'r', encoding='utf-8') as archivo:
-                estilo = archivo.read()
-            
-            # Aplicar el contenido leído
-            self.setStyleSheet(estilo)
-            
-        except FileNotFoundError:
-            print("Error: No se encontró el archivo estilos.qss")
+            archivo = QFile(ruta_archivo)
+            if archivo.open(QFile.ReadOnly | QFile.Text):
+                stream = QTextStream(archivo)
+                
+                # Limpiamos primero el estilo
+                app.setStyleSheet("")
+                
+                # asignamos el estilo
+                app.setStyleSheet(stream.readAll())
+                
+                archivo.close()
         except Exception as e:
             print(f"Error al cargar estilos: {e}")
-
 
 
 
@@ -543,8 +583,33 @@ class FuncionesDelSistema:
     def comprobar_si_hay_valor(self, variable):
         
         """
-        Metodo para comprobar y hay valor por asignar en la variable o se asigna None
-        Este metodo sirve para comprobar esos valores que pueden ser None
+        Metodo para comprobar si la variable tiene un valor para mostrar en pantalla
+        
+        Este metodo sirve en el caso de mostrar una informacion en pantalla teniendo en cuenta que la base de datos puede retornar o un valor o none
+        
+        ***Ejemplo***
+        
+        Si es None retornamos a "No tiene"
+        
+        Si tiene algun valor retornamos el valor de la variable
+        
+        
+        
+        alumnos = [ Manuel,    #1er nombre
+                    Alejandro, #2do nombre
+                    Perez,     #1er apellido
+                    None,      #2do apellido
+                    102031203  #cedula
+                    ]
+                    
+                    
+        mostrar_datos_en_pantalla(alumnos) # resultado: muestra todos los campos y el que esta en None lo muestra como "No tiene"
+        
+        
+        esto se hace para no confundirlo con un error
+        
+        
+        
     
         """
         
@@ -584,6 +649,56 @@ class FuncionesDelSistema:
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Error al abrir la carpeta:\n{str(e)}")  
             
+            
+    def cambiar_estilo_del_boton(self, qpushbutton, tipo:str = "boton_anadir") -> None:
+        """
+            ### Este metodo sirve para cambiar de estilo a los botones de registrar elementos catalogo.
+            
+            lo que hace es cambirle es el texto si el parametro tipo es:
+            
+            - "boton_anadir" le da el estilo por defecto
+            - "boton_editar" le cambia el texto por editar, le cambia el fondo a amarillo y le cambia el icono de mas o un lapiz
+            
+            Lo que hace este metodo es cambiarle la propiedad dinamica para que tome el estilo segun la hoja de estilo usada
+            
+            ***Ejemplo***
+            
+            boton_registrar = QPushButton()
+            
+            self.cambiar_estilo_del_boton(boton, "boton_editar") # estilo de editar
+            
+            
+        """
+        
+        
+    
+        try:
+            
+            
+            
+            
+            if tipo == "boton_anadir":
+                
+                qpushbutton.setText(" Anadir")
+                qpushbutton.setProperty("tipo", tipo)
+                
+                
+            elif tipo == "boton_editar":
+            
+                qpushbutton.setText(" Editar")
+                qpushbutton.setProperty("tipo", tipo)
+            
+            
+            
+            qpushbutton.style().unpolish(qpushbutton)
+            qpushbutton.style().polish(qpushbutton)
+            
+
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+            
+                
         
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
@@ -592,6 +707,13 @@ lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256'
                 (5, 'JOSE', 'ALEJANDRO', None, 'SALAS', 'JIMENEZ', '26788123', '1985-10-28', 39, 'Activo', 'F', 0)]
 
 FuncionSistema = FuncionesDelSistema()
+
+
+#lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
+            
+mi_especialidad = "carpinteria"
+
+#print(FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades))
 
 #print(FuncionSistema.buscar_id_por_cedula("5017497", lista_prueba))
 #print(funciones_comunes.cargar_elementos_para_el_combobox())

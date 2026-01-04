@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VentanaPrincipal</class>
+ <widget class="QMainWindow" name="VentanaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>891</width>
+    <height>1107</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="1" column="1">
+     <widget class="QStackedWidget" name="stacked_widget">
+      <widget class="QWidget" name="page"/>
+      <widget class="QWidget" name="page_2"/>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QScrollArea" name="area_scroll_side_bar">
+      <property name="maximumSize">
+       <size>
+        <width>190</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QScrollArea{
+
+	
+	
+	background-color: rgb(0, 138, 71);
+	padding: 3px 3px;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>184</width>
+         <height>1042</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="side_bar">
+          <property name="styleSheet">
+           <string notr="true">QFrame{
+
+background-color: transparent;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item alignment="Qt::AlignLeft">
+            <widget class="QFrame" name="frame">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+
+	padding:0px 0px 0px 0px;
+
+}
+</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetNoConstraint</enum>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignLeft">
+               <widget class="QPushButton" name="boton_menu">
+                <property name="maximumSize">
+                 <size>
+                  <width>62</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Franklin Gothic Demi Cond</family>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	
+
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+
+
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../recursos_de_imagenes/iconos_de_interfaz/menu.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/menu.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <property name="autoDefault">
+                 <bool>false</bool>
+                </property>
+                <property name="default">
+                 <bool>false</bool>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignLeft">
+               <widget class="QLabel" name="label_menu">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>10</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>80</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Franklin Gothic Demi Cond</family>
+                  <pointsize>19</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+
+	
+	color: rgb(255, 255, 255);
+	padding:0px;
+
+}</string>
+                </property>
+                <property name="text">
+                 <string>MENU</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_principal">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	border:none;
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+
+}
+
+QPushButton:disabled{
+
+	
+	background-color: rgb(0, 92, 47)
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>  Principal</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/hogar.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_estudiante">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	border:none;
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+
+}
+
+QPushButton:disabled{
+
+	
+	background-color: rgb(0, 92, 47)
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>  Estudiantes</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_personal">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	border:none;
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+
+}
+
+QPushButton:disabled{
+
+	
+	background-color: rgb(0, 92, 47)
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>  Personal</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/empleado.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/empleado.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_respaldo">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	border:none;
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+
+}
+
+QPushButton:disabled{
+
+	
+	background-color: rgb(0, 92, 47)
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>  Respaldos</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/respaldo.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/respaldo.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="boton_cargar_catologo">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	border:none;
+	padding:5px 0px 5px 5px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+	border-left:3px solid rgb(0, 183, 72);
+	padding-left:4px;
+
+}
+
+QPushButton:disabled{
+
+	
+	background-color: rgb(0, 92, 47)
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>  cargar catalogo</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/catalogar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/catalogar.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoRepeat">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+              </font>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>49</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignBottom">
+            <widget class="QPushButton" name="boton_salir">
+             <property name="font">
+              <font>
+               <family>Franklin Gothic Demi Cond</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    /* Mantiene el icono a la izquierda y el texto más a la derecha */
+    text-align: left;
+    
+
+	background:transparent; 
+	
+	color: rgb(255, 255, 255);
+	
+
+	padding:5px 0px 5px 10px;
+
+}
+
+QPushButton:hover {
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+QPushButton:checked{
+
+
+	
+	background-color: rgb(0, 89, 45);
+
+}
+
+
+QPushButton:disabled{\n\n	\n	background-color: rgb(0, 92, 47)}</string>
+             </property>
+             <property name="text">
+              <string>salir</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QFrame" name="espacio_princiapl">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="logo_zona_educativa">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../recursos_de_imagenes/logo_zona_educativa.PNG</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="membrete">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>230</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../recursos_de_imagenes/membrete.PNG</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="logo_tela">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="baseSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../recursos_de_imagenes/Tela.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>133</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="logo_juventud">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>../recursos_de_imagenes/logo_juventud.PNG</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

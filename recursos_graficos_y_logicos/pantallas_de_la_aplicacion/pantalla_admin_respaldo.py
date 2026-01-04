@@ -18,12 +18,6 @@ class PantallaAdminCrearRespaldo(QWidget, Ui_PantallaCrearRespaldo):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        #Rutas de las imagenes
-        self.boton_exportar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","exportar.png")))
-        self.boton_importar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","importar.png")))
-        self.boton_respaldo_correo.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mail.png")))
-        self.boton_ruta_importar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","base_de_datos.png")))
-        
         self.ruta = None 
         
         self.boton_exportar.clicked.connect(self.exportar_datos)

@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>1010</width>
-    <height>640</height>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -43,7 +46,7 @@
         <x>0</x>
         <y>0</y>
         <width>1010</width>
-        <height>640</height>
+        <height>586</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -65,12 +68,7 @@
        <item>
         <widget class="QFrame" name="espacio_principal">
          <property name="styleSheet">
-          <string notr="true">
-    background: qlineargradient(
-        x1:0, y1:0, x2:1, y2:1,
-        stop:0 #3fea87, stop:1 #00770e)
-   
-</string>
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>
@@ -78,163 +76,156 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <property name="spacing">
-           <number>40</number>
-          </property>
-          <item>
+         <property name="tipo" stdset="0">
+          <string>espacio_principal</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
            <widget class="QFrame" name="espacio_superior">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>70</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background:transparent;</string>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item alignment="Qt::AlignLeft">
-              <widget class="QPushButton" name="boton_de_regreso">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>42</width>
-                 <height>42</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>42</width>
-                 <height>42</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-
-	background-color: rgb(255, 255, 255);
-	border-radius: 20px ;
-	border:2px solid;
-
-}
-
-QPushButton:hover{
-
-	background-color: rgb(199, 199, 199)
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_crear_respaldo">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>10</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>320</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>320</width>
-                 <height>60</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Arial</family>
-                 <pointsize>17</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                 <kerning>true</kerning>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QLabel{
-	
-	background-color: rgb(0, 112, 21);
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}</string>
-               </property>
-               <property name="text">
-                <string>Importar/Exportar datos</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignHCenter">
-           <widget class="QFrame" name="espacio_central">
             <property name="minimumSize">
              <size>
-              <width>0</width>
-              <height>0</height>
+              <width>819</width>
+              <height>370</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>900</width>
-              <height>16777215</height>
+              <width>819</width>
+              <height>370</height>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background:transparent;</string>
+             <string notr="true"/>
             </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
+            <layout class="QVBoxLayout" name="verticalLayout_4">
              <property name="spacing">
               <number>0</number>
              </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item>
+              <widget class="QFrame" name="frame">
+               <property name="minimumSize">
+                <size>
+                 <width>795</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>800</width>
+                 <height>130</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px
+}</string>
+               </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_titulo_form</string>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label">
+                  <property name="minimumSize">
+                   <size>
+                    <width>101</width>
+                    <height>91</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>101</width>
+                    <height>91</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">:/iconos/iconos_de_interfaz/copia-de-seguridad-de-archivos.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_crear_respaldo">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>10</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>351</width>
+                    <height>51</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>351</width>
+                    <height>51</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>20</pointsize>
+                    <weight>75</weight>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	font-size:20pt;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Importar/Exportar datos</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>titulo_form</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
               <widget class="QFrame" name="espacio_requerimientos">
                <property name="minimumSize">
                 <size>
@@ -242,12 +233,16 @@ QPushButton:hover{
                  <height>220</height>
                 </size>
                </property>
+               <property name="maximumSize">
+                <size>
+                 <width>800</width>
+                 <height>220</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame{
-
-	background-color: rgb(0, 112, 21);
-	border-radius:12px;
-
+	border-top-left-radius:0px;
+	border-top-right-radius:0px
 }</string>
                </property>
                <property name="frameShape">
@@ -256,71 +251,35 @@ QPushButton:hover{
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
+               <property name="tipo" stdset="0">
+                <string>espacio_form</string>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_3">
-                <property name="leftMargin">
-                 <number>20</number>
-                </property>
-                <property name="topMargin">
-                 <number>20</number>
-                </property>
-                <property name="rightMargin">
-                 <number>20</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>20</number>
-                </property>
                 <item>
                  <layout class="QGridLayout" name="gridLayout">
-                  <property name="verticalSpacing">
-                   <number>20</number>
-                  </property>
-                  <item row="1" column="1">
-                   <widget class="QLineEdit" name="input_correo">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_titulo_importar">
                     <property name="font">
                      <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
+                      <family>Segoe UI</family>
+                      <pointsize>11</pointsize>
                       <weight>75</weight>
+                      <italic>false</italic>
                       <bold>true</bold>
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:12px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-
-	border: 2px solid rgb(202, 202, 202);
-	
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                     <string notr="true"/>
                     </property>
-                    <property name="readOnly">
-                     <bool>false</bool>
+                    <property name="text">
+                     <string>Ruta del archivo .sql  para importar los datos:</string>
                     </property>
-                    <property name="placeholderText">
-                     <string>Aquí exportas los datos asociado un correo @gmail</string>
+                    <property name="tipo" stdset="0">
+                     <string>titulo_qlineedit</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="1">
+                  <item row="1" column="0">
                    <widget class="QLineEdit" name="label_importar_datos">
                     <property name="minimumSize">
                      <size>
@@ -330,34 +289,15 @@ QLineEdit:focus{
                     </property>
                     <property name="font">
                      <font>
-                      <family>Arial</family>
-                      <pointsize>9</pointsize>
-                      <weight>75</weight>
+                      <family>Segoe UI</family>
+                      <pointsize>14</pointsize>
+                      <weight>50</weight>
                       <italic>false</italic>
-                      <bold>true</bold>
+                      <bold>false</bold>
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLineEdit{
-	
-	background-color: rgb(255, 255, 255);
-	border-radius:12px;
-	padding-left: 5px;
- padding-right:5px;
-	padding-top:1px;
-
-	border: 2px solid rgb(202, 202, 202);
-	
-}
-
-QLineEdit:focus{
-
-	border: 2px solid rgb(17, 192, 255)
-
-
-
-}
-</string>
+                     <string notr="true"/>
                     </property>
                     <property name="text">
                      <string/>
@@ -370,51 +310,7 @@ QLineEdit:focus{
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="0" alignment="Qt::AlignRight">
-                   <widget class="QLabel" name="label_titulo_importar">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>11</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel{
-
-		color: rgb(255, 255, 255);
-
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Ruta del archivo .sql  para importar los datos:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" alignment="Qt::AlignRight">
-                   <widget class="QLabel" name="label_correo_asociado">
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>11</pointsize>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel{
-
-		color: rgb(255, 255, 255);
-
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Correo asociado para exportar los datos:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2">
+                  <item row="1" column="1">
                    <widget class="QPushButton" name="boton_ruta_importar">
                     <property name="minimumSize">
                      <size>
@@ -424,8 +320,8 @@ QLineEdit:focus{
                     </property>
                     <property name="font">
                      <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
+                      <family>Segoe UI</family>
+                      <pointsize>12</pointsize>
                       <weight>75</weight>
                       <italic>false</italic>
                       <bold>true</bold>
@@ -434,29 +330,14 @@ QLineEdit:focus{
                     <property name="cursor">
                      <cursorShape>PointingHandCursor</cursorShape>
                     </property>
+                    <property name="toolTip">
+                     <string>Haga click aqui para seleccionar en donde esta el archivo .sql para importar los datos</string>
+                    </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton{
-
-	background-color: rgb(0, 183, 72);
-	
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                     <string notr="true"/>
                     </property>
                     <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>../recursos_de_imagenes/iconos_de_interfaz/base_de_datos.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/base_de_datos.png</iconset>
+                     <string>...</string>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -468,202 +349,125 @@ QPushButton:hover{
                   </item>
                  </layout>
                 </item>
-               </layout>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignTop">
-              <widget class="QFrame" name="espacio_boton_opciones">
-               <property name="styleSheet">
-                <string notr="true">background:transparent;</string>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0" columnstretch="0,0" rowminimumheight="0,0" columnminimumwidth="0,0">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetDefaultConstraint</enum>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <property name="horizontalSpacing">
-                 <number>100</number>
-                </property>
-                <property name="verticalSpacing">
-                 <number>30</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QPushButton" name="boton_exportar">
-                  <property name="minimumSize">
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
                    <size>
-                    <width>347</width>
+                    <width>20</width>
                     <height>40</height>
                    </size>
                   </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>347</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: rgb(0, 112, 21);
-		color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> Exportar datos en la computadora </string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/exportar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/exportar.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
+                 </spacer>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="boton_respaldo_correo">
-                  <property name="minimumSize">
-                   <size>
-                    <width>270</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>250</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
+                <item>
+                 <widget class="QFrame" name="espacio_boton_opciones">
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: rgb(0, 112, 21);
-		color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                   <string notr="true"/>
                   </property>
-                  <property name="text">
-                   <string> Exportar datos al correo</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mail.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mail.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QPushButton" name="boton_importar">
-                  <property name="minimumSize">
-                   <size>
-                    <width>270</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>0</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>13</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-
-	background-color: rgb(0, 112, 21);
-		color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> Importar datos al sistema</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../recursos_de_imagenes/iconos_de_interfaz/importar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/importar.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <item>
+                    <widget class="QPushButton" name="boton_exportar">
+                     <property name="minimumSize">
+                      <size>
+                       <width>347</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>347</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>12</pointsize>
+                       <weight>75</weight>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string> Exportar datos en la computadora </string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>28</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="tipo" stdset="0">
+                      <string>boton_exportar</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="boton_importar">
+                     <property name="minimumSize">
+                      <size>
+                       <width>270</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>0</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>12</pointsize>
+                       <weight>75</weight>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string> Importar datos al sistema</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>28</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="tipo" stdset="0">
+                      <string>boton_importar</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>
@@ -681,6 +485,8 @@ QPushButton:hover{
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+ </resources>
  <connections/>
 </ui>

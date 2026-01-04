@@ -1,11 +1,11 @@
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
                             QLabel, QHBoxLayout, QPushButton )
-from PyQt5.QtCore import QTime, QPoint, Qt
+from PyQt5.QtCore import QTime, QPoint, Qt, QDate, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import  Ui_PantallaControlDeLlegada
-from datetime import datetime, time
+from datetime import (datetime, time, date)
 
 ##################################
 # importaciones de base de datos #
@@ -69,13 +69,6 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.lista_timeedits = [self.input_hora_de_llegada, self.input_hora_de_salida]
         
         
-        # Ruta relativa de las imagenes ##
-        self.boton_de_regreso.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","flecha_izquierda_2.png")))
-        self.boton_limpiar_lista.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","brocha.png")))
-        self.boton_agregar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","mas_blanco.png")))
-        self.boton_suministrar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz","exportar.png")))
-
-
 
 
 
@@ -86,18 +79,19 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
 
 
-        self.boton_de_regreso.clicked.connect(self.volver)
-        self.label_mostrar_fecha.setText(dia_de_hoy)
+        
         self.actualizar_lista_busqueda()
 
         #funcion para habilitar los input segun el estado de asistencia
 
         self.input_asistente.toggled.connect(self.cuando_asiste_el_personal)
         self.input_inasistente.toggled.connect(self.cuando_no_asiste_el_personal)
+        self.boton_de_regreso.clicked.connect(self.volver)
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.boton_limpiar_lista.clicked.connect(self.limpiar_lista_de_asistencias)
         self.boton_suministrar.clicked.connect(self.suministrar_asistencias)
         
+        self.dateedit_fecha_actual.setDate(QDate.currentDate())
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
 
 
@@ -219,7 +213,8 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
                 empleado_n.append(empleado_id)
                 
                 # 1) Fecha de asistencia
-                dia_actual = self.fecha_de_str_a_date(dia_de_hoy)
+                dia_actual = date(self.dateedit_fecha_actual.date().year(), self.dateedit_fecha_actual.date().month(), self.dateedit_fecha_actual.date().day())
+
                 empleado_n.append(dia_actual)
                 
                 # 2) Hora de entrada
@@ -397,20 +392,7 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
             
                 
             label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:#b5ffb0;
-                                    font-family: 'Arial';
-                                    font-weight: bold;
-                                    font-size: 10pt;
-                                    padding-left:5px;
-                                    
-                                    
-                                }
-                                
-                                """)
+            label.setProperty("tipo", "asistente")
             row_layout.addWidget(label)
             
             
@@ -418,49 +400,19 @@ class PantallaControlDeLlegada(QWidget, Ui_PantallaControlDeLlegada):
         elif self.input_inasistente.isChecked():
             
             label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:#ffacac;
-                                    font-family: 'Arial';
-                                    font-weight: bold;
-                                    font-size: 10pt;
-                                    padding-left:5px;
-                                    
-                                    
-                                    
-                                }
-                                
-                                """)
+            label.setProperty("tipo", "inasistente")
             row_layout.addWidget(label)
 
         # Botón para eliminar
-        delete_button = QPushButton()
-        delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
-        delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        delete_button.setFixedSize(35,35)
-        delete_button.setStyleSheet("""
-                                    
-                                    QPushButton{
-                                        background:red;
-                                        border-radius:12px;
-                                        icon-size:28px;
-                                    
-                                    }
-                                    
-                                    QPushButton:hover{
-                                        
-                                        background:#9e0000
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                    """)
+        boton_borrar = QPushButton()
+        boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        boton_borrar.setFixedSize(60,40)
+        boton_borrar.setIconSize(QSize(30, 30))
+        boton_borrar.setProperty("tipo","boton_borrar")
         
-        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
-        row_layout.addWidget(delete_button)
+        
+        boton_borrar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        row_layout.addWidget(boton_borrar)
 
         # Asignar el widget al QListWidgetItem
         item.setSizeHint(widget.sizeHint())
