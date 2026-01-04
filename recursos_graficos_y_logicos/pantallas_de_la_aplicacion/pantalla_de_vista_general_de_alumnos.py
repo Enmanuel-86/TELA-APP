@@ -437,12 +437,21 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             widget = QWidget()
             layout = QHBoxLayout(widget)
             boton_editar = QPushButton("Editar")
-            boton_editar.setFixedSize(60, 30) 
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             boton_editar.setProperty("tipo", "boton_editar")
             boton_borrar = QPushButton("Borrar")
             boton_borrar.setFixedSize(60, 30) 
             boton_borrar.setProperty("tipo", "boton_borrar")
-            
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             
 
             # Conectar botones
@@ -540,7 +549,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         print(alumno)
         
         self.msg_box.setWindowTitle("Advertencia")
-        self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}?")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}? ")
         QApplication.beep()
         
         # Mostrar el cuadro de diálogo y esperar respuesta

@@ -294,7 +294,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
         
         self.msg_box.setWindowTitle("Advertencia")
-        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}? ")
         QApplication.beep()
         
         # Mostrar el cuadro de diálogo y esperar respuesta
@@ -600,9 +601,19 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             boton_editar = QPushButton("Editar")
             boton_editar.setFixedSize(60, 30) 
             boton_editar.setProperty("tipo", "boton_editar")
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             boton_borrar = QPushButton("Borrar")
             boton_borrar.setFixedSize(60, 30)
             boton_borrar.setProperty("tipo", "boton_borrar") 
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             
             
             
