@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
                             QLabel, QHBoxLayout, QPushButton )
-from PyQt5.QtCore import QTime, QPoint, Qt, QDate
+from PyQt5.QtCore import QSize, QPoint, Qt, QDate
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui, QtCore
 import os
@@ -115,6 +115,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         
         # Conexion de funciones a botones
         FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
+        self.boton_de_regreso.clicked.connect(self.volver)
         self.boton_especialidades.currentIndexChanged.connect(self.actualizar_lista_busqueda)
         self.boton_agregar.clicked.connect(self.agregar_info)
         self.input_cedula_alumno.textChanged.connect(self.filtrar_resultados)
@@ -785,20 +786,7 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
             
                 
             label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:#b5ffb0;
-                                    font-family: 'Arial';
-                                    font-weight: bold;
-                                    font-size: 10pt;
-                                    padding-left:5px;
-                                    
-                                    
-                                }
-                                
-                                """)
+            label.setProperty("tipo", "asistente")
             row_layout.addWidget(label)
             
             
@@ -806,49 +794,18 @@ class PantallaAsistenciaAlumnos(QWidget, Ui_PantallaAsistenciaAlumnos):
         elif self.input_inasistente.isChecked():
             
             label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
-            label.setStyleSheet("""
-                                
-                                QLabel{
-                                    
-                                    background:#ffacac;
-                                    font-family: 'Arial';
-                                    font-weight: bold;
-                                    font-size: 10pt;
-                                    padding-left:5px;
-                                    
-                                    
-                                    
-                                }
-                                
-                                """)
+            label.setProperty("tipo", "inasistente")
             row_layout.addWidget(label)
 
         # Botón para eliminar
-        delete_button = QPushButton()
-        delete_button.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
-        delete_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        delete_button.setFixedSize(35,35)
-        delete_button.setStyleSheet("""
-                                    
-                                    QPushButton{
-                                        background:red;
-                                        border-radius:12px;
-                                        icon-size:28px;
-                                    
-                                    }
-                                    
-                                    QPushButton:hover{
-                                        
-                                        background:#9e0000
-                                        
-                                        
-                                    }
-                                    
-                                    
-                                    """)
+        boton_borrar = QPushButton()
+        boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        boton_borrar.setFixedSize(60,40)
+        boton_borrar.setIconSize(QSize(30, 30))
+        boton_borrar.setProperty("tipo","boton_borrar")
         
-        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
-        row_layout.addWidget(delete_button)
+        boton_borrar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        row_layout.addWidget(boton_borrar)
 
         # Asignar el widget al QListWidgetItem
         item.setSizeHint(widget.sizeHint())
