@@ -148,8 +148,9 @@ QPushButton[tipo="boton_anadir"]{
 QPushButton[tipo="boton_editar"]{
 	font-size:11px;
 	icon: url(:/iconos/iconos_de_interfaz/pencil-white.png);
-	background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(217, 199, 0, 255), stop:1 rgba(192, 107, 0, 255)) ;	border-radius:20px;
+	background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0.448864, stop:0 rgba(217, 199, 0, 255), stop:1 rgba(255, 162, 0, 255))  ;	
 	color: rgb(255, 255, 255);
+	border-radius:12px;
 	padding:0px;
 }
 
@@ -161,7 +162,7 @@ QPushButton[tipo="boton_borrar"]{
 	font-size:11px;
 	icon: url(:/iconos/iconos_de_interfaz/trash-2.png);
 	background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 0, 0, 255), stop:1 rgba(255, 0, 36, 255)) ;
-	border-radius:20px;
+	border-radius:12px;
 	color: rgb(255, 255, 255);
 	padding:0px;
 }
@@ -200,10 +201,31 @@ QPushButton[tipo="boton_generar_reporte"]{
 	icon:url(:/iconos/iconos_de_interfaz/file-white.png);
 }
 
+QPushButton[tipo="boton_ver"]{
+	border-radius:12px;
+	icon:url(:/iconos/iconos_de_interfaz/eye-white.png)
+}
+
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
 	image:url(:/iconos/iconos_de_interfaz/circle-user-round.png);
+}
+
+QLabel[tipo="asistente"]{
+	background:#00aa61;
+	font-size: 12pt;
+	color:#ffffff;
+	padding-left:5px;
+	border-radius:12px;
+}
+
+QLabel[tipo="inasistente"]{
+	background: #ff5252;
+	font-size: 12pt;
+	color:#ffffff;
+	padding-left:5px;
+	border-radius:12px;
 }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -238,7 +260,7 @@ QFrame[tipo="espacio_form"]{
 }
 
 QFrame[tipo="sub_espacio_form"]{
-	border:2px solid rgb(216, 216, 216);
+	border:2px solid rgba(190, 190, 190, 1);
 	border-radius:20px;
 }
 
@@ -729,3 +751,30 @@ QGroupBox{
 	border:none;
 	color:#000000;
 }
+
+
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------*/
+
+
+/* 15. QMessageBox */
+
+QMessageBox {
+	background-color: #ffffff;
+	color: #000000;
+	font-size: 14px;
+}
+
+QMessageBox QLabel {
+	color: #000000;
+	font-size: 14px;
+}
+
+QMessageBox QPushButton {
+	padding: 8px 16px;
+	border-radius: 4px;
+	font-size: 15px;
+	min-width: 40px;
+}
+
