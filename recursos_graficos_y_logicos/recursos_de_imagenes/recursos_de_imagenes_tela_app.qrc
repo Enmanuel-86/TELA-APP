@@ -28,6 +28,8 @@
     <file>Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>iconos_de_interfaz/catalogo.png</file>
+    <file>iconos_de_interfaz/copia-de-seguridad-de-archivos.png</file>
     <file>iconos_de_interfaz/asistencia.png</file>
     <file>iconos_de_interfaz/pencil-white.png</file>
     <file>iconos_de_interfaz/pencil.png</file>
@@ -44,13 +46,8 @@
     <file>iconos_de_interfaz/chevron-up.png</file>
     <file>iconos_de_interfaz/sun.png</file>
     <file>iconos_de_interfaz/agregar-usuario.png</file>
-    <file>iconos_de_interfaz/archivo.png</file>
-    <file>iconos_de_interfaz/base_de_datos.png</file>
-    <file>iconos_de_interfaz/borrar.png</file>
-    <file>iconos_de_interfaz/calendario.png</file>
     <file>iconos_de_interfaz/brush-cleaning-white.png</file>
     <file>iconos_de_interfaz/brush-cleaning.png</file>
-    <file>iconos_de_interfaz/carpeta_abierta.png</file>
     <file>iconos_de_interfaz/catalogar.png</file>
     <file>iconos_de_interfaz/cerrar_sesion.png</file>
     <file>iconos_de_interfaz/circle-user-round.png</file>
@@ -60,15 +57,12 @@
     <file>iconos_de_interfaz/database-white.png</file>
     <file>iconos_de_interfaz/empleado.png</file>
     <file>iconos_de_interfaz/estudiantes.png</file>
-    <file>iconos_de_interfaz/exportar.png</file>
     <file>iconos_de_interfaz/eye.png</file>
     <file>iconos_de_interfaz/eye-off.png</file>
     <file>iconos_de_interfaz/eye-off-white.png</file>
     <file>iconos_de_interfaz/eye-white.png</file>
     <file>iconos_de_interfaz/file.png</file>
     <file>iconos_de_interfaz/file-white.png</file>
-    <file>iconos_de_interfaz/flecha_abajo.png</file>
-    <file>iconos_de_interfaz/flecha_izquierda.png</file>
     <file>iconos_de_interfaz/search.png</file>
     <file>iconos_de_interfaz/search-white.png</file>
     <file>iconos_de_interfaz/hogar.png</file>
@@ -76,8 +70,19 @@
     <file>iconos_de_interfaz/lock-keyhole.png</file>
     <file>iconos_de_interfaz/lock-keyhole-white.png</file>
     <file>iconos_de_interfaz/mail.png</file>
-    <file>iconos_de_interfaz/mas.png</file>
     <file>iconos_de_interfaz/menu.png</file>
+    <file>iconos_de_interfaz/folder-white.png</file>
+    <file>iconos_de_interfaz/folder.png</file>
+    <file>iconos_de_interfaz/calendar-days-white.png</file>
+    <file>iconos_de_interfaz/calendar-days.png</file>
+    <file>iconos_de_interfaz/mail-white.png</file>
+    <file>iconos_de_interfaz/mail.png</file>
+    <file>iconos_de_interfaz/filewhite.png</file>
+    <file>iconos_de_interfaz/file.png</file>
+    <file>iconos_de_interfaz/file-down-white.png</file>
+    <file>iconos_de_interfaz/file-down.png</file>
+    <file>iconos_de_interfaz/file-up-white.png</file>
+    <file>iconos_de_interfaz/file-up.png</file>
     <file>iconos_de_interfaz/respaldo.png</file>
     <file>iconos_de_interfaz/book-text-white.png</file>
     <file>iconos_de_interfaz/book-text.png</file>
