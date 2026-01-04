@@ -161,18 +161,12 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         # Rutas relativas de la imagenes
         
-        ## cintillo ##
-        ## Rutas relativas de la imagenes ##
-        self.logo_zona_educativa.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_zona_educativa.png")))
-        self.membrete.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "membrete.png")))
-        self.logo_tela.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.png")))
-        self.logo_juventud.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "logo_juventud.png")))
 
         
         self.botones_sidebar = (self.boton_principal, self.boton_estudiante, self.boton_personal, 
-                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_salir)
+                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_generar_reporte ,self.boton_salir)
         
-        self.pantallas_importantes = (3,8)
+        self.pantallas_importantes = (3, 8, 11, 6)
         
         
         
@@ -239,7 +233,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.stacked_widget.currentChanged.connect(lambda indice_stackedwidget:  self.boton_principal.setChecked(True) if indice_stackedwidget == 1 else None)
         
         # Funciones para los botones del sidebar
-        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.sidebar))
+        self.boton_menu.clicked.connect(lambda: FuncionSistema.cambiar_tamano_side_bar(self.sidebar, self.espacio_botones_temas))
         self.boton_principal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,1 ))
         self.boton_estudiante.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget,2 ))
         self.boton_personal.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 7 ))
@@ -400,7 +394,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    #FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_default.qss')
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
     
     window.show()
     window.showMaximized()
