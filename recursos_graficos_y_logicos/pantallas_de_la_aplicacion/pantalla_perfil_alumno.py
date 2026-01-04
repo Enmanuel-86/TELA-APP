@@ -1,6 +1,7 @@
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QWidget, QPushButton , QHBoxLayout, QListWidgetItem, QLabel)
 from PyQt5 import QtGui, QtCore
+from PyQt5.QtCore import QSize
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInfoCompletaDelAlumno
 from ..utilidades.funciones_sistema import FuncionSistema
@@ -322,25 +323,10 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             boton_ver = QPushButton()
             boton_ver.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "ver_contraseña.png")))
             boton_ver.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-            boton_ver.setFixedSize(40,40)
-            boton_ver.setStyleSheet("""
-                                        
-                                        QPushButton{
-                                            background:#ffffff;
-                                            border-radius:12px;
-                                            icon-size:28px;
-                                            border:1px solid black;
-                                        }
-                                        
-                                        QPushButton:hover{
-                                            
-                                            background:#acacac
-                                            
-                                            
-                                        }
-                                        
-                                        
-                                        """)
+            boton_ver.setFixedSize(60,40)
+            boton_ver.setIconSize(QSize(30, 30))
+            boton_ver.setProperty("tipo", "boton_ver")
+            
             
             row_layout.addWidget(boton_ver)
             
