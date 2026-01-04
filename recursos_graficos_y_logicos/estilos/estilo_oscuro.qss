@@ -126,7 +126,17 @@ QPushButton[tipo="boton_limpiar"]:hover{
 	background-color: rgb(34, 26, 143);
 }
 
+QPushButton[tipo="boton_importar"]{
+	icon:url(:/iconos/iconos_de_interfaz/file-up-white.png);
+}
 
+QPushButton[tipo="boton_exportar"]{
+	icon:url(:/iconos/iconos_de_interfaz/file-down-white.png);
+}
+
+QPushButton[tipo="boton_generar_reporte"]{
+	icon:url(:/iconos/iconos_de_interfaz/file-white.png);
+}
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
@@ -159,6 +169,11 @@ QFrame[tipo="espacio_form"]{
 	padding:10px;
 	border-radius:20px;
 
+}
+
+QFrame[tipo="sub_espacio_form"]{
+	border:2px solid rgb(34, 32, 33);
+	border-radius:20px;
 }
 
 
@@ -422,7 +437,7 @@ QDateEdit::up-button {
     border: none;
 	margin:0px;
 	border-top-right-radius:10px;
-	image: url(:/iconos/imagenes/chevron-up.png);
+	image: url(:/iconos/iconos_de_interfaz/chevron-up.png);
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
@@ -432,7 +447,7 @@ QDateEdit::down-button{
     background: red;
     border: none;
 	border-bottom-right-radius:10px;
-	image: url(:/iconos/imagenes/chevron-down.png);
+	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
 background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 
 }
