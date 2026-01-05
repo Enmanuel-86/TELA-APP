@@ -4,7 +4,7 @@ import random
 from PyQt5.QtWidgets import (QApplication, QStackedWidget, QVBoxLayout,
                              QMainWindow, QWidget, QMessageBox, QLineEdit, QStatusBar)
 from PyQt5.QtGui import QIcon, QPixmap
-import recursos_graficos_y_logicos.recursos_de_imagenes.recursos_de_imagenes_tela_app_rc as recursos_de_imagenes_tela_app_rc
+import recursos_graficos_y_logicos.recursos_de_imagenes_tela_app_rc as recursos_de_imagenes_tela_app_rc
 sys.modules["recursos_de_imagenes_tela_app_rc"] = recursos_de_imagenes_tela_app_rc
 
 from PyQt5.QtWidgets import QGraphicsDropShadowEffect
@@ -240,8 +240,8 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
         self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
-        self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_default.qss'))
-        self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss'))
+        self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_default.qss'))
+        self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro.qss'))
         self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
@@ -394,7 +394,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
+    FuncionSistema.cargar_estilos(window, ':/hojas_de_estilo/estilos/estilo_oscuro.qss')
     
     window.show()
     window.showMaximized()

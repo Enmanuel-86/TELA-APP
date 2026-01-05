@@ -245,7 +245,7 @@ class Ui_VentanaAnadirReposo(object):
 "    background-color: rgb(199, 199, 199)\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/calendario.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/calendario.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_para_agregar_fecha.setIcon(icon)
         self.boton_para_agregar_fecha.setIconSize(QtCore.QSize(20, 20))
         self.boton_para_agregar_fecha.setObjectName("boton_para_agregar_fecha")
@@ -358,7 +358,7 @@ class Ui_VentanaAnadirReposo(object):
 "\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/control_de_reposos.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_anadir_reposo.setIcon(icon1)
         self.boton_anadir_reposo.setIconSize(QtCore.QSize(20, 20))
         self.boton_anadir_reposo.setObjectName("boton_anadir_reposo")

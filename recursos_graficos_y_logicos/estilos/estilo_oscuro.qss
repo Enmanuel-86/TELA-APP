@@ -43,17 +43,17 @@ QFrame[tipo="espacio_principal_login"]{
 }
 
 QLabel#icono_usuario{
-	image: url(:/iconos/iconos_de_interfaz/circle-user-round-white.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-user-round-white.png);
 }
 
 QLabel#icono_contrasena{
-	image: url(:/iconos/iconos_de_interfaz/lock-keyhole-white.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/lock-keyhole-white.png);
 }
 
 QToolButton#boton_ver_contrasena{
 	padding:0px;
 	background:transparent;
-	image:url(:/iconos/iconos_de_interfaz/eye-white.png)
+	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png)
 }
 
 QToolButton#boton_ver_contrasena:hover{
@@ -62,29 +62,29 @@ QToolButton#boton_ver_contrasena:hover{
 }
 
 QToolButton#boton_ver_contrasena:checked {
-    image: url(:/iconos/iconos_de_interfaz/eye-off-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off-white.png);
 	background:transparent;
 }
 
 /* OJO ABIERTO */
 QToolButton#boton_ver_contrasena:!checked {
 background:transparent;
-    image: url(:/iconos/iconos_de_interfaz/eye-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png);
 }
 
 /* botones segun su acción  */
 
 /* boton de regresar */
 QPushButton[tipo="boton_regresar"]{
-	icon: url(:/iconos/iconos_de_interfaz/arrow-left-white.png);
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/arrow-left-white.png);
 }
 
 QPushButton[tipo="boton_anadir"]{
-	icon: url(:/iconos/iconos_de_interfaz/circle-plus-white.png);
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-plus-white.png);
 }
 
 QPushButton[tipo="boton_editar"]{
-	icon: url(:/iconos/iconos_de_interfaz/pencil-white.png);
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/pencil-white.png);
 	background-color:qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0.448864, stop:0 rgba(217, 199, 0, 255), stop:1 rgba(255, 162, 0, 255))  ;	
 	border-radius:12px;
 	color: rgb(255, 255, 255);
@@ -96,7 +96,7 @@ QPushButton[tipo="boton_editar"]:hover{
 }
 
 QPushButton[tipo="boton_borrar"]{
-	icon: url(:/iconos/iconos_de_interfaz/trash-2.png);
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/trash-2.png);
 	background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 0, 0, 255), stop:1 rgba(255, 0, 36, 255)) ;
 	border-radius:12px;
 	color: rgb(255, 255, 255);
@@ -109,14 +109,14 @@ QPushButton[tipo="boton_borrar"]:hover{
 
 
 QPushButton[tipo="boton_buscar"]{
-	icon: url(:/iconos/iconos_de_interfaz/search-white.png);
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/search-white.png);
 }
 
 QPushButton[tipo="boton_limpiar"]{
 	background-color: rgb(85, 85, 255);
 	font-size:10pt;
 	font-weight:500;
-	icon:url(:/iconos/iconos_de_interfaz/brush-cleaning-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/brush-cleaning-white.png);
 	color: rgb(255, 255, 255);
 	padding:0px;
 }
@@ -126,26 +126,26 @@ QPushButton[tipo="boton_limpiar"]:hover{
 }
 
 QPushButton[tipo="boton_importar"]{
-	icon:url(:/iconos/iconos_de_interfaz/file-up-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-up-white.png);
 }
 
 QPushButton[tipo="boton_exportar"]{
-	icon:url(:/iconos/iconos_de_interfaz/file-down-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-down-white.png);
 }
 
 QPushButton[tipo="boton_generar_reporte"]{
-	icon:url(:/iconos/iconos_de_interfaz/file-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-white.png);
 }
 
 QPushButton[tipo="boton_ver"]{
 	border-radius:12px;
-	icon:url(:/iconos/iconos_de_interfaz/eye-white.png)
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png)
 }
 
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
-	image:url(:/iconos/iconos_de_interfaz/circle-user-round-white.png);
+	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-user-round-white.png);
 }
 
 QLabel[tipo="asistente"]{
@@ -348,7 +348,7 @@ QComboBox{
 QComboBox::drop-down {
 	width:35px;
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
-	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
 }
@@ -456,7 +456,7 @@ QDateEdit::up-button {
     border: none;
 	margin:0px;
 	border-top-right-radius:10px;
-	image: url(:/iconos/iconos_de_interfaz/chevron-up.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-up.png);
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
@@ -466,7 +466,7 @@ QDateEdit::down-button{
     background: red;
     border: none;
 	border-bottom-right-radius:10px;
-	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
 background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 
 }
@@ -487,7 +487,7 @@ QDateEdit::down-button:hover{
 QDateEdit::drop-down {
 	width:35px;
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
-	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
 }
@@ -656,7 +656,7 @@ QTimeEdit::up-button {
     border: none;
 	margin:0px;
 	border-top-right-radius:10px;
-	image: url(:/iconos/iconos_de_interfaz/chevron-up.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-up.png);
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
@@ -666,7 +666,7 @@ QTimeEdit::down-button{
     background: red;
     border: none;
 	border-bottom-right-radius:10px;
-	image: url(:/iconos/iconos_de_interfaz/chevron-down.png);
+	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
 background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 
 }

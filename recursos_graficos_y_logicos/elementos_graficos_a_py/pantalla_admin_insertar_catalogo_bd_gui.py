@@ -63,7 +63,7 @@ class Ui_PantallaInsertarCatalogoBD(object):
         self.label.setMinimumSize(QtCore.QSize(111, 91))
         self.label.setMaximumSize(QtCore.QSize(111, 91))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/iconos/iconos_de_interfaz/catalogo.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/iconos/recursos_de_imagenes/iconos_de_interfaz/catalogar.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)

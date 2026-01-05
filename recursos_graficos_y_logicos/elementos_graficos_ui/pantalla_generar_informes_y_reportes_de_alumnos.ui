@@ -184,7 +184,7 @@
                    <string/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">:/iconos/iconos_de_interfaz/reportes.png</pixmap>
+                   <pixmap resource="../recursos_de_imagenes_tela_app.qrc">:/iconos/recursos_de_imagenes/iconos_de_interfaz/reportes.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -1002,7 +1002,8 @@
   </layout>
  </widget>
  <resources>
-  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
  </resources>
  <connections/>
 </ui>

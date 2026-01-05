@@ -1496,5 +1496,6 @@ class Ui_PantallaInfoCompletaDelEmpleado(object):
         self.label_enfermedades.setProperty("tipo", _translate("PantallaInfoCompletaDelEmpleado", "titulo_qlineedit"))
         self.label_discapacidades.setText(_translate("PantallaInfoCompletaDelEmpleado", "Diagnosticos"))
         self.label_discapacidades.setProperty("tipo", _translate("PantallaInfoCompletaDelEmpleado", "titulo_qlineedit"))
+import recursos_de_imagenes_tela_app_rc
 import os
 BASE_DIR = os.path.dirname(__file__)

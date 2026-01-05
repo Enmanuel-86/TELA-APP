@@ -71,7 +71,7 @@ class Ui_CrearNuevoUsuario(object):
 "}")
         self.boton_de_regreso.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_de_regreso.setIcon(icon)
         self.boton_de_regreso.setIconSize(QtCore.QSize(30, 30))
         self.boton_de_regreso.setObjectName("boton_de_regreso")
@@ -141,7 +141,7 @@ class Ui_CrearNuevoUsuario(object):
         self.icono_usuario.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_usuario.setText("")
-        self.icono_usuario.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
+        self.icono_usuario.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
         self.icono_usuario.setScaledContents(True)
         self.icono_usuario.setObjectName("icono_usuario")
         self.boton_roles = QtWidgets.QComboBox(self.espacio_central)
@@ -237,7 +237,7 @@ class Ui_CrearNuevoUsuario(object):
         self.icono_contrasena.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_contrasena.setText("")
-        self.icono_contrasena.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_contraseña.png")))
+        self.icono_contrasena.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_contraseña.png"))
         self.icono_contrasena.setScaledContents(True)
         self.icono_contrasena.setObjectName("icono_contrasena")
         self.icono_usuario_2 = QtWidgets.QLabel(self.espacio_central)
@@ -245,7 +245,7 @@ class Ui_CrearNuevoUsuario(object):
         self.icono_usuario_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius:10px;")
         self.icono_usuario_2.setText("")
-        self.icono_usuario_2.setPixmap(QtGui.QPixmap(os.path.join(BASE_DIR, "../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png")))
+        self.icono_usuario_2.setPixmap(QtGui.QPixmap("C:/Users/Enman/Documents/Enmanuel/trabajos uni Enmanuel/Proyecto Tela/Sistema_de_informacion_con_PyQt5/TELA-APP/recursos_graficos_y_logicos/elementos_graficos_ui\\../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png"))
         self.icono_usuario_2.setScaledContents(True)
         self.icono_usuario_2.setObjectName("icono_usuario_2")
         self.titulo_usuario = QtWidgets.QLabel(self.espacio_central)

@@ -82,7 +82,7 @@ class Ui_Login(object):
         self.logo_del_tela.setGeometry(QtCore.QRect(340, 60, 181, 171))
         self.logo_del_tela.setStyleSheet("")
         self.logo_del_tela.setText("")
-        self.logo_del_tela.setPixmap(QtGui.QPixmap(":/imagenes_y_logos/Tela.png"))
+        self.logo_del_tela.setPixmap(QtGui.QPixmap(":/imagenes_y_logos/recursos_de_imagenes/Tela.png"))
         self.logo_del_tela.setScaledContents(True)
         self.logo_del_tela.setObjectName("logo_del_tela")
         self.boton_ver_contrasena = QtWidgets.QToolButton(self.espacio_login)

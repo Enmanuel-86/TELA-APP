@@ -110,8 +110,8 @@
            <string>  MENU</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/menu.png</normaloff>:/iconos/iconos_de_interfaz/menu.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/menu.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/menu.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -156,8 +156,8 @@
            <string>  Principal</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/hogar.png</normaloff>:/iconos/iconos_de_interfaz/hogar.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/hogar.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/hogar.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -199,8 +199,8 @@
            <string>  Estudiantes</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/estudiantes.png</normaloff>:/iconos/iconos_de_interfaz/estudiantes.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -251,8 +251,8 @@
            <string>  Personal</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/empleado.png</normaloff>:/iconos/iconos_de_interfaz/empleado.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/empleado.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/empleado.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -297,8 +297,8 @@
            <string>  Respaldos</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/respaldo.png</normaloff>:/iconos/iconos_de_interfaz/respaldo.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/respaldo.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/respaldo.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -343,8 +343,8 @@
            <string>  Generar reporte</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/reportes.png</normaloff>:/iconos/iconos_de_interfaz/reportes.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/reportes.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/reportes.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -389,8 +389,8 @@
            <string>  Cargar catalogo</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/catalogar.png</normaloff>:/iconos/iconos_de_interfaz/catalogar.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/catalogo.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/catalogo.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -448,8 +448,8 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-               <normaloff>:/iconos/iconos_de_interfaz/sun.png</normaloff>:/iconos/iconos_de_interfaz/sun.png</iconset>
+              <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+               <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/sun.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/sun.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -481,8 +481,8 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-               <normaloff>:/iconos/iconos_de_interfaz/moon.png</normaloff>:/iconos/iconos_de_interfaz/moon.png</iconset>
+              <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+               <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/moon.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/moon.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -515,8 +515,8 @@
            <string>  salir</string>
           </property>
           <property name="icon">
-           <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-            <normaloff>:/iconos/iconos_de_interfaz/cerrar_sesion.png</normaloff>:/iconos/iconos_de_interfaz/cerrar_sesion.png</iconset>
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/cerrar_sesion.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -549,7 +549,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
  </resources>
  <connections/>
 </ui>

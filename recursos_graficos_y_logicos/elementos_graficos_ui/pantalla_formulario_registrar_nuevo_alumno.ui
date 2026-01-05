@@ -255,7 +255,7 @@
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">:/iconos/iconos_de_interfaz/estudiantes.png</pixmap>
+                      <pixmap resource="../recursos_de_imagenes_tela_app.qrc">:/iconos/recursos_de_imagenes/iconos_de_interfaz/estudiantes.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -338,7 +338,6 @@
 	background-color: rgb(85, 85, 255);
 	border-radius:20px;
 	padding:10px;
-	icon:url(:/iconos/iconos_de_interfaz/circle-question-mark.png);
 }
 
 QPushButton:hover{
@@ -352,6 +351,10 @@ QPushButton:hover{
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                       <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -4740,8 +4743,8 @@ padding:0px;</string>
                       <string>Finallizar</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc">
-                       <normaloff>:/iconos/iconos_de_interfaz/save.png</normaloff>:/iconos/iconos_de_interfaz/save.png</iconset>
+                      <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                       <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -4826,7 +4829,8 @@ padding:0px;</string>
   <tabstop>boton_de_regreso</tabstop>
  </tabstops>
  <resources>
-  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
  </resources>
  <connections/>
 </ui>
