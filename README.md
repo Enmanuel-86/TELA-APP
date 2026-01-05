@@ -3,7 +3,7 @@
 # Este repositorio es **UN PROYECTO UNIVERSITARIO**, esto no tiene ningun fin de lucro, todo este software es libre.
 
 
-## Si deseas probar el sistema haz click [aqui](https://github.com/Enmanuel-86/TELA-APP/releases/tag/Version_20%2F11%2F2025) 💡
+## Si deseas probar el sistema haz click [aqui](https://github.com/Enmanuel-86/TELA-APP/releases/tag/Version_04%2F01%2F2026) 💡
 
 
 
