@@ -1,5 +1,5 @@
 from conexiones.conexion import Base
-from sqlalchemy import Column, Integer, String, Date, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, Boolean, LargeBinary, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import date
 
@@ -25,6 +25,7 @@ class Alumno(Base):
     escolaridad = Column(String(20), default = "No posee")
     procedencia = Column(String(35), default = "Foráneo/a")
     situacion = Column(String(10), default = "Ingresado")
+    foto_perfil = Column(LargeBinary)
     
     representante = relationship("Representante", back_populates = "alumno")
     medidas_alumno = relationship("MedidasAlumno", back_populates = "alumno", cascade="all, delete-orphan")

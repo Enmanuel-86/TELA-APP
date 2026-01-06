@@ -1575,6 +1575,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     "num_telefono_adicional": num_telefono_adicional,
                                     "carga_familiar": carga_familiar,
                                     "estado_civil": estado_civil
+                         # Acá iría "foto_perfil": "ruta/foto.png"
                                 }
                                 
                                 errores_datos_representante = representante_servicio.validar_campos_representante(
@@ -1639,6 +1640,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         "escolaridad": campos_info_academica.get("escolaridad"),
                                         "procedencia": campos_info_academica.get("procedencia"),
                                         "situacion": campos_datos_alumno_1.get("situacion")
+                             # Acá iría "foto_perfil": "ruta/foto.png"
                                     }
                                     
                                     # Acá guardo el alumno_id que retorno al crear un registro en la tabla tb_alumnos

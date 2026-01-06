@@ -6,6 +6,7 @@ from modelos import Empleado
 from repositorios.usuarios.auditoria_repositorio import auditoria_repositorio
 from repositorios.repositorio_base import RepositorioBase
 from conexiones.conexion import conexion_bd
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import cargar_foto_perfil
 
 
 class EmpleadoRepositorio(RepositorioBase):
@@ -16,6 +17,10 @@ class EmpleadoRepositorio(RepositorioBase):
     def registrar(self, campos: Dict) -> int:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
+                ruta_foto_perfil = campos["foto_perfil"]
+                foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                campos["foto_perfil"] = foto_perfil
+                
                 nuevo_empleado = Empleado(**campos)
                 
                 sesion.add(nuevo_empleado)
@@ -59,7 +64,8 @@ class EmpleadoRepositorio(RepositorioBase):
                             END AS edad,
                             situacion,
                             sexo,
-                            tiene_hijos_menores
+                            tiene_hijos_menores,
+                            foto_perfil
                         FROM tb_empleados;
                     """
                 )).fetchall()
@@ -91,7 +97,8 @@ class EmpleadoRepositorio(RepositorioBase):
                             END AS edad,
                             situacion,
                             sexo,
-                            tiene_hijos_menores
+                            tiene_hijos_menores,
+                            foto_perfil
                         FROM tb_empleados
                         WHERE empleado_id = :empleado_id;
                     """
@@ -195,7 +202,8 @@ class EmpleadoRepositorio(RepositorioBase):
                             END AS edad,
                             situacion,
                             sexo,
-                            tiene_hijos_menores
+                            tiene_hijos_menores,
+                            foto_perfil
                         FROM tb_empleados
                         WHERE cedula = :cedula;
                     """
@@ -289,7 +297,8 @@ class EmpleadoRepositorio(RepositorioBase):
                     "estado_reside": "ESTADO EN EL QUE RESIDE",
                     "municipio": "MUNICIPIO",
                     "direccion_residencia": "DIRECCIÓN DE RESIDENCIA",
-                    "situacion": "SITUACIÓN"
+                    "situacion": "SITUACIÓN",
+                    "foto_perfil": "FOTO DE PERFIL"
                 }
                 
                 for clave in diccionario_empleado.keys():
@@ -302,6 +311,14 @@ class EmpleadoRepositorio(RepositorioBase):
                             valor_actual = "SI" if (campos_empleado.get("tiene_hijos_menores") == 1) else "NO"
                             
                             valor_campo_actual = campos_empleado.get("tiene_hijos_menores")
+                        elif (clave == "foto_perfil"):
+                            ruta_foto_perfil = campos_empleado.get(clave)
+                            foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                            campos_empleado.get(clave) = foto_perfil
+                            
+                            valor_campo_actual = campos_empleado.get(clave)
+                            
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                         else:
                             valor_anterior = diccionario_empleado.get(clave)
                             valor_actual = campos_empleado.get(clave)

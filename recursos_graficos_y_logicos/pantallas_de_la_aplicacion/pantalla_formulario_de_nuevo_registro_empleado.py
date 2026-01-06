@@ -897,6 +897,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             "municipio": municipio,
                                             "direccion_residencia": direccion_residencia,
                                             "situacion": situacion
+                                 # Acá iría "foto_perfil": "ruta/foto.png"
                                         }
 
                                         # Acá va a retornar el empleado_id para asociarlo a las demás tablas cuyos campos

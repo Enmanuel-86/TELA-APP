@@ -1,5 +1,5 @@
 from conexiones.conexion import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, LargeBinary
 from sqlalchemy.orm import relationship
 
 
@@ -15,5 +15,6 @@ class Representante(Base):
     num_telefono_adicional = Column(String(15))
     carga_familiar = Column(Integer, nullable = False)
     estado_civil = Column(String(15), default = "Soltero/a")
+    foto_perfil = Column(LargeBinary)
     
     alumno = relationship("Alumno", back_populates = "representante", cascade = "save-update, merge")

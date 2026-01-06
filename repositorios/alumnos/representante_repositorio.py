@@ -3,6 +3,7 @@ from repositorios.repositorio_base import RepositorioBase
 from modelos import Representante, Alumno
 from repositorios.usuarios.auditoria_repositorio import auditoria_repositorio
 from conexiones.conexion import conexion_bd
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import cargar_foto_perfil
 
 
 class RepresentanteRepositorio(RepositorioBase):
@@ -13,6 +14,10 @@ class RepresentanteRepositorio(RepositorioBase):
     def registrar(self, campos: Dict) -> int:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
+                ruta_foto_perfil = campos["foto_perfil"]
+                foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                campos["foto_perfil"] = foto_perfil
+                
                 nuevo_representante = Representante(**campos)
                 
                 sesion.add(nuevo_representante)
@@ -39,7 +44,8 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono,
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
-                    Representante.estado_civil
+                    Representante.estado_civil,
+                    Representante.foto_perfil
                 ).all()
                 return representantes
         except Exception as error:
@@ -57,7 +63,8 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono,
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
-                    Representante.estado_civil
+                    Representante.estado_civil,
+                    Representante.foto_perfil
                 ).filter_by(representante_id = representante_id).first()
                 return representante
         except Exception as error:
@@ -75,7 +82,8 @@ class RepresentanteRepositorio(RepositorioBase):
                     Representante.num_telefono,
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
-                    Representante.estado_civil
+                    Representante.estado_civil,
+                    Representante.foto_perfil
                 ).filter_by(cedula = cedula).first()
                 
                 return representante
@@ -120,18 +128,28 @@ class RepresentanteRepositorio(RepositorioBase):
                     "num_telefono": "NÚMERO DE TELÉFONO",
                     "num_telefono_adicional": "NÚMERO DE TELÉFONO ADICIONAL",
                     "carga_familiar": "CARGA FAMILIAR",
-                    "estado_civil": "ESTADO CIVIL"
+                    "estado_civil": "ESTADO CIVIL",
+                    "foto_perfil": "FOTO DE PERFIL"
                 }
                 
                 for clave in diccionario_representante.keys():
                     if not(campos_representante.get(clave) == diccionario_representante.get(clave)):
                         campo_actualizado = campos.get(clave)
                         
-                        valor_campo_anterior = diccionario_representante.get(clave)
-                        valor_campo_actual = campos_representante.get(clave)
-                        
-                        accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_campo_anterior}. AHORA: {valor_campo_actual}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
-                        auditoria_repositorio.registrar(self.entidad, accion)
+                        if (clave == "foto_perfil"):
+                            ruta_foto_perfil = campos_representante.get(clave)
+                            foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                            campos_representante.get(clave) = foto_perfil
+                            
+                            valor_campo_actual = campos_representante.get(clave)
+                            
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
+                        else:
+                            valor_campo_anterior = diccionario_representante.get(clave)
+                            valor_campo_actual = campos_representante.get(clave)
+                            
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_campo_anterior}. AHORA: {valor_campo_actual}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
+                            auditoria_repositorio.registrar(self.entidad, accion)
                         
                         sesion.query(Representante).filter_by(representante_id = representante_id).update({clave: valor_campo_actual})
                         sesion.commit()
