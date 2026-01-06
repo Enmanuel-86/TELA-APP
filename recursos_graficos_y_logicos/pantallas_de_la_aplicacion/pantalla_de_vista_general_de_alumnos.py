@@ -19,6 +19,7 @@ from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.info_bancaria_alumno_repositorio import InfoBancarioAlumnoRepositorio
 from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
+from repositorios.alumnos.representante_repositorio import RepresentanteRepositorio
 
 # Servicios
 
@@ -27,6 +28,7 @@ from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.info_bancaria_alumno_servicio import InfoBancariaAlumnoServicio
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
+from servicios.alumnos.representante_servicio import RepresentanteServicio
 
 
 
@@ -41,7 +43,7 @@ info_bancaria_alumno_repositorio = InfoBancarioAlumnoRepositorio()
 
 info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 
-
+representante_repositorio = RepresentanteRepositorio()
 
 # Instancia Servicios
 
@@ -54,7 +56,7 @@ info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_
 
 info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
 
-
+representante_servicio = RepresentanteServicio(representante_repositorio)
 
 ##################################
 # importaciones de base de datos #
@@ -75,6 +77,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
         self.stacked_widget = stacked_widget
         self.setupUi(self)
+        
+        self.configurar_filtro()
                 
         self.msg_box = QMessageBox(self)
         
@@ -115,14 +119,17 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_buscar.clicked.connect(lambda _: self.aplicar_filtro(self.barra_de_busqueda.text()))
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
+        self.boton_entidades.currentIndexChanged.connect(lambda: self.filtrar_por_ente_seleccionado())
         self.tabla_ver_alumnos.doubleClicked.connect(self.acceder_al_prefil_del_alumno_desde_la_tabla)
-        self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
+        self.barra_de_busqueda.textChanged.connect(lambda texto: self.filtrar_resultados(texto) if not texto == "" else self.filtrar_por_ente_seleccionado())
         self.barra_de_busqueda.returnPressed.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()) )
+        self.barra_de_busqueda.textChanged.connect(lambda texto: self.resultados.hide() if texto == "" else None )
         
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
         
-        self.barra_de_busqueda.textChanged.connect(lambda :  self.filtrar_por_especialidad() if self.barra_de_busqueda.text() == "" else None)
+        
+        
         
         
         
@@ -138,7 +145,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.resultados = QListWidget(self)
         self.resultados.setFocusPolicy(Qt.NoFocus)
         self.resultados.setMouseTracking(True)
-        self.resultados.setStyleSheet("background-color: white; border: 1px solid gray;border-radius:0px; padding:10px;")
+        self.resultados.setStyleSheet("padding:10px;")
         self.resultados.itemClicked.connect(self.seleccionar_item)
         self.resultados.hide() 
         
@@ -190,25 +197,48 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         # Recorremos fila por fila del modelo filtrado (proxy)
         for fila in range(filas_visibles):
 
-            # Obtenemos el índice del proxy
-            index_proxy = self.proxy.index(fila, 0)
+            if self.boton_entidades.currentIndex() == 0: # si es alumno
+                # Obtenemos el índice del proxy
+                index_proxy = self.proxy.index(fila, 0)
 
-            # Convertimos el índice del proxy al índice original del modelo
-            index_modelo = self.proxy.mapToSource(index_proxy)
+                # Convertimos el índice del proxy al índice original del modelo
+                index_modelo = self.proxy.mapToSource(index_proxy)
 
-            # Obtenemos la cédula desde la columna 1 del modelo
-            cedula = modelo.index(index_modelo.row(), 1).data()
+                # Obtenemos la cédula desde la columna 1 del modelo
+                cedula = modelo.index(index_modelo.row(), 1).data()
 
-            # Obtenemos nombre desde la columna 2
-            nombre = modelo.index(index_modelo.row(), 2).data()
+                # Obtenemos nombre desde la columna 2
+                nombre = modelo.index(index_modelo.row(), 2).data()
 
-            # Obtenemos apellido desde la columna 3
-            apellido = modelo.index(index_modelo.row(), 3).data()
+                # Obtenemos apellido desde la columna 3
+                apellido = modelo.index(index_modelo.row(), 3).data()
 
-            # Convertimos todo a minúsculas para comparar
-            cedula_lower = str(cedula).lower()
-            nombre_lower = str(nombre).lower()
-            apellido_lower = str(apellido).lower()
+                # Convertimos todo a minúsculas para comparar
+                cedula_lower = str(cedula).lower()
+                nombre_lower = str(nombre).lower()
+                apellido_lower = str(apellido).lower()
+                
+                
+            if self.boton_entidades.currentIndex() == 1: # si es representante
+                # Obtenemos el índice del proxy
+                index_proxy = self.proxy.index(fila, 0)
+
+                # Convertimos el índice del proxy al índice original del modelo
+                index_modelo = self.proxy.mapToSource(index_proxy)
+
+                # Obtenemos la cédula desde la columna 1 del modelo
+                cedula = modelo.index(index_modelo.row(), 0).data()
+
+                # Obtenemos nombre desde la columna 2
+                nombre = modelo.index(index_modelo.row(), 1).data()
+
+                # Obtenemos apellido desde la columna 3
+                apellido = modelo.index(index_modelo.row(), 2).data()
+
+                # Convertimos todo a minúsculas para comparar
+                cedula_lower = str(cedula).lower()
+                nombre_lower = str(nombre).lower()
+                apellido_lower = str(apellido).lower()
 
             # Si coincide con cedula, nombre o apellido lo agregamos a resultados
             if texto in cedula_lower or texto in nombre_lower or texto in apellido_lower:
@@ -307,10 +337,46 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     ################################################################################################################    
     ################################################################################################################
     
+    def filtrar_en_la_barra_de_busqueda(self):
+        
+        """
+        
+        """
+        
+        if self.barra_de_busqueda.text() and self.boton_entidades.currentIndex() == 0: # si es alumno
+        
+            self.filtrar_por_especialidad()
+            
+        elif self.barra_de_busqueda.text() and self.boton_entidades.currentIndex() == 1: # si es representante
+            
+            self.filtrar_por_ente_seleccionado()
+            
+            
+            
     
+    def filtrar_por_ente_seleccionado(self):
+        """
+            Este metodo sirve para filtrar segun el ente seleccionado alumno o representante, para ver su informacion con mas detalles y editarlo
+        """
     
-    
-    
+        if self.boton_entidades.currentIndex() == 0: # si es alumno
+            
+            self.boton_especialidades.setEnabled(True)
+            self.label_titulo_contador.setText("N° Estudiantes")
+            self.barra_de_busqueda.clear()
+            self.configurar_filtro()
+            self.filtrar_por_especialidad()
+            
+        elif self.boton_entidades.currentIndex() == 1: # si es representante
+            
+            self.boton_especialidades.setEnabled(False)
+            self.barra_de_busqueda.clear()
+            self.configurar_filtro()
+            lista_representates = representante_servicio.obtener_todos_representantes()
+            self.cargar_representantes_en_tabla(self.tabla_ver_alumnos, lista_representates)
+            self.label_contador.setText(str(len(lista_representates)))
+            self.label_titulo_contador.setText("N° Representantes")
+            print("representantes")
     
 
     
@@ -335,10 +401,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                         
                         alumnos_especialidad = inscripcion_servicio.obtener_inscripcion_por_especialidad(especialidad_id = especialidad_id)
                         
-                        self.configurar_filtro()
+                        
                         
                         self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos_especialidad)
                         
+                                                
                         self.actualizar_tabla(especialidad_id)
                         
                         break
@@ -377,7 +444,99 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
         
     
-    
+    def cargar_representantes_en_tabla(self, tabla, representantes):
+        columnas = [
+            "Cédula", "Nombre", "Paterno",
+            "Estado Civil", "Opciones"
+        ]
+
+        global modelo
+        modelo = QStandardItemModel()
+        modelo.setHorizontalHeaderLabels(columnas)
+
+        # Primero cargamos los datos
+        for indice, representante in enumerate(representantes):
+            datos_visibles = [
+            representante[1],  # Cedula
+            representante[2],  # Nombre
+            representante[3],  # Apellido
+            representante[8],  # Estado civil
+            
+            ]
+
+
+            items = []
+            for dato in datos_visibles:
+                item = QStandardItem(str(dato) if dato is not None else "")
+                # Evita edición del usuario
+                item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                items.append(item)
+
+            # Agregar la fila completa
+            modelo.appendRow(items)
+            
+            
+            for fila in range(modelo.rowCount()):
+                tabla.setRowHeight(fila, 40)
+
+            # Numerar filas en el encabezado vertical
+            header_item = QStandardItem(str(indice + 1))
+            header_item.setFlags(Qt.ItemIsEnabled)
+            modelo.setVerticalHeaderItem(indice, header_item)
+
+        #  Muy importante: asignar modelo primero
+        tabla.setModel(modelo)
+        
+        
+        # PROXY --------------------------------------------
+        # Asociar el modelo original al proxy
+        self.proxy.setSourceModel(modelo)
+
+        # Establecer que la tabla use el proxy y no el modelo directo
+        tabla.setModel(self.proxy)
+
+
+        #  Ahora sí añadimos los botones fila por fila
+        for fila in range(modelo.rowCount()):
+            widget = QWidget()
+            layout = QHBoxLayout(widget)
+            boton_editar = QPushButton("Editar")
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            
+
+            # Conectar botones
+            #boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
+            #boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
+
+            layout.addWidget(boton_editar)
+            layout.addWidget(boton_borrar)
+            layout.setContentsMargins(3, 3, 3, 3)
+            widget.setLayout(layout)
+
+            index = modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
+            tabla.setIndexWidget(index, widget)
+       
+
+            # Insertar el widget usando el índice convertido para el proxy
+            proxy_index = self.proxy.mapFromSource(index)
+
+            tabla.setIndexWidget(proxy_index, widget)
+        
+        
     
     # Método para cargar los alumnos en la tabla
     def cargar_alumnos_en_tabla(self, tabla, alumnos):
@@ -486,8 +645,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     def actualizar_especialidades(self):
 
         self.boton_especialidades.clear()
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
+        
 
     # Metodo para actualizar la tabla
     def actualizar_tabla(self, especialidad_id = None):
@@ -496,7 +656,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos_actuales)
             self.label_contador.setText(str(len(alumnos_actuales)))
 
-
+    
 
     
     def habilitar_edicion_alumno(self, fila):
