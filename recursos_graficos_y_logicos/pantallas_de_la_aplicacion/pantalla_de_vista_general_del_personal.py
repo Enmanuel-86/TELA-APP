@@ -167,7 +167,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         
         # cargar catalogo de los tipos de cargos
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 0, "Todos")
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 0)
         
         ######################################################################
@@ -185,7 +185,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.resultados = QListWidget(self)
         self.resultados.setFocusPolicy(Qt.NoFocus)
         self.resultados.setMouseTracking(True)
-        self.resultados.setStyleSheet("background-color: white; border: 1px solid gray;border-radius:0px; padding:10px;")
+        self.resultados.setStyleSheet("padding:10px;")
         self.resultados.itemClicked.connect(self.seleccionar_item)
         self.resultados.hide() 
     
