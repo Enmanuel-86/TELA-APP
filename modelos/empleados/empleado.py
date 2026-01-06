@@ -1,6 +1,6 @@
 from conexiones.conexion import Base
 from datetime import date
-from sqlalchemy import Column, Integer, String, Date, Boolean
+from sqlalchemy import Column, Integer, String, Date, Boolean, LargeBinary
 from sqlalchemy.orm import relationship
 
 
@@ -30,6 +30,7 @@ class Empleado(Base):
     municipio = Column(String(20), nullable = False)
     direccion_residencia = Column(String(100), nullable = False)
     situacion = Column(String(10), default = "Activo")
+    foto_perfil = Column(LargeBinary)
     
     usuario = relationship("Usuario", back_populates = "empleado", cascade="save-update, merge")
     info_laboral = relationship("InfoLaboral", back_populates = "empleado", cascade="all, delete-orphan")

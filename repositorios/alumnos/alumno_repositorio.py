@@ -7,6 +7,7 @@ from modelos import Alumno, Representante, Inscripcion
 from repositorios.usuarios.auditoria_repositorio import auditoria_repositorio
 from repositorios.alumnos.representante_repositorio import representante_repositorio
 from conexiones.conexion import conexion_bd
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import cargar_foto_perfil
 
 
 class AlumnoRepositorio(RepositorioBase):
@@ -17,6 +18,10 @@ class AlumnoRepositorio(RepositorioBase):
     def registrar(self, campos: Dict) -> int:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
+                ruta_foto_perfil = campos["foto_perfil"]
+                foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                campos["foto_perfil"] = foto_perfil
+                
                 nuevo_alumno = Alumno(**campos)
                 
                 sesion.add(nuevo_alumno)
@@ -53,7 +58,8 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cma,
                         alumnos.imt,
                         alumnos.fecha_ingreso_institucion,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
                     WHERE alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial';
                 """
@@ -88,7 +94,8 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cma,
                         alumnos.imt,
                         alumnos.fecha_ingreso_institucion,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
                 """
@@ -128,7 +135,8 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.cma,
                         alumnos.imt,
                         alumnos.fecha_ingreso_institucion,
-                        alumnos.situacion
+                        alumnos.situacion,
+                        alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
                     WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;
                 """
@@ -150,7 +158,8 @@ class AlumnoRepositorio(RepositorioBase):
                     Representante.num_telefono,
                     Representante.num_telefono_adicional,
                     Representante.carga_familiar,
-                    Representante.estado_civil
+                    Representante.estado_civil,
+                    Representante.foto_perfil
                 ).join(Alumno.representante).filter(Alumno.alumno_id == alumno_id).first()
                 
                 return representante_alumno
@@ -195,7 +204,8 @@ class AlumnoRepositorio(RepositorioBase):
                     "relacion_con_rep": "RELACIÓN CON SU REPRESENTANTE",
                     "escolaridad": "ESCOLARIDAD",
                     "procedencia": "PROCEDENCIA",
-                    "situacion": "SITUACIÓN"
+                    "situacion": "SITUACIÓN",
+                    "foto_perfil": "FOTO DE PERFIL"
                 }
                 
                 for clave in diccionario_alumno.keys():
@@ -218,6 +228,14 @@ class AlumnoRepositorio(RepositorioBase):
                             nuevo_representante = sesion.query(Representante).filter(Representante.representante_id == nuevo_representante_id).first()
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {representante_alumno.nombre} {representante_alumno.apellido}. AHORA: {nuevo_representante.nombre} {nuevo_representante.apellido}. MATRICULA: {inscripcion_alumno.num_matricula}"
+                        elif (clave == "foto_perfil"):
+                            ruta_foto_perfil = campos_alumno.get(clave)
+                            foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                            campos_alumno.get(clave) = foto_perfil
+                            
+                            valor_campo_actual = campos_alumno.get(clave)
+                            
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}"
                         else:
                             valor_campo_anterior = diccionario_alumno.get(clave) if (diccionario_alumno.get(clave)) else ""
                             valor_campo_actual = campos_alumno.get(clave)
