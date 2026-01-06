@@ -221,10 +221,10 @@
                  <bool>false</bool>
                 </property>
                 <property name="currentText">
-                 <string>Nuevo elemento</string>
+                 <string/>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>-1</number>
                 </property>
                 <property name="insertPolicy">
                  <enum>QComboBox::NoInsert</enum>
@@ -238,26 +238,6 @@
                 <property name="placeholderText">
                  <string/>
                 </property>
-                <item>
-                 <property name="text">
-                  <string>Nuevo elemento</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Nuevo elemento</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Nuevo elemento</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Nuevo elemento</string>
-                 </property>
-                </item>
                </widget>
                <widget class="QComboBox" name="boton_entidades">
                 <property name="geometry">
@@ -293,10 +273,10 @@
                  <bool>false</bool>
                 </property>
                 <property name="currentText">
-                 <string/>
+                 <string>Alumnos</string>
                 </property>
                 <property name="currentIndex">
-                 <number>-1</number>
+                 <number>0</number>
                 </property>
                 <property name="insertPolicy">
                  <enum>QComboBox::NoInsert</enum>
@@ -310,6 +290,16 @@
                 <property name="placeholderText">
                  <string/>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>Alumnos</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Representantes</string>
+                 </property>
+                </item>
                </widget>
                <widget class="QLabel" name="titulo_de_boton_de_opciones_2">
                 <property name="geometry">
