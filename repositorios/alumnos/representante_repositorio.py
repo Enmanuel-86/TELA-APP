@@ -143,7 +143,7 @@ class RepresentanteRepositorio(RepositorioBase):
                             
                             valor_campo_actual = campos_representante.get(clave)
                             
-                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}"
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
                         else:
                             valor_campo_anterior = diccionario_representante.get(clave)
                             valor_campo_actual = campos_representante.get(clave)

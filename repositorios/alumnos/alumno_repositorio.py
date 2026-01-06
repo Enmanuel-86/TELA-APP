@@ -235,7 +235,7 @@ class AlumnoRepositorio(RepositorioBase):
                             
                             valor_campo_actual = campos_alumno.get(clave)
                             
-                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}"
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. MATRICULA: {inscripcion_alumno.num_matricula}"
                         else:
                             valor_campo_anterior = diccionario_alumno.get(clave) if (diccionario_alumno.get(clave)) else ""
                             valor_campo_actual = campos_alumno.get(clave)

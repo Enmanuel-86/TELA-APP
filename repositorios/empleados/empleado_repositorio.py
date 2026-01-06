@@ -318,7 +318,7 @@ class EmpleadoRepositorio(RepositorioBase):
                             
                             valor_campo_actual = campos_empleado.get(clave)
                             
-                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}"
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                         else:
                             valor_anterior = diccionario_empleado.get(clave)
                             valor_actual = campos_empleado.get(clave)
