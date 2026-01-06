@@ -166,7 +166,7 @@ class FuncionesDelSistema:
         
         
     # Metodo para cargar catalogo en los combobox
-    def cargar_elementos_para_el_combobox(self, lista_catalogo: list, boton_desplegable, indice_nombre_elemento:int, anadir_seleccionar_aqui: int = 0) -> None:
+    def cargar_elementos_para_el_combobox(self, lista_catalogo: list, boton_desplegable, indice_nombre_elemento:int, anadir_seleccionar_aqui: int = 0, texto_personalizdo:str=None) -> None:
         """
             Este metodo sirve para cargar los elementos de una lista a un combobox o actualizar el combobox, indicandole:
             
@@ -209,7 +209,9 @@ class FuncionesDelSistema:
                 
             elif anadir_seleccionar_aqui == 0:
                 
-                pass
+                if texto_personalizdo != None:
+                
+                    boton_desplegable.addItem(texto_personalizdo)
             
             elif anadir_seleccionar_aqui > 1:
                 
