@@ -3,7 +3,7 @@ from repositorios.repositorio_base import RepositorioBase
 from modelos import Representante, Alumno
 from repositorios.usuarios.auditoria_repositorio import auditoria_repositorio
 from conexiones.conexion import conexion_bd
-from recursos_graficos_y_logicos.utilidades.funciones_sistema import cargar_foto_perfil
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 
 
 class RepresentanteRepositorio(RepositorioBase):
@@ -15,7 +15,7 @@ class RepresentanteRepositorio(RepositorioBase):
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 ruta_foto_perfil = campos["foto_perfil"]
-                foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                foto_perfil = FuncionSistema.cargar_foto_perfil(ruta_foto_perfil)
                 campos["foto_perfil"] = foto_perfil
                 
                 nuevo_representante = Representante(**campos)
@@ -138,7 +138,7 @@ class RepresentanteRepositorio(RepositorioBase):
                         
                         if (clave == "foto_perfil"):
                             ruta_foto_perfil = campos_representante.get(clave)
-                            foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
+                            foto_perfil = FuncionSistema.cargar_foto_perfil(ruta_foto_perfil)
                             
                             valor_campo_actual = foto_perfil
                             
