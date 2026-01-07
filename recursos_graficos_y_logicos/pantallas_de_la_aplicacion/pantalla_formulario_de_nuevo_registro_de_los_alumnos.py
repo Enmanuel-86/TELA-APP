@@ -1,12 +1,12 @@
 from datetime import datetime, date
 from itertools import zip_longest
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QDate
 import traceback
 import os
 from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
-                             QStackedWidget, QMessageBox,
+                             QStackedWidget, QMessageBox, QFileDialog,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
@@ -180,6 +180,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.boton_de_regreso.clicked.connect(self.salir_del_formulario_alumno)
         
+        self.boton_agregar_foto.clicked.connect(lambda: self.buscar_foto())
+        
         
         # esto es para hacer pruebas  para no ingresar datos a cada rato
         # NOTA: lo pueden cambiar
@@ -255,7 +257,24 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
           
             
             
-    
+    def buscar_foto(self):
+        """
+            Este metodo sirve para buscar la foto de la persona que se esta registrando
+            
+        """
+        
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, 
+            "Seleccionar Foto",  # Título
+            "",  # Directorio inicial (vacío = directorio actual)
+            "Imágenes (*.png *.jpg *.jpeg *.bmp *.gif);;Todos los archivos (*)"  # Filtros
+        )
+        
+        if file_path:
+            print(f"Ruta seleccionada: {file_path}")
+            self.label_foto_alumno.setPixmap(QPixmap(file_path))
+            return file_path
+        return None
 
             
     # Metodo para buscar el id que esta en la tupla de la lista que arroja la base de datos
