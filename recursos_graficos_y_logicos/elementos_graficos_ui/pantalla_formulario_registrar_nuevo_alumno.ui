@@ -52,7 +52,7 @@
         <x>0</x>
         <y>0</y>
         <width>1340</width>
-        <height>2735</height>
+        <height>2757</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -155,13 +155,13 @@
                <property name="minimumSize">
                 <size>
                  <width>988</width>
-                 <height>628</height>
+                 <height>650</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>988</width>
-                 <height>628</height>
+                 <height>700</height>
                 </size>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -370,7 +370,7 @@ QPushButton:hover{
                 <item>
                  <widget class="QFrame" name="datos_del_alumno">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
                     <verstretch>10</verstretch>
                    </sizepolicy>
@@ -384,11 +384,11 @@ QPushButton:hover{
                   <property name="maximumSize">
                    <size>
                     <width>1001</width>
-                    <height>420</height>
+                    <height>16777215</height>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QFrame{
+                   <string notr="true">QFrame#datos_del_alumno{
 	border-top-left-radius:0px;
 	border-top-right-radius:0px
 }</string>
@@ -402,10 +402,7 @@ QPushButton:hover{
                   <property name="tipo" stdset="0">
                    <string>espacio_form</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_4">
-                   <property name="topMargin">
-                    <number>20</number>
-                   </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_44">
                    <item>
                     <widget class="QLabel" name="label_segmento_datos_del_alumno">
                      <property name="minimumSize">
@@ -443,8 +440,14 @@ QPushButton:hover{
                      </property>
                     </widget>
                    </item>
-                   <item alignment="Qt::AlignVCenter">
+                   <item>
                     <widget class="QFrame" name="preguntas_datos_alumno">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="minimumSize">
                       <size>
                        <width>460</width>
@@ -460,29 +463,103 @@ QPushButton:hover{
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
-                     <layout class="QGridLayout" name="gridLayout_6">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="horizontalSpacing">
-                       <number>20</number>
-                      </property>
-                      <property name="verticalSpacing">
+                     <layout class="QGridLayout" name="gridLayout_5">
+                      <property name="spacing">
                        <number>10</number>
                       </property>
-                      <item row="1" column="1">
-                       <layout class="QVBoxLayout" name="verticalLayout_13">
-                        <item alignment="Qt::AlignLeft">
-                         <widget class="QLabel" name="label_cedula">
+                      <item row="0" column="0" rowspan="4">
+                       <widget class="QFrame" name="frame_foto">
+                        <property name="minimumSize">
+                         <size>
+                          <width>193</width>
+                          <height>251</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>209</width>
+                          <height>281</height>
+                         </size>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_4">
+                         <property name="spacing">
+                          <number>10</number>
+                         </property>
+                         <item alignment="Qt::AlignHCenter">
+                          <widget class="QLabel" name="label_foto_alumno">
+                           <property name="minimumSize">
+                            <size>
+                             <width>191</width>
+                             <height>201</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>191</width>
+                             <height>201</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>12</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>No hay foto</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>cuadro_foto</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignHCenter">
+                          <widget class="QPushButton" name="boton_agregar_foto">
+                           <property name="minimumSize">
+                            <size>
+                             <width>151</width>
+                             <height>41</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>151</width>
+                             <height>41</height>
+                            </size>
+                           </property>
+                           <property name="text">
+                            <string>agregar foto</string>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>25</width>
+                             <height>25</height>
+                            </size>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>boton_anadir</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <layout class="QVBoxLayout" name="verticalLayout_5">
+                        <item>
+                         <widget class="QLabel" name="label_primer_nombre">
                           <property name="maximumSize">
                            <size>
-                            <width>16777215</width>
+                            <width>120</width>
                             <height>20</height>
                            </size>
                           </property>
@@ -499,10 +576,7 @@ QPushButton:hover{
                            <string notr="true"/>
                           </property>
                           <property name="text">
-                           <string>Cédula</string>
-                          </property>
-                          <property name="textFormat">
-                           <enum>Qt::PlainText</enum>
+                           <string>Primer nombre</string>
                           </property>
                           <property name="scaledContents">
                            <bool>true</bool>
@@ -513,7 +587,7 @@ QPushButton:hover{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="input_cedula">
+                         <widget class="QLineEdit" name="input_primer_nombre">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -538,6 +612,9 @@ QPushButton:hover{
                           <property name="styleSheet">
                            <string notr="true"/>
                           </property>
+                          <property name="text">
+                           <string/>
+                          </property>
                           <property name="placeholderText">
                            <string>.....</string>
                           </property>
@@ -545,115 +622,7 @@ QPushButton:hover{
                         </item>
                        </layout>
                       </item>
-                      <item row="2" column="1" alignment="Qt::AlignTop">
-                       <widget class="QWidget" name="espacio_sexo" native="true">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="minimumSize">
-                         <size>
-                          <width>0</width>
-                          <height>60</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>0</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string/>
-                        </property>
-                        <layout class="QGridLayout" name="gridLayout_2">
-                         <item row="1" column="0" alignment="Qt::AlignLeft">
-                          <widget class="QRadioButton" name="input_sexo_femenino">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>100</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Femenino</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="1">
-                          <widget class="QRadioButton" name="input_sexo_masculino">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>100</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Masculino</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="0" alignment="Qt::AlignTop">
-                          <widget class="QLabel" name="label_sexo">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>2</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>20</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>11</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Sexo</string>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>false</bool>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_qlineedit</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
+                      <item row="0" column="2">
                        <layout class="QVBoxLayout" name="verticalLayout_6">
                         <item>
                          <widget class="QLabel" name="label_segundo_nombre">
@@ -723,75 +692,6 @@ QPushButton:hover{
                        </layout>
                       </item>
                       <item row="0" column="3">
-                       <layout class="QVBoxLayout" name="verticalLayout_15">
-                        <item alignment="Qt::AlignLeft">
-                         <widget class="QLabel" name="label_apellido_paterno">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>11</pointsize>
-                            <weight>75</weight>
-                            <italic>false</italic>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>Apellido paterno</string>
-                          </property>
-                          <property name="textFormat">
-                           <enum>Qt::PlainText</enum>
-                          </property>
-                          <property name="scaledContents">
-                           <bool>true</bool>
-                          </property>
-                          <property name="tipo" stdset="0">
-                           <string>titulo_qlineedit</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="input_apellido_paterno">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item row="0" column="2">
                        <layout class="QVBoxLayout" name="verticalLayout_16">
                         <item>
                          <widget class="QLabel" name="label_segundo_nombre_2">
@@ -860,94 +760,280 @@ QPushButton:hover{
                         </item>
                        </layout>
                       </item>
-                      <item row="2" column="2">
-                       <widget class="QFrame" name="espacio_imt">
-                        <property name="maximumSize">
-                         <size>
-                          <width>200</width>
-                          <height>60</height>
-                         </size>
-                        </property>
-                        <property name="toolTip">
-                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Está inscrito en el Ministerio de Trabajo?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                        </property>
-                        <property name="styleSheet">
-                         <string/>
-                        </property>
-                        <layout class="QGridLayout" name="gridLayout_5">
-                         <property name="horizontalSpacing">
-                          <number>50</number>
-                         </property>
-                         <item row="0" column="0">
-                          <widget class="QLabel" name="label_imt">
-                           <property name="maximumSize">
-                            <size>
-                             <width>120</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>11</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>IMT</string>
-                           </property>
-                           <property name="textFormat">
-                            <enum>Qt::PlainText</enum>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_qlineedit</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="0">
-                          <widget class="QRadioButton" name="input_imt_si">
-                           <property name="maximumSize">
-                            <size>
-                             <width>40</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Si</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="1">
-                          <widget class="QRadioButton" name="input_imt_no">
-                           <property name="maximumSize">
-                            <size>
-                             <width>40</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>No</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </widget>
+                      <item row="1" column="1">
+                       <layout class="QVBoxLayout" name="verticalLayout_15">
+                        <item alignment="Qt::AlignLeft">
+                         <widget class="QLabel" name="label_apellido_paterno">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Apellido paterno</string>
+                          </property>
+                          <property name="textFormat">
+                           <enum>Qt::PlainText</enum>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qlineedit</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="input_apellido_paterno">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>.....</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
                       </item>
                       <item row="1" column="2">
+                       <layout class="QVBoxLayout" name="verticalLayout_19">
+                        <item alignment="Qt::AlignLeft">
+                         <widget class="QLabel" name="label_apellido_materno">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Apellido materno</string>
+                          </property>
+                          <property name="textFormat">
+                           <enum>Qt::PlainText</enum>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qlineedit</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="input_apellido_materno">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>.....</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="1" column="3">
+                       <layout class="QVBoxLayout" name="verticalLayout_38">
+                        <item>
+                         <widget class="QLabel" name="label_situacion">
+                          <property name="maximumSize">
+                           <size>
+                            <width>120</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Situación</string>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qlineedit</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="input_situacion">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>.....</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="2" column="1">
+                       <layout class="QVBoxLayout" name="verticalLayout_13">
+                        <item alignment="Qt::AlignLeft">
+                         <widget class="QLabel" name="label_cedula">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Cédula</string>
+                          </property>
+                          <property name="textFormat">
+                           <enum>Qt::PlainText</enum>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qlineedit</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="input_cedula">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>.....</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="2" column="2">
                        <layout class="QVBoxLayout" name="verticalLayout_14">
                         <item alignment="Qt::AlignLeft">
                          <widget class="QLabel" name="label_relacion_con_representante">
@@ -1022,12 +1108,18 @@ QPushButton:hover{
                         </item>
                        </layout>
                       </item>
-                      <item row="1" column="3">
+                      <item row="2" column="3">
                        <widget class="QFrame" name="espacio_fecha_nacimiento">
                         <property name="minimumSize">
                          <size>
-                          <width>200</width>
-                          <height>0</height>
+                          <width>222</width>
+                          <height>69</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>222</width>
+                          <height>69</height>
                          </size>
                         </property>
                         <property name="styleSheet">
@@ -1152,211 +1244,221 @@ QPushButton:hover{
                         <zorder>label_cedula_2</zorder>
                        </widget>
                       </item>
-                      <item row="2" column="0">
-                       <layout class="QVBoxLayout" name="verticalLayout_38">
-                        <item>
-                         <widget class="QLabel" name="label_situacion">
-                          <property name="maximumSize">
-                           <size>
-                            <width>120</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>11</pointsize>
-                            <weight>75</weight>
-                            <italic>false</italic>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>Situación</string>
-                          </property>
-                          <property name="scaledContents">
-                           <bool>true</bool>
-                          </property>
-                          <property name="tipo" stdset="0">
-                           <string>titulo_qlineedit</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="input_situacion">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                      <item row="3" column="1">
+                       <widget class="QWidget" name="espacio_sexo" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>223</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>223</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string/>
+                        </property>
+                        <layout class="QGridLayout" name="gridLayout_2">
+                         <item row="1" column="0" alignment="Qt::AlignLeft">
+                          <widget class="QRadioButton" name="input_sexo_femenino">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Femenino</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="1">
+                          <widget class="QRadioButton" name="input_sexo_masculino">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Masculino</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0" alignment="Qt::AlignTop">
+                          <widget class="QLabel" name="label_sexo">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>2</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Sexo</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>false</bool>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>titulo_qlineedit</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
                       </item>
-                      <item row="0" column="0">
-                       <layout class="QVBoxLayout" name="verticalLayout_5">
-                        <item>
-                         <widget class="QLabel" name="label_primer_nombre">
-                          <property name="maximumSize">
-                           <size>
-                            <width>120</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>11</pointsize>
-                            <weight>75</weight>
-                            <italic>false</italic>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>Primer nombre</string>
-                          </property>
-                          <property name="scaledContents">
-                           <bool>true</bool>
-                          </property>
-                          <property name="tipo" stdset="0">
-                           <string>titulo_qlineedit</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="input_primer_nombre">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                      <item row="3" column="2">
+                       <widget class="QFrame" name="espacio_imt">
+                        <property name="minimumSize">
+                         <size>
+                          <width>200</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>200</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="toolTip">
+                         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;¿Está inscrito en el Ministerio de Trabajo?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                        </property>
+                        <property name="styleSheet">
+                         <string/>
+                        </property>
+                        <widget class="QLabel" name="label_imt">
+                         <property name="geometry">
+                          <rect>
+                           <x>3</x>
+                           <y>9</y>
+                           <width>40</width>
+                           <height>19</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>120</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Segoe UI</family>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <italic>false</italic>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string>IMT</string>
+                         </property>
+                         <property name="textFormat">
+                          <enum>Qt::PlainText</enum>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                         <property name="tipo" stdset="0">
+                          <string>titulo_qlineedit</string>
+                         </property>
+                        </widget>
+                        <widget class="QRadioButton" name="input_imt_si">
+                         <property name="geometry">
+                          <rect>
+                           <x>3</x>
+                           <y>34</y>
+                           <width>29</width>
+                           <height>17</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>40</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string>Si</string>
+                         </property>
+                        </widget>
+                        <widget class="QRadioButton" name="input_imt_no">
+                         <property name="geometry">
+                          <rect>
+                           <x>110</x>
+                           <y>34</y>
+                           <width>37</width>
+                           <height>17</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>40</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string>No</string>
+                         </property>
+                        </widget>
+                       </widget>
                       </item>
-                      <item row="1" column="0">
-                       <layout class="QVBoxLayout" name="verticalLayout_19">
-                        <item alignment="Qt::AlignLeft">
-                         <widget class="QLabel" name="label_apellido_materno">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>11</pointsize>
-                            <weight>75</weight>
-                            <italic>false</italic>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>Apellido materno</string>
-                          </property>
-                          <property name="textFormat">
-                           <enum>Qt::PlainText</enum>
-                          </property>
-                          <property name="scaledContents">
-                           <bool>true</bool>
-                          </property>
-                          <property name="tipo" stdset="0">
-                           <string>titulo_qlineedit</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="input_apellido_materno">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item row="2" column="3">
+                      <item row="3" column="3">
                        <widget class="QFrame" name="espacio_cma">
                         <property name="minimumSize">
                          <size>
@@ -1434,8 +1536,83 @@ QPushButton:hover{
                         </layout>
                        </widget>
                       </item>
-                      <item row="3" column="1">
+                      <item row="4" column="1">
+                       <layout class="QVBoxLayout" name="verticalLayout_18">
+                        <item alignment="Qt::AlignTop">
+                         <widget class="QLabel" name="label_lugar_de_nacimiento">
+                          <property name="maximumSize">
+                           <size>
+                            <width>150</width>
+                            <height>120</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Lugar de nacimiento</string>
+                          </property>
+                          <property name="textFormat">
+                           <enum>Qt::PlainText</enum>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qlineedit</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item alignment="Qt::AlignTop">
+                         <widget class="QLineEdit" name="input_lugar_de_nacimiento">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>10</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>220</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="placeholderText">
+                           <string>.....</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item row="4" column="2">
                        <widget class="QFrame" name="frame_2">
+                        <property name="maximumSize">
+                         <size>
+                          <width>223</width>
+                          <height>69</height>
+                         </size>
+                        </property>
                         <property name="styleSheet">
                          <string/>
                         </property>
@@ -1453,6 +1630,12 @@ QPushButton:hover{
                            <horstretch>0</horstretch>
                            <verstretch>10</verstretch>
                           </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>191</width>
+                           <height>16</height>
+                          </size>
                          </property>
                          <property name="maximumSize">
                           <size>
@@ -1575,75 +1758,6 @@ QPushButton:hover{
                          </property>
                         </widget>
                        </widget>
-                      </item>
-                      <item row="3" column="0">
-                       <layout class="QVBoxLayout" name="verticalLayout_18">
-                        <item alignment="Qt::AlignTop">
-                         <widget class="QLabel" name="label_lugar_de_nacimiento">
-                          <property name="maximumSize">
-                           <size>
-                            <width>150</width>
-                            <height>120</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>11</pointsize>
-                            <weight>75</weight>
-                            <italic>false</italic>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="text">
-                           <string>Lugar de nacimiento</string>
-                          </property>
-                          <property name="textFormat">
-                           <enum>Qt::PlainText</enum>
-                          </property>
-                          <property name="scaledContents">
-                           <bool>true</bool>
-                          </property>
-                          <property name="tipo" stdset="0">
-                           <string>titulo_qlineedit</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignTop">
-                         <widget class="QLineEdit" name="input_lugar_de_nacimiento">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>10</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>220</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
-                           </font>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
                       </item>
                      </layout>
                     </widget>
