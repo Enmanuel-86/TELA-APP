@@ -702,7 +702,49 @@ class FuncionesDelSistema:
         except Exception as e:
             
             FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+    
+    def cargar_foto_perfil(self, ruta_foto_perfil: str = None) -> Optional[bytes]:
+        """
+        Función para cargar la foto de perfil
+        
+        :param ruta_foto_perfil: La primera posición de la tupla que obtengo al usar **QFileDialog.getOpenFileName()**
+        :type ruta_foto_perfil: str
+        :return: La foto convertida en **bytes** para guardarla en la base de datos y leerla usando **QPixmap().loadFromData(QByteArray(foto_en_bytes))** obteniendo la foto original ya optimizada, en caso de no cargar una foto se retorna un **None**
+        :rtype: bytes o None
+        """
+        
+        if (ruta_foto_perfil):
+            try:
+                # OPTIMIZACIÓN (Pillow) - Recortamos a cuadrado primero
+                imagen = Image.open(ruta_foto_perfil)
+                
+                # Crear un cuadrado perfecto (Crop al centro)
+                ancho, alto = imagen.size
+                min_dim = min(ancho, alto)
+                izquierda = (ancho - min_dim) / 2
+                superior = (alto - min_dim) / 2
+                derecha = (ancho + min_dim) / 2
+                inferior = (alto + min_dim) / 2
+                imagen = imagen.crop((izquierda, superior, derecha, inferior))
+                
+                # Redimensionar la imágen
+                imagen.thumbnail((140, 140))
+                
+                # Creo un archivo virtual en la memoria RAM (para no guardar la imágen en el disco duro)
+                buffer = io.BytesIO()
+                
+                # Guardo la imágen en mi archivo virtual (temporalmente) convirtiendola formato .WebP
+                imagen.save(buffer, format="WEBP", quality=100)
+                
+                # Obtengo una cadena de ceros y unos (bytes) y así poder utilizar esto para guardarlo en la base de
+                # datos y leerlo a la hora de mostrar la foto de perfil
+                foto_en_bytes = buffer.getvalue()
+                
+                return foto_en_bytes
+            except Exception as error:
+                raise error
             
+        return None     
                 
         
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
@@ -726,45 +768,3 @@ mi_especialidad = "carpinteria"
 
 #funciones_comunes.limpiar_inputs_de_qt(lista_qlineedits_y_qlabel= [("12"), (123)])
 
-def cargar_foto_perfil(ruta_foto_perfil: str = None) -> Optional[bytes]:
-    """
-    Función para cargar la foto de perfil
-    
-    :param ruta_foto_perfil: La primera posición de la tupla que obtengo al usar **QFileDialog.getOpenFileName()**
-    :type ruta_foto_perfil: str
-    :return: La foto convertida en **bytes** para guardarla en la base de datos y leerla usando **QPixmap().loadFromData(QByteArray(foto_en_bytes))** obteniendo la foto original ya optimizada, en caso de no cargar una foto se retorna un **None**
-    :rtype: bytes o None
-    """
-    
-    if (ruta_foto_perfil):
-        try:
-            # OPTIMIZACIÓN (Pillow) - Recortamos a cuadrado primero
-            imagen = Image.open(ruta_foto_perfil)
-            
-            # Crear un cuadrado perfecto (Crop al centro)
-            ancho, alto = imagen.size
-            min_dim = min(ancho, alto)
-            izquierda = (ancho - min_dim) / 2
-            superior = (alto - min_dim) / 2
-            derecha = (ancho + min_dim) / 2
-            inferior = (alto + min_dim) / 2
-            imagen = imagen.crop((izquierda, superior, derecha, inferior))
-            
-            # Redimensionar la imágen
-            imagen.thumbnail((140, 140))
-            
-            # Creo un archivo virtual en la memoria RAM (para no guardar la imágen en el disco duro)
-            buffer = io.BytesIO()
-            
-            # Guardo la imágen en mi archivo virtual (temporalmente) convirtiendola formato .WebP
-            imagen.save(buffer, format="WEBP", quality=100)
-            
-            # Obtengo una cadena de ceros y unos (bytes) y así poder utilizar esto para guardarlo en la base de
-            # datos y leerlo a la hora de mostrar la foto de perfil
-            foto_en_bytes = buffer.getvalue()
-            
-            return foto_en_bytes
-        except Exception as error:
-            raise error
-        
-    return None
