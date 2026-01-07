@@ -314,9 +314,8 @@ class EmpleadoRepositorio(RepositorioBase):
                         elif (clave == "foto_perfil"):
                             ruta_foto_perfil = campos_empleado.get(clave)
                             foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
-                            campos_empleado.get(clave) = foto_perfil
                             
-                            valor_campo_actual = campos_empleado.get(clave)
+                            valor_campo_actual = foto_perfil
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                         else:

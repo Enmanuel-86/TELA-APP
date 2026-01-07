@@ -139,9 +139,8 @@ class RepresentanteRepositorio(RepositorioBase):
                         if (clave == "foto_perfil"):
                             ruta_foto_perfil = campos_representante.get(clave)
                             foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
-                            campos_representante.get(clave) = foto_perfil
                             
-                            valor_campo_actual = campos_representante.get(clave)
+                            valor_campo_actual = foto_perfil
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
                         else:

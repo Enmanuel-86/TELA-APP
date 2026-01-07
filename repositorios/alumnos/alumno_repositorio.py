@@ -231,9 +231,8 @@ class AlumnoRepositorio(RepositorioBase):
                         elif (clave == "foto_perfil"):
                             ruta_foto_perfil = campos_alumno.get(clave)
                             foto_perfil = cargar_foto_perfil(ruta_foto_perfil)
-                            campos_alumno.get(clave) = foto_perfil
                             
-                            valor_campo_actual = campos_alumno.get(clave)
+                            valor_campo_actual = foto_perfil
                             
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. MATRICULA: {inscripcion_alumno.num_matricula}"
                         else:
