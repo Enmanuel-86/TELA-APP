@@ -1,4 +1,4 @@
-from PyQt5.QtCore import Qt,QPoint
+from PyQt5.QtCore import Qt,QPoint, QSortFilterProxyModel
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout, 
                              QMessageBox, QListWidget, QListWidgetItem, 
@@ -158,14 +158,12 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_crear_nuevo_registro.clicked.connect(self.ir_a_crear_nuevo_registro)
         self.boton_control_de_llegada.clicked.connect(self.ir_a_control_de_llegada)
         self.boton_control_de_reposos.clicked.connect(self.ir_a_control_de_reposos)
-        self.boton_buscar.clicked.connect(self.acceder_perfil_empleado)
-        
-
-        ## logica de Base de datos para mostrar a los empleados
-        
+        self.boton_buscar.clicked.connect(self.acceder_perfil_empleado)     
         self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
-        
+        self.barra_de_busqueda.textChanged.connect(lambda texto: self.filtrar_resultados(texto) if not texto == "" else self.filtrar_por_tipo_cargo())
+        self.barra_de_busqueda.returnPressed.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()) )
+
         # cargar catalogo de los tipos de cargos
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 0, "Todos")
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 0)
@@ -207,34 +205,83 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
     
     def filtrar_resultados(self, texto):
+        # Limpiamos espacios y convertimos todo a minúsculas
         texto = texto.strip().lower()
+
+        # Limpiamos los resultados anteriores del QListWidget
         self.resultados.clear()
 
+        # Si el campo está vacío, ocultamos la lista y salimos
         if not texto:
             self.resultados.hide()
             return
-        
-    
-        
-        coincidencias = [
-            persona for persona in self.lista_empleados_actual
-            if texto in persona[6] or texto in persona[1].lower()
-        ]
 
+        # --------------------------------------------------------------------
+        # NUEVO: Buscar según el PROXY (lo que ve el usuario en la tabla)
+        # --------------------------------------------------------------------
+        coincidencias = []
+
+        # Cantidad de filas visibles en el proxy
+        filas_visibles = self.proxy.rowCount()
+
+        # Recorremos fila por fila del modelo filtrado (proxy)
+        for fila in range(filas_visibles):
+
+        
+            # Obtenemos el índice del proxy
+            index_proxy = self.proxy.index(fila, 0)
+
+            # Convertimos el índice del proxy al índice original del modelo
+            index_modelo = self.proxy.mapToSource(index_proxy)
+
+            # Obtenemos la cédula desde la columna 1 del modelo
+            cedula = modelo.index(index_modelo.row(), 0).data()
+
+            # Obtenemos nombre desde la columna 2
+            nombre = modelo.index(index_modelo.row(), 1).data()
+
+            # Obtenemos apellido desde la columna 3
+            apellido = modelo.index(index_modelo.row(), 3).data()
+
+            # Convertimos todo a minúsculas para comparar
+            cedula_lower = str(cedula).lower()
+            nombre_lower = str(nombre).lower()
+            apellido_lower = str(apellido).lower()
+            
+                
+
+            # Si coincide con cedula, nombre o apellido lo agregamos a resultados
+            if texto in cedula_lower or texto in nombre_lower or texto in apellido_lower:
+
+                # Guardamos la información exacta del modelo para mostrarla luego
+                coincidencias.append({
+                    "cedula": cedula,
+                    "nombre": nombre,
+                    "apellido": apellido
+                })
+
+        # Si no hubo coincidencias, ocultamos lista y salimos
         if not coincidencias:
             self.resultados.hide()
             return
 
+        # --------------------------------------------------------------------
+        # Llenamos el QListWidget con las coincidencias encontradas
+        # --------------------------------------------------------------------
         for persona in coincidencias:
-            item = f'{persona[6]} - {persona[1]} {persona[4]}'
+
+            # Texto que se mostrará en la lista desplegable
+            item = f'{persona["cedula"]} - {persona["nombre"]} {persona["apellido"]}'
+
+            # Agregamos el item al QListWidget
             self.resultados.addItem(QListWidgetItem(item))
 
-        # Ocultar si hay una coincidencia exacta por cédula
-        if len(coincidencias) == 1 and coincidencias[0][1] == texto:
+        # Si solo hay una coincidencia exacta por cédula, se oculta la lista
+        if len(coincidencias) == 1 and coincidencias[0]["cedula"].lower() == texto:
             self.resultados.hide()
         else:
+            # Si hay varias coincidencias, mostramos la lista de sugerencias
             self.mostrar_lista()
-
 
 
 
@@ -250,10 +297,32 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     def seleccionar_item(self, item):
         cedula = item.text().split(" - ")[0]
         self.barra_de_busqueda.setText(cedula)
+        self.aplicar_filtro(cedula)
         self.resultados.hide()
         
-        
     
+    def configurar_filtro(self):
+        # Crear el filtro proxy (modelo intermedio entre el modelo real y la tabla)
+        self.proxy = QSortFilterProxyModel()
+
+        # Permitir búsqueda en todas las columnas
+        self.proxy.setFilterKeyColumn(-1)  
+
+        # Hacer el filtrado sin distinguir mayúsculas/minúsculas
+        self.proxy.setFilterCaseSensitivity(Qt.CaseInsensitive)
+
+        # Conectar el QLineEdit al filtro
+        #self.barra_de_busqueda.textChanged.connect(self.aplicar_filtro)
+
+    
+    
+    
+    def aplicar_filtro(self, texto):
+        # Cada vez que escribes algo, el proxy actualizará las filas visibles
+        self.proxy.setFilterFixedString(texto)
+        self.resultados.hide()
+
+        
         
         
     def habilitar_edicion(self, fila):
@@ -454,6 +523,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     # se le manda el id al metodo del servicio
                     empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id = tipo_cargo_id, especialidad_id= None)
                     
+                    self.configurar_filtro()
+                    
                     # funcion para cargar la tabla segun el cargo
                     self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                    indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
@@ -464,6 +535,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     
                     # si es docente habilita este boton de especialidades
                     self.habilitar_boton_especialidades()
+                    self.barra_de_busqueda.clear()
                     
                     #self.label_contador.setText(str(len(empleados)))
                     
@@ -506,14 +578,14 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         # si es verdadero se le manda el id que esta en el indice 0 de la tupla
                         empleados_por_especialidad = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente,especialidad_id= especialidad_id)
                         
-                        
+                        self.configurar_filtro()
                         self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_por_especialidad, indice_cedula= 2, indice_1er_nombre= 3,
                                                     indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
                         self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, indice_cedula= 2, indice_1er_nombre= 3,
                                                     indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                         
-                        
+                        self.barra_de_busqueda.clear()
                         #print(f"\n {especialidad_selec} si esta en la tupla {especialidad}")
                         
                         break
@@ -525,7 +597,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         
             else:
                 
-                pass
+                empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente)
+                self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2,
+                                                    indice_2do_nombre= 3, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+            
+                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, indice_cedula= 1, indice_1er_nombre= 2,
+                                                    indice_2do_nombre= 3, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                        
             
         except Exception as e:
             
@@ -568,14 +646,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         modelo.setHorizontalHeaderLabels(columnas)
 
         for indice, empleado in enumerate(empleados):
-            #datos_visibles = [empleado[1], empleado[2], empleado[3], empleado[4], empleado[5], empleado[7]]
-            
-            datos_visibles = [empleado[indice_cedula], empleado[indice_1er_nombre], empleado[indice_2do_nombre], empleado[indice_1er_apellido], empleado[indice_2do_apellido], empleado[indice_estado]]
+            datos_visibles = [
+                empleado[indice_cedula], 
+                empleado[indice_1er_nombre], 
+                empleado[indice_2do_nombre], 
+                empleado[indice_1er_apellido], 
+                empleado[indice_2do_apellido], 
+                empleado[indice_estado]
+            ]
 
             items = []
-
-            
-            
             for dato in datos_visibles:
                 item = QStandardItem(str(dato) if dato is not None else "")
                 item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
@@ -583,18 +663,28 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
             modelo.appendRow(items)
             
-            for fila in range(modelo.rowCount()):
-                tabla.setRowHeight(fila, 40)
-
             # Numerar filas en el encabezado vertical
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
             modelo.setVerticalHeaderItem(indice, header_item)
 
-        # Muy importante: asignar modelo primero
-        tabla.setModel(modelo)
+        # AJUSTES DE ALTURA DE FILAS
+        for fila in range(modelo.rowCount()):
+            tabla.setRowHeight(fila, 40)
 
-        #  Ahora sí añadimos los botones fila por fila
+        # PROXY --------------------------------------------
+        # Crear o configurar el proxy
+        if not hasattr(self, 'proxy'):
+            self.proxy = QSortFilterProxyModel()
+            self.proxy.setFilterCaseSensitivity(Qt.CaseInsensitive)
+        
+        # Asociar el modelo original al proxy
+        self.proxy.setSourceModel(modelo)
+
+        # Establecer que la tabla use el proxy y no el modelo directo
+        tabla.setModel(self.proxy)
+
+        # Ahora sí añadimos los botones fila por fila
         for fila in range(modelo.rowCount()):
             widget = QWidget()
             layout = QHBoxLayout(widget)
@@ -614,11 +704,8 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                         font-size:8pt;
                     }
             """) 
-            
-            
-            
 
-            # Conectar botones
+            # Conectar botones - IMPORTANTE: mantener referencia a fila del modelo fuente
             boton_editar.clicked.connect(lambda _, r=fila: self.habilitar_edicion(r))
             boton_borrar.clicked.connect(lambda _, r=fila: self.eliminar_empleado_de_la_bd(r))
 
@@ -627,11 +714,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             layout.setContentsMargins(3, 3, 3, 3)
             widget.setLayout(layout)
 
-            index = modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
-            tabla.setIndexWidget(index, widget)
+            # Obtener índice en el modelo fuente (última columna "Opciones")
+            fuente_index = modelo.index(fila, len(columnas) - 1)
+            
+            # Convertir al índice del proxy
+            proxy_index = self.proxy.mapFromSource(fuente_index)
+            
+            # Insertar el widget usando el índice convertido del proxy
+            tabla.setIndexWidget(proxy_index, widget)
         
-    
-        
+            
         
     #Metodos para la tabla de base de datos  
     ################################################################################################################33
