@@ -720,8 +720,8 @@
                    <string>  Asistencia alumnos</string>
                   </property>
                   <property name="icon">
-                   <iconset>
-                    <normaloff>:/iconos/iconos_de_interfaz/clock-3-white.png</normaloff>:/iconos/iconos_de_interfaz/clock-3-white.png</iconset>
+                   <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/clock-3-white.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/clock-3-white.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -782,8 +782,8 @@
                    <string>  Crear nuevo registro</string>
                   </property>
                   <property name="icon">
-                   <iconset>
-                    <normaloff>:/iconos/iconos_de_interfaz/user-round-plus-white.png</normaloff>:/iconos/iconos_de_interfaz/user-round-plus-white.png</iconset>
+                   <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/user-round-plus-white.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/user-round-plus-white.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
