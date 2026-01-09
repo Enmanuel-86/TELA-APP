@@ -131,7 +131,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
 
 
-        
+        # esta variable es para inicializar la foto de perfil
+        # (acá intenté crear self.foto_perfil = None)
+        # pero por alguna razon no sirvió de nada y tambien no inicializó los inputs por defecto con los datos que pusiste xd (sin tocar otra cosa, nomas con crear esa variable ahi)
         
         # esta variable es para almacenar el id del representate para el registro del alumno
         self.representante_id = None
@@ -274,6 +276,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             print(f"Ruta seleccionada: {file_path}")
             self.label_foto_alumno.setPixmap(QPixmap(file_path))
             
+            # self.foto_perfil solo existe dentro de esta función
+            # por lo que más adelante del código este atributo no existe para PantallaDeFormularioNuevoRegistroAlumnos
+            # Recomendación: crear la variable antes y luego cambiarla acá
             self.foto_perfil = file_path
         return None
 
@@ -1162,8 +1167,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     campos_datos_alumno_1.get("apellido_paterno"),
                     campos_datos_alumno_1.get("apellido_materno"),
                     campos_datos_alumno_1.get("relacion_con_rep"),
-                    campos_datos_alumno_1.get("fecha_ingreso_institucion"),
-                    campos_datos_alumno_1.get("foto_perfil")
+                    campos_datos_alumno_1.get("fecha_ingreso_institucion")
+                    #campos_datos_alumno_1.get("foto_perfil") (acá no va esta línea ya que no necesito validar algo de la foto de perfil, por eso el error al registrar)
                 )
             
             # verificamos que no hay errores
