@@ -108,7 +108,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
                                 self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
                                 self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
-                                self.vista_previa_diagnostico
+                                self.vista_previa_diagnostico, self.label_foto_alumno
                                 )
         
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
@@ -189,7 +189,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # Datos insertados desde los inputs
         # si no los va a usar comentelos con """"""
         
-        """
+        #"""
         
         # info alumno
         
@@ -228,7 +228,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
     
         
-        """
+        #"""
         
         
     def actualizar_listas_catalogo(self):
@@ -273,7 +273,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         if file_path:
             print(f"Ruta seleccionada: {file_path}")
             self.label_foto_alumno.setPixmap(QPixmap(file_path))
-            return file_path
+            
+            self.foto_perfil = file_path
         return None
 
             
@@ -1149,7 +1150,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 "relacion_con_rep": relacion_con_rep,
                 "sexo": sexo,
                 "situacion": situacion,
-                "fecha_ingreso_institucion": fecha_ingreso_institucion
+                "fecha_ingreso_institucion": fecha_ingreso_institucion,
+                "foto_perfil": self.foto_perfil
                 }
             
             errores_primera_info_alumno = alumno_servicio.validar_campos_primera_info_alumno(
@@ -1160,7 +1162,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     campos_datos_alumno_1.get("apellido_paterno"),
                     campos_datos_alumno_1.get("apellido_materno"),
                     campos_datos_alumno_1.get("relacion_con_rep"),
-                    campos_datos_alumno_1.get("fecha_ingreso_institucion")
+                    campos_datos_alumno_1.get("fecha_ingreso_institucion"),
+                    campos_datos_alumno_1.get("foto_perfil")
                 )
             
             # verificamos que no hay errores
@@ -1336,7 +1339,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     "relacion_con_rep": campos_datos_alumno_1.get("relacion_con_rep"),
                                     "escolaridad": campos_info_academica.get("escolaridad"),
                                     "procedencia": campos_info_academica.get("procedencia"),
-                                    "situacion": campos_datos_alumno_1.get("situacion")
+                                    "situacion": campos_datos_alumno_1.get("situacion"),
+                                    "foto_perfil": campos_datos_alumno_1.get("foto_perfil")
                                 }
                                 
                                 # Acá guardo el alumno_id que retorno al crear un registro en la tabla tb_alumnos
