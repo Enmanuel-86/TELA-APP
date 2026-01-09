@@ -41,7 +41,7 @@
       <enum>QFrame::Raised</enum>
      </property>
      <property name="tipo" stdset="0">
-      <string>espacio_principal_login</string>
+      <string>espacio_principal</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -80,7 +80,7 @@
          <enum>QFrame::Raised</enum>
         </property>
         <property name="tipo" stdset="0">
-         <string>espacio_login</string>
+         <string>espacio_form</string>
         </property>
         <widget class="QLineEdit" name="input_contrasena">
          <property name="geometry">
@@ -110,15 +110,15 @@
           <enum>Qt::VisualMoveStyle</enum>
          </property>
          <property name="tipo" stdset="0">
-          <string>login</string>
+          <string/>
          </property>
         </widget>
         <widget class="QLabel" name="titulo_login">
          <property name="geometry">
           <rect>
-           <x>30</x>
+           <x>20</x>
            <y>32</y>
-           <width>121</width>
+           <width>111</width>
            <height>61</height>
           </rect>
          </property>
@@ -141,7 +141,7 @@
           <set>Qt::AlignCenter</set>
          </property>
          <property name="tipo" stdset="0">
-          <string>titulo_form</string>
+          <string>titulo_segmento</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="input_usuario">
@@ -163,7 +163,7 @@
           <string>Usuario</string>
          </property>
          <property name="tipo" stdset="0">
-          <string>login</string>
+          <string/>
          </property>
         </widget>
         <widget class="QPushButton" name="boton_ingresar">
@@ -226,10 +226,10 @@
         <widget class="QLabel" name="logo_del_tela">
          <property name="geometry">
           <rect>
-           <x>340</x>
-           <y>60</y>
-           <width>181</width>
-           <height>171</height>
+           <x>330</x>
+           <y>40</y>
+           <width>201</width>
+           <height>211</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -239,7 +239,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../recursos_de_imagenes_tela_app.qrc">:/imagenes_y_logos/recursos_de_imagenes/Tela.png</pixmap>
+          <pixmap resource="../recursos_de_imagenes_tela_app.qrc">:/imagenes_y_logos/recursos_de_imagenes/icono_sistema_V3.ico</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -312,6 +312,11 @@
           <italic>false</italic>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+}</string>
         </property>
         <property name="text">
          <string>Mensaje</string>
