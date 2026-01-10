@@ -523,7 +523,7 @@ QPushButton:hover{
                           </widget>
                          </item>
                          <item alignment="Qt::AlignHCenter">
-                          <widget class="QPushButton" name="boton_agregar_foto">
+                          <widget class="QPushButton" name="boton_agregar_foto_alumno">
                            <property name="minimumSize">
                             <size>
                              <width>151</width>
@@ -2174,7 +2174,7 @@ QPushButton:hover{
                        </widget>
                       </item>
                       <item alignment="Qt::AlignHCenter">
-                       <widget class="QPushButton" name="boton_agregar_representante">
+                       <widget class="QPushButton" name="boton_agregar_foto_representante">
                         <property name="minimumSize">
                          <size>
                           <width>151</width>
