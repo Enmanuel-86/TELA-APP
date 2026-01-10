@@ -416,6 +416,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             modelo.clear()
             self.label_contador.setText("0")
+            QMessageBox.information(self, "No hay registros", f"{e}")
             
             FuncionSistema.mostrar_errores_por_excepcion(e, "filrar_por_especialidad")
     
