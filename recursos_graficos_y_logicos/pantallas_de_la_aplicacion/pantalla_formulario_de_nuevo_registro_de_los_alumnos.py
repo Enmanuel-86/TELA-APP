@@ -105,7 +105,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.lista_de_inputs = (
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
                                 self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
-                                self.input_situacion, self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
+                                self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
                                 self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
                                 self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
                                 self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
@@ -211,7 +211,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.input_cma_no.setChecked(True)
         self.input_imt_si.setChecked(True)
         self.input_lugar_de_nacimiento.setText("barcelona")
-        self.input_situacion.setText("Inicial")
         
         # info representante no los voy a colocar, es para comprobar si se asocian al alumno
         
@@ -1145,7 +1144,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno.text().strip().capitalize())
             cedula = self.input_cedula.text().strip()
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
-            situacion = self.input_situacion.text().strip().capitalize()
+            situacion = self.boton_situacion.currentText()
             
             fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
             

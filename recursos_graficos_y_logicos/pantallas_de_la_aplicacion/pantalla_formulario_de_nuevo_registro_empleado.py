@@ -781,7 +781,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                             fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_ministerio.text())
                             
 
-                            situacion = None  # Por defecto es Activo
+                            situacion = self.boton_situacion.currentText()  # Por defecto es Activo
 
                             titulo_cargo = self.input_titulo_del_cargo.text().capitalize().strip()
                             
@@ -896,8 +896,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             "estado_reside": estado_reside,
                                             "municipio": municipio,
                                             "direccion_residencia": direccion_residencia,
-                                            "situacion": situacion
-                                 # Acá iría "foto_perfil": "ruta/foto.png"
+                                            "situacion": situacion,
+                                            "foto_perfil": None # Acá iría "foto_perfil": "ruta/foto.png"
                                         }
 
                                         # Acá va a retornar el empleado_id para asociarlo a las demás tablas cuyos campos

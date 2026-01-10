@@ -51,8 +51,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1340</width>
-        <height>2857</height>
+        <width>1336</width>
+        <height>2876</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -932,16 +932,10 @@ QPushButton:hover{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="input_situacion">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
+                         <widget class="QComboBox" name="boton_situacion">
                           <property name="minimumSize">
                            <size>
-                            <width>220</width>
+                            <width>0</width>
                             <height>40</height>
                            </size>
                           </property>
@@ -949,17 +943,33 @@ QPushButton:hover{
                            <font>
                             <family>Segoe UI</family>
                             <pointsize>14</pointsize>
-                            <weight>50</weight>
-                            <italic>false</italic>
-                            <bold>false</bold>
                            </font>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
-                          <property name="placeholderText">
-                           <string>.....</string>
-                          </property>
+                          <item>
+                           <property name="text">
+                            <string>Ingresado</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Inicial</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Egresado</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Rotado</string>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Inactivo</string>
+                           </property>
+                          </item>
                          </widget>
                         </item>
                        </layout>
@@ -4969,7 +4979,6 @@ padding:0px;</string>
   <tabstop>input_cedula</tabstop>
   <tabstop>input_relacion_con_representante</tabstop>
   <tabstop>dateedit_fecha_nacimiento</tabstop>
-  <tabstop>input_situacion</tabstop>
   <tabstop>input_sexo_femenino</tabstop>
   <tabstop>input_sexo_masculino</tabstop>
   <tabstop>input_imt_si</tabstop>
