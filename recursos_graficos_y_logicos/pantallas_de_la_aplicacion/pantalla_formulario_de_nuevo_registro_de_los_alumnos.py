@@ -97,6 +97,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
+        self.foto_perfil_alumno = None
+        self.foto_perfil_representante = None
 
         # lista de inputs para usarlo en el metodo de limpiar inputs,
         # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
@@ -182,7 +184,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.boton_de_regreso.clicked.connect(self.salir_del_formulario_alumno)
         
-        self.boton_agregar_foto.clicked.connect(lambda: self.buscar_foto())
+        self.boton_agregar_foto_alumno.clicked.connect(lambda: self.buscar_foto("alumno"))
+        
+        self.boton_agregar_foto_representante.clicked.connect(lambda: self.buscar_foto("representante"))
         
         
         # esto es para hacer pruebas  para no ingresar datos a cada rato
@@ -259,12 +263,20 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
           
             
             
-    def buscar_foto(self):
+    def buscar_foto(self,  entidad):
         """
             Este metodo sirve para buscar la foto de la persona que se esta registrando
             
+            se tiene que especificar para que entidad se va a usar el metodo, como esta es la pantalla del formulario del alumno, se tiene que especificar
+            si es el alumno o el representante a quien se le esta buscando la foto.
+            
+            ***Ejemplo***
+            
+            boton.clicked.connect(lambda: buscar_foto("alumno"))
+            
+            se realiza de esta forma porque como la variable es de la propia clase (self.foto_perfil_alumno), se tiene que modificar directemante
         """
-        
+        print(self.foto_perfil_alumno)
         file_path, _ = QFileDialog.getOpenFileName(
             self, 
             "Seleccionar Foto",  # Título
@@ -274,12 +286,17 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         if file_path:
             print(f"Ruta seleccionada: {file_path}")
-            self.label_foto_alumno.setPixmap(QPixmap(file_path))
             
-            # self.foto_perfil solo existe dentro de esta función
-            # por lo que más adelante del código este atributo no existe para PantallaDeFormularioNuevoRegistroAlumnos
-            # Recomendación: crear la variable antes y luego cambiarla acá
-            self.foto_perfil = file_path
+            if entidad == "alumno":
+                self.label_foto_alumno.setPixmap(QPixmap(file_path))
+                self.foto_perfil_alumno = file_path
+            
+            elif entidad == "representante":
+                self.label_foto_representante.setPixmap(QPixmap(file_path))
+                self.foto_perfil_representante = file_path
+            
+            
+            
         return None
 
             
@@ -1109,7 +1126,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     # Metodo para guardar todos los datos del Alumno en la BD
     # hasta los momentos nada (vamos a realizar todas las funciones, )
     def guardar_informacion_alumno(self):
-        
+        print(self.foto_anadir_alumno)
         try:
             
             ################################################################################################
@@ -1156,7 +1173,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 "sexo": sexo,
                 "situacion": situacion,
                 "fecha_ingreso_institucion": fecha_ingreso_institucion,
-                "foto_perfil": self.foto_perfil
+                "foto_perfil": self.foto_perfil_alumno
                 }
             
             errores_primera_info_alumno = alumno_servicio.validar_campos_primera_info_alumno(
@@ -1602,8 +1619,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     "num_telefono": num_telefono,
                                     "num_telefono_adicional": num_telefono_adicional,
                                     "carga_familiar": carga_familiar,
-                                    "estado_civil": estado_civil
-                         # Acá iría "foto_perfil": "ruta/foto.png"
+                                    "estado_civil": estado_civil,
+                                    "foto_perfil": self.foto_perfil_representante
+                        
                                 }
                                 
                                 errores_datos_representante = representante_servicio.validar_campos_representante(
@@ -1667,8 +1685,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         "relacion_con_rep": campos_datos_alumno_1.get("relacion_con_rep"),
                                         "escolaridad": campos_info_academica.get("escolaridad"),
                                         "procedencia": campos_info_academica.get("procedencia"),
-                                        "situacion": campos_datos_alumno_1.get("situacion")
-                             # Acá iría "foto_perfil": "ruta/foto.png"
+                                        "situacion": campos_datos_alumno_1.get("situacion"),
+                                        "foto_perfil": campos_datos_alumno_1.get("foto_perfil")
+                            
                                     }
                                     
                                     # Acá guardo el alumno_id que retorno al crear un registro en la tabla tb_alumnos
@@ -1884,6 +1903,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     
                                                     ## si el boton "no" es pulsadoo, no hace nada
                                                     elif self.msg_box.clickedButton() == self.boton_no:
+                                                        
+                                                        alumno_servicio.eliminar_alumno(alumno_id)
+                                                        
                                                         return
 
                                                 except Exception as e:
