@@ -1,7 +1,7 @@
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import (QWidget, QPushButton , QHBoxLayout, QListWidgetItem, QLabel)
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, QByteArray
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInfoCompletaDelAlumno
 from ..utilidades.funciones_sistema import FuncionSistema
@@ -107,7 +107,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         # cargamos todos la infomacion del alumno
         info_basica = alumno_servicio.obtener_alumno_por_id(alumno_id)
-        
+        #print(info_basica)
         datos_representante = alumno_servicio.obtener_datos_representante(alumno_id)
         
         
@@ -144,9 +144,12 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             self.label_mostrar_estado.setText(info_basica[14])
             
             
+            FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_basica[15], self.label_imagen_del_alumno)
+            
             if info_basica[10] == 'F':
-                    
-                self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_f.png")))
+                
+                if info_basica[15] == None:
+                    self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_f.png")))
                 
                 self.input_sexo_femenino.setChecked(True)
                 self.input_sexo_masculino.setChecked(False)
@@ -154,11 +157,13 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
                 
             elif info_basica[10] == 'M':
                 
+                if info_basica[15] == None:
+                    self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_m.png")))
                 
-                self.label_imagen_del_alumno.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "estudiante_m.png")))
                 self.input_sexo_masculino.setChecked(True)
                 self.input_sexo_femenino.setChecked(False)
-        
+
+            
         
         
             if info_basica[11] == 1:
