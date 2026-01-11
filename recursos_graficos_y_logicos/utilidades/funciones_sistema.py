@@ -707,7 +707,7 @@ class FuncionesDelSistema:
     def cargar_foto_perfil_en_la_interfaz(self, ruta_foto_perfil, widget_foto):
         
         """
-            ### Este metodo sirve para cargar la ***FOTO DE PERFIL EN LA INTERFAZ***, es decir, cargar la imagen en el widget que se le tenga que colocar la imagen
+            ### Este metodo sirve para cargar la FOTO DE PERFIL EN LA INTERFAZ, es decir, cargar la imagen en el widget que se le tenga que colocar la imagen
 
             ***Ejemplo***
             ruta_de_la_foto = b'RIFF.)\x00\x00WEBPVP8 ")\x00\x00\x10m\x00\x9d\x01*\x8c\x00\x8c\x00\x00\x00\x00%\xb0\x02\x9d7i\xf9_\xe37K\x04\xee\xef\x7f\x8e\xff\xae\x9f\xe3>Li/\xcf ... (30114 characters truncated) ... x99\xdc\x91\x1b\xc1zM\x05\xbf\xaf\x06I\xfd\xe3q\xfd\xfb\xa5\nb5\xca\xea\xf12G\x10`[\x94GF\x0b\x02\xa5p\x1b=$\x11\r\xc3\xe4\x19\x03\xe5z{\x7f\xb7@\x00
