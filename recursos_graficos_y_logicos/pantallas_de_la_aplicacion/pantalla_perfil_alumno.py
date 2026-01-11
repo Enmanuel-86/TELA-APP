@@ -68,6 +68,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.dockWidget_diagnostico.hide()
         
         
+        
         self.lista_qlineedit = (self.input_mostrar_cedula_representante, self.input_mostrar_cedula_representante, self.input_mostrar_apellido, self.input_mostrar_nombre, self.input_mostrar_carga_familiar,
                                 self.input_mostrar_direccion_residencial, self.input_mostrar_cedula, self.input_mostrar_escolaridad, self.input_mostrar_especialidad, self.input_mostrar_procedencia,
                                 self.input_mostrar_primer_nombre, self.input_mostrar_segundo_nombre, self.input_mostrar_apellido_materno, self.input_mostrar_apellido_paterno, self.input_mostrar_estado_civil,
@@ -413,6 +414,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         try:
             
+            self.dockWidget_diagnostico.setFloating(True)
             diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
         
             if self.dockWidget_diagnostico.show():

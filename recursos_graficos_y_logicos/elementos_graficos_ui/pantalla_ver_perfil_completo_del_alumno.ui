@@ -1106,7 +1106,7 @@
              <string/>
             </property>
             <property name="floating">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="features">
              <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable</set>
