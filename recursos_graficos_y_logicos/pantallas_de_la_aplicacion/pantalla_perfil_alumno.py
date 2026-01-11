@@ -197,7 +197,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         try:    
             # Datos del representante
                 
-            
+            print(datos_representante)
             
             self.input_mostrar_nombre.setText(datos_representante[3])
             self.input_mostrar_apellido.setText(datos_representante[4])   
@@ -215,6 +215,14 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             self.input_mostrar_carga_familiar.setText(str(datos_representante[8]))   
             self.input_mostrar_estado_civil.setText(datos_representante[9])
+            
+            
+            if datos_representante[10] == None:
+                self.label_foto_representante.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "iconos_de_interfaz","padres.png")))
+            
+            else:
+                
+                FuncionSistema.cargar_foto_perfil_en_la_interfaz(datos_representante[10], self.label_foto_representante)
             
         except Exception as e:
             print(f"Algo paso en datos del representante: {e}")
