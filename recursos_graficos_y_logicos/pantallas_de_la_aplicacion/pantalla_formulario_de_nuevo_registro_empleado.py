@@ -2,12 +2,12 @@ from datetime import datetime
 from PyQt5.QtCore import QRegExp, QDate
 from PyQt5.QtGui import QRegExpValidator, QIntValidator
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPixmap
 import traceback
 import os
 from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
                              QStackedWidget, QMessageBox,QListWidgetItem,
-                             QLabel, QHBoxLayout,
+                             QLabel, QHBoxLayout, QFileDialog,
                              QPushButton, QApplication)
 
 from ..elementos_graficos_a_py import Ui_PantallaFormularioEmpleado
@@ -117,6 +117,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
+        self.foto_perfil_empleado = None
+        
         # se crea messagebox
         self.msg_box = QMessageBox(self)
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
@@ -168,7 +170,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.boton_anadir_enfermedad.clicked.connect(self.anadir_enfermedad)
         self.boton_anadir_diagnostico.clicked.connect(self.anadir_diagnostico)
         self.boton_tipo_de_cargo.currentIndexChanged.connect(self.habilitar_boton_especialidades)    
-        
+        self.boton_agregar_foto.clicked.connect(lambda: self.buscar_foto())
         ## Boton para registrar toda la informacion a la base de datos##
         self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
 
@@ -241,6 +243,35 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             self.boton_de_especialidad.setEnabled(True)
     
     
+    def buscar_foto(self):
+        """
+            Este metodo sirve para buscar la foto de la persona que se esta registrando
+            
+            se tiene que especificar para que entidad se va a usar el metodo, como esta es la pantalla del formulario del alumno, se tiene que especificar
+            si es el alumno o el representante a quien se le esta buscando la foto.
+            
+            ***Ejemplo***
+            
+            boton.clicked.connect(lambda: buscar_foto("alumno"))
+            
+            se realiza de esta forma porque como la variable es de la propia clase (self.foto_perfil_alumno), se tiene que modificar directemante
+        """
+        
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, 
+            "Seleccionar Foto",  # Título
+            "",  # Directorio inicial (vacío = directorio actual)
+            "Imágenes (*.png *.jpg *.jpeg *.bmp *.gif);;Todos los archivos (*)"  # Filtros
+        )
+        
+        if file_path:
+            print(f"Ruta seleccionada: {file_path}")
+            
+            
+            self.label_foto_empleado.setPixmap(QPixmap(file_path))
+            self.foto_perfil_empleado = file_path
+        
+        return None
 
     
     ## Metodo para añadir una enfermedad al "carrito"
@@ -897,7 +928,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             "municipio": municipio,
                                             "direccion_residencia": direccion_residencia,
                                             "situacion": situacion,
-                                            "foto_perfil": None # Acá iría "foto_perfil": "ruta/foto.png"
+                                            "foto_perfil": self.foto_perfil_empleado
                                         }
 
                                         # Acá va a retornar el empleado_id para asociarlo a las demás tablas cuyos campos
