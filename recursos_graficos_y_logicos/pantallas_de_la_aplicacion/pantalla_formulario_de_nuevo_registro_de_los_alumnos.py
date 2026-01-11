@@ -195,7 +195,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         # Datos insertados desde los inputs
         # si no los va a usar comentelos con """"""
         
-        #"""
+        """
         
         # info alumno
         
@@ -233,7 +233,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
     
         
-        #"""
+        """
         
         
     def actualizar_listas_catalogo(self):
