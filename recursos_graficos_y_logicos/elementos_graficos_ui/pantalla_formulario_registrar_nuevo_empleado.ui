@@ -45,7 +45,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1075</width>
+        <width>1079</width>
         <height>2438</height>
        </rect>
       </property>
@@ -117,10 +117,6 @@
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1397,7 +1393,7 @@ QLineEdit:focus{
                         <property name="frameShadow">
                          <enum>QFrame::Raised</enum>
                         </property>
-                        <widget class="QWidget" name="">
+                        <widget class="QWidget" name="layoutWidget">
                          <property name="geometry">
                           <rect>
                            <x>0</x>
@@ -2907,10 +2903,6 @@ QLineEdit:focus{
                    <property name="text">
                     <string>Añadir </string>
                    </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png</iconset>
-                   </property>
                    <property name="iconSize">
                     <size>
                      <width>30</width>
@@ -2987,10 +2979,6 @@ QLineEdit:focus{
                    </property>
                    <property name="text">
                     <string>Añadir </string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/circulo_mas.png</iconset>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -4130,8 +4118,8 @@ QLineEdit:focus{
                       <string>Finallizar</string>
                      </property>
                      <property name="icon">
-                      <iconset>
-                       <normaloff>:/iconos/iconos_de_interfaz/save.png</normaloff>:/iconos/iconos_de_interfaz/save.png</iconset>
+                      <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                       <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -4205,7 +4193,7 @@ QLineEdit:focus{
  </tabstops>
  <resources>
   <include location="../recursos_de_imagenes_tela_app.qrc"/>
-  <include location="../recursos_de_imagenes/recursos_de_imagenes_tela_app.qrc"/>
+  <include location="../recursos_de_imagenes_tela_app.qrc"/>
  </resources>
  <connections/>
 </ui>

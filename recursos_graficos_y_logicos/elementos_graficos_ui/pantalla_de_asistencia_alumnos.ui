@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1447</width>
-    <height>737</height>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,10 +108,6 @@
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</normaloff>../../recursos_de_imagenes/iconos_de_interfaz/flecha_izquierda_2.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -973,10 +969,6 @@
                      <property name="text">
                       <string> Agregar</string>
                      </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                     </property>
                      <property name="iconSize">
                       <size>
                        <width>26</width>
@@ -1088,10 +1080,6 @@
                        <property name="text">
                         <string comment="hola" extracomment="sd">Limpiar Lista</string>
                        </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../recursos_de_imagenes/iconos_de_interfaz/brocha.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/brocha.png</iconset>
-                       </property>
                        <property name="tipo" stdset="0">
                         <string>boton_limpiar</string>
                        </property>
@@ -1167,10 +1155,6 @@
                      </property>
                      <property name="text">
                       <string>Suministrar</string>
-                     </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../recursos_de_imagenes/iconos_de_interfaz/exportar.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/exportar.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>

@@ -51,8 +51,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1336</width>
-        <height>2876</height>
+        <width>1340</width>
+        <height>2857</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2303,10 +2303,6 @@ QPushButton:hover{
                        </property>
                        <property name="text">
                         <string>Comprobar</string>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_de_busqueda.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_de_busqueda.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>

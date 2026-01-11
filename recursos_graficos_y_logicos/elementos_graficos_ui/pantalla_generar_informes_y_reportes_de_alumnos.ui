@@ -580,10 +580,6 @@
                      <property name="text">
                       <string>Generar informe</string>
                      </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</iconset>
-                     </property>
                      <property name="iconSize">
                       <size>
                        <width>26</width>
@@ -711,10 +707,6 @@
                      </property>
                      <property name="text">
                       <string>Generar reporte</string>
-                     </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -919,10 +911,6 @@
                    </property>
                    <property name="text">
                     <string>Generar reporte de asistencia</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/generar_informe.png</iconset>
                    </property>
                    <property name="iconSize">
                     <size>

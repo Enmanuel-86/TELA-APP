@@ -459,10 +459,6 @@
                 <property name="text">
                  <string>Buscar</string>
                 </property>
-                <property name="icon">
-                 <iconset>
-                  <normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/lupa_blanca.png</iconset>
-                </property>
                 <property name="iconSize">
                  <size>
                   <width>22</width>
@@ -557,9 +553,6 @@
                   </property>
                   <property name="text">
                    <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap>../recursos_de_imagenes/iconos_de_interfaz/icono_de_usuario.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>

@@ -388,10 +388,6 @@ QPushButton:hover{
                  <property name="text">
                   <string>Abrir PDF</string>
                  </property>
-                 <property name="icon">
-                  <iconset>
-                   <normaloff>../recursos_de_imagenes/iconos_de_interfaz/archivo.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/archivo.png</iconset>
-                 </property>
                  <property name="iconSize">
                   <size>
                    <width>20</width>

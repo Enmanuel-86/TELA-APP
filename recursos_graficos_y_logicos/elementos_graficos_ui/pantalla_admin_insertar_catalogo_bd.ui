@@ -446,10 +446,6 @@
                          <property name="text">
                           <string> Añadir</string>
                          </property>
-                         <property name="icon">
-                          <iconset>
-                           <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                         </property>
                          <property name="iconSize">
                           <size>
                            <width>26</width>
@@ -711,10 +707,6 @@
                          <property name="text">
                           <string> Añadir</string>
                          </property>
-                         <property name="icon">
-                          <iconset>
-                           <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                         </property>
                          <property name="iconSize">
                           <size>
                            <width>26</width>
@@ -975,10 +967,6 @@
                        <property name="text">
                         <string> Añadir</string>
                        </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
-                       </property>
                        <property name="iconSize">
                         <size>
                          <width>26</width>
@@ -1216,10 +1204,6 @@
                          </property>
                          <property name="text">
                           <string> Añadir</string>
-                         </property>
-                         <property name="icon">
-                          <iconset>
-                           <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -1526,10 +1510,6 @@
                        </property>
                        <property name="text">
                         <string> Añadir</string>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1868,10 +1848,6 @@
                        </property>
                        <property name="text">
                         <string> Añadir</string>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</normaloff>../recursos_de_imagenes/iconos_de_interfaz/mas_blanco.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>

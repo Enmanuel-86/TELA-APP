@@ -199,12 +199,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # info alumno
         
-        self.input_primer_nombre.setText("Mario")
+        self.input_primer_nombre.setText("Yonaiker")
         
         self.input_segundo_nombre.setText("Jose")
-        self.input_apellido_paterno.setText("Merida")
+        self.input_apellido_paterno.setText("Mendoza")
         self.input_apellido_materno.setText("Lopez")
-        self.input_cedula.setText("4012322")
+        self.input_cedula.setText("4067822")
         self.input_relacion_con_representante.setText("hijo")
         self.input_sexo_masculino.setChecked(True)
         
