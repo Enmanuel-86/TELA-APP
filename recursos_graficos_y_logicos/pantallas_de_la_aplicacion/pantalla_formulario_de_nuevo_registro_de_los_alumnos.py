@@ -1190,6 +1190,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 # Primera parte sin errores
                 
                 ############################################################################################3
+                # segunda parte
+                
                 # vamos guardando los valores de los inputs en las varibles
                 
                 cma = None
@@ -1270,13 +1272,21 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                         return
                     
                     else:
+                        # tercera parte sin errores
+                        ##################################
                         
+                        # Cuarta parte
                         # aqui verifica si el usuario verifico si el representante existe o no
                         if not self.comprobacion:
                             QMessageBox.warning(self, "Aviso", "Tiene que comprobar si el representante esta registrado o no")
                             return 
                     
                         else:
+                            # cuarta parte sin errores
+                            
+                            #######################################33
+                            
+                            # Quinta parte
                             
                             # vamos guardando los valores de los inputs en las varibles
                                     estatura = None
@@ -1324,15 +1334,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                         
                                         else:                                  
                                         
-                                            # sexta parte sin erroes
+                                            # quinta parte sin erroes
                                             
                                             #####################################################################################
                                             
-                                            # Septima parte
+                                            # Sexta parte
                                             
                                             
-                                            # cuentas del alumno y diagnostico del alumno
-                                            
+                                                                                        
                                             # comprobamos si la lista de diagnostico por lo menos tenga un diagnostico registrado
                                             
                                             if not self.lista_carrito_diagnosticos:
@@ -1342,7 +1351,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             
                                             
-                                            # si un o unos diagnostico entonces que siga 
+                                            # si son uno o unos diagnostico entonces que siga 
                                             else: 
                                                 
                                             
@@ -1351,7 +1360,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 
                                                 ######################################################################################
                                                 
-                                                # Novena parte 
+                                                # septima parte 
                                                 
                                                 # Info especialida / info inscripcion
                                                 
