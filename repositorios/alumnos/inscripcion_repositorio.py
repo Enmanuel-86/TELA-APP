@@ -67,8 +67,7 @@ class InscripcionRepositorio(RepositorioBase):
                     INNER JOIN tb_inscripciones AS inscripciones 
                         ON inscripciones.alumno_id = alumnos.alumno_id 
                     INNER JOIN tb_especialidades AS especialidades 
-                        ON inscripciones.especialidad_id = especialidades.especialidad_id
-                    WHERE alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial';
+                        ON inscripciones.especialidad_id = especialidades.especialidad_id;
                 """
                 
                 alumnos = sesion.execute(text(consulta)).fetchall()
@@ -104,7 +103,7 @@ class InscripcionRepositorio(RepositorioBase):
                         ON inscripciones.alumno_id = alumnos.alumno_id 
                     INNER JOIN tb_especialidades AS especialidades 
                         ON inscripciones.especialidad_id = especialidades.especialidad_id
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
+                    WHERE alumnos.alumno_id = :alumno_id;
                 """
                 
                 alumno = sesion.execute(text(consulta), {"alumno_id": alumno_id}).fetchone()
@@ -145,7 +144,7 @@ class InscripcionRepositorio(RepositorioBase):
                         ON inscripciones.alumno_id = alumnos.alumno_id 
                     INNER JOIN tb_especialidades AS especialidades 
                         ON inscripciones.especialidad_id = especialidades.especialidad_id
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND inscripciones.num_matricula = :num_matricula;
+                    WHERE inscripciones.num_matricula = :num_matricula;
                 """
                 
                 alumno = sesion.execute(text(consulta), {"num_matricula": num_matricula}).fetchone()
@@ -186,7 +185,7 @@ class InscripcionRepositorio(RepositorioBase):
                         ON inscripciones.alumno_id = alumnos.alumno_id 
                     INNER JOIN tb_especialidades AS especialidades 
                         ON inscripciones.especialidad_id = especialidades.especialidad_id
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND especialidades.especialidad_id = :especialidad_id;
+                    WHERE especialidades.especialidad_id = :especialidad_id;
                 """
                 
                 alumnos = sesion.execute(text(consulta), {"especialidad_id": especialidad_id}).fetchall()
@@ -227,7 +226,7 @@ class InscripcionRepositorio(RepositorioBase):
                         ON inscripciones.alumno_id = alumnos.alumno_id 
                     INNER JOIN tb_especialidades AS especialidades 
                         ON inscripciones.especialidad_id = especialidades.especialidad_id
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;
+                    WHERE alumnos.cedula = :cedula;
                 """
                 
                 alumno = sesion.execute(text(consulta), {"cedula": cedula}).fetchone()
@@ -274,7 +273,7 @@ class InscripcionRepositorio(RepositorioBase):
                 alumnos = sesion.execute(text(consulta), {
                     "situacion": situacion,
                     "especialidad_id": especialidad_id
-                }).fetchone()
+                }).fetchall()
                 
                 if not(alumnos):
                     raise BaseDatosError("INSCRIPCIONES_NO_EXISTEN", "No hay alumnos inscritos en esta especialidad.")
@@ -311,11 +310,55 @@ class InscripcionRepositorio(RepositorioBase):
     
     def obtener_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
         try:
-            if (cedula):
-                if (self.obtener_por_cedula(cedula)):
-                    return self.obtener_por_cedula(cedula)
-            else:
-                return self.obtener_por_situacion_y_especialidad(situacion, especialidad_id)
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                        SELECT
+                            alumnos.alumno_id,
+                            alumnos.cedula,
+                            alumnos.primer_nombre,
+                            alumnos.apellido_paterno,
+                            especialidades.especialidad,
+                            inscripciones.num_matricula,
+                            inscripciones.fecha_inscripcion,
+                            STRFTIME('%Y', 'NOW', 'LOCALTIME') - STRFTIME('%Y', alumnos.fecha_ingreso_institucion) -
+                            CASE 
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') = STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') = STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                                WHEN STRFTIME('%m', 'NOW', 'LOCALTIME') < STRFTIME('%m', alumnos.fecha_ingreso_institucion) AND STRFTIME('%d', 'NOW', 'LOCALTIME') < STRFTIME('%d', alumnos.fecha_ingreso_institucion) THEN 1
+                                ELSE 0
+                            END AS tiempo_en_tela,
+                            inscripciones.periodo_escolar,
+                            alumnos.situacion,
+                            alumnos.relacion_con_rep
+                        FROM tb_alumnos AS alumnos
+                        INNER JOIN tb_inscripciones AS inscripciones 
+                            ON inscripciones.alumno_id = alumnos.alumno_id 
+                        INNER JOIN tb_especialidades AS especialidades 
+                            ON inscripciones.especialidad_id = especialidades.especialidad_id
+                        WHERE especialidades.especialidad_id = :especialidad_id
+                    """
+                    
+                parametros = {"especialidad_id": especialidad_id}
+                
+                condiciones_adicionales = []
+                
+                if (cedula):
+                    condiciones_adicionales.append("cedula = :cedula")
+                    parametros["cedula"] = cedula
+                
+                if (situacion):
+                    condiciones_adicionales.append("situacion = :situacion")
+                    parametros["situacion"] = situacion
+                
+                if (condiciones_adicionales):
+                    consulta += " AND " + " AND ".join(condiciones_adicionales)
+                
+                alumnos = sesion.execute(text(consulta), parametros).fetchall()
+                
+                if not(alumnos):
+                    raise BaseDatosError("NO_HAY_ALUMNOS_REGISTRADOS", f"No hay alumnos con esa situación, especialidad o cédula ingresados.")
+                
+                return alumnos
         except BaseDatosError as error:
             raise error
         except Exception as error:
@@ -450,11 +493,11 @@ if __name__ == "__main__":
     
     inscripcion_repositorio.actualizar(17, campos_inscripcion)"""
     
-    """try:
+    try:
         alumnos = inscripcion_repositorio.obtener_por_cedula_situacion_especialidad(1, None, "Ingresado")
         print(alumnos)
     except BaseDatosError as error:
-        print(error)"""
+        print(error)
     
     """try:
         alumno = inscripcion_repositorio.obtener_por_matricula_situacion_especialidad(1, None)

@@ -2162,7 +2162,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             apellido_materno = FuncionSistema.comprobar_si_hay_valor(self.input_apellido_materno.text().strip().capitalize())
             cedula = self.input_cedula.text().strip()
             relacion_con_rep = self.input_relacion_con_representante.text().strip().capitalize()
-            situacion = self.input_situacion.text().strip().capitalize()
+            situacion = self.boton_situacion.currentText()
             
             fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
             
