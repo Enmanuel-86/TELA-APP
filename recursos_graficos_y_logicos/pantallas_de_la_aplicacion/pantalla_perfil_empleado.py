@@ -164,10 +164,7 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
             
             self.label_mostrar_estado.setText(str(info_basica[9]))
             
-            
-            
-            
-            
+                        
             
             if info_basica[10] == 'M' or info_basica[10] == 'm':
                 
@@ -180,7 +177,9 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
                 self.label_imagen_del_personal.setPixmap(QtGui.QPixmap(os.path.join(os.path.dirname(__file__), "..", "recursos_de_imagenes", "imagen_personal_f.png")))
                 self.input_sexo_masculino.setChecked(False)
                 self.input_sexo_femenino.setChecked(True)
-                
+        
+            FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_basica[12] ,self.label_imagen_del_personal)
+
         
             
             if info_basica[11] == 1:
