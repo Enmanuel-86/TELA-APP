@@ -308,7 +308,7 @@ class InscripcionRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LA INSCRIPCION/ES POR ESPECIALIDAD O MATRICULA: {error}")
     
-    def obtener_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+    def obtener_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 consulta = """

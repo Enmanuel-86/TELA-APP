@@ -177,7 +177,7 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR TIPO DE CARGO: {error}")
     
-    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> Union[List[Tuple], Tuple]:
+    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 consulta = """

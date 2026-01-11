@@ -109,7 +109,7 @@ class DetalleCargoServicio:
         except BaseDatosError as error:
             raise error
     
-    def obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> Union[List[Tuple], Tuple]:
+    def obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> List[Tuple]:
         try:
             return self.repositorio.obtener_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id, especialidad_id, cedula, situacion)
         except BaseDatosError as error:
