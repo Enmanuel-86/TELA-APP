@@ -509,14 +509,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     }
             """) 
             boton_editar.setProperty("tipo", "boton_editar")
-            boton_borrar = QPushButton("Borrar")
-            boton_borrar.setFixedSize(60, 30) 
-            boton_borrar.setProperty("tipo", "boton_borrar")
-            boton_borrar.setStyleSheet("""
-                    QPushButton{
-                        font-size:8pt;
-                    }
-            """) 
+            #boton_borrar = QPushButton("Borrar")
+            #boton_borrar.setFixedSize(60, 30) 
+            #boton_borrar.setProperty("tipo", "boton_borrar")
+            #boton_borrar.setStyleSheet("""
+            #        QPushButton{
+            #            font-size:8pt;
+            #        }
+            #""") 
             
 
             # Conectar botones
@@ -524,7 +524,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             #boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
 
             layout.addWidget(boton_editar)
-            layout.addWidget(boton_borrar)
+            #layout.addWidget(boton_borrar)
             layout.setContentsMargins(3, 3, 3, 3)
             widget.setLayout(layout)
 
