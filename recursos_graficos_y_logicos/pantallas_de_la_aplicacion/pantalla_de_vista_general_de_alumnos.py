@@ -390,25 +390,17 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
     # Metodo para filtrar por especialidad
     def filtrar_por_especialidad(self):
-        especialidad_selec = self.boton_especialidades.currentText()
-        situacion_selec = self.boton_situacion.currentText()
-        cedula_selec = self.barra_de_busqueda.text().strip()
         
-        if not(cedula_selec):
-            cedula_selec = None
+        situacion_selec = self.boton_situacion.currentText()
         
         try:
-            # Iteramos todas las especialidades, ejemplo (1,"ceramica")
-            for especialidad in self.lista_especialidades:
-                
-                # si el boton esta en X especialidad entonces
-                if especialidad_selec in especialidad:
+            
+            especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
                     
-                    #obtenemos el id de la especialidad
-                    especialidad_id = especialidad[0]
+            self.actualizar_tabla(None, situacion_selec, especialidad_id)
+            self.barra_de_busqueda.clear()
                     
-                    self.actualizar_tabla(cedula_selec, situacion_selec, especialidad_id)
-                    break
+                    
         except Exception as e:
             modelo.clear()
             self.label_contador.setText("0")
@@ -534,8 +526,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             tabla.setIndexWidget(proxy_index, widget)
         
         
-    
-    # Método para cargar los alumnos en la tabla
     def cargar_alumnos_en_tabla(self, tabla, alumnos):
         columnas = [
             "Matricula", "Cédula", "Primer Nombre", "Apellido Paterno",
@@ -556,7 +546,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             alumno[9]   # Situacion
             ]
 
-
             items = []
             for dato in datos_visibles:
                 item = QStandardItem(str(dato) if dato is not None else "")
@@ -566,19 +555,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
             # Agregar la fila completa
             modelo.appendRow(items)
-            
-            
-            for fila in range(modelo.rowCount()):
-                tabla.setRowHeight(fila, 40)
 
             # Numerar filas en el encabezado vertical
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
             modelo.setVerticalHeaderItem(indice, header_item)
 
-        #  Muy importante: asignar modelo primero
+        # Muy importante: asignar modelo primero
         tabla.setModel(modelo)
-        
         
         # PROXY --------------------------------------------
         # Asociar el modelo original al proxy
@@ -586,9 +570,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
         # Establecer que la tabla use el proxy y no el modelo directo
         tabla.setModel(self.proxy)
+        
+        # **NUEVO: Configurar altura de filas DESPUÉS de asignar el proxy**
+        tabla.verticalHeader().setDefaultSectionSize(40)  # Altura fija para todas las filas
+        
+        # Si prefieres altura dinámica, usa esto en su lugar:
+        # tabla.resizeRowsToContents()
 
-
-        #  Ahora sí añadimos los botones fila por fila
+        # Ahora sí añadimos los botones fila por fila
         for fila in range(modelo.rowCount()):
             widget = QWidget()
             layout = QHBoxLayout(widget)
@@ -620,16 +609,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             widget.setLayout(layout)
 
             index = modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
-            tabla.setIndexWidget(index, widget)
-       
-
+            
             # Insertar el widget usando el índice convertido para el proxy
             proxy_index = self.proxy.mapFromSource(index)
-
             tabla.setIndexWidget(proxy_index, widget)
-        
-        
-   
+    
 
 
 
