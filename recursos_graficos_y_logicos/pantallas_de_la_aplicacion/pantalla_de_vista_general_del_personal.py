@@ -114,10 +114,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
-        
-        #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
-        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
+        # [(1, None, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, None, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')]
+        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                                   indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9 )
 
 
         #print(self.lista_cargo_actual[1])
@@ -526,12 +525,12 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                     self.configurar_filtro()
                     
                     # funcion para cargar la tabla segun el cargo
-                    self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                    self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                                   indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
 
                     # actualizar la tabla segun el cargo
-                    self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                    self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                                   indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                     
                     # si es docente habilita este boton de especialidades
                     self.habilitar_boton_especialidades()
@@ -628,6 +627,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     def actualizar_tabla(self,  indice_cedula = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
         
             empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id)
+            
             self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_actualizados, indice_cedula= indice_cedula,
                                            indice_1er_nombre= indice_1er_nombre, indice_2do_nombre= indice_2do_nombre,
                                            indice_1er_apellido= indice_1er_apellido, indice_2do_apellido= indice_2do_apellido, indice_estado= indice_estado)
@@ -638,7 +638,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
     # Metodo para cargar los empleados en la tabla
     def cargar_empleados_en_tabla(self, tabla, empleados, indice_cedula, indice_1er_nombre, indice_2do_nombre, indice_1er_apellido, indice_2do_apellido, indice_estado):
-        columnas = ["Cédula", "Primer Nombre", "Segundo Nombre", "Apellido Paterno", "Apellido Materno", "Estado", "Opciones"]
+        columnas = ["Cédula", 
+                    "Primer Nombre", 
+                    "Segundo Nombre", 
+                    "Apellido Paterno", 
+                    "Apellido Materno", 
+                    "Estado", 
+                    "Opciones"]
         
         global modelo
         
