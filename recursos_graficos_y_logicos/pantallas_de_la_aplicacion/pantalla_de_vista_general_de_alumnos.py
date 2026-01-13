@@ -435,7 +435,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
     def cargar_representantes_en_tabla(self, tabla, representantes):
         columnas = [
-            "Cédula", "Nombre", "Paterno",
+            "Cédula", "Nombre", "Apellido",
             "Estado Civil", "Opciones"
         ]
 
