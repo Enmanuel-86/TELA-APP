@@ -832,6 +832,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
             self.stacked_widget.setCurrentIndex(2)
             FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            self.foto_perfil_alumno = None
+            self.foto_perfil_representante = None
         
         ## si el boton "no" es pulsadoo, no pasa nada #3
         elif self.msg_box.clickedButton() == self.boton_no:
@@ -1648,6 +1650,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             self.input_lugar_de_nacimiento.setText(info_basica[9])
             
+            if not info_basica[15] == None:
+                self.foto_perfil_alumno = info_basica[15]
+                FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_basica[15], self.label_foto_alumno)
+            
             if info_basica[10] == 'M':
                 self.input_sexo_masculino.setChecked(True)
                 
@@ -1677,7 +1683,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 
             self.dateedit_fecha_ingreso_tela.setDate(QDate.fromString(info_basica[13], 'yyyy-MM-dd'))
             
-            self.input_situacion.setText(info_basica[14])
+            self.boton_situacion.setCurrentText(info_basica[14])
+            
+            
+                            
                             
         except:
             
@@ -1743,6 +1752,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.input_carga_familiar.setText(str(info_representante[8]))
             self.input_estado_civil.setText(info_representante[9])
             
+            if not info_representante[10] == None:
+                FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_representante[10], self.label_foto_representante)
         except:
             
             print("La informacion del representante no cargo correctamente")
@@ -1843,7 +1854,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             fecha_ingreso_institucion = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_tela.text())
             
-            
+                
+                
             if self.input_sexo_masculino.isChecked():
                 
                 sexo = "M"
@@ -1866,7 +1878,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 "relacion_con_rep": relacion_con_rep,
                 "sexo": sexo,
                 "situacion": situacion,
-                "fecha_ingreso_institucion": fecha_ingreso_institucion
+                "fecha_ingreso_institucion": fecha_ingreso_institucion,
+                "foto_perfil": self.foto_perfil_alumno
                 }
             
             errores_primera_info_alumno = alumno_servicio.validar_campos_primera_info_alumno(
@@ -2046,7 +2059,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 "relacion_con_rep": campos_datos_alumno_1.get("relacion_con_rep"),
                                 "escolaridad": campos_info_academica.get("escolaridad"),
                                 "procedencia": campos_info_academica.get("procedencia"),
-                                "situacion": campos_datos_alumno_1.get("situacion")
+                                "situacion": campos_datos_alumno_1.get("situacion"),
+                                "foto_perfil": campos_datos_alumno_1.get("foto_perfil")
                             }
                             
                             # Acá guardo el alumno_id que retorno al crear un registro en la tabla tb_alumnos
