@@ -295,7 +295,7 @@ class PantallaPerfilEmpleado(QWidget, Ui_PantallaInfoCompletaDelEmpleado):
             
             
             
-            self.ver_cursor_posicion_cero(self.lista_qlineedits)
+            #self.ver_cursor_posicion_cero(self.lista_qlineedits)
         
         
         except Exception as e:
