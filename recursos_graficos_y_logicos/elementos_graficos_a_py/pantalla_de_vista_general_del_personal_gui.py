@@ -153,8 +153,6 @@ class Ui_VistaGeneralDelPersonal(object):
         self.boton_de_situacion.setObjectName("boton_de_situacion")
         self.boton_de_situacion.addItem("")
         self.boton_de_situacion.addItem("")
-        self.boton_de_situacion.addItem("")
-        self.boton_de_situacion.setItemText(2, "")
         self.gridLayout_2.addWidget(self.boton_de_situacion, 1, 2, 1, 1)
         self.horizontalLayout_3.addWidget(self.espacio_para_las_opciones)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)

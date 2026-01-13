@@ -421,11 +421,6 @@
                     <string>Inactivo</string>
                    </property>
                   </item>
-                  <item>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </item>
                  </widget>
                 </item>
                </layout>
