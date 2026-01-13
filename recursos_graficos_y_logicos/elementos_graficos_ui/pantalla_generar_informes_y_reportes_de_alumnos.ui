@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1345</width>
-    <height>613</height>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,8 +45,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1328</width>
-        <height>621</height>
+        <width>1345</width>
+        <height>761</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -97,13 +97,13 @@
            <widget class="QFrame" name="frame">
             <property name="minimumSize">
              <size>
-              <width>1231</width>
-              <height>601</height>
+              <width>1229</width>
+              <height>687</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>1291</width>
+              <width>1292</width>
               <height>601</height>
              </size>
             </property>
@@ -226,7 +226,7 @@
 }</string>
                   </property>
                   <property name="text">
-                   <string>Generar informes o reportes de los alumnos</string>
+                   <string>Generar reportes de alumnos o empleados</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -260,7 +260,7 @@
                <property name="minimumSize">
                 <size>
                  <width>1211</width>
-                 <height>461</height>
+                 <height>512</height>
                 </size>
                </property>
                <property name="maximumSize">
@@ -285,122 +285,6 @@
                 <string>espacio_form</string>
                </property>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="0" column="0">
-                 <widget class="QFrame" name="espacio_para_las_opciones">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>330</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>330</width>
-                    <height>90</height>
-                   </size>
-                  </property>
-                  <property name="sizeIncrement">
-                   <size>
-                    <width>0</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Plain</enum>
-                  </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_4">
-                   <item>
-                    <widget class="QLabel" name="titulo_de_boton_de_opciones">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>30</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>500</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>11</pointsize>
-                       <weight>75</weight>
-                       <italic>false</italic>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Especialidad ocupacional</string>
-                     </property>
-                     <property name="tipo" stdset="0">
-                      <string>titulo_qlineedit</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QComboBox" name="boton_especialidades">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>305</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="editable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="currentText">
-                      <string/>
-                     </property>
-                     <property name="currentIndex">
-                      <number>-1</number>
-                     </property>
-                     <property name="insertPolicy">
-                      <enum>QComboBox::NoInsert</enum>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>40</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="placeholderText">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
                 <item row="1" column="0">
                  <widget class="QFrame" name="espacio_informe_integral">
                   <property name="sizePolicy">
@@ -461,7 +345,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Generar informe educativo integral</string>
+                      <string>Informe educativo de alumnos</string>
                      </property>
                      <property name="scaledContents">
                       <bool>false</bool>
@@ -481,7 +365,7 @@
                     <widget class="QLabel" name="label_titulo_director_actual">
                      <property name="minimumSize">
                       <size>
-                       <width>121</width>
+                       <width>181</width>
                        <height>20</height>
                       </size>
                      </property>
@@ -504,7 +388,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Director/a actual</string>
+                      <string>Coordinador académico</string>
                      </property>
                      <property name="tipo" stdset="0">
                       <string>titulo_qlineedit</string>
@@ -591,6 +475,19 @@
                      </property>
                     </widget>
                    </item>
+                   <item>
+                    <spacer name="verticalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -654,7 +551,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Generar reporte caracterización general</string>
+                      <string>Caracterización general de alumnos</string>
                      </property>
                      <property name="scaledContents">
                       <bool>false</bool>
@@ -788,7 +685,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Generar reporte de asistencia mensual</string>
+                    <string>Asistencia mensual de alumnos</string>
                    </property>
                    <property name="scaledContents">
                     <bool>false</bool>
@@ -871,7 +768,7 @@
                    <property name="geometry">
                     <rect>
                      <x>40</x>
-                     <y>150</y>
+                     <y>140</y>
                      <width>291</width>
                      <height>46</height>
                     </rect>
@@ -957,6 +854,265 @@
                    </property>
                    <property name="tipo" stdset="0">
                     <string>titulo_qdateedit</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QFrame" name="espacio_para_las_opciones">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>330</width>
+                    <height>90</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>330</width>
+                    <height>90</height>
+                   </size>
+                  </property>
+                  <property name="sizeIncrement">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Plain</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <item>
+                    <widget class="QLabel" name="titulo_de_boton_de_opciones">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>30</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>500</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>11</pointsize>
+                       <weight>75</weight>
+                       <italic>false</italic>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Especialidad ocupacional</string>
+                     </property>
+                     <property name="tipo" stdset="0">
+                      <string>titulo_qlineedit</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="boton_especialidades">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>305</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="currentText">
+                      <string/>
+                     </property>
+                     <property name="currentIndex">
+                      <number>-1</number>
+                     </property>
+                     <property name="insertPolicy">
+                      <enum>QComboBox::NoInsert</enum>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>40</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="placeholderText">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QFrame" name="espacio_reporte_general_empleados">
+                  <property name="minimumSize">
+                   <size>
+                    <width>388</width>
+                    <height>161</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>388</width>
+                    <height>161</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <stylestrategy>NoAntialias</stylestrategy>
+                   </font>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>sub_espacio_form</string>
+                  </property>
+                  <widget class="QLabel" name="label_titulo_reporte_general_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>60</x>
+                     <y>10</y>
+                     <width>276</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>276</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>361</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Reporte general de empleados</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qlineedit</string>
+                   </property>
+                  </widget>
+                  <widget class="QPushButton" name="boton_generar_informe_general_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>110</x>
+                     <y>80</y>
+                     <width>174</width>
+                     <height>46</height>
+                    </rect>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>174</width>
+                     <height>46</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>180</width>
+                     <height>46</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Generar reporte</string>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>26</width>
+                     <height>26</height>
+                    </size>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>boton_generar_reporte</string>
                    </property>
                   </widget>
                  </widget>

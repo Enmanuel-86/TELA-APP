@@ -673,6 +673,8 @@ class ReporteGeneralEmpleados(ReporteBase):
             nombre_archivo = f"REPORTE DE PERSONAL ACTIVO - {fecha_actual}"
             
             libro.save(f"{self.RUTA_REPORTES_GENERALES_EMPLEADOS}/{nombre_archivo}.xlsx")
+        except BaseDatosError as error:
+            raise error
         except Exception as error:
             raise error
 
