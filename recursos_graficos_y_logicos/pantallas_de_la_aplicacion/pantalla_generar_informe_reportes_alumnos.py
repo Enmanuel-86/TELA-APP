@@ -12,8 +12,6 @@ from configuraciones.configuracion import app_configuracion
 # Importaciones de base de datos #
 ##################################
 
-# Reportes
-from reportes.alumnos.reporte_general_alumnos import ReporteGeneralAlumnos
 from excepciones.base_datos_error import BaseDatosError
 
 
@@ -24,8 +22,16 @@ from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
 from repositorios.alumnos.asistencia_alumno_repositorio import AsistenciaAlumnoRepositorio
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
+from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
+from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
+from repositorios.empleados.info_clinica_empleado_repositorio import InfoClinicaEmpleadoRepositorio
+
+# Reportes
+from reportes.alumnos.reporte_general_alumnos import ReporteGeneralAlumnos
 from reportes.alumnos.reporte_asistencia_mensual_alumnos import ReporteAsistenciaMensualAlumnos
-from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
+from reportes.alumnos.reporte_informe_educativo_alumnos import ReporteInformeEducativoAlumnos
+from reportes.empleados.reporte_general_empleados import ReporteGeneralEmpleados
 
 
 # Servicios
@@ -38,6 +44,10 @@ from servicios.especialidades.especialidad_servicio import EspecialidadServicio
 reporte_asistencia_mensual_alumnos = ReporteAsistenciaMensualAlumnos()
 
 reporte_general_alumnos = ReporteGeneralAlumnos()
+
+reporte_informe_educativo_integral_alumnos = ReporteInformeEducativoAlumnos()
+
+reporte_general_empleados = ReporteGeneralEmpleados()
 
 # Repositorios
 asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
@@ -53,6 +63,14 @@ inscripcion_repositorio = InscripcionRepositorio()
 info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 
 especialidad_repositorio = EspecialidadRepositorio()
+
+detalle_cargo_repositorio = DetalleCargoRepositorio()
+
+empleado_repositorio = EmpleadoRepositorio()
+
+info_laboral_repositorio = InfoLaboralRepositorio()
+
+info_clinica_empleado_repositorio = InfoClinicaEmpleadoRepositorio()
 
 # Servicios
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
@@ -74,6 +92,7 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         
         # cargar rutas de las carpetas de los documentos
         self.carpeta_reportes_alumnos = str(app_configuracion.DIRECTORIO_REPORTES_ALUMNOS)
+        self.carpeta_reportes_empleados = str(app_configuracion.DIRECTORIO_REPORTES_EMPLEADOS)
         
         # Establecer la fecha actual en el dateedit
         self.dateedit_fecha_reporte_asistencia.setDate(QDate.currentDate())
@@ -82,7 +101,8 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         # Conexiones a los botones
         self.boton_generar_reporte_asistencia.clicked.connect(self.generar_reporte_de_asistencia)
         self.boton_generar_informe_integral_2.clicked.connect(self.generar_caraterizacion_general_alumno)
-        
+        self.boton_generar_informe_integral.clicked.connect(self.generar_informe_educativo_integral_alumno)
+        self.boton_generar_informe_general_empleados.clicked.connect(self.generar_informe_general_empleados)
         
         
     def generar_reporte_de_asistencia(self):
@@ -154,3 +174,50 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
             
             # Abrir carpeta contenedora de los archivos generados
             FuncionSistema.abrir_carpeta_contenedora_de_archivos(self.carpeta_reportes_alumnos) 
+    
+    def generar_informe_educativo_integral_alumno(self):
+        """
+        Este método es para generar el informe educativo integral de alumnos por especialidad
+        
+        :param self: No necesita parámetros (los obtenemos de la interfaz y los repositorios importados)
+        """
+        
+        ESPECIALIDAD_ID = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_especialidades, self.lista_especialidades, 1, 0, True)
+        
+        if not self.boton_especialidades.currentIndex() == 0:
+            try:
+                datos = reporte_informe_educativo_integral_alumnos.cargar_datos(
+                    alumno_repositorio, inscripcion_repositorio,
+                    info_clinica_alumno_repositorio, detalle_cargo_repositorio,
+                    especialidad_repositorio, ESPECIALIDAD_ID,
+                    self.input_director_actual.text()
+                )
+                
+                reporte_informe_educativo_integral_alumnos.exportar(datos)
+            except BaseDatosError as error:
+                QMessageBox.warning(self, "AVISO", f"{error}")
+            else:
+                QMessageBox.information(self, "AVISO", f"Generado con exito")
+                FuncionSistema.abrir_carpeta_contenedora_de_archivos(self.carpeta_reportes_alumnos)
+        else:
+            QMessageBox.warning(self, "AVISO", f"Seleccione una especialidad")
+    
+    def generar_informe_general_empleados(self):
+        """
+        Este método es para generar el informe general de los empleados
+        
+        :param self: No necesita parámetros (los obtenemos de la interfaz y los repositorios importados)
+        """
+        
+        try:
+            datos = reporte_general_empleados.cargar_datos(
+                empleado_repositorio, info_laboral_repositorio,
+                detalle_cargo_repositorio, info_clinica_empleado_repositorio
+            )
+            
+            reporte_general_empleados.exportar(datos)
+        except Exception as error:
+            print(error)
+        else:
+            QMessageBox.information(self, "AVISO", f"Generado con exito")
+            FuncionSistema.abrir_carpeta_contenedora_de_archivos(self.carpeta_reportes_empleados)

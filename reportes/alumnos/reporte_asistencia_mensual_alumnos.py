@@ -217,7 +217,7 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
             datos.append(lista_dia_mes_con_dia_semana)
             
             # Posición 1: Mes específico
-            mes_especifico = self.cargar_meses_y_anio(anio)[mes]
+            mes_especifico = self.cargar_meses_y_anio(anio)[(mes - 1)]
             datos.append(mes_especifico)
             
             # Posición 2: Año específico

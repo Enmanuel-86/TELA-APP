@@ -50,7 +50,7 @@ class ReporteGeneralAlumnos(ReporteBase):
             
             cedula = alumno[1]
             
-            especialidad_ocupacional = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)[3]
+            especialidad_ocupacional = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)[4]
             
             lugar_nacimiento = alumno[9]
             fecha_nacimiento = alumno[7]
