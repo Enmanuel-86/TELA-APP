@@ -1092,7 +1092,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_cedula.setText(info_basica[6])
         
         self.dateedit_fecha_nacimiento.setDate(QDate.fromString(info_basica[7], 'yyyy-MM-dd'))
-
+        self.boton_situacion.setCurrentText(info_basica[9])
 
 
         if info_basica[10] == 'M':
@@ -1114,7 +1114,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         if info_basica[11] == 1:
             
             self.input_si.setChecked(True)
-        
+            
+        if not info_basica[12] == None:
+            self.foto_perfil_empleado = info_basica[12]
+            FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_basica[12], self.label_foto_empleado)
         
         
         
@@ -1502,7 +1505,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                                 "estado_reside": estado_reside,
                                                 "municipio": municipio,
                                                 "direccion_residencia": direccion_residencia,
-                                                "situacion": situacion
+                                                "situacion": situacion,
+                                                "foto_perfil": self.foto_perfil_empleado
                                             }
 
                                             
@@ -1671,7 +1675,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
             FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
             
-
+            self.foto_perfil_empleado = None
             self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
 
