@@ -324,7 +324,8 @@ class EmpleadoRepositorio(RepositorioBase):
                             
                             valor_campo_actual = campos_empleado.get(clave)
 
-                        accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_anterior}. AHORA: {valor_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_anterior}. AHORA: {valor_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                            
                         auditoria_repositorio.registrar(self.entidad, accion)
                         
                         sesion.query(Empleado).filter(Empleado.empleado_id == empleado_id).update({clave: valor_campo_actual})
