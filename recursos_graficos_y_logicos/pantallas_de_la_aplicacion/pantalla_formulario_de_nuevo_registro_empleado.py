@@ -985,7 +985,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                                         pantalla_tabla = self.stacked_widget.widget(7)
                                         
-                                        pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
+                                        pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= "Activo", indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
                                                                         indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8)
                                         
                                         pantalla_tabla.actualizar_lista_busqueda()
@@ -1379,7 +1379,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                 fecha_ingreso_ministerio = self.fecha_de_str_a_date(self.dateedit_fecha_ingreso_ministerio.text())
                                 
 
-                                situacion = "Activo"  # Por defecto es Activo
+                                situacion = self.boton_situacion.currentText()
 
                                 titulo_cargo = self.input_titulo_del_cargo.text()
                                 
@@ -1567,7 +1567,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                                             pantalla_tabla = self.stacked_widget.widget(7)
                                             
-                                            pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                            pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= self.boton_situacion.currentText(), indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
                                                             indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9 )
 
 
