@@ -115,7 +115,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         # [(1, None, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, None, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')]
-        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= self.boton_de_situacion.currentText(), indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
                                                    indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9 )
 
 
@@ -514,15 +514,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id = tipo_cargo_id, especialidad_id= None, situacion = situacion_selec)
             
             #self.boton_de_situacion
-            
+            print(empleados)
             self.configurar_filtro()
+            
             
             # funcion para cargar la tabla segun el cargo
             self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
                                             indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
 
             # actualizar la tabla segun el cargo
-            self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+            self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
                                             indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
             # si es docente habilita este boton de especialidades
@@ -571,7 +572,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_por_especialidad, indice_cedula= 2, indice_1er_nombre= 3,
                                             indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
     
-                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, indice_cedula= 2, indice_1er_nombre= 3,
+                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3,
                                             indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                 
                 self.barra_de_busqueda.clear()
@@ -585,7 +586,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
                 self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados, indice_cedula= 2, indice_1er_nombre= 3,
                                                     indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
-                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, indice_cedula= 2, indice_1er_nombre= 3,
+                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3,
                                                     indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                         
             
@@ -609,9 +610,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
     # Metodo para actualizar la tabla
-    def actualizar_tabla(self,  indice_cedula = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
+    def actualizar_tabla(self,  indice_cedula = None, situacion_selec = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
         
-            empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id)
+            empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id, situacion= situacion_selec)
             
             self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_actualizados, indice_cedula= indice_cedula,
                                            indice_1er_nombre= indice_1er_nombre, indice_2do_nombre= indice_2do_nombre,
