@@ -114,10 +114,9 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
-        
-        #(1, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')
-        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8 )
+        # [(1, None, '17536256', 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', 'ADMINISTRATIVO', 'Activo'), (2, None, '5017497', 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', 'ADMINISTRATIVO', 'Activo')]
+        self.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= self.boton_de_situacion.currentText(), indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                                   indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9 )
 
 
         #print(self.lista_cargo_actual[1])
@@ -160,6 +159,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_control_de_reposos.clicked.connect(self.ir_a_control_de_reposos)
         self.boton_buscar.clicked.connect(self.acceder_perfil_empleado)     
         self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
+        self.boton_de_situacion.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
         self.barra_de_busqueda.textChanged.connect(lambda texto: self.filtrar_resultados(texto) if not texto == "" else self.filtrar_por_tipo_cargo())
         self.barra_de_busqueda.returnPressed.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()) )
@@ -504,47 +504,46 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     #Metodo para filtrar por tipo de cargo
     def filtrar_por_tipo_cargo(self):
     
-        tipo_cargo_selec = self.boton_de_opciones.currentText()
-        
-        # si el boton esta pulsado
-        if self.boton_de_opciones.currentText() :
+        try:
+            situacion_selec = self.boton_de_situacion.currentText()
+                        
+            # me pasa el indice donde esta id en la tupla, el id esta en el indice 0
+            tipo_cargo_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_de_opciones.currentText(), self.lista_tipo_cargo, 0)
             
-            # print("\n",self.boton_de_opciones.currentText())
+            # se le manda el id al metodo del servicio
+            empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id = tipo_cargo_id, especialidad_id= None, situacion = situacion_selec)
             
-            # aqui se obtiene el id del tipo de cargo que esta en el combobox boton_de_opciones
-            for tipo_cargo in self.lista_tipo_cargo:
-                
-                # si la seleccion esta en el catalogo
-                if tipo_cargo_selec in tipo_cargo:
-                    
-                    # me pasa el indice donde esta id en la tupla, el id esta en el indice 0
-                    tipo_cargo_id = tipo_cargo[0]
-                    
-                    # se le manda el id al metodo del servicio
-                    empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id = tipo_cargo_id, especialidad_id= None)
-                    
-                    self.configurar_filtro()
-                    
-                    # funcion para cargar la tabla segun el cargo
-                    self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+            #self.boton_de_situacion
+            print(empleados)
+            self.configurar_filtro()
+            
+            
+            # funcion para cargar la tabla segun el cargo
+            self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal,empleados= empleados, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                            indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
 
-                    # actualizar la tabla segun el cargo
-                    self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                   indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
-                    
-                    # si es docente habilita este boton de especialidades
-                    self.habilitar_boton_especialidades()
-                    self.barra_de_busqueda.clear()
-                    
-                    #self.label_contador.setText(str(len(empleados)))
-                    
+            # actualizar la tabla segun el cargo
+            self.actualizar_tabla(tipo_cargo_id= tipo_cargo_id, especialidad_id= None, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                            indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
+            
+            # si es docente habilita este boton de especialidades
+            self.habilitar_boton_especialidades()
+            self.barra_de_busqueda.clear()
+            
+                        #self.label_contador.setText(str(len(empleados)))
+        except Exception as e:
+            
+            modelo.clear()
+            self.label_contador.setText("0")
+            QMessageBox.information(self, "No hay registros", f"{e}")
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "filrar_por_tipo_cargo")             
                     
     # Metodo para filtrar por especialidad           
     def filtrar_por_especialidad(self):
         
         # guardamos la seleccion
-        especialidad_selec = self.boton_especialidades.currentText()
+        situacion_selec = self.boton_de_situacion.currentText()
         
         
         
@@ -564,45 +563,31 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             # comparamos si tiene seleccion y si esta habilitado el boton
             if self.boton_especialidades.currentText() and self.boton_especialidades.isEnabled() and not self.boton_especialidades.currentIndex() == 0:
                 
-                # iteramos cada tupla de la lista
-                for especialidad in self.lista_especialidades:
-                    
-                    # comparamos si la especialidad seleecionada esta en la tupla ejemplo:
-                    # "ceramicas" esta en (1,"ceramica")? si es verdadero realiza las instrucciones
-                    # si no es verdadero como este caso
-                    # "ceramica" esta en (3,"hoteleria")? si no esta el va cambiando de tupla hasta conseguir la indicada
-                    if especialidad_selec in especialidad:
-                        
-                        
-                        especialidad_id = especialidad[0]
-                        # si es verdadero se le manda el id que esta en el indice 0 de la tupla
-                        empleados_por_especialidad = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente,especialidad_id= especialidad_id)
-                        
-                        self.configurar_filtro()
-                        self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_por_especialidad, indice_cedula= 2, indice_1er_nombre= 3,
-                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
-                        self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, indice_cedula= 2, indice_1er_nombre= 3,
-                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
-                        
-                        self.barra_de_busqueda.clear()
-                        #print(f"\n {especialidad_selec} si esta en la tupla {especialidad}")
-                        
-                        break
-                    else:
-                        
-                        #print(f"{especialidad_selec} no esta en la tupla {especialidad}")
-                        
-                        pass
+                especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
+                # si es verdadero se le manda el id que esta en el indice 0 de la tupla
+                empleados_por_especialidad = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente,especialidad_id= especialidad_id, situacion= situacion_selec)
+                
+                self.configurar_filtro()
+                self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_por_especialidad, indice_cedula= 2, indice_1er_nombre= 3,
+                                            indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
+    
+                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, especialidad_id= especialidad_id, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3,
+                                            indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
+                
+                self.barra_de_busqueda.clear()
+                #print(f"\n {especialidad_selec} si esta en la tupla {especialidad}")
+                
+                
                         
             else:
                 
-                empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente)
-                self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados, indice_cedula= 1, indice_1er_nombre= 2,
-                                                    indice_2do_nombre= 3, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id= id_cargo_docente, situacion = situacion_selec)
+                self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados, indice_cedula= 2, indice_1er_nombre= 3,
+                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
             
-                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, indice_cedula= 1, indice_1er_nombre= 2,
-                                                    indice_2do_nombre= 3, indice_1er_apellido= 5, indice_2do_apellido= 6, indice_estado= 8)
+                self.actualizar_tabla(tipo_cargo_id= id_cargo_docente, situacion_selec= situacion_selec, indice_cedula= 2, indice_1er_nombre= 3,
+                                                    indice_2do_nombre= 4, indice_1er_apellido= 6, indice_2do_apellido= 7, indice_estado= 9)
                         
             
         except Exception as e:
@@ -625,9 +610,10 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
 
     # Metodo para actualizar la tabla
-    def actualizar_tabla(self,  indice_cedula = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
+    def actualizar_tabla(self,  indice_cedula = None, situacion_selec = None, indice_1er_nombre = None, indice_2do_nombre = None, indice_1er_apellido = None, indice_2do_apellido = None, indice_estado = None, tipo_cargo_id = None, especialidad_id = None):
         
-            empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id)
+            empleados_actualizados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id=tipo_cargo_id, especialidad_id= especialidad_id, situacion= situacion_selec)
+            
             self.cargar_empleados_en_tabla(tabla= self.tabla_ver_personal, empleados= empleados_actualizados, indice_cedula= indice_cedula,
                                            indice_1er_nombre= indice_1er_nombre, indice_2do_nombre= indice_2do_nombre,
                                            indice_1er_apellido= indice_1er_apellido, indice_2do_apellido= indice_2do_apellido, indice_estado= indice_estado)
@@ -638,7 +624,13 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
 
     # Metodo para cargar los empleados en la tabla
     def cargar_empleados_en_tabla(self, tabla, empleados, indice_cedula, indice_1er_nombre, indice_2do_nombre, indice_1er_apellido, indice_2do_apellido, indice_estado):
-        columnas = ["Cédula", "Primer Nombre", "Segundo Nombre", "Apellido Paterno", "Apellido Materno", "Estado", "Opciones"]
+        columnas = ["Cédula", 
+                    "Primer Nombre", 
+                    "Segundo Nombre", 
+                    "Apellido Paterno", 
+                    "Apellido Materno", 
+                    "Estado", 
+                    "Opciones"]
         
         global modelo
         

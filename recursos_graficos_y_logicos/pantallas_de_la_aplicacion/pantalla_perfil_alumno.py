@@ -16,6 +16,7 @@ from repositorios.alumnos.alumno_repositorio import AlumnoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.info_bancaria_alumno_repositorio import InfoBancarioAlumnoRepositorio
 from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
+from repositorios.alumnos.medidas_alumno_repositorio import MedidasAlumnoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 
 # Servicios
@@ -24,6 +25,7 @@ from servicios.alumnos.alumno_servicio import AlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.info_bancaria_alumno_servicio import InfoBancariaAlumnoServicio
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
+from servicios.alumnos.medidas_alumno_servicio import MedidasAlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 
 
@@ -37,6 +39,8 @@ inscripcion_repositorio = InscripcionRepositorio()
 
 info_bancaria_alumno_repositorio = InfoBancarioAlumnoRepositorio()
 
+medidas_alumno_repositorio = MedidasAlumnoRepositorio()
+
 info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 
 
@@ -49,6 +53,8 @@ alumno_servicio = AlumnoServicio(alumnos_repositorio)
 inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
 
 info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_repositorio)
+
+medidas_alumno_servicio = MedidasAlumnoServicio(medidas_alumno_repositorio)
 
 info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
 
@@ -118,6 +124,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         info_inscripcion = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
         
+        info_medidas_alumno = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
         
         try:
             
@@ -278,6 +285,17 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         except Exception as e:
             print(f"Algo paso en info clinia: {e}")
             
+            
+            
+        try:
+            self.input_estatura.setText(str(info_medidas_alumno[1]))
+            self.input_peso.setText(str(info_medidas_alumno[2]))
+            self.input_talla_camisa.setText(str(info_medidas_alumno[3]))
+            self.input_talla_pantalon.setText(str(info_medidas_alumno[4]))
+            self.input_talla_zapatos.setText(str(info_medidas_alumno[5]))
+        except Exception as e:
+            
+            print(f"Algo malo paso en info medidas: {e}")
             
         try:
             

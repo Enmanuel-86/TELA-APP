@@ -95,7 +95,7 @@ class InscripcionServicio:
         except BaseDatosError as error:
             raise error
     
-    def obtener_inscripcion_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> Union[List[Tuple], Tuple]:
+    def obtener_inscripcion_por_cedula_situacion_especialidad(self, especialidad_id: int, cedula: str = None, situacion: str = "Inactivo") -> List[Tuple]:
         try:
             return self.repositorio.obtener_por_cedula_situacion_especialidad(especialidad_id, cedula, situacion)
         except BaseDatosError as error:

@@ -177,19 +177,53 @@ class DetalleCargoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER AL EMPLEADO POR TIPO DE CARGO: {error}")
     
-    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> Union[List[Tuple], Tuple]:
+    def obtener_por_tipo_cargo_o_especialidad_o_cedula(self, tipo_cargo_id: int, especialidad_id: int = None, cedula: str = None, situacion: str = "Activo") -> List[Tuple]:
         try:
-            if (cedula):
-                if (self.obtener_por_cedula(cedula)):
-                    return self.obtener_por_cedula(cedula)
-            
-            if ((tipo_cargo_id) and (especialidad_id)):
-                if ((self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)) and (self.obtener_por_especialidad(especialidad_id, situacion))):
-                    return self.obtener_por_especialidad(especialidad_id, situacion)
-            
-            if (tipo_cargo_id):
-                if (self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)):
-                    return self.obtener_por_tipo_cargo(tipo_cargo_id, situacion)
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                        SELECT
+                            detalles_cargo.detalle_cargo_id,
+                            especialidades.especialidad_id,
+                            empleados.cedula,
+                            empleados.primer_nombre,
+                            empleados.segundo_nombre,
+                            empleados.tercer_nombre,
+                            empleados.apellido_paterno,
+                            empleados.apellido_materno,
+                            tipos_cargo.tipo_cargo,
+                            empleados.situacion
+                        FROM tb_detalles_cargo AS detalles_cargo
+                        INNER JOIN tb_empleados AS empleados ON detalles_cargo.empleado_id = empleados.empleado_id
+                        INNER JOIN tb_tipos_cargo AS tipos_cargo ON detalles_cargo.tipo_cargo_id = tipos_cargo.tipo_cargo_id
+                        LEFT JOIN tb_especialidades AS especialidades ON detalles_cargo.especialidad_id = especialidades.especialidad_id
+                        WHERE tipos_cargo.tipo_cargo_id = :tipo_cargo_id
+                """
+                
+                parametros = {"tipo_cargo_id": tipo_cargo_id}
+                
+                condiciones_adicionales = []
+                
+                if (especialidad_id):
+                    condiciones_adicionales.append("especialidades.especialidad_id = :especialidad_id")
+                    parametros["especialidad_id"] = especialidad_id
+                
+                if (cedula):
+                    condiciones_adicionales.append("empleados.cedula = :cedula")
+                    parametros["cedula"] = cedula
+                
+                if (situacion):
+                    condiciones_adicionales.append("empleados.situacion = :situacion")
+                    parametros["situacion"] = situacion
+                
+                if (condiciones_adicionales):
+                    consulta += " AND " + " AND ".join(condiciones_adicionales)
+                
+                empleados = sesion.execute(text(consulta), parametros).fetchall()
+                
+                if not(empleados):
+                    raise BaseDatosError("NO_HAY_EMPLEADOS_REGISTRADOS", "No hay empleados con esa situación, especialidad, tipo de cargo o cédula ingresados.")
+                
+                return empleados
         except BaseDatosError as error:
             raise error
         except Exception as error:
@@ -431,15 +465,18 @@ if __name__ == "__main__":
         print(detalle_cargo)"""
     
     
-    """try:
-        todos_empleados = detalle_cargo_repositorio.obtener_por_tipo_cargo_o_especialidad_o_cedula(2, 1, "18128319")
-        if (type(todos_empleados) == list):
-            for registro in todos_empleados:
-                print(registro)
-        else:
-            print(todos_empleados)
+    try:
+        todos_empleados = detalle_cargo_repositorio.obtener_por_tipo_cargo_o_especialidad_o_cedula(
+            tipo_cargo_id = 2,
+            especialidad_id = 2,
+            cedula = None,
+            situacion = "Activo"
+        )
+        
+        for registro in todos_empleados:
+            print(registro)
     except BaseDatosError as error:
-        print(error)"""
+        print(error)
     
     """campos_detalle_cargo = {
         "cargo_id": 1,
