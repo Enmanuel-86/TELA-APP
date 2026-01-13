@@ -464,7 +464,6 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "boton_anadir")
                         self.boton_registrar_especialidad.clicked.disconnect()                   
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-                        self.actualizar_comboboxs_especialidades()
                     
                     # en el caso de que sea un diagnostico
                     if nombre_clave_dict.lower() == "diagnostico":
