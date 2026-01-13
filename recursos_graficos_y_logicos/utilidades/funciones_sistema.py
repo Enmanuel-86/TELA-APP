@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 from datetime import datetime
 from PIL import Image
 from typing import Optional
+from openpyxl.utils import range_boundaries
 import platform
 import os
 import io
@@ -780,8 +781,13 @@ class FuncionesDelSistema:
             except Exception as error:
                 raise error
             
-        return None     
-                
+        return None
+    
+    def aplicar_borde_a_rango(self, hoja, rango, borde):
+        min_col, min_row, max_col, max_row = range_boundaries(rango)
+        for fila in range(min_row, max_row + 1):
+            for col in range(min_col, max_col + 1):
+                hoja.cell(row=fila, column=col).border = borde
         
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
@@ -803,4 +809,3 @@ mi_especialidad = "carpinteria"
 
 
 #funciones_comunes.limpiar_inputs_de_qt(lista_qlineedits_y_qlabel= [("12"), (123)])
-

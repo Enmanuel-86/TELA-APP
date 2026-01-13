@@ -10,6 +10,7 @@ from servicios.especialidades.especialidad_servicio import EspecialidadServicio
 from configuraciones.configuracion import app_configuracion
 from reportes.reporte_base import ReporteBase
 from excepciones.base_datos_error import BaseDatosError
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 
 
 class ReporteAsistenciaMensualAlumnos(ReporteBase):
@@ -367,22 +368,24 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
             
             # Manejo de Feriados
             if (fila_data["Es_Feriado"]) and not(fila_data["Es_Feriado"] == "Fin de Semana"):
+                rango = f"C{fila_actual}:H{fila_actual}"
+                hoja.merge_cells(start_row = fila_actual, start_column = 3, end_row = fila_actual, end_column = 8)
                 # Si es feriado o fin de semana escribir el contenido y combinar celdas
                 hoja.cell(row = fila_actual, column = 3, value = fila_data["Es_Feriado"])
-                
-                hoja.cell(row = fila_actual, column = 3).border = borde_celda
-                
-                # Fusiono las celdas
-                hoja.merge_cells(start_row = fila_actual, start_column = 3, end_row = fila_actual, end_column = 8)
-                
-                # Centrar el texto
                 hoja.cell(row = fila_actual, column = 3).alignment = alineacion_centrada
+                #hoja.cell(row = fila_actual, column = 3).border = borde_celda
+                
+                FuncionSistema.aplicar_borde_a_rango(hoja,rango, borde_celda)
+                
             # Si no es Feriado ni fin de semana, escribir la cantidad de asistencia
             elif fila_data["Es_Feriado"] == "Fin de Semana":
+                rango = f"C{fila_actual}:H{fila_actual}"
+                hoja.merge_cells(start_row = fila_actual, start_column = 3, end_row = fila_actual, end_column = 8)
                 hoja.cell(row = fila_actual, column = 3, value = "").fill = relleno_fines_semana
                 hoja.cell(row = fila_actual, column = 3).border = borde_celda
-                hoja.merge_cells(start_row = fila_actual, start_column = 3, end_row = fila_actual, end_column = 8)
+                
                 hoja.cell(row = fila_actual, column = 3).alignment = alineacion_centrada
+                FuncionSistema.aplicar_borde_a_rango(hoja, rango, borde_celda)
             else:
                 hoja.cell(row = fila_actual, column = 3, value = fila_data["Varones_Presentes"])
                 hoja.cell(row = fila_actual, column = 3).alignment = alineacion_centrada
@@ -448,6 +451,9 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
 
 
         hoja.merge_cells(f"A{siguiente_fila_disponible}:B{siguiente_fila_disponible}")
+        
+        rango = f"A{siguiente_fila_disponible}:B{siguiente_fila_disponible}"
+        FuncionSistema.aplicar_borde_a_rango(hoja, rango, borde_celda)
     
     def cargar_datos_matricula_alumnos(self, hoja, lista_dict_matricula_completa_alumnos: List[Dict], fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados):
         hoja["J8"] = "Matrícula"
@@ -471,13 +477,6 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
         hoja["N8"].alignment = alineacion_centrada
         hoja["O8"].alignment = alineacion_centrada
 
-        hoja["J8"].border = borde_celda
-        hoja["J9"].border = borde_celda
-        hoja["J10"].border = borde_celda
-        hoja["J11"].border = borde_celda
-        hoja["J12"].border = borde_celda
-        hoja["J13"].border = borde_celda
-
         hoja["M8"].border = borde_celda
         hoja["N8"].border = borde_celda
         hoja["O8"].border = borde_celda
@@ -494,6 +493,11 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
         hoja.merge_cells("J11:L11")
         hoja.merge_cells("J12:L12")
         hoja.merge_cells("J13:L13")
+        
+        rangos = ["J8:L8", "J9:L9", "J10:L10", "J11:L11", "J12:L12", "J13:L13"]
+        
+        for rango in rangos:
+            FuncionSistema.aplicar_borde_a_rango(hoja, rango, borde_celda)
 
 
         fila_actual = 9
@@ -591,6 +595,11 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
         hoja.merge_cells("J28:K28")
         hoja.merge_cells("J29:K29")
         hoja.merge_cells("J30:K30")
+        
+        rangos = ["L27:N27", "P27:R27","J28:K28", "J29:K29", "J30:K30"]
+        
+        for rango in rangos:
+            FuncionSistema.aplicar_borde_a_rango(hoja, rango, borde_celda)
     
     def cargar_datos_promedio_asistencia_inasistencia_alumnos(self, hoja, lista_dict_promedio_asistencia_inasistencia_alumnos: List[Dict], alineacion_centrada, borde_celda):
         fila_actual = 29

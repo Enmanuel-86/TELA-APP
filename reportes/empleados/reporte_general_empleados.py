@@ -17,6 +17,7 @@ from reportes.reporte_base import ReporteBase
 from configuraciones.configuracion import app_configuracion
 from excepciones.base_datos_error import BaseDatosError
 from datetime import datetime
+from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 import calendar
 
 
@@ -266,7 +267,8 @@ class ReporteGeneralEmpleados(ReporteBase):
         cintillo.width = 50 * 7.2
         cintillo.height = 47 + 10
         
-        hoja.add_image(cintillo, "A1")
+        cintillo.anchor = "A1"
+        hoja.add_image(cintillo)
     
     def cargar_encabezados_info_personal(self, hoja, borde_celda, fuente_negrita, alineacion_centrada, relleno_encabezados):
         encabezados = [
@@ -283,7 +285,7 @@ class ReporteGeneralEmpleados(ReporteBase):
         for i, encabezado in enumerate(encabezados, start = 1):
             letra_columna = get_column_letter(i)
             
-            celda = hoja[f"{letra_columna}2"]
+            celda = hoja[f"{letra_columna}4"]
             
             celda.border = borde_celda
             celda.font = fuente_negrita
@@ -318,7 +320,7 @@ class ReporteGeneralEmpleados(ReporteBase):
         alineacion_centrada,
         borde_celda
     ):
-        fila_actual = 3
+        fila_actual = 5
         contador_general = 1
         
         # Agrupar los empleados por tipo_personal
@@ -431,9 +433,9 @@ class ReporteGeneralEmpleados(ReporteBase):
         fila_actual = 3
 
         hoja["A2"] = "TURNO DE LA MAÑANA"
-        hoja["A2"].border = borde_celda
         hoja.merge_cells("A2:B2")
         hoja.cell(row = 2, column = 1).alignment = alineacion_centrada
+        FuncionSistema.aplicar_borde_a_rango(hoja, "A2:B2", borde_celda)
         
         for elemento in lista_dict_conteo_personal:
             hoja.cell(row = fila_actual, column = 1, value = elemento["funcion_cargo"])
@@ -469,9 +471,9 @@ class ReporteGeneralEmpleados(ReporteBase):
         elemento = lista_dict_matricula_personal[0]
 
         hoja["D2"] = "TURNO DE LA MAÑANA"
-        hoja["D2"].border = borde_celda
         hoja.merge_cells("D2:E2")
         hoja.cell(row = 2, column = columna_actual).alignment = alineacion_centrada
+        FuncionSistema.aplicar_borde_a_rango(hoja, "D2:E2", borde_celda)
         
         hoja.cell(row = fila_actual, column = 4, value = "VARONES")
         hoja.cell(row = fila_actual, column = 4).alignment = alineacion_centrada
