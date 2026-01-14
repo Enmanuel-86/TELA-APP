@@ -371,7 +371,7 @@ class Ui_VistaGeneralDeAlumnos(object):
         self.boton_situacion.setItemText(2, _translate("VistaGeneralDeAlumnos", "Egresado"))
         self.boton_situacion.setItemText(3, _translate("VistaGeneralDeAlumnos", "Rotado"))
         self.boton_situacion.setItemText(4, _translate("VistaGeneralDeAlumnos", "Inactivo"))
-        self.barra_de_busqueda.setPlaceholderText(_translate("VistaGeneralDeAlumnos", "Buscar alumno por su cédula"))
+        self.barra_de_busqueda.setPlaceholderText(_translate("VistaGeneralDeAlumnos", "Buscar por cédula"))
         self.boton_buscar.setText(_translate("VistaGeneralDeAlumnos", " Buscar"))
         self.boton_buscar.setProperty("tipo", _translate("VistaGeneralDeAlumnos", "boton_buscar"))
         self.label_contador.setText(_translate("VistaGeneralDeAlumnos", "0"))
