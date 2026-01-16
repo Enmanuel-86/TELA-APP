@@ -464,7 +464,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_especialidad, "boton_anadir")
                         self.boton_registrar_especialidad.clicked.disconnect()                   
                         self.boton_registrar_especialidad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_especialidad, "especialidad", self.lista_especialidades) )
-                    
+                        self.actualizar_especialidades()
+                        
                     # en el caso de que sea un diagnostico
                     if nombre_clave_dict.lower() == "diagnostico":
                         
@@ -1000,11 +1001,32 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
         
         """
-        
+        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         
         pantalla_vista_general_alumnos = self.stacked_widget.widget(2)
+        pantalla_formulario_alumno = self.stacked_widget.widget(3)
+        pantalla_asistencia_alumno = self.stacked_widget.widget(4)
+        pantalla_generar_informes = self.stacked_widget.widget(5)
         pantalla_vista_general_personal = self.stacked_widget.widget(7)
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
         
         
+        # esta tupla contiene todos  los combobox con "Seleccionar aqui" en la primera opcion
+        lista_seleccionar_aqui = (pantalla_formulario_alumno.boton_de_especialidad, 
+                                  pantalla_formulario_empleado.boton_de_especialidad, 
+                                  pantalla_asistencia_alumno.boton_especialidades,
+                                  pantalla_generar_informes.boton_especialidades)
+        
+        # Aqui iteramos la lista de los combobox
+        for combobox_especialidad in lista_seleccionar_aqui:
+            FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, combobox_especialidad, 1, 1)
+        
+        
+        """
+            Estos son dos casos particulares, el primero es que la vista general del alumno filtra de golpe y lanza una excepcion, el sistema no se corrompe,
+            pero es desgradable para el usuario que cuando edite o agregue automaticamente le salga un mensaje de que no hay alumnos en x especialida nueva.
+            
+            el segundo la vista general del personal, no hay problemas, solo hay que agregar la palabra "Todos" a la primera opcion del combobox
+        """
         pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
-        pantalla_vista_general_personal.actualizar_especialidades()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, pantalla_vista_general_personal.boton_especialidades, 1, 0, "Todos")
