@@ -228,6 +228,8 @@ class FuncionesDelSistema:
                 
                 # le indicamos con el indice que pedimos que vaya agregando el nombre del elemento
                 boton_desplegable.addItem(elemento_iterado[indice_nombre_elemento])
+                
+            boton_desplegable.setCurrentIndex(0)
         
         except Exception as e:
             
