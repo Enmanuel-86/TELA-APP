@@ -118,8 +118,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_crear_nuevo_registro.clicked.connect(lambda _: self.ir_crear_nuevo_registro())
         self.boton_buscar.clicked.connect(lambda _: self.aplicar_filtro(self.barra_de_busqueda.text()))
         self.boton_asistencia_alumnos.clicked.connect(lambda _: self.ir_asistencia_alumno())
-        self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
-        self.boton_situacion.currentIndexChanged.connect(self.filtrar_por_especialidad)
+        self.boton_especialidades.currentIndexChanged.connect(lambda: self.filtrar_por_especialidad())
+        self.boton_situacion.currentIndexChanged.connect(lambda: self.filtrar_por_especialidad())
         self.boton_entidades.currentIndexChanged.connect(lambda: self.filtrar_por_ente_seleccionado())
         self.tabla_ver_alumnos.doubleClicked.connect(self.acceder_al_prefil_del_alumno_desde_la_tabla)
         self.barra_de_busqueda.textChanged.connect(lambda texto: self.filtrar_resultados(texto) if not texto == "" else self.filtrar_por_ente_seleccionado())
@@ -136,7 +136,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         
         # Carga las especialidades al boton deplegable
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 0, "Todos")
         
         
             
@@ -153,10 +153,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
   
     def actualizar_combobox_especialidades(self):
-        
+        self.boton_especialidades.disconnect()
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1)
-            
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1,0 , "Todos")
+        self.boton_especialidades.currentIndexChanged.connect(lambda: self.filtrar_por_especialidad())
+
             
             
             
@@ -390,14 +391,24 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     
     # Metodo para filtrar por especialidad
     def filtrar_por_especialidad(self):
-        
+        """
+            Este metodo sirve para filtrar a los alumnos segun las especialidades registradas
+        """
         situacion_selec = self.boton_situacion.currentText()
         
         try:
-            
-            especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
-                    
-            self.actualizar_tabla(None, situacion_selec, especialidad_id)
+            if self.boton_especialidades.currentIndex() == 0: 
+                
+                alumnos = inscripcion_servicio.obtener_todos_inscripciones()
+                
+                self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos)
+                
+            else:
+                
+                especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
+                        
+                self.actualizar_tabla(None, situacion_selec, especialidad_id)
+                
             self.barra_de_busqueda.clear()
                     
                     
