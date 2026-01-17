@@ -263,6 +263,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
 
+                        self.actualizar_diagnosticos()
                     
                     elif nombre_clave_dict.lower() == "enfermedad_cronica":
                         
@@ -284,7 +285,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
                         
-                        
+                        self.actualizar_funciones_de_cargos()
                         
                     # Casos especiales
                     
@@ -311,6 +312,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.input_hora_cargo_empleado.clear()
                         
+                        self.actualizar_tipos_de_cargos()
                         
                     if nombre_clave_dict.lower() == "cargo" and codigo_cargo != None:
                         
@@ -334,7 +336,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                         self.input_codigo_cargo_empleado.clear()
                     
-                    
+                        self.actualizar_cargos()
                         
                         
                     qlineedit.clear()
@@ -479,6 +481,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_diagnostico, "boton_anadir")
                         self.boton_registrar_diagnostico.clicked.disconnect()
                         self.boton_registrar_diagnostico.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_diagnostico, "diagnostico", self.lista_diagnosticos) )
+                        self.actualizar_diagnosticos()
                         
                     # en el caso que se una enfermedad cronica
                     if nombre_clave_dict.lower() == "enfermedad_cronica":
@@ -501,14 +504,13 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         
                         lista_catalogo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
 
-
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
 
                         FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_funcion_cargo, "boton_anadir")
                         self.boton_registrar_funcion_cargo.clicked.disconnect()
                         self.boton_registrar_funcion_cargo.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_funcion_cargo, "funcion_cargo", self.lista_funcion_cargo) )
                         
-                       
+                        self.actualizar_funciones_de_cargos()
                        
                     
                     if nombre_clave_dict.lower() == "cargo":
@@ -537,6 +539,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.input_codigo_cargo_empleado.clear()
                         self.input_cargo_empleado.clear()
                         
+                        self.actualizar_cargos()
                         
                     if nombre_clave_dict.lower() == "tipo_cargo":
                         
@@ -568,6 +571,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         self.input_tipo_cargo_empleado.clear()
                         self.input_hora_cargo_empleado.setTime(QtCore.QTime(8,0))
                         
+                        self.actualizar_tipos_de_cargos()
                         
                     
                     qlineedit.clear()
@@ -647,6 +651,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     lista_catalogo = especialidad_servicio.obtener_todos_especialidades()
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_especialidades, lista_catalogo)
+                    
                     self.actualizar_especialidades()
 
 
@@ -658,7 +663,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_diagnosticos, lista_catalogo)
 
-
+                    self.actualizar_diagnosticos()
 
                 elif nombre_clave_dict.lower() == "enfermedad_cronica":
                     
@@ -678,7 +683,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_funciones_cargo, lista_catalogo)
   
-                
+                    self.actualizar_funciones_de_cargos()
                 
                 
                 elif nombre_clave_dict.lower() == "tipo_cargo":
@@ -689,7 +694,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_tipos_cargos_empleados, lista_catalogo)
                     
-                    
+                    self.actualizar_tipos_de_cargos()
                     
                 elif nombre_clave_dict.lower() == "cargo":
                     
@@ -699,7 +704,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_cargos_empleados, lista_catalogo)
   
-                
+                    self.actualizar_cargos()
                   
                     
             except Exception as e:
@@ -999,10 +1004,10 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         """
             Este metodo sirve para actualizar las especialidades en las pantallas qe utilicen esta lista catalogo
 
-        
         """
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         
+        # asignamos las pantallas a las variables
         pantalla_vista_general_alumnos = self.stacked_widget.widget(2)
         pantalla_formulario_alumno = self.stacked_widget.widget(3)
         pantalla_asistencia_alumno = self.stacked_widget.widget(4)
@@ -1010,7 +1015,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         pantalla_vista_general_personal = self.stacked_widget.widget(7)
         pantalla_formulario_empleado = self.stacked_widget.widget(8)
         
-        
+        # Agrupamos las pantalla en un lista
         # esta tupla contiene todos  los combobox con "Seleccionar aqui" en la primera opcion
         lista_seleccionar_aqui = (pantalla_formulario_alumno.boton_de_especialidad, 
                                   pantalla_formulario_empleado.boton_de_especialidad, 
@@ -1030,3 +1035,67 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         """
         pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, pantalla_vista_general_personal.boton_especialidades, 1, 0, "Todos")
+        
+        
+        
+    def actualizar_diagnosticos(self):
+        """
+            Este metodo sirve para actualizar los diagnosticos en las pantallas qe utilicen esta lista catalogo
+
+        """
+        self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
+        
+        # asignamos las pantallas a las variables
+        pantalla_formulario_alumno = self.stacked_widget.widget(3)
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
+        
+        # agrupamos los combobox en una lista
+        lista_combobox = (pantalla_formulario_alumno.boton_diagnostico,
+                          pantalla_formulario_empleado.boton_diagnostico)
+        
+        for combobox_diagnostico in lista_combobox:
+            FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnosticos, combobox_diagnostico, 1, 1)
+            
+        
+    def actualizar_cargos(self):
+        """
+            Este metodo sirve para actualizar los cargos en las pantallas qe utilicen esta lista catalogo
+        """
+        self.lista_cargo = cargo_empleado_servicio.obtener_todos_cargos_empleados()
+        
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
+                
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_cargo, pantalla_formulario_empleado.boton_de_cargos, 2, 1)
+
+       
+    def actualizar_funciones_de_cargos(self):
+        """
+            Este metodo sirve para actualizar las funciones de cargos en las pantallas qe utilicen esta lista catalogo
+        """
+        self.lista_funcion_cargo = funcion_cargo_servicio.obtener_todos_funciones_cargo()
+        
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
+                
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_funcion_cargo, pantalla_formulario_empleado.boton_funcion_cargos, 1, 1)
+
+    
+    def actualizar_tipos_de_cargos(self):
+        """
+            Este metodo sirve para actualizar los tipos de cargos en las pantallas qe utilicen esta lista catalogo
+        """
+        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+        
+        pantalla_vista_general_personal = self.stacked_widget.widget(7)
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
+                
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, pantalla_formulario_empleado.boton_tipo_de_cargo, 1, 1)
+
+        """
+            Aqui es un caso especial ya que lanza una excepcion cuando el combobox se actualiza, este lanza la excepcion es porque el combobox
+            automaticamente filtrar por el currentChanged, asi que el metodo que esta aqui de la propia pantalla lo que hace es desconectar el boton,
+            actualizarlo y volverlo a conectar a su funcion/metodo que usa
+        """
+        pantalla_vista_general_personal.actualizar_tipo_de_cargo()
+        
+        
+        
