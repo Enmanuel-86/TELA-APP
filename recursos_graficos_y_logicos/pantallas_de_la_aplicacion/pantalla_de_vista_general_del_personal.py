@@ -189,14 +189,16 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     
     ##########################################################################################################################
     ##########################################################################################################################
-    def actualizar_especialidades(self):
+    def actualizar_tipo_de_cargo(self):
     
         """
             Este metodo es de uso exclusivo para la pantalla de inserta_catalogo.py
         """
-        self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, self.boton_especialidades, 1, 1)
-    
+        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+        self.boton_de_opciones.disconnect()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 1)
+        self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
+
     
     # Metodo para la busqueda dinamica
     def actualizar_lista_busqueda(self):
