@@ -274,7 +274,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                     
                         self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
                         
-                    
+                        self.actualizar_enfermedades_cronicas()
                     
                     elif nombre_clave_dict.lower() == "funcion_cargo":
                         
@@ -496,6 +496,8 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
                         FuncionSistema.cambiar_estilo_del_boton(self.boton_registrar_enfermedad, "boton_anadir")
                         self.boton_registrar_enfermedad.clicked.disconnect()
                         self.boton_registrar_enfermedad.clicked.connect(lambda _: self.agregar_nuevo_elemento_al_catalogo(self.input_enfermedad, "enfermedad_Cronica", self.lista_enfermedades) )
+                        self.actualizar_enfermedades_cronicas()
+                        
                         
                     # en el caso que se una funcion de cargo
                     if nombre_clave_dict.lower() == "funcion_cargo":
@@ -673,7 +675,7 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
 
                     self.agregar_elementos_a_las_vistas_previas_catalogo(self.vista_previa_enfermedades, lista_catalogo)
   
-  
+                    self.actualizar_enfermedades_cronicas()
   
                 elif nombre_clave_dict.lower() == "funcion_cargo":
                     
@@ -1036,12 +1038,22 @@ class PantallaAdminInsertarCatalogo(QWidget, Ui_PantallaInsertarCatalogoBD):
         pantalla_vista_general_alumnos.actualizar_combobox_especialidades()
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_especialidades, pantalla_vista_general_personal.boton_especialidades, 1, 0, "Todos")
         
+    def actualizar_enfermedades_cronicas(self):
+        """
+            Este metodo sirve para actualizar las enfermedades cronicas en las pantallas qe utilicen esta lista catalogo
+        """
+        self.lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
+        
+        # asignamos las pantallas a las variables
+        pantalla_formulario_empleado = self.stacked_widget.widget(8)
+        
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_enfermedades, pantalla_formulario_empleado.boton_enfermedades, 1, 1)
+        
         
         
     def actualizar_diagnosticos(self):
         """
             Este metodo sirve para actualizar los diagnosticos en las pantallas qe utilicen esta lista catalogo
-
         """
         self.lista_diagnosticos = diagnostico_servicio.obtener_todos_diagnosticos()
         
