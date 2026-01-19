@@ -27,6 +27,8 @@
     <file>recursos_de_imagenes/Tela.png</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>recursos_de_imagenes/iconos_de_interfaz/x-white.png</file>
+    <file>recursos_de_imagenes/iconos_de_interfaz/x.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/padres.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/catalogo.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/copia-de-seguridad-de-archivos.png</file>
