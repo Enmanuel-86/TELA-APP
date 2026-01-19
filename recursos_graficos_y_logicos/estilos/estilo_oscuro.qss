@@ -326,11 +326,16 @@ QPushButton{
 	font: 12pt "Segoe UI";
 	font-weight: 500;
 	color: rgb(255, 255, 255);
-	padding:10px;
+	padding:8px;
 }
 
 QPushButton:hover{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
+}
+
+QPushButton:disabled{
+	
+	background-color: rgb(2, 81, 43);
 }
 
 
@@ -494,9 +499,10 @@ QDateEdit::down-button:hover{
 QDateEdit::drop-down {
 	width:35px;
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
-	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
+	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/calendar-days-white.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
+	padding:2px;
 }
 
 QDateEdit::drop-down:hover {
