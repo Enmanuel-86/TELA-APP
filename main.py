@@ -14,9 +14,9 @@ from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_Ve
 
 
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
-                                        PantallaControlDeLlegada, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
+                                        PantallaVistaGeneralAsistenciaEmpleados, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
-                                        PantallaAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
+                                        PantallaVistaGeneralAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
 
 from recursos_graficos_y_logicos.utilidades import FuncionSistema
 
@@ -182,14 +182,14 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         self.pantalla_vista_general_de_alumnos = PantallaDeVistaGeneralDeAlumnos(self.stacked_widget) # pantalla vista general de los alumnos
         self.pantalla_formulario_nuevo_registro_de_alumnos = PantallaDeFormularioNuevoRegistroAlumnos(self.stacked_widget) # pantalla del formulario para el nuevo registro de los alumnos
-        self.pantalla_asistencia_alumnos = PantallaAsistenciaAlumnos(self.stacked_widget) # pantalla de asistencias de los alumnos
+        self.pantalla_vista_general_asistencia_alumnos = PantallaVistaGeneralAsistenciaAlumnos(self.stacked_widget) # pantalla de asistencias de los alumnos
         self.pantalla_generar_informes_reportes_alumno = PantallaGenerarInformesReportesAlumnos(self.stacked_widget) # pantalla para generar los reportes de los alumnos
         self.pantalla_perfil_alumno = PantallaPerfilAlumno(self.stacked_widget) # pantalla para ver el perfil del alumno
         
         
         self.pantalla_vista_general_del_personal = PantallaDeVistaGeneralDelPersonal(self.stacked_widget) # pantalla vista general del personal
         self.pantalla_formulario_nuevo_registro_empleado = PantallaDeFormularioNuevoRegistroEmpleado(self.stacked_widget) # pantalla del formulario para el nuevo registro del personal
-        self.pantalla_control_de_llegada = PantallaControlDeLlegada(self.stacked_widget) # pantalla de control de llegada del personal
+        self.pantalla_vista_general_asistencia_empleados =  PantallaVistaGeneralAsistenciaEmpleados(self.stacked_widget) # pantalla de control de llegada del personal
         self.pantalla_control_de_reposos = PantallaControlRepososPersonal(self.stacked_widget) # pantalla para ver y registrar los reposos del personal/empleados
         self.pantalla_perfil_empleado = PantallaPerfilEmpleado(self.stacked_widget) # pantalla para ver el perfil del empleado
 
@@ -208,13 +208,13 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         self.stacked_widget.addWidget(self.pantalla_vista_general_de_alumnos)  # indice 2
         self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_de_alumnos)  # indice 3
-        self.stacked_widget.addWidget(self.pantalla_asistencia_alumnos) # indice 4
+        self.stacked_widget.addWidget(self.pantalla_vista_general_asistencia_alumnos) # indice 4
         self.stacked_widget.addWidget(self.pantalla_generar_informes_reportes_alumno) # indice 5
         self.stacked_widget.addWidget(self.pantalla_perfil_alumno) # indice 6
         
         self.stacked_widget.addWidget(self.pantalla_vista_general_del_personal)  # indice 7
         self.stacked_widget.addWidget(self.pantalla_formulario_nuevo_registro_empleado)  # indice 8
-        self.stacked_widget.addWidget(self.pantalla_control_de_llegada)  # indice 9
+        self.stacked_widget.addWidget(self.pantalla_vista_general_asistencia_empleados)  # indice 9
         self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 10
         self.stacked_widget.addWidget(self.pantalla_perfil_empleado) # indice 11
         
