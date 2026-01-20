@@ -82,7 +82,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
         self.radioButton_asistente.toggled.connect(lambda: self.cuando_asiste_el_personal())
         self.radioButton_inasistente.toggled.connect(lambda: self.cuando_no_asiste_el_personal())
-        self.boton_crear_registro.clicked.connect(lambda: self.ventanas_registro_asistencia.setCurrentIndex(1))
+        self.boton_crear_registro.clicked.connect(lambda: self.crear_nuevo_registro_asistencia())
+        self.boton_cancelar_registro.clicked.connect(lambda: self.cancelar_registro_asistencia())
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_asistencias())
@@ -156,8 +157,97 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.resultados.hide()
         
     #################################################################################
+    def crear_nuevo_registro_asistencia(self, ):
+        """
+            Este metodo sirve para empezar a crear un nuevo registro de asistencia de los empleados, hace lo siguiente
+            
+            1. Al darle click al boton nuevo registro este cambia el stackedWidget que esta en el frame inferior a la posicion 1 en donde tiene el QListWidget
+            2. Deshabilita el boton crear nuevo registro, para que los dos botones tenga efecto switch
+            3. Habilitamos los campos que se utilizan para el registro (los QLineEdits, RadioButton, QDateEdit, QTimeEdit)
+            4. Habilita el boton de cancelar registro
+            
+        """
+        self.ventanas_registro_asistencia.setCurrentIndex(1)
+        
+        self.boton_crear_registro.setEnabled(False)
+        
+                
+        for qlineedits in self.lista_qlineedits:
+            qlineedits.setEnabled(True)
+            
+        for qradiobutton in self.lista_radiobuttons:
+            qradiobutton.setEnabled(True)
+            
+        for qtimeedit in self.lista_timeedits:
+            qtimeedit.setEnabled(True)
+        
+        self.dateedit_fecha_asistencia.setEnabled(True)
+        
+        self.boton_agregar.setEnabled(True)
+        
+        self.boton_cancelar_registro.setEnabled(True)
     
-    
+    def cancelar_registro_asistencia(self):
+        """
+            Este metodo sirve para cancelar el registro de asistencia que se esta realizando, haciendo lo siguiente:
+            
+            1. Este le aviasa al usuario si esta seguro que si quiere cancelar el registro, si lo hace:
+                * Restablecemos las listas internas que llevan el control de la asistencia a su estado inicial
+                * Al darle click la boton de cancelar registro, este cambia el stackedWidget que esta en el frame inferior a la posicion 0 para ver el QTableView
+                * Deshabilita el boton de cancelar registro de asistencia
+                * Deshabilitamos los campos que se utilizan para el registro (los QLineEdits, RadioButton, QDateEdit, QTimeEdit)
+                * Habilita el boton de crear nuevo registro de asistencia
+                
+            2. Si le da a NO, no pasa nada y el usuario sigue con lo suyo
+        """
+        
+        self.msg_box.setIcon(QMessageBox.Information)
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText("¿Seguro que quiere cancelar el registro?")
+        self.msg_box.setInformativeText("Esto borrar lo que lleva registrando hasta el momento.")
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+
+            # Limpiamos las listas y los contadores
+            self.lista_asistencias_en_cola.clear()
+            self.lista_de_asistencias.clear()
+            self.lista_agregados.clear()
+            self.indice = 0
+            self.contador_de_asistencias = 0
+            
+            # restablecemos el contador de asistencias
+            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+            
+            # restablecemos la lista de empleados actuales de la bd
+            self.actualizar_lista_busqueda()
+        
+            self.ventanas_registro_asistencia.setCurrentIndex(0)
+            
+            self.boton_crear_registro.setEnabled(True)
+            
+                    
+            for qlineedits in self.lista_qlineedits:
+                qlineedits.setEnabled(False)
+                
+            for qradiobutton in self.lista_radiobuttons:
+                qradiobutton.setEnabled(False)
+                
+            for qtimeedit in self.lista_timeedits:
+                qtimeedit.setEnabled(False)
+                
+            self.dateedit_fecha_asistencia.setEnabled(False)
+            
+            self.boton_agregar.setEnabled(True)
+            
+            self.boton_cancelar_registro.setEnabled(False)
+            
+        if self.msg_box.clickedButton() == self.boton_no:
+            
+            return
+        
     # Metodo para agregar la informacion a la lista de asistencias
     def agregar_info(self):
         
@@ -481,8 +571,10 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             registrando
         
         """
+        
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText("¿Seguro que quiere borrar la lista y empezar de nuevo?")
+        self.msg_box.setIcon(QMessageBox.Warning)
         QApplication.beep()
         self.msg_box.exec_()
 
@@ -626,5 +718,3 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                                     
                                  
         
-
-            
