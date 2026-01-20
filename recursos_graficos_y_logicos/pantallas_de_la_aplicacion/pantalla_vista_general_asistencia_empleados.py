@@ -244,6 +244,11 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             
             self.boton_cancelar_registro.setEnabled(False)
             
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+            
+            self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
+            self.timeEdit_hora_salida.setTime(QTime(12, 0))
+            
         if self.msg_box.clickedButton() == self.boton_no:
             
             return
