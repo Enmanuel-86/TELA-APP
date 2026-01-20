@@ -80,10 +80,13 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.actualizar_lista_busqueda()
         
         self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
+        self.radioButton_asistente.toggled.connect(lambda: self.cuando_asiste_el_personal())
+        self.radioButton_inasistente.toggled.connect(lambda: self.cuando_no_asiste_el_personal())
         self.boton_crear_registro.clicked.connect(lambda: self.ventanas_registro_asistencia.setCurrentIndex(1))
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_asistencias())
+        self.boton_limpiar_lista.clicked.connect(lambda: self.limpiar_lista_de_asistencias())
         
         # Lista de coincidencias
         self.resultados = QListWidget(self)
@@ -440,7 +443,73 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         nombre_qlistwidget.takeItem(row)
     
         print(f"lista actualizada: {nombre_lista}")
+       
+       
+       
+    # Metodo para habilitar los inputs si asistio
+    def cuando_asiste_el_personal(self, ):
         
+        
+            self.input_motivo_inasistencia.setDisabled(True)
+            self.input_motivo_inasistencia.clear()
+
+            self.timeEdit_hora_entrada.setDisabled(False)
+            self.timeEdit_hora_salida.setDisabled(False)
+            self.input_motivo_retraso.setDisabled(False)
+            
+
+
+    # Metodo para deshabilitar los inputs si no asistio
+    def cuando_no_asiste_el_personal(self):
+        
+        self.timeEdit_hora_entrada.setDisabled(True)
+        self.timeEdit_hora_entrada.setTime(QTime(7,0))
+
+        self.timeEdit_hora_salida.setDisabled(True)
+        self.timeEdit_hora_salida.setTime(QTime(12,0))
+
+        self.input_motivo_retraso.setDisabled(True)
+        self.input_motivo_retraso.clear()
+
+        self.input_motivo_inasistencia.setDisabled(False)
+        self.label_motivo_inasistencia.setDisabled(False)
+ 
+ 
+    def limpiar_lista_de_asistencias(self):
+        """
+            Este metodo sirve para limpiar el QListWidget que contiene el "Carrito" que muestra a los empleado que se van
+            registrando
+        
+        """
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText("¿Seguro que quiere borrar la lista y empezar de nuevo?")
+        QApplication.beep()
+        self.msg_box.exec_()
+
+
+
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+
+            # Limpiamos las listas y los contadores
+            self.lista_asistencias_en_cola.clear()
+            self.lista_de_asistencias.clear()
+            self.lista_agregados.clear()
+            self.indice = 0
+            self.contador_de_asistencias = 0
+            
+            # restablecemos el contador de asistencias
+            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+            
+            # restablecemos la lista de empleados actuales de la bd
+            self.actualizar_lista_busqueda()
+
+        
+
+        elif self.msg_box.clickedButton() == self.boton_no:
+            pass
+
+
         
     # Metodo para suministrar las asistencias a la base de datos
     def suministrar_asistencias(self):
