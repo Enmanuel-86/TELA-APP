@@ -206,6 +206,24 @@ QPushButton[tipo="boton_ver"]{
 	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png)
 }
 
+QPushButton[tipo="boton_cancelar"]{
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/x-white.png);
+	background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 0, 0, 255), stop:1 rgba(255, 0, 36, 255)) ;
+	border-radius:12px;
+	color: rgb(255, 255, 255);
+	padding:0px;
+}
+
+QPushButton[tipo="boton_cancelar"]:disabled{
+	background-color: rgb(144, 0, 0);
+}
+
+QPushButton[tipo="boton_cancelar"]:hover{
+	background-color: rgb(158, 0, 3);
+}
+
+
+
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
@@ -734,6 +752,20 @@ QTimeEdit::up-button:hover {
 
 QTimeEdit::down-button:hover{
      background: rgb(2, 150, 84);
+}
+
+
+QTimeEdit:disabled{
+	background-color: rgb(194, 194, 194);    /* Gris claro para diferenciarlo del blanco activo */
+    border: 2px solid rgb(153, 153, 153);    /* Borde más apagado */
+    color: rgb(91, 91, 91);  
+}
+
+QTimeEdit::up-button:disabled,
+QTimeEdit::down-button:disabled{
+	background-color: rgb(168, 168, 168);    
+    color: rgb(91, 91, 91);
+
 }
 
 /*--------------------------------------------------------------------------------------------------*/

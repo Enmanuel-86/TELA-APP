@@ -142,6 +142,23 @@ QPushButton[tipo="boton_ver"]{
 	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png)
 }
 
+QPushButton[tipo="boton_cancelar"]{
+	icon: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/x-white.png);
+	background-color:qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 0, 0, 255), stop:1 rgba(255, 0, 36, 255)) ;
+	border-radius:12px;
+	color: rgb(255, 255, 255);
+	padding:0px;
+}
+
+QPushButton[tipo="boton_cancelar"]:disabled{
+	background-color: rgb(144, 0, 0);
+}
+
+QPushButton[tipo="boton_cancelar"]:hover{
+	background-color: rgb(158, 0, 3);
+}
+
+
 /* vista general de alumno y empleados*/
 
 QLabel#imagen_contador{
