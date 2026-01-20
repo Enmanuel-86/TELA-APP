@@ -516,7 +516,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             empleados = detalle_cargo_servicio.obtener_detalles_cargo_por_tipo_cargo_o_especialidad_o_cedula(tipo_cargo_id = tipo_cargo_id, especialidad_id= None, situacion = situacion_selec)
             
             #self.boton_de_situacion
-            print(empleados)
+            #print(empleados)
             self.configurar_filtro()
             
             
