@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1756</width>
+    <width>1281</width>
     <height>1055</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1754</width>
+        <width>1279</width>
         <height>1053</height>
        </rect>
       </property>
@@ -122,7 +122,7 @@
            </spacer>
           </item>
           <item alignment="Qt::AlignTop">
-           <widget class="QFrame" name="frame_2">
+           <widget class="QFrame" name="frame">
             <property name="enabled">
              <bool>true</bool>
             </property>
@@ -218,7 +218,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QFrame" name="espacio_a_2">
+                   <widget class="QFrame" name="espacio_a">
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
@@ -233,7 +233,7 @@
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_13">
                      <item>
-                      <widget class="QLabel" name="label_imagen_asistencia_2">
+                      <widget class="QLabel" name="label_imagen_asistencia">
                        <property name="minimumSize">
                         <size>
                          <width>91</width>
@@ -258,7 +258,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="label_control_de_llegada_2">
+                      <widget class="QLabel" name="label_control_de_llegada">
                        <property name="minimumSize">
                         <size>
                          <width>351</width>
@@ -434,7 +434,7 @@
                   <item row="1" column="0">
                    <layout class="QVBoxLayout" name="verticalLayout_11">
                     <item>
-                     <widget class="QLabel" name="label_cedula_empleado_2">
+                     <widget class="QLabel" name="label_cedula_empleado">
                       <property name="font">
                        <font>
                         <family>Segoe UI</family>
@@ -459,7 +459,29 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="input_cedula_empleado_2">
+                     <widget class="QLabel" name="label_nombre_empleado_guia">
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>8</pointsize>
+                        <weight>50</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="input_cedula_empleado">
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
@@ -490,8 +512,8 @@
                   </item>
                   <item row="1" column="1">
                    <layout class="QVBoxLayout" name="verticalLayout_14">
-                    <item>
-                     <widget class="QLabel" name="label_hora_entrada_2">
+                    <item alignment="Qt::AlignBottom">
+                     <widget class="QLabel" name="label_hora_entrada">
                       <property name="font">
                        <font>
                         <family>Segoe UI</family>
@@ -516,7 +538,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QTimeEdit" name="timeEdit_hora_entrada_2">
+                     <widget class="QTimeEdit" name="timeEdit_hora_entrada">
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
@@ -555,71 +577,10 @@
                     </item>
                    </layout>
                   </item>
-                  <item row="1" column="2">
-                   <layout class="QVBoxLayout" name="verticalLayout_13">
-                    <item>
-                     <widget class="QLabel" name="label_hora_salida_2">
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>11</pointsize>
-                        <weight>75</weight>
-                        <italic>false</italic>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="text">
-                       <string>Hora de salida</string>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>false</bool>
-                      </property>
-                      <property name="tipo" stdset="0">
-                       <string>titulo_qlineedit</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QTimeEdit" name="timeEdit_hora_salida_2">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>189</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="frame">
-                       <bool>true</bool>
-                      </property>
-                      <property name="dateTime">
-                       <datetime>
-                        <hour>12</hour>
-                        <minute>0</minute>
-                        <second>0</second>
-                        <year>2000</year>
-                        <month>1</month>
-                        <day>1</day>
-                       </datetime>
-                      </property>
-                      <property name="displayFormat">
-                       <string>HH:mm</string>
-                      </property>
-                      <property name="timeSpec">
-                       <enum>Qt::LocalTime</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
                   <item row="1" column="3">
                    <layout class="QVBoxLayout" name="verticalLayout_12">
-                    <item>
-                     <widget class="QLabel" name="label_fecha_asistencia_2">
+                    <item alignment="Qt::AlignBottom">
+                     <widget class="QLabel" name="label_fecha_asistencia">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -650,7 +611,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QDateEdit" name="dateedit_fecha_asistencia_2">
+                     <widget class="QDateEdit" name="dateedit_fecha_asistencia">
                       <property name="enabled">
                        <bool>true</bool>
                       </property>
@@ -719,7 +680,7 @@
                    </layout>
                   </item>
                   <item row="1" column="4">
-                   <widget class="QGroupBox" name="groupBox_estado_asistencia_2">
+                   <widget class="QGroupBox" name="groupBox_estado_asistencia">
                     <property name="minimumSize">
                      <size>
                       <width>221</width>
@@ -753,7 +714,7 @@
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_10">
                      <item>
-                      <widget class="QRadioButton" name="radioButton_asistente_2">
+                      <widget class="QRadioButton" name="radioButton_asistente">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>
@@ -772,7 +733,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QRadioButton" name="radioButton_inasistente_2">
+                      <widget class="QRadioButton" name="radioButton_inasistente">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>
@@ -798,7 +759,7 @@
                     <item>
                      <layout class="QVBoxLayout" name="verticalLayout_15">
                       <item>
-                       <widget class="QLabel" name="label_motivo_retraso_2">
+                       <widget class="QLabel" name="label_motivo_retraso">
                         <property name="font">
                          <font>
                           <family>Segoe UI</family>
@@ -823,7 +784,7 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="input_motivo_retraso_2">
+                       <widget class="QLineEdit" name="input_motivo_retraso">
                         <property name="enabled">
                          <bool>true</bool>
                         </property>
@@ -855,7 +816,7 @@
                     <item>
                      <layout class="QVBoxLayout" name="verticalLayout_16">
                       <item>
-                       <widget class="QLabel" name="label_motivo_inasistencia_2">
+                       <widget class="QLabel" name="label_motivo_inasistencia">
                         <property name="font">
                          <font>
                           <family>Segoe UI</family>
@@ -880,7 +841,7 @@
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="input_motivo_inasistencia_2">
+                       <widget class="QLineEdit" name="input_motivo_inasistencia">
                         <property name="enabled">
                          <bool>true</bool>
                         </property>
@@ -912,7 +873,7 @@
                    </layout>
                   </item>
                   <item row="2" column="4" alignment="Qt::AlignRight|Qt::AlignBottom">
-                   <widget class="QPushButton" name="boton_agregar_2">
+                   <widget class="QPushButton" name="boton_agregar">
                     <property name="minimumSize">
                      <size>
                       <width>111</width>
@@ -953,6 +914,67 @@
                      <string>boton_anadir</string>
                     </property>
                    </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item alignment="Qt::AlignBottom">
+                     <widget class="QLabel" name="label_hora_salida">
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Hora de salida</string>
+                      </property>
+                      <property name="scaledContents">
+                       <bool>false</bool>
+                      </property>
+                      <property name="tipo" stdset="0">
+                       <string>titulo_qlineedit</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTimeEdit" name="timeEdit_hora_salida">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>189</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="dateTime">
+                       <datetime>
+                        <hour>12</hour>
+                        <minute>0</minute>
+                        <second>0</second>
+                        <year>2000</year>
+                        <month>1</month>
+                        <day>1</day>
+                       </datetime>
+                      </property>
+                      <property name="displayFormat">
+                       <string>HH:mm</string>
+                      </property>
+                      <property name="timeSpec">
+                       <enum>Qt::LocalTime</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </widget>
@@ -1010,7 +1032,7 @@
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_15">
                      <item>
-                      <widget class="QLabel" name="label_filtro_fecha_asistencia_2">
+                      <widget class="QLabel" name="label_filtro_fecha_asistencia">
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
@@ -1047,7 +1069,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QDateEdit" name="dateedit_filtro_fecha_asistencia_2">
+                      <widget class="QDateEdit" name="dateedit_filtro_fecha_asistencia">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>
@@ -1124,7 +1146,7 @@
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_16">
                      <item>
-                      <widget class="QLabel" name="titulo_de_boton_filtro_tipo_cargo_2">
+                      <widget class="QLabel" name="titulo_de_boton_filtro_tipo_cargo">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                          <horstretch>0</horstretch>
@@ -1164,7 +1186,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="boton_filtro_tipo_cargo_2">
+                      <widget class="QComboBox" name="boton_filtro_tipo_cargo">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>
@@ -1218,7 +1240,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QStackedWidget" name="ventanas_registro_asistencia_2">
+                 <widget class="QStackedWidget" name="ventanas_registro_asistencia">
                   <property name="styleSheet">
                    <string notr="true">StackedWidget{
 	background:none;
@@ -1226,9 +1248,9 @@
 }</string>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
-                  <widget class="QWidget" name="pagina_asistencias_registradas_2">
+                  <widget class="QWidget" name="pagina_asistencias_registradas">
                    <layout class="QVBoxLayout" name="verticalLayout_18">
                     <property name="topMargin">
                      <number>0</number>
@@ -1240,12 +1262,12 @@
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QTableView" name="tbl_asistencias_registradas_2"/>
+                     <widget class="QTableView" name="tbl_asistencias_registradas"/>
                     </item>
                    </layout>
                   </widget>
-                  <widget class="QWidget" name="pagina_asistencias_en_cola_2">
-                   <widget class="QPushButton" name="boton_suministrar_2">
+                  <widget class="QWidget" name="pagina_asistencias_en_cola">
+                   <widget class="QPushButton" name="boton_suministrar">
                     <property name="geometry">
                      <rect>
                       <x>460</x>
@@ -1313,7 +1335,7 @@
                         <number>6</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_titulo_asistencia_2">
+                        <widget class="QLabel" name="label_titulo_asistencia">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -1360,7 +1382,7 @@
                         </spacer>
                        </item>
                        <item alignment="Qt::AlignBottom">
-                        <widget class="QPushButton" name="boton_limpiar_lista_2">
+                        <widget class="QPushButton" name="boton_limpiar_lista">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -1405,7 +1427,7 @@
                       </layout>
                      </item>
                      <item>
-                      <widget class="QListWidget" name="lista_asistencias_en_cola_2"/>
+                      <widget class="QListWidget" name="lista_asistencias_en_cola"/>
                      </item>
                     </layout>
                    </widget>
@@ -1432,7 +1454,7 @@
            </spacer>
           </item>
          </layout>
-         <zorder>frame_2</zorder>
+         <zorder>frame</zorder>
          <zorder>boton_de_regreso</zorder>
          <zorder>horizontalSpacer_6</zorder>
          <zorder>horizontalSpacer_7</zorder>
