@@ -355,7 +355,7 @@ class FuncionesDelSistema:
             
     
     # Metodos para limpiar los inputs 
-    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = (), lista_qtimeedit: tuple = ()) -> None:
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = ()) -> None:
         
         """
             ### Este metodo sirve para limpiar los inputs mas relevante como los:
@@ -365,7 +365,7 @@ class FuncionesDelSistema:
             * QRadioButton
             * QListWidget
             * QComboBox
-            * QTimeEdits
+
             * lista normales de python
             
             
@@ -417,11 +417,7 @@ class FuncionesDelSistema:
                     
                     combobox.setCurrentIndex(0)
                     
-            if len(lista_qtimeedit) > 0:
-                for timeedit in lista_qtimeedit:
-                    
-                    timeedit.setTime(QTime(7,0) if "llegada" in timeedit.objectName() else QTime(12,0))
-                    
+            
             
 
         except Exception as e:
