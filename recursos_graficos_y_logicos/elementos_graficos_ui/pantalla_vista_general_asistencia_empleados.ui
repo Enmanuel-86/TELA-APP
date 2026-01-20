@@ -367,6 +367,9 @@
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="toolTip">
+                       <string>Este boton sirve para comenzar a crear un nuevo registro de asistencia</string>
+                      </property>
                       <property name="text">
                        <string>Crear nuevo registro</string>
                       </property>
@@ -401,6 +404,9 @@
                       <property name="cursor">
                        <cursorShape>PointingHandCursor</cursorShape>
                       </property>
+                      <property name="toolTip">
+                       <string>Este boton sirve para cancelar el registro de asistencia que esta realizando</string>
+                      </property>
                       <property name="text">
                        <string>Cancelar nuevo registro</string>
                       </property>
@@ -413,6 +419,9 @@
                         <width>26</width>
                         <height>26</height>
                        </size>
+                      </property>
+                      <property name="tipo" stdset="0">
+                       <string>boton_cancelar</string>
                       </property>
                      </widget>
                     </item>
@@ -483,7 +492,7 @@
                     <item>
                      <widget class="QLineEdit" name="input_cedula_empleado">
                       <property name="enabled">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                       <property name="minimumSize">
                        <size>
@@ -540,7 +549,7 @@
                     <item>
                      <widget class="QTimeEdit" name="timeEdit_hora_entrada">
                       <property name="enabled">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                       <property name="minimumSize">
                        <size>
@@ -613,7 +622,7 @@
                     <item>
                      <widget class="QDateEdit" name="dateedit_fecha_asistencia">
                       <property name="enabled">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                       <property name="minimumSize">
                        <size>
@@ -716,7 +725,7 @@
                      <item>
                       <widget class="QRadioButton" name="radioButton_asistente">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="font">
                         <font>
@@ -735,7 +744,7 @@
                      <item>
                       <widget class="QRadioButton" name="radioButton_inasistente">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="font">
                         <font>
@@ -786,7 +795,7 @@
                       <item>
                        <widget class="QLineEdit" name="input_motivo_retraso">
                         <property name="enabled">
-                         <bool>true</bool>
+                         <bool>false</bool>
                         </property>
                         <property name="minimumSize">
                          <size>
@@ -843,7 +852,7 @@
                       <item>
                        <widget class="QLineEdit" name="input_motivo_inasistencia">
                         <property name="enabled">
-                         <bool>true</bool>
+                         <bool>false</bool>
                         </property>
                         <property name="minimumSize">
                          <size>
@@ -874,6 +883,9 @@
                   </item>
                   <item row="2" column="4" alignment="Qt::AlignRight|Qt::AlignBottom">
                    <widget class="QPushButton" name="boton_agregar">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>111</width>
@@ -945,7 +957,7 @@
                     <item>
                      <widget class="QTimeEdit" name="timeEdit_hora_salida">
                       <property name="enabled">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                       <property name="minimumSize">
                        <size>
