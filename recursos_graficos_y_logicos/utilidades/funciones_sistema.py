@@ -1,6 +1,6 @@
 import traceback
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QPropertyAnimation, QEasingCurve, QFile, QTextStream
+from PyQt5.QtCore import (QPropertyAnimation, QEasingCurve, QFile, QTextStream, QTime)
 from PyQt5.QtGui import QIcon, QPixmap
 from datetime import datetime
 from PIL import Image
@@ -355,7 +355,7 @@ class FuncionesDelSistema:
             
     
     # Metodos para limpiar los inputs 
-    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = ()) -> None:
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = (), lista_qtimeedit: tuple = ()) -> None:
         
         """
             ### Este metodo sirve para limpiar los inputs mas relevante como los:
@@ -365,7 +365,9 @@ class FuncionesDelSistema:
             * QRadioButton
             * QListWidget
             * QComboBox
+            * QTimeEdits
             * lista normales de python
+            
             
             Para usar la funcion solo haga una lista agrupando todos los QLabel y QLineEdit en una lista y los QRadioButton en otra.
             
@@ -414,7 +416,12 @@ class FuncionesDelSistema:
                 for combobox in lista_qcombobox:
                     
                     combobox.setCurrentIndex(0)
-                
+                    
+            if len(lista_qtimeedit) > 0:
+                for timeedit in lista_qtimeedit:
+                    
+                    timeedit.setTime(QTime(7,0) if "llegada" in timeedit.objectName() else QTime(12,0))
+                    
             
 
         except Exception as e:
