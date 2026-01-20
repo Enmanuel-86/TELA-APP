@@ -696,6 +696,19 @@ QTimeEdit::down-button:hover{
      background: rgb(2, 150, 84);
 }
 
+QTimeEdit:disabled{
+	background-color: rgb(67, 67, 67);    
+    border: 2px solid rgb(30, 30, 30);
+    color: #000000; 
+}
+
+QTimeEdit::up-button:disabled,
+QTimeEdit::down-button:disabled{
+	background-color: rgb(47, 47, 47);
+    color: #000000;
+
+}
+
 
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
