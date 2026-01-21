@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
-                            QLabel, QHBoxLayout, QPushButton )
-from PyQt5.QtCore import QTime, QPoint, Qt, QDate, QSize
-from PyQt5.QtGui import QIcon
+                            QLabel, QHBoxLayout, QPushButton, QHeaderView )
+from PyQt5.QtCore import (QTime, QPoint, Qt, QDate, QSize)
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import  Ui_VistaGeneralAsistenciaEmpleados
@@ -15,10 +15,12 @@ from datetime import (datetime, time, date)
 # Repositorios
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
 from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+from repositorios.empleados.tipo_cargo_repositorio import TipoCargoRepositorio
 
 # Servicios
 from servicios.empleados.empleado_servicio import EmpleadoServicio
 from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
+from servicios.empleados.tipo_cargo_servicio import TipoCargoServicio
 
 ##################################
 # importaciones de base de datos #
@@ -27,10 +29,12 @@ from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoS
 # Instancia del repositorio
 empleado_repositorio = EmpleadoRepositorio()
 asistetencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
+tipo_cargo_repositorio = TipoCargoRepositorio()
 
 # Instancia del servicio
 empleado_servicio = EmpleadoServicio(empleado_repositorio)
 asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistetencia_empleado_repositorio)
+tipo_cargo_servicio = TipoCargoServicio(tipo_cargo_repositorio)
 
 
 
@@ -62,6 +66,27 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         # esta lista guardara los empleados que se agreguen a la lista de asistencias
         self.lista_agregados = []
         
+        self.tbl_asistencias_registradas.horizontalHeader().setVisible(True)
+
+        self.tbl_asistencias_registradas.horizontalHeader().setMinimumHeight(50)
+        self.tbl_asistencias_registradas.horizontalHeader().setMinimumWidth(10)
+        self.tbl_asistencias_registradas.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_asistencias_registradas.horizontalHeader().setSectionsClickable(False)
+
+
+        self.tbl_asistencias_registradas.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.tbl_asistencias_registradas.verticalHeader().setVisible(True)
+        #self.tbl_asistencias_registradas.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_asistencias_registradas.verticalHeader().setMinimumWidth(20)
+        self.tbl_asistencias_registradas.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.tbl_asistencias_registradas.verticalHeader().setFixedWidth(20)
+        #esto me da el valor de la cedula al darle click a la persona que quiero
+        self.tbl_asistencias_registradas.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
+
+        # Opcional: desactivar clic en el encabezado vertical
+        self.tbl_asistencias_registradas.verticalHeader().setSectionsClickable(True)
+        
+        
         # esto es para el metodo de agregar al empleado a la lista 
         self.indice = 0
 
@@ -88,6 +113,11 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_asistencias())
         self.boton_limpiar_lista.clicked.connect(lambda: self.limpiar_lista_de_asistencias())
+        self.boton_de_regreso.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(7))
+        self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtrar_asistencia_por_fecha())
+        
+        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_filtro_tipo_cargo, 1, 1)
         
         # Lista de coincidencias
         self.resultados = QListWidget(self)
@@ -157,6 +187,75 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.resultados.hide()
         
     #################################################################################
+    def filtrar_asistencia_por_fecha(self):
+        
+        """
+            Este metodo sirve para mostrar las asistencias registradas segun su cargo
+        
+        """
+        
+        # Aqui esta el id del tipo de cargo
+        #tipo_id_cargo = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_filtro_tipo_cargo, self.lista_tipo_cargo, 1, 0, True)
+        try:
+            
+            fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),self.dateedit_filtro_fecha_asistencia.date().month(), self.dateedit_filtro_fecha_asistencia.date().day() )
+            
+            asistencia = asistencia_empleado_servicio.obtener_asistencia_empleado_por_fecha(fecha)
+            
+        except Exception as e:
+            print("Algo salio mal en: Filtrar_asistencia_por_fecha")
+            
+        else:
+            print("La asistencia es: ")
+            print(asistencia)
+            self.cargar_empleados_en_tabla(self.tbl_asistencias_registradas, asistencia)
+        
+  
+    def cargar_empleados_en_tabla(self, tabla, empleados):
+        columnas = [
+            "Cédula", "Nombre", "Apellido", "Estado de asistencia", 
+            "Hora de llegada", "Hora de salida"
+            
+        ]
+
+        global modelo
+        modelo = QStandardItemModel()
+        modelo.setHorizontalHeaderLabels(columnas)
+
+        # Primero cargamos los datos
+        for indice, empleado in enumerate(empleados):
+            datos_visibles = [
+            empleado[2],  # Cedula
+            empleado[3],  # Nombre
+            empleado[4],  # Apellido
+            empleado[6],  # Estado de asistencia
+            empleado[7],  # Hora de llegada
+            empleado[8],  # Hora de salida
+            ]
+
+            items = []
+            for dato in datos_visibles:
+                item = QStandardItem(str(dato) if dato is not None else "")
+                # Evita edición del usuario
+                item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                items.append(item)
+
+            # Agregar la fila completa
+            modelo.appendRow(items)
+
+            # Numerar filas en el encabezado vertical
+            header_item = QStandardItem(str(indice + 1))
+            header_item.setFlags(Qt.ItemIsEnabled)
+            modelo.setVerticalHeaderItem(indice, header_item)
+
+        # Muy importante: asignar modelo primero
+        tabla.setModel(modelo)
+        
+        
+
+          
+    
+    
     def crear_nuevo_registro_asistencia(self, ):
         """
             Este metodo sirve para empezar a crear un nuevo registro de asistencia de los empleados, hace lo siguiente
@@ -248,6 +347,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             
             self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
             self.timeEdit_hora_salida.setTime(QTime(12, 0))
+            
+            self.boton_agregar.setEnabled(False)
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -705,6 +806,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     
                     # restablecemos la lista de empleados actuales de la bd
                     self.actualizar_lista_busqueda()
+                    
+                    self.ventanas_registro_asistencia.setCurrentIndex(0)
 
                     
                     
