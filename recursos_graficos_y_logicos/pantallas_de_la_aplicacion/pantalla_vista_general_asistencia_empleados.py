@@ -808,6 +808,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     self.actualizar_lista_busqueda()
                     
                     self.ventanas_registro_asistencia.setCurrentIndex(0)
+                    
+                    self.dateedit_filtro_fecha_asistencia.setDate(QtCore.QDate.currentDate())
 
                     
                     
