@@ -256,7 +256,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
           
     
     
-    def crear_nuevo_registro_asistencia(self, ):
+    def crear_nuevo_registro_asistencia(self):
         """
             Este metodo sirve para empezar a crear un nuevo registro de asistencia de los empleados, hace lo siguiente
             
