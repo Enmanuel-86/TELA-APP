@@ -250,7 +250,7 @@
                     <property name="font">
                      <font>
                       <pointsize>23</pointsize>
-                      <weight>62</weight>
+                      <weight>75</weight>
                       <italic>false</italic>
                       <bold>true</bold>
                      </font>
@@ -363,7 +363,7 @@
                <property name="title">
                 <string>Estado de asistencia</string>
                </property>
-               <widget class="QRadioButton" name="radioButton">
+               <widget class="QRadioButton" name="radioButton_asistente">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
@@ -386,7 +386,7 @@
                  <string>Asistente</string>
                 </property>
                </widget>
-               <widget class="QRadioButton" name="radioButton_2">
+               <widget class="QRadioButton" name="radioButton_inasistente">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
@@ -533,7 +533,7 @@
                 <string>boton_anadir</string>
                </property>
               </widget>
-              <widget class="QWidget" name="">
+              <widget class="QWidget" name="layoutWidget">
                <property name="geometry">
                 <rect>
                  <x>21</x>
@@ -634,7 +634,7 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="">
+              <widget class="QWidget" name="layoutWidget">
                <property name="geometry">
                 <rect>
                  <x>250</x>
@@ -710,7 +710,7 @@
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="">
+              <widget class="QWidget" name="layoutWidget">
                <property name="geometry">
                 <rect>
                  <x>21</x>
@@ -778,7 +778,7 @@
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>8</pointsize>
-                    <weight>62</weight>
+                    <weight>75</weight>
                     <italic>false</italic>
                     <bold>true</bold>
                    </font>
@@ -882,7 +882,7 @@
                 <string>boton_anadir</string>
                </property>
               </widget>
-              <widget class="QWidget" name="">
+              <widget class="QWidget" name="layoutWidget">
                <property name="geometry">
                 <rect>
                  <x>600</x>
@@ -1437,7 +1437,7 @@
                   <string>boton_anadir</string>
                  </property>
                 </widget>
-                <widget class="QWidget" name="">
+                <widget class="QWidget" name="layoutWidget">
                  <property name="geometry">
                   <rect>
                    <x>10</x>
