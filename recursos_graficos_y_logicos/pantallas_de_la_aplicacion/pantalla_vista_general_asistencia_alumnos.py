@@ -116,6 +116,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.boton_especialidades.currentIndexChanged.connect(lambda: self.actualizar_lista_busqueda())
         self.checkbox_estado_combobox.clicked.connect(lambda: self.verficacion_combobox())
         self.input_cedula_alumno.textChanged.connect(lambda texto: self.filtrar_resultados(texto))
+        self.boton_agregar.clicked.connect(lambda: self.agregar_info())
+        self.boton_suministrar.clicked.connect(lambda: self.suministrar_info())
 
 
         # Lista de coincidencias
@@ -160,7 +162,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                     self.boton_especialidades.setCurrentIndex(0)
                     
                     # limpiamos la lista de asistencia
-                    self.lista_asistencias_en_cola.clear()
+                    self.lista_asistencias_en_colas_en_cola.clear()
                     
                     # y usamos la funcion para limpiar los inputs
                     FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
@@ -371,7 +373,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
 
             # Limpiamos las listas y los contadores
-            self.lista_asistencias_en_cola.clear()
+            self.lista_asistencias_en_colas_en_cola.clear()
             self.lista_de_asistencias.clear()
             self.lista_agregados.clear()
             self.indice = 0
@@ -387,10 +389,10 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
             self.boton_crear_registro.setEnabled(True)
             
-            self.boton_especialidades.setEnabled(False)
-            
             self.boton_especialidades.setCurrentIndex(0)
             
+            self.boton_especialidades.setEnabled(False)
+                        
             self.checkbox_estado_combobox.setEnabled(False)
                     
             for qlineedits in self.lista_qlineedits:
@@ -431,7 +433,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
 
     
             # Limpiamos las listas y los contadores
-            self.lista_asistencia.clear()
+            self.lista_asistencias_en_cola.clear()
             self.lista_de_asistencias.clear()
             self.lista_agregados.clear()
             self.indice = 0
@@ -447,7 +449,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.input_cedula_alumno.clear()
             
             # limpiamos los inputs
-            self.limpiar_inputs(self.lista_qlineedits, self.lista_radiobuttons)
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
             
             # restablecemos la lista de empleados actuales de la bd
             self.actualizar_lista_busqueda()
@@ -455,3 +457,343 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         if self.msg_box.clickedButton() == self.boton_no:
             
             return
+        
+    # Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
+    # esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
+    # empleado que ya fue agregado a la lista de asistencias
+    def eliminar_alumno_de_lista(self, alumno):
+        
+        if alumno in self.lista_alumnos_actual:
+                            
+            self.lista_agregados.append(alumno)
+            
+            self.lista_alumnos_actual.remove(alumno)
+            
+
+     # Metodo para agregar la informacion a la lista de asistencias
+    def agregar_info(self):
+        
+        try: 
+            
+            # Primero verificamos que el usuario haya seleccionado un estado de asistencia
+            # asistente o inasistente
+            # SI ninguno de los estados de asistencia esta seleccionado entonces
+            if self.radioButton_asistente.isChecked() == False and self.radioButton_inasistente.isChecked() == False:
+                
+                # le avisamos al usuario que seleccione un estado de asistencia
+                QMessageBox.warning(self, "Error", "Por favor, seleccione si el alumno asistió o no.")
+                
+                
+                return
+            
+            else:
+                
+                # Hacemos una lista que sera el carrito
+                alumno_n = []
+                
+                # Guardamos la cedula que es lo que utilizaremos
+                cedula = self.input_cedula_alumno.text().strip()
+                
+                # y buscamos el id del alumnos con el metodo self.buscar_id_alumno
+                alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+                
+                
+                # si algun elemento (la cedula) no esta en la tupla entonces
+                if not any(cedula in alumno[1] for alumno in self.lista_alumnos_actual):
+                    
+                    # avisamos que ya existe en la lista de asistencia o que la persona no esta en la bd
+                    QMessageBox.warning(self, "Error", "La persona ya esta agregada o no existe")
+                    return
+                
+                # buscamos al alumno por el id
+                alumno = inscripcion_servicio.obtener_inscripcion_por_id(alumno_id)
+                
+                            
+                
+                # la lista se compone de: id_alumno, fecha_asistencia,
+                # motivo_inasistencia, cedula, nombre y apellido del empleado 
+                # (estas 3 ultimas son para mostrar nada mas)
+                
+                # 0) alumno ID
+                alumno_n.append(alumno_id)
+                
+                # 1) Fecha de asistencia
+                dia_actual = date(self.dateedit_fecha_asistencia.date().year(), self.dateedit_fecha_asistencia.date().month(), self.dateedit_fecha_asistencia.date().day())
+                alumno_n.append(dia_actual)
+                
+                
+                # 2) Estado de asistencia
+                if self.radioButton_asistente.isChecked():
+                    estado_asistencia = 1
+                    alumno_n.append(estado_asistencia)
+                
+                elif self.radioButton_inasistente.isChecked():
+                    estado_asistencia = 0
+                    alumno_n.append(estado_asistencia)
+                    
+                    
+                
+                # 3) cedula
+                alumno_n.append(cedula)
+                
+                #4) nombre
+                alumno_n.append(alumno[2])
+                
+                #5) apellido
+                alumno_n.append(alumno[3])
+                
+                
+                # el texto que quiero mostrar en la lista de asistencias es : Cedula - Nombre Apellido
+                texto_a_mostrar = f"{alumno_n[3]} - {alumno_n[4]} {alumno_n[5]}"
+                
+                # lo transformamos en un tupla
+                alumno_n = tuple(alumno_n)
+                
+                
+                
+                
+                print(f"la lista es {alumno_n}")
+                
+                
+                    
+                
+                
+                # si la lista tiene una longitud mayor a 0
+                # esto se hace para evitar errores al insertar al primer elemento a la lista de asistencia
+                
+                if not len(self.lista_de_asistencias) > 0:
+                
+                    # si alumno_n no esta en la lista de asistencia
+                    # Agregaremos los elementos al "carrito"
+                    if not alumno_n in self.lista_de_asistencias:
+                        
+                        
+                        # eliminamos el alumno de la lista temporalmente
+                        # (OJO se elimina aqui en la logica segun lo que se quiere, no se elimina de la base de datos)
+                        self.eliminar_alumno_de_lista(alumno)
+                        
+                        
+                        #print(alumno_n)
+                        
+                        # si no esta los agrega a la lista de asistencia
+                        self.lista_de_asistencias.append(alumno_n)
+                        
+                        
+                        # lo agrega al "carrito"
+                        self.agg_alumno_a_lista(self.lista_asistencias_en_cola, self.lista_de_asistencias, self.input_cedula_alumno, texto_a_mostrar)
+
+                        # Limpiamos los inputs
+                        FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                        
+                        
+                        
+                        
+                        
+                    # SI el alumno esta en la lista de asistencia que no lo agregue
+                    else:
+                        # Avisamos en al usuario
+                        QMessageBox.warning(self, "Error", "Persona ya agregada")
+                        
+                        # Limpiamos los inputs
+                        FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                        
+                        return
+                    
+                # Aqui si la lista de asistencia tiene una longitud mayor a 0, es decir
+                # que tiene a una persona agregada
+                else:
+                    
+                    # Verificamos si la cedula del alumno de la lista alumno_n, esta en la lista de asistencia buscando por indice y por cedula
+                    # si no esta lo agregamos, si lo esta no lo agregamos
+                    if not alumno_n[3] in self.lista_de_asistencias[self.indice][3] or not alumno_n[3] == self.lista_de_asistencias[self.indice][3]:
+                        
+                        # si no esta los agrega a la lista de asistencia
+                        self.lista_de_asistencias.append(alumno_n)
+                        
+                        
+                        self.eliminar_alumno_de_lista(alumno)
+                        
+                        # lo agrega al "carrito"
+                        self.agg_alumno_a_lista(self.lista_asistencias_en_cola, self.lista_de_asistencias, self.input_cedula_alumno, texto_a_mostrar)
+
+                        # Limpiamos los inputs
+                        FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                        
+                        # y le sumamos uno al indice para saber la posicion actual
+                        self.indice += 1
+                        
+                    
+                    else:
+                        
+                        QMessageBox.warning(self, "Error", "Persona ya agregada")
+                        # Limpiamos los inputs
+                        FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                        
+                        return
+                    
+                    
+                    
+                
+                    
+                
+                # esto es para actualizar cuantas personas hay 
+                self.contador_de_asistencias += 1
+                self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                self.input_cedula_alumno.clear()
+                
+                
+                
+
+        except Exception as e:
+            print(f"Error al agregar la informacion: {e}")
+    
+    
+    
+            
+             
+    # Metodo "carrito" para agregar a los empleados a la lista de asistencia
+    def agg_alumno_a_lista(self, nombre_qlistwidget, nombre_lista, enfoca_input, texto_a_mostrar=None):
+        
+        
+        
+        # Crear un QListWidgetItem
+        item = QListWidgetItem()
+        nombre_qlistwidget.addItem(item)
+        
+        
+
+        # Crear un widget personalizado para la fila
+        widget = QWidget()
+        row_layout = QHBoxLayout()
+        widget.setLayout(row_layout)
+
+        # Label para el texto
+        if self.radioButton_asistente.isChecked():
+            
+                
+            label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
+            label.setProperty("tipo", "asistente")
+            row_layout.addWidget(label)
+            
+            
+        
+        elif self.radioButton_inasistente.isChecked():
+            
+            label = QLabel(texto_a_mostrar if texto_a_mostrar else f"Elemento {self.list_widget.count() + 1}")
+            label.setProperty("tipo", "inasistente")
+            row_layout.addWidget(label)
+
+        # Botón para eliminar
+        boton_borrar = QPushButton()
+        boton_borrar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        boton_borrar.setFixedSize(60,40)
+        boton_borrar.setIconSize(QSize(30, 30))
+        boton_borrar.setProperty("tipo","boton_borrar")
+        
+        boton_borrar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        row_layout.addWidget(boton_borrar)
+
+        # Asignar el widget al QListWidgetItem
+        item.setSizeHint(widget.sizeHint())
+        nombre_qlistwidget.setItemWidget(item, widget)
+        
+        
+
+    
+    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item):
+        
+        
+        # Logica para borrar el registro del diagnostico de la lista
+        
+        # indice del listwidget
+        indice_vista_previa = nombre_qlistwidget.row(item)
+        
+        # borramos el elemento de la lista segun el indice del listwidget
+        del nombre_lista[indice_vista_previa]
+        self.indice -= 1
+        
+        # darle foco al input del segmento
+        # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
+        enfoca_input.setFocus()
+        
+        if not self.lista_agregados[indice_vista_previa] in self.lista_alumnos_actual:
+            
+            alumno_restaurar = self.lista_agregados[indice_vista_previa]
+            
+            self.lista_alumnos_actual.append(alumno_restaurar)
+            
+            self.lista_agregados.remove(alumno_restaurar)
+        
+        
+        # actualizar el contador de asistencias
+        self.contador_de_asistencias -= 1
+        self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+        
+        
+    
+        
+        
+        ##########################################################################
+        # Obtener la fila del item y eliminarlo
+        row = nombre_qlistwidget.row(item)
+        nombre_qlistwidget.takeItem(row)
+    
+        print(f"lista actualizada: {nombre_lista}")
+    
+
+          
+        
+    def suministrar_info(self):
+        """
+            Este metodo sirve para cargar el registro de asistencia de los alumnos a la base de datos
+            
+            este metodo funciona asi:
+            
+            - un for va a recorrer self.lista_de_asistencias, que contiene todo lo que se ve en el qlistwidget
+            - self.lista_de_asistencias sigue la siguiente estructura:
+            
+            
+            
+            self.lista_de_asistencias = [(1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares'),
+                                         (1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares'),
+                                         (1, datetime.date(2025, 11, 9), 'PRESENTE', '30466351', 'Ariana', 'Mijares')]
+                                         
+            donde tenemos: el ID del alumno, la fecha de actual, el estado de asistencia, la cedula, nombre y apellido del alumno
+            
+            - con el for vamos a pasar el id, la fecha, el estado de asistencia, y el dia laborable (todavia no esta habilitado)
+            - y en cada iteracion cargamos cada alumno con le metodo de la base de datos
+        
+        
+        """
+        
+        try:
+            
+            for alumno in self.lista_de_asistencias:
+                
+                id_alumno = alumno[0]
+                estado_asistencia = alumno[2]
+                
+                
+                
+                campos_asistencia_alumnos = {
+                    "inscripcion_id": id_alumno,
+                    "fecha_asistencia": date.today(),
+                    "estado_asistencia": estado_asistencia,
+                    "dia_no_laborable": None
+                }
+                
+                asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
+            
+        
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "funcion_suministrar")
+            QMessageBox.warning(self, "Error", "Algo salio mal, revise la consola")
+            
+        
+        else:
+            
+            
+            QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia")
+    
+    
