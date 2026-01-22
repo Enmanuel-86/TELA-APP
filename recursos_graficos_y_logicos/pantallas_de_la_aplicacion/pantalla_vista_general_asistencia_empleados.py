@@ -110,11 +110,13 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.boton_crear_registro.clicked.connect(lambda: self.crear_nuevo_registro_asistencia())
         self.boton_cancelar_registro.clicked.connect(lambda: self.cancelar_registro_asistencia())
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
-        self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_asistencias())
         self.boton_limpiar_lista.clicked.connect(lambda: self.limpiar_lista_de_asistencias())
         self.boton_de_regreso.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(7))
         self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtrar_asistencia_por_fecha())
+        
+        self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
+        self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
         
         self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_filtro_tipo_cargo, 1, 1)
@@ -198,7 +200,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         #tipo_id_cargo = FuncionSistema.obtener_id_del_elemento_del_combobox(self.boton_filtro_tipo_cargo, self.lista_tipo_cargo, 1, 0, True)
         try:
             
-            fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),self.dateedit_filtro_fecha_asistencia.date().month(), self.dateedit_filtro_fecha_asistencia.date().day() )
+            fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                         self.dateedit_filtro_fecha_asistencia.date().month(), 
+                         self.dateedit_filtro_fecha_asistencia.date().day() )
             
             asistencia = asistencia_empleado_servicio.obtener_asistencia_empleado_por_fecha(fecha)
             
@@ -206,8 +210,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             print("Algo salio mal en: Filtrar_asistencia_por_fecha")
             
         else:
-            print("La asistencia es: ")
-            print(asistencia)
+            #print("La asistencia es: ")
+            #print(asistencia)
             self.cargar_empleados_en_tabla(self.tbl_asistencias_registradas, asistencia)
         
   
