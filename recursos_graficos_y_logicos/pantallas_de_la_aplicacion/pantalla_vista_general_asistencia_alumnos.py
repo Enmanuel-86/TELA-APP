@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
-                            QLabel, QHBoxLayout, QPushButton )
+                            QLabel, QHBoxLayout, QPushButton, QHeaderView )
 from PyQt5.QtCore import QSize, QPoint, Qt, QDate
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5 import QtGui, QtCore
 import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralAsistenciaAlumnos
@@ -96,15 +96,33 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.checkbox_estado_combobox.setText("Activado")
         self.checkbox_estado_combobox.setChecked(True)
         
+        self.tbl_asistencias_registradas.horizontalHeader().setVisible(True)
+
+        self.tbl_asistencias_registradas.horizontalHeader().setMinimumHeight(50)
+        self.tbl_asistencias_registradas.horizontalHeader().setMinimumWidth(10)
+        self.tbl_asistencias_registradas.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_asistencias_registradas.horizontalHeader().setSectionsClickable(False)
+
+
+        self.tbl_asistencias_registradas.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.tbl_asistencias_registradas.verticalHeader().setVisible(True)
+        #self.tbl_asistencias_registradas.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_asistencias_registradas.verticalHeader().setMinimumWidth(20)
+        self.tbl_asistencias_registradas.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.tbl_asistencias_registradas.verticalHeader().setFixedWidth(20)
+        #esto me da el valor de la cedula al darle click a la persona que quiero
+        self.tbl_asistencias_registradas.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
+
+        # Opcional: desactivar clic en el encabezado vertical
+        self.tbl_asistencias_registradas.verticalHeader().setSectionsClickable(True)
+        
 
         self.msg_box = QMessageBox(self)
         
         # Crear botones personalizados
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
-        
-        self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
-        
+                
         self.input_cedula_alumno.setDisabled(True)
         
         FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
@@ -118,7 +136,10 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.input_cedula_alumno.textChanged.connect(lambda texto: self.filtrar_resultados(texto))
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_info())
+        self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia())
 
+        self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
+        self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
 
         # Lista de coincidencias
         self.resultados = QListWidget(self)
@@ -162,7 +183,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                     self.boton_especialidades.setCurrentIndex(0)
                     
                     # limpiamos la lista de asistencia
-                    self.lista_asistencias_en_colas_en_cola.clear()
+                    self.lista_asistencias_en_cola.clear()
                     
                     # y usamos la funcion para limpiar los inputs
                     FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
@@ -320,10 +341,71 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.label_nombre_alumno_guia.setText(nombre_guia)
         self.resultados.hide()
         
-        
-
     
+    def filtra_alumnos_por_fecha_de_asistencia(self):
+        """
+            Este metodo sirve para filtrar a los alumnos por la fecha en la que registraron la asistencia
+        """
+        
+        try:
+            fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                                self.dateedit_filtro_fecha_asistencia.date().month(), 
+                                self.dateedit_filtro_fecha_asistencia.date().day() )
+
+            alumnos = asistencia_alumno_servicio.obtener_por_fecha_asistencia(fecha)
+            
+    
+        except Exception as e:
+            print(f"A ocorrido un error el metodo de filtra_alumnos_por_fecha_de_asistencia: {e}")
+            
+        else:
+            
+            self.cargar_alumnos_en_tabla(self.tbl_asistencias_registradas, alumnos)
+            
+            
     ################################################################
+    
+    def cargar_alumnos_en_tabla(self, tabla, alumnos):
+        columnas = [
+            "Matricula", "Nombre", "Apellido", "Estado de asistencia", 
+            "Dia No laborable"
+            
+        ]
+
+        global modelo
+        modelo = QStandardItemModel()
+        modelo.setHorizontalHeaderLabels(columnas)
+
+        # Primero cargamos los datos
+        for indice, alumno in enumerate(alumnos):
+            datos_visibles = [
+            alumno[3],  # Matricula
+            alumno[4],  # Nombre
+            alumno[5],  # Apellido
+            "Asistente" if alumno[7] else "Inasistente",  # Estado de asistencia
+            "Ninguno" if alumno[8] == None else alumno[8],  # Dia no Laborable
+            ]
+
+            items = []
+            for dato in datos_visibles:
+                item = QStandardItem(str(dato) if dato is not None else "")
+                # Evita edición del usuario
+                item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                items.append(item)
+
+            # Agregar la fila completa
+            modelo.appendRow(items)
+
+            # Numerar filas en el encabezado vertical
+            header_item = QStandardItem(str(indice + 1))
+            header_item.setFlags(Qt.ItemIsEnabled)
+            modelo.setVerticalHeaderItem(indice, header_item)
+
+        # Muy importante: asignar modelo primero
+        tabla.setModel(modelo)
+    
+    
+    
     
     def crear_nuevo_registro_asistencia(self):
         """
@@ -335,6 +417,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             4. Habilita el boton de cancelar registro
             
         """
+        print("Proceso de crear registro de asistencia")
+        
         self.ventanas_registro_asistencia.setCurrentIndex(1)
         
         self.boton_crear_registro.setEnabled(False)
@@ -346,8 +430,12 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.checkbox_estado_combobox.setEnabled(True)
                                     
         self.boton_cancelar_registro.setEnabled(True)
+        
+        self.dateedit_filtro_fecha_asistencia.setEnabled(False)
     
-    
+        
+        
+        
     def cancelar_registro_asistencia(self):
         """
             Este metodo sirve para cancelar el registro de asistencia que se esta realizando, haciendo lo siguiente:
@@ -361,6 +449,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 
             2. Si le da a NO, no pasa nada y el usuario sigue con lo suyo
         """
+        print("Proceso de cancelar registro de asistencia")
         
         self.msg_box.setIcon(QMessageBox.Information)
         self.msg_box.setWindowTitle("Confirmar acción")
@@ -373,7 +462,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
 
             # Limpiamos las listas y los contadores
-            self.lista_asistencias_en_colas_en_cola.clear()
+            self.lista_asistencias_en_cola.clear()
             self.lista_de_asistencias.clear()
             self.lista_agregados.clear()
             self.indice = 0
@@ -408,10 +497,12 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.boton_cancelar_registro.setEnabled(False)
             
             FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
-            
-            
-            
+                        
             self.boton_agregar.setEnabled(False)
+            
+            self.boton_establecer_dia_feriado.setEnabled(False)
+            
+            self.dateedit_filtro_fecha_asistencia.setEnabled(True)
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -420,7 +511,9 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
      
     def limpiar_lista_de_asistencias(self):
         
-
+        print("Procese de limpieza del QListWidget que contiene la lista de asistencia")
+        
+        
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText("¿Seguro que quiere borrar la lista y empezar de nuevo?")
         self.msg_box.setIcon(QMessageBox.Warning)
@@ -458,26 +551,37 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
             return
         
-    # Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
-    # esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
-    # empleado que ya fue agregado a la lista de asistencias
+    
     def eliminar_alumno_de_lista(self, alumno):
+        """
+            Metodo para eliminar al empleado de la lista en donde estan todos los empleados actuales
+            esto es para que cuando agregue un empleado la lista de la barra de busqueda no muestre el 
+            empleado que ya fue agregado a la lista de asistencias
         
+        """
         if alumno in self.lista_alumnos_actual:
                             
             self.lista_agregados.append(alumno)
             
             self.lista_alumnos_actual.remove(alumno)
+     
             
 
-     # Metodo para agregar la informacion a la lista de asistencias
+    
     def agregar_info(self):
         
+        """
+        Metodo para agregar la informacion a la lista de asistencias
+        """
         try: 
             
-            # Primero verificamos que el usuario haya seleccionado un estado de asistencia
-            # asistente o inasistente
-            # SI ninguno de los estados de asistencia esta seleccionado entonces
+            """
+                Primero verificamos que el usuario haya seleccionado un estado de asistencia
+                asistente o inasistente.
+                
+                SI ninguno de los estados de asistencia esta seleccionado entonces
+                
+            """
             if self.radioButton_asistente.isChecked() == False and self.radioButton_inasistente.isChecked() == False:
                 
                 # le avisamos al usuario que seleccione un estado de asistencia
@@ -765,35 +869,95 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         
         
         """
+        self.msg_box.setWindowTitle("Confirmar registro")
+        self.msg_box.setText("¿Seguro que quiere registrar esta lista de asistencia?")
+        self.msg_box.setIcon(QMessageBox.Question)
+        QApplication.beep()
+
+
+
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+
+        if self.msg_box.clickedButton() == self.boton_si:
         
-        try:
-            
-            for alumno in self.lista_de_asistencias:
+            try:
                 
-                id_alumno = alumno[0]
-                estado_asistencia = alumno[2]
+                for alumno in self.lista_de_asistencias:
+                    
+                    id_alumno = alumno[0]
+                    estado_asistencia = alumno[2]
+                    
+                    
+                    
+                    campos_asistencia_alumnos = {
+                        "inscripcion_id": id_alumno,
+                        "fecha_asistencia": date.today(),
+                        "estado_asistencia": estado_asistencia,
+                        "dia_no_laborable": None
+                    }
+                    
+                    asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
+                
+            
+            except Exception as e:
+                
+                FuncionSistema.mostrar_errores_por_excepcion(e, "funcion_suministrar")
+                QMessageBox.warning(self, "Error", "Algo salio mal, revise la consola")
+                
+            
+            else:
+                
+                QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia")
+                
+                # Aqui al finalizar, como todo salio bien, deshabilitamos y limpiamos todo
+                
+                # Limpiamos las listas y los contadores
+                self.lista_asistencias_en_cola.clear()
+                self.lista_de_asistencias.clear()
+                self.lista_agregados.clear()
+                self.indice = 0
+                self.contador_de_asistencias = 0
+                
+                # restablecemos el contador de asistencias
+                self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+                
+                # restablecemos la lista de empleados actuales de la bd
+                self.actualizar_lista_busqueda()
+            
+                self.ventanas_registro_asistencia.setCurrentIndex(0)
+                
+                self.boton_crear_registro.setEnabled(True)
+                
+                self.boton_especialidades.setCurrentIndex(0)
+                
+                self.boton_especialidades.setEnabled(False)
+                            
+                self.checkbox_estado_combobox.setEnabled(False)
+                        
+                for qlineedits in self.lista_qlineedits:
+                    qlineedits.setEnabled(False)
+                    
+                for qradiobutton in self.lista_radiobuttons:
+                    qradiobutton.setEnabled(False)
+                    
+                self.dateedit_fecha_asistencia.setEnabled(False)
+                
+                self.boton_agregar.setEnabled(True)
+                
+                self.boton_cancelar_registro.setEnabled(False)
+                
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                            
+                self.boton_agregar.setEnabled(False)
+                
+                self.dateedit_filtro_fecha_asistencia.setEnabled(True)
+                
+                # Filtramos la asistencia actual
+                self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
+                
+                self.filtra_alumnos_por_fecha_de_asistencia()
                 
                 
-                
-                campos_asistencia_alumnos = {
-                    "inscripcion_id": id_alumno,
-                    "fecha_asistencia": date.today(),
-                    "estado_asistencia": estado_asistencia,
-                    "dia_no_laborable": None
-                }
-                
-                asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
-            
-        
-        except Exception as e:
-            
-            FuncionSistema.mostrar_errores_por_excepcion(e, "funcion_suministrar")
-            QMessageBox.warning(self, "Error", "Algo salio mal, revise la consola")
-            
-        
-        else:
-            
-            
-            QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia")
-    
-    
+        elif self.msg_box.clickedButton() == self.boton_no:
+            return
