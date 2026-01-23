@@ -794,6 +794,33 @@ class FuncionesDelSistema:
             for col in range(min_col, max_col + 1):
                 hoja.cell(row=fila, column=col).border = borde
         
+    def habilitar_o_deshabilitar_widget_de_qt(self, tupla_de_widegts_qt: tuple ,opcion: bool):
+        """
+            ### Este metodo sirve mas que todo para habilitar o deshabilitar una gran cantidad de widget de qt, como:
+            - QLineEdits
+            - QRadioButtons
+            - QLabels
+            - QListWidget
+            - QPushButton
+            
+            Pasandole como argumento una tupla con los widgets y un valor boleano (True o False)
+            
+            ***Ejemplo***
+            
+            lista_widget = (label, button, lineedit)
+            
+            habilitar_0_deshabilitar_widget_de_qt(lista_widget, True) # habilita los widgets
+            
+            #### True los habilita
+            #### False los deshabilita
+        """    
+        try:
+            for widget in tupla_de_widegts_qt:
+                widget.setEnabled(opcion)
+        
+        except Exception as e:
+            self.mostrar_errores_por_excepcion(e, "habilitar_0_deshabilitar_widget_de_qt")
+    
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
                 (3, 'ROSMARY', 'DEL VALLE', None, 'SALAS', 'JIMENEZ', '18128319', '1986-10-28', 38, 'Activo', 'F', 0),
