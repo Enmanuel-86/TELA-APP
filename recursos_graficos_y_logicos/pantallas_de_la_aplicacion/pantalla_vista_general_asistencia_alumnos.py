@@ -91,10 +91,18 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         
         self.lista_qlineedits = (self.input_cedula_alumno, self.input_dia_feriado)
         self.lista_radiobuttons = (self.radioButton_inasistente, self.radioButton_asistente)
+        self.lista_widget_por_deshabilitar = (self.input_cedula_alumno, self.input_dia_feriado,
+                                              self.radioButton_inasistente, self.radioButton_asistente,
+                                              self.boton_agregar, self.boton_establecer_dia_feriado, self.boton_especialidades,
+                                              self.checkbox_estado_combobox, self.boton_cancelar_registro, self.dateedit_fecha_asistencia
+                                              )
         
         
         self.checkbox_estado_combobox.setText("Activado")
         self.checkbox_estado_combobox.setChecked(True)
+        
+        # definimos el modelo para el qtableview
+        self.modelo = QStandardItemModel()
         
         self.tbl_asistencias_registradas.horizontalHeader().setVisible(True)
 
@@ -137,6 +145,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_info())
         self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia())
+        self.boton_de_regreso.clicked.connect(lambda: self.regresar_pantalla_anterior())
 
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
@@ -357,7 +366,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
     
         except Exception as e:
             print(f"A ocorrido un error el metodo de filtra_alumnos_por_fecha_de_asistencia: {e}")
-            
+            self.modelo.removeRows(0, self.modelo.rowCount())
         else:
             
             self.cargar_alumnos_en_tabla(self.tbl_asistencias_registradas, alumnos)
@@ -372,9 +381,9 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
         ]
 
-        global modelo
-        modelo = QStandardItemModel()
-        modelo.setHorizontalHeaderLabels(columnas)
+        
+        
+        self.modelo.setHorizontalHeaderLabels(columnas)
 
         # Primero cargamos los datos
         for indice, alumno in enumerate(alumnos):
@@ -394,15 +403,15 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 items.append(item)
 
             # Agregar la fila completa
-            modelo.appendRow(items)
+            self.modelo.appendRow(items)
 
             # Numerar filas en el encabezado vertical
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
-            modelo.setVerticalHeaderItem(indice, header_item)
+            self.modelo.setVerticalHeaderItem(indice, header_item)
 
-        # Muy importante: asignar modelo primero
-        tabla.setModel(modelo)
+        # Muy importante: asignar self.modelo primero
+        tabla.setModel(self.modelo)
     
     
     
@@ -431,7 +440,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                                     
         self.boton_cancelar_registro.setEnabled(True)
         
-        self.dateedit_filtro_fecha_asistencia.setEnabled(False)
+        #self.dateedit_filtro_fecha_asistencia.setEnabled(False)
     
         
         
@@ -502,7 +511,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
             self.boton_establecer_dia_feriado.setEnabled(False)
             
-            self.dateedit_filtro_fecha_asistencia.setEnabled(True)
+            #self.dateedit_filtro_fecha_asistencia.setEnabled(True)
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -959,5 +968,47 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 self.filtra_alumnos_por_fecha_de_asistencia()
                 
                 
+        elif self.msg_box.clickedButton() == self.boton_no:
+            return
+        
+        
+    def regresar_pantalla_anterior(self):
+        """
+            Esta metodo sirve para regresa a la pantalla anterio, pero advirtiendo le al usuario que si se va de
+            la pantalla todo su progreso se perdera.
+        """
+        
+        self.msg_box.setWindowTitle("Confirmar registro")
+        self.msg_box.setText("¿Seguro que quiere irse de esta pantalla?")
+        self.msg_box.setIcon(QMessageBox.Question)
+        QApplication.beep()
+
+
+
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            # Limpiamos las listas y los contadores
+            self.lista_asistencias_en_cola.clear()
+            self.lista_de_asistencias.clear()
+            self.lista_agregados.clear()
+            self.indice = 0
+            self.contador_de_asistencias = 0
+            
+            # restablecemos el contador de asistencias
+            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+            
+            # restablecemos la lista de empleados actuales de la bd
+            self.actualizar_lista_busqueda()
+                
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+            
+            self.boton_crear_registro.setEnabled(True)
+            self.ventanas_registro_asistencia.setCurrentIndex(0)
+            self.stacked_widget.setCurrentIndex(2)
+            
         elif self.msg_box.clickedButton() == self.boton_no:
             return

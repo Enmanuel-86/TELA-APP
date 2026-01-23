@@ -65,6 +65,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         
         # esta lista guardara los empleados que se agreguen a la lista de asistencias
         self.lista_agregados = []
+
+        # definimos el modelo para el qtableview
+        self.modelo = QStandardItemModel()
         
         self.tbl_asistencias_registradas.horizontalHeader().setVisible(True)
 
@@ -93,7 +96,10 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.lista_qlineedits = (self.input_cedula_empleado, self.input_motivo_retraso, self.input_motivo_inasistencia)
         self.lista_radiobuttons = (self.radioButton_asistente, self.radioButton_inasistente)
         self.lista_timeedits = (self.timeEdit_hora_entrada, self.timeEdit_hora_salida)
-        
+        self.lista_widget_por_deshabilitar = (self.input_cedula_empleado, self.input_motivo_retraso, self.input_motivo_inasistencia,
+                                              self.radioButton_asistente, self.radioButton_inasistente, self.timeEdit_hora_entrada, 
+                                              self.timeEdit_hora_salida, self.boton_cancelar_registro, self.boton_agregar, self.dateedit_fecha_asistencia
+                                              )
 
         self.msg_box = QMessageBox(self)
         
@@ -112,7 +118,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_asistencias())
         self.boton_limpiar_lista.clicked.connect(lambda: self.limpiar_lista_de_asistencias())
-        self.boton_de_regreso.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(7))
+        self.boton_de_regreso.clicked.connect(lambda: self.regresar_pantalla_anterior())
         self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtrar_asistencia_por_fecha())
         
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
@@ -207,8 +213,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             asistencia = asistencia_empleado_servicio.obtener_asistencia_empleado_por_fecha(fecha)
             
         except Exception as e:
-            print("Algo salio mal en: Filtrar_asistencia_por_fecha")
-            
+            print(f"Algo salio mal en: Filtrar_asistencia_por_fecha: {e}")
+            self.modelo.removeRows(0, self.modelo.rowCount())
         else:
             #print("La asistencia es: ")
             #print(asistencia)
@@ -222,9 +228,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             
         ]
 
-        global modelo
-        modelo = QStandardItemModel()
-        modelo.setHorizontalHeaderLabels(columnas)
+        
+        self.modelo = QStandardItemModel()
+        self.modelo.setHorizontalHeaderLabels(columnas)
 
         # Primero cargamos los datos
         for indice, empleado in enumerate(empleados):
@@ -245,15 +251,15 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 items.append(item)
 
             # Agregar la fila completa
-            modelo.appendRow(items)
+            self.modelo.appendRow(items)
 
             # Numerar filas en el encabezado vertical
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
-            modelo.setVerticalHeaderItem(indice, header_item)
+            self.modelo.setVerticalHeaderItem(indice, header_item)
 
-        # Muy importante: asignar modelo primero
-        tabla.setModel(modelo)
+        # Muy importante: asignar self.modelo primero
+        tabla.setModel(self.modelo)
         
         
 
@@ -647,7 +653,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
        
        
     # Metodo para habilitar los inputs si asistio
-    def cuando_asiste_el_personal(self, ):
+    def cuando_asiste_el_personal(self):
         
         
             self.input_motivo_inasistencia.setDisabled(True)
@@ -828,7 +834,48 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         except Exception as e:
             
             print(f"algo malo paso en suministrar info : {e}")
+            
+        else:
+            
+            self.filtrar_asistencia_por_fecha()
                                     
-                                    
-                                 
+                          
+    def regresar_pantalla_anterior(self):
+        """
+            Esta metodo sirve para regresa a la pantalla anterio, pero advirtiendo le al usuario que si se va de
+            la pantalla todo su progreso se perdera.
+        """
         
+        self.msg_box.setIcon(QMessageBox.Information)
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText("¿Seguro que quiere irse de esta pantalla?")
+        #self.msg_box.setInformativeText("Si se retira de la pantalla esto borrar lo que lleva registrando hasta el momento.")
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            # Limpiamos las listas y los contadores
+            self.lista_asistencias_en_cola.clear()
+            self.lista_de_asistencias.clear()
+            self.lista_agregados.clear()
+            self.indice = 0
+            self.contador_de_asistencias = 0
+            
+            # restablecemos el contador de asistencias
+            self.label_titulo_asistencia.setText(f"Lista actual de asistencias: {self.contador_de_asistencias}")
+            
+            # restablecemos la lista de empleados actuales de la bd
+            self.actualizar_lista_busqueda()
+        
+            
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+            
+            self.boton_crear_registro.setEnabled(True)
+            self.ventanas_registro_asistencia.setCurrentIndex(0)
+            self.stacked_widget.setCurrentIndex(7)
+            
+        elif self.msg_box.clickedButton() == self.boton_no:
+            
+            return    
