@@ -969,7 +969,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 # Filtramos la asistencia actual
                 self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
                 
-                self.filtra_alumnos_por_fecha_de_asistencia()
+                self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
                 
                 
         elif self.msg_box.clickedButton() == self.boton_no:
