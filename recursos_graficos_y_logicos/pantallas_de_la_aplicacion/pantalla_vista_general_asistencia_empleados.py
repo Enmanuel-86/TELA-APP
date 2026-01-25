@@ -258,48 +258,84 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             header_item.setFlags(Qt.ItemIsEnabled)
             self.modelo.setVerticalHeaderItem(indice, header_item)
             
-             # AJUSTES DE ALTURA DE FILAS
-            for fila in range(self.modelo.rowCount()):
-                tabla.setRowHeight(fila, 40)
-                
-            # Ahora sí añadimos los botones fila por fila
-            for fila in range(self.modelo.rowCount()):
-                widget = QWidget()
-                layout = QHBoxLayout(widget)
-                boton_editar = QPushButton("Editar")
-                boton_editar.setFixedSize(60, 30)
-                boton_editar.setStyleSheet("""
-                        QPushButton{
-                            font-size:8pt;
-                        }
-                """) 
-                boton_editar.setProperty("tipo", "boton_editar")
-                boton_borrar = QPushButton("Borrar")
-                boton_borrar.setFixedSize(60, 30) 
-                boton_borrar.setProperty("tipo", "boton_borrar")
-                boton_borrar.setStyleSheet("""
-                        QPushButton{
-                            font-size:8pt;
-                        }
-                """) 
-                
-
-                # Conectar botones
-                boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
-                boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
-
-                layout.addWidget(boton_editar)
-                layout.addWidget(boton_borrar)
-                layout.setContentsMargins(3, 3, 3, 3)
-                widget.setLayout(layout)
-                
-                index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
-                tabla.setIndexWidget(index, widget)
-
-            # Muy importante: asignar self.modelo primero
-            tabla.setModel(self.modelo)
+        # Muy importante: asignar self.modelo primero
+        tabla.setModel(self.modelo)
         
+        # AJUSTES DE ALTURA DE FILAS
+        for fila in range(self.modelo.rowCount()):
+            tabla.setRowHeight(fila, 40)
+                
+        # Ahora sí añadimos los botones fila por fila
+        for fila in range(self.modelo.rowCount()):
+            widget = QWidget()
+            layout = QHBoxLayout(widget)
+            boton_editar = QPushButton("Editar")
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            
+
+            # Conectar botones
+            boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_del_registro_de_asistencia(fila))
+            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+
+            layout.addWidget(boton_editar)
+            layout.addWidget(boton_borrar)
+            layout.setContentsMargins(3, 3, 3, 3)
+            widget.setLayout(layout)
+            
+            index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
+            tabla.setIndexWidget(index, widget)
+
+            
         
+    def habilitar_edicion_del_registro_de_asistencia(self, fila):
+        
+        """
+            Este metodo sirve para habilitar la edicion del registro de x empleado.
+        """
+        permiso_editar_registro_asistencia = True
+        
+        if permiso_editar_registro_asistencia:
+            try:
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, True)
+                self.boton_crear_registro.setEnabled(False)
+                
+                # Obtener el texto de la primera columna (nombre)
+                cedula = self.modelo.item(fila, 0).text()
+
+                lista_empleados = empleado_servicio.obtener_todos_empleados()
+                
+                empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, lista_empleados)
+                
+                fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                         self.dateedit_filtro_fecha_asistencia.date().month(), 
+                         self.dateedit_filtro_fecha_asistencia.date().day() )
+                
+                asistencia_empleado = asistencia_empleado_servicio.obtener_asistencia_por_empleado_id_y_fecha(empleado_id, fecha)
+                
+                print(f"esta editando a {asistencia_empleado}")
+                
+            except Exception as e:
+                FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_del_registro_de_asistencia")
+            
+                
+                
+        else:
+            pass   
+            
 
           
     
@@ -916,4 +952,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             
         elif self.msg_box.clickedButton() == self.boton_no:
             
-            return    
+            return  
+        
+        
+    
