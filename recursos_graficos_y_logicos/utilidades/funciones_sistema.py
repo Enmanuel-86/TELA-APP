@@ -9,6 +9,7 @@ from openpyxl.utils import range_boundaries
 import platform
 import os
 import io
+from itertools import zip_longest
 
 """
 Este archivo contiene todas las funciones que suelen repetirse, esto ayuda a evitar copiar y pegar
@@ -21,7 +22,7 @@ class FuncionesDelSistema:
         # Variables axuliares
         self.estado_sidebar = True
         
-        
+        self.id_usuario = None
         
     # Metodo para bloquear los botones del side bar
     def bloquear_botones_sidebar(self, indice_stackedwidget: int, pantallas_importantes: tuple, botones_sidebar: tuple) -> None:
@@ -707,7 +708,7 @@ class FuncionesDelSistema:
 
         except Exception as e:
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
+            self.mostrar_errores_por_excepcion(e, "cambiar_estilo_del_boton")
     
     
     def cargar_foto_perfil_en_la_interfaz(self, ruta_foto_perfil, widget_foto):
@@ -821,6 +822,7 @@ class FuncionesDelSistema:
         except Exception as e:
             self.mostrar_errores_por_excepcion(e, "habilitar_0_deshabilitar_widget_de_qt")
     
+
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
                 (3, 'ROSMARY', 'DEL VALLE', None, 'SALAS', 'JIMENEZ', '18128319', '1986-10-28', 38, 'Activo', 'F', 0),
