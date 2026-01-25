@@ -20,6 +20,7 @@ from repositorios.alumnos.info_bancaria_alumno_repositorio import InfoBancarioAl
 from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.representante_repositorio import RepresentanteRepositorio
+from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
 
 # Servicios
 
@@ -29,6 +30,7 @@ from servicios.alumnos.info_bancaria_alumno_servicio import InfoBancariaAlumnoSe
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.representante_servicio import RepresentanteServicio
+from servicios.usuarios.permiso_servicio import PermisoServicio
 
 
 
@@ -45,6 +47,8 @@ info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 
 representante_repositorio = RepresentanteRepositorio()
 
+permisos_repositorio = PermisoRepositorio()
+
 # Instancia Servicios
 
 
@@ -57,6 +61,8 @@ info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_
 info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
 
 representante_servicio = RepresentanteServicio(representante_repositorio)
+
+permisos_servicio = PermisoServicio(permisos_repositorio)
 
 ##################################
 # importaciones de base de datos #
@@ -666,29 +672,36 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         """
         
         try: 
-            
-            # Obtener el texto de la primera columna (nombre)
-            cedula = modelo.item(fila, 1).text()
-            
-            alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
-            
-            
-            
-            pantalla_perfil_alumno = self.stacked_widget.widget(3)
-            
-            
+            permiso_editar_alumno = permisos_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "ACTUALIZAR ALUMNOS")
+            if permiso_editar_alumno:
+                
+                try: 
+                    
+                    # Obtener el texto de la primera columna (nombre)
+                    cedula = modelo.item(fila, 1).text()
+                    
+                    alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
+                    
+                    
+                    
+                    pantalla_perfil_alumno = self.stacked_widget.widget(3)
+                    
+                    
+                    
+                except Exception as e:
+                    
+                    FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_alumno")
+                    
+                else:
+                    
+                    self.stacked_widget.setCurrentIndex(3)
+                    
+                    pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
             
         except Exception as e:
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_alumno")
-            
-        else:
-            
-            self.stacked_widget.setCurrentIndex(3)
-            
-            pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
-            
-            
+            QMessageBox.warning(self, "No puede", f"{e}")   
+                
         
         
                 
@@ -739,9 +752,9 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     # Metodo para ir a la pantalla para registrar un alumno
     def ir_crear_nuevo_registro(self):
         self.stacked_widget.setCurrentIndex(3)
-        pantalla_perfil_alumno = self.stacked_widget.widget(3)
+        #pantalla_perfil_alumno = self.stacked_widget.widget(3)
         
-        pantalla_perfil_alumno.boton_finalizar.setText("Guardar")
+        #pantalla_perfil_alumno.boton_finalizar.setText("Guardar")
         
     # Metodo para ir a la pantalla de asistenca de alumnos
     def ir_asistencia_alumno(self):
