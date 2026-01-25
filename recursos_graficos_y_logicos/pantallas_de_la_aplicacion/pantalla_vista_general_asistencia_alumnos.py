@@ -134,6 +134,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.input_cedula_alumno.setDisabled(True)
         
         FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_especialidades, 1, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(lista_especialidades, self.boton_filtro_especialidades, 1, 0)
         
         # Conexion de botones
         
@@ -144,7 +145,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.input_cedula_alumno.textChanged.connect(lambda texto: self.filtrar_resultados(texto))
         self.boton_agregar.clicked.connect(lambda: self.agregar_info())
         self.boton_suministrar.clicked.connect(lambda: self.suministrar_info())
-        self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia())
+        self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad())
+        self.boton_filtro_especialidades.currentIndexChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad())
         self.boton_de_regreso.clicked.connect(lambda: self.regresar_pantalla_anterior())
 
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
@@ -351,17 +353,19 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.resultados.hide()
         
     
-    def filtra_alumnos_por_fecha_de_asistencia(self):
+    def filtra_alumnos_por_fecha_de_asistencia_y_especialidad(self):
         """
-            Este metodo sirve para filtrar a los alumnos por la fecha en la que registraron la asistencia
+            Este metodo sirve para filtrar a los alumnos por la fecha en la que registraron la asistencia y su especialidad
         """
         
         try:
             fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
                                 self.dateedit_filtro_fecha_asistencia.date().month(), 
                                 self.dateedit_filtro_fecha_asistencia.date().day() )
+            
+            especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_filtro_especialidades.currentText(), lista_especialidades, 0)
 
-            alumnos = asistencia_alumno_servicio.obtener_por_fecha_asistencia(fecha)
+            alumnos = asistencia_alumno_servicio.obtener_por_fecha_asistencia_y_especialidad(fecha, especialidad_id)
             
     
         except Exception as e:
@@ -377,12 +381,12 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
     def cargar_alumnos_en_tabla(self, tabla, alumnos):
         columnas = [
             "Matricula", "Nombre", "Apellido", "Estado de asistencia", 
-            "Dia No laborable"
+            "Dia No laborable", "Opciones"
             
         ]
 
         
-        
+        self.modelo = QStandardItemModel()
         self.modelo.setHorizontalHeaderLabels(columnas)
 
         # Primero cargamos los datos
@@ -965,7 +969,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 # Filtramos la asistencia actual
                 self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
                 
-                self.filtra_alumnos_por_fecha_de_asistencia()
+                self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
                 
                 
         elif self.msg_box.clickedButton() == self.boton_no:

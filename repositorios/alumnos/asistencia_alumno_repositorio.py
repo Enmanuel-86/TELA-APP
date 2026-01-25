@@ -119,6 +119,30 @@ class AsistenciaAlumnoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LA ASISTENCIA DIARIA DE ALUMNO: {error}")
     
+    def obtener_por_fecha_asistencia_y_especialidad(self, fecha_asistencia: date, especialidad_id: int) -> List[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                asistencia_alumnos = (
+                    sesion.query(
+                        AsistenciaAlumno.asist_alumno_id,
+                        Especialidad.especialidad_id,
+                        Especialidad.especialidad,
+                        Inscripcion.num_matricula,
+                        Alumno.primer_nombre,
+                        Alumno.apellido_paterno,
+                        AsistenciaAlumno.fecha_asistencia,
+                        AsistenciaAlumno.estado_asistencia,
+                        AsistenciaAlumno.dia_no_laborable
+                    )
+                    .join(AsistenciaAlumno.inscripcion)
+                    .join(Inscripcion.especialidad)
+                    .join(Inscripcion.alumno)
+                    .order_by(AsistenciaAlumno.fecha_asistencia)
+                ).filter(AsistenciaAlumno.fecha_asistencia == fecha_asistencia).filter(Especialidad.especialidad_id == especialidad_id).all()
+                return asistencia_alumnos
+        except Exception as error:
+            print(f"ERROR AL OBTENER LA ASISTENCIA DIARIA DE ALUMNO: {error}")
+    
     def obtener_asistencia_mensual(self) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:

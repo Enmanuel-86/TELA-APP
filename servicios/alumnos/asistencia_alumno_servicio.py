@@ -44,6 +44,9 @@ class AsistenciaAlumnoServicio:
     def obtener_por_fecha_asistencia(self, fecha_asistencia: date) -> List[Tuple]:
         return self.repositorio.obtener_por_fecha_asistencia(fecha_asistencia)
     
+    def obtener_por_fecha_asistencia_y_especialidad(self, fecha_asistencia: date, especialidad_id: int) -> List[Tuple]:
+        return self.repositorio.obtener_por_fecha_asistencia_y_especialidad(fecha_asistencia, especialidad_id)
+    
     def obtener_asistencia_por_especialidad_y_anio_mes(self, especialidad_id: int, anio_mes: str) -> List[Tuple]:
         return self.repositorio.obtener_por_especialidad_y_anio_mes(especialidad_id, anio_mes)
     
