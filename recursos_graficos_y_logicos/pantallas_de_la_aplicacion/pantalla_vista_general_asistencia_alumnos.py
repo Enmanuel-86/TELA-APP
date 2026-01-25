@@ -420,46 +420,48 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             header_item.setFlags(Qt.ItemIsEnabled)
             self.modelo.setVerticalHeaderItem(indice, header_item)
             
-             # AJUSTES DE ALTURA DE FILAS
-            for fila in range(self.modelo.rowCount()):
-                tabla.setRowHeight(fila, 40)
+        # Muy importante: asignar self.modelo primero
+        tabla.setModel(self.modelo)
+        
+            # AJUSTES DE ALTURA DE FILAS
+        for fila in range(self.modelo.rowCount()):
+            tabla.setRowHeight(fila, 40)
+        
+        # Ahora sí añadimos los botones fila por fila
+        for fila in range(self.modelo.rowCount()):
+            widget = QWidget()
+            layout = QHBoxLayout(widget)
+            boton_editar = QPushButton("Editar")
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
             
-            # Ahora sí añadimos los botones fila por fila
-            for fila in range(self.modelo.rowCount()):
-                widget = QWidget()
-                layout = QHBoxLayout(widget)
-                boton_editar = QPushButton("Editar")
-                boton_editar.setFixedSize(60, 30)
-                boton_editar.setStyleSheet("""
-                        QPushButton{
-                            font-size:8pt;
-                        }
-                """) 
-                boton_editar.setProperty("tipo", "boton_editar")
-                boton_borrar = QPushButton("Borrar")
-                boton_borrar.setFixedSize(60, 30) 
-                boton_borrar.setProperty("tipo", "boton_borrar")
-                boton_borrar.setStyleSheet("""
-                        QPushButton{
-                            font-size:8pt;
-                        }
-                """) 
-                
 
-                # Conectar botones
-                boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
-                boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+            # Conectar botones
+            boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
+            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
 
-                layout.addWidget(boton_editar)
-                layout.addWidget(boton_borrar)
-                layout.setContentsMargins(3, 3, 3, 3)
-                widget.setLayout(layout)
-                
-                index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
-                tabla.setIndexWidget(index, widget)
+            layout.addWidget(boton_editar)
+            layout.addWidget(boton_borrar)
+            layout.setContentsMargins(3, 3, 3, 3)
+            widget.setLayout(layout)
+            
+            index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
+            tabla.setIndexWidget(index, widget)
 
-            # Muy importante: asignar self.modelo primero
-            tabla.setModel(self.modelo)
+    
     
     
     
