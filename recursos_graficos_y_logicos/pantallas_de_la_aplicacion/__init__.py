@@ -1,5 +1,5 @@
 from .pantalla_bienvenida_usuario import PantallaBienvenidaUsuario
-from .pantalla_admin_crear_usuario import PantallaAdminCrearUsuario
+from .pantalla_admin_de_vista_general_de_usuarios import PantallaAdminVistaGeneralUsuarios
 from .pantalla_admin_respaldo import PantallaAdminCrearRespaldo
 from .pantalla_admin_insertar_catalogo import PantallaAdminInsertarCatalogo
 from .pantalla_de_vista_general_de_alumnos import PantallaDeVistaGeneralDeAlumnos

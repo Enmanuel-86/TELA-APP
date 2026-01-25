@@ -3,7 +3,7 @@ from .pantalla_principal_gui import Ui_VentanaPrincipal
 from .pantalla_de_login_gui import Ui_Login
 from .pantalla_de_bienvenida_gui import Ui_PantallaBienvenidaUsuario
 
-from .pantalla_admin_crear_nuevo_usuario_gui import Ui_CrearNuevoUsuario
+from .pantalla_admin_vista_general_usuarios_gui import Ui_VistaGeneralUsuarios
 from .pantalla_admin_crear_respaldo_gui import Ui_PantallaCrearRespaldo
 from .pantalla_admin_insertar_catalogo_bd_gui import Ui_PantallaInsertarCatalogoBD
 
