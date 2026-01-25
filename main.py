@@ -328,7 +328,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     
                     
 
-
+            FuncionSistema.id_usuario = usuario_id_autenticado
             crear_nuevo_empleado = permisos_servicio.verificar_permiso_usuario(usuario_id_autenticado,"CREAR EMPLEADOS")
 
             if not(crear_nuevo_empleado):
