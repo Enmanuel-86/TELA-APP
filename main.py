@@ -13,7 +13,7 @@ from PyQt5 import QtGui
 from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_VentanaPrincipal)
 
 
-from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import (PantallaAdminCrearUsuario, PantallaAdminCrearRespaldo,
+from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import ( PantallaAdminVistaGeneralUsuarios, PantallaAdminCrearRespaldo,
                                         PantallaVistaGeneralAsistenciaEmpleados, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
                                         PantallaVistaGeneralAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
@@ -194,7 +194,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.pantalla_perfil_empleado = PantallaPerfilEmpleado(self.stacked_widget) # pantalla para ver el perfil del empleado
 
         
-        self.pantalla_admin_crear_usuario = PantallaAdminCrearUsuario(self.stacked_widget) # pantalla del admin para crear usuario 
+        self.pantalla_admin_vista_general_usuario = PantallaAdminVistaGeneralUsuarios(self.stacked_widget) # pantalla del admin para crear usuario 
         self.pantalla_admin_crear_respaldo = PantallaAdminCrearRespaldo(self.stacked_widget) # pantalla del admin para crear respaldo
         self.pantalla_admin_insertar_catalogo = PantallaAdminInsertarCatalogo(self.stacked_widget)
         
@@ -218,7 +218,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.stacked_widget.addWidget(self.pantalla_control_de_reposos) # indice 10
         self.stacked_widget.addWidget(self.pantalla_perfil_empleado) # indice 11
         
-        self.stacked_widget.addWidget(self.pantalla_admin_crear_usuario) # indice 12
+        self.stacked_widget.addWidget(self.pantalla_admin_vista_general_usuario) # indice 12
         self.stacked_widget.addWidget(self.pantalla_admin_crear_respaldo) #indice 13
         self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 14
         
@@ -240,6 +240,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_respaldo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 13) )
         self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
+        self.boton_control_usuarios.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 12))
         self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_default.qss'))
         self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro.qss'))
         self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
