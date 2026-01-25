@@ -416,6 +416,52 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="boton_control_usuarios">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Franklin Gothic Demi Cond</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>  Control de usuarios</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+            <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/agregar-usuario.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/agregar-usuario.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>30</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="tipo" stdset="0">
+           <string>boton_sidebar</string>
+          </property>
+          <property name="boton_sidebar" stdset="0">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer">
           <property name="font">
            <font>
