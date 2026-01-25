@@ -137,6 +137,44 @@ class UsuarioRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER EL USUARIO POR SU NOMBRE DE USUARIO: {error}")
     
+    def obtener_por_rol_o_cedula_empleado(self, rol_id: int, cedula_empleado: Optional[str] = None) -> Optional[List[Tuple]]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        usuarios.usuario_id,
+                        empleados.cedula,
+                        empleados.primer_nombre,
+                        empleados.apellido_paterno,
+                        usuarios.nombre_usuario,
+                        roles.tipo_rol
+                    FROM tb_usuarios AS usuarios
+                    INNER JOIN tb_roles AS roles ON usuarios.rol_id = roles.rol_id
+                    INNER JOIN tb_empleados AS empleados ON usuarios.empleado_id = empleados.empleado_id
+                    WHERE roles.rol_id = :rol_id
+                """
+                
+                paramametros = {"rol_id": rol_id}
+                condiciones_adicionales = []
+                
+                if (cedula_empleado):
+                    condiciones_adicionales.append("empleados.cedula = :cedula")
+                    paramametros["cedula"] = cedula_empleado
+                
+                if (condiciones_adicionales):
+                    consulta += " AND " + " AND ".join(condiciones_adicionales)
+                
+                usuarios = sesion.execute(text(consulta), paramametros).fetchall()
+                
+                if not (usuarios):
+                    raise BaseDatosError("NO_HAY_USUARIOS_CON_ROL_O_CEDULA", "No hay usuarios con ese rol o cédula registrados.")
+                
+                return usuarios
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER USUARIOS POR EL ROL Y/O CÉDULA: {error}")
+    
     def actualizar(self, usuario_id: int, campos_usuario: Dict) -> None:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
