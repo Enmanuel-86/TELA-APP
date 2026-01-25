@@ -269,6 +269,7 @@ class AlumnoRepositorio(RepositorioBase):
                     accion_2 = f"ELIMINÓ A {representante.nombre} {representante.apellido}. CÉDULA DEL REPRESENTANTE AFECTADO: {representante.cedula}"
                     auditoria_repositorio.registrar(representante_repositorio.entidad, accion_2)
                     
+                    sesion.delete(alumno)
                     sesion.delete(representante)
                     print("Se eliminó al representante correctamente")
                 else:
