@@ -98,6 +98,12 @@ class UsuarioServicio:
     def obtener_usuario_por_nombre_usuario(self, nombre_usuario: str) -> Optional[Tuple]:
         return self.repositorio.obtener_por_nombre_usuario(nombre_usuario)
     
+    def obtener_usuario_por_rol_o_cedula_empleado(self, rol_id: int, cedula_empleado: Optional[str] = None) -> Optional[List[Tuple]]:
+        try:
+            return self.repositorio.obtener_por_rol_o_cedula_empleado(rol_id, cedula_empleado)
+        except BaseDatosError as error:
+            raise error
+    
     def actualizar_usuario(self, usuario_id: int, campos_usuario: Dict) -> None:
         self.repositorio.actualizar(usuario_id, campos_usuario)
     

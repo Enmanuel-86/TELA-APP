@@ -212,6 +212,7 @@ class EmpleadoRepositorio(RepositorioBase):
                 return empleado
         except Exception as error:
             print(f"ERROR AL OBTENER EL EMPLEADO: {error}")
+            raise error
     
     def obtener_info_contacto(self, empleado_id: int) -> Tuple:
         try:

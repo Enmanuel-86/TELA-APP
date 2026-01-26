@@ -411,6 +411,12 @@ class EmpleadoServicio:
         except BaseDatosError as error:
             raise error
     
+    def obtener_empleado_por_cedula(self, cedula: str) -> Optional[Tuple]:
+        try:
+            return self.repositorio.obtener_por_cedula(cedula)
+        except Exception as error:
+            raise error
+    
     def obtener_info_contacto_empleado(self, empleado_id: int) -> Tuple:
         return self.repositorio.obtener_info_contacto(empleado_id)
     
