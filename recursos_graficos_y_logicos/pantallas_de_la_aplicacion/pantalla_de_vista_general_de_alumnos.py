@@ -409,6 +409,8 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 
                 self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos)
                 
+                self.label_contador.setText(str(len(alumnos)))
+                
             else:
                 
                 especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
@@ -699,7 +701,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
             
         except Exception as e:
-            
+            print(F"No lo puede editar: {e}")
             QMessageBox.warning(self, "No puede", f"{e}")   
                 
         
@@ -718,34 +720,50 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         alumno = alumnos_servicio.obtener_alumno_por_id(alumno_id)
         print(alumno)
         
-        self.msg_box.setWindowTitle("Advertencia")
-        self.msg_box.setIcon(QMessageBox.Warning)
-        self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}? ")
-        QApplication.beep()
         
-        # Mostrar el cuadro de diálogo y esperar respuesta
-        self.msg_box.exec_()
         
-        # si le da a SI, verificamos primero
-        if self.msg_box.clickedButton() == self.boton_si:
-            try: 
-                                
-                alumnos_servicio.eliminar_alumno(alumno_id)
+        try:
+            
+            permiso_para_eliminar_alumno = permisos_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "ELIMINAR ALUMNOS")
+            
+            if permiso_para_eliminar_alumno:
                 
+                self.msg_box.setWindowTitle("Advertencia")
+                self.msg_box.setIcon(QMessageBox.Warning)
+                self.msg_box.setText(f"¿Seguro que quiere eliminar a {alumno[2]} {alumno[5]}? ")
+                QApplication.beep()
                 
-            except Exception as e:
+                # Mostrar el cuadro de diálogo y esperar respuesta
+                self.msg_box.exec_()
                 
-                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
+                # si le da a SI, verificamos primero
+                if self.msg_box.clickedButton() == self.boton_si:
+                    try: 
+                                        
+                        alumnos_servicio.eliminar_alumno(alumno_id)
+                        
+                        
+                    except Exception as e:
+                        
+                        FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_alumno_de_la_bd")
+                        
+                    else:
+                        
+                        QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {alumno[2]} {alumno[5]} con exito")
+                        self.filtrar_por_especialidad()
+                        
+                elif self.msg_box.clickedButton() == self.boton_no: 
+                    
+                    return  
                 
             else:
                 
-                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {alumno[2]} {alumno[5]} con exito")
-                self.filtrar_por_especialidad()
+                pass
                 
-        elif self.msg_box.clickedButton() == self.boton_no: 
-            
-            return  
-            
+        except Exception as e:
+            print(F"No lo puede eliminar: {e}")
+            QMessageBox.warning(self, "No puede", f"{e}")
+        
             
 
 
