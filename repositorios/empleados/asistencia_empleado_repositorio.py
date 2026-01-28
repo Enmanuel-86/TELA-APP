@@ -142,7 +142,7 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
     def actualizar(self, asist_empleado_id: int, campos_asistencia_empleado: Dict) -> None:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                asistencia_empleado = sesion.query(AsistenciaEmpleado).filter(AsistenciaEmpleado.asist_empleado_id).first()
+                asistencia_empleado = sesion.query(AsistenciaEmpleado).filter(AsistenciaEmpleado.asist_empleado_id == asist_empleado_id).first()
                 (cedula_empleado,) = sesion.execute(text(
                     """
                         SELECT
