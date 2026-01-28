@@ -121,12 +121,11 @@ class Login(QWidget, Ui_Login):
     def cambiar_ver_contrasena(self, contrasena_visible):
         if contrasena_visible:
             # Ocultar la contraseña
-            self.input_contrasena.setEchoMode(QLineEdit.Password)
-            
-            
+            self.input_contrasena.setEchoMode(QLineEdit.Normal)
         else:
             # Mostrar la contraseña
-            self.input_contrasena.setEchoMode(QLineEdit.Normal)
+            self.input_contrasena.setEchoMode(QLineEdit.Password)
+            
             
             
             
@@ -324,6 +323,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                     self.sidebar.show()
                     
                     self.boton_cargar_catologo.hide()
+                    self.boton_control_usuarios.hide()
                     
                     self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
                     
@@ -395,7 +395,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, ':/hojas_de_estilo/estilos/estilo_oscuro.qss')
+    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
     
     window.show()
     window.showMaximized()
