@@ -733,13 +733,13 @@ class FuncionesDelSistema:
             
             if tipo == "boton_anadir":
                 
-                qpushbutton.setText(" Anadir")
+                qpushbutton.setText("Anadir")
                 qpushbutton.setProperty("tipo", tipo)
                 
                 
             elif tipo == "boton_editar":
             
-                qpushbutton.setText(" Editar")
+                qpushbutton.setText("Editar")
                 qpushbutton.setProperty("tipo", tipo)
             
             
