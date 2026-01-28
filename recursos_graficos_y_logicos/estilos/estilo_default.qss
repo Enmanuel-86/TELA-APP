@@ -109,7 +109,7 @@ QPushButton#boton_ver_contrasena:hover{
 QToolButton#boton_ver_contrasena{
 	padding:0px;
 	background:transparent;
-	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye.png)
+	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off.png)
 }
 
 QToolButton#boton_ver_contrasena:hover{
@@ -118,7 +118,7 @@ QToolButton#boton_ver_contrasena:hover{
 }
 
 QToolButton#boton_ver_contrasena:checked {
-    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye.png);
 	background:transparent;
 }
 
