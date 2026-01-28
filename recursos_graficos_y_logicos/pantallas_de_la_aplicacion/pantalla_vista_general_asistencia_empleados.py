@@ -65,6 +65,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         
         # esta lista guardara los empleados que se agreguen a la lista de asistencias
         self.lista_agregados = []
+        
+        # esta variable es para guardar el id de la asistencia del empleado
+        self.asitencia_id = None
 
         # definimos el modelo para el qtableview
         self.modelo = QStandardItemModel()
@@ -132,7 +135,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.resultados.setFocusPolicy(Qt.NoFocus)
         self.resultados.setMouseTracking(True)
         self.resultados.setStyleSheet("padding:10px;")
-        self.resultados.itemClicked.connect(self.seleccionar_item)
+        self.resultados.itemClicked.connect(self.seleccionar_empleado)
         self.resultados.hide() 
         
         
@@ -145,54 +148,98 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
     #################################################################################
     # Metodos para la barra de busqueda (el QLineedit de la cedula del empleado)
     
-    def filtrar_resultados(self, texto):
-        texto = texto.strip().lower()
-        self.resultados.clear()
+    
+        
 
+    def filtrar_resultados(self, texto):
+        texto = texto.strip()
+        self.resultados.clear()
+        
         if not texto:
             self.resultados.hide()
             self.label_nombre_empleado_guia.clear()
             return
         
-    
+        texto_busqueda = texto.lower()
+        coincidencias = []
         
-        coincidencias = [
-            persona for persona in self.lista_empleados_actual
-            if texto in persona[6] or texto in persona[1].lower()
-        ]
-
+        # Buscar coincidencias
+        for persona in self.lista_empleados_actual:
+            cedula = persona[6]  # Asumo que índice 6 es la cédula
+            nombre = persona[1].lower()  # Asumo que índice 1 es el nombre
+            apellido = persona[4].lower()  # Asumo que índice 4 es el apellido
+            
+            # Buscar por cédula exacta o parcial
+            if texto_busqueda in cedula or texto_busqueda in nombre:
+                coincidencias.append(persona)
+        
         if not coincidencias:
             self.resultados.hide()
+            self.label_nombre_empleado_guia.clear()
             return
-
+        
+        # Mostrar todas las coincidencias en el QListWidget
         for persona in coincidencias:
-            item = f'{persona[6]} - {persona[1]} {persona[4]}'
-            
-            global nombre_guia
-            nombre_guia = f" {persona[1].capitalize()} {persona[4].capitalize()}"
-            
-            self.resultados.addItem(QListWidgetItem(item))
-
-        # Ocultar si hay una coincidencia exacta por cédula
-        if len(coincidencias) == 1 and coincidencias[0][1] == texto:
-            self.resultados.hide()
+            cedula = persona[6]
+            nombre = persona[1]
+            apellido = persona[4]
+            item_text = f'{cedula} - {nombre} {apellido}'
+            self.resultados.addItem(QListWidgetItem(item_text))
+        
+        # Si hay UNA SOLA coincidencia y la cédula coincide EXACTAMENTE
+        if len(coincidencias) == 1:
+            persona_unica = coincidencias[0]
+            # Verificar si la cédula ingresada coincide exactamente
+            if persona_unica[6] == texto:  # Comparación exacta de cédula
+                # Ocultar lista y mostrar nombre en el label
+                self.resultados.hide()
+                nombre_completo = f"{persona_unica[1].capitalize()} {persona_unica[4].capitalize()}"
+                self.label_nombre_empleado_guia.setText(nombre_completo)
+                return
+            else:
+                # Mostrar lista si es coincidencia parcial
+                self.mostrar_lista()
+                self.label_nombre_empleado_guia.clear()
         else:
+            # Mostrar lista si hay múltiples coincidencias
             self.mostrar_lista()
             self.label_nombre_empleado_guia.clear()
 
+    def seleccionar_empleado(self, item):
+        """Maneja la selección de un empleado de la lista"""
+        # Obtener el texto del item seleccionado
+        texto = item.text()
+        
+        # Extraer la cédula (asumiendo formato "cedula - nombre apellido")
+        partes = texto.split(' - ')
+        if len(partes) >= 1:
+            cedula_seleccionada = partes[0]
+            
+            # Buscar el empleado correspondiente
+            for persona in self.lista_empleados_actual:
+                if persona[6] == cedula_seleccionada:
+                    # Poner la cédula en el QLineEdit
+                    self.input_cedula_empleado.setText(cedula_seleccionada)
+                    
+                    # Mostrar el nombre en el label
+                    nombre_completo = f"{persona[1].capitalize()} {persona[4].capitalize()}"
+                    self.label_nombre_empleado_guia.setText(nombre_completo)
+                    
+                    # Ocultar la lista
+                    self.resultados.hide()
+                    break
 
     def mostrar_lista(self):
-        pos = self.input_cedula_empleado.mapTo(self, QPoint(0, self.input_cedula_empleado.height()))
+        """Muestra la lista de resultados debajo del QLineEdit"""
+        pos = self.input_cedula_empleado.mapToGlobal(
+            QPoint(0, self.input_cedula_empleado.height())
+        )
+        # Convertir a coordenadas del widget padre si es necesario
+        pos = self.parent().mapFromGlobal(pos) if self.parent() else pos
         self.resultados.move(pos)
         self.resultados.resize(self.input_cedula_empleado.width(), 100)
         self.resultados.show()
-        
-
-    def seleccionar_item(self, item):
-        cedula = item.text().split(" - ")[0]
-        self.input_cedula_empleado.setText(cedula)
-        self.label_nombre_empleado_guia.setText(nombre_guia)
-        self.resultados.hide()
+        self.resultados.raise_()  # Traer al frente
         
     #################################################################################
     def filtrar_asistencia_por_fecha(self):
@@ -306,39 +353,161 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         """
             Este metodo sirve para habilitar la edicion del registro de x empleado.
         """
+        # aqui verficamos si el usuario tiene el permiso
         permiso_editar_registro_asistencia = True
         
         if permiso_editar_registro_asistencia:
-            try:
-                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, True)
-                self.boton_crear_registro.setEnabled(False)
-                
-                # Obtener el texto de la primera columna (nombre)
-                cedula = self.modelo.item(fila, 0).text()
-
-                lista_empleados = empleado_servicio.obtener_todos_empleados()
-                
-                empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, lista_empleados)
-                
-                fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
-                         self.dateedit_filtro_fecha_asistencia.date().month(), 
-                         self.dateedit_filtro_fecha_asistencia.date().day() )
-                
-                asistencia_empleado = asistencia_empleado_servicio.obtener_asistencia_por_empleado_id_y_fecha(empleado_id, fecha)
-                
-                print(f"esta editando a {asistencia_empleado}")
-                
-            except Exception as e:
-                FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_del_registro_de_asistencia")
             
+            self.msg_box.setIcon(QMessageBox.Information)
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText("¿Seguro que quiere editar el registro?")
+            QApplication.beep()
+            self.msg_box.exec_()
+            
+            if self.msg_box.clickedButton() == self.boton_si:
+            
+                try:
+                    # habilitamos los inputs necesarios
+                    FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, True)
+                    self.input_cedula_empleado.setEnabled(False)
+                    
+                    # habilitamos el boton de crear registro
+                    self.boton_crear_registro.setEnabled(False)
+                    
+                    # le cambiamos el texto al boton cancelar registro por
+                    self.boton_cancelar_registro.setText("Cancelar edición")
+                    
+                    # le cambiamos el estilo al boton de agregar al estilo de editar 
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_editar")
+                    
+                    # lo desconectamos del metodo que tenga
+                    self.boton_agregar.disconnect()
+                    
+                    
+                    # Obtener el texto de la primera columna (nombre)
+                    cedula = self.modelo.item(fila, 0).text()
+
+                    # la lista de los empleados registrados
+                    lista_empleados = empleado_servicio.obtener_todos_empleados()
+                    
+                    # obtenemos el id del empleado
+                    empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, lista_empleados)
+                    
+                    # obtenemos la fecha
+                    fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                            self.dateedit_filtro_fecha_asistencia.date().month(), 
+                            self.dateedit_filtro_fecha_asistencia.date().day() )
+                    
+                    # obtenemos el registro de la asistencia del empleado con el id del empleado y la fecha
+                    asistencia_empleado = asistencia_empleado_servicio.obtener_asistencia_por_empleado_id_y_fecha(empleado_id, fecha)
+                    
+                    self.asistencia_id = asistencia_empleado[0]
+                    
+                    # le damos la cedula
+                    self.input_cedula_empleado.setText(asistencia_empleado[2])
+                    
+                    # le damos la fecha
+                    self.dateedit_fecha_asistencia.setDate(QDate.fromString(asistencia_empleado[5], "yyyy-MM-dd"))
+                    
+                    # verficamos si esta presente o ausente
+                    if asistencia_empleado[6] == "PRESENTE":
+                        self.radioButton_asistente.setChecked(True)
+                    elif asistencia_empleado[6] == "AUSENTE":   
+                        self.radioButton_inasistente.setChecked(True)
+                        
+                    # le damos la hora a los qtimeedit
+                    self.timeEdit_hora_entrada.setTime(QTime.fromString(asistencia_empleado[7], "h:mm"))
+                    self.timeEdit_hora_salida.setTime(QTime.fromString(asistencia_empleado[8], "h:mm")) 
+                    
+                    # le damos el motivo de retraso y motivo de inasistencia
+                    self.input_motivo_retraso.setText(asistencia_empleado[9] if asistencia_empleado[9] != None else None)
+                    self.input_motivo_inasistencia.setText(asistencia_empleado[10] if asistencia_empleado[10] != None else None)
+                    
+                    # conectamos el boton al otro metodo
+                    self.boton_agregar.clicked.connect(lambda: self.editar_registro_de_asistencia_empleado())
+                    
+                    print(f"esta editando a {asistencia_empleado}")
+                    
+                except Exception as e:
+                    FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_del_registro_de_asistencia")
                 
+            if self.msg_box.clickedButton() == self.boton_no:
+                
+                return
                 
         else:
             pass   
             
-
-          
     
+    def editar_registro_de_asistencia_empleado(self):
+        """
+            Este metodo sirve para editar/actualizar el registro de asistencia del empleado y suministrar la información a la base de datos.
+            
+            Lo que hacemos es capturas los datos nuevamente como en el registro de asistencia, con la unica diferencia que solo actualizamos/editamos la información
+        """
+        
+        self.msg_box.setIcon(QMessageBox.Information)
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText("¿Modifico los datos correctamente?")
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            try:
+                
+                # obtenemos la fecha
+                fecha_asistencia = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                                self.dateedit_filtro_fecha_asistencia.date().month(), 
+                                self.dateedit_filtro_fecha_asistencia.date().day() )
+                
+                # obtenemos las horas
+                hora_entrada = time(self.timeEdit_hora_entrada.time().hour() , self.timeEdit_hora_entrada.time().minute())
+                hora_salida = time(self.timeEdit_hora_salida.time().hour() , self.timeEdit_hora_salida.time().minute())
+                
+                # obtenemos el estado de asistencia
+                if self.radioButton_asistente.isChecked():
+                    estado_asistencia = "PRESENTE"
+                elif self.radioButton_inasistente.isChecked():
+                    estado_asistencia = "AUSENTE"
+                    
+                # obtenemos los motivos
+                motivo_retraso = self.input_motivo_retraso.text().strip() if not self.input_motivo_retraso.text().strip() == "" else None
+                motivo_inasistencia = self.input_motivo_inasistencia.text().strip() == "" if self.input_motivo_inasistencia.text().strip() == "" else None
+                
+                campos_asistencia_empleados = {
+                "fecha_asistencia": fecha_asistencia,
+                "hora_entrada": hora_entrada,
+                "hora_salida": hora_salida,
+                "estado_asistencia": estado_asistencia,
+                "motivo_retraso": motivo_retraso,
+                "motivo_inasistencia": motivo_inasistencia
+                }
+                
+                asistencia_empleado_servicio.actualizar(self.asistencia_id, campos_asistencia_empleados)
+                
+            
+            except Exception as e:
+                FuncionSistema.mostrar_errores_por_excepcion(e, "editar_registro_de_asistencia_empleado")
+                
+            else:
+                QMessageBox.information(self, "Preceso exitoso", "El registro fue editado correctamente")
+                self.filtrar_asistencia_por_fecha()
+                self.asistencia_id = None
+                
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
+                self.boton_agregar.disconnect()
+                self.boton_agregar.clicked.connect(lambda: self.agregar_info())
+                
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+                    
+                self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
+                self.timeEdit_hora_salida.setTime(QTime(12, 0)) 
+                    
+        
+        if self.msg_box.clickedButton() == self.boton_no:
+            return
     
     def crear_nuevo_registro_asistencia(self):
         """
@@ -433,6 +602,12 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             self.timeEdit_hora_salida.setTime(QTime(12, 0))
             
             self.boton_agregar.setEnabled(False)
+            
+            # esto es para cuando cancele en la edicion
+            self.boton_cancelar_registro.setText("Cancelar nuevo registro")
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
+            self.boton_agregar.disconnect()
+            self.boton_agregar.clicked.connect(lambda: self.agregar_info())
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -877,6 +1052,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     
                     QMessageBox.information(self, "Registro exitoso", "Tu registro de asistencia a sido exitoso. ")
                     FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                    FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+                    self.boton_crear_registro.setEnabled(True)
                     
                     # Limpiamos las listas y los contadores
                     self.lista_asistencias_en_cola.clear()
