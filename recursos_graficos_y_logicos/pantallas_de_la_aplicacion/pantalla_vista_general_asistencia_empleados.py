@@ -275,6 +275,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             
         ]
 
+        tooltip_text = None
         
         self.modelo = QStandardItemModel()
         self.modelo.setHorizontalHeaderLabels(columnas)
@@ -296,6 +297,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 # Evita edición del usuario
                 item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
                 items.append(item)
+                
 
             # Agregar la fila completa
             self.modelo.appendRow(items)
@@ -304,6 +306,21 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
             self.modelo.setVerticalHeaderItem(indice, header_item)
+            
+            if empleado[10] != None:
+                # Creamos el texto del tooltip para esta fila
+                tooltip_text = f"""<html><head/><body><p><span style=" font-weight:600;">Inasistencia Justificada: {empleado[10]}</span></p></body></html>"""
+                
+            elif empleado[9] != None:
+                # Creamos el texto del tooltip para esta fila
+                tooltip_text = f"""<html><head/><body><p><span style=" font-weight:600;">Motivo del retraso: {empleado[9]}</span></p></body></html>"""
+                
+            if tooltip_text:
+                # Aplicamos el tooltip a TODAS las celdas de esta fila
+                for col in range(self.modelo.columnCount() - 1):  # -1 para excluir columna Opciones
+                    item = self.modelo.item(indice, col)
+                    if item:
+                        item.setToolTip(tooltip_text)
             
         # Muy importante: asignar self.modelo primero
         tabla.setModel(self.modelo)
