@@ -2,7 +2,8 @@ from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 import os
-from PyQt5.QtWidgets import (QWidget, QMessageBox, QHeaderView)
+from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
+                            QLabel, QHBoxLayout, QPushButton, QHeaderView )
 
 from ..elementos_graficos_a_py import Ui_VistaGeneralUsuarios
 from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
@@ -22,13 +23,37 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
-        # LISTA CON LA DATA DE USUAIOS
-        self.usuario_data = []
+            
+        self.msg_box = QMessageBox(self)
+        
+        # Crear botones personalizados
+        self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
+        self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
+        
+        # definimos el modelo para el qtableview
+        self.modelo = QStandardItemModel()
+        
+        self.tbl_usuarios.horizontalHeader().setVisible(True)
+
+        self.tbl_usuarios.horizontalHeader().setMinimumHeight(50)
+        self.tbl_usuarios.horizontalHeader().setMinimumWidth(10)
+        self.tbl_usuarios.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_usuarios.horizontalHeader().setSectionsClickable(False)
+
+
+        self.tbl_usuarios.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        self.tbl_usuarios.verticalHeader().setVisible(True)
+        #self.tbl_usuarios.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tbl_usuarios.verticalHeader().setMinimumWidth(20)
+        self.tbl_usuarios.verticalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.tbl_usuarios.verticalHeader().setFixedWidth(20)
+        #esto me da el valor de la cedula al darle click a la persona que quiero
+        self.tbl_usuarios.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
         
         # CONFIGURACIÓN DE LAS SEÑALES
         self.boton_agregar.clicked.connect(self.registrar_usuario)
-        self.comboBox_filtro_rol.currentIndexChanged.connect(self.filtrar_usuarios_por_rol_e_identificador)
-        self.boton_buscar.clicked.connect(self.filtrar_usuarios_por_rol_e_identificador)
+        self.comboBox_filtro_rol.currentIndexChanged.connect(self.filtrar_por_rol_de_usuario)
+        #self.boton_buscar.clicked.connect(self.filtrar_usuarios_por_rol_e_identificador)
         
         # ELEMENTOS DE UTILIDAD
         self.lista_roles = rol_servicio.obtener_todos_roles()
@@ -49,159 +74,192 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             
             Este método funciona de la siguiente manera:
             
-            - Primero obtenemos los datos ingresados
+            - Primero le preguntamos al usuario si quiere registrar un usuario para X empleado
+            - Obtenemos los datos ingresados
             - Le pasamos el diccionario con los datos para registrar el usuario (**empleado_id**, **rol_id**, **nombre_usuario** y **clave_usuario**)
             - Validamos antes de registrar si todo lo ingresado está correctamente (en caso de que no, no registramos y mostramos los errores)
             - Limpiamos los inputs
             - Actualizamos el filtro cargando así los registros actuales de los usuarios en el Table View
         """
-        try:
-            # OBTENEMOS LOS DATOS INGRESADOS PARA REGISTRAR EL USUARIO
-            cedula_empleado = self.input_cedula_empleado.text()
-            empleado = empleado_servicio.obtener_empleado_por_cedula(cedula_empleado)
-            empleado_id = None
-            
-            if (empleado):
-                empleado_id = empleado[0]
-            
-            nombre_usuario = self.input_nombre_usuario.text()
-            clave_usuario = self.input_clave_usuario.text()
-            
-            rol_seleccionado = self.comboBox_rol
-            rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
-            
-            # CREAMOS UN DICCIONARIO CON LOS CAMPOS A REGISTRAR DEL USUARIO
-            campos_usuario = {
-                "empleado_id": empleado_id,
-                "rol_id": rol_id,
-                "nombre_usuario": nombre_usuario,
-                "clave_usuario": clave_usuario
-            }
-            
-            # VALIDAMOS LOS CAMPOS DEL USUARIO
-            errores = usuario_servicio.validar_campos_usuario(
-                empleado_id = campos_usuario.get("empleado_id"),
-                rol_id = campos_usuario.get("rol_id"),
-                nombre_usuario = campos_usuario.get("nombre_usuario"),
-                clave_usuario = campos_usuario.get("clave_usuario")
-            )
-            
-            # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
-            if (errores):
-                QMessageBox.warning(self, "Error al registrar el usuario", "\n".join(errores))
-            else:
-                # REGISTRAMOS AL USUARIO
-                usuario_servicio.registrar_usuario(campos_usuario)
+        # OBTENEMOS LOS DATOS INGRESADOS PARA REGISTRAR EL USUARIO
+        cedula_empleado = self.input_cedula_empleado.text()
+        empleado = empleado_servicio.obtener_empleado_por_cedula(cedula_empleado)
+        empleado_id = None
+        
+        self.msg_box.setIcon(QMessageBox.Information)
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText(f"¿Seguro que quiere registrar un usuario para {empleado[1]} {empleado[4]}?")
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+        
+            try:
                 
-                # LIMPIAMOS LOS INPUTS
-                for campo_input in self.lista_inputs:
-                    campo_input.clear()
                 
-                # ACTUALIZAMOS LA TABLA LLAMANDO AL FILTRO DE LOS USUARIOS
-                self.filtrar_usuarios_por_rol_e_identificador()
-        except BaseDatosError as error:
-            QMessageBox.warning(self, "Error al registrar al usuario", str(error))
-    
-    def filtrar_usuarios_por_rol_e_identificador(self):
-        """
-            Método para filtrar a los usuarios por el rol y su cédula
-            
-            Este método funciona de la siguiente manera:
-            
-            - Primero obtenemso el rol seleccionado del combobox para el filtro
-            - Luego obtenemos la cédula de la barra de búsqueda y verificamos si tiene contenido
-            - Creamos una lista de tuplas de usuarios a partir de los parámetros obtenidos de los pasos anteriores
-            - Creamos el modelo de datos e insertamos en cada celda de la fila el contenido correspondiente
-            - Le asignamos ese modelo de datos al Table View
-            - En caso de que haya un error limpiamos el Table View y la data de usuarios pasa a ser una lista vacía
-        """
-        try:
-            # LE ASIGNAMOS LA LISTA DE TUPLAS ACTUAL DE USUARIOS A LA DATA CON EL PARÁMETRO DEL ROL Y LA CÉDULA DEL EMPLEADO (SI LA INGRESA)
-            rol_seleccionado = self.comboBox_filtro_rol
-            rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
-            
-            cedula_empleado_buscar = self.barra_de_busqueda.text()
-            
-            if (cedula_empleado_buscar.strip() == ""):
-                cedula_empleado_buscar = None
-            
-            usuarios = usuario_servicio.obtener_usuario_por_rol_o_cedula_empleado(rol_id, cedula_empleado_buscar)
-            self.usuario_data = usuarios
-            
-            # SI NO HAY USUARIOS AL LLAMAR AL MÉTODO LA DATA PASA A SER UNA LISTA VACÍA
-            if not(usuarios):
-                self.usuario_data = []
-                return
-            
-            # CREAMOS EL MODELO DE DATOS CON LA CANTIDAD DE FILAS, COLUMNAS Y PONEMOS EL NOMBRE DE CADA COLUMNA
-            CANTIDAD_FILAS = len(usuarios)
-            CANTIDAD_COLUMNAS = 5
-            
-            modelo_datos = QStandardItemModel(CANTIDAD_FILAS, CANTIDAD_COLUMNAS)
-            modelo_datos.setHorizontalHeaderLabels([
-                "Cédula de empleado",
-                "Nombre",
-                "Apellido",
-                "Nombre de usuario",
-                "Opciones"
-            ])
-            
-            # RECORREMOS CADA FILA PARA QUE EN CADA CELDA ASIGNARLE EL VALOR QUE LE CORRESPONDE A ESA FILA EN CONCRETO
-            for fila, usuario in enumerate(usuarios):
-                cedula_empleado = usuario[1]
-                nombre_empleado = usuario[2]
-                apellido_empleado = usuario[3]
-                nombre_usuario = usuario[4]
+                if (empleado):
+                    empleado_id = empleado[0]
                 
-                items = [
-                    QStandardItem(str(cedula_empleado)),
-                    QStandardItem(str(nombre_empleado)),
-                    QStandardItem(str(apellido_empleado)),
-                    QStandardItem(str(nombre_usuario))
-                ]
+                nombre_usuario = self.input_nombre_usuario.text()
+                clave_usuario = self.input_clave_usuario.text()
                 
-                for columna, item in enumerate(items):
-                    modelo_datos.setItem(fila, columna, item)
+                rol_seleccionado = self.comboBox_rol
+                rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
+                
+                # CREAMOS UN DICCIONARIO CON LOS CAMPOS A REGISTRAR DEL USUARIO
+                campos_usuario = {
+                    "empleado_id": empleado_id,
+                    "rol_id": rol_id,
+                    "nombre_usuario": nombre_usuario,
+                    "clave_usuario": clave_usuario
+                }
+                
+                # VALIDAMOS LOS CAMPOS DEL USUARIO
+                errores = usuario_servicio.validar_campos_usuario(
+                    empleado_id = campos_usuario.get("empleado_id"),
+                    rol_id = campos_usuario.get("rol_id"),
+                    nombre_usuario = campos_usuario.get("nombre_usuario"),
+                    clave_usuario = campos_usuario.get("clave_usuario")
+                )
+                
+                # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
+                if (errores):
+                    QMessageBox.warning(self, "Error al registrar el usuario", "\n".join(errores))
+                    return
+                
+                try:
+                    # REGISTRAMOS AL USUARIO
+                    usuario_servicio.registrar_usuario(campos_usuario)
                     
-                    # Evita la edición de las celdas por parte del usuario
-                    item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                except Exception as e:
+                    QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
+                else:
+                
+                    QMessageBox.information(self, "Proceso exitoso", f"Se a registrado correctamente el usuario para {empleado[1]} {empleado[4]}")
+                    FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
+                    
+                    self.comboBox_filtro_rol.setCurrentText(self.comboBox_rol.currentText())
+                    self.comboBox_rol.setCurrentIndex(0)
+                    
+                    self.filtrar_por_rol_de_usuario()
+                    
+                    
+                    
+                    
+            except BaseDatosError as error:
+                print("Error al registrar al usuario: ", str(error))
+        
+
+        elif self.msg_box.clickedButton() == self.boton_no:
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
+            self.comboBox_filtro_rol.setCurrentIndex(0)
+            self.comboBox_rol.setCurrentIndex(0)
             
-            # ASIGNAMOS EL MODELO DE DATOS AL TABLE VIEW
-            self.tbl_usuarios.setModel(modelo_datos)
-        except BaseDatosError as error:
-            # SI HAY UN ERROR DE BASE DE DATOS QUE LIMPIE LA TABLA Y LA DATA DE USUARIOS ESTÉ VACÍA
-            self.limpiar_tabla(str(error))
-            self.usuario_data = []
-        finally:
-            header = self.tbl_usuarios.horizontalHeader()
-            header.setSectionResizeMode(QHeaderView.Stretch)
+            
+    def filtrar_por_rol_de_usuario(self):
+        """
+            Este metodo filtra segun los roles que se registraron el la base de datos. y funciona de la siguiente manera:
+            
+            1. Se obtiene el id del rol
+            2. Se obtiene la cedula (en caso de que use la barra de busqueda)
+            3. Se obtienen a los usuarios a partir del rol o la cedula con el servicio de la base de datos
+            4. Si hay usuarios se cargan en el QTableView, caso contrario no muestra nada
+        """
+        
+        try:
+            
+            # Obtenemos el id del rol
+            rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(self.comboBox_filtro_rol, self.lista_roles, 1, 0)
+            
+            # Obtenemos los usuarios
+            usuarios = usuario_servicio.obtener_usuario_por_rol_o_cedula_empleado(rol_id, None if self.barra_de_busqueda.text().strip() == "" else self.barra_de_busqueda.text().strip() )
+            
+            
+        except Exception as e:
+            
+            FuncionSistema.mostrar_errores_por_excepcion(e, "filtrar_por_rol_de_usuario")
+            
+            # Borramos el contenido de la tabla al haber una excepcion
+            self.modelo.removeRows(0, self.modelo.rowCount())
+        else:
+            
+            # Cargamos a los usuarios en caso de no haber excepciones
+            self.cargar_usuario_en_tabla(self.tbl_usuarios ,usuarios)
+        
     
-    def limpiar_tabla(self, mensaje_error: str):
-        """
-            Método para limpiar el Table View
             
-            Este método funciona de la siguiente manera:
+    def cargar_usuario_en_tabla(self, tabla, usuarios):
+        columnas = [
+            "Cédula", "Nombre", "Apellido", "Nombre de usuario", "Opciones"
             
-            - Primero creamos un modelo vacío sin filas pero con sus respectivas columnas
-            - Asignamos ese modelo vacío al Table View
-            - Se muestra un mensaje de error al usuario cuando no haya coincidencia con el filtro
-        """
-        CANTIDAD_FILAS = 0
-        CANTIDAD_COLUMNAS = 5
+        ]
+
         
-        # CREAMOS UN MODELO DE DATOS VACÍO
-        modelo_vacio = QStandardItemModel(CANTIDAD_FILAS, CANTIDAD_COLUMNAS)
-        modelo_vacio.setHorizontalHeaderLabels([
-                "Cédula de empleado",
-                "Nombre",
-                "Apellido",
-                "Nombre de usuario",
-                "Opciones"
-            ])
+        self.modelo = QStandardItemModel()
+        self.modelo.setHorizontalHeaderLabels(columnas)
+
+        # Primero cargamos los datos
+        for indice, usuario in enumerate(usuarios):
+            datos_visibles = [
+            usuario[1],  # Cedula
+            usuario[2],  # Nombre
+            usuario[3],  # Apellido
+            usuario[4]   # usuario
+            ]
+
+            items = []
+            for dato in datos_visibles:
+                item = QStandardItem(str(dato) if dato is not None else "")
+                # Evita edición del usuario
+                item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
+                items.append(item)
+
+            # Agregar la fila completa
+            self.modelo.appendRow(items)
+
+            # Numerar filas en el encabezado vertical
+            header_item = QStandardItem(str(indice + 1))
+            header_item.setFlags(Qt.ItemIsEnabled)
+            self.modelo.setVerticalHeaderItem(indice, header_item)
+            
+        # Muy importante: asignar self.modelo primero
+        tabla.setModel(self.modelo)
         
-        # LE ASIGNAMOS EL MODELO VACÍO AL TABLE VIEW
-        self.tbl_usuarios.setModel(modelo_vacio)
+            # AJUSTES DE ALTURA DE FILAS
+        for fila in range(self.modelo.rowCount()):
+            tabla.setRowHeight(fila, 40)
         
-        # MOSTRAMOS UN MENSAJE DE ERROR AL USUARIO EN CASO DE QUE HAYA UN ERROR EN EL FILTRO
-        if (mensaje_error):
-            QMessageBox.warning(self, "Error al filtrar los usuarios", mensaje_error)
+        # Ahora sí añadimos los botones fila por fila
+        for fila in range(self.modelo.rowCount()):
+            widget = QWidget()
+            layout = QHBoxLayout(widget)
+            boton_editar = QPushButton("Editar")
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            
+
+            # Conectar botones
+            boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
+            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+
+            layout.addWidget(boton_editar)
+            layout.addWidget(boton_borrar)
+            layout.setContentsMargins(3, 3, 3, 3)
+            widget.setLayout(layout)
+            
+            index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
+            tabla.setIndexWidget(index, widget)
+        
