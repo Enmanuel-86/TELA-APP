@@ -16,6 +16,15 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
     def registrar(self, campos: Dict) -> None:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
+                if (campos.get("estado_asistencia") == "AUSENTE"):
+                    if (campos.get("motivo_inasistencia") == ""):
+                        campos["estado_asistencia"] = "II"
+                    else:
+                        campos["estado_asistencia"] == "IJ"
+                    
+                    campos["hora_entrada"] = None
+                    campos["hora_salida"] = None
+                
                 nueva_asistencia_empleado = AsistenciaEmpleado(**campos)
                 
                 sesion.add(nueva_asistencia_empleado)
@@ -172,9 +181,35 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
                         valor_campo_actual = campos_asistencia_empleado.get(clave)
                         
                         if ((clave == "hora_entrada") or (clave == "hora_salida")):
-                            hora_anterior = valor_campo_anterior.strftime('%H:%M')
-                            hora_actual = valor_campo_actual.strftime('%H:%M')
-                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {hora_anterior}. AHORA: {hora_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                            hora_entrada_anterior = diccionario_asistencia_empleado.get("hora_entrada")
+                            hora_salida_anterior = diccionario_asistencia_empleado.get("hora_salida")
+                            
+                            hora_entrada_actual = campos_asistencia_empleado.get("hora_entrada")
+                            hora_salida_actual = campos_asistencia_empleado.get("hora_salida")
+                            
+                            horas_anteriores_vacias = ((hora_entrada_anterior is None) and (hora_salida_anterior is None))
+                            horas_actuales_vacias = ((hora_entrada_actual is None) and (hora_salida_actual is None))
+                            
+                            if (campos_asistencia_empleado.get("hora_entrada") and campos_asistencia_empleado.get("hora_salida")):
+                                hora_anterior = valor_campo_anterior.strftime('%H:%M')
+                                hora_actual = valor_campo_actual.strftime('%H:%M')
+                                accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {hora_anterior}. AHORA: {hora_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                            elif ((horas_anteriores_vacias) and not(horas_actuales_vacias)):
+                                hora_anterior = ""
+                                hora_actual = valor_campo_actual.strftime('%H:%M')
+                                accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {hora_anterior}. AHORA: {hora_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                            else:
+                                hora_anterior = ""
+                                hora_actual = ""
+                                accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {hora_anterior}. AHORA: {hora_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
+                        elif (clave == "estado_asistencia"):
+                            if (campos_asistencia_empleado.get("estado_asistencia") == "AUSENTE"):
+                                if (campos_asistencia_empleado.get("motivo_inasistencia") == ""):
+                                    valor_campo_actual = "II"
+                                else:
+                                    valor_campo_actual = "IJ"
+                                
+                            accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_campo_anterior}. AHORA: {valor_campo_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                         else:
                             accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {valor_campo_anterior}. AHORA: {valor_campo_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                             

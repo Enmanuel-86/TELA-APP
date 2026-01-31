@@ -485,12 +485,15 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 # obtenemos el estado de asistencia
                 if self.radioButton_asistente.isChecked():
                     estado_asistencia = "PRESENTE"
-                elif self.radioButton_inasistente.isChecked():
+                    
+                if self.radioButton_inasistente.isChecked():
                     estado_asistencia = "AUSENTE"
+                    hora_entrada = None
+                    hora_salida = None
                     
                 # obtenemos los motivos
                 motivo_retraso = self.input_motivo_retraso.text().strip() if not self.input_motivo_retraso.text().strip() == "" else None
-                motivo_inasistencia = self.input_motivo_inasistencia.text().strip() == "" if self.input_motivo_inasistencia.text().strip() == "" else None
+                motivo_inasistencia = self.input_motivo_inasistencia.text().strip()
                 
                 campos_asistencia_empleados = {
                 "fecha_asistencia": fecha_asistencia,
@@ -520,7 +523,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
                     
                 self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
-                self.timeEdit_hora_salida.setTime(QTime(12, 0)) 
+                self.timeEdit_hora_salida.setTime(QTime(12, 0))
+                
+                self.boton_crear_registro.setEnabled(True)
                     
         
         if self.msg_box.clickedButton() == self.boton_no:
@@ -673,10 +678,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 empleado_n.append(dia_actual)
                 
                 # 2) Hora de entrada
-                
-                
                 hora_entrada = time(self.timeEdit_hora_entrada.time().hour() , self.timeEdit_hora_entrada.time().minute())
-
                 empleado_n.append(hora_entrada)
                 
                 # 3) Hora de salida
@@ -688,10 +690,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     estado_asistencia = "PRESENTE"
                     empleado_n.append(estado_asistencia)
                 
-                elif self.radioButton_inasistente.isChecked():
+                if self.radioButton_inasistente.isChecked():
                     estado_asistencia = "AUSENTE"
                     empleado_n.append(estado_asistencia)
-                    
                     
                 # 5) Motivo de retraso
                 if self.input_motivo_retraso.text().strip():
@@ -706,7 +707,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     motivo_inasistencia = self.input_motivo_inasistencia.text().strip()
                     empleado_n.append(motivo_inasistencia)
                 else:
-                    empleado_n.append(None)
+                    empleado_n.append("")
                 
                 # 7) cedula
                 empleado_n.append(cedula)
