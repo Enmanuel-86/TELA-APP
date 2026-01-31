@@ -9,9 +9,8 @@ from ..elementos_graficos_a_py import Ui_VistaGeneralUsuarios
 from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 
 # IMPORTACIONES DE BASE DE DATOS
-from recursos_graficos_y_logicos.utilidades.base_de_datos import usuario_servicio
-from recursos_graficos_y_logicos.utilidades.base_de_datos import rol_servicio
-from recursos_graficos_y_logicos.utilidades.base_de_datos import empleado_servicio
+from recursos_graficos_y_logicos.utilidades.base_de_datos import (usuario_servicio, rol_servicio, empleado_servicio,
+                                                                  permiso_servicio)
 from excepciones.base_datos_error import BaseDatosError
 
 
@@ -134,16 +133,21 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                 except Exception as e:
                     QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
                 else:
-                
+                    
+                    # Mostramos el mensaje de exito
                     QMessageBox.information(self, "Proceso exitoso", f"Se a registrado correctamente el usuario para {empleado[1]} {empleado[4]}")
+                    
+                    # Limpiamos inputs
                     FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
                     
+                    # Filtramos con el rol que se acaba de registrar
                     self.comboBox_filtro_rol.setCurrentText(self.comboBox_rol.currentText())
+                    
+                    # Posicion 0 para este combobox
                     self.comboBox_rol.setCurrentIndex(0)
                     
+                    # Filtramos
                     self.filtrar_por_rol_de_usuario()
-                    
-                    
                     
                     
             except BaseDatosError as error:
@@ -155,7 +159,92 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             self.comboBox_filtro_rol.setCurrentIndex(0)
             self.comboBox_rol.setCurrentIndex(0)
             
+    
+    def habilitar_edicion_usuario(self, fila):
+        """
+            Este metodo es para habilitar la edicion del usuario.
             
+            Aqui solamente colocamos los valores registrados a los campos para que se puedan editar
+        """
+        try:
+            # Aqui se verifica si tiene el permiso
+            permiso_editar_usuario = permiso_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "GESTIONAR USUARIOS")
+            
+            if permiso_editar_usuario:
+                
+                # Mensaje para confirmar la accion
+                self.msg_box.setIcon(QMessageBox.Information)
+                self.msg_box.setWindowTitle("Confirmar acción")
+                self.msg_box.setText("¿Seguro que quiere editar este usuario?")
+                QApplication.beep()
+                self.msg_box.exec_()
+                
+                if self.msg_box.clickedButton() == self.boton_si:
+                    
+                    # Tomamos la cedula de la fila en donde pulso el boton editar
+                    cedula = self.modelo.item(fila, 0).text()
+                    
+                    # Buscamos al empleado por su cedula
+                    empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)
+                    #print(empleado)
+                    
+                    # Buscamos el usuario a partir del id del empleado
+                    usuario = usuario_servicio.obtener_usuario_por_empleado_id(empleado[0])
+                    print(usuario_servicio.obtener_todos_usuarios())
+                    # Colocamos los valores a los inputs
+                    self.input_cedula_empleado.setText(usuario[2])
+                    self.input_nombre_usuario.setText(usuario[5])
+                    self.comboBox_rol.setCurrentText(usuario[6])
+        
+        except Exception as e:
+            # si el usuario no tiene permiso se le muestra un mensaje en pantalla
+            QMessageBox.warning(self, "No puede", f"{e}")
+        
+            
+    def eliminar_usuario_del_registro(self, fila):
+        """"""
+        
+        try:
+            
+            permiso_eliminar_usuario = permiso_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "GESTIONAR USUARIOS")
+            
+            if permiso_eliminar_usuario:
+                
+                # Mensaje para confirmar la accion
+                self.msg_box.setIcon(QMessageBox.Information)
+                self.msg_box.setWindowTitle("Confirmar acción")
+                self.msg_box.setText("¿Seguro que quiere eliminar este usuario?")
+                QApplication.beep()
+                self.msg_box.exec_()
+                
+                if self.msg_box.clickedButton() == self.boton_si:
+                    
+                    # Tomamos la cedula de la fila en donde pulso el boton editar
+                    cedula = self.modelo.item(fila, 0).text()
+                    
+                    # Buscamos al empleado por su cedula
+                    empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)
+                    #print(empleado)
+                    
+                    # Buscamos el usuario a partir del id del empleado
+                    usuario = usuario_servicio.obtener_usuario_por_empleado_id(empleado[0])
+                    
+                    try:
+                        usuario_servicio.eliminar_usuario(usuario[0])
+                    except Exception as e:
+                        print("El usuario se pudo eliminar correctamente")
+                        return
+                    
+        except Exception as e:
+            
+            QMessageBox.warning(self, "No puede", f"{e}")
+            
+        else:
+            # Mostramos el mensaje de exito
+            QMessageBox.information(self, "Proceso exitoso", f"Se a Eliminado correctamente el usuario")
+                    
+                    
+    
     def filtrar_por_rol_de_usuario(self):
         """
             Este metodo filtra segun los roles que se registraron el la base de datos. y funciona de la siguiente manera:
@@ -177,7 +266,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             
         except Exception as e:
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "filtrar_por_rol_de_usuario")
+            print(f"filtrar_por_rol_de_usuario: no pudo filtrar con el cargo seleccionado")
             
             # Borramos el contenido de la tabla al haber una excepcion
             self.modelo.removeRows(0, self.modelo.rowCount())
@@ -187,7 +276,6 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             self.cargar_usuario_en_tabla(self.tbl_usuarios ,usuarios)
         
     
-            
     def cargar_usuario_en_tabla(self, tabla, usuarios):
         columnas = [
             "Cédula", "Nombre", "Apellido", "Nombre de usuario", "Opciones"
@@ -252,8 +340,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             
 
             # Conectar botones
-            boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
-            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+            boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_usuario(fila))
+            boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_usuario_del_registro(fila))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
