@@ -85,79 +85,70 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         empleado = empleado_servicio.obtener_empleado_por_cedula(cedula_empleado)
         empleado_id = None
         
-        self.msg_box.setIcon(QMessageBox.Information)
-        self.msg_box.setWindowTitle("Confirmar acción")
-        self.msg_box.setText(f"¿Seguro que quiere registrar un usuario para {empleado[1]} {empleado[4]}?")
-        QApplication.beep()
-        self.msg_box.exec_()
         
-        if self.msg_box.clickedButton() == self.boton_si:
         
+        try:
+            
+            
+            if (empleado):
+                empleado_id = empleado[0]
+            
+            nombre_usuario = self.input_nombre_usuario.text()
+            clave_usuario = self.input_clave_usuario.text()
+            
+            rol_seleccionado = self.comboBox_rol
+            rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
+            
+            # CREAMOS UN DICCIONARIO CON LOS CAMPOS A REGISTRAR DEL USUARIO
+            campos_usuario = {
+                "empleado_id": empleado_id,
+                "rol_id": rol_id,
+                "nombre_usuario": nombre_usuario,
+                "clave_usuario": clave_usuario
+            }
+            
+            # VALIDAMOS LOS CAMPOS DEL USUARIO
+            errores = usuario_servicio.validar_campos_usuario(
+                empleado_id = campos_usuario.get("empleado_id"),
+                rol_id = campos_usuario.get("rol_id"),
+                nombre_usuario = campos_usuario.get("nombre_usuario"),
+                clave_usuario = campos_usuario.get("clave_usuario")
+            )
+            
+            # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
+            if (errores):
+                QMessageBox.warning(self, "Error al registrar el usuario", "\n".join(errores))
+                return
+            
             try:
+                # REGISTRAMOS AL USUARIO
+                usuario_servicio.registrar_usuario(campos_usuario)
+                
+            except Exception as e:
+                QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
+            else:
+                
+                # Mostramos el mensaje de exito
+                QMessageBox.information(self, "Proceso exitoso", f"Se a registrado correctamente el usuario para {empleado[1]} {empleado[4]}")
+                
+                # Limpiamos inputs
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
+                
+                # Filtramos con el rol que se acaba de registrar
+                self.comboBox_filtro_rol.setCurrentText(self.comboBox_rol.currentText())
+                
+                # Posicion 0 para este combobox
+                self.comboBox_rol.setCurrentIndex(0)
+                
+                # Filtramos
+                self.filtrar_por_rol_de_usuario()
                 
                 
-                if (empleado):
-                    empleado_id = empleado[0]
-                
-                nombre_usuario = self.input_nombre_usuario.text()
-                clave_usuario = self.input_clave_usuario.text()
-                
-                rol_seleccionado = self.comboBox_rol
-                rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
-                
-                # CREAMOS UN DICCIONARIO CON LOS CAMPOS A REGISTRAR DEL USUARIO
-                campos_usuario = {
-                    "empleado_id": empleado_id,
-                    "rol_id": rol_id,
-                    "nombre_usuario": nombre_usuario,
-                    "clave_usuario": clave_usuario
-                }
-                
-                # VALIDAMOS LOS CAMPOS DEL USUARIO
-                errores = usuario_servicio.validar_campos_usuario(
-                    empleado_id = campos_usuario.get("empleado_id"),
-                    rol_id = campos_usuario.get("rol_id"),
-                    nombre_usuario = campos_usuario.get("nombre_usuario"),
-                    clave_usuario = campos_usuario.get("clave_usuario")
-                )
-                
-                # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
-                if (errores):
-                    QMessageBox.warning(self, "Error al registrar el usuario", "\n".join(errores))
-                    return
-                
-                try:
-                    # REGISTRAMOS AL USUARIO
-                    usuario_servicio.registrar_usuario(campos_usuario)
-                    
-                except Exception as e:
-                    QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
-                else:
-                    
-                    # Mostramos el mensaje de exito
-                    QMessageBox.information(self, "Proceso exitoso", f"Se a registrado correctamente el usuario para {empleado[1]} {empleado[4]}")
-                    
-                    # Limpiamos inputs
-                    FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
-                    
-                    # Filtramos con el rol que se acaba de registrar
-                    self.comboBox_filtro_rol.setCurrentText(self.comboBox_rol.currentText())
-                    
-                    # Posicion 0 para este combobox
-                    self.comboBox_rol.setCurrentIndex(0)
-                    
-                    # Filtramos
-                    self.filtrar_por_rol_de_usuario()
-                    
-                    
-            except BaseDatosError as error:
-                print("Error al registrar al usuario: ", str(error))
+        except BaseDatosError as error:
+            print("Error al registrar al usuario: ", str(error))
         
 
-        elif self.msg_box.clickedButton() == self.boton_no:
-            FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
-            self.comboBox_filtro_rol.setCurrentIndex(0)
-            self.comboBox_rol.setCurrentIndex(0)
+        
             
     
     def habilitar_edicion_usuario(self, fila):
@@ -186,21 +177,97 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                     
                     # Buscamos al empleado por su cedula
                     empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)
-                    #print(empleado)
+                    empleado_id = empleado[0]
                     
                     # Buscamos el usuario a partir del id del empleado
                     usuario = usuario_servicio.obtener_usuario_por_empleado_id(empleado[0])
-                    print(usuario_servicio.obtener_todos_usuarios())
+                    print(usuario)
                     # Colocamos los valores a los inputs
                     self.input_cedula_empleado.setText(usuario[2])
                     self.input_nombre_usuario.setText(usuario[5])
+                    self.input_clave_usuario.setText(usuario[7])
                     self.comboBox_rol.setCurrentText(usuario[6])
+                    
+                    self.boton_agregar.clicked.disconnect()
+                    
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_editar")
+                    
+                    usuario_id = usuario[0]
+                    empleado_id
+                    self.boton_agregar.clicked.connect(lambda : self.editar_info_usuario(usuario_id, empleado_id))
         
         except Exception as e:
             # si el usuario no tiene permiso se le muestra un mensaje en pantalla
             QMessageBox.warning(self, "No puede", f"{e}")
+    
+    def editar_info_usuario(self, usuario_id, empleado_id):
         
-            
+        
+        
+        self.msg_box.setIcon(QMessageBox.Information)
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText(f"¿Seguro que quiere editar este usuario?")
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+        
+            try:
+                
+                
+               
+                
+                nombre_usuario = self.input_nombre_usuario.text()
+                clave_usuario = self.input_clave_usuario.text()
+                
+                rol_seleccionado = self.comboBox_rol
+                rol_id = FuncionSistema.obtener_id_del_elemento_del_combobox(rol_seleccionado, self.lista_roles, 1, 0)
+                
+                # CREAMOS UN DICCIONARIO CON LOS CAMPOS A REGISTRAR DEL USUARIO
+                campos_usuario = {
+                    "rol_id": rol_id,
+                    "nombre_usuario": nombre_usuario,
+                    "clave_usuario": clave_usuario
+                }
+                
+                # VALIDAMOS LOS CAMPOS DEL USUARIO
+                errores = usuario_servicio.validar_campos_usuario(
+                    rol_id = campos_usuario.get("rol_id"),
+                    nombre_usuario = campos_usuario.get("nombre_usuario"),
+                    clave_usuario = campos_usuario.get("clave_usuario")
+                )
+                
+                # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
+                if (errores):
+                    QMessageBox.warning(self, "Error al editar el usuario", "\n".join(errores))
+                    return
+                
+                try:
+                    # REGISTRAMOS AL USUARIO
+                    usuario_servicio.actualizar_usuario(usuario_id, campos_usuario)
+                    
+                except Exception as e:
+                    QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
+                else:
+                    
+                    # Mostramos el mensaje de exito
+                    QMessageBox.information(self, "Proceso exitoso", f"Se a editado correctamente el usuario")
+                    
+                    # Limpiamos inputs
+                    FuncionSistema.limpiar_inputs_de_qt(self.lista_inputs)
+                    
+                    # Filtramos con el rol que se acaba de registrar
+                    self.comboBox_filtro_rol.setCurrentText(self.comboBox_rol.currentText())
+                    
+                    # Posicion 0 para este combobox
+                    self.comboBox_rol.setCurrentIndex(0)
+                    
+                    # Filtramos
+                    self.filtrar_por_rol_de_usuario()
+                    
+                    
+            except BaseDatosError as error:
+                print("Error al registrar al usuario: ", str(error))
     def eliminar_usuario_del_registro(self, fila):
         """"""
         
