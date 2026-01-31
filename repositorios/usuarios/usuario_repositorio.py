@@ -102,7 +102,8 @@ class UsuarioRepositorio(RepositorioBase):
                             empleados.primer_nombre,
                             empleados.apellido_paterno,
                             usuarios.nombre_usuario,
-                            roles.tipo_rol
+                            roles.tipo_rol,
+                            usuarios.clave_usuario
                         FROM tb_usuarios AS usuarios
                         INNER JOIN tb_roles AS roles ON usuarios.rol_id = roles.rol_id
                         INNER JOIN tb_empleados AS empleados ON usuarios.empleado_id = empleados.empleado_id
