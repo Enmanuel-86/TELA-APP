@@ -849,8 +849,8 @@ class FuncionesDelSistema:
             
             Pasandole como argumento una tupla con los widgets y un valor boleano (True o False)
             
-            ***Ejemplo***
-            
+            **Ejemplo**
+            .. code-block:: python
             lista_widget = (label, button, lineedit)
             
             habilitar_0_deshabilitar_widget_de_qt(lista_widget, True) # habilita los widgets
@@ -865,6 +865,56 @@ class FuncionesDelSistema:
         except Exception as e:
             self.mostrar_errores_por_excepcion(e, "habilitar_0_deshabilitar_widget_de_qt")
     
+    
+    # Metodo para mostrar errores de la base de datos 
+    def mostrar_errores_verificados(self, app, errores, nombre_segmento):
+        """
+            ### Esta metodo sirve para mostrar le al usuario cuales son los errores segun el servicio de la base de datos que se encargar de verificar los errores en cada campo
+            
+            Este metodo funciona de la siguiente manera:
+            
+            1. Primero se verifican los errores de los campos con el servicio de la base de datos
+            2. Si existe algun error este se le debe mostrar al usuario por pantalla, en caso contrario no pasara nada
+            
+            para que esto funcione se se pasan los parametros:
+            
+            app: este es donde se quiere mostrar (coloque self)\n
+            errores: aqui debe colocar la variable con contiene el servicio que verifico los errores\n
+            nombre_segmento: es para sabes agregar un titulo al QMessagebox
+            
+            
+            **Ejemplo**
+            
+            .. code-block:: python
+            
+                campos_asistencia_empleados = {
+                                    "empleado_id": empleado_id,
+                                    "fecha_asistencia": fecha_asistencia,
+                                    "hora_entrada": hora_entrada,
+                                    "hora_salida": hora_salida,
+                                    "estado_asistencia": estado_asistencia,
+                                    "motivo_retraso": motivo_retraso,
+                                    "motivo_inasistencia": motivo_inasistencia
+                                }
+                        
+                errores_totales = asistencia_empleado_servicio.validar_asistencia_empleado(
+                                    campos_asistencia_empleados.get("empleado_id"), 
+                                    campos_asistencia_empleados.get("fecha_asistencia"),
+                                    campos_asistencia_empleados.get("estado_asistencia"),
+                                    campos_asistencia_empleados.get("motivo_retraso"),
+                                    campos_asistencia_empleados.get("motivo_inasistencia")
+                                    )
+                
+                if errores_totales:
+                    FuncionSistema.mostrar_errores_verificados(self, errores_totales, "Control de llegada") # aqui deberia de mostrar los errores como: el empleado no puede ser registrado otra vez
+
+            
+        """
+        error_msg = "Lista de errores:\n"
+        error_msg += "\n".join(f"- {field.capitalize()}" for field in errores)
+        QMessageBox.critical(app, f"Errores en {nombre_segmento}", error_msg)
+        print("\n".join(errores))
+        return
 
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),
