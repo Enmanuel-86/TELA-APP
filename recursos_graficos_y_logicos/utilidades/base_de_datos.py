@@ -5,6 +5,9 @@
 
 # Repositorios
 
+# EMPLEADOS
+from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+
 # especialidades
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
 
@@ -17,6 +20,10 @@ from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlum
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 
 # Servicios
+
+# EMPLEADOS
+from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
+
 # especialidades
 from servicios.especialidades.especialidad_servicio import EspecialidadServicio
 
@@ -31,6 +38,10 @@ from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 
 
 # Instanacias Repositorios
+
+# EMPLEADOS
+asistencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
+
 # especialidades
 especialidad_repositorio = EspecialidadRepositorio()
 
@@ -47,6 +58,9 @@ info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 
 
 # Instancia Servicios
+
+# EMPLEADOS
+asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistencia_empleado_repositorio)
 
 # especialidades
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)

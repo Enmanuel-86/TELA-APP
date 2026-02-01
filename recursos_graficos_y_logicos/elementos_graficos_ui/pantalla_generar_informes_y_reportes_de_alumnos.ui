@@ -767,9 +767,9 @@
                   <widget class="QPushButton" name="boton_generar_reporte_asistencia">
                    <property name="geometry">
                     <rect>
-                     <x>40</x>
-                     <y>140</y>
-                     <width>291</width>
+                     <x>110</x>
+                     <y>150</y>
+                     <width>174</width>
                      <height>46</height>
                     </rect>
                    </property>
@@ -807,7 +807,7 @@
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Generar reporte de asistencia</string>
+                    <string>Generar reporte</string>
                    </property>
                    <property name="iconSize">
                     <size>
@@ -1115,6 +1115,237 @@
                     <string>boton_generar_reporte</string>
                    </property>
                   </widget>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QFrame" name="espacio_reporte_asistencia_mensual_empleados">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>sub_espacio_form</string>
+                  </property>
+                  <widget class="QLabel" name="label_titulo_reporte_asistencia_general_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>60</x>
+                     <y>0</y>
+                     <width>276</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>276</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>361</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Asistencia mensual de empleados</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qlineedit</string>
+                   </property>
+                  </widget>
+                  <widget class="QPushButton" name="boton_generar_reporte_asistencia_general_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>110</x>
+                     <y>100</y>
+                     <width>174</width>
+                     <height>46</height>
+                    </rect>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>174</width>
+                     <height>46</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>180</width>
+                     <height>46</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Generar reporte</string>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>26</width>
+                     <height>26</height>
+                    </size>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>boton_generar_reporte</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_anio_mes_reporte_asistencia_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>100</x>
+                     <y>40</y>
+                     <width>61</width>
+                     <height>21</height>
+                    </rect>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>8</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Año / Mes</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qdateedit</string>
+                   </property>
+                  </widget>
+                  <widget class="QDateEdit" name="dateedit_fecha_reporte_asistencia_empleados">
+                   <property name="geometry">
+                    <rect>
+                     <x>80</x>
+                     <y>50</y>
+                     <width>221</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Año/Mes/Dia</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="wrapping">
+                    <bool>false</bool>
+                   </property>
+                   <property name="frame">
+                    <bool>false</bool>
+                   </property>
+                   <property name="accelerated">
+                    <bool>true</bool>
+                   </property>
+                   <property name="keyboardTracking">
+                    <bool>true</bool>
+                   </property>
+                   <property name="showGroupSeparator" stdset="0">
+                    <bool>true</bool>
+                   </property>
+                   <property name="currentSection">
+                    <enum>QDateTimeEdit::YearSection</enum>
+                   </property>
+                   <property name="displayFormat">
+                    <string>yyyy / MM </string>
+                   </property>
+                   <property name="calendarPopup">
+                    <bool>false</bool>
+                   </property>
+                   <property name="currentSectionIndex">
+                    <number>0</number>
+                   </property>
+                   <property name="date">
+                    <date>
+                     <year>2000</year>
+                     <month>1</month>
+                     <day>26</day>
+                    </date>
+                   </property>
+                  </widget>
+                  <zorder>label_titulo_reporte_asistencia_general_empleados</zorder>
+                  <zorder>boton_generar_reporte_asistencia_general_empleados</zorder>
+                  <zorder>dateedit_fecha_reporte_asistencia_empleados</zorder>
+                  <zorder>label_anio_mes_reporte_asistencia_empleados</zorder>
                  </widget>
                 </item>
                </layout>

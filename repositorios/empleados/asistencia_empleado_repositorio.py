@@ -148,6 +148,121 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LAS INASISTENCIAS MENSUALES DE LOS EMPLEADOS: {error}")
     
+    def obtener_conteo_asistencia_mensual(self, anio_mes: str) -> List[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        anio_mes,
+                        fecha_asistencia,
+                        hombres_presentes,
+                        mujeres_presentes,
+                        (hombres_presentes + mujeres_presentes) AS total_presentes,
+                        hombres_ausentes,
+                        mujeres_ausentes,
+                        (hombres_ausentes + mujeres_ausentes) AS total_ausentes
+                    FROM vw_conteo_asistencia_mensual_empleados
+                    WHERE anio_mes = :anio_mes;
+                """
+                
+                parametros = {"anio_mes": anio_mes}
+                
+                conteo_asistencia_mensual = sesion.execute(text(consulta), parametros).fetchall()
+                return conteo_asistencia_mensual
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL CONTEO DE ASISTENCIA MENSUAL DE EMPLEADOS: {error}")
+    
+    def obtener_sumatoria_asistencia_inasistencia(self, anio_mes: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        anio_mes,
+                        sumatoria_hombres_presentes,
+                        sumatoria_mujeres_presentes,
+                        sumatoria_general_empleados_presentes,
+                        sumatoria_hombres_ausentes,
+                        sumatoria_mujeres_ausentes,
+                        sumatoria_general_empleados_ausentes
+                    FROM vw_sumatoria_asistencias_inasistencias_empleados
+                    WHERE anio_mes = :anio_mes;
+                """
+                
+                parametros = {"anio_mes": anio_mes}
+                
+                sumatoria_asistencia_inasistencia = sesion.execute(text(consulta), parametros).first()
+                return sumatoria_asistencia_inasistencia
+        except Exception as error:
+            print(f"ERROR AL OBTENER LA SUMATORIA DE ASISTENCIA E INASISTENCIA DE EMPLEADOS: {error}")
+    
+    def obtener_dias_habiles(self, anio_mes: str) -> Optional[int]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        COUNT(*) AS dias_habilies
+                    FROM vw_conteo_asistencia_mensual_empleados
+                    WHERE anio_mes = :anio_mes;
+                """
+                
+                parametros = {"anio_mes": anio_mes}
+                
+                (dias_habiles,) = sesion.execute(text(consulta), parametros).fetchone()
+                return dias_habiles
+        except Exception:
+            return None
+    
+    def obtener_promedio_asistencia_inasistencia(self, anio_mes: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                dias_habiles = self.obtener_dias_habiles(anio_mes)
+                
+                consulta = """
+                    SELECT
+                        anio_mes,
+                        ROUND(sumatoria_hombres_presentes / :dias_habiles) AS promedio_hombres_presentes,
+                        ROUND(sumatoria_mujeres_presentes / :dias_habiles) AS promedio_mujeres_presentes,
+                        ROUND((sumatoria_hombres_presentes / :dias_habiles) + ROUND(sumatoria_mujeres_presentes / :dias_habiles)) AS promedio_general_presentes,
+                        ROUND(sumatoria_hombres_ausentes / :dias_habiles) AS promedio_hombres_ausentes,
+                        ROUND(sumatoria_mujeres_ausentes / :dias_habiles) AS promedio_mujeres_ausentes,
+                        ROUND((sumatoria_hombres_ausentes / :dias_habiles) + ROUND(sumatoria_mujeres_ausentes / :dias_habiles)) AS promedio_general_ausentes
+                    FROM vw_sumatoria_asistencias_inasistencias_empleados
+                    WHERE anio_mes = :anio_mes;
+                """
+                
+                parametros = {
+                    "dias_habiles": dias_habiles,
+                    "anio_mes": anio_mes
+                }
+                
+                promedio_asistencia_inasistencia = sesion.execute(text(consulta), parametros).fetchone()
+                return promedio_asistencia_inasistencia
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL PROMEDIO DE ASISTENCAI E INASISTENCIA DE EMPLEADOS: {error}")
+    
+    def obtener_porcentaje_asistencia_inasistenica(self, anio_mes: str) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                    SELECT
+                        anio_mes,
+                        porcentaje_hombres_presentes,
+                        porcentaje_mujeres_presentes,
+                        porcentaje_general_presentes,
+                        porcentaje_hombres_ausentes,
+                        porcentaje_mujeres_ausentes,
+                        porcentaje_general_ausentes
+                    FROM vw_porcentaje_asistencia_inasistencia_empleados
+                    WHERE anio_mes = :anio_mes;
+                """
+                
+                parametros = {"anio_mes": anio_mes}
+                
+                porcentaje_asistencia_inasistencia = sesion.execute(text(consulta), parametros).fetchone()
+                return porcentaje_asistencia_inasistencia
+        except Exception as error:
+            print(f"ERROR AL OBTENER EL PORCENTAJE DE ASISTENCIA E INASISTENCIA DE EMPLEADOS: {error}")
+    
     def actualizar(self, asist_empleado_id: int, campos_asistencia_empleado: Dict) -> None:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
@@ -299,3 +414,26 @@ if __name__ == "__main__":
     
     #asistencia_empleado_repositorio.eliminar(40)
     #asistencia_empleado_repositorio.eliminar(1)
+    
+    
+    
+    print("--------------CONTEO DE ASISTENCIA MENSUAL DE EMPLEADOS--------------")
+    ANIO_MES = "2026-01"
+    asistencias = asistencia_empleado_repositorio.obtener_conteo_asistencia_mensual(ANIO_MES)
+    for registro in asistencias:
+        print(registro)
+    
+    
+    print("--------------SUMATORIA DE ASISTENCIA E INASISTENCIA  DE EMPLEADOS--------------")
+    sumatoria = asistencia_empleado_repositorio.obtener_sumatoria_asistencia_inasistencia(ANIO_MES)
+    print(sumatoria)
+    
+    
+    print("--------------PROMEDIO DE ASISTENCIA E INASISTENCIA DE EMPLEADOS--------------")
+    promedio = asistencia_empleado_repositorio.obtener_promedio_asistencia_inasistencia(ANIO_MES)
+    print(promedio)
+    
+    
+    print("--------------PORCENTAJE DE ASISTENCIA E INASISTENCIA DE EMPLEADOS--------------")
+    porcentaje = asistencia_empleado_repositorio.obtener_porcentaje_asistencia_inasistenica(ANIO_MES)
+    print(porcentaje)
