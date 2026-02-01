@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5 import QtGui
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import (QPoint, Qt)
 import os
 from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
                             QLabel, QHBoxLayout, QPushButton, QHeaderView )
@@ -49,9 +49,14 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         #esto me da el valor de la cedula al darle click a la persona que quiero
         self.tbl_usuarios.clicked.connect(lambda index: print(index.sibling(index.row(), 0).data()))
         
+        # actualizamos la barra de busqueda
+        self.actualizar_lista_busqueda()
+        
         # CONFIGURACIÓN DE LAS SEÑALES
         self.boton_agregar.clicked.connect(self.registrar_usuario)
         self.comboBox_filtro_rol.currentIndexChanged.connect(self.filtrar_por_rol_de_usuario)
+        self.input_cedula_empleado.textChanged.connect(self.filtrar_resultados)
+        #self.barra_de_busqueda.textChanged.connect(self.filtrar_resultados)
         #self.boton_buscar.clicked.connect(self.filtrar_usuarios_por_rol_e_identificador)
         
         # ELEMENTOS DE UTILIDAD
@@ -66,6 +71,122 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         # CARGAR LOS ROLES EN LOS COMBOBOX
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_roles, self.comboBox_rol, 1)
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_roles, self.comboBox_filtro_rol, 1)
+        
+        
+    
+        # Lista de coincidencias
+        self.resultados = QListWidget(self)
+        self.resultados.setFocusPolicy(Qt.NoFocus)
+        self.resultados.setMouseTracking(True)
+        self.resultados.setStyleSheet("padding:10px;")
+        self.resultados.itemClicked.connect(self.seleccionar_empleado)
+        self.resultados.hide() 
+        
+        
+    def actualizar_lista_busqueda(self):
+        
+        self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+        
+    #################################################################################
+    # Metodos para la barra de busqueda (el QLineedit de la cedula del empleado)
+
+    def filtrar_resultados(self, texto):
+        texto = texto.strip()
+        self.resultados.clear()
+        
+        if not texto:
+            self.resultados.hide()
+            self.label_nombre_empleado_guia.clear()
+            return
+        
+        texto_busqueda = texto.lower()
+        coincidencias = []
+        
+        # Buscar coincidencias
+        for persona in self.lista_empleados_actual:
+            cedula = persona[6]  # Asumo que índice 6 es la cédula
+            nombre = persona[1].lower()  # Asumo que índice 1 es el nombre
+            apellido = persona[4].lower()  # Asumo que índice 4 es el apellido
+            
+            # Buscar por cédula exacta o parcial
+            if texto_busqueda in cedula or texto_busqueda in nombre:
+                coincidencias.append(persona)
+        
+        if not coincidencias:
+            self.resultados.hide()
+            self.label_nombre_empleado_guia.clear()
+            return
+        
+        # Mostrar todas las coincidencias en el QListWidget
+        for persona in coincidencias:
+            cedula = persona[6]
+            nombre = persona[1]
+            apellido = persona[4]
+            item_text = f'{cedula} - {nombre} {apellido}'
+            self.resultados.addItem(QListWidgetItem(item_text))
+        
+        # Si hay UNA SOLA coincidencia y la cédula coincide EXACTAMENTE
+        if len(coincidencias) == 1:
+            persona_unica = coincidencias[0]
+            # Verificar si la cédula ingresada coincide exactamente
+            if persona_unica[6] == texto:  # Comparación exacta de cédula
+                # Ocultar lista y mostrar nombre en el label
+                self.resultados.hide()
+                nombre_completo = f"{persona_unica[1].capitalize()} {persona_unica[4].capitalize()}"
+                self.label_nombre_empleado_guia.setText(nombre_completo)
+                return
+            else:
+                # Mostrar lista si es coincidencia parcial
+                self.mostrar_lista()
+                self.label_nombre_empleado_guia.clear()
+        else:
+            # Mostrar lista si hay múltiples coincidencias
+            self.mostrar_lista()
+            self.label_nombre_empleado_guia.clear()
+
+    def seleccionar_empleado(self, item):
+        """Maneja la selección de un empleado de la lista"""
+        # Obtener el texto del item seleccionado
+        texto = item.text()
+        
+        # Extraer la cédula (asumiendo formato "cedula - nombre apellido")
+        partes = texto.split(' - ')
+        if len(partes) >= 1:
+            cedula_seleccionada = partes[0]
+            
+            # Buscar el empleado correspondiente
+            for persona in self.lista_empleados_actual:
+                if persona[6] == cedula_seleccionada:
+                    # Poner la cédula en el QLineEdit
+                    self.input_cedula_empleado.setText(cedula_seleccionada)
+                    
+                    # Mostrar el nombre en el label
+                    nombre_completo = f"{persona[1].capitalize()} {persona[4].capitalize()}"
+                    self.label_nombre_empleado_guia.setText(nombre_completo)
+                    
+                    # Ocultar la lista
+                    self.resultados.hide()
+                    break
+
+    def mostrar_lista(self):
+        """Muestra la lista de resultados debajo del QLineEdit"""
+        pos = self.input_cedula_empleado.mapToGlobal(
+            QPoint(0, self.input_cedula_empleado.height())
+        )
+        # Convertir a coordenadas del widget padre si es necesario
+        pos = self.parent().mapFromGlobal(pos) if self.parent() else pos
+        self.resultados.move(pos)
+        self.resultados.resize(self.input_cedula_empleado.width(), 100)
+        self.resultados.show()
+        self.resultados.raise_()  # Traer al frente
+        
+    #################################################################################
+    
+    
+    
+    
+    
+    
     
     def registrar_usuario(self):
         """
@@ -263,6 +384,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                     self.filtrar_por_rol_de_usuario()
             except BaseDatosError as error:
                 print("Error al editar al usuario: ", str(error))
+                
+                
     def eliminar_usuario_del_registro(self, fila):
         """"""
         
@@ -300,6 +423,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         else:
             # Mostramos el mensaje de exito
             QMessageBox.information(self, "Proceso exitoso", f"Se a Eliminado correctamente el usuario")
+            self.filtrar_por_rol_de_usuario()
                     
                     
     
