@@ -26,14 +26,11 @@ class AlumnoServicio:
                 alumno_ya_existe = self.obtener_alumno_por_cedula(cedula)
                 
                 if (alumno_ya_existe):
-                    if (alumno_id is None):
+                    id_alumno_existente = alumno_ya_existe[0]
+                    id_alumno_a_actualizar = alumno_a_actualizar[0]
+                    
+                    if ((alumno_id is None) or (id_alumno_existente != id_alumno_a_actualizar)):
                         errores.append("Cédula del alumno: Esta cédula ya está registrada.")
-                    elif (alumno_a_actualizar):
-                        id_alumno_existente = alumno_ya_existe[0]
-                        id_alumno_a_actualizar = alumno_a_actualizar[0]
-                        
-                        if (id_alumno_existente != id_alumno_a_actualizar):
-                            errores.append("Cédula del alumno: Esta cédula ya está registrada.")
             except BaseDatosError:
                 pass
             

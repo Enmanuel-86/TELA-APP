@@ -110,14 +110,11 @@ class EmpleadoServicio:
                 empleado_ya_existe = self.repositorio.obtener_por_cedula(cedula)
                     
                 if (empleado_ya_existe):
-                    if (empleado_id is None):
+                    id_empleado_ya_existente = empleado_ya_existe[0]
+                    id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                    
+                    if ((empleado_id is None) or (id_empleado_ya_existente != id_empleado_a_actualizar)):
                         errores.append("Cédula: Esta cédula ya está registrada.")
-                    elif (empleado_a_actualizar_info):
-                        id_empleado_ya_existente = empleado_ya_existe[0]
-                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
-                            
-                        if (id_empleado_ya_existente != id_empleado_a_actualizar):
-                            errores.append("Cédula: Esta cédula ya está registrada.")
             except BaseDatosError:
                 pass
             
@@ -295,14 +292,11 @@ class EmpleadoServicio:
                 empleado_ya_existe_correo_principal = self.repositorio.obtener_por_correo(correo_electronico)
                 
                 if (empleado_ya_existe_correo_principal):
-                    if (empleado_id is None):
+                    id_empleado_existente_correo_principal = empleado_ya_existe_correo_principal[0]
+                    id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                    
+                    if ((empleado_id is None) or (id_empleado_existente_correo_principal != id_empleado_a_actualizar)):
                         errores.append("Correo electrónico: Este correo electrónico ya está registrado.")
-                    elif (empleado_a_actualizar_info):
-                        id_empleado_existente_correo_principal = empleado_ya_existe_correo_principal[0]
-                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
-                        
-                        if (id_empleado_existente_correo_principal != id_empleado_a_actualizar):
-                            errores.append("Correo electrónico: Este correo electrónico ya está registrado.")
             except Exception:
                 pass
             
@@ -336,14 +330,11 @@ class EmpleadoServicio:
                 empleado_ya_existe_correo_adicional = self.repositorio.obtener_por_correo_adicional(correo_electronico_adicional)
                 
                 if (empleado_ya_existe_correo_adicional):
-                    if (empleado_id is None):
+                    id_empleado_existente_correo_adicional = empleado_ya_existe_correo_adicional[0]
+                    id_empleado_a_actualizar = empleado_a_actualizar_info[0]
+                    
+                    if ((empleado_id is None) or (id_empleado_existente_correo_adicional != id_empleado_a_actualizar)):
                         errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
-                    elif (empleado_a_actualizar_info):
-                        id_empleado_existente_correo_adicional = empleado_ya_existe_correo_adicional[0]
-                        id_empleado_a_actualizar = empleado_a_actualizar_info[0]
-                        
-                        if (id_empleado_existente_correo_adicional != id_empleado_a_actualizar):
-                            errores.append("Correo electrónico adicional: Este correo electrónico ya está registrado.")
             except Exception:
                 pass
             

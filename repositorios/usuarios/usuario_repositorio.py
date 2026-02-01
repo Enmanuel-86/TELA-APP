@@ -180,7 +180,7 @@ class UsuarioRepositorio(RepositorioBase):
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
                 usuario = sesion.query(Usuario).filter(Usuario.usuario_id == usuario_id).first()
-                USUARIO_ID = app_configuracion.get("USUARIO_ID")
+                USUARIO_ID = app_configuracion.USUARIO_ID
                 diccionario_usuario = {campo: valor for campo, valor in vars(usuario).items() if not(campo.startswith("_")) and not(campo == "usuario_id") and not(campo == "empleado_id")}
                 
                 campos = {
@@ -209,6 +209,9 @@ class UsuarioRepositorio(RepositorioBase):
                         sesion.query(Usuario).filter(Usuario.usuario_id == usuario_id).update({clave: valor_campo_actual})
                         sesion.commit()
                         print(f"Se actualizó el campo: {campo_actualizado} correctamente")
+        except BaseDatosError as error:
+            sesion.rollback()
+            raise error
         except Exception as error:
             sesion.rollback()
             print(f"ERROR AL ACTUALIZAR LOS CAMPOS: {error}")
@@ -224,14 +227,14 @@ class UsuarioRepositorio(RepositorioBase):
                 if not(usuario):
                     raise BaseDatosError("USUARIO_NO_EXISTE", "Este usuario no existe")
                 
-                if ((usuario.rol == "DIRECTOR") and (usuario_id != USUARIO_ID)):
+                if ((usuario.rol.tipo_rol == "DIRECTOR") and (usuario_id != USUARIO_ID)):
                     raise BaseDatosError("ELIMINAR_DIRECTOR", "No se puede eliminar a los DIRECTORES")
                 
                 for cada_usuario in todos_usuarios:
                     if (cada_usuario[5] == "DIRECTOR"):
                         contador_directores += 1
                 
-                if ((usuario_id == USUARIO_ID) and not(contador_directores > 1)):
+                if ((usuario_id == USUARIO_ID) and (contador_directores == 1)):
                     raise BaseDatosError("UNICO_DIRECTOR", "Primero tienes que designarle a otro empleado el rol de DIRECTOR")
                 
                 (cedula,) = sesion.execute(text("SELECT cedula FROM tb_empleados WHERE empleado_id = :empleado_id;"),

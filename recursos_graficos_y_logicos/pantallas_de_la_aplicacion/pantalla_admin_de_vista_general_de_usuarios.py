@@ -213,10 +213,6 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         if self.msg_box.clickedButton() == self.boton_si:
         
             try:
-                
-                
-               
-                
                 nombre_usuario = self.input_nombre_usuario.text()
                 clave_usuario = self.input_clave_usuario.text()
                 
@@ -232,9 +228,11 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                 
                 # VALIDAMOS LOS CAMPOS DEL USUARIO
                 errores = usuario_servicio.validar_campos_usuario(
+                    empleado_id = empleado_id,
                     rol_id = campos_usuario.get("rol_id"),
                     nombre_usuario = campos_usuario.get("nombre_usuario"),
-                    clave_usuario = campos_usuario.get("clave_usuario")
+                    clave_usuario = campos_usuario.get("clave_usuario"),
+                    usuario_id = usuario_id
                 )
                 
                 # SI HAY ERRORES EN LA VALIDACIÓN NO REGISTRAMOS AL USUARIO Y LE MOSTRAMOS EN PANTALLA LA LISTA DE ERRORES
@@ -249,7 +247,6 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                 except Exception as e:
                     QMessageBox.warning(self, "Error al registrar usuario", f"{e}")
                 else:
-                    
                     # Mostramos el mensaje de exito
                     QMessageBox.information(self, "Proceso exitoso", f"Se a editado correctamente el usuario")
                     
@@ -264,10 +261,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                     
                     # Filtramos
                     self.filtrar_por_rol_de_usuario()
-                    
-                    
             except BaseDatosError as error:
-                print("Error al registrar al usuario: ", str(error))
+                print("Error al editar al usuario: ", str(error))
     def eliminar_usuario_del_registro(self, fila):
         """"""
         
@@ -296,15 +291,11 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                     # Buscamos el usuario a partir del id del empleado
                     usuario = usuario_servicio.obtener_usuario_por_empleado_id(empleado[0])
                     
-                    try:
-                        usuario_servicio.eliminar_usuario(usuario[0])
-                    except Exception as e:
-                        print("El usuario se pudo eliminar correctamente")
-                        return
-                    
+                    usuario_servicio.eliminar_usuario(usuario[0])
+                    print("El usuario se pudo eliminar correctamente")
         except Exception as e:
             
-            QMessageBox.warning(self, "No puede", f"{e}")
+            QMessageBox.warning(self, "Error al eliminar el usuario", f"{e}")
             
         else:
             # Mostramos el mensaje de exito
