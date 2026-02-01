@@ -190,9 +190,16 @@ class AsistenciaEmpleadoRepositorio(RepositorioBase):
                             horas_anteriores_vacias = ((hora_entrada_anterior is None) and (hora_salida_anterior is None))
                             horas_actuales_vacias = ((hora_entrada_actual is None) and (hora_salida_actual is None))
                             
-                            if (campos_asistencia_empleado.get("hora_entrada") and campos_asistencia_empleado.get("hora_salida")):
-                                hora_anterior = valor_campo_anterior.strftime('%H:%M')
-                                hora_actual = valor_campo_actual.strftime('%H:%M')
+                            if ((campos_asistencia_empleado.get("hora_entrada")) and (campos_asistencia_empleado.get("hora_salida"))):
+                                hora_anterior = ""
+                                hora_actual = ""
+                                
+                                if not(valor_campo_anterior == ""):
+                                    hora_anterior = valor_campo_anterior.strftime('%H:%M')
+                                
+                                if not (valor_campo_actual == ""):
+                                    hora_actual = valor_campo_actual.strftime('%H:%M')
+                                
                                 accion = f"ACTUALIZÓ EL CAMPO: {campo_actualizado}. ANTES: {hora_anterior}. AHORA: {hora_actual}. CÉDULA DEL EMPLEADO AFECTADO: {cedula_empleado}"
                             elif ((horas_anteriores_vacias) and not(horas_actuales_vacias)):
                                 hora_anterior = ""
