@@ -1,6 +1,6 @@
 import traceback
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import (QPropertyAnimation, QEasingCurve, QFile, QTextStream, QTime)
+from PyQt5.QtWidgets import QMessageBox, QListWidget, QListWidgetItem
+from PyQt5.QtCore import (QPropertyAnimation, QEasingCurve, QFile, QTextStream, QTime, Qt, QPoint)
 from PyQt5.QtGui import QIcon, QPixmap
 from datetime import datetime
 from PIL import Image
@@ -821,6 +821,138 @@ class FuncionesDelSistema:
         
         except Exception as e:
             self.mostrar_errores_por_excepcion(e, "habilitar_0_deshabilitar_widget_de_qt")
+            
+    def configurar_barra_de_busqueda(self, app, qlineedit, lista_datos:list, indice_cedula:int, indice_nombre:int, indice_apellido:int, label_guia = None):
+        """
+            ### Este metodo sirve para transformar cualquier QLineEdit en una barra de busqueda pasandole los siguiente parametros
+            
+            - app: este parametro se refiere a la aplicacion, si se esta trabajando con clases como en este caso solamente hay que pasarle unicamente el self 
+            - qlineedit: aqui solo se tiene que pasar es el qlineedit que se va a utilizar como barra de busqueda
+            - lista_datos: aqui se pasa la lista de los elementos que se van a mostrar en la barra de busqueda, en esta caso como la mayoria de elementos que se muestran en la barra de busqueda son listas que estan estructuradas de la siguiente manera [(1, nombre, apellido), (1, nombre, apellido)]
+            - indice_cedula, indice_nombre e indice_apellido: aqui se pasan son los indices en donde se encuentran los valores que se desean mostrar ejemplo: si la lista que se mando en este metodo es [(1, nombre, apellido), (1, nombre, apellido)], deberiamos pasar los indices 0 para la cedula, 1 para el nombre y 2 para el apellido
+            - label_guia: este parametro es opcional ya que no todas las pantallas usan este elemento, esto lo que hace es mostrar el nombre y apellido en este label, ya que la barra de busqueda como tal solo queda la cedula y no el nombre de la persona
+            
+            **Ejemplo**
+            
+            
+            self.barra_de_busqueda = QLineEdit()
+            
+            self.lista_empleados_actual = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1, None), (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1, None)]
+            
+            FuncionSistema.configurar_barra_de_busqueda(app = self, qlineedit = self.barra_de_busqueda, lista_datos = self.lista_empleados_actual, indice_cedula = 6, indice_nombre = 1, indice_apellido= 4)
+
+            Al escribir en la barra de busqueda se va a ir mostrando lo siguiente:
+            
+            1736256 - Douglas Marquez
+            5017497 - Enmanuel Garcia
+            
+        """
+        resultados = QListWidget(app)
+        resultados.setFocusPolicy(Qt.NoFocus)
+        resultados.setMouseTracking(True)
+        resultados.setStyleSheet("padding:10px;")
+        resultados.itemClicked.connect(lambda item: seleccionar_persona(app,item))
+        resultados.hide()
+        
+        qlineedit.textChanged.connect(lambda texto: filtrar_resultados(app, texto))
+        
+        def filtrar_resultados(self, texto):
+            texto = texto.strip()
+            resultados.clear()
+            
+            if not texto:
+                resultados.hide()
+                if label_guia:
+                    label_guia.clear()
+                    
+                return
+            
+            texto_busqueda = texto.lower()
+            coincidencias = []
+        
+            # Buscar coincidencias
+            for persona in lista_datos:
+                cedula = persona[indice_cedula]  # Asumo que índice 6 es la cédula
+                nombre = persona[indice_nombre].lower()  # Asumo que índice 1 es el nombre
+                apellido = persona[indice_apellido].lower()  # Asumo que índice 4 es el apellido
+                
+                # Buscar por cédula exacta o parcial
+                if texto_busqueda in cedula or texto_busqueda in nombre:
+                    coincidencias.append(persona)
+            
+            if not coincidencias:
+                resultados.hide()
+                if label_guia:
+                    label_guia.clear()
+                return
+            
+            # Mostrar todas las coincidencias en el QListWidget
+            for persona in coincidencias:
+                cedula = persona[indice_cedula]
+                nombre = persona[indice_nombre]
+                apellido = persona[indice_apellido]
+                item_text = f'{cedula} - {nombre} {apellido}'
+                resultados.addItem(QListWidgetItem(item_text))
+            
+            # Si hay UNA SOLA coincidencia y la cédula coincide EXACTAMENTE
+            if len(coincidencias) == 1:
+                persona_unica = coincidencias[0]
+                # Verificar si la cédula ingresada coincide exactamente
+                if persona_unica[6] == texto:  # Comparación exacta de cédula
+                    # Ocultar lista y mostrar nombre en el label
+                    resultados.hide()
+                    nombre_completo = f"{persona_unica[1].capitalize()} {persona_unica[4].capitalize()}"
+                    if label_guia:
+                        label_guia.setText(nombre_completo)
+                    return
+                else:
+                    # Mostrar lista si es coincidencia parcial
+                    mostrar_lista(app)
+                    if label_guia:
+                        label_guia.setText(nombre_completo)
+            else:
+                # Mostrar lista si hay múltiples coincidencias
+                mostrar_lista(app)
+                if label_guia:
+                    label_guia.clear()
+
+        def seleccionar_persona(self, item):
+            """Maneja la selección de un empleado de la lista"""
+            # Obtener el texto del item seleccionado
+            texto = item.text()
+            
+            # Extraer la cédula (asumiendo formato "cedula - nombre apellido")
+            partes = texto.split(' - ')
+            if len(partes) >= 1:
+                cedula_seleccionada = partes[0]
+                
+                # Buscar el empleado correspondiente
+                for persona in self.lista_empleados_actual:
+                    if persona[6] == cedula_seleccionada:
+                        # Poner la cédula en el QLineEdit
+                        qlineedit.setText(cedula_seleccionada)
+                        
+                        # Mostrar el nombre en el label
+                        nombre_completo = f"{persona[1].capitalize()} {persona[4].capitalize()}"
+                        if label_guia:
+                            label_guia.setText(nombre_completo)
+                        
+                        
+                        # Ocultar la lista
+                        resultados.hide()
+                        break
+
+        def mostrar_lista(self):
+            """Muestra la lista de resultados debajo del QLineEdit"""
+            pos = qlineedit.mapToGlobal(
+                QPoint(0, qlineedit.height())
+            )
+            # Convertir a coordenadas del widget padre si es necesario
+            pos = app.parent().mapFromGlobal(pos) if app.parent() else pos
+            resultados.move(pos)
+            resultados.resize(qlineedit.width(), 100)
+            resultados.show()
+            resultados.raise_()  # Traer al frente
     
 
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
