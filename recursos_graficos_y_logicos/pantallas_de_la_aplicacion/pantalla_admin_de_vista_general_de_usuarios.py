@@ -412,8 +412,14 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
                     # Buscamos el usuario a partir del id del empleado
                     usuario = usuario_servicio.obtener_usuario_por_empleado_id(empleado[0])
                     
-                    usuario_servicio.eliminar_usuario(usuario[0])
-                    print("El usuario se pudo eliminar correctamente")
+                    if usuario[0] == FuncionSistema.id_usuario:
+                        QMessageBox.warning(self, "Error al eliminar el usuario", f"No te puede eliminar a ti mismo")
+                        return
+                    else:
+                        usuario_servicio.eliminar_usuario(usuario[0])
+                    
+                        print("El usuario se pudo eliminar correctamente")
+                    
         except Exception as e:
             
             QMessageBox.warning(self, "Error al eliminar el usuario", f"{e}")
