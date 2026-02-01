@@ -11,7 +11,7 @@ QPushButton[tipo="boton_sidebar"]{
 	background:transparent;
 	border:0px;
 	color:#ffffff;
-	font: 13pt "Segoe UI";
+	font: 11pt "Segoe UI";
 	font-weight: 500;
 	text-align: left;
 	padding: 5px 5px 5px 5px;
