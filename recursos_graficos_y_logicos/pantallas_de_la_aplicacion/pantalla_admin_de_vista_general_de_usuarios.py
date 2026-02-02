@@ -61,7 +61,6 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
         self.lista_usuarios = usuario_servicio.obtener_todos_usuarios()
-        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_usuarios, 1,2,3)
         self.barra_de_busqueda.returnPressed.connect(self.filtrar_por_rol_de_usuario)
         #self.barra_de_busqueda.textChanged.connect(self.filtrar_por_rol_de_usuario)
         self.boton_buscar.clicked.connect(self.filtrar_por_rol_de_usuario)
@@ -458,6 +457,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             
             # Cargamos a los usuarios en caso de no haber excepciones
             self.cargar_usuario_en_tabla(self.tbl_usuarios ,usuarios)
+            
+            FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, usuarios, 1,2,3)
         
         
     def filtrar_con_barra_de_busqueda(self):
