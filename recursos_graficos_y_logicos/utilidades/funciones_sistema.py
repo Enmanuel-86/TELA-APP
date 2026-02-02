@@ -261,11 +261,11 @@ class FuncionesDelSistema:
             
             **Ejemplo**
 
-            lista_especialidades = [(1, 'Medicina General'), (2, 'Enfermeria'), (3, 'Odontologia')]
+            >>> lista_especialidades = [(1, 'Medicina General'), (2, 'Enfermeria'), (3, 'Odontologia')]
             
-            boton_seleccionado = QCombobox() # con 'Enfermeria' seleccionado
+            >>> boton_seleccionado = QCombobox() # con 'Enfermeria' seleccionado
             
-            id_especialidad = buscar_id_de_la_lista_del_combobox(boton_seleccionado, lista_especialidades, 1, 0)
+            >>> id_especialidad = buscar_id_de_la_lista_del_combobox(boton_seleccionado, lista_especialidades, 1, 0)
         
         """    
         # Obtener el texto seleccionado del combobox
@@ -317,23 +317,23 @@ class FuncionesDelSistema:
     def buscar_id_por_nombre_del_elemento(self, nombre_elemeto:str, lista_de_elementos:list, indice_id:int = 0):
         
         """
-            Este metodo sirve para buscar el id del elemento que pertenezca a un catalogo.
+            ### Este metodo sirve para buscar el id del elemento que pertenezca a un catalogo.
             
-            ***Ejemplo***
+            **Ejemplo**
             
             si tenemos una variable que contiene una especialidad y queremos obtener su id para realizar una operacion usamos el metodo asi:
             
-            lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
+            >>> lista_especialidades = [(1, "artesania"), (2, "ceramica"), (3, "carpinteria")]
             
-            mi_especialidad = "artesania"
+            >>> mi_especialidad = "artesania"
             
-            id_especialidad = FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades) # retorna 1
+            >>> id_especialidad = FuncionSistema.buscar_id_por_nombre_del_elemento(nombre_elemeto = mi_especialidad, lista_de_elementos = lista_especialidades) # retorna 1
             
             normalmente el indice del id es 0 pero puedes colocar el indice en donde se encuentre el id
             
             
         """     
-        
+         
         
         try:
             
@@ -377,6 +377,7 @@ class FuncionesDelSistema:
             
             
             **Ejemplo**
+            
             
             lista_qlabel_qlineedit = [input_1, input_2, input_3, label_4, ......]
             
@@ -441,7 +442,10 @@ class FuncionesDelSistema:
     def mostrar_errores_por_excepcion(self, e, nombre_func: str):
         """
             Esta funcion lo que hace es mostrar los errores por excepcion por consola, especificando la excepcion
-            la linea y en donde pasa el error
+            la linea y en donde pasa el error.
+            
+            **Ejemplo de lo que mostraria por consola si hay algun error**
+            
             
             ------------------------------------------------------------------------------------
 
@@ -529,6 +533,40 @@ class FuncionesDelSistema:
             
     # Metodos para cambiar de estilos/TEMAS
     def cargar_estilos(self, app, ruta_archivo):
+        """
+            ### Este metodo sirve para cargar las hojas de estilo al sistema
+            
+            como todos los elementos de la pantalla tienen propiedades dinamicas, podemos usar hojas de estilos en archivos.qss para poder usarlo en el sistema
+            
+            Lo que se tiene que hacer es pasarle dos parametro:
+            
+            1. la variable que instacia toda la aplicacion.
+            2. la rutra del archivo.qss (procurar que la hoja de estilo este en el archivo.qrc).
+            
+            **Ejemplo**
+            
+            
+            si es para que los botones cambie entre estilos:
+            ### Main.py
+                
+                
+                ###
+                if __name__ == "__main__":
+                    app = QApplication(sys.argv)
+                    window = MainWindow() # variable que instacia la aplicacion
+                    FuncionSistema.cargar_estilos(window, ':/hojas_de_estilo/estilos/estilo_oscuro.qss')
+                    window.show()
+                    window.showMaximized()
+                    sys.exit(app.exec_())
+                    
+            si es para que los botones cambie entre estilos:
+            ### Desde donde tengas los botones
+                
+                ### 
+                self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_default.qss'))
+                self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro.qss'))
+                
+        """
         try:
             archivo = QFile(ruta_archivo)
             if archivo.open(QFile.ReadOnly | QFile.Text):
@@ -595,7 +633,7 @@ class FuncionesDelSistema:
     def comprobar_si_hay_valor(self, variable):
         
         """
-        Metodo para comprobar si la variable tiene un valor para mostrar en pantalla
+        ### Metodo para comprobar si la variable tiene un valor para mostrar en pantalla
         
         Este metodo sirve en el caso de mostrar una informacion en pantalla teniendo en cuenta que la base de datos puede retornar o un valor o none
         
@@ -607,11 +645,12 @@ class FuncionesDelSistema:
         
         
         
-        alumnos = [ Manuel,    #1er nombre
-                    Alejandro, #2do nombre
-                    Perez,     #1er apellido
-                    None,      #2do apellido
-                    102031203  #cedula
+        alumnos = [ 
+                    Manuel,    # 1er nombre
+                    Alejandro, # 2do nombre
+                    Perez,     # 1er apellido
+                    None,      # 2do apellido
+                    102031203  # cedula
                     ]
                     
                     
@@ -639,7 +678,10 @@ class FuncionesDelSistema:
     def abrir_carpeta_contenedora_de_archivos(self, ruta_carpeta: str) -> None:
         
         """
-            Este metodo sirve para abrir la carpeta contenedora de archivos en el explorador de archivos del sistema operativo
+            ### Este metodo sirve para abrir la carpeta contenedora de los archivos generados por el sistema en el explorador de archivos del sistema operativo:
+            
+            - Windows
+            - Linux (No hay version de linux)
         
         """
         
@@ -677,7 +719,7 @@ class FuncionesDelSistema:
             
             boton_registrar = QPushButton()
             
-            self.cambiar_estilo_del_boton(boton, "boton_editar") # estilo de editar
+            self.cambiar_estilo_del_boton(boton_registrar, "boton_editar") # estilo de editar
             
             
         """
@@ -691,13 +733,13 @@ class FuncionesDelSistema:
             
             if tipo == "boton_anadir":
                 
-                qpushbutton.setText(" Anadir")
+                qpushbutton.setText("Anadir")
                 qpushbutton.setProperty("tipo", tipo)
                 
                 
             elif tipo == "boton_editar":
             
-                qpushbutton.setText(" Editar")
+                qpushbutton.setText("Editar")
                 qpushbutton.setProperty("tipo", tipo)
             
             
@@ -718,11 +760,12 @@ class FuncionesDelSistema:
 
             ***Ejemplo***
             ruta_de_la_foto = b'RIFF.)\x00\x00WEBPVP8 ")\x00\x00\x10m\x00\x9d\x01*\x8c\x00\x8c\x00\x00\x00\x00%\xb0\x02\x9d7i\xf9_\xe37K\x04\xee\xef\x7f\x8e\xff\xae\x9f\xe3>Li/\xcf ... (30114 characters truncated) ... x99\xdc\x91\x1b\xc1zM\x05\xbf\xaf\x06I\xfd\xe3q\xfd\xfb\xa5\nb5\xca\xea\xf12G\x10`[\x94GF\x0b\x02\xa5p\x1b=$\x11\r\xc3\xe4\x19\x03\xe5z{\x7f\xb7@\x00
+            
             label = QLabel()
             
             FuncionSistema.cargar_foto_perfil_en_la_interfaz(ruta_de_la_foto, label) # esto da como resultado la foto colocada en el label
             
-            esto 
+            
         """
         try:
             if not ruta_foto_perfil == None:
@@ -806,8 +849,8 @@ class FuncionesDelSistema:
             
             Pasandole como argumento una tupla con los widgets y un valor boleano (True o False)
             
-            ***Ejemplo***
-            
+            **Ejemplo**
+            .. code-block:: python
             lista_widget = (label, button, lineedit)
             
             habilitar_0_deshabilitar_widget_de_qt(lista_widget, True) # habilita los widgets
@@ -954,6 +997,56 @@ class FuncionesDelSistema:
             resultados.show()
             resultados.raise_()  # Traer al frente
     
+    
+    # Metodo para mostrar errores de la base de datos 
+    def mostrar_errores_verificados(self, app, errores, nombre_segmento):
+        """
+            ### Esta metodo sirve para mostrar le al usuario cuales son los errores segun el servicio de la base de datos que se encargar de verificar los errores en cada campo
+            
+            Este metodo funciona de la siguiente manera:
+            
+            1. Primero se verifican los errores de los campos con el servicio de la base de datos
+            2. Si existe algun error este se le debe mostrar al usuario por pantalla, en caso contrario no pasara nada
+            
+            para que esto funcione se se pasan los parametros:
+            
+            app: este es donde se quiere mostrar (coloque self)\n
+            errores: aqui debe colocar la variable con contiene el servicio que verifico los errores\n
+            nombre_segmento: es para sabes agregar un titulo al QMessagebox
+            
+            
+            **Ejemplo**
+            
+            .. code-block:: python
+            
+                campos_asistencia_empleados = {
+                                    "empleado_id": empleado_id,
+                                    "fecha_asistencia": fecha_asistencia,
+                                    "hora_entrada": hora_entrada,
+                                    "hora_salida": hora_salida,
+                                    "estado_asistencia": estado_asistencia,
+                                    "motivo_retraso": motivo_retraso,
+                                    "motivo_inasistencia": motivo_inasistencia
+                                }
+                        
+                errores_totales = asistencia_empleado_servicio.validar_asistencia_empleado(
+                                    campos_asistencia_empleados.get("empleado_id"), 
+                                    campos_asistencia_empleados.get("fecha_asistencia"),
+                                    campos_asistencia_empleados.get("estado_asistencia"),
+                                    campos_asistencia_empleados.get("motivo_retraso"),
+                                    campos_asistencia_empleados.get("motivo_inasistencia")
+                                    )
+                
+                if errores_totales:
+                    FuncionSistema.mostrar_errores_verificados(self, errores_totales, "Control de llegada") # aqui deberia de mostrar los errores como: el empleado no puede ser registrado otra vez
+
+            
+        """
+        error_msg = "Lista de errores:\n"
+        error_msg += "\n".join(f"- {field.capitalize()}" for field in errores)
+        QMessageBox.critical(app, f"Errores en {nombre_segmento}", error_msg)
+        print("\n".join(errores))
+        return
 
 lista_prueba = [(1, 'DOUGLAS', 'JOSE', None, 'MARQUEZ', 'BETANCOURT', '17536256', '1983-05-17', 42, 'Activo', 'M', 1),
                 (2, 'ENMANUEL', 'JESÚS', None, 'GARCIA', 'RAMOS', '5017497', '1956-10-10', 69, 'Activo', 'M', 1),

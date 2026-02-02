@@ -229,11 +229,12 @@ class ReporteAsistenciaMensualAlumnos(ReporteBase):
             nombre_especialidad = especialidades_servicio.obtener_especialidad_por_id(especialidad_id)[1]
             datos.append(nombre_especialidad)
             
-            # Posición 4: Lista Dict de la asistencia mensual de alumnos
             if not(asistencia_alumnos_servicio.obtener_asistencia_por_especialidad_y_anio_mes(especialidad_id, anio_mes)):
                 raise BaseDatosError("ASISTENCIA_ALUMNOS_NO_EXISTE", "No existen registros de asistencia de alumnos en esta especialidad, año y mes.")
             
             lista_asistencia_inasistencia_alumnos = asistencia_alumnos_servicio.obtener_asistencia_por_especialidad_y_anio_mes(especialidad_id, anio_mes)
+            
+            # Posición 4: Lista Dict de la asistencia mensual de alumnos
             lista_dict_asistencia_inasistencia_alumnos = self.transformar_lista_asistencia_inasistencia_alumnos(lista_asistencia_inasistencia_alumnos, lista_dia_mes_con_dia_semana, anio, mes)
             datos.append(lista_dict_asistencia_inasistencia_alumnos)
             

@@ -367,13 +367,19 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
 
             alumnos = asistencia_alumno_servicio.obtener_por_fecha_asistencia_y_especialidad(fecha, especialidad_id)
             
-    
+
         except Exception as e:
             print(f"A ocorrido un error el metodo de filtra_alumnos_por_fecha_de_asistencia: {e}")
             self.modelo.removeRows(0, self.modelo.rowCount())
         else:
             
-            self.cargar_alumnos_en_tabla(self.tbl_asistencias_registradas, alumnos)
+            if len(alumnos) == 0:
+                self.modelo.removeRows(0, self.modelo.rowCount())
+                #print("lista vacia")
+            else:
+                
+                self.cargar_alumnos_en_tabla(self.tbl_asistencias_registradas, alumnos)
+            
             
             
     ################################################################
@@ -413,9 +419,49 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             header_item = QStandardItem(str(indice + 1))
             header_item.setFlags(Qt.ItemIsEnabled)
             self.modelo.setVerticalHeaderItem(indice, header_item)
-
+            
         # Muy importante: asignar self.modelo primero
         tabla.setModel(self.modelo)
+        
+            # AJUSTES DE ALTURA DE FILAS
+        for fila in range(self.modelo.rowCount()):
+            tabla.setRowHeight(fila, 40)
+        
+        # Ahora sí añadimos los botones fila por fila
+        for fila in range(self.modelo.rowCount()):
+            widget = QWidget()
+            layout = QHBoxLayout(widget)
+            boton_editar = QPushButton("Editar")
+            boton_editar.setFixedSize(60, 30)
+            boton_editar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            boton_editar.setProperty("tipo", "boton_editar")
+            boton_borrar = QPushButton("Borrar")
+            boton_borrar.setFixedSize(60, 30) 
+            boton_borrar.setProperty("tipo", "boton_borrar")
+            boton_borrar.setStyleSheet("""
+                    QPushButton{
+                        font-size:8pt;
+                    }
+            """) 
+            
+
+            # Conectar botones
+            boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
+            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+
+            layout.addWidget(boton_editar)
+            layout.addWidget(boton_borrar)
+            layout.setContentsMargins(3, 3, 3, 3)
+            widget.setLayout(layout)
+            
+            index = self.modelo.index(fila, len(columnas) - 1)  # última columna ("Opciones")
+            tabla.setIndexWidget(index, widget)
+
+    
     
     
     
@@ -1016,3 +1062,14 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
         elif self.msg_box.clickedButton() == self.boton_no:
             return
+        
+        
+    def obtener_info_alumno_para_editar(self):
+        """
+            Este metodo sirve para actualizar/editar el registro de asistencia del alumno
+        """
+        
+        
+        
+        
+        

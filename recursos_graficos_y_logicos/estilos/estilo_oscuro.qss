@@ -62,14 +62,14 @@ QToolButton#boton_ver_contrasena:hover{
 }
 
 QToolButton#boton_ver_contrasena:checked {
-    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png);
 	background:transparent;
 }
 
 /* OJO ABIERTO */
 QToolButton#boton_ver_contrasena:!checked {
 background:transparent;
-    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off-white.png);
 }
 
 /* botones segun su acción  */

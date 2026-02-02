@@ -5,6 +5,9 @@
 
 # Repositorios
 
+# EMPLEADOS
+from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+
 # especialidades
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
 
@@ -80,6 +83,9 @@ empleado_repositorio = EmpleadoRepositorio()
 
 
 # Instancia Servicios
+
+# EMPLEADOS
+asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistencia_empleado_repositorio)
 
 # especialidades
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)

@@ -32,6 +32,8 @@ class Ui_VentanaPrincipal(object):
         self.sidebar.setObjectName("sidebar")
         self.sidebar_contenido = QtWidgets.QWidget()
         self.sidebar_contenido.setGeometry(QtCore.QRect(0, 0, 191, 736))
+        self.sidebar_contenido.setMinimumSize(QtCore.QSize(45, 0))
+        self.sidebar_contenido.setMaximumSize(QtCore.QSize(191, 16777215))
         self.sidebar_contenido.setStyleSheet("")
         self.sidebar_contenido.setObjectName("sidebar_contenido")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.sidebar_contenido)
