@@ -60,7 +60,11 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
-        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_empleados_actual, 6,1,4)
+        self.lista_usuarios = usuario_servicio.obtener_todos_usuarios()
+        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_usuarios, 1,2,3)
+        self.barra_de_busqueda.returnPressed.connect(self.filtrar_por_rol_de_usuario)
+        #self.barra_de_busqueda.textChanged.connect(self.filtrar_por_rol_de_usuario)
+        self.boton_buscar.clicked.connect(self.filtrar_por_rol_de_usuario)
         FuncionSistema.configurar_barra_de_busqueda(self, self.input_cedula_empleado, self.lista_empleados_actual, 6,1,4, self.label_nombre_empleado_guia)
         
         # ELEMENTOS DE UTILIDAD
@@ -88,13 +92,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
         
-    #################################################################################
     
-        
-    ################################################################################
-    
-        
-    #################################################################################
     
     
     def crear_nuevo_registro(self):
@@ -461,7 +459,33 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             # Cargamos a los usuarios en caso de no haber excepciones
             self.cargar_usuario_en_tabla(self.tbl_usuarios ,usuarios)
         
+        
+    def filtrar_con_barra_de_busqueda(self):
+        """
+
+        """
     
+        try:
+
+            
+            usuarios = usuario_servicio.obtener_usuario_por_rol_o_cedula_empleado(cedula_empleado= None if self.barra_de_busqueda.text().strip() == "" else self.barra_de_busqueda.text().strip() )
+            
+            
+                
+        except:
+            # Borramos el contenido de la tabla al haber una excepcion
+            self.modelo.removeRows(0, self.modelo.rowCount())
+            print("No funciono el metodo: filtrar_con_barra_de_busqueda")
+            
+        else:
+            # Cargamos a los usuarios en caso de no haber excepciones
+            
+            print(usuarios)
+            self.cargar_usuario_en_tabla(self.tbl_usuarios ,usuarios)
+            
+            
+            
+            
     def cargar_usuario_en_tabla(self, tabla, usuarios):
         columnas = [
             "Cédula", "Nombre", "Apellido", "Nombre de usuario", "Opciones"
@@ -498,6 +522,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
             
         # Muy importante: asignar self.modelo primero
         tabla.setModel(self.modelo)
+        
+        
         
             # AJUSTES DE ALTURA DE FILAS
         for fila in range(self.modelo.rowCount()):
