@@ -898,7 +898,7 @@ class FuncionesDelSistema:
             if len(coincidencias) == 1:
                 persona_unica = coincidencias[0]
                 # Verificar si la cédula ingresada coincide exactamente
-                if persona_unica[6] == texto:  # Comparación exacta de cédula
+                if persona_unica[indice_cedula] == texto:  # Comparación exacta de cédula
                     # Ocultar lista y mostrar nombre en el label
                     resultados.hide()
                     nombre_completo = f"{persona_unica[1].capitalize()} {persona_unica[4].capitalize()}"
