@@ -298,13 +298,13 @@
                  <property name="minimumSize">
                   <size>
                    <width>1171</width>
-                   <height>121</height>
+                   <height>200</height>
                   </size>
                  </property>
                  <property name="maximumSize">
                   <size>
                    <width>1271</width>
-                   <height>121</height>
+                   <height>200</height>
                   </size>
                  </property>
                  <property name="styleSheet">
@@ -323,10 +323,13 @@
                   <string>espacio_form</string>
                  </property>
                  <widget class="QPushButton" name="boton_agregar">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="geometry">
                    <rect>
-                    <x>1000</x>
-                    <y>50</y>
+                    <x>990</x>
+                    <y>135</y>
                     <width>120</width>
                     <height>40</height>
                    </rect>
@@ -375,9 +378,9 @@
                   <property name="geometry">
                    <rect>
                     <x>18</x>
-                    <y>21</y>
+                    <y>90</y>
                     <width>951</width>
-                    <height>71</height>
+                    <height>86</height>
                    </rect>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,1">
@@ -409,9 +412,43 @@
                       </widget>
                      </item>
                      <item>
+                      <widget class="QLabel" name="label_nombre_empleado_guia">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>10</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>15</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Segoe UI</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <italic>false</italic>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="tipo" stdset="0">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QLineEdit" name="input_cedula_empleado">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -474,7 +511,7 @@
                      <item>
                       <widget class="QLineEdit" name="input_nombre_usuario">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -537,7 +574,7 @@
                      <item>
                       <widget class="QLineEdit" name="input_clave_usuario">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -599,6 +636,9 @@
                      </item>
                      <item>
                       <widget class="QComboBox" name="comboBox_rol">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
@@ -616,6 +656,93 @@
                     </layout>
                    </item>
                   </layout>
+                 </widget>
+                 <widget class="QPushButton" name="boton_crear_registro">
+                  <property name="geometry">
+                   <rect>
+                    <x>30</x>
+                    <y>30</y>
+                    <width>201</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>201</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>201</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Este boton sirve para comenzar a crear un nuevo registro de asistencia</string>
+                  </property>
+                  <property name="text">
+                   <string>Crear nuevo registro</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>boton_anadir</string>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="boton_cancelar_registro">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="geometry">
+                   <rect>
+                    <x>254</x>
+                    <y>30</y>
+                    <width>221</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>221</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>221</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Este boton sirve para cancelar el registro de asistencia que esta realizando</string>
+                  </property>
+                  <property name="text">
+                   <string>Cancelar nuevo registro</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                    <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/x-white.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/x-white.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>26</width>
+                    <height>26</height>
+                   </size>
+                  </property>
+                  <property name="tipo" stdset="0">
+                   <string>boton_cancelar</string>
+                  </property>
                  </widget>
                 </widget>
                </item>
@@ -712,6 +839,9 @@
                       </property>
                       <property name="placeholderText">
                        <string>Buscar por cédula o usuario</string>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -831,7 +961,11 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QTableView" name="tbl_usuarios"/>
+                 <widget class="QTableView" name="tbl_usuarios">
+                  <property name="selectionBehavior">
+                   <enum>QAbstractItemView::SelectRows</enum>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>

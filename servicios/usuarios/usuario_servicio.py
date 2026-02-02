@@ -9,14 +9,27 @@ class UsuarioServicio:
     def __init__(self, repositorio: RepositorioBase):
         self.repositorio = repositorio
     
-    def validar_empleado_id(self, empleado_id: int) -> List[str]:
+    def validar_empleado_id(self, empleado_id: int, usuario_id: Optional[int] = None) -> List[str]:
         errores = []
+        usuario_a_actualizar = None
         
         if not(empleado_id):
             errores.append("Empleado asociado: El usuario tiene que asignarse a un empleado.")
         
-        if (self.obtener_usuario_por_empleado_id(empleado_id)):
-            errores.append("Empleado asociado: Este empleado ya tiene un usuario")
+        if (usuario_id):
+            usuario_a_actualizar = self.repositorio.obtener_por_id(usuario_id)
+            
+            try:
+                usuario_ya_existe = self.obtener_usuario_por_empleado_id(empleado_id)
+                
+                if (usuario_ya_existe):
+                    id_usuario_existente = usuario_ya_existe[0]
+                    id_usuario_a_actualizar = usuario_a_actualizar[0]
+                    
+                    if((usuario_id is None) or (id_usuario_existente != id_usuario_a_actualizar)):
+                        errores.append("Empleado asociado: Este empleado ya tiene un usuario")
+            except BaseDatosError:
+                pass
             
         return errores
     
@@ -28,23 +41,36 @@ class UsuarioServicio:
             
         return errores
     
-    def validar_nombre_usuario(self, nombre_usuario: str) -> List[str]:
+    def validar_nombre_usuario(self, nombre_usuario: str, usuario_id: Optional[int] = None) -> List[str]:
         errores = []
         
         if (not(nombre_usuario)):
             errores.append("Nombre de usuario: No puede estar vacío.")
         elif (nombre_usuario):
             nombre_usuario_sin_espacios = nombre_usuario.replace(" ", "")
-            ya_existe_nombre_usuario = self.obtener_usuario_por_nombre_usuario(nombre_usuario)
+            usuario_a_actualizar = None
             contiene_espacios = re.search(r"\s", nombre_usuario)
+            
+            if (usuario_id):
+                usuario_a_actualizar = self.repositorio.obtener_por_id(usuario_id)
+            
+            try:
+                usuario_ya_existe = self.obtener_usuario_por_nombre_usuario(nombre_usuario)
+                
+                if (usuario_ya_existe):
+                    id_usuario_existente = usuario_ya_existe[0]
+                    id_usuario_a_actualizar = usuario_a_actualizar[0]
+                    
+                    if ((usuario_id is None) or (id_usuario_existente != id_usuario_a_actualizar)):
+                        errores.append("Nombre de usuario: Este nombre de usuario ya existe.")
+            except BaseDatosError:
+                pass
+            
             if (len(nombre_usuario_sin_espacios) == 0):
                 errores.append("Nombre de usuario: No puede estar vacío.")
         
             if (contiene_espacios):
                 errores.append("Nombre de usuario: No debe contener espacios.")
-            
-            if (ya_existe_nombre_usuario):
-                errores.append("Nombre de usuario: El nombre de usuario ingresado ya existe.")
             
             if ((len(nombre_usuario) < 6) or (len(nombre_usuario) > 10)):
                 errores.append("Nombre de usuario: Debe contener como mínimo 6 caracteres y máximo 10.")
@@ -70,10 +96,10 @@ class UsuarioServicio:
         
         return errores
     
-    def validar_campos_usuario(self, empleado_id: int, rol_id: int, nombre_usuario: str, clave_usuario: str) -> List[str]:
-        error_empleado_id = self.validar_empleado_id(empleado_id)
+    def validar_campos_usuario(self, empleado_id: int, rol_id: int, nombre_usuario: str, clave_usuario: str, usuario_id: Optional[int] = None) -> List[str]:
+        error_empleado_id = self.validar_empleado_id(empleado_id, usuario_id)
         error_rol_id = self.validar_rol_id(rol_id)
-        error_nombre_usuario = self.validar_nombre_usuario(nombre_usuario)
+        error_nombre_usuario = self.validar_nombre_usuario(nombre_usuario, usuario_id)
         error_clave_usuario = self.validar_clave_usuario(clave_usuario)
         
         errores_totales = error_empleado_id + error_rol_id + error_nombre_usuario + error_clave_usuario
@@ -97,6 +123,12 @@ class UsuarioServicio:
     
     def obtener_usuario_por_nombre_usuario(self, nombre_usuario: str) -> Optional[Tuple]:
         return self.repositorio.obtener_por_nombre_usuario(nombre_usuario)
+    
+    def obtener_usuario_por_rol_o_cedula_empleado(self, rol_id: int, cedula_empleado: Optional[str] = None) -> Optional[List[Tuple]]:
+        try:
+            return self.repositorio.obtener_por_rol_o_cedula_empleado(rol_id, cedula_empleado)
+        except BaseDatosError as error:
+            raise error
     
     def actualizar_usuario(self, usuario_id: int, campos_usuario: Dict) -> None:
         self.repositorio.actualizar(usuario_id, campos_usuario)
@@ -152,3 +184,25 @@ if __name__ == "__main__":
     usuario_autenticado = usuario_servicio.autenticar_usuario(nombre_usuario, clave_usuario)"""
     
     #usuario_servicio.eliminar_usuario(1)
+    
+    campos_usuario_actualizar = {
+        "rol_id": 1,
+        "nombre_usuario": "douglas345",
+        "clave_usuario": "123456"
+    }
+    
+    empleado_id = 3
+    usuario_id = 1
+    
+    errores = usuario_servicio.validar_campos_usuario(
+        empleado_id,
+        campos_usuario_actualizar.get("rol_id"),
+        campos_usuario_actualizar.get("nombre_usuario"),
+        campos_usuario_actualizar.get("clave_usuario"),
+        usuario_id
+    )
+    
+    if (errores):
+        print("\n".join(errores))
+    else:
+        print("INFO DEL USUARIO VALIDADA CORRECTAMENTE")
