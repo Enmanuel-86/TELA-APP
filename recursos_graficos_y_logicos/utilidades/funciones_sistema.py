@@ -909,7 +909,7 @@ class FuncionesDelSistema:
                     # Mostrar lista si es coincidencia parcial
                     mostrar_lista(app)
                     if label_guia:
-                        label_guia.setText(nombre_completo)
+                        label_guia.clear()
             else:
                 # Mostrar lista si hay múltiples coincidencias
                 mostrar_lista(app)
