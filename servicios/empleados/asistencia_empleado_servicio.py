@@ -99,6 +99,21 @@ class AsistenciaEmpleadoServicio:
         except BaseDatosError as error:
             raise error
     
+    def obtener_conteo_asistencia_mensual(self, anio_mes: str) -> List[Tuple]:
+        return self.repositorio.obtener_conteo_asistencia_mensual(anio_mes)
+    
+    def obtener_sumatoria_asistencia_inasistencia(self, anio_mes: str) -> Optional[Tuple]:
+        return self.repositorio.obtener_sumatoria_asistencia_inasistencia(anio_mes)
+    
+    def obtener_dias_habiles(self, anio_mes: str) -> Optional[Tuple]:
+        return self.repositorio.obtener_dias_habiles(anio_mes)
+    
+    def obtener_promedio_asistencia_inasistencia(self, anio_mes: str) -> Optional[Tuple]:
+        return self.repositorio.obtener_promedio_asistencia_inasistencia(anio_mes)
+    
+    def obtener_porcentaje_asistencia_inasistenica(self, anio_mes: str) -> Optional[Tuple]:
+        return self.repositorio.obtener_porcentaje_asistencia_inasistenica(anio_mes)
+    
     def actualizar(self, asist_empleado_id: int, campos_asistencia_empleado: Dict) -> None:
         self.repositorio.actualizar(asist_empleado_id, campos_asistencia_empleado)
     

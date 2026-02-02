@@ -32,6 +32,7 @@ from reportes.alumnos.reporte_general_alumnos import ReporteGeneralAlumnos
 from reportes.alumnos.reporte_asistencia_mensual_alumnos import ReporteAsistenciaMensualAlumnos
 from reportes.alumnos.reporte_informe_educativo_alumnos import ReporteInformeEducativoAlumnos
 from reportes.empleados.reporte_general_empleados import ReporteGeneralEmpleados
+from reportes.empleados.reporte_asistencia_mensual_empleados import ReporteAsistenciaMensualEmpleados
 
 
 # Servicios
@@ -48,6 +49,8 @@ reporte_general_alumnos = ReporteGeneralAlumnos()
 reporte_informe_educativo_integral_alumnos = ReporteInformeEducativoAlumnos()
 
 reporte_general_empleados = ReporteGeneralEmpleados()
+
+reporte_asistencia_mensual_empleados = ReporteAsistenciaMensualEmpleados()
 
 # Repositorios
 asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
@@ -96,6 +99,7 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         
         # Establecer la fecha actual en el dateedit
         self.dateedit_fecha_reporte_asistencia.setDate(QDate.currentDate())
+        self.dateedit_fecha_reporte_asistencia_empleados.setDate(QDate.currentDate())
         
         
         # Conexiones a los botones
@@ -103,6 +107,7 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         self.boton_generar_informe_integral_2.clicked.connect(self.generar_caraterizacion_general_alumno)
         self.boton_generar_informe_integral.clicked.connect(self.generar_informe_educativo_integral_alumno)
         self.boton_generar_informe_general_empleados.clicked.connect(self.generar_informe_general_empleados)
+        self.boton_generar_reporte_asistencia_general_empleados.clicked.connect(self.generar_reporte_asistencia_mensual_empleados)
         
         
     def generar_reporte_de_asistencia(self):
@@ -219,5 +224,24 @@ class PantallaGenerarInformesReportesAlumnos(QWidget, Ui_PantallaGenerarInformes
         except Exception as error:
             print(error)
         else:
-            QMessageBox.information(self, "AVISO", f"Generado con exito")
+            QMessageBox.information(self, "AVISO", "Generado con exito")
+            FuncionSistema.abrir_carpeta_contenedora_de_archivos(self.carpeta_reportes_empleados)
+    
+    def generar_reporte_asistencia_mensual_empleados(self):
+        """
+        Este método es para generar el reporte de asistencia general de los empleados
+        
+        :param self: No necesita parámetros (los obtenemos de la interfaz y los repositorios importados)
+        """
+        
+        try:
+            anio = self.dateedit_fecha_reporte_asistencia_empleados.date().year()
+            mes = self.dateedit_fecha_reporte_asistencia_empleados.date().month()
+            
+            datos = reporte_asistencia_mensual_empleados.cargar_datos(anio, mes)
+            reporte_asistencia_mensual_empleados.exportar(datos)
+        except Exception as error:
+            QMessageBox.warning(self, "AVISO", f"{error}")
+        else:
+            QMessageBox.information(self, "AVISO", "Generado con éxito")
             FuncionSistema.abrir_carpeta_contenedora_de_archivos(self.carpeta_reportes_empleados)

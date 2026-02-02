@@ -286,7 +286,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             empleado[2],  # Cedula
             empleado[3],  # Nombre
             empleado[4],  # Apellido
-            empleado[6],  # Estado de asistencia
+            #"AUSENTE" if empleado[6] == "II" or empleado[6] == "IJ" else empleado[6],  # Estado de asistencia
+            empleado[6],
             empleado[7],  # Hora de llegada
             empleado[8],  # Hora de salida
             ]
@@ -307,13 +308,13 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             header_item.setFlags(Qt.ItemIsEnabled)
             self.modelo.setVerticalHeaderItem(indice, header_item)
             
-            if empleado[10] != None:
+            if not empleado[10] == None and not empleado[6] == "PRESENTE" :
                 # Creamos el texto del tooltip para esta fila
                 tooltip_text = f"""<html><head/><body><p><span style=" font-weight:600;">Inasistencia Justificada: {empleado[10]}</span></p></body></html>"""
                 
-            elif empleado[9] != None:
+            if not empleado[9] == None and not empleado[6] == "PRESENTE":
                 # Creamos el texto del tooltip para esta fila
-                tooltip_text = f"""<html><head/><body><p><span style=" font-weight:600;">Motivo del retraso: {empleado[9]}</span></p></body></html>"""
+                tooltip_text = f"""<html><head/><body><p><span style=" font-weight:600;">Motivo del retraso: {empleado[9] if not empleado[9] == None else "Ninguno"}</span></p></body></html>"""
                 
             if tooltip_text:
                 # Aplicamos el tooltip a TODAS las celdas de esta fila
@@ -429,7 +430,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     # verficamos si esta presente o ausente
                     if asistencia_empleado[6] == "PRESENTE":
                         self.radioButton_asistente.setChecked(True)
-                    elif asistencia_empleado[6] == "AUSENTE":   
+                    elif asistencia_empleado[6] == "AUSENTE" or "II" or "IJ":   
                         self.radioButton_inasistente.setChecked(True)
                         
                     # le damos la hora a los qtimeedit
@@ -485,12 +486,16 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 # obtenemos el estado de asistencia
                 if self.radioButton_asistente.isChecked():
                     estado_asistencia = "PRESENTE"
-                elif self.radioButton_inasistente.isChecked():
+                    
+                if self.radioButton_inasistente.isChecked():
                     estado_asistencia = "AUSENTE"
+                    hora_entrada = None
+                    hora_salida = None
                     
                 # obtenemos los motivos
-                motivo_retraso = self.input_motivo_retraso.text().strip() if not self.input_motivo_retraso.text().strip() == "" else None
-                motivo_inasistencia = self.input_motivo_inasistencia.text().strip() == "" if self.input_motivo_inasistencia.text().strip() == "" else None
+                motivo_retraso = self.input_motivo_retraso.text().strip() if not self.input_motivo_retraso.text().strip() == "" else ""
+                motivo_inasistencia = self.input_motivo_inasistencia.text().strip() if not self.input_motivo_inasistencia.text().strip() == "" else ""
+                
                 
                 campos_asistencia_empleados = {
                 "fecha_asistencia": fecha_asistencia,
@@ -500,12 +505,17 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 "motivo_retraso": motivo_retraso,
                 "motivo_inasistencia": motivo_inasistencia
                 }
-                
-                asistencia_empleado_servicio.actualizar(self.asistencia_id, campos_asistencia_empleados)
-                
+            
+                try:
+                    asistencia_empleado_servicio.actualizar(self.asistencia_id, campos_asistencia_empleados)
+                except Exception as e:
+                    QMessageBox.warning(self, "Error al editar", f"{e}")
+                    return
             
             except Exception as e:
+                
                 FuncionSistema.mostrar_errores_por_excepcion(e, "editar_registro_de_asistencia_empleado")
+                QMessageBox.warning(self, "Error al editar", f"{e}")
                 
             else:
                 QMessageBox.information(self, "Preceso exitoso", "El registro fue editado correctamente")
@@ -520,7 +530,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
                     
                 self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
-                self.timeEdit_hora_salida.setTime(QTime(12, 0)) 
+                self.timeEdit_hora_salida.setTime(QTime(12, 0))
+                
+                self.boton_crear_registro.setEnabled(True)
                     
         
         if self.msg_box.clickedButton() == self.boton_no:
@@ -673,10 +685,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 empleado_n.append(dia_actual)
                 
                 # 2) Hora de entrada
-                
-                
                 hora_entrada = time(self.timeEdit_hora_entrada.time().hour() , self.timeEdit_hora_entrada.time().minute())
-
                 empleado_n.append(hora_entrada)
                 
                 # 3) Hora de salida
@@ -688,10 +697,9 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     estado_asistencia = "PRESENTE"
                     empleado_n.append(estado_asistencia)
                 
-                elif self.radioButton_inasistente.isChecked():
+                if self.radioButton_inasistente.isChecked():
                     estado_asistencia = "AUSENTE"
                     empleado_n.append(estado_asistencia)
-                    
                     
                 # 5) Motivo de retraso
                 if self.input_motivo_retraso.text().strip():
@@ -706,7 +714,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     motivo_inasistencia = self.input_motivo_inasistencia.text().strip()
                     empleado_n.append(motivo_inasistencia)
                 else:
-                    empleado_n.append(None)
+                    empleado_n.append("")
                 
                 # 7) cedula
                 empleado_n.append(cedula)
@@ -1057,7 +1065,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     
                     if errores_totales:
                         
-                        QMessageBox.information(self, "Error", "Tu registro de asistencia a tenido un error. ")
+                        FuncionSistema.mostrar_errores_verificados(self, errores_totales, "Control de llegada")
                         estado = False
                         return
                     else:
