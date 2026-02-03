@@ -53,6 +53,7 @@ from servicios.usuarios.permiso_servicio import PermisoServicio
 
 # EMPLEADOS
 from servicios.empleados.empleado_servicio import EmpleadoServicio
+from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
 
 
 # Instanacias Repositorios
@@ -80,7 +81,7 @@ permiso_repositorio = PermisoRepositorio()
 
 # EMPLEADOS
 empleado_repositorio = EmpleadoRepositorio()
-
+asistencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
 
 # Instancia Servicios
 
