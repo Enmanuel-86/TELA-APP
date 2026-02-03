@@ -1,3 +1,4 @@
+
 /* Partes en especifico (sidebar) */
 
 /*Estilo para el sidebar*/
@@ -18,11 +19,12 @@ QPushButton[tipo="boton_sidebar"]{
 
 QPushButton[tipo="boton_sidebar"]:hover{
 	background:  rgb(30, 30, 30);
-	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 102, 162, 255), stop:1 rgba(0, 76, 136, 255));	
+	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
 }	
 
+
 QPushButton[tipo="boton_sidebar"]:checked{
-	border-left:3px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 102, 162, 255), stop:1 rgba(0, 76, 136, 255));	
+	border-left:3px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));	
 	background: rgb(66, 62, 64)
 }
 
@@ -55,19 +57,19 @@ QToolButton#boton_ver_contrasena{
 }
 
 QToolButton#boton_ver_contrasena:hover{
-	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 102, 162, 255), stop:1 rgba(0, 76, 136, 255));
+	border:1px solid qlineargradient(spread:pad, x1:0.449, y1:0, x2:0.534, y2:1, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
 	border-radius:5px;
 }
 
 QToolButton#boton_ver_contrasena:checked {
-    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png);
 	background:transparent;
 }
 
 /* OJO ABIERTO */
 QToolButton#boton_ver_contrasena:!checked {
 background:transparent;
-    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png);
+    image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-off-white.png);
 }
 
 /* botones segun su acción  */
@@ -164,7 +166,7 @@ QLabel#imagen_contador{
 }
 
 QLabel[tipo="asistente"]{
-	background:#0061aa;
+	background:#00aa61;
 	font-size: 12pt;
 	padding-left:5px;
 	border-radius:12px;
@@ -198,8 +200,9 @@ QFrame[tipo="espacio_principal"]{
 
 /*Este Frame es el que generalemnte tiene el titulo del formulario*/
 QFrame[tipo="espacio_titulo_form"]{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 	stop:0 rgba(25, 118, 210, 255), stop:1 rgba(0, 76, 170, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 	stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
 	border-radius:20px;
+
 }
 
 
@@ -208,6 +211,7 @@ QFrame[tipo="espacio_form"]{
 	background-color: rgb(66, 62, 64);
 	padding:10px;
 	border-radius:20px;
+
 }
 
 QFrame[tipo="sub_espacio_form"]{
@@ -231,29 +235,32 @@ QLineEdit{
 	padding:5px 10px;
 	font: 14pt "Segoe UI";
 	border-radius:12px;
+
+
 }
 
 QLineEdit[tipo="lineedit_tema_claro"]{
 	background-color: rgb(255, 255, 255);
 	color: rgb(0, 0, 0);
+
 }
 
 
 
 /* Hover más marcado para que se note */
 QLineEdit:hover {
-    border: 2px solid #0061aa;       
+    border: 2px solid #00aa61;       
 }
 
 /* Focus azul vibrante tipo Material/Windows */
 QLineEdit:focus {
-    border: 2px solid rgb(25, 118, 210);          
+    border: 2px solid rgb(25, 213, 100);          
     background-color: rgb(48, 48, 48);          
     /*color: #0D47A1;*/
 }
 
 QLineEdit[tipo="lineedit_tema_claro"]:focus {
-     border: 2px solid rgb(25, 118, 210);         
+     border: 2px solid rgb(25, 213, 100);         
     background-color: rgb(239, 239, 239);  
 }
 
@@ -299,12 +306,14 @@ QLabel[tipo="titulo_form"]{
 	font: 32pt "Segoe UI";
 	padding-left:1px;
 	font-weight: 500;
+
 }
 
 QLabel[tipo="texto"]{
 	font: 15pt "Segoe UI";
 	padding-left:1px;
 	font-weight: 500;
+
 }
 
 /*Este label son los que le dan un titulo a un segmento*/
@@ -317,6 +326,7 @@ QLabel[tipo="titulo_qdateedit"]{
 	font: 8pt "Segoe UI";
 	padding-left:1px;
 	font-weight: 500;
+
 }
 
 
@@ -328,7 +338,7 @@ QLabel[tipo="titulo_qdateedit"]{
 
 /*estilo para los botones*/
 QPushButton{
-	background-color:qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 118, 210, 255), stop:1 rgba(0, 76, 170, 255)) ;
+	background-color:qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255)) ;
 	border-radius:20px;
 	font: 12pt "Segoe UI";
 	font-weight: 500;
@@ -337,11 +347,12 @@ QPushButton{
 }
 
 QPushButton:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 74, 162, 255), stop:1 rgba(0, 51, 136, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));
 }
 
 QPushButton:disabled{
-	background-color: rgb(2, 43, 81);
+	
+	background-color: rgb(2, 81, 43);
 }
 
 
@@ -365,7 +376,7 @@ QComboBox{
 
 QComboBox::drop-down {
 	width:35px;
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
@@ -375,23 +386,23 @@ QComboBox QAbstractItemView {
     background: rgb(30, 30, 30);
 	color:#ffffff;
 	padding: 10px 5px;
-	border-left:2px solid rgb(25, 118, 210);
-	border-right:2px solid rgb(25, 118, 210);
-	border-bottom:2px solid rgb(25, 118, 210);
+	border-left:2px solid rgb(25, 213, 100);
+	border-right:2px solid rgb(25, 213, 100);
+	border-bottom:2px solid rgb(25, 213, 100);
     selection-background-color: rgb(60, 56, 214);
 }
 
 QComboBox:focus {
-    border: 2px solid rgb(25, 118, 210);         
+    border: 2px solid rgb(25, 213, 100);         
     background-color: rgb(48, 48, 48); 
 }
 
 QComboBox::drop-down:pressed{
-	background-color: rgb(0, 76, 170);
+	background-color: rgb(0, 170, 97);
 }
 
 QComboBox::drop-down:hover{
-	background: rgb(2, 84, 150);
+background: rgb(2, 150, 84);
 }
 
 QComboBox:disabled {
@@ -419,6 +430,8 @@ QRadioButton {
 	font: "Segoe UI";
 }
 
+
+
 QRadioButton::indicator {
     width: 5px;
     height: 5px;
@@ -428,15 +441,16 @@ QRadioButton::indicator {
 }
 
 QRadioButton::indicator:checked {
-    border: 3px solid  qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, stop:0 rgba(25, 118, 210, 255), stop:1 rgba(0, 76, 170, 255));
+    border: 3px solid  qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
 QRadioButton::indicator:hover {
-    border:  3px solid #0061aa;
+    border:  3px solid #00aa61;
 }
 
 QRadioButton::indicator:checked:hover {
-    border:  3px solid #0061aa;
+    border:  3px solid #00aa61;;
+
 }
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -459,7 +473,7 @@ QDateEdit {
 
 /* FOCUS */
 QDateEdit:focus {
-   border: 2px solid rgb(25, 118, 210);        
+   border: 2px solid rgb(25, 213, 100);        
     background-color: rgb(48, 48, 48);
 }
 
@@ -472,7 +486,7 @@ QDateEdit::up-button {
 	margin:0px;
 	border-top-right-radius:10px;
 	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-up.png);
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
 
@@ -482,24 +496,26 @@ QDateEdit::down-button{
     border: none;
 	border-bottom-right-radius:10px;
 	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+
 }
 
 
 
 /* HOVER A LOS BOTONES */
 QDateEdit::up-button:hover {
-    background: rgb(2, 84, 150);
+    background: rgb(2, 150, 84);
 }
 
 
 QDateEdit::down-button:hover{
-     background: rgb(2, 84, 150);
+     background: rgb(2, 150, 84);
 }
+
 
 QDateEdit::drop-down {
 	width:35px;
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 	image:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/calendar-days-white.png);
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
@@ -508,7 +524,7 @@ QDateEdit::drop-down {
 
 QDateEdit::drop-down:hover {
 	width:35px;
-	background:rgb(6, 100, 179)
+	background:rgb(6, 179, 100)
 }
 
 QCalendarWidget QWidget { 
@@ -559,6 +575,8 @@ QTableView{
     selection-color: white;           /* Color texto al seleccionar */
 }
 
+
+
 QHeaderView {
     background-color: transparent;     /* Fondo del header view */
     border: none;                     /* Sin borde */
@@ -566,13 +584,14 @@ QHeaderView {
 
 /* CADA SECCIÓN DE ENCABEZADO (cada columna) */
 QHeaderView::section {
-    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 118, 210, 255), stop:1 rgba(0, 76, 170, 255)) ;        /* Color de fondo */
+    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255)) ;        /* Color de fondo */
     color: white;                     /* Color del texto */
     border: 1px solid #ffffff;        /* Borde de cada sección */
     border-left: none;                /* Quitar borde izquierdo */
     font: 11pt "Segoe UI";
 	font-weight: 600;
 	
+    
     /* Alineación del texto */
     text-align: center;                 /* left, center, right */
     
@@ -580,12 +599,12 @@ QHeaderView::section {
 
 /* Sección cuando se pasa el mouse */
 QHeaderView::section:hover {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 74, 162, 255), stop:1 rgba(0, 51, 136, 255));
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));;
 }
 
 /* Sección cuando se presiona */
 QHeaderView::section:pressed {
-    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 74, 162, 255), stop:1 rgba(0, 51, 136, 255));
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.518, x2:1, y2:0.557, stop:0 rgba(19, 162, 74, 255), stop:1 rgba(0, 136, 77, 255));;
 }
 
 /* Para la última sección (última columna) */
@@ -601,7 +620,7 @@ QHeaderView::section:vertical {
 }
 
 QTableView QTableCornerButton::section {
-    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 118, 210, 255), stop:1 rgba(0, 76, 170, 255)) ;        /* Color de fondo */
+    background-color: qlineargradient(spread:pad, x1:0.551, y1:0, x2:0.511, y2:1, stop:0 rgba(25, 213, 100, 255), stop:1 rgba(0, 170, 97, 255)) ;        /* Color de fondo */
     border:1px solid #ffffff;
 }
 
@@ -656,7 +675,7 @@ QTimeEdit {
 
 /* FOCUS */
 QTimeEdit:focus {
-   border: 2px solid rgb(25, 118, 210);        
+   border: 2px solid rgb(25, 213, 100);        
     background-color: rgb(48, 48, 48);
 }
 
@@ -668,7 +687,7 @@ QTimeEdit::up-button {
 	margin:0px;
 	border-top-right-radius:10px;
 	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-up.png);
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
 
@@ -678,19 +697,20 @@ QTimeEdit::down-button{
     border: none;
 	border-bottom-right-radius:10px;
 	image: url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/chevron-down.png);
-	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 121, 237, 255), stop:1 rgba(0, 76, 170, 255));
+background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
+
 }
 
 
 
 /* HOVER A LOS BOTONES */
 QTimeEdit::up-button:hover {
-    background: rgb(2, 84, 150);
+    background: rgb(2, 150, 84);
 }
 
 
 QTimeEdit::down-button:hover{
-     background: rgb(2, 84, 150);
+     background: rgb(2, 150, 84);
 }
 
 QTimeEdit:disabled{
@@ -703,6 +723,7 @@ QTimeEdit::up-button:disabled,
 QTimeEdit::down-button:disabled{
 	background-color: rgb(47, 47, 47);
     color: #000000;
+
 }
 
 
@@ -715,6 +736,7 @@ QTimeEdit::down-button:disabled{
 
 QCheckBox{
 	color:#ffffff;
+
 }
 
 
@@ -755,3 +777,4 @@ QMessageBox QPushButton {
 	font-size: 15px;
 	min-width: 40px;
 }
+
