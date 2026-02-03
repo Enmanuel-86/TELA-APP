@@ -444,7 +444,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>  Control de usuarios</string>
+           <string>  Usuarios</string>
           </property>
           <property name="icon">
            <iconset resource="../recursos_de_imagenes_tela_app.qrc">
@@ -493,63 +493,54 @@
         </item>
         <item>
          <widget class="QFrame" name="espacio_botones_temas">
+          <property name="styleSheet">
+           <string notr="true">color: rgb(255, 255, 255);</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QPushButton" name="boton_tema_claro">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
              <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="../recursos_de_imagenes_tela_app.qrc">
-               <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/sun.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/sun.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>25</width>
-               <height>25</height>
-              </size>
+              <string>Temas</string>
              </property>
              <property name="tipo" stdset="0">
-              <string>boton_sidebar</string>
+              <string>titulo_qlineedit</string>
              </property>
             </widget>
            </item>
-           <item>
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>76</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="boton_tema_oscuro">
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="radioButton_claro_verde">
              <property name="text">
-              <string/>
+              <string>Claro Verde</string>
              </property>
-             <property name="icon">
-              <iconset resource="../recursos_de_imagenes_tela_app.qrc">
-               <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/moon.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/moon.png</iconset>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="radioButton_oscuro_verde">
+             <property name="text">
+              <string>Oscuro Verde</string>
              </property>
-             <property name="iconSize">
-              <size>
-               <width>25</width>
-               <height>25</height>
-              </size>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="radioButton_claro_azul">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
-             <property name="tipo" stdset="0">
-              <string>boton_sidebar</string>
+             <property name="text">
+              <string>Claro Azul</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QRadioButton" name="radioButton_oscuro_azul">
+             <property name="text">
+              <string>Oscuro Azul</string>
              </property>
             </widget>
            </item>
