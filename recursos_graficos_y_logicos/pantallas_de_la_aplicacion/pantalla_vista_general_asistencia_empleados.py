@@ -354,7 +354,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
 
             # Conectar botones
             boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_del_registro_de_asistencia(fila))
-            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+            boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_registro_de_asistencia(fila))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
@@ -518,26 +518,126 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                 QMessageBox.warning(self, "Error al editar", f"{e}")
                 
             else:
+                # Avisamos al usuario que el proceso fue un exito
                 QMessageBox.information(self, "Preceso exitoso", "El registro fue editado correctamente")
+                
+                # Filtramos otra vez
                 self.filtrar_asistencia_por_fecha()
+                
+                # Restauramos a su valor inicial
                 self.asistencia_id = None
                 
+                # Cambiamos de estilo al boton y le damos su funcion que estaba al comiezo
                 FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
                 self.boton_agregar.disconnect()
                 self.boton_agregar.clicked.connect(lambda: self.agregar_info())
                 
+                # Limpiamos los inputs
                 FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                
+                # Deshabilitamos los inputs
                 FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
-                    
+                
+                # Estado inicial de los campos de la hora
                 self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
                 self.timeEdit_hora_salida.setTime(QTime(12, 0))
                 
+                # Habilitamos el boton de crear registro
                 self.boton_crear_registro.setEnabled(True)
                     
         
         if self.msg_box.clickedButton() == self.boton_no:
-            return
+            # Filtramos otra vez
+                self.filtrar_asistencia_por_fecha()
+                
+                # Restauramos a su valor inicial
+                self.asistencia_id = None
+                
+                # Cambiamos de estilo al boton y le damos su funcion que estaba al comiezo
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
+                self.boton_agregar.disconnect()
+                self.boton_agregar.clicked.connect(lambda: self.agregar_info())
+                
+                # Limpiamos los inputs
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                
+                # Deshabilitamos los inputs
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+                
+                # Estado inicial de los campos de la hora
+                self.timeEdit_hora_entrada.setTime(QTime(7, 0))  
+                self.timeEdit_hora_salida.setTime(QTime(12, 0))
+                
+                # Habilitamos el boton de crear registro
+                self.boton_crear_registro.setEnabled(True)
     
+    def eliminar_registro_de_asistencia(self, fila):
+        
+        """
+            Este metodo sirve para eliminar el registro de asistencia seleccionado, este metodo funciona de la siguiente manera:
+            
+            1. Verificamos que tenga el permiso para eliminar
+            2. Le preguntamos al usuario si quiere eliminar el registro de asistencia, si la respuesta es SI, elimina el usaurio y refresca la tabla, en caso contrario no pasara nada
+            3. Obtenemos el id del empleado
+            4. Obtenemos la fecha en la que se esta filtrando
+            5. Obtenemos el id de la asistencia
+            6. Procedemos a borrar/eliminar el registro de asistencia
+        """
+        
+        
+        
+        try:
+            permiso_borrar_registro_asistencia = True
+            
+            if permiso_borrar_registro_asistencia:
+                
+                self.msg_box.setIcon(QMessageBox.Information)
+                self.msg_box.setWindowTitle("Confirmar acción")
+                self.msg_box.setText("¿Seguro que quiere eliminar este registro de asistencia?")
+                QApplication.beep()
+                self.msg_box.exec_()
+                
+                if self.msg_box.clickedButton() == self.boton_si:
+                    
+                    
+                    try:
+                        # Obtener el texto de la primera columna (nombre)
+                        cedula = self.modelo.item(fila, 0).text()
+                        
+                        # Tomamos la fecha en la que se esta filtrando
+                        fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                                self.dateedit_filtro_fecha_asistencia.date().month(), 
+                                self.dateedit_filtro_fecha_asistencia.date().day() )
+                        
+                        # Buscamos el empleado
+                        empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)
+                        
+                        # Guardamos el id del empleado
+                        empleado_id = empleado[0]
+                        
+                        # Obetenemos a la asistencia del empleado seleccionado segun la fecha y el ID del empleado
+                        asistencia_empleado = asistencia_empleado_servicio.obtener_asistencia_por_empleado_id_y_fecha(empleado_id, fecha)
+                        
+                        # Guardamos el id de la asistencia
+                        asistencia_id =  asistencia_empleado[0]
+                        
+                        # Eliminamos al usuario
+                        asistencia_empleado_servicio.eliminar(asistencia_id)
+                        
+                    except Exception as e:
+                        
+                        print("No se pudo eliminar el registro de asistencia correctamente")
+                        
+                    else:
+                        QMessageBox.information(self, "Preceso exitoso", "El registro fue eliminado correctamente")
+                        self.filtrar_asistencia_por_fecha()
+                    
+                
+        except Exception as e:
+            QMessageBox.information(self, "Error en el proceso", f"{e}")
+            return
+            
+            
     def crear_nuevo_registro_asistencia(self):
         """
             Este metodo sirve para empezar a crear un nuevo registro de asistencia de los empleados, hace lo siguiente
