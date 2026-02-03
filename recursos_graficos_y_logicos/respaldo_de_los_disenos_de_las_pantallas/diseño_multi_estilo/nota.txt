@@ -1,1 +1,0 @@
-Esto es para que cada pantalla se le quita el estilo para centralizar el estilo en un archivo .qss
