@@ -240,8 +240,9 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
         self.boton_control_usuarios.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 12))
-        self.boton_tema_claro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_default.qss'))
-        self.boton_tema_oscuro.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro.qss'))
+        self.radioButton_claro_verde.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_claro_verde.qss'))
+        self.radioButton_oscuro_verde.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro_verde.qss'))
+        self.radioButton_oscuro_azul.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro_azul.qss'))
         self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
@@ -395,7 +396,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    FuncionSistema.cargar_estilos(window, 'recursos_graficos_y_logicos/estilos/estilo_oscuro.qss')
+    FuncionSistema.cargar_estilos(window, ':/hojas_de_estilo/estilos/estilo_oscuro_verde.qss')
     
     window.show()
     window.showMaximized()
