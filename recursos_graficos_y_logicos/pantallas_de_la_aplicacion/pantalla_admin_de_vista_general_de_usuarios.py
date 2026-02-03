@@ -64,7 +64,8 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         self.barra_de_busqueda.returnPressed.connect(self.filtrar_por_rol_de_usuario)
         #self.barra_de_busqueda.textChanged.connect(self.filtrar_por_rol_de_usuario)
         self.boton_buscar.clicked.connect(self.filtrar_por_rol_de_usuario)
-        FuncionSistema.configurar_barra_de_busqueda(self, self.input_cedula_empleado, self.lista_empleados_actual, 6,1,4, self.label_nombre_empleado_guia)
+        
+        
         
         # ELEMENTOS DE UTILIDAD
         self.lista_roles = rol_servicio.obtener_todos_roles()
@@ -89,7 +90,25 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
     def actualizar_lista_busqueda(self):
         
-        self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+        
+        
+        try:
+            self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+            usuarios = usuario_servicio.obtener_todos_usuarios()
+            #print(usuarios[1])
+            for usuario in usuarios:
+                for empleado in self.lista_empleados_actual:
+                    
+                    if usuario[1] == empleado[6]:
+                        
+                        self.lista_empleados_actual.remove(empleado)
+            
+        except:
+            print("No se puedo actular la lista en la pantalla de usuarios")
+            
+        else:
+            
+            FuncionSistema.configurar_barra_de_busqueda(self, self.input_cedula_empleado, self.lista_empleados_actual, 6,1,4, self.label_nombre_empleado_guia)
         
     
     
