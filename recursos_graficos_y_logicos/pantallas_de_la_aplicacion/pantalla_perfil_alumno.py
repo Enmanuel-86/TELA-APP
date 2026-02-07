@@ -434,7 +434,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             self.dockWidget_diagnostico.setFloating(True)
             diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
-            print(diagnostico)
+            
         
             if self.dockWidget_diagnostico.show():
                 
