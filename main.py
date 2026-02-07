@@ -163,7 +163,8 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
         
         self.botones_sidebar = (self.boton_principal, self.boton_estudiante, self.boton_personal, 
-                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_generar_reporte ,self.boton_salir)
+                                self.boton_cargar_catologo, self.boton_respaldo, self.boton_generar_reporte ,
+                                self.boton_control_usuarios, self.boton_salir)
         
         self.pantallas_importantes = (3, 4, 6, 8, 9, 11)
         
