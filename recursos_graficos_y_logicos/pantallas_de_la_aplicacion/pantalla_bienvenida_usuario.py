@@ -20,6 +20,7 @@ class PantallaBienvenidaUsuario(QWidget, Ui_PantallaBienvenidaUsuario):
             Este metodo sirve para abrir el manual de usuario
         """
         
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..","recursos_graficos_y_logicos", "utilidades", "MANUAL DE USUARIO PARA EL USO DEL TELA-APP.pdf")
         pdf_path = r'recursos_graficos_y_logicos/utilidades/MANUAL DE USUARIO PARA EL USO DEL TELA-APP.pdf'  # Cambia esta ruta
         
         if os.path.exists(pdf_path):
