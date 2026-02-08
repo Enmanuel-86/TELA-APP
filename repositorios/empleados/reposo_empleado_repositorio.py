@@ -53,11 +53,10 @@ class ReposoEmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER LOS REPOSOS DE EMPLEADOS: {error}")
     
-    def obtener_por_id(self, reposo_empleado_id: int) -> Optional[Tuple]:
+    def obtener_por_id(self, reposo_empleado_id: int):
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                reposo_empleado = sesion.execute(text(
-                    """
+                consulta = """
                         SELECT 
                             empleados.cedula,
                             empleados.primer_nombre,
@@ -69,10 +68,41 @@ class ReposoEmpleadoRepositorio(RepositorioBase):
                         INNER JOIN tb_reposos_empleados AS reposos_empleados ON reposos_empleados.empleado_id = empleados.empleado_id
                         WHERE reposos_empleados.reposo_empleado_id = :reposo_empleado_id;
                     """
-                ), {"reposo_empleado_id": reposo_empleado_id}).fetchone()
+
+                parametros = {"reposo_empleado_id": reposo_empleado_id}
+                
+                reposo_empleado = sesion.execute(text(consulta), parametros).fetchone()
+                
+                if not (reposo_empleado):
+                    raise BaseDatosError("NO_EXISTE_REPOSO_EMPLEADO_POR_ID", "Este reposo de empleado no existe.")
+                
+                return reposo_empleado
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER LOS REPOSOS POR ID: {error}")
+    
+    def obtener_por_empleado_id(self, empleado_id: int) -> Optional[Tuple]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                reposo_empleado = sesion.execute(text(
+                    """
+                        SELECT 
+                            empleados.cedula,
+                            empleados.primer_nombre,
+                            empleados.apellido_paterno,
+                            reposos_empleados.motivo_reposo,
+                            reposos_empleados.fecha_emision,
+                            reposos_empleados.fecha_reingreso,
+                            reposos_empleados.reposo_empleado_id
+                        FROM tb_empleados AS empleados
+                        INNER JOIN tb_reposos_empleados AS reposos_empleados ON reposos_empleados.empleado_id = empleados.empleado_id
+                        WHERE empleados.empleado_id = :empleado_id;
+                    """
+                ), {"empleado_id": empleado_id}).fetchone()
                 
                 if not(reposo_empleado):
-                    raise BaseDatosError("REPOSO_EMPLEADO_NO_EXISTE", "Este registro de reposo no existe")
+                    raise BaseDatosError("NO_EXISTE_REPOSO_POR_EMPLEADO_ID", "Este registro de reposo no existe.")
                 
                 return reposo_empleado
         except BaseDatosError as error:
@@ -80,11 +110,10 @@ class ReposoEmpleadoRepositorio(RepositorioBase):
         except Exception as error:
             print(f"ERROR AL OBTENER EL REPOSO DEL EMPLEADO: {error}")
     
-    def obtener_por_fecha_emision(self, fecha_emision: date) -> List[Tuple]:
+    def obtener_por_fecha_emision_o_cedula(self, fecha_emision: date, cedula_empleado: str = None) -> List[Tuple]:
         try:
             with self.conexion_bd.obtener_sesion_bd() as sesion:
-                reposos_empleados = sesion.execute(text(
-                    """
+                consulta = """
                         SELECT 
                             empleados.cedula,
                             empleados.primer_nombre,
@@ -94,18 +123,29 @@ class ReposoEmpleadoRepositorio(RepositorioBase):
                             reposos_empleados.fecha_reingreso
                         FROM tb_empleados AS empleados
                         INNER JOIN tb_reposos_empleados AS reposos_empleados ON reposos_empleados.empleado_id = empleados.empleado_id
-                        WHERE reposos_empleados.fecha_emision = :fecha_emision;
+                        WHERE reposos_empleados.fecha_emision = :fecha_emision
                     """
-                ), {"fecha_emision": fecha_emision}).fetchall()
+
+                parametros = {"fecha_emision": fecha_emision}
+                condiciones_adicionales = []
+                
+                if (cedula_empleado):
+                    condiciones_adicionales.append("empleados.cedula = :cedula_empleado")
+                    parametros["cedula_empleado"] = cedula_empleado
+                
+                if (condiciones_adicionales):
+                    consulta += " AND " + " AND ".join(condiciones_adicionales)
+                
+                reposos_empleados = sesion.execute(text(consulta), parametros).fetchall()
                 
                 if not(reposos_empleados):
-                    raise BaseDatosError("REPOSOS_EMPLEADOS_NO_EXISTEN", "No existen reposos solicitados este día")
+                    raise BaseDatosError("REPOSOS_EMPLEADOS_NO_EXISTEN", "No existen reposos solicitados este día o por la cédula ingresada.")
                 
                 return reposos_empleados
         except BaseDatosError as error:
             raise error
         except Exception as error:
-            print(f"ERROR AL OBTENER EL REPOSO DE EMPLEADO POR FECHA DE EMISIÓN: {error}")
+            print(f"ERROR AL OBTENER LOS REPOSOS DE EMPLEADOS POR FECHA DE EMISIÓN O CÉDULA: {error}")
     
     def actualizar(self, reposo_empleado_id: int, campos_reposo_empleado: Dict) -> None:
         try:

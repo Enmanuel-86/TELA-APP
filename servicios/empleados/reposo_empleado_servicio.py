@@ -9,11 +9,22 @@ class ReposoEmpleadoServicio:
     def __init__(self, repositorio: RepositorioBase):
         self.repositorio = repositorio
     
-    def validar_empleado_id(self, empleado_id: int) -> List[str]:
+    def validar_empleado_id(self, empleado_id: int, reposo_empleado_id: int = None) -> List[str]:
         errores = []
         
         if not(empleado_id):
             errores.append("Empleado: Tiene que asignarle el reposo a un empleado.")
+            
+        try:
+            empleado_ya_tiene_reposo = self.obtener_reposo_por_empleado_id(empleado_id)
+            
+            if (empleado_ya_tiene_reposo):
+                id_reposo_empleado_existente = empleado_ya_tiene_reposo[6]
+                
+                if ((reposo_empleado_id is None) or (id_reposo_empleado_existente != reposo_empleado_id)):
+                    errores.append("Empleado: Este empleado ya tiene un reposo registrado.")
+        except BaseDatosError:
+            pass
         
         return errores
     
@@ -43,8 +54,8 @@ class ReposoEmpleadoServicio:
         
         return errores
     
-    def validar_campos_reposo(self, empleado_id: int, motivo_reposo: str, fecha_reingreso: date, fecha_emision: date) -> List[str]:
-        error_empleado_id = self.validar_empleado_id(empleado_id)
+    def validar_campos_reposo(self, empleado_id: int, motivo_reposo: str, fecha_reingreso: date, fecha_emision: date, reposo_empleado_id: int = None) -> List[str]:
+        error_empleado_id = self.validar_empleado_id(empleado_id, reposo_empleado_id)
         error_motivo_reposo = self.validar_motivo_reposo(motivo_reposo)
         error_fecha_reingreso = self.validar_fecha_reingreso(fecha_reingreso, fecha_emision)
         
@@ -64,9 +75,15 @@ class ReposoEmpleadoServicio:
         except BaseDatosError as error:
             raise error
     
-    def obtener_reposo_por_fecha_emision(self, fecha_emision: date) -> List[Tuple]:
+    def obtener_reposo_por_empleado_id(self, empleado_id: int) -> Optional[Tuple]:
         try:
-            return self.repositorio.obtener_por_fecha_emision(fecha_emision)
+            return self.repositorio.obtener_por_empleado_id(empleado_id)
+        except BaseDatosError as error:
+            raise error
+    
+    def obtener_reposo_por_fecha_emision_o_cedula(self, fecha_emision: date, cedula_empleado: str = None) -> List[Tuple]:
+        try:
+            return self.repositorio.obtener_por_fecha_emision_o_cedula(fecha_emision, cedula_empleado)
         except BaseDatosError as error:
             raise error
     

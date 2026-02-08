@@ -6,7 +6,9 @@
 # Repositorios
 
 # EMPLEADOS
+from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
 from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+from repositorios.empleados.reposo_empleado_repositorio import ReposoEmpleadoRepositorio
 
 # especialidades
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
@@ -24,10 +26,6 @@ from repositorios.usuarios.usuario_repositorio import UsuarioRepositorio
 from repositorios.usuarios.rol_repositorio import RolRepositorio
 from repositorios.usuarios.auditoria_repositorio import AuditoriaRepositorio
 from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
-
-
-# EMPLEADOS
-from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
 
 
 # Servicios
@@ -54,6 +52,7 @@ from servicios.usuarios.permiso_servicio import PermisoServicio
 # EMPLEADOS
 from servicios.empleados.empleado_servicio import EmpleadoServicio
 from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
+from servicios.empleados.reposo_empleado_servicio import ReposoEmpleadoServicio
 
 
 # Instanacias Repositorios
@@ -82,11 +81,14 @@ permiso_repositorio = PermisoRepositorio()
 # EMPLEADOS
 empleado_repositorio = EmpleadoRepositorio()
 asistencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
+reposo_empleado_repositorio = ReposoEmpleadoRepositorio()
 
 # Instancia Servicios
 
 # EMPLEADOS
 asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistencia_empleado_repositorio)
+empleado_servicio = EmpleadoServicio(empleado_repositorio)
+reposo_empleado_servicio = ReposoEmpleadoServicio(reposo_empleado_repositorio)
 
 # especialidades
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
@@ -108,7 +110,3 @@ usuario_servicio = UsuarioServicio(usuario_repositorio)
 rol_servicio = RolServicio(rol_repositorio)
 auditoria_servicio = AuditoriaServicio(auditoria_repositorio)
 permiso_servicio = PermisoServicio(permiso_repositorio)
-
-
-# EMPLEADOS
-empleado_servicio = EmpleadoServicio(empleado_repositorio)
