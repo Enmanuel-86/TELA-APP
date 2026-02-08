@@ -242,12 +242,13 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
         self.boton_control_usuarios.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 12))
         self.radioButton_claro_verde.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_claro_verde.qss'))
+        self.radioButton_claro_azul.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_claro_azul.qss'))
         self.radioButton_oscuro_verde.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro_verde.qss'))
         self.radioButton_oscuro_azul.clicked.connect(lambda: FuncionSistema.cargar_estilos(self, ':/hojas_de_estilo/estilos/estilo_oscuro_azul.qss'))
         self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
         
         
-        
+        self.radioButton_claro_azul.setEnabled(True)
         
         
         self.msg = QMessageBox()
