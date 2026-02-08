@@ -933,18 +933,19 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                                         pantalla_tabla = self.stacked_widget.widget(7)
                                         
-                                        pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= "Activo", indice_cedula= 1, indice_1er_nombre= 2, indice_2do_nombre= 3,
-                                                                        indice_1er_apellido=5, indice_2do_apellido= 6, indice_estado= 8)
+                                        pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= "Activo", indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                                                        indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9)
+                                        
                                         
                                         pantalla_tabla.actualizar_lista_busqueda()
                                         
                                         pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
-                                    
+
                                         self.stacked_widget.setCurrentIndex(7)
 
 
                                         FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
-                                        
+                                        self.label_foto_empleado.setText("No hay foto")
                                         
                                         self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
                                         self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
