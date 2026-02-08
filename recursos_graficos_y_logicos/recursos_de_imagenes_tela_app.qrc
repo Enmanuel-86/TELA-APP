@@ -99,6 +99,7 @@
   </qresource>
   <qresource prefix="hojas_de_estilo">
     <file>estilos/estilo_claro_verde.qss</file>
+    <file>estilos/estilo_claro_azul.qss</file>
     <file>estilos/estilo_oscuro_azul.qss</file>
     <file>estilos/estilo_oscuro_verde.qss</file>
   </qresource>
