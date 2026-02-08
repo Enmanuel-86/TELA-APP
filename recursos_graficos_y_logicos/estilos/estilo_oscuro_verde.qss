@@ -655,6 +655,56 @@ QScrollArea {
  }
 
 
+/* Fondo general del scrollbar */
+QScrollBar {
+    background: #000000;
+    border: none;
+}
+
+/* Tamaño */
+QScrollBar:vertical {
+    width: 12px;
+	background: #000000
+}
+
+QScrollBar:horizontal {
+    height: 12px;
+	background: #000000
+}
+
+/* ===== HANDLE (la barra que se mueve) ===== */
+QScrollBar::handle {
+    background: #808080;
+    border-radius: 6px;
+	margin:4px;
+}
+
+/* Hover (cuando pasas el mouse) */
+QScrollBar::handle:hover {
+    background: #6e6e6e;
+}
+
+/* Click / Drag */
+QScrollBar::handle:pressed {
+    background: #afafaf;
+}
+
+/* ===== Quitar botones de flechas ===== */
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    background: none;
+    border: none;
+    width: 0px;
+    height: 0px;
+}
+
+/* ===== Quitar zonas de salto ===== */
+QScrollBar::add-page,
+QScrollBar::sub-page {
+    background: none;
+}
+
+
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------*/
