@@ -44,6 +44,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 self.vista_previa_diagnostico, self.label_foto_alumno
                                 )
         
+        self.campos_representantes = (self.input_nombre_del_representante,
+                    self.input_apellido_del_representante,
+                    self.input_carga_familiar,
+                    self.input_direccion_residencia,
+                    self.input_numero_de_telefono,
+                    self.input_numero_de_telefono_adicional,
+                    self.input_estado_civil)
+                    
+        
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
         self.lista_de_radiobuttons = (
                                       self.input_sexo_masculino, self.input_sexo_femenino, self.input_cma_si, self.input_cma_no,
@@ -326,13 +335,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_estado_civil.setText(estado_civil_representante)
                     
                     # deshabilitamos los campos
-                    self.input_nombre_del_representante.setDisabled(True)
-                    self.input_apellido_del_representante.setDisabled(True)
-                    self.input_carga_familiar.setDisabled(True)
-                    self.input_direccion_residencia.setDisabled(True)
-                    self.input_numero_de_telefono.setDisabled(True)
-                    self.input_numero_de_telefono_adicional.setDisabled(True)
-                    self.input_estado_civil.setDisabled(True)
+                    
+                    FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, False)
                     
                     if not edicion:
                         # mostramos mensaje en pantalla
@@ -345,22 +349,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.representante_registrado = False
                     
                     # habilitamos los campos
-                    self.input_nombre_del_representante.setEnabled(True)
-                    self.input_apellido_del_representante.setEnabled(True)
-                    self.input_carga_familiar.setEnabled(True)
-                    self.input_direccion_residencia.setEnabled(True)
-                    self.input_numero_de_telefono.setEnabled(True)
-                    self.input_numero_de_telefono_adicional.setEnabled(True)
-                    self.input_estado_civil.setEnabled(True)
+                    FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, True)
                     
                     # limpiamos los campos
-                    self.input_nombre_del_representante.clear()
-                    self.input_apellido_del_representante.clear()
-                    self.input_carga_familiar.clear()
-                    self.input_direccion_residencia.clear()
-                    self.input_numero_de_telefono.clear()
-                    self.input_numero_de_telefono_adicional.clear()
-                    self.input_estado_civil.clear()
+                    FuncionSistema.limpiar_inputs_de_qt(self.campos_representantes)
                     
                     if not edicion:
                         # mostramos el mensaje
@@ -2335,6 +2327,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             # Limpiar todos los inputs
             FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            FuncionSistema.limpiar_inputs_de_qt(self.campos_representantes)
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, True)
             self.foto_perfil_alumno = None
             self.foto_perfil_representante = None
             self.label_foto_alumno.setText("No hay foto")
