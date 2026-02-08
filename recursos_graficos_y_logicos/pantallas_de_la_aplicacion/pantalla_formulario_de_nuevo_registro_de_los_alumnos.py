@@ -11,78 +11,9 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
                              QPushButton, QApplication)
 from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
 from ..utilidades.funciones_sistema import FuncionSistema
-                                     
-##################################
-# importaciones de base de datos #
-##################################
-
-# Repositorios
-
-from repositorios.alumnos.alumno_repositorio import AlumnoRepositorio
-from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoRepositorio
-from repositorios.alumnos.representante_repositorio import RepresentanteRepositorio
-from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
-from repositorios.alumnos.medidas_alumno_repositorio import MedidasAlumnoRepositorio
-from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
-from repositorios.alumnos.info_bancaria_alumno_repositorio import InfoBancarioAlumnoRepositorio
-from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
-
-# Servicio
-
-from servicios.alumnos.alumno_servicio import AlumnoServicio
-from servicios.diagnosticos.diagnostico_servicio import DiagnosticoServicio
-from servicios.alumnos.representante_servicio import RepresentanteServicio
-from servicios.especialidades.especialidad_servicio import EspecialidadServicio
-from servicios.alumnos.medidas_alumno_servicio import MedidasAlumnoServicio
-from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
-from servicios.alumnos.info_bancaria_alumno_servicio import InfoBancariaAlumnoServicio
-from servicios.alumnos.inscripcion_servicio import InscripcionServicio
-
-##################################
-# importaciones de base de datos #
-##################################
-
-# Instancia de los repositorios
-
-alumno_repositorio = AlumnoRepositorio()
-
-diagnostico_repositorio = DiagnosticoRepositorio()
-
-representante_repositorio = RepresentanteRepositorio()
-
-especialidad_repositorio = EspecialidadRepositorio()
-
-medidas_alumno_repositorio = MedidasAlumnoRepositorio()
-
-info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
-
-info_bancaria_alumno_repositorio = InfoBancarioAlumnoRepositorio()
-
-inscripcion_repositorio = InscripcionRepositorio()
-
-# Intancia de los servicio
-
-alumno_servicio = AlumnoServicio(alumno_repositorio)
-
-diagnostico_servicio = DiagnosticoServicio(diagnostico_repositorio)
-
-representante_servicio = RepresentanteServicio(representante_repositorio)
-
-especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
-
-medidas_alumno_servicio = MedidasAlumnoServicio(medidas_alumno_repositorio)
-
-info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
-
-info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_repositorio)
-
-inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
-
-# Lista de la bd
-
-
-
-
+from ..utilidades.base_de_datos import (alumno_servicio, especialidad_servicio, diagnostico_servicio,
+                                        medidas_alumno_servicio, representante_servicio, info_clinica_alumno_servicio,
+                                        info_bancaria_alumno_servicio, inscripcion_servicio)
 
 # Obtener el año actual
 año_actual = datetime.now().year
@@ -99,7 +30,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.foto_perfil_alumno = None
         self.foto_perfil_representante = None
-
+        
         # lista de inputs para usarlo en el metodo de limpiar inputs,
         # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
         self.lista_de_inputs = (
@@ -834,7 +765,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
             self.foto_perfil_alumno = None
             self.foto_perfil_representante = None
-        
+            self.label_foto_alumno.setText("No hay foto")
+            self.label_foto_representante.setText("No hay foto")
+            
+            self.boton_de_especialidad.setCurrentIndex(0)
+            self.area_de_scroll.verticalScrollBar().setValue(0)
+            
+            
         ## si el boton "no" es pulsadoo, no pasa nada #3
         elif self.msg_box.clickedButton() == self.boton_no:
             pass
@@ -1184,6 +1121,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             # verificamos que no hay errores
             if errores_primera_info_alumno:
                 
+                self.area_de_scroll.verticalScrollBar().setValue(0)
                 self.mostrar_errores_antes_de_guardar(errores_primera_info_alumno, "Información del alumno")
                 return
             
@@ -1238,7 +1176,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 # comprobamos si no hay errores
                 # si los hay que muestre el mensaje en la pantalla
                 if errores_segunda_info_alumno:
-                
+                    self.area_de_scroll.verticalScrollBar().setValue(0)
                     self.mostrar_errores_antes_de_guardar(errores_segunda_info_alumno, "Información del alumno")
                     return
                 
@@ -1280,6 +1218,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                         # Cuarta parte
                         # aqui verifica si el usuario verifico si el representante existe o no
                         if not self.comprobacion:
+                            self.area_de_scroll.verticalScrollBar().setValue(750)
                             QMessageBox.warning(self, "Aviso", "Tiene que comprobar si el representante esta registrado o no")
                             return 
                     
@@ -1323,7 +1262,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
                                     # comprobamos que no haigan errores
                                     if errores_medidas_alumnos:
-                                        
+                                        self.area_de_scroll.verticalScrollBar().setValue(1182)
                                         self.mostrar_errores_antes_de_guardar(errores_medidas_alumnos, "Información medidas del alumnos")
                                         return
             
@@ -1349,8 +1288,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             if not self.lista_carrito_diagnosticos:
                                                 
                                                 # si no tiene un registro que le muestre un mensaje de que no a registrado un diagnostico para el alumno
+                                                self.area_de_scroll.verticalScrollBar().setValue(1943)
                                                 QMessageBox.warning(self, "Aviso", f"El alumno {primer_nombre} {apellido_paterno}, no tiene diagnosticos registrados")
-                                            
+                                                return
                                             
                                             
                                             # si son uno o unos diagnostico entonces que siga 
@@ -1544,7 +1484,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                             "medicacion": None
                                                                         }
                                                         
-                                                         # si hay diagnosticos en el "carrito" de diagnosticos
+                                                        # si hay diagnosticos en el "carrito" de diagnosticos
                                                         if self.lista_carrito_diagnosticos:
                                                         
                                                             for diagnostico in self.lista_carrito_diagnosticos:
@@ -1566,7 +1506,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         else:
                                                             # esto ya aparece antes
                                                             QMessageBox.warning(self, "Aviso", f"El joven {self.input_primer_nombre.text()} {self.input_apellido_paterno.text()}, no tiene diagnosticos registrados")
-                                                                    
+                                                            return
                                                             
                                                         campos_inscripcion = {
                                                                     "num_matricula": None, #Esto es None para que internamente se modifique este valor por el que se va a generar automáticamente
@@ -1577,6 +1517,31 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                                 }
                                                         
                                                         inscripcion_servicio.registrar_inscripcion(campos_inscripcion)
+                                                        
+                                                        
+                                                        QMessageBox.information(self, "Bien hecho", "Registro exitoso")
+            
+                                                        # Limpiar todos los inputs
+                                                        FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+                                                        self.foto_perfil_alumno = None
+                                                        self.foto_perfil_representante = None
+                                                        self.label_foto_alumno.setText("No hay foto")
+                                                        self.label_foto_representante.setText("No hay foto")
+                                                        
+                                                        
+                                                        self.boton_de_especialidad.setCurrentIndex(0)
+                                                        self.area_de_scroll.verticalScrollBar().setValue(0)
+                                                        
+                                                        pantalla_tabla_alumnos = self.stacked_widget.widget(2)
+
+                                                        pantalla_tabla_alumnos.actualizar_tabla(None,"Ingresado", 1)
+                                                        pantalla_tabla_alumnos.actualizar_lista_busqueda()
+                                                                                                                
+                                                        pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
+                                                    
+                                                        
+                                                        self.stacked_widget.setCurrentIndex(2)
+
                                                         
                                                     
                                                     ## si el boton "no" es pulsadoo, no hace nada
@@ -1597,24 +1562,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         except Exception as e:
             FuncionSistema.mostrar_errores_por_excepcion(e, "guardar_informacion_alumno")
         
-        else:
-            QMessageBox.information(self, "Bien hecho", "Registro exitoso")
-            
-            # Limpiar todos los inputs
-            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
-            
-            
-            
-            pantalla_tabla_alumnos = self.stacked_widget.widget(2)
-
-            pantalla_tabla_alumnos.actualizar_tabla(None,"Ingresado", 1)
-            pantalla_tabla_alumnos.actualizar_lista_busqueda()
-                                                                    
-            pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
         
             
-            self.stacked_widget.setCurrentIndex(2)
-
 
 
     def editar_datos_alumno(self, alumno_id: int):
@@ -2386,6 +2335,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             # Limpiar todos los inputs
             FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            self.foto_perfil_alumno = None
+            self.foto_perfil_representante = None
+            self.label_foto_alumno.setText("No hay foto")
+            self.label_foto_representante.setText("No hay foto")
+            
+            self.boton_de_especialidad.setCurrentIndex(0)
+            self.area_de_scroll.verticalScrollBar().setValue(0)
             
             pantalla_tabla_alumnos = self.stacked_widget.widget(2)
 
