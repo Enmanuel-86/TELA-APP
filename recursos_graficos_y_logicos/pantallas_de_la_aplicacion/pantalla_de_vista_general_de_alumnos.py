@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QWidget, QHeaderView,  QVBoxLayout, 
                              QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel, QApplication)
 from PyQt5 import QtGui, QtCore
-import os
+from configuraciones.configuracion import app_configuracion
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos
 from ..utilidades.base_de_datos import especialidad_servicio
 from ..utilidades.funciones_sistema import FuncionSistema
@@ -674,7 +674,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         """
         
         try: 
-            permiso_editar_alumno = permisos_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "ACTUALIZAR ALUMNOS")
+            permiso_editar_alumno = permisos_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "ACTUALIZAR ALUMNOS")
             if permiso_editar_alumno:
                 
                 try: 
@@ -724,7 +724,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         try:
             
-            permiso_para_eliminar_alumno = permisos_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "ELIMINAR ALUMNOS")
+            permiso_para_eliminar_alumno = permisos_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "ELIMINAR ALUMNOS")
             
             if permiso_para_eliminar_alumno:
                 

@@ -4,86 +4,11 @@ from PyQt5.QtWidgets import (QWidget, QHeaderView,  QHBoxLayout,
                              QMessageBox, QListWidget, QListWidgetItem, 
                              QPushButton, QApplication)
 from PyQt5 import QtGui
-import os
+from configuraciones.configuracion import app_configuracion
 from ..elementos_graficos_a_py import Ui_VistaGeneralDelPersonal
 from ..utilidades.funciones_sistema import FuncionSistema
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
-
-# repositorios
-from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
-from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
-from repositorios.empleados.cargo_empleado_repositorio import CargoEmpleadoRepositorio
-from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
-from repositorios.empleados.tipo_cargo_repositorio import TipoCargoRepositorio
-from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
-from repositorios.empleados.historial_enferm_cronicas_repositorio import HistorialEnfermCronicasRepositorio
-from repositorios.empleados.info_clinica_empleado_repositorio import InfoClinicaEmpleadoRepositorio
-
-
-
-# servicios
-from servicios.empleados.empleado_servicio import EmpleadoServicio
-from servicios.empleados.info_laboral_servicio import InfoLaboralServicio
-from servicios.empleados.detalle_cargo_servicio import DetalleCargoServicio
-from servicios.empleados.cargo_empleado_servicio import CargoEmpleadoServicio
-from servicios.empleados.tipo_cargo_servicio import TipoCargoServicio
-from servicios.especialidades.especialidad_servicio import EspecialidadServicio
-from servicios.empleados.historial_enferm_cronicas_servicio import HistorialEnfermCronicasServicio
-from servicios.empleados.info_clinica_empleado_servicio import InfoClinicaEmpleadoServicio
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
-
-
-# instancias de los repositorios
-
-empleado_repositorio = EmpleadoRepositorio()
-
-info_laboral_repositorio = InfoLaboralRepositorio()
-
-cargo_empleado_repositorio = CargoEmpleadoRepositorio()
-
-detalle_cargo_repositorio = DetalleCargoRepositorio()
-
-tipo_cargo_repositorio = TipoCargoRepositorio()
-
-especialidad_repositorio = EspecialidadRepositorio()
-
-histotial_enferm_cronicas_repositorio = HistorialEnfermCronicasRepositorio()
-
-info_clinica_empleado_repositorio = InfoClinicaEmpleadoRepositorio()
-
-
-# instancia de los servicios
-
-empleado_servicio = EmpleadoServicio(empleado_repositorio)
-
-info_laboral_servicio = InfoLaboralServicio(info_laboral_repositorio)
-
-cargo_empleado_servicio = CargoEmpleadoServicio(cargo_empleado_repositorio)
-
-detalle_cargo_servicio = DetalleCargoServicio(detalle_cargo_repositorio)
-
-tipo_cargo_servicio = TipoCargoServicio(tipo_cargo_repositorio)
-
-especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
-
-histotial_enferm_cronicas_servicio = HistorialEnfermCronicasServicio(histotial_enferm_cronicas_repositorio)
-
-info_clinica_empleado_servicio = InfoClinicaEmpleadoServicio(info_clinica_empleado_repositorio)
-
-##################################
-# importaciones de base de datos #
-##################################
-
+from ..utilidades.base_de_datos import (cargo_empleado_servicio, tipo_cargo_servicio, especialidad_servicio,
+                                        empleado_servicio, detalle_cargo_servicio, permiso_servicio)
 
 
 
@@ -329,22 +254,31 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         
     def habilitar_edicion(self, fila):
         
+        
+        cedula = modelo.item(fila, 0).text()
+            
+        empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)    
+        
+        empleado_id = empleado[0]
+        
         try:
-            cedula = modelo.item(fila, 0).text()
             
-            empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_empleados_actual)
+            permiso_editar_empleado = permiso_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "ACTUALIZAR EMPLEADOS")
             
-            self.stacked_widget.setCurrentIndex(8)
-            
-            pantalla_editar_empleado = self.stacked_widget.widget(8)
-            
-            pantalla_editar_empleado.editar_datos_empleado(empleado_id)
-            
+            if permiso_editar_empleado:
+                self.stacked_widget.setCurrentIndex(8)
+                
+                pantalla_editar_empleado = self.stacked_widget.widget(8)
+                
+                pantalla_editar_empleado.editar_datos_empleado(empleado_id)
+                
             
         except Exception as e:
+            print(F"No lo puede eliminar: {e}")
+            QMessageBox.warning(self, "No puede", f"{e}")
             
             
-            FuncionSistema.mostrar_errores_por_excepcion(e, "Habilitar_edicion")
+            
 
     
     
@@ -356,46 +290,55 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
             Este metodo sirve para eliminar al empleado de la base de datos
 
         """
-        
         cedula = modelo.item(fila, 0).text()
-                
+                    
         empleado_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_empleados_actual)
         
         empleado = empleado_servicio.obtener_empleado_por_id(empleado_id)  
 
         
-        self.msg_box.setWindowTitle("Advertencia")
-        self.msg_box.setIcon(QMessageBox.Warning)
-        self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}? ")
-        QApplication.beep()
+        try:
         
-        # Mostrar el cuadro de diálogo y esperar respuesta
-        self.msg_box.exec_()
-        
-        # si le da a SI, verificamos primero
-        if self.msg_box.clickedButton() == self.boton_si:
-    
-    
-            try:
-
-
-                empleado_servicio.eliminar_empleado(empleado_id)
-                
-                
-            except Exception as e:
-                
-                QMessageBox.critical(self, "Error", f"No se pudo eliminar a {empleado[1]} {empleado[4]}, {e}")
-                FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_empleado_de_la_bd")   
-
-            else:
-                
-                QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {empleado[1]} {empleado[4]} con exito")
-                self.filtrar_por_tipo_cargo()
-    
-        elif self.msg_box.clickedButton() == self.boton_no:
+            permiso_eliminar_empleado = permiso_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "ELIMINAR EMPLEADOS")
             
-            return
+            if permiso_eliminar_empleado:
+                self.msg_box.setWindowTitle("Advertencia")
+                self.msg_box.setIcon(QMessageBox.Warning)
+                self.msg_box.setText(f"¿Seguro que quiere eliminar a {empleado[1]} {empleado[4]}? ")
+                QApplication.beep()
+                
+                # Mostrar el cuadro de diálogo y esperar respuesta
+                self.msg_box.exec_()
+                
+                # si le da a SI, verificamos primero
+                if self.msg_box.clickedButton() == self.boton_si:
             
+            
+                    try:
+
+
+                        empleado_servicio.eliminar_empleado(empleado_id)
+                        
+                        
+                    except Exception as e:
+                        
+                        QMessageBox.critical(self, "Error", f"No se pudo eliminar a {empleado[1]} {empleado[4]}, {e}")
+                        FuncionSistema.mostrar_errores_por_excepcion(e, "eliminar_empleado_de_la_bd")   
+
+                    else:
+                        
+                        QMessageBox.information(self, "Proceso exitoso", f"Se a eliminado a {empleado[1]} {empleado[4]} con exito")
+                        self.filtrar_por_tipo_cargo()
+            
+                elif self.msg_box.clickedButton() == self.boton_no:
+                    
+                    return
+            
+        except Exception as e:
+            print(F"No lo puede eliminar: {e}")
+            QMessageBox.warning(self, "No puede", f"{e}")
+            
+             
             
             
             

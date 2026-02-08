@@ -304,12 +304,9 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
             
 
                 if usuario[5] == "DIRECTOR":
-                    self.login.input_usuario.clear()
-                    self.login.input_contrasena.clear()
-                    self.stacked_widget.setCurrentIndex(1)
-                    self.sidebar.show()
-                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario} al sistema de información TELA-APP")
-
+                    
+                    self.boton_control_usuarios.show()
+                    self.boton_cargar_catologo.show()
 
                 elif usuario[5] == "SUB-DIRECTOR":
 
@@ -319,24 +316,19 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
                 elif usuario[5] == "SECRETARIO":
 
-                    self.login.input_usuario.clear() #limpia el input de nombre de usuario
-                    self.login.input_contrasena.clear() #limpia el input de contraseña de usuario
-                    self.stacked_widget.setCurrentIndex(1) # cambia de pantalla
-                    self.sidebar.show()
                     
                     self.boton_cargar_catologo.hide()
                     self.boton_control_usuarios.hide()
                     
-                    self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario}")
-                    
-                    
+                
+                self.login.input_usuario.clear()
+                self.login.input_contrasena.clear()
+                self.sidebar.show()
+                self.stacked_widget.setCurrentIndex(1)
+                
+                self.pantalla_bienvenida.label_titulo_del_segemeto_bienvenido.setText(f"Bienvenido {nombre_usuario} al sistema de información TELA-APP")                    
 
-            FuncionSistema.id_usuario = usuario_id_autenticado
-            crear_nuevo_empleado = permisos_servicio.verificar_permiso_usuario(usuario_id_autenticado,"CREAR EMPLEADOS")
-
-            if not(crear_nuevo_empleado):
-                self.pantalla_vista_general_del_personal.boton_crear_nuevo_registro.setDisabled(True)
-
+            
 
 
 

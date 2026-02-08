@@ -434,6 +434,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             self.dockWidget_diagnostico.setFloating(True)
             diagnostico = info_clinica_alumno_servicio.obtener_info_clinica_alumno_por_id(info_clinica_id)
+            
         
             if self.dockWidget_diagnostico.show():
                 
@@ -452,13 +453,14 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             
         else:
+            
             titulo= f"Diagnóstico N° {indice_vista_previa + 1}"
             nombre_diag= diagnostico[2]
             fecha_diag= str(diagnostico[3])
             medico = diagnostico[4]
-            medicacion=diagnostico[5]
-            certificado=str(diagnostico[6])
-            fecha_venc= diagnostico[7]
+            medicacion=diagnostico[7]
+            certificado=str(diagnostico[5])
+            fecha_venc= str(diagnostico[6])
             
             self.dockWidget_diagnostico.setWindowTitle(f"{titulo}: {nombre_diag}")
             self.titulo.setText(titulo)
