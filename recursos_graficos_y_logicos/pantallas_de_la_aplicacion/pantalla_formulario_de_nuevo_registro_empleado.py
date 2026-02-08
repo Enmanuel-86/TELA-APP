@@ -12,96 +12,13 @@ from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QFrame,
 
 from ..elementos_graficos_a_py import Ui_PantallaFormularioEmpleado
 from ..utilidades.funciones_sistema import FuncionSistema
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
-
-
-# repositorios
-from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
-from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
-from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
-from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoRepositorio
-from repositorios.empleados.tipo_cargo_repositorio import TipoCargoRepositorio
-from repositorios.empleados.cargo_empleado_repositorio import CargoEmpleadoRepositorio
-from repositorios.empleados.funcion_cargo_repositorio import FuncionCargoRepositorio
-from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
-from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
-from repositorios.empleados.info_clinica_empleado_repositorio import InfoClinicaEmpleadoRepositorio
-from repositorios.empleados.historial_enferm_cronicas_repositorio import HistorialEnfermCronicasRepositorio
+from ..utilidades.base_de_datos import (empleado_servicio, especialidad_servicio, tipo_cargo_servicio,
+                                        cargo_empleado_servicio, funcion_cargo_servicio, diagnostico_servicio,
+                                        enfermedad_cronica_servicio, info_laboral_servicio, detalle_cargo_servicio, historial_enferm_cronicas_servicio,
+                                        info_clinica_empleado_servicio)
 
 
 
-
-# servicios
-from servicios.empleados.empleado_servicio import EmpleadoServicio
-from servicios.empleados.enfermedad_cronica_servicio import EnfermedadCronicaServicio
-from servicios.empleados.info_laboral_servicio import InfoLaboralServicio
-from servicios.diagnosticos.diagnostico_servicio import DiagnosticoServicio
-from servicios.empleados.tipo_cargo_servicio import TipoCargoServicio
-from servicios.empleados.cargo_empleado_servicio import CargoEmpleadoServicio
-from servicios.empleados.funcion_cargo_servicio import FuncionCargoServicio
-from servicios.empleados.detalle_cargo_servicio import DetalleCargoServicio
-from servicios.especialidades.especialidad_servicio import EspecialidadServicio
-from servicios.empleados.info_clinica_empleado_servicio import InfoClinicaEmpleadoServicio
-from servicios.empleados.historial_enferm_cronicas_servicio import HistorialEnfermCronicasServicio
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
-# instancias de los repositorios
-empleado_repositorio = EmpleadoRepositorio()
-
-info_laboral_repositorio = InfoLaboralRepositorio()
-
-tipo_cargo_repositorio = TipoCargoRepositorio()
-
-cargo_empleado_repositorio = CargoEmpleadoRepositorio()
-
-enfermedad_cronica_repositorio = EnfermedadCronicaRepositorio()
-
-diagnostico_repositorio = DiagnosticoRepositorio()
-
-funcion_cargo_repositorio = FuncionCargoRepositorio()
-
-detalle_cargo_repositorio = DetalleCargoRepositorio()
-
-especialidad_repositorio = EspecialidadRepositorio()
-
-info_clinica_empleado_repositorio = InfoClinicaEmpleadoRepositorio()
-
-historial_enferm_cronicas_repositorio = HistorialEnfermCronicasRepositorio()
-
-
-# instancia de los servicios
-empleado_servicio = EmpleadoServicio(empleado_repositorio)
-
-info_laboral_servicio = InfoLaboralServicio(info_laboral_repositorio)
-
-tipo_cargo_servicio = TipoCargoServicio(tipo_cargo_repositorio)
-
-cargo_empleado_servicio = CargoEmpleadoServicio(cargo_empleado_repositorio)
-
-enfermedad_cronica_servicio = EnfermedadCronicaServicio(enfermedad_cronica_repositorio)
-
-diagnostico_servicio = DiagnosticoServicio(diagnostico_repositorio)
-
-funcion_cargo_servicio = FuncionCargoServicio(funcion_cargo_repositorio)
-
-detalle_cargo_servicio = DetalleCargoServicio(detalle_cargo_repositorio)
-
-especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
-
-info_clinica_empleado_servicio = InfoClinicaEmpleadoServicio(info_clinica_empleado_repositorio)
-
-historial_enferm_cronicas_servicio = HistorialEnfermCronicasServicio(historial_enferm_cronicas_repositorio)
-
-# listas de datos segun la tabla
 #lista_enfermedades = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
 #lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()
 
