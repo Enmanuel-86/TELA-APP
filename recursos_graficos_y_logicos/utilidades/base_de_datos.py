@@ -27,13 +27,17 @@
 
 # EMPLEADOS
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
 from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
-from repositorios.empleados.cargo_empleado_repositorio import CargoEmpleadoRepositorio
-from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
+from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoRepositorio
 from repositorios.empleados.tipo_cargo_repositorio import TipoCargoRepositorio
-from repositorios.empleados.historial_enferm_cronicas_repositorio import HistorialEnfermCronicasRepositorio
+from repositorios.empleados.cargo_empleado_repositorio import CargoEmpleadoRepositorio
+from repositorios.empleados.funcion_cargo_repositorio import FuncionCargoRepositorio
+from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
+from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
 from repositorios.empleados.info_clinica_empleado_repositorio import InfoClinicaEmpleadoRepositorio
-from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+from repositorios.empleados.historial_enferm_cronicas_repositorio import HistorialEnfermCronicasRepositorio
+
 
 # especialidades
 from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
@@ -61,14 +65,19 @@ from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
 
 
 # EMPLEADOS
-from servicios.empleados.empleado_servicio import EmpleadoServicio
-from servicios.empleados.info_laboral_servicio import InfoLaboralServicio
-from servicios.empleados.detalle_cargo_servicio import DetalleCargoServicio
-from servicios.empleados.cargo_empleado_servicio import CargoEmpleadoServicio
-from servicios.empleados.tipo_cargo_servicio import TipoCargoServicio
-from servicios.empleados.historial_enferm_cronicas_servicio import HistorialEnfermCronicasServicio
-from servicios.empleados.info_clinica_empleado_servicio import InfoClinicaEmpleadoServicio
-from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
+from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
+from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
+from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoRepositorio
+from repositorios.empleados.tipo_cargo_repositorio import TipoCargoRepositorio
+from repositorios.empleados.cargo_empleado_repositorio import CargoEmpleadoRepositorio
+from repositorios.empleados.funcion_cargo_repositorio import FuncionCargoRepositorio
+from repositorios.empleados.detalle_cargo_repositorio import DetalleCargoRepositorio
+from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
+from repositorios.empleados.info_clinica_empleado_repositorio import InfoClinicaEmpleadoRepositorio
+from repositorios.empleados.historial_enferm_cronicas_repositorio import HistorialEnfermCronicasRepositorio
+from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+
 
 #################
 ### Servicios ###
@@ -100,8 +109,17 @@ from servicios.usuarios.permiso_servicio import PermisoServicio
 
 # EMPLEADOS
 from servicios.empleados.empleado_servicio import EmpleadoServicio
+from servicios.empleados.enfermedad_cronica_servicio import EnfermedadCronicaServicio
+from servicios.empleados.info_laboral_servicio import InfoLaboralServicio
+from servicios.diagnosticos.diagnostico_servicio import DiagnosticoServicio
+from servicios.empleados.tipo_cargo_servicio import TipoCargoServicio
+from servicios.empleados.cargo_empleado_servicio import CargoEmpleadoServicio
+from servicios.empleados.funcion_cargo_servicio import FuncionCargoServicio
+from servicios.empleados.detalle_cargo_servicio import DetalleCargoServicio
+from servicios.especialidades.especialidad_servicio import EspecialidadServicio
+from servicios.empleados.info_clinica_empleado_servicio import InfoClinicaEmpleadoServicio
+from servicios.empleados.historial_enferm_cronicas_servicio import HistorialEnfermCronicasServicio
 from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
-
 
 # Instanacias Repositorios
 
@@ -140,9 +158,10 @@ cargo_empleado_repositorio = CargoEmpleadoRepositorio()
 detalle_cargo_repositorio = DetalleCargoRepositorio()
 tipo_cargo_repositorio = TipoCargoRepositorio()
 especialidad_repositorio = EspecialidadRepositorio()
-histotial_enferm_cronicas_repositorio = HistorialEnfermCronicasRepositorio()
+historial_enferm_cronicas_repositorio = HistorialEnfermCronicasRepositorio()
 info_clinica_empleado_repositorio = InfoClinicaEmpleadoRepositorio()
-
+funcion_cargo_repositorio = FuncionCargoRepositorio()
+enfermedad_cronica_repositorio = EnfermedadCronicaRepositorio()
 
 
 ###########################
@@ -180,5 +199,7 @@ cargo_empleado_servicio = CargoEmpleadoServicio(cargo_empleado_repositorio)
 detalle_cargo_servicio = DetalleCargoServicio(detalle_cargo_repositorio)
 tipo_cargo_servicio = TipoCargoServicio(tipo_cargo_repositorio)
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
-histotial_enferm_cronicas_servicio = HistorialEnfermCronicasServicio(histotial_enferm_cronicas_repositorio)
+historial_enferm_cronicas_servicio = HistorialEnfermCronicasServicio(historial_enferm_cronicas_repositorio)
 info_clinica_empleado_servicio = InfoClinicaEmpleadoServicio(info_clinica_empleado_repositorio)
+funcion_cargo_servicio = FuncionCargoServicio(funcion_cargo_repositorio)
+enfermedad_cronica_servicio = EnfermedadCronicaServicio(enfermedad_cronica_repositorio)
