@@ -82,7 +82,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         self.boton_crear_nuevo_registro.clicked.connect(self.ir_a_crear_nuevo_registro)
         self.boton_control_de_llegada.clicked.connect(self.ir_a_control_de_llegada)
         self.boton_control_de_reposos.clicked.connect(self.ir_a_control_de_reposos)
-        self.boton_buscar.clicked.connect(self.acceder_perfil_empleado)     
+        self.boton_buscar.clicked.connect(lambda: self.aplicar_filtro(self.barra_de_busqueda.text()))     
         self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
         self.boton_de_situacion.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
         self.boton_especialidades.currentIndexChanged.connect(self.filtrar_por_especialidad)
