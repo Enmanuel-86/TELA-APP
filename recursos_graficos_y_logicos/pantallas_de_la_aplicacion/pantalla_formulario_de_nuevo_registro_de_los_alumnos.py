@@ -89,7 +89,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.lista_carrito_diagnosticos = []
         self.lista_carrito_cuentas_bancarias = []
-        
+        self.lista_cuenta_bancarias_eliminadas = []
         
         # periodo escolar
         self.label_mostrar_periodo_escolar.setText(str(año_actual) + "-" + str(año_actual + 1))
@@ -112,20 +112,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.dateedit_fecha_ingreso_especialidad.setDate(QDate.currentDate())
         
         
-        self.boton_buscar_cedula_representante.clicked.connect(self.comprobar_representante_registrado)
-        
-        self.boton_anadir_cuenta_banco.clicked.connect(self.anadir_cuentas_bancarias_alumno)
-        
+        self.boton_buscar_cedula_representante.clicked.connect(self.comprobar_representante_registrado)    
+        self.boton_anadir_cuenta_banco.clicked.connect(self.anadir_cuentas_bancarias_alumno) 
         self.boton_anadir_diagnostico.clicked.connect(self.anadir_diagnosticos_alumno_a_lista)
-        
         self.boton_anadir_otro_diagnostico.clicked.connect(self.anadir_otro_diagnotico_diferente)
-        
         self.boton_finalizar.clicked.connect(self.guardar_informacion_alumno)
-        
         self.boton_de_regreso.clicked.connect(self.salir_del_formulario_alumno)
-        
         self.boton_agregar_foto_alumno.clicked.connect(lambda: self.buscar_foto("alumno"))
-        
         self.boton_agregar_foto_representante.clicked.connect(lambda: self.buscar_foto("representante"))
         
         
@@ -673,10 +666,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         boton_eliminar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         boton_eliminar.setFixedSize(30,30)
         boton_eliminar.setProperty("tipo", "boton_borrar")
-        
-        boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
         row_layout.addWidget(boton_eliminar)
-
+        
         if editando:
             # Botón para editar
             boton_editar = QPushButton()
@@ -685,8 +676,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             boton_editar.setProperty("tipo", "boton_editar")
             
             
+            boton_eliminar.clicked.connect(lambda _, item=item, lista=nombre_lista: self.eliminar_cuenta_bancaria_seleccionada(nombre_qlistwidget, lista, item))
             boton_editar.clicked.connect(lambda _, item=item, lista=nombre_lista:self.ver_elemento_de_la_lista_seleccionada(nombre_qlistwidget, lista, item))
             row_layout.addWidget(boton_editar)
+        
+        
+        boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
+        
+
+        
             
         # Asignar el widget al QListWidgetItem
         item.setSizeHint(widget.sizeHint())
@@ -831,6 +829,31 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
                 break
             
+    def eliminar_cuenta_bancaria_seleccionada(self, nombre_qlistwidget, nombre_lista, item):
+        """
+            Este metodo funciona para eliminar las cuentas de bancos registradas del alumno de la siguiente manera:
+            
+            1. Le preguntamos al usuario si esta seguro de realizar la eliminacion
+            2. Si lo hace guarda el id de la cuenta de banco en una lista para posteriormente usarlo con el servicio que elimina cuentas de banco a partir del ID de la cuenta bancaria
+            3. Caso contrario no hace nada
+        """
+        self.msg_box.setWindowTitle("Confirmar eliminación de la cuenta de banco")
+        self.msg_box.setText("¿Seguro que quiere elimiinar esta cuenta bancaria?")
+        self.msg_box.setIcon(QMessageBox.Question)
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            indice_vista_previa = nombre_qlistwidget.row(item)
+            cuenta_bancaria_id = nombre_lista[indice_vista_previa][0]
+            self.lista_cuenta_bancarias_eliminadas.append(cuenta_bancaria_id)
+            
+            row = nombre_qlistwidget.row(item)
+            nombre_qlistwidget.takeItem(row)
+            print(f"Se elimino la cuenta de banco: {cuenta_bancaria_id}")
+        
+    
     def editar_cuenta_banaria_seleccionada(self, nombre_lista, cuenta_bancaria_id):
         
         """
@@ -876,7 +899,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     self.boton_anadir_cuenta_banco.clicked.disconnect()
                     self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
-                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "añadir")
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "boton_anadir")
                     
                     self.vista_previa_cuentas_bancarias.clear()
                     
@@ -891,7 +914,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             self.boton_anadir_cuenta_banco.clicked.disconnect()
             self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
-            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "añadir")
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "boton_anadir")
             
             self.input_tipo_de_cuenta.clear()
             self.input_numero_de_cuenta.clear()
@@ -2256,7 +2279,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     
                                                             info_bancaria_alumno_servicio.registrar_info_bancaria_alumno(campos_info_bancaria_alumno)
                                                     
-                                                    
+                                                # Esto es para eliminar las cuentas de banco del alumno
+                                                if len(self.lista_cuenta_bancarias_eliminadas) > 0:
+                                                    for id_cuenta_bancaria in self.lista_cuenta_bancarias_eliminadas:
+                                                        info_bancaria_alumno_servicio.eliminar_info_bancaria(id_cuenta_bancaria)
+                                                        
+                                            
                                             except:
                                                 
                                                 print("Como no tiene cuenta de banco se le registra")
