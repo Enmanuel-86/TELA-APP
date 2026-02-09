@@ -166,7 +166,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
                                 self.boton_cargar_catologo, self.boton_respaldo, self.boton_generar_reporte ,
                                 self.boton_control_usuarios, self.boton_salir)
         
-        self.pantallas_importantes = (3, 4, 6, 8, 9, 11)
+        self.pantallas_importantes = (3, 4, 6, 8, 9, 10, 11)
         
         
         
@@ -354,7 +354,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
 
 
-    #hola desde antixlinux
+    
 
 
 
