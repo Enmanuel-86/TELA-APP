@@ -704,7 +704,7 @@ class FuncionesDelSistema:
             QMessageBox.critical(self, "Error", f"Error al abrir la carpeta:\n{str(e)}")  
             
             
-    def cambiar_estilo_del_boton(self, qpushbutton, tipo:str = "boton_anadir") -> None:
+    def cambiar_estilo_del_boton(self, qpushbutton, tipo:str = "boton_anadir", texto_personalizado:str = None) -> None:
         """
             ### Este metodo sirve para cambiar de estilo a los botones de registrar elementos catalogo.
             
@@ -715,13 +715,19 @@ class FuncionesDelSistema:
             
             Lo que hace este metodo es cambiarle la propiedad dinamica para que tome el estilo segun la hoja de estilo usada
             
-            ***Ejemplo***
+            Tambien podemos colocarle un texto al boton si se desea
+            
+            **Ejemplo**
             
             boton_registrar = QPushButton()
             
             self.cambiar_estilo_del_boton(boton_registrar, "boton_editar") # estilo de editar
             
+            **Ejemplo 2**
             
+            boton_registrar = QPushButton()
+            
+            self.cambiar_estilo_del_boton(boton_registrar, "boton_anadir", "registrar") # estilo de añadir pero con el texto personalizado para que en vez que diga añadir diga registrar
         """
         
         
@@ -733,7 +739,7 @@ class FuncionesDelSistema:
             
             if tipo == "boton_anadir":
                 
-                qpushbutton.setText("Anadir")
+                qpushbutton.setText("Añadir")
                 qpushbutton.setProperty("tipo", tipo)
                 
                 
@@ -742,6 +748,8 @@ class FuncionesDelSistema:
                 qpushbutton.setText("Editar")
                 qpushbutton.setProperty("tipo", tipo)
             
+            if texto_personalizado != None:
+                qpushbutton.setText(texto_personalizado)
             
             
             qpushbutton.style().unpolish(qpushbutton)

@@ -27,6 +27,8 @@
 
 # EMPLEADOS
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
+from repositorios.empleados.asistencia_empleado_repositorio import AsistenciaEmpleadoRepositorio
+from repositorios.empleados.reposo_empleado_repositorio import ReposoEmpleadoRepositorio
 from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
 from repositorios.empleados.info_laboral_repositorio import InfoLaboralRepositorio
 from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoRepositorio
@@ -64,6 +66,7 @@ from repositorios.usuarios.auditoria_repositorio import AuditoriaRepositorio
 from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
 
 
+# Servicios
 # EMPLEADOS
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
 from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
@@ -120,6 +123,7 @@ from servicios.especialidades.especialidad_servicio import EspecialidadServicio
 from servicios.empleados.info_clinica_empleado_servicio import InfoClinicaEmpleadoServicio
 from servicios.empleados.historial_enferm_cronicas_servicio import HistorialEnfermCronicasServicio
 from servicios.empleados.asistencia_empleado_servicio import AsistenciaEmpleadoServicio
+from servicios.empleados.reposo_empleado_servicio import ReposoEmpleadoServicio
 
 # Instanacias Repositorios
 
@@ -152,6 +156,7 @@ permiso_repositorio = PermisoRepositorio()
 # EMPLEADOS
 empleado_repositorio = EmpleadoRepositorio()
 asistencia_empleado_repositorio = AsistenciaEmpleadoRepositorio()
+reposo_empleado_repositorio = ReposoEmpleadoRepositorio()
 empleado_repositorio = EmpleadoRepositorio()
 info_laboral_repositorio = InfoLaboralRepositorio()
 cargo_empleado_repositorio = CargoEmpleadoRepositorio()
@@ -170,6 +175,8 @@ enfermedad_cronica_repositorio = EnfermedadCronicaRepositorio()
 
 # EMPLEADOS
 asistencia_empleado_servicio = AsistenciaEmpleadoServicio(asistencia_empleado_repositorio)
+empleado_servicio = EmpleadoServicio(empleado_repositorio)
+reposo_empleado_servicio = ReposoEmpleadoServicio(reposo_empleado_repositorio)
 
 # especialidades
 especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
@@ -189,6 +196,7 @@ representante_servicio = RepresentanteServicio(representante_repositorio)
 usuario_servicio = UsuarioServicio(usuario_repositorio)
 rol_servicio = RolServicio(rol_repositorio)
 auditoria_servicio = AuditoriaServicio(auditoria_repositorio)
+permiso_servicio = PermisoServicio(permiso_repositorio)
 permiso_servicio = PermisoServicio(permiso_repositorio)
 
 
