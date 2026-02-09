@@ -503,11 +503,18 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
         self.msg_box.exec_()
         
         if self.msg_box.clickedButton() == self.boton_si:
-            self.boton_agregar.clicked.disconnect()
-            FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
+            
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, False)
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+            self.boton_cancelar_registro.setEnabled(False)
+            self.boton_crear_registro.setEnabled(True)
+            
+            # en caso de que este en modo edicion
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "registrar")
+            self.boton_agregar.disconnect()
             self.boton_agregar.clicked.connect(self.registrar_reposo)
 
             self.stacked_widget.setCurrentIndex(7)
-            FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+            
     
     
