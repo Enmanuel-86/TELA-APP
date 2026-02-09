@@ -42,11 +42,22 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
         # DEFINIMOS EL MODELO PARA EL QTABLEVIEW
         self.modelo = QStandardItemModel()
         
+        # ELEMENTOS DE UTILIDAD
+        self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+        
         # CONFIGURACIÓN DE LAS SEÑALES
         self.boton_agregar.clicked.connect(self.registrar_reposo)
-        self.dateEdit_filtro_fecha_reposo.dateChanged.connect(self.filtrar_reposo)
-        self.boton_buscar.clicked.connect(self.filtrar_reposo)
+        self.dateEdit_filtro_fecha_reposo.dateChanged.connect(self.filtrar_reposo_por_fecha)
+        self.boton_buscar.clicked.connect(self.filtrar_reposo_por_fecha)
         self.boton_de_regreso.clicked.connect(self.regresar_pantalla_anterior)
+        FuncionSistema.configurar_barra_de_busqueda(self, self.input_cedula_empleado, self.lista_empleados_actual, 6, 1, 4, self.label_nombre_empleado_guia)
+        self.boton_crear_registro.clicked.connect(self.crear_nuevo_registro)
+        self.boton_cancelar_registro.clicked.connect(self.cancelar_nuevo_registro)
+        
+        self.lista_reposos_registrados = reposo_empleado_servicio.obtener_todos_reposos()
+        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_reposos_registrados, 0, 1, 2)
+        self.barra_de_busqueda.returnPressed.connect(self.filtrar_por_barra_de_busqueda)
+        self.boton_buscar.clicked.connect(self.filtrar_por_barra_de_busqueda)
         
         # ESTABLECIENDO VALORES POR DEFECTO
         self.tbl_reposos.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -54,8 +65,8 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
         self.dateEdit_fecha_reingreso.setDate(QDate.currentDate())
         self.dateEdit_filtro_fecha_reposo.setDate(QDate.currentDate())
         
-        # ELEMENTOS DE UTILIDAD
-        self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
+        
+        
         
         self.tupla_inputs = (
             self.input_cedula_empleado,
@@ -68,6 +79,65 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
             self.dateEdit_fecha_reingreso,
             self.dateEdit_filtro_fecha_reposo
         )
+        
+        self.tupla_de_campos = (self.input_cedula_empleado, self.input_motivo_reposo, 
+                                self.dateEdit_fecha_solicitud, self.dateEdit_fecha_reingreso, 
+                                self.boton_agregar
+                                )
+        
+        
+    
+    def crear_nuevo_registro(self):
+        """
+            Este metodo sirve para crear un nuevo registro de reposos de la siguiente manera:
+            
+            Solamente habilitamos todos los campos necesarios
+        """
+        
+        try:
+            
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, True)
+            self.boton_cancelar_registro.setEnabled(True)
+            self.boton_crear_registro.setEnabled(False)
+            
+        except Exception as e:
+            print(f"No se pudo crear un nuevo registro: {e}")
+            
+    def cancelar_nuevo_registro(self):
+        """
+            Este metodo sirve para cancelar el registro de reposo de la siguiente manera:
+            
+            1. Le preguntamos al usuario si quiere cancelar
+            2. Si lo hace se limpian y se deshabilitan los campos
+            3. Caso contrario no pasa nada
+        """
+        try:
+            self.msg_box.setIcon(QMessageBox.Information)
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText("¿Seguro que quiere cancelar el registro?")
+            QApplication.beep()
+            self.msg_box.exec_()
+            
+            if self.msg_box.clickedButton() == self.boton_si:
+            
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, False)
+                FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+                self.boton_cancelar_registro.setEnabled(False)
+                self.boton_crear_registro.setEnabled(True)
+                
+                # en caso de que este en modo edicion
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "registrar")
+                self.boton_agregar.disconnect()
+                self.boton_agregar.clicked.connect(self.registrar_reposo)
+                
+            elif self.msg_box.clickedButton() == self.boton_no:
+                return
+                
+                
+        except Exception as e:
+            print(f"No se pudo cancelar un nuevo registro: {e}")
+    
+    
     
     def registrar_reposo(self):
         """
@@ -87,35 +157,53 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
                 empleado_id = empleado[0]
             else:
                 empleado_id = None
+                
+            # MENSAJE PARA CONFIRMAR LA ACCIÓN
+            self.msg_box.setIcon(QMessageBox.Information)
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText("¿Seguro que quiere editar este reposo?")
+            QApplication.beep()
+            self.msg_box.exec_()
             
-            motivo_reposo = self.input_motivo_reposo.text()
-            fecha_desde = self.dateEdit_fecha_solicitud.date().toPyDate()
-            fecha_hasta = self.dateEdit_fecha_reingreso.date().toPyDate()
+            if self.msg_box.clickedButton() == self.boton_si:
             
-            campos_reposo_empleado = {
-                "empleado_id": empleado_id,
-                "motivo_reposo": motivo_reposo,
-                "fecha_emision": fecha_desde,
-                "fecha_reingreso": fecha_hasta
-            }
+                motivo_reposo = self.input_motivo_reposo.text()
+                fecha_desde = self.dateEdit_fecha_solicitud.date().toPyDate()
+                fecha_hasta = self.dateEdit_fecha_reingreso.date().toPyDate()
+                
+                campos_reposo_empleado = {
+                    "empleado_id": empleado_id,
+                    "motivo_reposo": motivo_reposo,
+                    "fecha_emision": fecha_desde,
+                    "fecha_reingreso": fecha_hasta
+                }
+                
+                errores = reposo_empleado_servicio.validar_campos_reposo(
+                    empleado_id = campos_reposo_empleado.get("empleado_id"),
+                    motivo_reposo = campos_reposo_empleado.get("motivo_reposo"),
+                    fecha_reingreso = campos_reposo_empleado.get("fecha_reingreso"),
+                    fecha_emision = campos_reposo_empleado.get("fecha_emision")
+                )
+                
+                if (errores):
+                    QMessageBox.warning(self, "Error al registrar el reposo", "\n".join(errores))
+                    return
+                
+                reposo_empleado_servicio.registrar_reposo(campos_reposo_empleado)
+                
+                QMessageBox.information(self, "Registro exitoso", "El reposo se ha registrado correctamente.")
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, False)
+                FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+                self.boton_cancelar_registro.setEnabled(False)
+                self.boton_crear_registro.setEnabled(True)
             
-            errores = reposo_empleado_servicio.validar_campos_reposo(
-                empleado_id = campos_reposo_empleado.get("empleado_id"),
-                motivo_reposo = campos_reposo_empleado.get("motivo_reposo"),
-                fecha_reingreso = campos_reposo_empleado.get("fecha_reingreso"),
-                fecha_emision = campos_reposo_empleado.get("fecha_emision")
-            )
-            
-            if (errores):
-                QMessageBox.warning(self, "Error al registrar el reposo", "\n".join(errores))
-                return
-            
-            reposo_empleado_servicio.registrar_reposo(campos_reposo_empleado)
-            QMessageBox.information(self, "Registro exitoso", "El reposo se ha registrado correctamente.")
-            self.filtrar_reposo()
-            self.limpiar_campos()
         except BaseDatosError as error:
             QMessageBox.warning(self, "Error al registrar al usuario", str(error))
+            
+        else:
+            self.lista_reposos_registrados = reposo_empleado_servicio.obtener_todos_reposos()
+            FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_reposos_registrados, 0, 1, 2)
+            self.filtrar_reposo_por_fecha()
     
     def habilitar_edicion_reposo(self, fila):
         """
@@ -164,8 +252,14 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
                     
                     FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_editar")
                     self.boton_agregar.clicked.connect(lambda : self.editar_info_reposo(reposo_empleado_id))
+                    
+                    FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, True)
+                    self.boton_cancelar_registro.setEnabled(True)
+                    self.boton_crear_registro.setEnabled(False)
+                    
         except Exception as error:
             QMessageBox.warning(self, "No puede", f"{error}")
+    
     
     def editar_info_reposo(self, reposo_empleado_id: int):
         """
@@ -219,9 +313,19 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
             FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
             self.boton_agregar.clicked.connect(self.registrar_reposo)
             
-            self.filtrar_reposo()
-            self.limpiar_campos()
-    
+            self.filtrar_reposo_por_fecha()
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+            
+        if self.msg_box.clickedButton() == self.boton_no:
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.tupla_de_campos, False)
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
+            self.boton_cancelar_registro.setEnabled(False)
+            self.boton_crear_registro.setEnabled(True)
+
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "registrar")
+            self.boton_agregar.disconnect()
+            self.boton_agregar.clicked.connect(self.registrar_reposo)
+
     def eliminar_info_reposo(self, fila):
         """
         Este método es para eliminar un reposo de empleado. El proceso es el siguiente:
@@ -253,13 +357,13 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
                     
                     reposo_empleado_servicio.eliminar_reposo(reposo_empleado_id)
                     QMessageBox.information(self, "Proceso exitoso", f"Se a Eliminado correctamente el reposo")
-                    self.filtrar_reposo()
+                    self.filtrar_reposo_por_fecha()
         except Exception as error:
             QMessageBox.warning(self, "Error al eliminar el reposo", str(error))
     
-    def filtrar_reposo(self):
+    def filtrar_reposo_por_fecha(self):
         """
-        Este método es para filtrar los reposos de empleados. El proceso es el siguiente:
+        Este método es para filtrar los reposos de empleados por la fecha. El proceso es el siguiente:
         
         - A partir de la fecha de emisión y la cédula del empleado obtenidos en la interfaz los usamos para el método que obtenga los registros
         - Si no hubo errores cargamos los registros obtenidos en la tabla
@@ -277,7 +381,31 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
             self.modelo.removeRows(0, self.modelo.rowCount())
         else:
             self.cargar_reposos_en_tabla(self.tbl_reposos, reposos_empleados)
-            FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, reposos_empleados, 0, 1, 2)
+            
+            
+    def filtrar_por_barra_de_busqueda(self):
+        """
+            Este metodo sirve para filtrar los reposos de todos lo empleados que tienen un reposo registrado, esto funciona asi:
+            
+            1. Obtenemos la cedula de la barra de busqueda
+            2. A partir de la cedula buscamos el id del empleado
+            3. Con el ID del empleado obtenemos el reposo
+            4. Con el reposo del empleado obtenemos la fecha
+            5. Con la fecha del reposo del empleado se la asignamos al QDateEdit que filtra por fecha, y al darle la fecha este automaticamente refresca la tabla
+        """
+        try:
+            cedula = self.barra_de_busqueda.text().strip()
+            empleado = empleado_servicio.obtener_empleado_por_cedula(cedula)
+            empleado_id = empleado[0]
+            reposo_actual = reposo_empleado_servicio.obtener_reposo_por_empleado_id(empleado_id)
+            fecha_reposo_empleado = reposo_actual[4]
+            
+            self.dateEdit_filtro_fecha_reposo.setDate(QDate.fromString(fecha_reposo_empleado, "yyyy-MM-dd"))
+            
+            
+        except Exception as e:
+            print(f"No se pudo filtrar por la barra de busqueda: {e}")
+        
     
     def cargar_reposos_en_tabla(self, tabla, reposos):
         """
@@ -371,7 +499,6 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
         self.msg_box.setIcon(QMessageBox.Information)
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText("¿Seguro que quiere irse de esta pantalla?")
-        #self.msg_box.setInformativeText("Si se retira de la pantalla esto borrar lo que lleva registrando hasta el momento.")
         QApplication.beep()
         self.msg_box.exec_()
         
@@ -381,11 +508,6 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
             self.boton_agregar.clicked.connect(self.registrar_reposo)
 
             self.stacked_widget.setCurrentIndex(7)
-            self.limpiar_campos()
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_inputs)
     
-    def limpiar_campos(self):
-        for qlineedit in self.tupla_inputs:
-            qlineedit.clear()
-            
-        for qdateedit in self.tupla_dateedits:
-            qdateedit.setDate(QDate.currentDate())
+    
