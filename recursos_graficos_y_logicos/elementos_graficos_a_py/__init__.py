@@ -15,6 +15,7 @@ from .pantalla_ver_perfil_completo_del_alumno_gui import Ui_PantallaInfoCompleta
 from .ventana_mostrar_diagnosticos_gui import Ui_VentanaMostrarDiagnosticoRegistrado
 from .pantalla_vista_general_reposo_empleados_gui import Ui_VistaGeneralReposoEmpleados
 from .ventana_añadir_reposos_empleado_gui import Ui_VentanaAnadirReposo
+from .pantalla_editar_representante_gui import Ui_VentanaEditarRepresentante
 
 
 from .pantalla_formulario_registrar_nuevo_empleado_gui import Ui_PantallaFormularioEmpleado
