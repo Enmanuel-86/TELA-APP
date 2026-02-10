@@ -7,6 +7,7 @@ from configuraciones.configuracion import app_configuracion
 from ..elementos_graficos_a_py import Ui_VistaGeneralDeAlumnos
 from ..utilidades.base_de_datos import especialidad_servicio
 from ..utilidades.funciones_sistema import FuncionSistema
+from .ventana_editar_representante import VentanaEditarRepresentante
 
 ##################################
 # importaciones de base de datos #
@@ -92,8 +93,10 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
+        self.ventana_editar_representante = VentanaEditarRepresentante()
+        
+        
         # Estableciendo estilo de la tabla
-            
         #self.tabla_ver_alumnos.setColumnWidth(6, 300) 
 
         self.tabla_ver_alumnos.horizontalHeader().setVisible(True)
@@ -345,6 +348,12 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     ################################################################################################################    
     ################################################################################################################
     
+    def editar_datos_del_representante(self):
+        """"""
+        self.ventana_editar_representante.show()
+        
+    
+    
     def filtrar_en_la_barra_de_busqueda(self):
         
         """
@@ -528,6 +537,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
             # Conectar botones
             #boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
+            boton_editar.clicked.connect(lambda : self.editar_datos_del_representante())
             #boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
 
             layout.addWidget(boton_editar)
