@@ -868,7 +868,7 @@
                 <item row="5" column="2">
                  <layout class="QHBoxLayout" name="horizontalLayout">
                   <item>
-                   <widget class="QPushButton" name="pushButton_3">
+                   <widget class="QPushButton" name="boton_cancelar">
                     <property name="minimumSize">
                      <size>
                       <width>111</width>
@@ -899,7 +899,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_2">
+                   <widget class="QPushButton" name="boton_editar">
                     <property name="minimumSize">
                      <size>
                       <width>101</width>
