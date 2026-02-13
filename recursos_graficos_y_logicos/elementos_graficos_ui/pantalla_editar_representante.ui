@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>752</width>
-    <height>497</height>
+    <width>779</width>
+    <height>593</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -50,8 +50,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>753</width>
+        <y>-70</y>
+        <width>760</width>
         <height>661</height>
        </rect>
       </property>
@@ -527,9 +527,9 @@
                  </layout>
                 </item>
                 <item row="1" column="2">
-                 <layout class="QVBoxLayout" name="verticalLayout_16">
+                 <layout class="QVBoxLayout" name="verticalLayout_37">
                   <item>
-                   <widget class="QLabel" name="label_relacion_alumno">
+                   <widget class="QLabel" name="label_numero_telefono_adicional">
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
@@ -555,7 +555,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="text">
-                     <string>Relación con el alumno</string>
+                     <string>Número de telefono adicional </string>
                     </property>
                     <property name="scaledContents">
                      <bool>false</bool>
@@ -566,7 +566,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="input_mostrar_relacion_alumno">
+                   <widget class="QLineEdit" name="input_mostrar_numero_telefono_adicional">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -659,144 +659,6 @@
                  </layout>
                 </item>
                 <item row="2" column="2">
-                 <layout class="QVBoxLayout" name="verticalLayout_37">
-                  <item>
-                   <widget class="QLabel" name="label_numero_telefono_adicional">
-                    <property name="minimumSize">
-                     <size>
-                      <width>200</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Segoe UI</family>
-                      <pointsize>11</pointsize>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="text">
-                     <string>Número de telefono adicional </string>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>false</bool>
-                    </property>
-                    <property name="tipo" stdset="0">
-                     <string>titulo_qlineedit</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLineEdit" name="input_mostrar_numero_telefono_adicional">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Segoe UI</family>
-                      <pointsize>14</pointsize>
-                      <weight>50</weight>
-                      <italic>false</italic>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="readOnly">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="3" column="1">
-                 <layout class="QVBoxLayout" name="verticalLayout_21">
-                  <item>
-                   <widget class="QLabel" name="label_estado_civil">
-                    <property name="minimumSize">
-                     <size>
-                      <width>200</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Segoe UI</family>
-                      <pointsize>11</pointsize>
-                      <weight>75</weight>
-                      <italic>false</italic>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="text">
-                     <string>Estado civil</string>
-                    </property>
-                    <property name="scaledContents">
-                     <bool>false</bool>
-                    </property>
-                    <property name="tipo" stdset="0">
-                     <string>titulo_qlineedit</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignTop">
-                   <widget class="QLineEdit" name="input_mostrar_estado_civil">
-                    <property name="enabled">
-                     <bool>true</bool>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Segoe UI</family>
-                      <pointsize>14</pointsize>
-                      <weight>50</weight>
-                      <italic>false</italic>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="readOnly">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="3" column="2">
                  <layout class="QVBoxLayout" name="verticalLayout_20">
                   <item>
                    <widget class="QLabel" name="label_carga_familiar">
@@ -865,7 +727,7 @@
                   </item>
                  </layout>
                 </item>
-                <item row="4" column="1" colspan="2">
+                <item row="3" column="1" colspan="2">
                  <layout class="QVBoxLayout" name="verticalLayout_17">
                   <item>
                    <widget class="QLabel" name="label_direccion_residencial">
@@ -906,6 +768,75 @@
                   </item>
                   <item>
                    <widget class="QLineEdit" name="input_mostrar_direccion_residencial">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>14</pointsize>
+                      <weight>50</weight>
+                      <italic>false</italic>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="4" column="1">
+                 <layout class="QVBoxLayout" name="verticalLayout_21">
+                  <item>
+                   <widget class="QLabel" name="label_estado_civil">
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>200</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <italic>false</italic>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>Estado civil</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                    <property name="tipo" stdset="0">
+                     <string>titulo_qlineedit</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignTop">
+                   <widget class="QLineEdit" name="input_mostrar_estado_civil">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
