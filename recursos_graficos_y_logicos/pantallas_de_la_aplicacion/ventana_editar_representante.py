@@ -14,30 +14,34 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         
         self.setupUi(self)
         
+        # Variable para guardar el id del representante temporalmente
         self.representante_id = None
+        
+        self.filtrar_por_ente_seleccionado = None
         
         self.msg_box = QMessageBox(self)
         # Crear botones personalizados
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
+        # Tupla para agrupar los campos para deshabilitarlo o limpiarlos
         self.tupla_de_campos = (self.input_mostrar_nombre, self.input_mostrar_apellido, self.input_mostrar_carga_familiar,
                                 self.input_mostrar_direccion_residencial, self.input_mostrar_cedula_representante, self.input_mostrar_estado_civil,
                                 self.input_mostrar_numero_telefono, self.input_mostrar_numero_telefono_adicional)
         
         self.boton_editar.clicked.connect(self.editar_informacion_representante)
+        self.boton_cancelar.clicked.connect(self.cancelar_edicion_de_datos_representante)
         
     def mostrar_informacion_representante(self, datos_representante):
         """
             Este metodo sirve para darle la informacion del representante a los campos que se usaran para editar:
             
-            - Tomamos los datos a partir de una lista (en este caso la lista de representantes)
-            - Le asignamos a cada campo el dato en su respectivo lugar
-            - Y el usuario se encargara editar o no la informacion
+            1. Tomamos los datos a partir de una lista (en este caso la lista de representantes)
+            2. Le asignamos a cada campo el dato en su respectivo lugar
+            3. Y el usuario se encargara editar o no la informacion
         
         """
         try:
-            
             self.representante_id = datos_representante[0]
             self.input_mostrar_nombre.setText(datos_representante[2])
             self.input_mostrar_apellido.setText(datos_representante[3])   
@@ -73,7 +77,14 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
             
     def editar_informacion_representante(self):
         """
-            Este metodo sirve para editar la informacion del representante
+            Este metodo sirve para editar la informacion del representante de la siguiente manera:
+            
+            1. Le preguntamos al usuario si quiere realizar el proceso de editar
+            2. Tomamos los datos editados o no
+            3. Los agrupamos en un diccionario
+            4. Comprobamos si no hay errores
+            5. Editamos la informacion
+            6. Le indicamos al usuario que la informacion se edito correctamente
         """
         
         self.msg_box.setWindowTitle("Advertencia")
@@ -87,9 +98,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         # si le da a SI, verificamos primero
         if self.msg_box.clickedButton() == self.boton_si:
 
-            try:
-                
-                
+            try: 
                 cedula = self.input_mostrar_cedula_representante.text().strip()
                 nombre = self.input_mostrar_nombre.text().strip().capitalize()
                 apellido = self.input_mostrar_apellido.text().strip().capitalize()
@@ -132,9 +141,31 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                 
                     self.representante_id = None
                     FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
+                    self.filtrar_por_ente_seleccionado()
+                    
+                    
+                    self.close()
                     
             except Exception as e:
                 print(f"No se puedo editar la informacion del representante: {e}")
             
             
+    def cancelar_edicion_de_datos_representante(self):
+        """
+            Este metodo sirve para cancelar la edicion de los datos del representante
+        
+        """       
+        self.msg_box.setWindowTitle("Advertencia")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere cancelar la edición de la información de {self.input_mostrar_nombre.text()} {self.input_mostrar_apellido.text()}? ")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        # si le da a SI, verificamos primero
+        if self.msg_box.clickedButton() == self.boton_si:
             
+            self.representante_id = None
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
+            self.close()
