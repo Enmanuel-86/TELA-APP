@@ -360,12 +360,12 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             representante = representante_servicio.obtener_representante_por_cedula(cedula)
             self.ventana_editar_representante.show()
             self.ventana_editar_representante.mostrar_informacion_representante(representante)
+            self.ventana_editar_representante.filtrar_por_ente_seleccionado = self.filtrar_por_ente_seleccionado
             
-            
-            
-        except Exception as e:
-            
+        except Exception as e:    
             print(f"No se puedo cargar la informacion del representante: {e}")
+
+        
     
     
     def filtrar_en_la_barra_de_busqueda(self):
