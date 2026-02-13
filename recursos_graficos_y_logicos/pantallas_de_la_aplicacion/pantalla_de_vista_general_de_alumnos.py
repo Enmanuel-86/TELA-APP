@@ -348,10 +348,24 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     ################################################################################################################    
     ################################################################################################################
     
-    def editar_datos_del_representante(self):
-        """"""
-        self.ventana_editar_representante.show()
+    def editar_datos_del_representante(self, fila):
+        """
+            Este Metodo sirve para editar la informacion de los representantes
+        """
         
+        try:
+            # Obtener el texto de la primera columna (nombre)
+            cedula = modelo.item(fila, 0).text()
+            
+            representante = representante_servicio.obtener_representante_por_cedula(cedula)
+            self.ventana_editar_representante.show()
+            self.ventana_editar_representante.mostrar_informacion_representante(representante)
+            
+            
+            
+        except Exception as e:
+            
+            print(f"No se puedo cargar la informacion del representante: {e}")
     
     
     def filtrar_en_la_barra_de_busqueda(self):
@@ -537,7 +551,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
 
             # Conectar botones
             #boton_editar.clicked.connect(lambda _, fila=fila: self.habilitar_edicion_alumno(fila))
-            boton_editar.clicked.connect(lambda : self.editar_datos_del_representante())
+            boton_editar.clicked.connect(lambda _, fila=fila: self.editar_datos_del_representante(fila))
             #boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_alumno_de_la_bd(fila))
 
             layout.addWidget(boton_editar)
