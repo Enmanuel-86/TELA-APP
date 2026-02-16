@@ -132,6 +132,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
             
                 if errores_totales:
                     FuncionSistema.mostrar_errores_verificados(self, errores_totales, "Editar representante")
+                    self.filtrar_por_ente_seleccionado = None
                     return
                 
                 else:
@@ -142,7 +143,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                     self.representante_id = None
                     FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
                     self.filtrar_por_ente_seleccionado()
-                    
+                    self.filtrar_por_ente_seleccionado = None
                     
                     self.close()
                     
@@ -168,4 +169,27 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
             
             self.representante_id = None
             FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
+            self.filtrar_por_ente_seleccionado = None
             self.close()
+            
+    def closeEvent(self, event):
+        """Este metodo solo para este widget preguntará al cerrarse"""
+        
+        self.msg_box.setWindowTitle("Advertencia antes de salir")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere salir de la edición de la información de {self.input_mostrar_nombre.text()} {self.input_mostrar_apellido.text()}? ")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            
+            self.representante_id = None
+            FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
+            self.filtrar_por_ente_seleccionado = None
+            self.close()
+            event.accept()  # Cierra el widget
+            
+        else:
+            event.ignore()  # No cierra el widget
