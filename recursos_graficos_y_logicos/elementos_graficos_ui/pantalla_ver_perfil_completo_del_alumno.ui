@@ -1079,9 +1079,9 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-1284</y>
+           <y>0</y>
            <width>931</width>
-           <height>2961</height>
+           <height>3021</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -1093,13 +1093,13 @@
             <property name="minimumSize">
              <size>
               <width>600</width>
-              <height>520</height>
+              <height>580</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>600</width>
-              <height>520</height>
+              <height>580</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -1148,13 +1148,13 @@
                    <property name="minimumSize">
                     <size>
                      <width>519</width>
-                     <height>447</height>
+                     <height>480</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>519</width>
-                     <height>447</height>
+                     <height>480</height>
                     </size>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1258,13 +1258,13 @@
                       <property name="minimumSize">
                        <size>
                         <width>500</width>
-                        <height>371</height>
+                        <height>400</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>500</width>
-                        <height>371</height>
+                        <height>400</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -1283,114 +1283,6 @@
                        <string>espacio_form</string>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_4">
-                       <item row="1" column="0">
-                        <layout class="QVBoxLayout" name="verticalLayout_43">
-                         <item>
-                          <widget class="QLabel" name="label_medico_tratante">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>11</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Médico Tratante</string>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_qlineedit</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="input_mostrar_medico_tratante">
-                           <property name="readOnly">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="1" column="1">
-                        <layout class="QVBoxLayout" name="verticalLayout_41">
-                         <item alignment="Qt::AlignBottom">
-                          <widget class="QLabel" name="label_fecha_diagnostico">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>11</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Fecha del diagnóstico</string>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_qlineedit</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="input_mostrar_fecha_diagnostico">
-                           <property name="readOnly">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="4" column="0">
-                        <layout class="QVBoxLayout" name="verticalLayout_44">
-                         <item>
-                          <widget class="QLabel" name="label_certificado_discap">
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>11</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>Certificado de discapacidad</string>
-                           </property>
-                           <property name="scaledContents">
-                            <bool>true</bool>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_qlineedit</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="input_mostrar_certificado_discap">
-                           <property name="readOnly">
-                            <bool>true</bool>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
                        <item row="0" column="0" colspan="2">
                         <layout class="QVBoxLayout" name="verticalLayout_40">
                          <item>
@@ -1433,15 +1325,132 @@
                          </item>
                         </layout>
                        </item>
-                       <item row="2" column="1">
+                       <item row="1" column="0" colspan="2">
+                        <layout class="QVBoxLayout" name="verticalLayout_43">
+                         <item>
+                          <widget class="QLabel" name="label_medico_tratante">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Médico Tratante</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>titulo_qlineedit</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="input_mostrar_medico_tratante">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="2" column="0">
+                        <layout class="QVBoxLayout" name="verticalLayout_41">
+                         <item>
+                          <widget class="QLabel" name="label_fecha_diagnostico">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Fecha del diagnóstico</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>titulo_qlineedit</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="input_mostrar_fecha_diagnostico">
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="2" column="1" rowspan="2">
+                        <layout class="QVBoxLayout" name="verticalLayout_44">
+                         <item alignment="Qt::AlignTop">
+                          <widget class="QLabel" name="label_certificado_discap">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Certificado de discapacidad</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>titulo_qlineedit</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item alignment="Qt::AlignTop">
+                          <widget class="QLineEdit" name="input_mostrar_certificado_discap">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>10</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="3" column="0" rowspan="2">
                         <layout class="QVBoxLayout" name="verticalLayout_42">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
                          <item>
                           <widget class="QLabel" name="label_fecha_venc_certificado">
                            <property name="font">
                             <font>
                              <family>Segoe UI</family>
                              <pointsize>11</pointsize>
-                             <weight>75</weight>
+                             <weight>62</weight>
                              <italic>false</italic>
                              <bold>true</bold>
                             </font>
@@ -1472,9 +1481,9 @@
                          </item>
                         </layout>
                        </item>
-                       <item row="2" column="0">
+                       <item row="4" column="1">
                         <layout class="QVBoxLayout" name="verticalLayout_45">
-                         <item>
+                         <item alignment="Qt::AlignTop">
                           <widget class="QLabel" name="label_medicacion">
                            <property name="font">
                             <font>
@@ -1499,8 +1508,50 @@
                            </property>
                           </widget>
                          </item>
-                         <item>
+                         <item alignment="Qt::AlignTop">
                           <widget class="QLineEdit" name="input_mostrar_medicacion">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>10</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="readOnly">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item row="5" column="0" colspan="2">
+                        <layout class="QVBoxLayout" name="verticalLayout_52">
+                         <item>
+                          <widget class="QLabel" name="label_observacion_adicional">
+                           <property name="font">
+                            <font>
+                             <family>Segoe UI</family>
+                             <pointsize>11</pointsize>
+                             <weight>75</weight>
+                             <italic>false</italic>
+                             <bold>true</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string>Observación adicional</string>
+                           </property>
+                           <property name="scaledContents">
+                            <bool>true</bool>
+                           </property>
+                           <property name="tipo" stdset="0">
+                            <string>titulo_qlineedit</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLineEdit" name="input_mostrar_observacion_adicional">
                            <property name="readOnly">
                             <bool>true</bool>
                            </property>
