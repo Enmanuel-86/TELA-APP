@@ -61,7 +61,7 @@ empleado_servicio = EmpleadoServicio(empleado_repositorio)
 
 
 
-ruta_del_icono = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "Tela.ico")
+ruta_del_icono = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "icono_sistema_V3.ico")
 icono_reloj_azul = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "reloj_azul.png")
 icono_reloj = os.path.join(os.path.dirname(__file__), "recursos_graficos_y_logicos","recursos_de_imagenes", "iconos_de_interfaz", "reloj.png")
 
@@ -158,7 +158,11 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         
         
         
-        # Rutas relativas de la imagenes
+        # QMessagebox
+        self.msg_box = QMessageBox(self)
+        # Crear botones personalizados
+        self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
+        self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
 
         
@@ -241,28 +245,35 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.boton_generar_reporte.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 5) )
         self.boton_cargar_catologo.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 14) )
         self.boton_control_usuarios.toggled.connect(lambda : FuncionSistema.moverse_de_pantalla(self.stacked_widget, 12))
-        self.boton_salir.clicked.connect(lambda : FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar))
+        self.boton_salir.clicked.connect(lambda : self.salir_al_login() )
         
         
         self.radioButton_claro_azul.setEnabled(True)
         
         
-        self.msg = QMessageBox()
-        self.msg.setWindowTitle("Error de inicio de sesión")
-        self.msg.setText("")
-        # Usar un icono del sistema 
-        self.msg.setIcon(QMessageBox.Warning)
-        self.msg.setWindowIcon(QIcon(ruta_del_icono))
-
-        # self.msg.exec_()
 
         self.login.boton_ingresar.clicked.connect(self.validar_credenciales)
         
         
 
-   
+    def salir_al_login(self):
+        """
+            Este metodo sirve para salir al login pero haciendo lo siguiente:
+            
+            1. Le preguntamos al usuario si quiere salir
+            2. Si le da a SI el vuelve al login, en caso contrario se queda en donde esta
+        """
+        self.msg_box.setWindowTitle("Advertencia antes de cerrar sesión")
+        self.msg_box.setIcon(QMessageBox.Warning)
+        self.msg_box.setText(f"¿Seguro que quiere cerrar su sesión?")
+        QApplication.beep()
+        
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
+            FuncionSistema.salir_al_login_con_sidebar(self.stacked_widget, self.sidebar)
     
-      
 
     def validar_credenciales(self):
         nombre_usuario = self.login.input_usuario.text()
@@ -276,13 +287,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
         except BaseDatosError as error:
 
-            self.msg.setWindowTitle("Error de inicio de sesión")
-            self.msg.setText(f"{error}")
-            # Usar un icono del sistema (predeterminado de PyQt5)
-            self.msg.setIcon(QMessageBox.Warning)
-
-            self.msg.exec_()
-
+            QMessageBox.warning(self, "Error de inicio de sesión", f"{error}")
             self.login.input_contrasena.clear()
 
         else:
@@ -364,19 +369,31 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
 
         msg.setWindowTitle("Verificación de hora del sistema")
         msg.setText("Bienvenido al TELA-APP, esta es una versión de prueba, pueden haber errores, por favor tenga la hora de su dispositivo (su computadora) actualizada para que los registros no tengan errores")
-
-
-        
         msg.setIconPixmap(QPixmap(icono_reloj))
         msg.setWindowIcon(QIcon(icono_reloj))
-
-
-
         # Añadir botón OK
         msg.setStandardButtons(QMessageBox.Ok)
-
         # Mostrar el messagebox
         msg.exec_()
+        
+    def closeEvent(self, event):
+        """Este metodo solo para este widget preguntará al cerrarse"""
+        
+        if not self.stacked_widget.currentIndex() == 0:
+            
+            self.msg_box.setWindowTitle("Advertencia antes de salir")
+            self.msg_box.setIcon(QMessageBox.Warning)
+            self.msg_box.setText(f"¿Seguro que quiere salir del sistema? ")
+            QApplication.beep()
+            
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+            
+            if self.msg_box.clickedButton() == self.boton_si:
+                event.accept()  # Cierra el widget
+                
+            else:
+                event.ignore()  # No cierra el widget
 
 
 
