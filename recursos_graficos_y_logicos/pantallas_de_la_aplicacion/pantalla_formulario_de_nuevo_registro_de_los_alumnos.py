@@ -524,10 +524,30 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     lista_diagnostico.append(certificacion_discap)
                     lista_diagnostico.append(observacion_adicional)
                     
+                    tooltip_diagnostico = f"""<html>
+                                            <head>
+                                                <style>
+                                                    p {{
+                                                        margin: 2px 0;  /* margen superior e inferior de 2px */
+                                                        padding: 0;
+                                                        line-height: 1.2;  /* altura de línea reducida */
+                                                    }}
+                                                </style>
+                                            </head>
+                                            <body>
+                                                <p><span style=" font-weight:600;">Diagnóstico: </span>{self.boton_diagnostico.currentText()}</p>
+                                                <p><span style=" font-weight:600;">Fecha del diagnóstico: </span>{fecha_diagnostico}</p>
+                                                <p><span style=" font-weight:600;">Medico Tratante: </span>{medico_tratante}</p>
+                                                <p><span style=" font-weight:600;">Certificado de discapacidad: </span>{certificacion_discap}</p>
+                                                <p><span style=" font-weight:600;">Fecha venc del certificado: </span>{fecha_vencimiento_certif}</p>
+                                                <p><span style=" font-weight:600;">Medicación: </span>{medicacion}</p>
+                                                <p><span style=" font-weight:600;">Observación adicional: </span>{observacion_adicional}</p>
+                                            </body>
+                                        </html>""" 
                     
                     # usamos el metodo para que se vea en la vista previa de cuantos
                     # diagnostico tiene el alumno
-                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_carrito_diagnosticos, lista_diagnostico[1])
+                    self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico , self.lista_carrito_diagnosticos, lista_diagnostico[1], tooltip= tooltip_diagnostico)
                     
                     lista_diagnostico = tuple(lista_diagnostico)
                     
@@ -633,7 +653,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
     
 
     # Metodo para agregar diagnostico a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, texto_a_mostrar=None, editando:bool = False):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, texto_a_mostrar=None, editando:bool = False, tooltip = None):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)
@@ -659,6 +679,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                             }
                             
                             """)
+        if not tooltip == None:
+            label.setToolTip(tooltip)
         row_layout.addWidget(label)
 
         # Botón para eliminar
@@ -1790,9 +1812,38 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             for diagnostico in info_clinica:
                 
+                nombre_diagnostico = diagnostico[2]
+                fecha_diagnostico = diagnostico[3]
+                doctor = diagnostico[4]
+                certificado = diagnostico[5]
+                fecha_venc_certif = diagnostico[6]
+                medicacion = diagnostico[7]
+                observacion_adicional = "No posee" if diagnostico[8] == None else diagnostico[8]
+                
+                tooltip_diagnostico = f"""<html>
+                                            <head>
+                                                <style>
+                                                    p {{
+                                                        margin: 2px 0;  /* margen superior e inferior de 2px */
+                                                        padding: 0;
+                                                        line-height: 1.2;  /* altura de línea reducida */
+                                                    }}
+                                                </style>
+                                            </head>
+                                            <body>
+                                                <p><span style=" font-weight:600;">Diagnóstico: </span>{nombre_diagnostico}</p>
+                                                <p><span style=" font-weight:600;">Fecha del diagnóstico: </span>{fecha_diagnostico}</p>
+                                                <p><span style=" font-weight:600;">Medico Tratante: </span>{doctor}</p>
+                                                <p><span style=" font-weight:600;">Certificado de discapacidad: </span>{certificado}</p>
+                                                <p><span style=" font-weight:600;">Fecha venc del certificado: </span>{fecha_venc_certif}</p>
+                                                <p><span style=" font-weight:600;">Medicación: </span>{medicacion}</p>
+                                                <p><span style=" font-weight:600;">Observación adicional: </span>{observacion_adicional}</p>
+                                            </body>
+                                        </html>""" 
+                
                 self.lista_carrito_diagnosticos.append(diagnostico)
                 
-                self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, self.lista_carrito_diagnosticos, diagnostico[2], editando= True )
+                self.agregar_elementos_a_la_vista_previa(self.vista_previa_diagnostico, self.lista_carrito_diagnosticos, diagnostico[2], editando= True, tooltip= tooltip_diagnostico)
                 
         except:
             print("error al cargar los diagnosticos del alumno")
