@@ -31,18 +31,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.foto_perfil_alumno = None
         self.foto_perfil_representante = None
         
-        # lista de inputs para usarlo en el metodo de limpiar inputs,
-        # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
-        self.lista_de_inputs = (
-                                self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
-                                self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
-                                self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
-                                self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
-                                self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
-                                self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
-                                self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
-                                self.vista_previa_diagnostico, self.label_foto_alumno
-                                )
         
         self.campos_representantes = (self.input_nombre_del_representante,
                     self.input_apellido_del_representante,
@@ -55,8 +43,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
         self.lista_de_radiobuttons = (
-                                      self.input_sexo_masculino, self.input_sexo_femenino, self.input_cma_si, self.input_cma_no,
-                                      self.input_imt_si, self.input_imt_no
+                                    self.input_sexo_masculino, self.input_sexo_femenino, self.input_cma_si, self.input_cma_no,
+                                    self.input_imt_si, self.input_imt_no
                                         )
         
         
@@ -90,12 +78,25 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.lista_carrito_diagnosticos = []
         self.lista_carrito_cuentas_bancarias = []
         self.lista_cuenta_bancarias_eliminadas = []
+        self.lista_diagnosticos_eliminados = []
         
         # periodo escolar
         self.label_mostrar_periodo_escolar.setText(str(año_actual) + "-" + str(año_actual + 1))
         
         
-       
+       # lista de inputs para usarlo en el metodo de limpiar inputs,
+        # en esta lista solo estan los inputs QLineEdit, QLabel y QListWidget
+        self.lista_de_inputs = (
+                                self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
+                                self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
+                                self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
+                                self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
+                                self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
+                                self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
+                                self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
+                                self.vista_previa_diagnostico, self.label_foto_alumno, self.lista_carrito_cuentas_bancarias, self.lista_carrito_diagnosticos, 
+                                self.lista_diagnosticos_eliminados, self.lista_cuenta_bancarias_eliminadas
+                                )
         
         # cargar catalogo de diagnosticos
         FuncionSistema.cargar_elementos_para_el_combobox(self.lista_diagnostico ,self.boton_diagnostico, 1,1)
@@ -676,12 +677,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             boton_editar.setProperty("tipo", "boton_editar")
             
             
-            boton_eliminar.clicked.connect(lambda _, item=item, lista=nombre_lista: self.eliminar_cuenta_bancaria_seleccionada(nombre_qlistwidget, lista, item))
+            boton_eliminar.clicked.connect(lambda _, item=item, lista=nombre_lista: self.eliminar_elemento_de_la_lista_seleccionada(nombre_qlistwidget, lista, item))
             boton_editar.clicked.connect(lambda _, item=item, lista=nombre_lista:self.ver_elemento_de_la_lista_seleccionada(nombre_qlistwidget, lista, item))
             row_layout.addWidget(boton_editar)
         
-        
-        boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
+        else:
+            boton_eliminar.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, item))
         
 
         
@@ -786,6 +787,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             return nombre_variable
         
  
+    def eliminar_elemento_de_la_lista_seleccionada(self,  nombre_qlistwidget, nombre_lista, item):
+        """
+            Este metodo sirve para eliminar el elemento del qlistwidget en donde esta el elemento 
+        """
+        if nombre_qlistwidget == self.vista_previa_diagnostico:
+            self.eliminar_diagnostico_seleccionado(nombre_qlistwidget, nombre_lista, item)
+            
+        elif nombre_qlistwidget == self.vista_previa_cuentas_bancarias:
+            self.eliminar_cuenta_bancaria_seleccionada(nombre_qlistwidget, nombre_lista, item)
+        
     def ver_elemento_de_la_lista_seleccionada(self,  nombre_qlistwidget, nombre_lista, item):
         
         """
@@ -828,6 +839,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.editar_cuenta_banaria_seleccionada(nombre_lista, cuenta_bancaria_id))
 
                 break
+    
             
     def eliminar_cuenta_bancaria_seleccionada(self, nombre_qlistwidget, nombre_lista, item):
         """
@@ -838,7 +850,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             3. Caso contrario no hace nada
         """
         self.msg_box.setWindowTitle("Confirmar eliminación de la cuenta de banco")
-        self.msg_box.setText("¿Seguro que quiere elimiinar esta cuenta bancaria?")
+        self.msg_box.setText("¿Seguro que quiere eliminar esta cuenta bancaria?")
         self.msg_box.setIcon(QMessageBox.Question)
         QApplication.beep()
         self.msg_box.exec_()
@@ -852,7 +864,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             row = nombre_qlistwidget.row(item)
             nombre_qlistwidget.takeItem(row)
             print(f"Se elimino la cuenta de banco: {cuenta_bancaria_id}")
-        
+            
+        elif self.msg_box.clickedButton() == self.boton_no:
+            return
     
     def editar_cuenta_banaria_seleccionada(self, nombre_lista, cuenta_bancaria_id):
         
@@ -1071,9 +1085,26 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.input_medicacion.clear()
             self.input_observacion_adicional.clear()
 
-
+    def eliminar_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
         
+        self.msg_box.setWindowTitle("Confirmar eliminación del diagnóstico")
+        self.msg_box.setText("¿Seguro que quiere eliminar este diagnóstico?")
+        self.msg_box.setIcon(QMessageBox.Question)
+        QApplication.beep()
+        self.msg_box.exec_()
+        
+        if self.msg_box.clickedButton() == self.boton_si:
             
+            indice_vista_previa = nombre_qlistwidget.row(item)
+            diagnostico_id = nombre_lista[indice_vista_previa][0]
+            self.lista_diagnosticos_eliminados.append(diagnostico_id)
+            
+            row = nombre_qlistwidget.row(item)
+            nombre_qlistwidget.takeItem(row)
+            print(f"Se elimino el diagnostico: {self.lista_diagnosticos_eliminados}")
+        
+        elif self.msg_box.clickedButton() == self.boton_no:
+            return 
             
               
     # Metodo para guardar todos los datos del Alumno en la BD
@@ -2226,16 +2257,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             medidas_alumno_servicio.actualizar_medidas_alumno(alumno_id, campos_medidas_alumno)
                         
-                                            # logica para agregar todas las cuentas que estan en la lista al diccionario
-                                            campos_info_bancaria_alumno = {
-                                                                
-                                                                "tipo_cuenta": None,
-                                                                "num_cuenta": None
-                                                            }
-                                            
-                                            
-                                            
-                                                
+                                        
                                             try: 
                                                 cuentas_bancarias_antiguas = info_bancaria_alumno_servicio.obtener_info_bancaria_por_alumno_id(alumno_id)
                                                 
@@ -2288,7 +2310,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             except:
                                                 
                                                 print("Como no tiene cuenta de banco se le registra")
-                                                
                                                 
                                                 campos_info_bancaria_alumno = {
                                                                 "alumno_id": alumno_id,
@@ -2372,7 +2393,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                         info_clinica_alumno_servicio.registrar_info_clinica_alumno(campos_info_clinica_alumno)
                                                         
-                                            
+                                            if len(self.lista_diagnosticos_eliminados) > 0:
+                                                for info_clinica_id in self.lista_diagnosticos_eliminados:
+                                                    info_clinica_alumno_servicio.eliminar_info_clinica_alumno(info_clinica_id)
                                                 
                                             inscripcion_servicio.actualizar_inscripcion(alumno_id, campos_inscripcion)
                                             
@@ -2403,7 +2426,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                         
-                                                                                
                                             
                                             self.stacked_widget.setCurrentIndex(2)
                                             print("No hubo problemas al tomar los datos")
