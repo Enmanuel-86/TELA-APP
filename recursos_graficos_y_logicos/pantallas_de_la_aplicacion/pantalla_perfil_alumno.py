@@ -353,7 +353,6 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
 
             # Botón para eliminar
             boton_ver = QPushButton()
-            boton_ver.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "ver_contraseña.png")))
             boton_ver.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             boton_ver.setFixedSize(60,40)
             boton_ver.setIconSize(QSize(30, 30))
@@ -461,6 +460,8 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             medicacion=diagnostico[7]
             certificado=str(diagnostico[5])
             fecha_venc= str(diagnostico[6])
+            observacion_adicional = "No posee" if diagnostico[8] == None else diagnostico[8]
+            
             
             self.dockWidget_diagnostico.setWindowTitle(f"{titulo}: {nombre_diag}")
             self.titulo.setText(titulo)
@@ -470,6 +471,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             self.input_mostrar_certificado_discap.setText(certificado)
             self.input_mostrar_fecha_venc_certificado.setText(fecha_venc)
             self.input_mostrar_medicacion.setText(medicacion)
+            self.input_mostrar_observacion_adicional.setText(observacion_adicional)
             
             self.dockWidget_diagnostico.show()
             self.dockWidget_diagnostico.setFloating(True)
