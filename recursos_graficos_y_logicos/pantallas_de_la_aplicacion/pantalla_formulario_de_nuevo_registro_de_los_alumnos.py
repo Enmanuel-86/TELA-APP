@@ -824,7 +824,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 self.input_numero_de_cuenta.setText(cuenta_bancaria[3])
                 
                 self.boton_anadir_cuenta_banco.clicked.disconnect()
-                FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "editar")
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "boton_editar")
                 self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.editar_cuenta_banaria_seleccionada(nombre_lista, cuenta_bancaria_id))
 
                 break
@@ -952,7 +952,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.boton_anadir_diagnostico.clicked.disconnect()
         self.boton_anadir_diagnostico.clicked.connect(lambda: self.editar_diagnostico_seleccionado(nombre_lista, info_clinica_id))
-        FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "editar")
+        FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "boton_editar")
         try: 
             
             for i, _ in enumerate(info_clinica):
@@ -1042,7 +1042,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_medicacion.clear()
                     self.input_observacion_adicional.clear()
                     
-                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "añadir")
+                    FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "boton_anadir")
                     self.boton_anadir_diagnostico.clicked.disconnect()
                     self.boton_anadir_diagnostico.clicked.connect(lambda: self.anadir_diagnosticos_alumno_a_lista())
                     
@@ -1059,7 +1059,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         ## si el boton "no" es pulsadoo, no pasa nada #3
         elif self.msg_box.clickedButton() == self.boton_no:
             
-            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "añadir")
+            FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_diagnostico, "boton_anadir")
             self.boton_anadir_diagnostico.clicked.disconnect()
             self.boton_anadir_diagnostico.clicked.connect(lambda: self.anadir_diagnosticos_alumno_a_lista())
             
