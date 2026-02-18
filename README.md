@@ -61,7 +61,7 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 
 | PyQt5 | QtDesigner |                                            
 |-------|------------|
-| <img src="https://process.filestackapi.com/cache=expiry:max/resize=width:700/uPPuFFskQoezJvzvNcHi" style="width: 200px; height: auto;" alt="Logo de PyQt5">| <img src="https://flathub.org/_next/image?url=https%3A%2F%2Fdl.flathub.org%2Fmedia%2Fio%2Fqt%2FDesigner%2F256e688f981e073bb67f8847eba5316c%2Ficons%2F128x128%2Fio.qt.Designer.png&w=128&q=100"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">|
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Python_and_Qt.svg/960px-Python_and_Qt.svg.png" style="width: 150px; height: auto;" alt="Logo de PyQt5">| <img src="https://flathub.org/_next/image?url=https%3A%2F%2Fdl.flathub.org%2Fmedia%2Fio%2Fqt%2FDesigner%2F256e688f981e073bb67f8847eba5316c%2Ficons%2F128x128%2Fio.qt.Designer.png&w=128&q=100"   style="width: 150px; height: auto;" alt="Logo del QtDesigner">|
 
 <br>
 
@@ -82,11 +82,17 @@ Las herramientas que se utilizaron para es desarrollo de este proyecto fueron:
 <ol>
   <li>
     <b>Registra Informacion:</b> este sistema registra toda la informacion requerida del taller de educacion laboral anzoategui, registra la informacion de los alumnos y del personal.</li>
-  [insertar imagen relacionada a registrar]
+    <div style="display: flex; justify-content: center; ">
+      <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/formulario_alumno.png"   style="width: 600px; height: auto; padding: 20px;" alt="capptura de pantalla del formulario del alumno">
+      <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/formulario_empleados.png"   style="width: 600px; height: auto; padding: 20px;" alt="capptura de pantalla del formulario del empleado">
+    </div>
 
   <li>
     <b>Consulta la informacion que se registro:</b> se puede consultar toda la informacion que se registro en el sistema.
-    [insertar imagenes de como se consulta ]
+    <div style="display: flex; justify-content: center; ">
+      <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/pantalla_perfil_alumno.png"   style="width: 600px; height: auto; padding: 20px;" alt="capptura de pantalla pefil del alumno">
+      <img src="recursos_graficos_y_logicos/recursos_de_imagenes/imagenes_para_readme/pantalla_vista_general_alumno.png"   style="width: 600px; height: auto; padding: 20px;" alt="capptura de pantalla vista general del alumno">
+    </div>
   </li>
 
   <li>
