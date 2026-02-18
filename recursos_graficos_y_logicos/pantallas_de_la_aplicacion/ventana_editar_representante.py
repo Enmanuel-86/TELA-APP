@@ -1,7 +1,6 @@
-from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QListWidget, QListWidgetItem, 
-                            QLabel, QHBoxLayout, QPushButton, QHeaderView )
-from PyQt5.QtCore import (QTime, QPoint, Qt, QDate, QSize)
-from PyQt5 import QtGui, QtCore
+from PyQt5.QtWidgets import (QWidget, QMessageBox, QApplication, QFileDialog )
+from PyQt5 import QtGui
+from PyQt5.QtGui import QPixmap
 import os
 from ..elementos_graficos_a_py import  Ui_VentanaEditarRepresentante
 from ..utilidades.funciones_sistema import FuncionSistema
@@ -19,6 +18,12 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         
         self.filtrar_por_ente_seleccionado = None
         
+        # Variable para guardar la ruta de la foto del representante
+        self.foto_representante = None
+        
+        # Variable para manejar el estado del closeEvent si se cierra el widget desde otro metodo
+        self.cerrado_desde_otra_parte = False
+        
         self.msg_box = QMessageBox(self)
         # Crear botones personalizados
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
@@ -27,11 +32,38 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         # Tupla para agrupar los campos para deshabilitarlo o limpiarlos
         self.tupla_de_campos = (self.input_mostrar_nombre, self.input_mostrar_apellido, self.input_mostrar_carga_familiar,
                                 self.input_mostrar_direccion_residencial, self.input_mostrar_cedula_representante, self.input_mostrar_estado_civil,
-                                self.input_mostrar_numero_telefono, self.input_mostrar_numero_telefono_adicional)
+                                self.input_mostrar_numero_telefono, self.input_mostrar_numero_telefono_adicional, self.label_foto_representante)
         
         self.boton_editar.clicked.connect(self.editar_informacion_representante)
         self.boton_cancelar.clicked.connect(self.cancelar_edicion_de_datos_representante)
+        self.boton_cambiar_foto.clicked.connect(lambda: self.buscar_foto())
         
+    def buscar_foto(self):
+        """
+            Este metodo sirve para buscar la foto de la persona que se esta registrando
+            
+            si es el alumno o el representante a quien se le esta buscando la foto.
+            
+            ***Ejemplo***
+            
+            boton.clicked.connect(lambda: buscar_foto("alumno"))
+            
+            se realiza de esta forma porque como la variable es de la propia clase (self.foto_perfil_alumno), se tiene que modificar directemante
+        """
+        
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, 
+            "Seleccionar Foto",  # Título
+            "",  # Directorio inicial (vacío = directorio actual)
+            "Imágenes (*.png *.jpg *.jpeg *.bmp *.gif);;Todos los archivos (*)"  # Filtros
+        )
+        
+        if file_path:
+            print(f"Ruta seleccionada: {file_path}")
+            
+            self.label_foto_representante.setPixmap(QPixmap(file_path))
+            self.foto_representante = file_path
+            
     def mostrar_informacion_representante(self, datos_representante):
         """
             Este metodo sirve para darle la informacion del representante a los campos que se usaran para editar:
@@ -42,6 +74,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         
         """
         try:
+            print(datos_representante)
             self.representante_id = datos_representante[0]
             self.input_mostrar_nombre.setText(datos_representante[2])
             self.input_mostrar_apellido.setText(datos_representante[3])   
@@ -116,7 +149,8 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                 "num_telefono": num_telefono,
                 "num_telefono_adicional": num_telefono_adicional,
                 "carga_familiar": carga_familiar,
-                "estado_civil": estado_civil
+                "estado_civil": estado_civil,
+                "foto_perfil": self.foto_representante
                 }
                 
                 errores_totales = representante_servicio.validar_campos_representante(
@@ -144,7 +178,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                     FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
                     self.filtrar_por_ente_seleccionado()
                     self.filtrar_por_ente_seleccionado = None
-                    
+                    self.cerrado_desde_otra_parte = True
                     self.close()
                     
             except Exception as e:
@@ -168,28 +202,35 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         if self.msg_box.clickedButton() == self.boton_si:
             
             self.representante_id = None
+            self.foto_representante = None
             FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
             self.filtrar_por_ente_seleccionado = None
+            self.cerrado_desde_otra_parte = True
             self.close()
+
             
     def closeEvent(self, event):
         """Este metodo solo para este widget preguntará al cerrarse"""
         
-        self.msg_box.setWindowTitle("Advertencia antes de salir")
-        self.msg_box.setIcon(QMessageBox.Warning)
-        self.msg_box.setText(f"¿Seguro que quiere salir de la edición de la información de {self.input_mostrar_nombre.text()} {self.input_mostrar_apellido.text()}? ")
-        QApplication.beep()
-        
-        # Mostrar el cuadro de diálogo y esperar respuesta
-        self.msg_box.exec_()
-        
-        if self.msg_box.clickedButton() == self.boton_si:
+        if not self.cerrado_desde_otra_parte:
+            self.msg_box.setWindowTitle("Advertencia antes de salir")
+            self.msg_box.setIcon(QMessageBox.Warning)
+            self.msg_box.setText(f"¿Seguro que quiere salir de la edición de la información de {self.input_mostrar_nombre.text()} {self.input_mostrar_apellido.text()}? ")
+            QApplication.beep()
             
-            self.representante_id = None
-            FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
-            self.filtrar_por_ente_seleccionado = None
-            self.close()
-            event.accept()  # Cierra el widget
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
             
+            if self.msg_box.clickedButton() == self.boton_si:
+                
+                self.representante_id = None
+                FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
+                self.filtrar_por_ente_seleccionado = None
+                self.close()
+                event.accept()  # Cierra el widget
+                
+            else:
+                event.ignore()  # No cierra el widget
+                
         else:
-            event.ignore()  # No cierra el widget
+            self.cerrado_desde_otra_parte = False
