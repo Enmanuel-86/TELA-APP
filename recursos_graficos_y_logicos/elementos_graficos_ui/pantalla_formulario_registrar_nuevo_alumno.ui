@@ -50,7 +50,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-161</y>
         <width>1340</width>
         <height>2857</height>
        </rect>
@@ -754,7 +754,7 @@ QPushButton:hover{
                            <string notr="true"/>
                           </property>
                           <property name="placeholderText">
-                           <string>(si es que lo tiene)</string>
+                           <string>si lo posee</string>
                           </property>
                          </widget>
                         </item>
@@ -2347,7 +2347,7 @@ QPushButton:hover{
                      <item>
                       <widget class="QLineEdit" name="input_nombre_del_representante">
                        <property name="enabled">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2418,6 +2418,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_apellido_del_representante">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2481,6 +2484,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_estado_civil">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2544,6 +2550,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_numero_de_telefono">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2607,6 +2616,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_numero_de_telefono_adicional">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2670,6 +2682,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_carga_familiar">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2733,6 +2748,9 @@ QPushButton:hover{
                      </item>
                      <item>
                       <widget class="QLineEdit" name="input_direccion_residencia">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -4559,7 +4577,7 @@ padding:0px;</string>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>30</height>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="font">
@@ -4796,7 +4814,7 @@ padding:0px;</string>
                        <rect>
                         <x>0</x>
                         <y>9</y>
-                        <width>231</width>
+                        <width>271</width>
                         <height>16</height>
                        </rect>
                       </property>
