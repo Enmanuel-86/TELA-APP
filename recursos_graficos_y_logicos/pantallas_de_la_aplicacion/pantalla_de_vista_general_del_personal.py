@@ -121,7 +121,7 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
         """
         self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
         self.boton_de_opciones.disconnect()
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 1)
+        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_de_opciones, 1, 0)
         self.boton_de_opciones.currentIndexChanged.connect(self.filtrar_por_tipo_cargo)
 
     
