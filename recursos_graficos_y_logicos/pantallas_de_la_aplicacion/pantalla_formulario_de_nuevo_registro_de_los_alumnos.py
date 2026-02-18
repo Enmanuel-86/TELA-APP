@@ -38,7 +38,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_direccion_residencia,
                     self.input_numero_de_telefono,
                     self.input_numero_de_telefono_adicional,
-                    self.input_estado_civil)
+                    self.input_estado_civil, 
+                    self.boton_agregar_foto_representante,
+                    self.label_foto_representante)
                     
         
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
@@ -229,7 +231,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                 self.foto_perfil_representante = file_path
             
             
-            
+
         return None
 
             
@@ -347,6 +349,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     # limpiamos los campos
                     FuncionSistema.limpiar_inputs_de_qt(self.campos_representantes)
+                    self.label_foto_representante.setText("No hay foto")
                     
                     if not edicion:
                         # mostramos el mensaje
