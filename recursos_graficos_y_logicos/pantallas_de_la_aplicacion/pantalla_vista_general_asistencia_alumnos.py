@@ -7,57 +7,11 @@ import os
 from ..elementos_graficos_a_py import Ui_VistaGeneralAsistenciaAlumnos
 from ..utilidades.funciones_sistema import FuncionSistema
 from datetime import datetime, date
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
-# Repositorios
-
-from repositorios.especialidades.especialidad_repositorio import EspecialidadRepositorio
-from repositorios.alumnos.alumno_repositorio import AlumnoRepositorio
-from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
-from repositorios.alumnos.asistencia_alumno_repositorio import AsistenciaAlumnoRepositorio
-
-# Servicios
-
-from servicios.especialidades.especialidad_servicio import EspecialidadServicio
-from servicios.alumnos.alumno_servicio import AlumnoServicio
-from servicios.alumnos.inscripcion_servicio import InscripcionServicio
-from servicios.alumnos.asistencia_alumno_servicio import AsistenciaAlumnoServicio
-
-# Instanacias Repositorios
-
-especialidad_repositorio = EspecialidadRepositorio()
-
-alumnos_repositorio = AlumnoRepositorio()
-
-inscripcion_repositorio = InscripcionRepositorio()
-
-asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
-
-
-# Instancia Servicios
-
-especialidad_servicio = EspecialidadServicio(especialidad_repositorio)
-
-alumnos_servicio = AlumnoServicio(alumnos_repositorio)
-
-inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
-
-asistencia_alumno_servicio = AsistenciaAlumnoServicio(asistencia_alumno_repositorio)
-
-
-
-##################################
-# importaciones de base de datos #
-##################################
-
+from configuraciones.configuracion import app_configuracion
+from ..utilidades.base_de_datos import (especialidad_servicio, alumno_servicio, asistencia_alumno_servicio,
+                                        inscripcion_servicio, permiso_servicio)
 
 lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
-
-
 
 # Dia actual
 today = datetime.now()
@@ -80,8 +34,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         # lista para almacenar los empleados que se van agregando a la lista de asistencias
         self.lista_de_asistencias = []
         
-        # lista de empleados actuales en la bd
-        self.lista_empleados_actual = []
+        # Esta variable es para guardar la lista de los alumnos que se muestran en la tabla
+        self.lista_alumnos_en_tabla = None
         
         # esta lista guardara los empleados que se agreguen a la lista de asistencias
         self.lista_agregados = []
@@ -377,7 +331,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 self.modelo.removeRows(0, self.modelo.rowCount())
                 #print("lista vacia")
             else:
-                
+                self.lista_alumnos_en_tabla = alumnos
                 self.cargar_alumnos_en_tabla(self.tbl_asistencias_registradas, alumnos)
             
             
@@ -451,7 +405,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
 
             # Conectar botones
             boton_editar.clicked.connect(lambda _, fila=fila: print("Editar"))
-            boton_borrar.clicked.connect(lambda _, fila=fila: print("Borrar"))
+            boton_borrar.clicked.connect(lambda _, fila=fila: self.eliminar_registro_de_asistencia_del_alumno(fila))
 
             layout.addWidget(boton_editar)
             layout.addWidget(boton_borrar)
@@ -628,8 +582,45 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.lista_alumnos_actual.remove(alumno)
      
             
+    def obtener_info_alumno_para_editar(self):
+        """
+            Este metodo sirve para actualizar/editar el registro de asistencia del alumno
+        """
+        
+        
+        
+    def eliminar_registro_de_asistencia_del_alumno(self, fila):
+        """
+            Este metodo sirve para eliminar el registro de asistencia del alumno
+        """
+        matricula = self.modelo.item(fila, 0).text()
+        nombre = self.modelo.item(fila, 1).text()
+        apellido = self.modelo.item(fila, 2).text()
+        
+        try:
+            #permiso_eliminar_registro_asistencia = permiso_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "ELIMINAR ALUMNOS")
+            
+            self.msg_box.setWindowTitle("Confirmar eliminación")
+            self.msg_box.setText(f"¿Seguro que quiere eliminar a {nombre} {apellido} del registro de asistencia?")
+            self.msg_box.setIcon(QMessageBox.Question)
+            QApplication.beep()
 
-    
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+
+            if self.msg_box.clickedButton() == self.boton_si:      
+                asistencia_alumno_id = FuncionSistema.buscar_id_por_cedula(matricula, self.lista_alumnos_en_tabla)
+                asistencia_alumno_servicio.eliminar_asistencia_alumno(asistencia_alumno_id)
+                
+        
+        except Exception as e:
+            print(F"No lo puede eliminar: {e}")
+            QMessageBox.warning(self, "No puede", f"{e}")
+            
+        else:
+            QMessageBox.information(self, "Preceso exitoso", "El registro fue eliminado correctamente")
+            self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
+            
     def agregar_info(self):
         
         """
@@ -1068,12 +1059,6 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             return
         
         
-    def obtener_info_alumno_para_editar(self):
-        """
-            Este metodo sirve para actualizar/editar el registro de asistencia del alumno
-        """
-        
-        
-        
+    
         
         
