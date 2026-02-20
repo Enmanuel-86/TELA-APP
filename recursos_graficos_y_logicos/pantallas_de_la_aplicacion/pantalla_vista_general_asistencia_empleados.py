@@ -385,6 +385,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             if self.msg_box.clickedButton() == self.boton_si:
             
                 try:
+                    self.area_scroll.verticalScrollBar().setValue(0)
+                    
                     # habilitamos los inputs necesarios
                     FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, True)
                     self.input_cedula_empleado.setEnabled(False)
@@ -648,6 +650,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             4. Habilita el boton de cancelar registro
             
         """
+        
         self.ventanas_registro_asistencia.setCurrentIndex(1)
         
         self.boton_crear_registro.setEnabled(False)
@@ -667,6 +670,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.boton_agregar.setEnabled(True)
         
         self.boton_cancelar_registro.setEnabled(True)
+        
+        self.area_scroll.verticalScrollBar().setValue(0)
     
     def cancelar_registro_asistencia(self):
         """
@@ -737,6 +742,8 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
             FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir")
             self.boton_agregar.disconnect()
             self.boton_agregar.clicked.connect(lambda: self.agregar_info())
+            self.area_scroll.verticalScrollBar().setValue(0)
+            
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -1198,7 +1205,7 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
                     self.dateedit_filtro_fecha_asistencia.setDate(QtCore.QDate.currentDate())
 
                     
-                    
+                    self.area_scroll.verticalScrollBar().setValue(0)
                     
                         
             elif self.msg_box.clickedButton() == self.boton_no:

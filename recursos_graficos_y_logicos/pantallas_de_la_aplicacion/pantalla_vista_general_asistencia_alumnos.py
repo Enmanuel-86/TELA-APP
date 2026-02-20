@@ -490,6 +490,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                                     
         self.boton_cancelar_registro.setEnabled(True)
         
+        self.area_scroll.verticalScrollBar().setValue(0)
         #self.dateedit_filtro_fecha_asistencia.setEnabled(False)
     
         
@@ -562,6 +563,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.boton_establecer_dia_feriado.setEnabled(False)
             
             #self.dateedit_filtro_fecha_asistencia.setEnabled(True)
+            
+            self.area_scroll.verticalScrollBar().setValue(0)
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -1057,6 +1060,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
             
             self.boton_crear_registro.setEnabled(True)
+            self.area_scroll.verticalScrollBar().setValue(0)
             self.ventanas_registro_asistencia.setCurrentIndex(0)
             self.stacked_widget.setCurrentIndex(2)
             

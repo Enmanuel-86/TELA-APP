@@ -487,7 +487,7 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         
         self.stacked_widget.setCurrentIndex(2)
         self.dockWidget_diagnostico.hide()
-
+        self.espacio_scroll_mostrar_datos_obtenidos.verticalScrollBar().setValue(0)
         
         FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit)
     
