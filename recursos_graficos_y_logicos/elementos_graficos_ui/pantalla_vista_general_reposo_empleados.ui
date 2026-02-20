@@ -264,7 +264,7 @@
                       <widget class="QLabel" name="label_control_de_reposos">
                        <property name="minimumSize">
                         <size>
-                         <width>506</width>
+                         <width>440</width>
                          <height>101</height>
                         </size>
                        </property>
@@ -289,7 +289,7 @@
 }</string>
                        </property>
                        <property name="text">
-                        <string>CONTROL DE REPOSOS DE LOS EMPLEADOS</string>
+                        <string>Control de reposos de los empleados</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -445,10 +445,10 @@
                      <property name="font">
                       <font>
                        <family>Segoe UI</family>
-                       <pointsize>8</pointsize>
-                       <weight>50</weight>
+                       <pointsize>10</pointsize>
+                       <weight>75</weight>
                        <italic>false</italic>
-                       <bold>false</bold>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="styleSheet">
@@ -844,70 +844,117 @@
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <widget class="QWidget" name="layoutWidget_5">
+                  <widget class="QFrame" name="frame_5">
                    <property name="geometry">
                     <rect>
                      <x>10</x>
                      <y>10</y>
                      <width>181</width>
-                     <height>68</height>
+                     <height>84</height>
                     </rect>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_10">
-                    <item alignment="Qt::AlignLeft|Qt::AlignTop">
-                     <widget class="QLabel" name="label_filtro_fecha_reposo">
-                      <property name="minimumSize">
-                       <size>
-                        <width>58</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>11</pointsize>
-                        <weight>75</weight>
-                        <italic>false</italic>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="text">
-                       <string>Fecha desde</string>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>false</bool>
-                      </property>
-                      <property name="tipo" stdset="0">
-                       <string>titulo_qlineedit</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignTop">
-                     <widget class="QDateEdit" name="dateEdit_filtro_fecha_reposo">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>20</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="displayFormat">
-                       <string>dd/MM/yyyy</string>
-                      </property>
-                      <property name="calendarPopup">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
+                   <widget class="QLabel" name="label_filtro_fecha_reposo">
+                    <property name="geometry">
+                     <rect>
+                      <x>5</x>
+                      <y>7</y>
+                      <width>85</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>58</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <italic>false</italic>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>Fecha desde</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                    <property name="tipo" stdset="0">
+                     <string>titulo_qlineedit</string>
+                    </property>
+                   </widget>
+                   <widget class="QDateEdit" name="dateEdit_filtro_fecha_reposo">
+                    <property name="geometry">
+                     <rect>
+                      <x>1</x>
+                      <y>29</y>
+                      <width>171</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>20</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="displayFormat">
+                     <string>yyyy / MM / dd</string>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_anio_mes_reporte_asistencia_empleados">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>25</y>
+                      <width>91</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>8</pointsize>
+                      <weight>75</weight>
+                      <italic>false</italic>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>Año / Mes / Dia</string>
+                    </property>
+                    <property name="scaledContents">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="tipo" stdset="0">
+                     <string>titulo_qdateedit</string>
+                    </property>
+                   </widget>
                   </widget>
                   <widget class="QWidget" name="layoutWidget_6">
                    <property name="geometry">

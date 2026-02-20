@@ -567,7 +567,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item alignment="Qt::AlignHCenter">
+                   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                     <widget class="QPushButton" name="boton_generar_informe_integral_2">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -703,10 +703,10 @@
                   <widget class="QDateEdit" name="dateedit_fecha_reporte_asistencia">
                    <property name="geometry">
                     <rect>
-                     <x>18</x>
-                     <y>82</y>
-                     <width>221</width>
-                     <height>40</height>
+                     <x>80</x>
+                     <y>72</y>
+                     <width>231</width>
+                     <height>41</height>
                     </rect>
                    </property>
                    <property name="minimumSize">
@@ -768,7 +768,7 @@
                    <property name="geometry">
                     <rect>
                      <x>110</x>
-                     <y>150</y>
+                     <y>130</y>
                      <width>174</width>
                      <height>46</height>
                     </rect>
@@ -822,8 +822,8 @@
                   <widget class="QLabel" name="label_titulo_reporte_asistencia_3">
                    <property name="geometry">
                     <rect>
-                     <x>40</x>
-                     <y>80</y>
+                     <x>100</x>
+                     <y>70</y>
                      <width>61</width>
                      <height>21</height>
                     </rect>
@@ -1006,7 +1006,7 @@
                    <property name="geometry">
                     <rect>
                      <x>60</x>
-                     <y>10</y>
+                     <y>0</y>
                      <width>276</width>
                      <height>40</height>
                     </rect>
@@ -1061,7 +1061,7 @@
                    <property name="geometry">
                     <rect>
                      <x>110</x>
-                     <y>80</y>
+                     <y>90</y>
                      <width>174</width>
                      <height>46</height>
                     </rect>
@@ -1245,7 +1245,7 @@
                    <property name="geometry">
                     <rect>
                      <x>100</x>
-                     <y>40</y>
+                     <y>46</y>
                      <width>61</width>
                      <height>21</height>
                     </rect>
@@ -1282,9 +1282,9 @@
                    <property name="geometry">
                     <rect>
                      <x>80</x>
-                     <y>50</y>
+                     <y>49</y>
                      <width>221</width>
-                     <height>40</height>
+                     <height>41</height>
                     </rect>
                    </property>
                    <property name="minimumSize">

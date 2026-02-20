@@ -1081,13 +1081,28 @@
            <x>0</x>
            <y>0</y>
            <width>931</width>
-           <height>3021</height>
+           <height>3057</height>
           </rect>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_8">
+          <property name="spacing">
+           <number>15</number>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item alignment="Qt::AlignHCenter">
            <widget class="QDockWidget" name="dockWidget_diagnostico">
             <property name="minimumSize">
@@ -1450,7 +1465,7 @@
                             <font>
                              <family>Segoe UI</family>
                              <pointsize>11</pointsize>
-                             <weight>62</weight>
+                             <weight>75</weight>
                              <italic>false</italic>
                              <bold>true</bold>
                             </font>
