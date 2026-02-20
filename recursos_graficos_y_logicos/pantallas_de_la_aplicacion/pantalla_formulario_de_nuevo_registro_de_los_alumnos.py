@@ -688,7 +688,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
         # Botón para eliminar
         boton_eliminar = QPushButton()
-        boton_eliminar.setIcon(QIcon.fromTheme(os.path.join(os.path.dirname(__file__), ".." ,"recursos_de_imagenes", "iconos_de_interfaz", "borrar.png")))
         boton_eliminar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         boton_eliminar.setFixedSize(30,30)
         boton_eliminar.setProperty("tipo", "boton_borrar")

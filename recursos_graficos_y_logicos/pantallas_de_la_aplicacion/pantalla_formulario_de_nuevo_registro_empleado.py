@@ -41,6 +41,12 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.boton_si = self.msg_box.addButton("Sí", QMessageBox.YesRole)
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
+        # listas carrito
+        self.lista_carrito_enfermedades = []
+        self.lista_carrito_diagnosticos = []
+        
+        self.lista_enfermedades_eliminadas = []
+        self.lista_diagnosticos_eliminados = []
         
         # Se que se tratan de tuplas, pero las nombre LISTA para que fuera rapido de asociar
         
@@ -52,7 +58,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                 self.input_numero_de_telefono, self.input_numero_de_telefono_adicional, self.input_correo_electronico, self.input_correo_electronico_adicional,
                                 self.input_otra_enfermedad, self.input_otro_diagnostico, self.ver_lista_diagnostico, self.ver_lista_enfermedades,
                                 self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral, self.input_titulo_del_cargo, self.input_labores_que_realiza,
-                                self.ver_lista_diagnostico, self.ver_lista_enfermedades
+                                self.ver_lista_diagnostico, self.ver_lista_enfermedades, self.lista_diagnosticos_eliminados, self.lista_enfermedades_eliminadas
                                 )
         
         
@@ -69,9 +75,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.lista_diagnostico = diagnostico_servicio.obtener_todos_diagnosticos()       
         self.lista_enfermedades_cronicas = enfermedad_cronica_servicio.obtener_todos_enfermedades_cronicas()
 
-        # listas carrito
-        self.lista_carrito_enfermedades = []
-        self.lista_carrito_diagnosticos = []
+        
 
         
         
@@ -394,7 +398,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
 
     # Metodo para agregar elementos a la vista previa
-    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input = None, texto_a_mostrar=None):
+    def agregar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input = None, texto_a_mostrar=None, edicion = False):
         # Crear un QListWidgetItem
         item = QListWidgetItem()
         nombre_qlistwidget.addItem(item)
@@ -428,7 +432,13 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         delete_button.setFixedSize(30,30)
         delete_button.setProperty("tipo", "boton_borrar")
         
-        delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
+        if edicion:
+            
+            delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item, True))
+
+            
+        else:
+            delete_button.clicked.connect(lambda: self.borrar_elementos_a_la_vista_previa(nombre_qlistwidget, nombre_lista, enfoca_input, item))
         row_layout.addWidget(delete_button)
 
         # Asignar el widget al QListWidgetItem
@@ -439,35 +449,42 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
     
 
     # Metodo para borrar elemento a la vista previa
-    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item):
+    def borrar_elementos_a_la_vista_previa(self, nombre_qlistwidget, nombre_lista, enfoca_input,  item, edicion = False):
         
         
         # Logica para borrar el registro del diagnostico de la lista
         
         # indice del listwidget
         indice_vista_previa = nombre_qlistwidget.row(item)
-        
-        # borramos el elemento de la lista segun el indice del listwidget
-        del nombre_lista[indice_vista_previa]
+
+        if edicion:
+            
+            if nombre_qlistwidget == self.ver_lista_enfermedades:
+                self.lista_enfermedades_eliminadas.append(nombre_lista[indice_vista_previa][0])
+                print("la enfermedad eliminada es: ",self.lista_enfermedades_eliminadas)   
+                
+            if nombre_qlistwidget == self.ver_lista_diagnostico:
+                self.lista_diagnosticos_eliminados.append(nombre_lista[indice_vista_previa][0])
+                print("el diagnostico eliminado es: ",self.lista_diagnosticos_eliminados)          
+            
+        else:
+            
+            # borramos el elemento de la lista segun el indice del listwidget
+            del nombre_lista[indice_vista_previa]
+                    
+            print(f"lista actualizada: {nombre_lista}")
+    
+    
+        # Obtener la fila del item y eliminarlo
+        row = nombre_qlistwidget.row(item)
+        nombre_qlistwidget.takeItem(row)
         
         # darle foco al input del segmento
         # esto lo hice porque al borrar toda la lista de X segmento, esta se subia al arriba del todo del formulario
-        
-        
         enfoca_input.setFocus()
         
         
         
-        
-        
-        
-        ##########################################################################
-        # Obtener la fila del item y eliminarlo
-        row = nombre_qlistwidget.row(item)
-        nombre_qlistwidget.takeItem(row)
-    
-        print(f"lista actualizada: {nombre_lista}")
-    
 
         
         
@@ -1134,7 +1151,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             
                 for enfermedad in self.lista_carrito_enfermedades:
                 
-                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2])
+                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_enfermedades, self.lista_carrito_enfermedades, self.boton_enfermedades, enfermedad[2], True)
             
             else:
 
@@ -1160,7 +1177,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                 
                 for diagnostico in self.lista_carrito_diagnosticos:
                     
-                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico[2])
+                    self.agregar_elementos_a_la_vista_previa(self.ver_lista_diagnostico, self.lista_carrito_diagnosticos, self.boton_diagnostico, diagnostico[2], True)
             
             else:
 
@@ -1455,67 +1472,41 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                                             
                                             
+                                            if len(self.lista_enfermedades_eliminadas) > 0:
+                                                for enfemedad_id in self.lista_enfermedades_eliminadas:
+                                                    historial_enferm_cronicas_servicio.eliminar_historial_enferm_cronica(enfemedad_id)
                                             
-                                            
-                                            # Acá con esto es para más adelante comprobar que si
-                                            # Si la lista de diagnosticos o la lista de enfermedades crónicas
-                                            # no está vacía entonces se hace el proceso de asociar el empleado con sus enfermedades o discapacidades
-                                            # en caso de que alguna esté vacía entonces ese registro en concreto (por ejemplo, si la de discapaciades
-                                            # está vacía) no se hace
-                                            """
-                                            
-                                                
+                                            if len(self.lista_diagnosticos_eliminados) > 0:
+                                                for diagnostico_id in self.lista_diagnosticos_eliminados:
+                                                    info_clinica_empleado_servicio.eliminar_info_clinica(diagnostico_id)
+
+
                                             campos_info_clinica_empleado = {
-                                                "diagnostico_id": None
+                                            "empleado_id": empleado_id,
+                                            "diagnostico_id": None
                                             }
-                                            
+                                        
                                             # declaramos el diccionario
                                             campos_historial_enferm_cronicas = {
+                                                    "empleado_id": empleado_id,
                                                     "enferm_cronica_id": None
                                                 }
-                                            
-                                            
-                                            
-                                            
+  
                                             # se ve si la lista esta llena
                                             if self.lista_carrito_diagnosticos:
-                                                
                                                 # se itera cada diagnostico
                                                 for diagnostico in self.lista_carrito_diagnosticos:
-                                                    
                                                     diagnostico_id = diagnostico[0]
-                                                            
                                                     campos_info_clinica_empleado["diagnostico_id"] = diagnostico_id
-                                                
-                                                    info_clinica_empleado_servicio.actualizar_info_clinica(empleado_id, campos_info_clinica_empleado)
+                                                    info_clinica_empleado_servicio.registrar_info_clinica_empleado(campos_info_clinica_empleado)
 
-                                                
-                                            
-                                            
-                                                    
-                                                
                                             if self.lista_carrito_enfermedades:
-                                                
-                                                for enfermedad in self.lista_carrito_enfermedades:
-                                                    
-                                                        
-                                                        
+                                                for enfermedad in self.lista_carrito_enfermedades:  
                                                     enferm_cronica_id = enfermedad[0]
-                                                    
                                                     campos_historial_enferm_cronicas["enferm_cronica_id"] = enferm_cronica_id
-                                                    
-                                                    historial_enferm_cronicas_servicio.actualizar_historial_enferm_cronica(empleado_id, campos_historial_enferm_cronicas)
+                                                    historial_enferm_cronicas_servicio.registrar_historial_enferm_cronica(campos_historial_enferm_cronicas)
 
-                                                                
-                                            else:
-                                                
-                                                pass
-                                                                    
-                                                
-                                            
-                                            
-                                            """
-                                            
+                                                            
 
 
                                             pantalla_tabla = self.stacked_widget.widget(7)
@@ -1537,11 +1528,12 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             
                                             self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
                                             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
-                                            
+
+                                            QMessageBox.information(self, "Proceso exitoso", "Se realizo la edicion correctamente")
+                                            self.stacked_widget.setCurrentIndex(7)
+
                                             self.area_de_scroll.verticalScrollBar().setValue(0)
-
-
-
+                                            
                                         except Exception as e:
 
                                             QMessageBox.information(self, "No se pudo", f"{str(e)}")
@@ -1564,10 +1556,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             FuncionSistema.mostrar_errores_por_excepcion(e, "Confirmar_edidcion_empleados")
             
         
-        else:
+        
             
-            QMessageBox.information(self, "Proceso exitoso", "Se realizo la edicion correctamente")
-            self.stacked_widget.setCurrentIndex(7)
     
                             
         
