@@ -1613,6 +1613,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                         self.stacked_widget.setCurrentIndex(2)
 
+                                                        self.area_de_scroll.verticalScrollBar().setValue(0)
                                                         
                                                     
                                                     ## si el boton "no" es pulsadoo, no hace nada
@@ -2480,7 +2481,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             
                                             pantalla_tabla_alumnos.boton_especialidades.setCurrentIndex(0)
                                         
-                                            
+                                            self.area_de_scroll.verticalScrollBar().setValue(0)
                                             self.stacked_widget.setCurrentIndex(2)
                                             print("No hubo problemas al tomar los datos")
                                             

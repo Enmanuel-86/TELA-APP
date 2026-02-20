@@ -950,7 +950,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                         self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
                                         self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
 
-
+                                        self.area_de_scroll.verticalScrollBar().setValue(0)
 
                                     except Exception as e:
 
@@ -1537,6 +1537,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             
                                             self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
                                             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
+                                            
+                                            self.area_de_scroll.verticalScrollBar().setValue(0)
 
 
 
