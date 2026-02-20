@@ -56,7 +56,7 @@ from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlum
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.medidas_alumno_repositorio import MedidasAlumnoRepositorio
 from repositorios.alumnos.representante_repositorio import RepresentanteRepositorio
-
+from repositorios.alumnos.asistencia_alumno_repositorio import AsistenciaAlumnoRepositorio
 
 
 # USUARIOS
@@ -102,6 +102,7 @@ from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServ
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.medidas_alumno_servicio import MedidasAlumnoServicio
 from servicios.alumnos.representante_servicio import RepresentanteServicio
+from servicios.alumnos.asistencia_alumno_servicio import AsistenciaAlumnoServicio
 
 # USUARIOS
 from servicios.usuarios.usuario_servicio import UsuarioServicio
@@ -144,6 +145,7 @@ info_bancaria_alumno_repositorio = InfoBancarioAlumnoRepositorio()
 info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
 medidas_alumno_repositorio = MedidasAlumnoRepositorio()
 representante_repositorio = RepresentanteRepositorio()
+asistencia_alumno_repositorio = AsistenciaAlumnoRepositorio()
 
 
 # USUARIOS
@@ -191,6 +193,7 @@ info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_
 info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
 medidas_alumno_servicio = MedidasAlumnoServicio(medidas_alumno_repositorio)
 representante_servicio = RepresentanteServicio(representante_repositorio)
+asistencia_alumno_servicio = AsistenciaAlumnoServicio(asistencia_alumno_repositorio)
 
 # USUARIOS
 usuario_servicio = UsuarioServicio(usuario_repositorio)
