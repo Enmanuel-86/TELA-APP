@@ -47,8 +47,9 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.lista_radiobuttons = (self.radioButton_inasistente, self.radioButton_asistente)
         self.lista_widget_por_deshabilitar = (self.input_cedula_alumno, self.input_dia_feriado,
                                               self.radioButton_inasistente, self.radioButton_asistente,
-                                              self.boton_agregar, self.boton_establecer_dia_feriado, self.boton_especialidades,
-                                              self.checkbox_estado_combobox, self.boton_cancelar_registro, self.dateedit_fecha_asistencia
+                                              self.boton_agregar, self.boton_registrar_dia_feriado, self.boton_especialidades,
+                                              self.checkbox_estado_combobox, self.boton_cancelar_registro, self.dateedit_fecha_asistencia,
+                                              self.boton_agregar
                                               )
         
         
@@ -101,6 +102,8 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.dateedit_filtro_fecha_asistencia.dateChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad())
         self.boton_filtro_especialidades.currentIndexChanged.connect(lambda: self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad())
         self.boton_de_regreso.clicked.connect(lambda: self.regresar_pantalla_anterior())
+        self.boton_establecer_dia_feriado.clicked.connect(self.habilitar_campos_dia_feriado)
+        self.boton_registrar_dia_feriado.clicked.connect(self.registrar_dia_feriado)
 
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
@@ -368,17 +371,12 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         print("Proceso de crear registro de asistencia")
         
         self.ventanas_registro_asistencia.setCurrentIndex(1)
-        
         self.boton_crear_registro.setEnabled(False)
-        
         self.boton_especialidades.setEnabled(True)
-        
         self.boton_especialidades.setCurrentIndex(0)
-        
         self.checkbox_estado_combobox.setEnabled(True)
-                                    
         self.boton_cancelar_registro.setEnabled(True)
-        
+        self.boton_establecer_dia_feriado.setEnabled(False)
         self.area_scroll.verticalScrollBar().setValue(0)
         #self.dateedit_filtro_fecha_asistencia.setEnabled(False)
     
@@ -403,7 +401,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
         self.msg_box.setIcon(QMessageBox.Information)
         self.msg_box.setWindowTitle("Confirmar acción")
         self.msg_box.setText("¿Seguro que quiere cancelar el registro?")
-        self.msg_box.setInformativeText("Esto borrar lo que lleva registrando hasta el momento.")
+        self.msg_box.setInformativeText("Esto borrara lo que lleva registrando hasta el momento.")
         QApplication.beep()
         self.msg_box.exec_()
         
@@ -424,21 +422,11 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.actualizar_lista_busqueda()
             self.ventanas_registro_asistencia.setCurrentIndex(0)
             self.boton_crear_registro.setEnabled(True)
+            self.boton_establecer_dia_feriado.setEnabled(True)
+            
             self.boton_especialidades.setCurrentIndex(0)
-            self.boton_especialidades.setEnabled(False)
-            self.checkbox_estado_combobox.setEnabled(False)
-                    
-            for qlineedits in self.lista_qlineedits:
-                qlineedits.setEnabled(False)
-                
-            for qradiobutton in self.lista_radiobuttons:
-                qradiobutton.setEnabled(False)
-                
-            self.dateedit_fecha_asistencia.setEnabled(False)            
-            self.boton_cancelar_registro.setEnabled(False)
+            FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
             FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)         
-            self.boton_establecer_dia_feriado.setEnabled(False)
-            #self.dateedit_filtro_fecha_asistencia.setEnabled(True)
             
             
             FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "agregar")
@@ -447,6 +435,7 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             self.boton_agregar.clicked.connect(self.agregar_info)
             
             self.area_scroll.verticalScrollBar().setValue(0)
+            self.msg_box.setInformativeText("")
             
         if self.msg_box.clickedButton() == self.boton_no:
             
@@ -566,31 +555,89 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             
             
     def editar_informacion_del_registro_asistencia(self, inscripcion_id, asistencia_alumno_id):
-        """"""
+        """
+            Este metodo sirve para suministrar la informacion editada/actualizada del registro de asistencia del alumno a la base de datos de la siguiente manera:
+            
+            1. le preguntamos al usuario si esta seguro de editar el registro
+            2. si es asi tomamos los datos de los campos y lo suministramos al servicioasistencia_alumno_servicio.actualizar_asistencia_alumno
+            3. si no hay problemas le avisamos al usuario que todo salio bien y dejamos todo en su estado inicial
+        """
         
         try:
-            fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
-                                self.dateedit_filtro_fecha_asistencia.date().month(), 
-                                self.dateedit_filtro_fecha_asistencia.date().day() )
             
-            if self.radioButton_asistente.isChecked():
-                estado_asistencia = True
-            if self.radioButton_inasistente.isChecked():
-                estado_asistencia = False
+            
+            self.msg_box.setWindowTitle("Confirmar edición")
+            self.msg_box.setText(f"¿Seguro que quiere editar el registro de asistencia?")
+            self.msg_box.setIcon(QMessageBox.Question)
+            QApplication.beep()
 
-            dia_no_laborable = None
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+
+            if self.msg_box.clickedButton() == self.boton_si:
+                fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                                    self.dateedit_filtro_fecha_asistencia.date().month(), 
+                                    self.dateedit_filtro_fecha_asistencia.date().day() )
+                
+                if self.radioButton_asistente.isChecked():
+                    estado_asistencia = True
+                if self.radioButton_inasistente.isChecked():
+                    estado_asistencia = False
+
+                dia_no_laborable = None
+                
+                campos_asistencia_alumnos = {
+                "inscripcion_id": inscripcion_id,
+                "fecha_asistencia": fecha,
+                "estado_asistencia": estado_asistencia,
+                "dia_no_laborable": dia_no_laborable
+                }
             
-            campos_asistencia_alumnos = {
-            "inscripcion_id": inscripcion_id,
-            "fecha_asistencia": fecha,
-            "estado_asistencia": estado_asistencia,
-            "dia_no_laborable": dia_no_laborable
-            }
-        
-            asistencia_alumno_servicio.actualizar_asistencia_alumno(asistencia_alumno_id, campos_asistencia_alumnos)
-            QMessageBox.information(self, "Proceso exitoso", "El registro fue editado correctamente")
-            self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
-            
+                asistencia_alumno_servicio.actualizar_asistencia_alumno(asistencia_alumno_id, campos_asistencia_alumnos)
+                QMessageBox.information(self, "Proceso exitoso", "El registro fue editado correctamente")
+                
+                # restablecemos la lista de empleados actuales de la bd
+                self.actualizar_lista_busqueda()
+                self.ventanas_registro_asistencia.setCurrentIndex(0)
+                self.boton_especialidades.setCurrentIndex(0)
+                
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+
+                self.dateedit_filtro_fecha_asistencia.setEnabled(True)
+                
+                # Filtramos la asistencia actual
+                self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
+                
+                self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
+                
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "agregar")
+                self.boton_agregar.setEnabled(False)
+                self.boton_agregar.clicked.disconnect()
+                self.boton_agregar.clicked.connect(self.agregar_info)
+                
+            if self.msg_box.clickedButton() == self.boton_no:
+                
+                # restablecemos la lista de empleados actuales de la bd
+                self.actualizar_lista_busqueda()
+                self.ventanas_registro_asistencia.setCurrentIndex(0)
+                self.boton_especialidades.setCurrentIndex(0)
+                
+                FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
+
+                self.dateedit_filtro_fecha_asistencia.setEnabled(True)
+                
+                # Filtramos la asistencia actual
+                self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
+                
+                self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
+                
+                FuncionSistema.cambiar_estilo_del_boton(self.boton_agregar, "boton_anadir", "agregar")
+                self.boton_agregar.setEnabled(False)
+                self.boton_agregar.clicked.disconnect()
+                self.boton_agregar.clicked.connect(self.agregar_info)
+                    
         except Exception as e:
             print(F"No lo puede editar: {e}")
             QMessageBox.warning(self, "No puede", f"{e}")
@@ -598,7 +645,13 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
     
     def eliminar_registro_de_asistencia_del_alumno(self, fila):
         """
-            Este metodo sirve para eliminar el registro de asistencia del alumno
+            Este metodo sirve para eliminar el registro de asistencia del alumno, de la siguiente manera:
+            
+            1. verificamos si tiene el permiso necesario
+            2. si lo tiene le preguntamos si esta seguro de realizar la eliminacion
+            3. si esta seguro buscamos el id de la asistencia del alumno y se la pasamos al servicio asistencia_alumno_servicio.eliminar_asistencia_alumno
+            4. si todo sale bien le avisamos al usuario que el proceso ha sido exitoso
+            5. en caso de que no tenga el permiso de eliminar le saldran un mensaje en pantalla
         """
         matricula = self.modelo.item(fila, 0).text()
         nombre = self.modelo.item(fila, 1).text()
@@ -627,7 +680,102 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
             print(F"No lo puede eliminar: {e}")
             QMessageBox.warning(self, "No puede", f"{e}")
             
+      
+    def habilitar_campos_dia_feriado(self):
+        """
+            Este metodo sirve para habilitar los campos para establecer el dia feriado para el registro de asistencia
+        """
+        self.msg_box.setWindowTitle("Confirmar acción")
+        self.msg_box.setText(f"¿Seguro que quiere establecer un dia feriado para el registro de asistencia?")
+        self.msg_box.setIcon(QMessageBox.Question)
+        QApplication.beep()
+
+        # Mostrar el cuadro de diálogo y esperar respuesta
+        self.msg_box.exec_()
+
+        if self.msg_box.clickedButton() == self.boton_si:
+            self.input_dia_feriado.setEnabled(True)
+            self.boton_registrar_dia_feriado.setEnabled(True)
+            self.boton_crear_registro.setEnabled(False)
+            self.boton_establecer_dia_feriado.setEnabled(False)
+            self.boton_cancelar_registro.setEnabled(True)
+            self.dateedit_fecha_asistencia.setEnabled(True)
+            
+            
         
+        
+    def registrar_dia_feriado(self):
+        """
+            Este metodo funciona para registrar a todos los alumnos con el dia feriado que se establezca
+        """
+        
+        try:
+            
+            self.msg_box.setWindowTitle("Confirmar acción")
+            self.msg_box.setText(f"¿Seguro que quiere establecer un dia feriado para el registro de asistencia?")
+            self.msg_box.setInformativeText("Esto registrara a todos los alumnos inasistentes y con el dia feriado establecido.")
+            self.msg_box.setIcon(QMessageBox.Question)
+            QApplication.beep()
+
+            # Mostrar el cuadro de diálogo y esperar respuesta
+            self.msg_box.exec_()
+
+            if self.msg_box.clickedButton() == self.boton_si:
+                
+                if not self.input_dia_feriado.text() == "":
+                    fecha = date(self.dateedit_filtro_fecha_asistencia.date().year(),
+                                        self.dateedit_filtro_fecha_asistencia.date().month(), 
+                                        self.dateedit_filtro_fecha_asistencia.date().day() )
+                    
+                    alumnos = alumno_servicio.obtener_todos_alumnos()
+                    dia_no_laborable = self.input_dia_feriado.text().strip()
+                    for alumno in alumnos:
+                        alumno_id = alumno[0]
+                        
+                        campos_asistencia_alumnos = {
+                            "inscripcion_id": alumno_id,
+                            "fecha_asistencia": fecha,
+                            "estado_asistencia": False,
+                            "dia_no_laborable": dia_no_laborable.capitalize()
+                        }
+                        
+                        
+                        asistencia_alumno_servicio.registrar_asistencia_alumno(campos_asistencia_alumnos)
+                    
+                    QMessageBox.information(self, "Proceso exitoso", "Se a registrado correctamente la asistencia con el dia feriado")
+
+                    self.input_dia_feriado.setEnabled(False)
+                    self.boton_registrar_dia_feriado.setEnabled(False)
+                    self.boton_crear_registro.setEnabled(True)
+                    self.boton_establecer_dia_feriado.setEnabled(True)
+                    self.boton_cancelar_registro.setEnabled(False)
+                    self.dateedit_fecha_asistencia.setEnabled(False)
+                    self.input_dia_feriado.clear()
+                    self.input_dia_feriado.setEnabled(False)
+                    self.boton_registrar_dia_feriado.setEnabled(False)
+                    self.msg_box.setInformativeText("")
+                    
+                    # Filtramos la asistencia actual
+                    self.filtra_alumnos_por_fecha_de_asistencia_y_especialidad()
+                    
+                else:
+                    QMessageBox.warning(self, "Campo vacio", "Si va a establecer un dia feriado debe de llenar el campo (Dia Feriado)")
+                    self.input_dia_feriado.setFocus()
+                
+            if self.msg_box.clickedButton() == self.boton_no:
+                self.input_dia_feriado.setEnabled(False)
+                self.boton_registrar_dia_feriado.setEnabled(False)
+                self.dateedit_fecha_asistencia.setEnabled(False)
+                self.boton_crear_registro.setEnabled(True)
+                self.boton_establecer_dia_feriado.setEnabled(True)
+                self.boton_cancelar_registro.setEnabled(False)
+                self.input_dia_feriado.clear()
+                
+        
+            
+        except:
+            print("No se puedo registrar el dia feriado")
+            
             
             
     def agregar_info(self):
@@ -986,31 +1134,10 @@ class PantallaVistaGeneralAsistenciaAlumnos(QWidget, Ui_VistaGeneralAsistenciaAl
                 
                 # restablecemos la lista de empleados actuales de la bd
                 self.actualizar_lista_busqueda()
-            
                 self.ventanas_registro_asistencia.setCurrentIndex(0)
-                
-                self.boton_crear_registro.setEnabled(True)
-                
                 self.boton_especialidades.setCurrentIndex(0)
-                
-                self.boton_especialidades.setEnabled(False)
-                            
-                self.checkbox_estado_combobox.setEnabled(False)
-                        
-                for qlineedits in self.lista_qlineedits:
-                    qlineedits.setEnabled(False)
-                    
-                for qradiobutton in self.lista_radiobuttons:
-                    qradiobutton.setEnabled(False)
-                    
-                self.dateedit_fecha_asistencia.setEnabled(False)
-                
-                self.boton_agregar.setEnabled(True)
-                
-                self.boton_cancelar_registro.setEnabled(False)
-                
                 FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedits, self.lista_radiobuttons)
-                            
+                FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.lista_widget_por_deshabilitar, False)
                 self.boton_agregar.setEnabled(False)
                 
                 self.dateedit_filtro_fecha_asistencia.setEnabled(True)
