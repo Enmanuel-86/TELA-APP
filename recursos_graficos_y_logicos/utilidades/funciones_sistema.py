@@ -978,13 +978,13 @@ class FuncionesDelSistema:
                 cedula_seleccionada = partes[0]
                 
                 # Buscar el empleado correspondiente
-                for persona in self.lista_empleados_actual:
-                    if persona[6] == cedula_seleccionada:
+                for persona in lista_datos:
+                    if persona[indice_cedula] == cedula_seleccionada:
                         # Poner la cédula en el QLineEdit
                         qlineedit.setText(cedula_seleccionada)
                         
                         # Mostrar el nombre en el label
-                        nombre_completo = f"{persona[1].capitalize()} {persona[4].capitalize()}"
+                        nombre_completo = f"{persona[indice_nombre].capitalize()} {persona[indice_apellido].capitalize()}"
                         if label_guia:
                             label_guia.setText(nombre_completo)
                         
