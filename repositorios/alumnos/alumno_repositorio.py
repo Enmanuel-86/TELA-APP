@@ -61,7 +61,6 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.situacion,
                         alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
-                    WHERE alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial';
                 """
                 alumnos = sesion.execute(text(consulta)).fetchall()
                 
@@ -97,7 +96,6 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.situacion,
                         alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.alumno_id = :alumno_id;
                 """
                 alumno = sesion.execute(text(consulta), {"alumno_id": alumno_id}).fetchone()
                 
@@ -138,7 +136,6 @@ class AlumnoRepositorio(RepositorioBase):
                         alumnos.situacion,
                         alumnos.foto_perfil
                     FROM tb_alumnos AS alumnos
-                    WHERE (alumnos.situacion = 'Ingresado' OR alumnos.situacion = 'Inicial') AND alumnos.cedula = :cedula;
                 """
                 alumno = sesion.execute(text(consulta), {"cedula": cedula}).fetchone()
                 return alumno
