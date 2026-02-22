@@ -39,7 +39,6 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_numero_de_telefono,
                     self.input_numero_de_telefono_adicional,
                     self.input_estado_civil, 
-                    self.boton_agregar_foto_representante,
                     self.label_foto_representante)
                     
         
