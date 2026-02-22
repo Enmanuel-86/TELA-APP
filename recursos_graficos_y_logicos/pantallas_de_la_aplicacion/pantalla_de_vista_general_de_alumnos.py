@@ -112,7 +112,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         self.tabla_ver_alumnos.verticalHeader().setFixedWidth(20)
 
         #esto me da el valor de la cedula al darle click a la persona que quiero
-        self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 2).data()))
+        self.tabla_ver_alumnos.clicked.connect(lambda index: print(index.sibling(index.row(), 1).data()))
 
         # Opcional: desactivar clic en el encabezado vertical
         self.tabla_ver_alumnos.verticalHeader().setSectionsClickable(True)
@@ -137,11 +137,6 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         
         self.lista_especialidades = especialidad_servicio.obtener_todos_especialidades()
         self.lista_alumnos_actual = alumnos_servicio.obtener_todos_alumnos()
-        
-        
-        
-        
-        
         
         
         # Carga las especialidades al boton deplegable
@@ -321,25 +316,16 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         cedula = modelo.item(row, 1).text()
         
         try:
-            
-            # buscamo el id del alumno para acceder a su perfil
-            # iteramos cada alumno en la lista de alumnos
-            for alumno in self.lista_alumnos_actual:
+
+                alumno = alumnos_servicio.obtener_alumno_por_cedula(cedula)
+                alumno_id = alumno[0]
                 
-                # comparamos la cedula de cada que esta en la lista para ver si es igual para obtener su id
-                if cedula == alumno[1]:
-                    
-                    # luego nos vamos a la pantalla del perfil del alumno
-                    self.stacked_widget.setCurrentIndex(6)
-                    self.barra_de_busqueda.clear()
-                    pantalla_perfil_alumno = self.stacked_widget.widget(6)
-                    pantalla_perfil_alumno.mostrar_la_info_alumno(alumno_id= alumno[0])
-                    
-                    
-                    
-                    break
-            
-            
+                # luego nos vamos a la pantalla del perfil del alumno
+                self.stacked_widget.setCurrentIndex(6)
+                self.barra_de_busqueda.clear()
+                pantalla_perfil_alumno = self.stacked_widget.widget(6)
+                pantalla_perfil_alumno.mostrar_la_info_alumno(alumno_id)
+
         except Exception as e:
             
             print("Error en la funcion acceder_al_prefil_del_alumno_desde_la_tabla", f"{e}")
@@ -428,11 +414,11 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
         try:
             if self.boton_especialidades.currentIndex() == 0: 
                 
-                alumnos = inscripcion_servicio.obtener_todos_inscripciones()
+                self.lista_alumnos_actual = inscripcion_servicio.obtener_todos_inscripciones()
                 
-                self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos)
+                self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, self.lista_alumnos_actual)
                 
-                self.label_contador.setText(str(len(alumnos)))
+                self.label_contador.setText(str(len(self.lista_alumnos_actual)))
                 
             else:
                 
@@ -676,14 +662,14 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
     # Metodo para actualizar la tabla
     def actualizar_tabla(self, cedula, situacion, especialidad_id = None):
         
-            alumnos_actuales = inscripcion_servicio.obtener_inscripcion_por_cedula_situacion_especialidad(
+            self.lista_alumnos_actual = inscripcion_servicio.obtener_inscripcion_por_cedula_situacion_especialidad(
                 especialidad_id = especialidad_id,
                 cedula = cedula,
                 situacion = situacion
             )
-            
-            self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, alumnos_actuales)
-            self.label_contador.setText(str(len(alumnos_actuales)))
+            print(self.lista_alumnos_actual)
+            self.cargar_alumnos_en_tabla(self.tabla_ver_alumnos, self.lista_alumnos_actual)
+            self.label_contador.setText(str(len(self.lista_alumnos_actual)))
 
     
 
@@ -705,24 +691,23 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     
                     # Obtener el texto de la primera columna (nombre)
                     cedula = modelo.item(fila, 1).text()
-                    
-                    alumno_id = FuncionSistema.buscar_id_por_cedula(cedula, self.lista_alumnos_actual)
-                    
-                    
+                    alumno = alumnos_servicio.obtener_alumno_por_cedula(cedula)
+                    alumno_id = alumno[0]                  
                     
                     pantalla_perfil_alumno = self.stacked_widget.widget(3)
-                    
-                    
-                    
+                
                 except Exception as e:
                     
                     FuncionSistema.mostrar_errores_por_excepcion(e, "habilitar_edicion_alumno")
-                    
+                    QMessageBox.warning(self, "Error", f"{e}")
+                    return
+                
                 else:
-                    
                     self.stacked_widget.setCurrentIndex(3)
-                    
                     pantalla_perfil_alumno.editar_datos_alumno(alumno_id)
+                
+                    
+                    
             
         except Exception as e:
             print(F"No lo puede editar: {e}")
