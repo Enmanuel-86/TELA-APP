@@ -1011,7 +1011,6 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         
         """
-        
         self.boton_finalizar.clicked.disconnect()
         self.boton_finalizar.clicked.connect(lambda: self.confirmar_edicion_datos_empleados(empleado_id))
         
@@ -1511,16 +1510,18 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                                             pantalla_tabla = self.stacked_widget.widget(7)
                                             
-                                            pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= self.boton_situacion.currentText(), indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
+                                            pantalla_tabla.actualizar_tabla(tipo_cargo_id= 1, especialidad_id= None, situacion_selec= "Activo", indice_cedula= 2, indice_1er_nombre= 3, indice_2do_nombre= 4,
                                                             indice_1er_apellido=6, indice_2do_apellido= 7, indice_estado= 9 )
 
+                                            pantalla_tabla.boton_de_situacion.setCurrentIndex(0)
 
                                             
                                             pantalla_tabla.actualizar_lista_busqueda()
                                             
                                             pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
                                         
-                                            
+                                            self.boton_finalizar.clicked.disconnect()
+                                            self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
 
 
                                             FuncionSistema.limpiar_inputs_de_qt(self.lista_qlineedit, self.lista_qradiobutton, self.lista_qcombobox)
