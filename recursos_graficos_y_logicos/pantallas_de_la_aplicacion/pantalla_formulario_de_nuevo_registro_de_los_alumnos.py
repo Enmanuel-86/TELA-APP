@@ -6,7 +6,7 @@ from PyQt5.QtCore import QDate
 import traceback
 import os
 from PyQt5.QtWidgets import (QDateEdit, QDialog, QDialogButtonBox, QFormLayout, QLineEdit, QWidget, QCalendarWidget, QListWidgetItem,
-                             QStackedWidget, QMessageBox, QFileDialog,
+                             QFrame, QMessageBox, QFileDialog, QVBoxLayout,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
@@ -2568,26 +2568,39 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         
 
-
 class VentanaDatosEgreso(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Información de Egreso")
-        self.setFixedSize(300, 150)
+        self.setFixedSize(300, 170)
         
-        layout = QFormLayout(self)
+        frame = QFrame(self)
+        frame.setProperty("tipo", "espacio_form")
+        frame.setStyleSheet("""
+                                QFrame{
+                                    border-radius:0px
+                                }
+                            """)
+        layout_principal = QVBoxLayout(self)
+        layout_principal.setContentsMargins(0, 0, 0, 0)
+        layout_principal.addWidget(frame)
+        
+        layout = QFormLayout(frame)
         
         self.fecha_egreso = QDateEdit(self)
         self.fecha_egreso.setCalendarPopup(True)
         self.fecha_egreso.setDate(QDate.currentDate())
+        self.fecha_egreso.setFixedSize(220, 40)
         
         self.razon_egreso = QLineEdit(self)
         self.razon_egreso.setPlaceholderText("Ej: Graduación, Traslado...")
+        self.razon_egreso.setFixedSize(220, 40)
         
         layout.addRow("Fecha:", self.fecha_egreso)
         layout.addRow("Razón:", self.razon_egreso)
         
         self.botones = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, self)
+        #self.botones.setFixedSize(220, 40)
         self.botones.accepted.connect(self.accept)
         self.botones.rejected.connect(self.reject)
         layout.addRow(self.botones)
