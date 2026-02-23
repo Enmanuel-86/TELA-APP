@@ -1011,6 +1011,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         
         """
+        self.boton_finalizar.setText("Editar")
         self.boton_finalizar.clicked.disconnect()
         self.boton_finalizar.clicked.connect(lambda: self.confirmar_edicion_datos_empleados(empleado_id))
         
@@ -1520,6 +1521,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                                             
                                             pantalla_tabla.boton_de_opciones.setCurrentIndex(0)
                                         
+                                            self.boton_finalizar.setText("Finalizar")
                                             self.boton_finalizar.clicked.disconnect()
                                             self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
 
@@ -1589,6 +1591,10 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
             self.foto_perfil_empleado = None
             self.dateedit_fecha_nacimiento.setDate(QtCore.QDate(2000, 1, 1))
             self.dateedit_fecha_ingreso_ministerio.setDate(QtCore.QDate(2000, 1, 1))
+
+            self.boton_finalizar.setText("Finalizar")
+            self.boton_finalizar.clicked.disconnect()
+            self.boton_finalizar.clicked.connect(self.guardar_informacion_empleado)
 
 
             self.stacked_widget.setCurrentIndex(7)

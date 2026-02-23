@@ -812,6 +812,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.label_foto_alumno.setText("No hay foto")
             self.label_foto_representante.setText("No hay foto")
             
+            self.boton_finalizar.setText("Finalizar")
+            self.boton_finalizar.clicked.disconnect()
+            self.boton_finalizar.clicked.connect(self.guardar_informacion_alumno)
+            
+            
             self.boton_de_especialidad.setCurrentIndex(0)
             self.area_de_scroll.verticalScrollBar().setValue(0)
             
@@ -2536,6 +2541,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                             self.foto_perfil_representante = None
                                             self.label_foto_alumno.setText("No hay foto")
                                             self.label_foto_representante.setText("No hay foto")
+                                            
+                                            self.boton_finalizar.setText("Finalizar")
+                                            self.boton_finalizar.clicked.disconnect()
+                                            self.boton_finalizar.clicked.connect(self.guardar_informacion_alumno)
                                             
                                             self.boton_de_especialidad.setCurrentIndex(0)
                                             self.area_de_scroll.verticalScrollBar().setValue(0)
