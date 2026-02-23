@@ -44,12 +44,21 @@
       <string>espacio_principal</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
       <item alignment="Qt::AlignTop">
        <widget class="QFrame" name="espacio_personal">
+        <property name="minimumSize">
+         <size>
+          <width>410</width>
+          <height>670</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>410</width>
-          <height>797</height>
+          <height>670</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -65,42 +74,54 @@
          <string>espacio_form</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QPushButton" name="boton_de_regreso">
-           <property name="minimumSize">
-            <size>
-             <width>41</width>
-             <height>41</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>41</width>
-             <height>41</height>
-            </size>
-           </property>
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="tipo" stdset="0">
-            <string>boton_regresar</string>
-           </property>
-          </widget>
-         </item>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout">
+           <item alignment="Qt::AlignTop">
+            <widget class="QPushButton" name="boton_de_regreso">
+             <property name="minimumSize">
+              <size>
+               <width>41</width>
+               <height>41</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>41</width>
+               <height>41</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="tipo" stdset="0">
+              <string>boton_regresar</string>
+             </property>
+            </widget>
+           </item>
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
@@ -141,9 +162,12 @@
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
+               <width>119</width>
                <height>20</height>
               </size>
              </property>
@@ -292,6 +316,9 @@
                  <bool>true</bool>
                 </property>
                 <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
                  <bool>false</bool>
                 </property>
                </widget>
@@ -1058,12 +1085,18 @@
            </item>
           </layout>
          </item>
-         <item>
+         <item alignment="Qt::AlignHCenter">
           <widget class="QPushButton" name="boton_info_egreso">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>40</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
-             <width>16777215</width>
-             <height>44</height>
+             <width>500</width>
+             <height>40</height>
             </size>
            </property>
            <property name="cursor">
@@ -1096,7 +1129,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>931</width>
+           <width>940</width>
            <height>3057</height>
           </rect>
          </property>
@@ -1114,7 +1147,7 @@
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>10</number>
+           <number>0</number>
           </property>
           <property name="bottomMargin">
            <number>0</number>
