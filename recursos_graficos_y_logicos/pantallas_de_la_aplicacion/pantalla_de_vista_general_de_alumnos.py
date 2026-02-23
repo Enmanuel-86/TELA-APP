@@ -420,10 +420,15 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                 
                 self.label_contador.setText(str(len(self.lista_alumnos_actual)))
                 
+                self.boton_situacion.setCurrentIndex(0)
+                self.boton_situacion.setEnabled(False)
+                
+                
             else:
                 
                 especialidad_id = FuncionSistema.buscar_id_por_nombre_del_elemento(self.boton_especialidades.currentText(), self.lista_especialidades, 0)
-                        
+                self.boton_situacion.setEnabled(True)
+                
                 self.actualizar_tabla(None, situacion_selec, especialidad_id)
                 
             self.barra_de_busqueda.clear()
