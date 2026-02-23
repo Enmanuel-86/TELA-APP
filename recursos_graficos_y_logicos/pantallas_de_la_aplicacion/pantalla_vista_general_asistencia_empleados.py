@@ -127,8 +127,6 @@ class PantallaVistaGeneralAsistenciaEmpleados(QWidget, Ui_VistaGeneralAsistencia
         self.dateedit_fecha_asistencia.setDate(QDate.currentDate())
         self.dateedit_filtro_fecha_asistencia.setDate(QDate.currentDate())
         
-        self.lista_tipo_cargo = tipo_cargo_servicio.obtener_todos_tipos_cargo()
-        FuncionSistema.cargar_elementos_para_el_combobox(self.lista_tipo_cargo, self.boton_filtro_tipo_cargo, 1, 1)
         
         # Lista de coincidencias
         self.resultados = QListWidget(self)
