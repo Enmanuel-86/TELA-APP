@@ -84,6 +84,10 @@ class PantallaAdminCrearRespaldo(QWidget, Ui_PantallaCrearRespaldo):
             
             QMessageBox.information(self, "Importación de datos exitosa", "La base de datos a sido actualizada con la importación nueva de datos")
             respaldo_bd.importar(self.ruta)
+            pantalla_vista_general_empleados =self.stacked_widget.widget(7)
+            pantalla_vista_general_alumno = self.stacked_widget.widget(2)
+            pantalla_vista_general_empleados.filtrar_por_tipo_cargo()
+            pantalla_vista_general_alumno.filtrar_por_ente_seleccionado()
             
             
             
