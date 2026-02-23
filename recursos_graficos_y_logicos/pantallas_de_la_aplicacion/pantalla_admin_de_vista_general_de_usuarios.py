@@ -12,6 +12,7 @@ from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSist
 from recursos_graficos_y_logicos.utilidades.base_de_datos import (usuario_servicio, rol_servicio, empleado_servicio,
                                                                   permiso_servicio)
 from excepciones.base_datos_error import BaseDatosError
+from configuraciones.configuracion import app_configuracion
 
 
 
@@ -260,9 +261,10 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         """
         try:
             # Aqui se verifica si tiene el permiso
-            permiso_editar_usuario = permiso_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "GESTIONAR USUARIOS")
+            permiso_editar_usuario = permiso_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "GESTIONAR USUARIOS")
             
             if permiso_editar_usuario:
+                print("tengo permisos para editar")
                 
                 # Mensaje para confirmar la accion
                 self.msg_box.setIcon(QMessageBox.Information)
@@ -405,7 +407,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
         try:
             
-            permiso_eliminar_usuario = permiso_servicio.verificar_permiso_usuario(FuncionSistema.id_usuario, "GESTIONAR USUARIOS")
+            permiso_eliminar_usuario = permiso_servicio.verificar_permiso_usuario(app_configuracion.USUARIO_ID, "GESTIONAR USUARIOS")
             
             if permiso_eliminar_usuario:
                 

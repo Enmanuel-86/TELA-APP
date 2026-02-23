@@ -63,7 +63,7 @@ class AlumnoEgresadoServicio:
     def obtener_alumno_egresado_por_id(self, alumno_id: int) -> Optional[Tuple]:
         try:
             return self.repositorio.obtener_por_id(alumno_id)
-        except BaseDatosError as error:
+        except Exception as error:
             raise error
     
     def obtener_alumno_egresado_por_cedula(self, cedula: str) -> Optional[Tuple]:

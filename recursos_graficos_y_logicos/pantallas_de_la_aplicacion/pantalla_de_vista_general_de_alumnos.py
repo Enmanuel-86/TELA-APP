@@ -692,7 +692,7 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
                     # Obtener el texto de la primera columna (nombre)
                     cedula = modelo.item(fila, 1).text()
                     alumno = alumnos_servicio.obtener_alumno_por_cedula(cedula)
-                    alumno_id = alumno[0]                  
+                    alumno_id = alumno[0]
                     
                     pantalla_perfil_alumno = self.stacked_widget.widget(3)
                 

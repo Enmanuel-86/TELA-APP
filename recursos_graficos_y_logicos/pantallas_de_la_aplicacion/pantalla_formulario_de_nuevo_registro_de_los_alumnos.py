@@ -5,13 +5,13 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QDate
 import traceback
 import os
-from PyQt5.QtWidgets import (QWidget, QCalendarWidget, QListWidgetItem,
+from PyQt5.QtWidgets import (QDateEdit, QDialog, QDialogButtonBox, QFormLayout, QLineEdit, QWidget, QCalendarWidget, QListWidgetItem,
                              QStackedWidget, QMessageBox, QFileDialog,
                              QLabel, QHBoxLayout,
                              QPushButton, QApplication)
 from ..elementos_graficos_a_py import Ui_FormularioNuevoRegistroAlumnos
 from ..utilidades.funciones_sistema import FuncionSistema
-from ..utilidades.base_de_datos import (alumno_servicio, especialidad_servicio, diagnostico_servicio,
+from ..utilidades.base_de_datos import (alumno_servicio, alumno_egresado_servicio, especialidad_servicio, diagnostico_servicio,
                                         medidas_alumno_servicio, representante_servicio, info_clinica_alumno_servicio,
                                         info_bancaria_alumno_servicio, inscripcion_servicio)
 
@@ -123,6 +123,12 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.boton_agregar_foto_alumno.clicked.connect(lambda: self.buscar_foto("alumno"))
         self.boton_agregar_foto_representante.clicked.connect(lambda: self.buscar_foto("representante"))
         
+        self.boton_info_egreso.setVisible(False)
+        
+
+        # Inicializamos variables para los datos extras (opcional)
+        self.datos_egreso = None
+        
         
         # esto es para hacer pruebas  para no ingresar datos a cada rato
         # NOTA: lo pueden cambiar
@@ -170,6 +176,30 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         """
         
+        self.boton_info_egreso.clicked.connect(self.abrir_dialogo_egreso)
+        self.boton_situacion.currentTextChanged.connect(self.gestionar_visibilidad_boton_egreso)
+    
+    def gestionar_visibilidad_boton_egreso(self, texto):
+        if texto == "Egresado":
+            self.boton_info_egreso.setVisible(True)
+        else:
+            self.boton_info_egreso.setVisible(False)
+            self.datos_egreso = None # Limpiamos los datos si cambia a otra situación
+    
+    def abrir_dialogo_egreso(self):
+        ventana = VentanaDatosEgreso(self)
+        
+        # SI YA EXISTEN DATOS, los cargamos en la ventana para "verlos"
+        if hasattr(self, 'datos_egreso') and self.datos_egreso:
+            # Convertir fecha de objeto/string a QDate para el widget
+            # Si guardaste la fecha como objeto date de Python:
+            ventana.fecha_egreso.setDate(self.datos_egreso['fecha'])
+            ventana.razon_egreso.setText(self.datos_egreso['razon'])
+
+        if ventana.exec_() == QDialog.Accepted:
+            # Guardamos/Actualizamos los datos
+            self.datos_egreso = ventana.obtener_datos()
+            print("Datos de egreso actualizados:", self.datos_egreso)
         
     def actualizar_listas_catalogo(self):
         
@@ -1587,6 +1617,19 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         
                                                         inscripcion_servicio.registrar_inscripcion(campos_inscripcion)
                                                         
+                                                        if alumno_id and situacion == "Egresado" and hasattr(self, 'datos_egreso'):
+                                                            fecha = self.datos_egreso['fecha']
+                                                            razon = self.datos_egreso['razon']
+                                                            
+                                                            campos_alumno_egresado = {
+                                                                "alumno_id": alumno_id,
+                                                                "fecha_emision": fecha,
+                                                                "razon_egreso": razon
+                                                            }
+                                                            
+                                                            alumno_egresado_servicio.registrar_alumno_egresado(campos_alumno_egresado)
+                                                            print("egreso del alumno registrado correctamente")
+                                                        
                                                         
                                                         QMessageBox.information(self, "Bien hecho", "Registro exitoso")
             
@@ -1618,9 +1661,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                     elif self.msg_box.clickedButton() == self.boton_no:
                                                         return
                                                         
-                                                except:
+                                                except Exception as e:
                                                     
-                                                    print("No se puedo guardar la informacion del alumno correctamente")
+                                                    print(f"No se puedo guardar la informacion del alumno correctamente. ERROR: {e}")
                                                     return
                                                 
                                                 else:
@@ -1704,9 +1747,16 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             self.boton_situacion.setCurrentText(info_basica[14])
             
+            if (self.boton_situacion.currentText() == "Egresado"):
+                self.boton_info_egreso.setVisible(True)
+                info_egreso = alumno_egresado_servicio.obtener_alumno_egresado_por_id(alumno_id)
+                
+                if (info_egreso):
+                    self.datos_egreso = {
+                        "fecha": info_egreso[10],
+                        "razon": info_egreso[9]
+                    }
             
-                            
-                            
         except:
             
             print("Error al cargar la Informacion basica")
@@ -2188,6 +2238,24 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     campos_inscripcion.get("periodo_escolar")
                                 )
                                 
+                                if (self.boton_situacion.currentText() == "Egresado"):
+                                    campos_alumno_egresado_actualizar = {
+                                        "fecha_emision": self.datos_egreso["fecha"],
+                                        "razon_egreso": self.datos_egreso["razon"]
+                                    }
+                                    
+                                    campos_alumno_egresado_registrar = {
+                                        "alumno_id": alumno_id,
+                                        "fecha_emision": self.datos_egreso["fecha"],
+                                        "razon_egreso": self.datos_egreso["razon"]
+                                    }
+                                    
+                                    
+                                    if (alumno_egresado_servicio.obtener_alumno_egresado_por_id(alumno_id)):
+                                            alumno_egresado_servicio.actualizar_alumno_egresado(alumno_id, campos_alumno_egresado_actualizar)
+                                    else:
+                                        alumno_egresado_servicio.registrar_alumno_egresado(campos_alumno_egresado_registrar)
+                                
                                 # comprobamos errores
                                 if errores_inscripcion:
                                     self.mostrar_errores_antes_de_guardar(errores_inscripcion, "Especialidad por inscribir")
@@ -2499,4 +2567,33 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         
         
-            
+
+
+class VentanaDatosEgreso(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Información de Egreso")
+        self.setFixedSize(300, 150)
+        
+        layout = QFormLayout(self)
+        
+        self.fecha_egreso = QDateEdit(self)
+        self.fecha_egreso.setCalendarPopup(True)
+        self.fecha_egreso.setDate(QDate.currentDate())
+        
+        self.razon_egreso = QLineEdit(self)
+        self.razon_egreso.setPlaceholderText("Ej: Graduación, Traslado...")
+        
+        layout.addRow("Fecha:", self.fecha_egreso)
+        layout.addRow("Razón:", self.razon_egreso)
+        
+        self.botones = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel, self)
+        self.botones.accepted.connect(self.accept)
+        self.botones.rejected.connect(self.reject)
+        layout.addRow(self.botones)
+
+    def obtener_datos(self):
+        return {
+            "fecha": self.fecha_egreso.date().toPyDate(),
+            "razon": self.razon_egreso.text()
+        }

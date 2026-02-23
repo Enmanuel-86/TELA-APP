@@ -49,7 +49,7 @@
         <property name="maximumSize">
          <size>
           <width>410</width>
-          <height>671</height>
+          <height>797</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1007,7 +1007,7 @@
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>Estado:</string>
+                <string>Estado: </string>
                </property>
                <property name="scaledContents">
                 <bool>false</bool>
@@ -1057,6 +1057,22 @@
             </layout>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="boton_info_egreso">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>44</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Info de egreso</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

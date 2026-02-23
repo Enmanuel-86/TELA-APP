@@ -50,6 +50,7 @@ from repositorios.diagnosticos.diagnostico_repositorio import DiagnosticoReposit
 
 # Alumnos
 from repositorios.alumnos.alumno_repositorio import AlumnoRepositorio
+from repositorios.alumnos.alumno_egresado_repositorio import AlumnoEgresadoRepositorio
 from repositorios.alumnos.inscripcion_repositorio import InscripcionRepositorio
 from repositorios.alumnos.info_bancaria_alumno_repositorio import InfoBancarioAlumnoRepositorio
 from repositorios.alumnos.info_clinica_alumno_repositorio import InfoClinicaAlumnoRepositorio
@@ -96,6 +97,7 @@ from servicios.diagnosticos.diagnostico_servicio import DiagnosticoServicio
 
 # Alumnos
 from servicios.alumnos.alumno_servicio import AlumnoServicio
+from servicios.alumnos.alumno_egresado_servicio import AlumnoEgresadoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.info_bancaria_alumno_servicio import InfoBancariaAlumnoServicio
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
@@ -140,6 +142,7 @@ diagnostico_repositorio = DiagnosticoRepositorio()
 # Alumnos:
 
 alumno_repositorio = AlumnoRepositorio()
+alumno_egresado_repositorio = AlumnoEgresadoRepositorio()
 inscripcion_repositorio = InscripcionRepositorio()
 info_bancaria_alumno_repositorio = InfoBancarioAlumnoRepositorio()
 info_clinica_alumno_repositorio = InfoClinicaAlumnoRepositorio()
@@ -188,6 +191,7 @@ diagnostico_servicio = DiagnosticoServicio(diagnostico_repositorio)
 
 # Alumnos
 alumno_servicio = AlumnoServicio(alumno_repositorio)
+alumno_egresado_servicio = AlumnoEgresadoServicio(alumno_egresado_repositorio)
 inscripcion_servicio = InscripcionServicio(inscripcion_repositorio)
 info_bancaria_alumno_servicio = InfoBancariaAlumnoServicio(info_bancaria_alumno_repositorio)
 info_clinica_alumno_servicio = InfoClinicaAlumnoServicio(info_clinica_alumno_repositorio)
