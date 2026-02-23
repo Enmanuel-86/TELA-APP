@@ -267,22 +267,23 @@ class ReporteGeneralAlumnos(ReporteBase):
             # Llenar la primera tabla con los datos del bloque actual
             for persona in bloque_personas:
                 fila_celdas = tabla_1.add_row().cells
-                fila_celdas[0].text = str(persona["num"])
-                fila_celdas[1].text = persona["nombre_completo_alumno"]
-                fila_celdas[2].text = persona["cedula"]
-                fila_celdas[3].text = persona["especialidad_ocupacional"]
-                fila_celdas[4].text = persona["lugar_y_fecha_nacimiento"]
-                fila_celdas[5].text = str(persona["edad"])
-                fila_celdas[6].text = persona["sexo"]
-                fila_celdas[7].text = persona["lista_diagnosticos"]
-                fila_celdas[8].text = persona["lista_medicacion"]
-                fila_celdas[9].text = str(persona["talla"])
-                fila_celdas[10].text = str(persona["peso"])
-                fila_celdas[11].text = persona["talla_camisa"]
-                fila_celdas[12].text = str(persona["talla_pantalon"])
-                fila_celdas[13].text = str(persona["talla_zapatos"])
-                fila_celdas[14].text = persona["procedencia"]
-                fila_celdas[15].text = persona["fecha_ingreso_institucion"]
+                fila_celdas[0].text = str(persona["num"]) if persona["num"] is not None else ""
+                fila_celdas[1].text = persona["nombre_completo_alumno"] if persona["nombre_completo_alumno"] is not None else ""
+                fila_celdas[2].text = persona["cedula"] if persona["cedula"] is not None else ""
+                fila_celdas[3].text = persona["especialidad_ocupacional"] if persona["especialidad_ocupacional"] is not None else ""
+                fila_celdas[4].text = persona["lugar_y_fecha_nacimiento"] if persona["lugar_y_fecha_nacimiento"] is not None else ""
+                fila_celdas[5].text = str(persona["edad"]) if persona["edad"] is not None else ""
+                fila_celdas[6].text = persona["sexo"] if persona["sexo"] is not None else ""
+                fila_celdas[7].text = persona["lista_diagnosticos"] if persona["lista_diagnosticos"] is not None else ""
+                fila_celdas[8].text = persona["lista_medicacion"] if persona["lista_medicacion"] is not None else ""
+                fila_celdas[9].text = str(persona["talla"]) if persona["talla"] is not None else ""
+                fila_celdas[10].text = str(persona["peso"]) if persona["peso"] is not None else ""
+                fila_celdas[11].text = persona["talla_camisa"] if persona["talla_camisa"] is not None else ""
+                fila_celdas[12].text = str(persona["talla_pantalon"]) if persona["talla_pantalon"] is not None else ""
+                fila_celdas[13].text = str(persona["talla_zapatos"]) if persona["talla_zapatos"] is not None else ""
+                fila_celdas[14].text = persona["procedencia"] if persona["procedencia"] is not None else ""
+                # SOLUCIÓN: Aquí verificamos que fecha_ingreso_institucion no sea None
+                fila_celdas[15].text = str(persona["fecha_ingreso_institucion"]) if persona["fecha_ingreso_institucion"] is not None else ""
                 
                 # Configurar el estilo al contenido de cada fila de la tabla 1
                 for celda in fila_celdas:
@@ -339,17 +340,17 @@ class ReporteGeneralAlumnos(ReporteBase):
                 tiempo_en_tela = persona["tiempo_en_tela"]
                 
                 fila_celdas = tabla_2.add_row().cells
-                fila_celdas[0].text = str(persona["num"])
-                fila_celdas[1].text = persona["escolaridad"]
-                fila_celdas[2].text = f"{tiempo_en_tela} años" if (tiempo_en_tela > 1) else "Nuevo ingreso"
-                fila_celdas[3].text = "No" if (persona["cma"] == 0) else "Si"
-                fila_celdas[4].text = "No" if (persona["imt"] == 0) else "Si"
-                fila_celdas[5].text = persona["lista_certificado_discapacidad"]
-                fila_celdas[6].text = persona["nombre_completo_representante"]
-                fila_celdas[7].text = persona["cedula_representante"]
-                fila_celdas[8].text = persona["direccion_residencia"]
-                fila_celdas[9].text = persona["telefonos"]
-                fila_celdas[10].text = str(persona["carga_familiar"])
+                fila_celdas[0].text = str(persona["num"]) if persona["num"] is not None else ""
+                fila_celdas[1].text = persona["escolaridad"] if persona["escolaridad"] is not None else ""
+                fila_celdas[2].text = f"{tiempo_en_tela} años" if (tiempo_en_tela and tiempo_en_tela > 1) else "Nuevo ingreso"
+                fila_celdas[3].text = "No" if (persona["cma"] == 0 or persona["cma"] is None) else "Si"
+                fila_celdas[4].text = "No" if (persona["imt"] == 0 or persona["imt"] is None) else "Si"
+                fila_celdas[5].text = persona["lista_certificado_discapacidad"] if persona["lista_certificado_discapacidad"] is not None else ""
+                fila_celdas[6].text = persona["nombre_completo_representante"] if persona["nombre_completo_representante"] is not None else ""
+                fila_celdas[7].text = persona["cedula_representante"] if persona["cedula_representante"] is not None else ""
+                fila_celdas[8].text = persona["direccion_residencia"] if persona["direccion_residencia"] is not None else ""
+                fila_celdas[9].text = persona["telefonos"] if persona["telefonos"] is not None else ""
+                fila_celdas[10].text = str(persona["carga_familiar"]) if persona["carga_familiar"] is not None else ""
                 
                 # Configurar el estilo al contenido de cada fila de la tabla 2
                 for celda in fila_celdas:
@@ -364,7 +365,7 @@ class ReporteGeneralAlumnos(ReporteBase):
             # Se puede hacer esto en cada iteración excepto en la última
             if i + 8 < len(lista_dict_data_alumnos):
                 documento.add_page_break()
-    
+                
     def exportar(self, datos: List):
         try:
             self.RUTA_REPORTES_GENERALES_ALUMNOS.mkdir(exist_ok = True)
