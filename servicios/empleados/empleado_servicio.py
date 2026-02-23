@@ -188,8 +188,8 @@ class EmpleadoServicio:
             if not(estructura_estado_reside):
                 errores.append("Estado en el que reside: No debe contener números o caracteres especiales.")
             
-            if (len(estado_reside) > 20):
-                errores.append("Estado en el que reside: No puede contener más de 20 caracteres.")
+            if (len(estado_reside) > 50):
+                errores.append("Estado en el que reside: No puede contener más de 50 caracteres.")
         
         return errores
     
@@ -207,8 +207,8 @@ class EmpleadoServicio:
             if not(estructura_municipio):
                 errores.append("Municipio: No debe contener números o caracteres especiales.")
             
-            if (len(municipio) > 20):
-                errores.append("Municipio: No puede contener más de 20 caracteres.")
+            if (len(municipio) > 50):
+                errores.append("Municipio: No puede contener más de 50 caracteres.")
         
         return errores
     
