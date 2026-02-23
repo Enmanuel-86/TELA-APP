@@ -155,8 +155,8 @@ class AlumnoServicio:
             if (len(lugar_nacimiento_sin_espacios) == 0):
                 errores.append("Lugar de nacimiento: No puede estar vacío.")
         
-            if (len(lugar_nacimiento) > 40):
-                errores.append("Lugar de nacimiento: No puede contener más de 40 caracteres.")
+            if (len(lugar_nacimiento) > 50):
+                errores.append("Lugar de nacimiento: No puede contener más de 50 caracteres.")
         
         return errores
     

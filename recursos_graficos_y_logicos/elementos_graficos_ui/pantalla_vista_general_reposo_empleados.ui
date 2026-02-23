@@ -730,7 +730,7 @@
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="toolTip">
-                      <string>Este boton sirve para comenzar a crear un nuevo registro de asistencia</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Este boton sirve para comenzar a crear un nuevo registro de reposo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                      <property name="text">
                       <string>Crear nuevo registro</string>
@@ -780,7 +780,7 @@
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="toolTip">
-                      <string>Este boton sirve para cancelar el registro de asistencia que esta realizando</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Este boton sirve para cancelar el registro de reposo que esta realizando&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                      <property name="text">
                       <string>Cancelar nuevo registro</string>

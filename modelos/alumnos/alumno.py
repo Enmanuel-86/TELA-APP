@@ -16,7 +16,7 @@ class Alumno(Base):
     apellido_paterno = Column(String(15), nullable = False)
     apellido_materno = Column(String(15))
     fecha_nacimiento = Column(Date, nullable = False)
-    lugar_nacimiento = Column(String(40), nullable = False)
+    lugar_nacimiento = Column(String(50), nullable = False)
     sexo = Column(String(1), default = "M")
     cma = Column(Boolean, default = 1)
     imt = Column(Boolean, default = 1)

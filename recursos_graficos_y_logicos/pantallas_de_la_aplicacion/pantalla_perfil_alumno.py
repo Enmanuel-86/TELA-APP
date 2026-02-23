@@ -5,6 +5,8 @@ from PyQt5.QtCore import QSize, QByteArray
 import os
 from ..elementos_graficos_a_py import Ui_PantallaInfoCompletaDelAlumno
 from ..utilidades.funciones_sistema import FuncionSistema
+from recursos_graficos_y_logicos.utilidades.base_de_datos import alumno_egresado_servicio
+from recursos_graficos_y_logicos.pantallas_de_la_aplicacion.pantalla_formulario_de_nuevo_registro_de_los_alumnos import VentanaDatosEgreso
 
 ##################################
 # importaciones de base de datos #
@@ -89,6 +91,28 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
         self.boton_de_regreso.clicked.connect(self.volver_vista_general_alumnos)
         
         
+        self.boton_info_egreso.clicked.connect(self.ver_info_egreso_alumno)
+        self.datos_egreso = None
+    
+    def cargar_info_egreso_alumno(self, alumno_id: int):
+        alumno_egresado = alumno_egresado_servicio.obtener_alumno_egresado_por_id(alumno_id)
+        
+        self.datos_egreso = {
+            "fecha": alumno_egresado[10],
+            "razon": alumno_egresado[9]
+        }
+    
+    def ver_info_egreso_alumno(self):
+        ventana = VentanaDatosEgreso(self)
+        
+        ventana.fecha_egreso.setDate(self.datos_egreso['fecha'])
+        ventana.razon_egreso.setText(self.datos_egreso['razon'])
+        
+        ventana.botones.hide()
+        ventana.fecha_egreso.setReadOnly(True)
+        ventana.razon_egreso.setReadOnly(True)
+        
+        ventana.exec_()
     
     # Metodo para acceder a la informacion del alumno
     def mostrar_la_info_alumno(self, alumno_id: int):
@@ -150,6 +174,12 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             self.input_mostrar_lugar_nacimiento.setText(info_basica[9])
             
             self.label_mostrar_estado.setText(info_basica[14])
+            
+            if (info_basica[14] == "Egresado"):
+                self.boton_info_egreso.setVisible(True)
+                self.cargar_info_egreso_alumno(alumno_id)
+            else:
+                self.boton_info_egreso.setVisible(False)
             
             
             FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_basica[15], self.label_imagen_del_alumno)

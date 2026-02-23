@@ -86,11 +86,9 @@ class AlumnoEgresadoRepositorio(RepositorioBase):
                 ).filter(AlumnoEgresado.alumno_id == alumno_id).first()
                 
                 if not(alumno_egresado):
-                    raise BaseDatosError("ALUMNO_EGRESADO_NO_EXISTE", "Este registro de alumno egresado no existe")
+                    return None
                 
                 return alumno_egresado
-        except BaseDatosError as error:
-            raise error
         except Exception as error:
             print(f"ERROR AL OBTENER AL ALUMNO EGRESADO: {error}")
     
