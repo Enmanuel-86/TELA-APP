@@ -347,8 +347,10 @@ class PantallaDeVistaGeneralDelPersonal(QWidget, Ui_VistaGeneralDelPersonal):
     # ponga la cedula en la barra de busqueda    
     def on_double_click(self, index):
          
+        index_real = self.proxy.mapToSource(index)
+        
         # Obtener la fila donde se hizo doble click
-        row = index.row()
+        row = index_real.row()
         
         # Obtener el texto de la primera columna (nombre)
         cedula = modelo.item(row, 0).text()

@@ -308,9 +308,10 @@ class PantallaDeVistaGeneralDeAlumnos(QWidget, Ui_VistaGeneralDeAlumnos):
             
             Tomamos la fila y si hace el doble click este accede al perfil del alumno
         """
-         
+        index_real = self.proxy.mapToSource(index)
+        
         # Obtener la fila donde se hizo doble click
-        row = index.row()
+        row = index_real.row()
         
         # Obtener el texto de la primera columna (nombre)
         cedula = modelo.item(row, 1).text()
