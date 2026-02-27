@@ -16,7 +16,7 @@ from recursos_graficos_y_logicos.elementos_graficos_a_py import (Ui_Login, Ui_Ve
 from recursos_graficos_y_logicos.pantallas_de_la_aplicacion import ( PantallaAdminVistaGeneralUsuarios, PantallaAdminCrearRespaldo,
                                         PantallaVistaGeneralAsistenciaEmpleados, PantallaDeFormularioNuevoRegistroEmpleado, PantallaDeVistaGeneralDeAlumnos, PantallaDeVistaGeneralDelPersonal,
                                         PantallaPerfilEmpleado, PantallaDeFormularioNuevoRegistroAlumnos, PantallaPerfilAlumno, PantallaControlRepososPersonal, PantallaGenerarInformesReportesAlumnos,
-                                        PantallaVistaGeneralAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario)
+                                        PantallaVistaGeneralAsistenciaAlumnos, PantallaAdminInsertarCatalogo, PantallaBienvenidaUsuario, PantallaDeVistaGeneralAuditorias)
 
 from recursos_graficos_y_logicos.utilidades import FuncionSistema
 
@@ -201,6 +201,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.pantalla_admin_vista_general_usuario = PantallaAdminVistaGeneralUsuarios(self.stacked_widget) # pantalla del admin para crear usuario 
         self.pantalla_admin_crear_respaldo = PantallaAdminCrearRespaldo(self.stacked_widget) # pantalla del admin para crear respaldo
         self.pantalla_admin_insertar_catalogo = PantallaAdminInsertarCatalogo(self.stacked_widget)
+        self.pantalla_admin_vista_general_auditoria = PantallaDeVistaGeneralAuditorias(self.stacked_widget)
         
         
         
@@ -225,6 +226,7 @@ class MainWindow(QMainWindow, Ui_VentanaPrincipal):
         self.stacked_widget.addWidget(self.pantalla_admin_vista_general_usuario) # indice 12
         self.stacked_widget.addWidget(self.pantalla_admin_crear_respaldo) #indice 13
         self.stacked_widget.addWidget(self.pantalla_admin_insertar_catalogo) # indice 14
+        self.stacked_widget.addWidget(self.pantalla_admin_vista_general_auditoria) # indice 15
         
         # Los indices, al final hay que acomodarlos para que sean mas entendibles
         
