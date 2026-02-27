@@ -30,6 +30,7 @@
     <file>utilidades/MANUAL DE USUARIO PARA EL USO DEL TELA-APP.pdf</file>
   </qresource>
   <qresource prefix="iconos">
+    <file>recursos_de_imagenes/iconos_de_interfaz/auditoria.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/prescripcion-medica.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/x-white.png</file>
     <file>recursos_de_imagenes/iconos_de_interfaz/x.png</file>
