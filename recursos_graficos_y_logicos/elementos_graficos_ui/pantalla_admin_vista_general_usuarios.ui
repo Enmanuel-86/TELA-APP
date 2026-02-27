@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1217</width>
+    <width>1466</width>
     <height>1224</height>
    </rect>
   </property>
@@ -42,8 +42,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>1255</width>
-        <height>1205</height>
+        <width>1464</width>
+        <height>1222</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -261,7 +261,7 @@
 }</string>
                        </property>
                        <property name="text">
-                        <string>CONTROL DE USUARIOS</string>
+                        <string>Control de usuarios</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -957,6 +957,47 @@
                      </widget>
                     </item>
                    </layout>
+                  </widget>
+                  <widget class="QPushButton" name="boton_ver_auditoria">
+                   <property name="geometry">
+                    <rect>
+                     <x>1070</x>
+                     <y>30</y>
+                     <width>161</width>
+                     <height>41</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>161</width>
+                     <height>41</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>161</width>
+                     <height>41</height>
+                    </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Este boton sirve para comenzar a crear un nuevo registro de usuario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="text">
+                    <string>Ver auditoria</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="../recursos_de_imagenes_tela_app.qrc">
+                     <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/eye-white.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>26</width>
+                     <height>26</height>
+                    </size>
+                   </property>
                   </widget>
                  </widget>
                 </item>
