@@ -58,6 +58,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         self.comboBox_filtro_rol.currentIndexChanged.connect(self.filtrar_por_rol_de_usuario)
         self.boton_crear_registro.clicked.connect(self.crear_nuevo_registro)
         self.boton_cancelar_registro.clicked.connect(self.cancelar_registro)
+        self.boton_ver_auditoria.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(15))
         
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
