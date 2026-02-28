@@ -58,7 +58,7 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         self.comboBox_filtro_rol.currentIndexChanged.connect(self.filtrar_por_rol_de_usuario)
         self.boton_crear_registro.clicked.connect(self.crear_nuevo_registro)
         self.boton_cancelar_registro.clicked.connect(self.cancelar_registro)
-        self.boton_ver_auditoria.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(15))
+        self.boton_ver_auditoria.clicked.connect(lambda: self.ir_pantalla_auditoria())
         
         
         self.lista_empleados_actual = empleado_servicio.obtener_todos_empleados()
@@ -88,7 +88,14 @@ class PantallaAdminVistaGeneralUsuarios(QWidget, Ui_VistaGeneralUsuarios):
         
         
     
+    def ir_pantalla_auditoria(self):
+        """
+            Metodo para actualizar las auditorias en la tabla de auditorias en el sistema
+        """
         
+        pantalla_auditorias = self.stacked_widget.widget(15)
+        pantalla_auditorias.actualizar_auditorias()
+        self.stacked_widget.setCurrentIndex(15)
         
     def actualizar_lista_busqueda(self):
         
