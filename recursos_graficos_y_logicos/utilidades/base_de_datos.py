@@ -67,7 +67,7 @@ from repositorios.usuarios.auditoria_repositorio import AuditoriaRepositorio
 from repositorios.usuarios.permiso_repositorio import PermisoRepositorio
 
 
-# Servicios
+
 # EMPLEADOS
 from repositorios.empleados.empleado_repositorio import EmpleadoRepositorio
 from repositorios.empleados.enfermedad_cronica_repositorio import EnfermedadCronicaRepositorio
