@@ -4,7 +4,7 @@ from sqlalchemy import text
 from excepciones.base_datos_error import BaseDatosError
 from modelos import Auditoria
 from conexiones.conexion import conexion_bd
-from datetime import datetime
+from datetime import datetime, date
 from repositorios.repositorio_base import RepositorioBase
 
 
@@ -86,6 +86,49 @@ class AuditoriaRepositorio(RepositorioBase):
             raise error
         except Exception as error:
             print(f"ERROR AL OBTENER LA AUDITORÍA: {error}")
+    
+    def obtener_por_fecha_rol_y_usuario(self, fecha_accion: date, tipo_rol: Optional[str] = None, nombre_usuario: Optional[str] = None) -> Optional[List[Tuple]]:
+        try:
+            with self.conexion_bd.obtener_sesion_bd() as sesion:
+                consulta = """
+                        SELECT 
+                            auditoria_id,
+                            nombre_usuario,
+                            cedula,
+                            primer_nombre,
+                            tipo_rol,
+                            entidad_afectada,
+                            accion,
+                            fecha_accion,
+                            hora_accion
+                        FROM vw_auditorias_sistema
+                        WHERE fecha_accion = :fecha_accion
+                    """
+                
+                parametros = {"fecha_accion": fecha_accion}
+                condiciones_adicionales = []
+                
+                if (tipo_rol):
+                    condiciones_adicionales.append("tipo_rol = :tipo_rol")
+                    parametros["tipo_rol"] = tipo_rol
+                
+                if (nombre_usuario):
+                    condiciones_adicionales.append("nombre_usuario = :nombre_usuario")
+                    parametros["nombre_usuario"] = nombre_usuario
+                
+                if (condiciones_adicionales):
+                    consulta += " AND " + " AND ".join(condiciones_adicionales)
+                
+                auditorias = sesion.execute(text(consulta), parametros).fetchall()
+                
+                if not(auditorias):
+                    raise BaseDatosError("NO_HAY_AUDITORIAS", "No hay registros de auditoría en esta fecha, ni filtrados por el tipo de rol y nombre de usuario ingresados.")
+                
+                return auditorias
+        except BaseDatosError as error:
+            raise error
+        except Exception as error:
+            print(f"ERROR AL OBTENER LA AUDITORÍA: {error}")
 
 auditoria_repositorio = AuditoriaRepositorio()
 
@@ -97,3 +140,13 @@ if __name__ == "__main__":
     
     
     #print(auditoria.obtener_por_id(2))
+    
+    try:
+        fecha_actual = date(2026, 2, 22)
+        
+        auditorias = auditoria_repositorio.obtener_por_fecha_rol_y_usuario(fecha_actual, "DIRECTOR", "douglas345")
+        
+        for registro in auditorias:
+            print(registro)
+    except BaseDatosError as error:
+        print(f"ERROR: {error}")

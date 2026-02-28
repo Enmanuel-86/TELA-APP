@@ -1,4 +1,5 @@
 from typing import List, Tuple, Optional
+from datetime import date
 from excepciones.base_datos_error import BaseDatosError
 from repositorios.usuarios.auditoria_repositorio import AuditoriaRepositorio
 from repositorios.repositorio_base import RepositorioBase
@@ -14,6 +15,12 @@ class AuditoriaServicio:
     def obtener_auditoria_por_id(self, auditoria_id: int) -> Optional[Tuple]:
         try:
             return self.repositorio.obtener_por_id(auditoria_id)
+        except BaseDatosError as error:
+            raise error
+    
+    def obtener_auditorias_por_fecha_rol_y_usuario(self, fecha_accion: date, tipo_rol: Optional[str] = None, nombre_usuario: Optional[str] = None) -> Optional[List[Tuple]]:
+        try:
+            return self.repositorio.obtener_por_fecha_rol_y_usuario(fecha_accion, tipo_rol, nombre_usuario)
         except BaseDatosError as error:
             raise error
 
