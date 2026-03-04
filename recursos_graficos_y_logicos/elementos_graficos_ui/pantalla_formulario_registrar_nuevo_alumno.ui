@@ -2965,34 +2965,64 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_talla_camisa">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QComboBox" name="comboBox_talla_camisa">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
-                       </property>
+                       <item>
+                        <property name="text">
+                         <string>S</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XS</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>S</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>M</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>L</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XXL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>3XL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>6XL</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -5034,7 +5064,6 @@ padding:0px;</string>
   <tabstop>input_estado_civil</tabstop>
   <tabstop>input_carga_familiar</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
-  <tabstop>input_talla_camisa</tabstop>
   <tabstop>input_talla_zapatos</tabstop>
   <tabstop>input_talla_pantalon</tabstop>
   <tabstop>input_peso</tabstop>
