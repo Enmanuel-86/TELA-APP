@@ -28,6 +28,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         self.stacked_widget = stacked_widget
         self.setupUi(self)
         
+        
         self.foto_perfil_alumno = None
         self.foto_perfil_representante = None
         
@@ -92,7 +93,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
                                 self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
                                 self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
-                                self.input_talla_camisa, self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
+                                self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
                                 self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
                                 self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
                                 self.vista_previa_diagnostico, self.label_foto_alumno, self.lista_carrito_cuentas_bancarias, self.lista_carrito_diagnosticos, 
@@ -159,7 +160,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         
         # info medidas
-        self.input_talla_camisa.setText("M")
+        self.comboBox_talla_camisa.setCurrentText("M")
         self.input_talla_pantalon.setText("32")
         self.input_talla_zapatos.setText("32")
         self.input_peso.setText("60")
@@ -1336,7 +1337,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                             # vamos guardando los valores de los inputs en las varibles
                                     estatura = None
                                     peso = None
-                                    talla_camisa = self.input_talla_camisa.text().strip()
+                                    talla_camisa = self.comboBox_talla_camisa.currentText()
                                     talla_pantalon = None
                                     talla_zapatos = None
                                     
@@ -1796,7 +1797,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
             self.input_estatura.setText("" if not info_medidas[2] else str(info_medidas[2]))
             self.input_peso.setText("" if not info_medidas[3] else str(info_medidas[3]))
-            self.input_talla_camisa.setText("" if not info_medidas[4] else str(info_medidas[4]))
+            self.comboBox_talla_camisa.setCurrentText("" if not info_medidas[4] else str(info_medidas[4]))
             self.input_talla_pantalon.setText("" if not info_medidas[5] else str(info_medidas[5]))
             self.input_talla_zapatos.setText("" if not info_medidas[6] else str(info_medidas[6]))
             
@@ -2142,7 +2143,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                         # vamos guardando los valores de los inputs en las varibles
                         estatura = None
                         peso = None
-                        talla_camisa = self.input_talla_camisa.text().strip()
+                        talla_camisa = self.comboBox_talla_camisa.currentText()
                         talla_pantalon = None
                         talla_zapatos = None
                         
