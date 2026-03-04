@@ -44,7 +44,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-24</y>
         <width>1079</width>
         <height>2438</height>
        </rect>
@@ -1657,34 +1657,64 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_talla_de_camisa">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>20</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QComboBox" name="comboBox_talla_camisa">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
-                       </property>
+                       <item>
+                        <property name="text">
+                         <string>S</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XS</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>S</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>M</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>L</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>XXL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>3XL</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>6XL</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -4159,7 +4189,6 @@ QLineEdit:focus{
   <tabstop>input_si</tabstop>
   <tabstop>input_no</tabstop>
   <tabstop>dateedit_fecha_nacimiento</tabstop>
-  <tabstop>input_talla_de_camisa</tabstop>
   <tabstop>input_talla_de_pantalon</tabstop>
   <tabstop>input_talla_de_zapatos</tabstop>
   <tabstop>input_estado_residente</tabstop>

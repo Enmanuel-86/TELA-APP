@@ -53,7 +53,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # AQui estan las listas carrito y los qlistwidget ya que pueden usar tambien el .clear()
         self.lista_qlineedit = (
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_tercer_nombre, self.input_apellido_paterno,
-                                self.input_apellido_materno, self.input_cedula, self.input_talla_de_camisa, self.input_talla_de_pantalon,
+                                self.input_apellido_materno, self.input_cedula, self.input_talla_de_pantalon,
                                 self.input_talla_de_zapatos, self.input_estado_residente, self.input_municipio, self.input_direccion_residencia,
                                 self.input_numero_de_telefono, self.input_numero_de_telefono_adicional, self.input_correo_electronico, self.input_correo_electronico_adicional,
                                 self.input_otra_enfermedad, self.input_otro_diagnostico, self.ver_lista_diagnostico, self.ver_lista_enfermedades,
@@ -133,7 +133,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_sexo_femenino.setChecked(True)
         self.input_si.setChecked(True)
         
-        self.input_talla_de_camisa.setText("s")
+        self.comboBox_talla_camisa.setCurrentText("S")
         self.input_talla_de_pantalon.setText("23")
         self.input_talla_de_zapatos.setText("25")
         
@@ -636,7 +636,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
 
                 ## "Info medidas" que verifique si falta un campo requerido  ##
 
-                talla_camisa =  self.input_talla_de_camisa.text().upper()
+                talla_camisa =  self.comboBox_talla_camisa.currentText()
                 talla_pantalon = self.input_talla_de_pantalon.text()
                 talla_zapatos = self.input_talla_de_zapatos.text()
 
@@ -1060,7 +1060,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
         info_medidas = empleado_servicio.obtener_medidas_empleado(empleado_id)
         
-        self.input_talla_de_camisa.setText(info_medidas[1])
+        self.comboBox_talla_camisa.setCurrentText(info_medidas[1])
         self.input_talla_de_pantalon.setText(str(info_medidas[2]))
         self.input_talla_de_zapatos.setText(str(info_medidas[3]))
         
@@ -1253,7 +1253,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     
                 ## "Info medidas" que verifique si falta un campo requerido  ##
 
-                talla_camisa =  self.input_talla_de_camisa.text().upper()
+                talla_camisa =  self.comboBox_talla_camisa.currentText()
                 talla_pantalon = self.input_talla_de_pantalon.text()
                 talla_zapatos = self.input_talla_de_zapatos.text()
 
