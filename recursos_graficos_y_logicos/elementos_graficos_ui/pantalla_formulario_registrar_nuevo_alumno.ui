@@ -2980,11 +2980,6 @@ QPushButton:hover{
                        </property>
                        <item>
                         <property name="text">
-                         <string>S</string>
-                        </property>
-                       </item>
-                       <item>
-                        <property name="text">
                          <string>XS</string>
                         </property>
                        </item>

@@ -44,7 +44,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-24</y>
+        <y>0</y>
         <width>1079</width>
         <height>2438</height>
        </rect>
@@ -1670,11 +1670,6 @@ QLineEdit:focus{
                          <height>40</height>
                         </size>
                        </property>
-                       <item>
-                        <property name="text">
-                         <string>S</string>
-                        </property>
-                       </item>
                        <item>
                         <property name="text">
                          <string>XS</string>
