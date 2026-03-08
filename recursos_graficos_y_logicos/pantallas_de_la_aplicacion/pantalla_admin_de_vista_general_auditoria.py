@@ -16,7 +16,6 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
         
         self.usuario_auditados = auditoria_servicio.obtener_todos_auditorias() 
         self.lista_usuarios = usuario_servicio.obtener_todos_usuarios()
-        
         self.dateedit_filtro_fecha_auditoria.setDate(QDate.currentDate())
         
         # definimos el modelo para el qtableview
@@ -45,9 +44,11 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
 
         self.boton_de_regreso.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(12))
         self.dateedit_filtro_fecha_auditoria.dateChanged.connect(lambda: self.filtrar_auditoria_por_fecha())
+        self.barra_de_busqueda.returnPressed.connect(lambda texto: self.filtrar_auditoria_por_fecha(texto))
+        self.barra_de_busqueda.textChanged.connect(lambda texto: None if not texto == "" else self.filtrar_auditoria_por_fecha())
+        self.boton_buscar.clicked.connect(lambda: self.filtrar_auditoria_por_fecha(self.barra_de_busqueda.text()))
         
-        
-        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_usuarios, 1, 4, 5 )
+        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_usuarios, 4, 5, 1 )
         
         
         
@@ -112,14 +113,14 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
             tabla.setRowHeight(fila, 40)
         
     
-    def filtrar_auditoria_por_fecha(self):
+    def filtrar_auditoria_por_fecha(self, nombre_usuario = None):
         """
             Metodo para filtrar las auditoria de x usuario tomando su id
         """
         
         try:
             
-            nombre_usuario = None
+            
             rol_usuario = None
             fecha = date(self.dateedit_filtro_fecha_auditoria.date().year(),
                          self.dateedit_filtro_fecha_auditoria.date().month(), 
