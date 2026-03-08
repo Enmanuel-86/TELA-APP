@@ -127,13 +127,80 @@ class Ui_VistaGeneralAuditorias(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frame_registros)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame = QtWidgets.QFrame(self.frame_registros)
-        self.frame.setMinimumSize(QtCore.QSize(0, 61))
-        self.frame.setMaximumSize(QtCore.QSize(16777215, 61))
+        self.frame.setMinimumSize(QtCore.QSize(0, 100))
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 100))
         self.frame.setObjectName("frame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem3 = QtWidgets.QSpacerItem(310, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.frame1 = QtWidgets.QFrame(self.frame)
+        self.frame1.setMinimumSize(QtCore.QSize(171, 71))
+        self.frame1.setMaximumSize(QtCore.QSize(171, 71))
+        self.frame1.setObjectName("frame1")
+        self.label_filtro_fecha_auditoria = QtWidgets.QLabel(self.frame1)
+        self.label_filtro_fecha_auditoria.setGeometry(QtCore.QRect(-2, -2, 161, 23))
+        self.label_filtro_fecha_auditoria.setMinimumSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.label_filtro_fecha_auditoria.setFont(font)
+        self.label_filtro_fecha_auditoria.setStyleSheet("QLabel{font-size:15pt;}")
+        self.label_filtro_fecha_auditoria.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_filtro_fecha_auditoria.setObjectName("label_filtro_fecha_auditoria")
+        self.dateedit_filtro_fecha_auditoria = QtWidgets.QDateEdit(self.frame1)
+        self.dateedit_filtro_fecha_auditoria.setEnabled(True)
+        self.dateedit_filtro_fecha_auditoria.setGeometry(QtCore.QRect(1, 20, 160, 40))
+        self.dateedit_filtro_fecha_auditoria.setMinimumSize(QtCore.QSize(160, 40))
+        self.dateedit_filtro_fecha_auditoria.setMaximumSize(QtCore.QSize(160, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.dateedit_filtro_fecha_auditoria.setFont(font)
+        self.dateedit_filtro_fecha_auditoria.setStyleSheet("")
+        self.dateedit_filtro_fecha_auditoria.setWrapping(False)
+        self.dateedit_filtro_fecha_auditoria.setFrame(True)
+        self.dateedit_filtro_fecha_auditoria.setReadOnly(False)
+        self.dateedit_filtro_fecha_auditoria.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
+        self.dateedit_filtro_fecha_auditoria.setAccelerated(True)
+        self.dateedit_filtro_fecha_auditoria.setKeyboardTracking(True)
+        self.dateedit_filtro_fecha_auditoria.setProperty("showGroupSeparator", True)
+        self.dateedit_filtro_fecha_auditoria.setCurrentSection(QtWidgets.QDateTimeEdit.YearSection)
+        self.dateedit_filtro_fecha_auditoria.setCalendarPopup(True)
+        self.dateedit_filtro_fecha_auditoria.setCurrentSectionIndex(0)
+        self.dateedit_filtro_fecha_auditoria.setDate(QtCore.QDate(2000, 1, 26))
+        self.dateedit_filtro_fecha_auditoria.setObjectName("dateedit_filtro_fecha_auditoria")
+        self.label_5 = QtWidgets.QLabel(self.frame1)
+        self.label_5.setGeometry(QtCore.QRect(12, 19, 101, 16))
+        self.label_5.setStyleSheet("QLineEdit{\n"
+"    \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-radius:5px;\n"
+"    padding-left: 5px;\n"
+" padding-right:5px;\n"
+"    padding-top:1px;\n"
+"    border-bottom:2px solid black  ;\n"
+"    border-top: 2px solid rgb(202, 202, 202);\n"
+"    border-left: 2px solid rgb(202, 202, 202);\n"
+"    border-right: 2px solid rgb(202, 202, 202);\n"
+"\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"\n"
+"    border: 2px solid rgb(17, 192 255)\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"")
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout.addWidget(self.frame1)
+        spacerItem3 = QtWidgets.QSpacerItem(180, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem3)
         self.barra_de_busqueda = QtWidgets.QLineEdit(self.frame)
         self.barra_de_busqueda.setMinimumSize(QtCore.QSize(350, 40))
@@ -202,6 +269,12 @@ class Ui_VistaGeneralAuditorias(object):
         self.label_control_de_llegada.setText(_translate("VistaGeneralAuditorias", "Auditorias"))
         self.label_control_de_llegada.setProperty("tipo", _translate("VistaGeneralAuditorias", "titulo_form"))
         self.frame_registros.setProperty("tipo", _translate("VistaGeneralAuditorias", "espacio_form"))
+        self.label_filtro_fecha_auditoria.setText(_translate("VistaGeneralAuditorias", "<html><head/><body><p><span style=\" font-size:11pt;\">Fecha de la auditoria</span></p></body></html>"))
+        self.label_filtro_fecha_auditoria.setProperty("tipo", _translate("VistaGeneralAuditorias", "titulo_form"))
+        self.dateedit_filtro_fecha_auditoria.setToolTip(_translate("VistaGeneralAuditorias", "Año/Mes/Dia"))
+        self.dateedit_filtro_fecha_auditoria.setDisplayFormat(_translate("VistaGeneralAuditorias", "yyyy / MM / dd"))
+        self.label_5.setText(_translate("VistaGeneralAuditorias", "Año    / Mes / Dia"))
+        self.label_5.setProperty("tipo", _translate("VistaGeneralAuditorias", "titulo_qdateedit"))
         self.barra_de_busqueda.setPlaceholderText(_translate("VistaGeneralAuditorias", "Buscar por nombre o cédula"))
         self.boton_buscar.setText(_translate("VistaGeneralAuditorias", " Buscar"))
         self.boton_buscar.setProperty("tipo", _translate("VistaGeneralAuditorias", "boton_buscar"))

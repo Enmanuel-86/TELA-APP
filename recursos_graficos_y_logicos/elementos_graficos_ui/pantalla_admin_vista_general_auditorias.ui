@@ -354,13 +354,13 @@
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>61</height>
+                    <height>100</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>61</height>
+                    <height>100</height>
                    </size>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -368,13 +368,188 @@
                     <number>0</number>
                    </property>
                    <item>
+                    <widget class="QFrame" name="frame">
+                     <property name="minimumSize">
+                      <size>
+                       <width>171</width>
+                       <height>71</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>171</width>
+                       <height>71</height>
+                      </size>
+                     </property>
+                     <widget class="QLabel" name="label_filtro_fecha_auditoria">
+                      <property name="geometry">
+                       <rect>
+                        <x>-2</x>
+                        <y>-2</y>
+                        <width>161</width>
+                        <height>23</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>15</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel{font-size:15pt;}</string>
+                      </property>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Fecha de la auditoria&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="tipo" stdset="0">
+                       <string>titulo_form</string>
+                      </property>
+                     </widget>
+                     <widget class="QDateEdit" name="dateedit_filtro_fecha_auditoria">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>1</x>
+                        <y>20</y>
+                        <width>160</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>160</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>160</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Año/Mes/Dia</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="wrapping">
+                       <bool>false</bool>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="readOnly">
+                       <bool>false</bool>
+                      </property>
+                      <property name="buttonSymbols">
+                       <enum>QAbstractSpinBox::UpDownArrows</enum>
+                      </property>
+                      <property name="accelerated">
+                       <bool>true</bool>
+                      </property>
+                      <property name="keyboardTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="showGroupSeparator" stdset="0">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSection">
+                       <enum>QDateTimeEdit::YearSection</enum>
+                      </property>
+                      <property name="displayFormat">
+                       <string>yyyy / MM / dd</string>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                      <property name="currentSectionIndex">
+                       <number>0</number>
+                      </property>
+                      <property name="date">
+                       <date>
+                        <year>2000</year>
+                        <month>1</month>
+                        <day>26</day>
+                       </date>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_5">
+                      <property name="geometry">
+                       <rect>
+                        <x>12</x>
+                        <y>19</y>
+                        <width>101</width>
+                        <height>16</height>
+                       </rect>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLineEdit{
+	
+	background-color: rgb(255, 255, 255);
+	border-radius:5px;
+	padding-left: 5px;
+ padding-right:5px;
+	padding-top:1px;
+	border-bottom:2px solid black  ;
+	border-top: 2px solid rgb(202, 202, 202);
+	border-left: 2px solid rgb(202, 202, 202);
+	border-right: 2px solid rgb(202, 202, 202);
+
+}
+
+QLineEdit:focus{
+
+	border: 2px solid rgb(17, 192 255)
+
+
+
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Año    / Mes / Dia</string>
+                      </property>
+                      <property name="tipo" stdset="0">
+                       <string>titulo_qdateedit</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
                     <spacer name="horizontalSpacer">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Preferred</enum>
+                     </property>
                      <property name="sizeHint" stdset="0">
                       <size>
-                       <width>310</width>
+                       <width>180</width>
                        <height>20</height>
                       </size>
                      </property>
