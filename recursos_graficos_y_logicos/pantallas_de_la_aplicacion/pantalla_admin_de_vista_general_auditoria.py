@@ -1,12 +1,11 @@
-from PyQt5.QtCore import Qt,QPoint, QSortFilterProxyModel
-from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import (QWidget, QHeaderView,  QVBoxLayout, 
-                             QPushButton , QHBoxLayout,QMessageBox, QListWidget, QListWidgetItem, QLabel, QApplication)
-from PyQt5 import QtGui, QtCore
-from configuraciones.configuracion import app_configuracion
+from PyQt5.QtCore import (Qt, QDate)
+from PyQt5.QtGui import (QStandardItemModel, QStandardItem)
+from PyQt5.QtWidgets import (QWidget, QHeaderView,
+                            )
 from ..elementos_graficos_a_py import Ui_VistaGeneralAuditorias
 from ..utilidades.base_de_datos import auditoria_servicio, usuario_servicio
 from ..utilidades.funciones_sistema import FuncionSistema
+from datetime import date
 
 class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
     def __init__(self, stacked_widget):
@@ -16,6 +15,12 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
         self.setupUi(self)
         
         self.usuario_auditados = auditoria_servicio.obtener_todos_auditorias() 
+        self.lista_usuarios = usuario_servicio.obtener_todos_usuarios()
+        
+        self.dateedit_filtro_fecha_auditoria.setDate(QDate.currentDate())
+        
+        # definimos el modelo para el qtableview
+        self.modelo = QStandardItemModel()
         
         # Estableciendo estilo de la tabla
         #self.tabla_ver_alumnos.setColumnWidth(6, 300) 
@@ -37,17 +42,19 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
 
         # Opcional: desactivar clic en el encabezado vertical
         self.tbl_auditorias.verticalHeader().setSectionsClickable(True)
-        
+
         self.boton_de_regreso.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(12))
+        self.dateedit_filtro_fecha_auditoria.dateChanged.connect(lambda: self.filtrar_auditoria_por_fecha())
         
         
-        self.cargar_usuarios_auditados_en_tabla(self.tbl_auditorias, self.usuario_auditados )
+        FuncionSistema.configurar_barra_de_busqueda(self, self.barra_de_busqueda, self.lista_usuarios, 1, 4, 5 )
+        
+        
         
         
     def actualizar_auditorias(self):
         self.modelo.clear()
-        self.usuario_auditados = auditoria_servicio.obtener_todos_auditorias() 
-        self.cargar_usuarios_auditados_en_tabla(self.tbl_auditorias, self.usuario_auditados )
+        self.filtrar_auditoria_por_fecha()
     
     def cargar_usuarios_auditados_en_tabla(self, tabla, usuarios_auditados):
         columnas = [
@@ -105,24 +112,27 @@ class PantallaDeVistaGeneralAuditorias(QWidget, Ui_VistaGeneralAuditorias):
             tabla.setRowHeight(fila, 40)
         
     
-    def filtrar_por_usuario_id(self, index):
+    def filtrar_auditoria_por_fecha(self):
         """
             Metodo para filtrar las auditoria de x usuario tomando su id
         """
         
         try:
             
-            cedula = self.modelo.item(index, 1).text()
-            usuario = usuario_servicio.obtener_usuario_por_rol_o_cedula_empleado(cedula_empleado= cedula)
-            usuario_id = usuario[0]
+            nombre_usuario = None
+            rol_usuario = None
+            fecha = date(self.dateedit_filtro_fecha_auditoria.date().year(),
+                         self.dateedit_filtro_fecha_auditoria.date().month(), 
+                         self.dateedit_filtro_fecha_auditoria.date().day())
             
-            auditoria_servicio.obtener_auditoria_por_id()
+            lista_auditorias = auditoria_servicio.obtener_auditorias_por_fecha_rol_y_usuario(fecha_accion= fecha, tipo_rol= rol_usuario, nombre_usuario= nombre_usuario)
             
         except:
             self.modelo.removeRows(0, self.modelo.rowCount())
             
         else:
-            self.cargar_usuarios_auditados_en_tabla(self.tbl_auditorias)
+            self.cargar_usuarios_auditados_en_tabla(self.tbl_auditorias, lista_auditorias)
 
+            
            
         
