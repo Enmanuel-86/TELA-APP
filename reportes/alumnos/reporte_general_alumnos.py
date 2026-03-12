@@ -18,6 +18,7 @@ from servicios.alumnos.alumno_servicio import AlumnoServicio
 from servicios.alumnos.medidas_alumno_servicio import MedidasAlumnoServicio
 from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
+import os
 
 
 class ReporteGeneralAlumnos(ReporteBase):
@@ -194,7 +195,7 @@ class ReporteGeneralAlumnos(ReporteBase):
         encabezado_parrafo.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
         run = encabezado_parrafo.add_run()
-        run.add_picture("reportes/imagenes/CINTILLO_GRANDE.png")
+        run.add_picture(os.path.join(os.path.dirname(__file__), "..", "imagenes", "CINTILLO_GRANDE.png"))
     
     def cargar_titulo(self, documento):
         # Cargar el título

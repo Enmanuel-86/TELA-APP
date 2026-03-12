@@ -21,7 +21,7 @@ from servicios.alumnos.inscripcion_servicio import InscripcionServicio
 from servicios.alumnos.info_clinica_alumno_servicio import InfoClinicaAlumnoServicio
 from servicios.empleados.detalle_cargo_servicio import DetalleCargoServicio
 from servicios.especialidades.especialidad_servicio import EspecialidadServicio
-
+import os
 
 class ReporteInformeEducativoAlumnos(ReporteBase):
     def __init__(self):
@@ -195,7 +195,7 @@ class ReporteInformeEducativoAlumnos(ReporteBase):
         encabezado_parrafo.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         run = encabezado_parrafo.add_run()
-        run.add_picture("reportes/imagenes/CINTILLO_TELA.png")
+        run.add_picture(os.path.join(os.path.dirname(__file__), "..", "imagenes", "CINTILLO_TELA.png"))
     
     def cargar_fuente(self, run, nombre_fuente: str, tamanio: int):
         run.font.name = nombre_fuente

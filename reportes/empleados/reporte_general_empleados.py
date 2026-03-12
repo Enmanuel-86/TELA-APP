@@ -19,6 +19,7 @@ from excepciones.base_datos_error import BaseDatosError
 from datetime import datetime
 from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 import calendar
+import os
 
 
 class ReporteGeneralEmpleados(ReporteBase):
@@ -261,7 +262,8 @@ class ReporteGeneralEmpleados(ReporteBase):
         hoja.row_dimensions[1].height = 47
     
     def cargar_cintillo(self, hoja):
-        RUTA_IMAGEN = "reportes/imagenes/CINTILLO_PEQUEÑO_TELA.png"
+        RUTA_IMAGEN = os.path.join(os.path.dirname(__file__), "..", "imagenes", "CINTILLO_PEQUEÑO_TELA.png")
+        
         
         cintillo = Image(RUTA_IMAGEN)
         cintillo.width = 50 * 7.2
