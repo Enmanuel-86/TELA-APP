@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1357</width>
-    <height>2696</height>
+    <height>2670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1385,7 +1385,10 @@ QPushButton:hover{
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
-                            <pointsize>14</pointsize>
+                            <pointsize>10</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
                            </font>
                           </property>
                           <item>
@@ -2505,15 +2508,9 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_estado_civil">
+                      <widget class="QComboBox" name="comboBox_estado_civil">
                        <property name="enabled">
                         <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -2521,21 +2518,32 @@ QPushButton:hover{
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
-                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Soltero/a</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Casado/a</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Divorciado/a</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Viudo/a</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -2703,15 +2711,9 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_carga_familiar">
+                      <widget class="QSpinBox" name="spinBox_carga_familiar">
                        <property name="enabled">
                         <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
                        </property>
                        <property name="minimumSize">
                         <size>
@@ -2719,20 +2721,17 @@ QPushButton:hover{
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="maximum">
+                        <number>70</number>
                        </property>
                       </widget>
                      </item>
@@ -2980,6 +2979,11 @@ QPushButton:hover{
                        </property>
                        <item>
                         <property name="text">
+                         <string>Seleccione aqui</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
                          <string>XS</string>
                         </property>
                        </item>
@@ -3059,33 +3063,24 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_talla_zapatos">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QSpinBox" name="spinBox_talla_zapatos">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="maximum">
+                        <number>70</number>
                        </property>
                       </widget>
                      </item>
@@ -3128,33 +3123,24 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_talla_pantalon">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QSpinBox" name="spinBox_talla_pantalon">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="maximum">
+                        <number>70</number>
                        </property>
                       </widget>
                      </item>
@@ -3197,33 +3183,33 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_peso">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QDoubleSpinBox" name="doubleSpinBox_peso">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="suffix">
+                        <string>k</string>
+                       </property>
+                       <property name="decimals">
+                        <number>2</number>
+                       </property>
+                       <property name="maximum">
+                        <double>200.000000000000000</double>
+                       </property>
+                       <property name="stepType">
+                        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
                        </property>
                       </widget>
                      </item>
@@ -3263,33 +3249,30 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_estatura">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QDoubleSpinBox" name="doubleSpinBox_estatura">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="suffix">
+                        <string>m</string>
+                       </property>
+                       <property name="maximum">
+                        <double>2.500000000000000</double>
+                       </property>
+                       <property name="stepType">
+                        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
                        </property>
                       </widget>
                      </item>
@@ -3510,37 +3493,40 @@ QPushButton:hover{
                       </widget>
                      </item>
                      <item alignment="Qt::AlignTop">
-                      <widget class="QLineEdit" name="input_tipo_de_cuenta">
-                       <property name="enabled">
-                        <bool>true</bool>
-                       </property>
+                      <widget class="QComboBox" name="comboBox_tipo_de_cuenta">
                        <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
-                         <verstretch>30</verstretch>
+                         <verstretch>10</verstretch>
                         </sizepolicy>
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>240</width>
+                         <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
-                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Seleccione aqui</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Ahorro</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Corriente</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -5056,14 +5042,7 @@ padding:0px;</string>
   <tabstop>input_apellido_del_representante</tabstop>
   <tabstop>input_numero_de_telefono</tabstop>
   <tabstop>input_numero_de_telefono_adicional</tabstop>
-  <tabstop>input_estado_civil</tabstop>
-  <tabstop>input_carga_familiar</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
-  <tabstop>input_talla_zapatos</tabstop>
-  <tabstop>input_talla_pantalon</tabstop>
-  <tabstop>input_peso</tabstop>
-  <tabstop>input_estatura</tabstop>
-  <tabstop>input_tipo_de_cuenta</tabstop>
   <tabstop>input_numero_de_cuenta</tabstop>
   <tabstop>boton_anadir_cuenta_banco</tabstop>
   <tabstop>vista_previa_cuentas_bancarias</tabstop>
