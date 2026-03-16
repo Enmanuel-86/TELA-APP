@@ -356,7 +356,8 @@ class FuncionesDelSistema:
             
     
     # Metodos para limpiar los inputs 
-    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (), lista_qcombobox: tuple = ()) -> None:
+    def limpiar_inputs_de_qt(self, lista_qlineedits_y_qlabel: tuple, lista_qradiobuttons: tuple = (),
+                             lista_qcombobox: tuple = (), lista_spinBox_y_doubleSpinBox: tuple = ()) -> None:
         
         """
             ### Este metodo sirve para limpiar los inputs mas relevante como los:
@@ -418,6 +419,10 @@ class FuncionesDelSistema:
                 for combobox in lista_qcombobox:
                     
                     combobox.setCurrentIndex(0)
+                    
+            if len(lista_spinBox_y_doubleSpinBox) > 0:
+                for spinbox in lista_spinBox_y_doubleSpinBox:
+                    spinbox.setValue(0)
                     
             
             
