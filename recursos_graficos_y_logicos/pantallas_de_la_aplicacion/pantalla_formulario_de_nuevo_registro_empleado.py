@@ -126,7 +126,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ### Esto es de prueba, esto asigna un valor a los input
         
         
-        #"""
+        """
         self.input_primer_nombre.setText("Marla")
         self.input_apellido_paterno.setText("Garcia")
         self.input_cedula.setText("24345231")
@@ -149,7 +149,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_institucion_donde_laboral.setText("Escuela de tal")
         
         
-        #"""
+        """
         
         
     
