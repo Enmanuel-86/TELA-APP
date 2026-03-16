@@ -315,55 +315,6 @@
                      </property>
                     </spacer>
                    </item>
-                   <item alignment="Qt::AlignTop">
-                    <widget class="QPushButton" name="boton_ayuda">
-                     <property name="minimumSize">
-                      <size>
-                       <width>41</width>
-                       <height>41</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>41</width>
-                       <height>41</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	background-color: rgb(85, 85, 255);
-	border-radius:20px;
-	padding:10px;
-}
-
-QPushButton:hover{
-
-	background-color:rgb(39, 39, 118);
-	
-
-
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../recursos_de_imagenes_tela_app.qrc">
-                       <normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png</normaloff>:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>37</width>
-                       <height>37</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -5060,7 +5011,6 @@ padding:0px;</string>
   <tabstop>boton_de_especialidad</tabstop>
   <tabstop>dateedit_fecha_ingreso_especialidad</tabstop>
   <tabstop>boton_finalizar</tabstop>
-  <tabstop>boton_ayuda</tabstop>
   <tabstop>area_de_scroll</tabstop>
   <tabstop>boton_de_regreso</tabstop>
  </tabstops>

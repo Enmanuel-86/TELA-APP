@@ -118,32 +118,6 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.horizontalLayout_2.addWidget(self.label_titulo_formulario)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
-        self.boton_ayuda = QtWidgets.QPushButton(self.mensaje_bienvenida)
-        self.boton_ayuda.setMinimumSize(QtCore.QSize(41, 41))
-        self.boton_ayuda.setMaximumSize(QtCore.QSize(41, 41))
-        self.boton_ayuda.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.boton_ayuda.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(85, 85, 255);\n"
-"    border-radius:20px;\n"
-"    padding:10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    background-color:rgb(39, 39, 118);\n"
-"    \n"
-"\n"
-"\n"
-"}\n"
-"")
-        self.boton_ayuda.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_ayuda.setIcon(icon)
-        self.boton_ayuda.setIconSize(QtCore.QSize(37, 37))
-        self.boton_ayuda.setObjectName("boton_ayuda")
-        self.horizontalLayout_2.addWidget(self.boton_ayuda, 0, QtCore.Qt.AlignTop)
         self.verticalLayout_12.addWidget(self.mensaje_bienvenida)
         self.datos_del_alumno = QtWidgets.QFrame(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -2069,9 +2043,9 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         self.boton_finalizar.setMinimumSize(QtCore.QSize(150, 50))
         self.boton_finalizar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.boton_finalizar.setStyleSheet("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.boton_finalizar.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/iconos/recursos_de_imagenes/iconos_de_interfaz/save.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.boton_finalizar.setIcon(icon)
         self.boton_finalizar.setIconSize(QtCore.QSize(30, 30))
         self.boton_finalizar.setObjectName("boton_finalizar")
         self.gridLayout_7.addWidget(self.boton_finalizar, 2, 2, 1, 1)
@@ -2127,8 +2101,7 @@ class Ui_FormularioNuevoRegistroAlumnos(object):
         FormularioNuevoRegistroAlumnos.setTabOrder(self.vista_previa_diagnostico, self.boton_de_especialidad)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_de_especialidad, self.dateedit_fecha_ingreso_especialidad)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.dateedit_fecha_ingreso_especialidad, self.boton_finalizar)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_finalizar, self.boton_ayuda)
-        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_ayuda, self.area_de_scroll)
+        FormularioNuevoRegistroAlumnos.setTabOrder(self.boton_finalizar, self.area_de_scroll)
         FormularioNuevoRegistroAlumnos.setTabOrder(self.area_de_scroll, self.boton_de_regreso)
 
     def retranslateUi(self, FormularioNuevoRegistroAlumnos):
