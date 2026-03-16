@@ -318,11 +318,11 @@ class PantallaPerfilAlumno(QWidget, Ui_PantallaInfoCompletaDelAlumno):
             
             
         try:
-            self.input_estatura.setText(str(info_medidas_alumno[1]))
-            self.input_peso.setText(str(info_medidas_alumno[2]))
-            self.input_talla_camisa.setText(str(info_medidas_alumno[3]))
-            self.input_talla_pantalon.setText(str(info_medidas_alumno[4]))
-            self.input_talla_zapatos.setText(str(info_medidas_alumno[5]))
+            self.input_estatura.setText(str(info_medidas_alumno[2])[0:4])
+            self.input_peso.setText(str(info_medidas_alumno[3]))
+            self.input_talla_camisa.setText(str(info_medidas_alumno[4]))
+            self.input_talla_pantalon.setText(str(info_medidas_alumno[5]))
+            self.input_talla_zapatos.setText(str(info_medidas_alumno[6]))
         except Exception as e:
             
             print(f"Algo malo paso en info medidas: {e}")
