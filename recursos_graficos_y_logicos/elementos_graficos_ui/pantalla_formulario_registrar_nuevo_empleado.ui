@@ -297,52 +297,6 @@
                      </property>
                     </spacer>
                    </item>
-                   <item alignment="Qt::AlignTop">
-                    <widget class="QPushButton" name="boton_ayuda">
-                     <property name="minimumSize">
-                      <size>
-                       <width>41</width>
-                       <height>41</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>41</width>
-                       <height>41</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-
-	background-color: rgb(85, 85, 255);
-	border-radius:20px;
-	padding:10px;
-	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/circle-question-mark.png);
-}
-
-QPushButton:hover{
-
-	background-color:rgb(39, 39, 118);
-	
-
-
-}
-</string>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>37</width>
-                       <height>37</height>
-                      </size>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -1586,14 +1540,11 @@ QLineEdit:focus{
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_5">
-                   <property name="horizontalSpacing">
-                    <number>9</number>
-                   </property>
-                   <property name="verticalSpacing">
+                  <layout class="QHBoxLayout" name="horizontalLayout_3">
+                   <property name="spacing">
                     <number>20</number>
                    </property>
-                   <item row="0" column="0">
+                   <item>
                     <layout class="QVBoxLayout" name="verticalLayout_18">
                      <property name="spacing">
                       <number>0</number>
@@ -1714,7 +1665,7 @@ QLineEdit:focus{
                      </item>
                     </layout>
                    </item>
-                   <item row="0" column="1">
+                   <item>
                     <layout class="QVBoxLayout" name="verticalLayout_19">
                      <property name="spacing">
                       <number>0</number>
@@ -1778,39 +1729,30 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_talla_de_pantalon">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>20</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QSpinBox" name="spinBox_talla_pantalon">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="maximum">
+                        <number>70</number>
                        </property>
                       </widget>
                      </item>
                     </layout>
                    </item>
-                   <item row="0" column="2">
+                   <item>
                     <layout class="QVBoxLayout" name="verticalLayout_20">
                      <property name="spacing">
                       <number>0</number>
@@ -1874,11 +1816,11 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item alignment="Qt::AlignLeft">
-                      <widget class="QLineEdit" name="input_talla_de_zapatos">
+                      <widget class="QSpinBox" name="spinBox_talla_zapatos">
                        <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>20</verstretch>
+                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                         <horstretch>10</horstretch>
+                         <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
                        <property name="minimumSize">
@@ -1887,24 +1829,37 @@ QLineEdit:focus{
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                       <property name="accelerated">
+                        <bool>true</bool>
                        </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
+                       <property name="maximum">
+                        <number>70</number>
                        </property>
                       </widget>
                      </item>
                     </layout>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>150</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -2037,34 +1992,139 @@ QLineEdit:focus{
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLineEdit" name="input_estado_residente">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>20</verstretch>
-                        </sizepolicy>
-                       </property>
+                      <widget class="QComboBox" name="comboBox_estado_residente">
                        <property name="minimumSize">
                         <size>
                          <width>220</width>
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="font">
-                        <font>
-                         <family>Segoe UI</family>
-                         <pointsize>14</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
+                       <property name="maximumSize">
+                        <size>
+                         <width>220</width>
+                         <height>40</height>
+                        </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="placeholderText">
-                        <string>.....</string>
-                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Amazonas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Anzoátegui</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Apure</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Aragua</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Barinas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Bolivar</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Caracas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Carabobo</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Cojedes</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Delta Macuro</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Falcón</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Guárico</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Lara</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Mérida</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Miranda</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Monagas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Nueva Esparta</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Portuguesa</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Sucre</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Táchira</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Trujillo</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Vargas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Yaracuy</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Zulia</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -4184,9 +4244,6 @@ QLineEdit:focus{
   <tabstop>input_si</tabstop>
   <tabstop>input_no</tabstop>
   <tabstop>dateedit_fecha_nacimiento</tabstop>
-  <tabstop>input_talla_de_pantalon</tabstop>
-  <tabstop>input_talla_de_zapatos</tabstop>
-  <tabstop>input_estado_residente</tabstop>
   <tabstop>input_municipio</tabstop>
   <tabstop>input_direccion_residencia</tabstop>
   <tabstop>input_correo_electronico</tabstop>
