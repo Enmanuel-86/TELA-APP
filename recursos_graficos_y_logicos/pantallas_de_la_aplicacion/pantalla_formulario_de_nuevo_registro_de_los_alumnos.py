@@ -35,13 +35,17 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         self.campos_representantes = (self.input_nombre_del_representante,
                     self.input_apellido_del_representante,
-                    self.input_carga_familiar,
                     self.input_direccion_residencia,
                     self.input_numero_de_telefono,
                     self.input_numero_de_telefono_adicional,
-                    self.input_estado_civil, 
                     self.label_foto_representante)
                     
+        self.lista_de_comboBoxs = (self.comboBox_estado_civil,
+                                   self.comboBox_talla_camisa
+                                   )
+        
+        self.lista_spinBox_y_doubleSpinBox = (self.spinBox_carga_familiar, self.spinBox_talla_pantalon, self.spinBox_talla_zapatos,
+                                              self.doubleSpinBox_peso, self.doubleSpinBox_estatura)
         
         # esta lista es exclusiva de radiobuttons, aqui no hay ningun QLabel, QLineedit, nada de eso
         self.lista_de_radiobuttons = (
@@ -92,9 +96,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_apellido_paterno, self.input_apellido_materno,
                                 self.input_cedula, self.input_relacion_con_representante, self.input_lugar_de_nacimiento,
                                 self.input_escolaridad, self.input_procendencia, self.input_buscar_por_cedula,self.input_nombre_del_representante, 
-                                self.input_apellido_del_representante, self.input_numero_de_telefono, self.input_estado_civil, self.input_carga_familiar, self.input_direccion_residencia,
-                                self.input_talla_pantalon, self.input_talla_zapatos, self.input_peso, self.input_estatura,
-                                self.input_tipo_de_cuenta, self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
+                                self.input_apellido_del_representante, self.input_numero_de_telefono,   self.input_direccion_residencia,
+                                self.input_numero_de_cuenta, self.vista_previa_cuentas_bancarias, self.input_otro_diagnostico,
                                 self.input_medicacion, self.input_medico_tratante,  self.input_certificado_discapacidad,
                                 self.vista_previa_diagnostico, self.label_foto_alumno, self.lista_carrito_cuentas_bancarias, self.lista_carrito_diagnosticos, 
                                 self.lista_diagnosticos_eliminados, self.lista_cuenta_bancarias_eliminadas
@@ -161,10 +164,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         # info medidas
         self.comboBox_talla_camisa.setCurrentText("M")
-        self.input_talla_pantalon.setText("32")
-        self.input_talla_zapatos.setText("32")
-        self.input_peso.setText("60")
-        self.input_estatura.setText("170")
+        self.spinBox_talla_pantalon.setValue(32)
+        self.spinBox_talla_zapatos.setValue(32)
+        self.doubleSpinBox_peso.setValue(60)
+        self.doubleSpinBox_estatura.setValue(1.70)
         
         # info escolaridad
         
@@ -356,13 +359,15 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.input_nombre_del_representante.setText(nombre_representante)
                     self.input_apellido_del_representante.setText(apellido_representante)
                     self.input_numero_de_telefono.setText(num_telefono_representante)
-                    self.input_carga_familiar.setText(carga_familiar_representante)
+                    self.spinBox_carga_familiar.setValue(int(carga_familiar_representante))
                     self.input_direccion_residencia.setText(direccion_residencia_representante)
-                    self.input_estado_civil.setText(estado_civil_representante)
+                    self.comboBox_estado_civil.setCurrentText(estado_civil_representante)
                     
                     # deshabilitamos los campos
                     
                     FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, False)
+                    self.spinBox_carga_familiar.setEnabled(False)
+                    self.comboBox_estado_civil.setEnabled(False)
                     
                     if not edicion:
                         # mostramos mensaje en pantalla
@@ -376,9 +381,13 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     # habilitamos los campos
                     FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, True)
+                    self.spinBox_carga_familiar.setEnabled(True)
+                    self.comboBox_estado_civil.setEnabled(True)
                     
                     # limpiamos los campos
                     FuncionSistema.limpiar_inputs_de_qt(self.campos_representantes)
+                    self.spinBox_carga_familiar.setValue(0)
+                    self.comboBox_estado_civil.setCurrentIndex(0)
                     self.label_foto_representante.setText("No hay foto")
                     
                     if not edicion:
@@ -396,7 +405,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         except Exception as e:
             
-            print("Error al comprobar si el representante esta registrado")
+            print("Error al comprobar si el representante esta registrado", e)
     
     
 
@@ -622,9 +631,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
         
         try:
             # si los campos de la cuenta bancaria de alumno tiene texto entonces...
-            if self.input_tipo_de_cuenta.text().strip() and self.input_numero_de_cuenta.text().strip():
+            if self.comboBox_tipo_de_cuenta.currentIndex() > 0 and self.input_numero_de_cuenta.text().strip():
                 
-                tipo_cuenta = self.input_tipo_de_cuenta.text().strip()
+                tipo_cuenta = self.comboBox_tipo_de_cuenta.currentText()
                 num_cuenta = self.input_numero_de_cuenta.text().strip()
                 
                 
@@ -666,7 +675,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     self.agregar_elementos_a_la_vista_previa(self.vista_previa_cuentas_bancarias, self.lista_carrito_cuentas_bancarias, mostrar_texto)
                 
                     # limpiamos los inputs
-                    self.input_tipo_de_cuenta.clear()
+                    self.comboBox_tipo_de_cuenta.setCurrentIndex(0)
                     self.input_numero_de_cuenta.clear()
                     
                     
@@ -807,7 +816,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
         
             self.stacked_widget.setCurrentIndex(2)
-            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons, self.lista_de_comboBoxs, self.lista_spinBox_y_doubleSpinBox)
             self.foto_perfil_alumno = None
             self.foto_perfil_representante = None
             self.label_foto_alumno.setText("No hay foto")
@@ -890,7 +899,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             if cuenta_bancaria[0] == cuenta_bancaria_id:
                 
-                self.input_tipo_de_cuenta.setText(cuenta_bancaria[2])
+                self.comboBox_tipo_de_cuenta.setCurrentText(cuenta_bancaria[2])
                 self.input_numero_de_cuenta.setText(cuenta_bancaria[3])
                 
                 self.boton_anadir_cuenta_banco.clicked.disconnect()
@@ -960,14 +969,14 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                     
                     cuentas_bancarias[i] = list(cuentas_bancarias[i])
                     
-                    cuentas_bancarias[i][2] = self.input_tipo_de_cuenta.text()
+                    cuentas_bancarias[i][2] = self.comboBox_tipo_de_cuenta.CurrentText()
                     cuentas_bancarias[i][3] = self.input_numero_de_cuenta.text()
 
                     cuentas_bancarias[i] = tuple(cuentas_bancarias[i])
                     
                     print(f"Ahora: {cuentas_bancarias}")
                     
-                    self.input_tipo_de_cuenta.clear()
+                    self.comboBox_tipo_de_cuenta.setCurrentIndex(0)
                     self.input_numero_de_cuenta.clear()
                     
                     self.boton_anadir_cuenta_banco.clicked.disconnect()
@@ -989,7 +998,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.boton_anadir_cuenta_banco.clicked.connect(lambda: self.anadir_cuentas_bancarias_alumno())
             FuncionSistema.cambiar_estilo_del_boton(self.boton_anadir_cuenta_banco, "boton_anadir")
             
-            self.input_tipo_de_cuenta.clear()
+            self.comboBox_tipo_de_cuenta.setCurrentIndex(0)
             self.input_numero_de_cuenta.clear()
         
     def ver_diagnostico_seleccionado(self, nombre_qlistwidget, nombre_lista, item):
@@ -1341,10 +1350,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                     talla_pantalon = None
                                     talla_zapatos = None
                                     
-                                    estatura = self.de_str_a_int_o_float(estatura, self.input_estatura, float)
-                                    peso = self.de_str_a_int_o_float(peso, self.input_peso, float)
-                                    talla_pantalon = self.de_str_a_int_o_float(talla_pantalon, self.input_talla_pantalon, int)
-                                    talla_zapatos = self.de_str_a_int_o_float(talla_zapatos, self.input_talla_zapatos, int)
+                                    estatura = self.doubleSpinBox_estatura.value()
+                                    peso = self.doubleSpinBox_peso.value()
+                                    talla_pantalon = self.spinBox_talla_pantalon.value()
+                                    talla_zapatos = self.spinBox_talla_zapatos.value()
                                     
                                     
                                     
@@ -1470,9 +1479,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                             else:
                                                                 num_telefono_adicional = None
                                                             
-                                                            estado_civil = self.input_estado_civil.text().strip().capitalize()
+                                                            estado_civil = self.comboBox_estado_civil_civil.currentText()
                                                             carga_familiar = None
-                                                            carga_familiar = self.de_str_a_int_o_float(carga_familiar, self.input_carga_familiar, int)
+                                                            carga_familiar = self.spinBox_carga_familiar.value()
                                                             
                                                             
                                                             campos_representante = {
@@ -1640,7 +1649,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                         QMessageBox.information(self, "Bien hecho", "Registro exitoso")
             
                                                         # Limpiar todos los inputs
-                                                        FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+                                                        FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons, self.lista_de_comboBoxs, self.lista_spinBox_y_doubleSpinBox)
                                                         self.foto_perfil_alumno = None
                                                         self.foto_perfil_representante = None
                                                         self.label_foto_alumno.setText("No hay foto")
@@ -1795,11 +1804,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
             # (1, 1, 1.42, 56.9, 'M', 30, 36)
             info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
-            self.input_estatura.setText("" if not info_medidas[2] else str(info_medidas[2]))
-            self.input_peso.setText("" if not info_medidas[3] else str(info_medidas[3]))
+            self.doubleSpinBox_estatura.setValue(0 if not info_medidas[2] else str(info_medidas[2]))
+            self.doubleSpinBox_peso.setValue(0 if not info_medidas[3] else str(info_medidas[3]))
             self.comboBox_talla_camisa.setCurrentText("" if not info_medidas[4] else str(info_medidas[4]))
-            self.input_talla_pantalon.setText("" if not info_medidas[5] else str(info_medidas[5]))
-            self.input_talla_zapatos.setText("" if not info_medidas[6] else str(info_medidas[6]))
+            self.spinBox_talla_pantalon.setValue(0 if not info_medidas[5] else str(info_medidas[5]))
+            self.spinBox_talla_zapatos.setValue(0 if not info_medidas[6] else str(info_medidas[6]))
             
         except:
             
@@ -1824,8 +1833,8 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             self.input_direccion_residencia.setText(info_representante[5])
             self.input_numero_de_telefono.setText(info_representante[6])
             self.input_numero_de_telefono_adicional.setText("" if info_representante[7] == None else info_representante[7])
-            self.input_carga_familiar.setText(str(info_representante[8]))
-            self.input_estado_civil.setText(info_representante[9])
+            self.spinBox_carga_familiar.setValue(info_representante[8])
+            self.comboBox_estado_civil_civil.setCurrentText(info_representante[9])
             
             if not info_representante[10] == None:
                 FuncionSistema.cargar_foto_perfil_en_la_interfaz(info_representante[10], self.label_foto_representante)
@@ -2147,11 +2156,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                         talla_pantalon = None
                         talla_zapatos = None
                         
-                        estatura = self.de_str_a_int_o_float(estatura, self.input_estatura, float)
-                        peso = self.de_str_a_int_o_float(peso, self.input_peso, float)
-                        talla_pantalon = self.de_str_a_int_o_float(talla_pantalon, self.input_talla_pantalon, int)
-                        talla_zapatos = self.de_str_a_int_o_float(talla_zapatos, self.input_talla_zapatos, int)
-                        
+                        estatura = self.doubleSpinBox_estatura.value()
+                        peso = self.doubleSpinBox_peso.value()
+                        talla_pantalon = self.spinBox_talla_pantalon.value()
+                        talla_zapatos = self.spinBox_talla_zapatos.value()
+            
                         
                         
                         campos_medidas_alumno = {
@@ -2308,9 +2317,9 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 else:
                                                     num_telefono_adicional = None
                                                 
-                                                estado_civil = self.input_estado_civil.text().strip().capitalize()
+                                                estado_civil = self.comboBox_estado_civil_civil.currentText()
                                                 carga_familiar = None
-                                                carga_familiar = self.de_str_a_int_o_float(carga_familiar, self.input_carga_familiar, int)
+                                                carga_familiar = self.spinBox_carga_familiar.value()
                                                 
                                                 
                                                 campos_representante = {
@@ -2535,9 +2544,10 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
             
             
                                             # Limpiar todos los inputs
-                                            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons)
+                                            FuncionSistema.limpiar_inputs_de_qt(self.lista_de_inputs, self.lista_de_radiobuttons, self.lista_de_comboBoxs, self.lista_spinBox_y_doubleSpinBox)
                                             FuncionSistema.limpiar_inputs_de_qt(self.campos_representantes)
                                             FuncionSistema.habilitar_o_deshabilitar_widget_de_qt(self.campos_representantes, True)
+                                            self.spinBox_carga_familiar.setEnabled(True)
                                             self.foto_perfil_alumno = None
                                             self.foto_perfil_representante = None
                                             self.label_foto_alumno.setText("No hay foto")
