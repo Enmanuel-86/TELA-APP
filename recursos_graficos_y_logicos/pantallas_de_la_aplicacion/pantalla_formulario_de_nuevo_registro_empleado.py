@@ -53,8 +53,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         # AQui estan las listas carrito y los qlistwidget ya que pueden usar tambien el .clear()
         self.lista_qlineedit = (
                                 self.input_primer_nombre, self.input_segundo_nombre, self.input_tercer_nombre, self.input_apellido_paterno,
-                                self.input_apellido_materno, self.input_cedula, self.input_talla_de_pantalon,
-                                self.input_talla_de_zapatos, self.input_estado_residente, self.input_municipio, self.input_direccion_residencia,
+                                self.input_apellido_materno, self.input_cedula,
+                                 self.input_municipio, self.input_direccion_residencia,
                                 self.input_numero_de_telefono, self.input_numero_de_telefono_adicional, self.input_correo_electronico, self.input_correo_electronico_adicional,
                                 self.input_otra_enfermedad, self.input_otro_diagnostico, self.ver_lista_diagnostico, self.ver_lista_enfermedades,
                                 self.input_codigo_por_donde_cobra, self.input_institucion_donde_laboral, self.input_titulo_del_cargo, self.input_labores_que_realiza,
@@ -68,7 +68,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         
 
         self.lista_qcombobox = ( self.boton_enfermedades, self.boton_diagnostico, self.boton_de_especialidad, self.boton_de_cargos,
-                                self.boton_funcion_cargos, self.boton_tipo_de_cargo
+                                self.boton_funcion_cargos, self.boton_tipo_de_cargo, self.comboBox_talla_camisa, self.comboBox_estado_residente
                                 )
         
         # lista de las base de datos
@@ -126,7 +126,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         ### Esto es de prueba, esto asigna un valor a los input
         
         
-        """
+        #"""
         self.input_primer_nombre.setText("Marla")
         self.input_apellido_paterno.setText("Garcia")
         self.input_cedula.setText("24345231")
@@ -134,11 +134,11 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_si.setChecked(True)
         
         self.comboBox_talla_camisa.setCurrentText("S")
-        self.input_talla_de_pantalon.setText("23")
-        self.input_talla_de_zapatos.setText("25")
+        self.spinBox_talla_pantalon.setValue(23)
+        self.spinBox_talla_zapatos.setValue(25)
         
         
-        self.input_estado_residente.setText("Anzoategui")
+        self.comboBox_estado_residente.setCurrentText("Anzoátegui")
         self.input_municipio.setText("Bolivar")
         self.input_direccion_residencia.setText("Calle 19")
         
@@ -149,7 +149,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         self.input_institucion_donde_laboral.setText("Escuela de tal")
         
         
-        """
+        #"""
         
         
     
@@ -637,8 +637,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                 ## "Info medidas" que verifique si falta un campo requerido  ##
 
                 talla_camisa =  self.comboBox_talla_camisa.currentText()
-                talla_pantalon = self.input_talla_de_pantalon.text()
-                talla_zapatos = self.input_talla_de_zapatos.text()
+                talla_pantalon = self.spinBox_talla_pantalon.value()
+                talla_zapatos = self.spinBox_talla_zapatos.value()
 
                 if not(talla_pantalon):
                     talla_pantalon = None
@@ -668,7 +668,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     ## info cgeografica" que verifique si falta un campo requerido  ##
                     
 
-                    estado_reside = self.input_estado_residente.text().capitalize()
+                    estado_reside = self.comboBox_estado_residente.currentText()
                     municipio = self.input_municipio.text().capitalize()
                     direccion_residencia = self.input_direccion_residencia.text().capitalize()
 
@@ -1061,15 +1061,15 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
         info_medidas = empleado_servicio.obtener_medidas_empleado(empleado_id)
         
         self.comboBox_talla_camisa.setCurrentText(info_medidas[1])
-        self.input_talla_de_pantalon.setText(str(info_medidas[2]))
-        self.input_talla_de_zapatos.setText(str(info_medidas[3]))
+        self.spinBox_talla_pantalon.setValue(info_medidas[2])
+        self.spinBox_talla_zapatos.setValue(info_medidas[3])
         
         
         # Info geografica
         
         info_geografica = empleado_servicio.obtener_info_geografica_empleado(empleado_id)
         
-        self.input_estado_residente.setText(info_geografica[1])
+        self.comboBox_estado_residente.setCurrentText(info_geografica[1])
         self.input_municipio.setText(info_geografica[2])
         self.input_direccion_residencia.setText(info_geografica[3])
         
@@ -1254,8 +1254,8 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                 ## "Info medidas" que verifique si falta un campo requerido  ##
 
                 talla_camisa =  self.comboBox_talla_camisa.currentText()
-                talla_pantalon = self.input_talla_de_pantalon.text()
-                talla_zapatos = self.input_talla_de_zapatos.text()
+                talla_pantalon = self.spinBox_talla_pantalon.value()
+                talla_zapatos = self.spinBox_talla_zapatos.value()
 
                 if not(talla_pantalon):
                     talla_pantalon = None
@@ -1281,7 +1281,7 @@ class PantallaDeFormularioNuevoRegistroEmpleado(QWidget, Ui_PantallaFormularioEm
                     ## info cgeografica" que verifique si falta un campo requerido  ##
                     
 
-                    estado_reside = self.input_estado_residente.text()
+                    estado_reside = self.comboBox_estado_residente.currentText()
                     municipio = self.input_municipio.text()
                     direccion_residencia = self.input_direccion_residencia.text()
 
