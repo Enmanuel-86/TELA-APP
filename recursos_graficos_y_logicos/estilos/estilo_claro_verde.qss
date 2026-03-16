@@ -750,6 +750,8 @@ QScrollBar::sub-page {
 /* 12. QTimeEdit */
 
 /* CONTENEDOR PRINCIPAL */
+QSpinBox,
+QDoubleSpinBox,
 QTimeEdit {
     background: rgb(255,255,255);
     color: rgb(0, 0, 0);
@@ -762,6 +764,8 @@ QTimeEdit {
 
 
 /* FOCUS */
+QSpinBox:focus,
+QDoubleSpinBox:focus,
 QTimeEdit:focus {
    border: 2px solid rgb(25, 213, 100);         
     background-color: rgb(239, 239, 239);
@@ -769,6 +773,8 @@ QTimeEdit:focus {
 
 
 /* BOTONES DE SUBIR Y BAJAR */
+QSpinBox::up-button,
+QDoubleSpinBox::up-button,
 QTimeEdit::up-button {
     width: 35px;
     background: red;
@@ -779,7 +785,8 @@ QTimeEdit::up-button {
 	background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			stop:0 rgba(43, 237, 121, 255), stop:1 rgba(0, 170, 97, 255));
 }
 
-
+QSpinBox::down-button,
+QDoubleSpinBox::down-button,
 QTimeEdit::down-button{
     width: 35px;
     background: red;
@@ -793,22 +800,30 @@ background:qlineargradient(spread:pad, x1:0, y1:0.545, x2:1, y2:0.545364, 			sto
 
 
 /* HOVER A LOS BOTONES */
+QSpinBox::up-button:hover,
+QDoubleSpinBox::up-button:hover,
 QTimeEdit::up-button:hover {
     background: rgb(2, 150, 84);
 }
 
-
+QSpinBox::down-button:hover,
+QDoubleSpinBox::down-button:hover,
 QTimeEdit::down-button:hover{
      background: rgb(2, 150, 84);
 }
 
-
+QSpinBox:disabled,
+QDoubleSpinBox:disabled,
 QTimeEdit:disabled{
 	background-color: rgb(194, 194, 194);    /* Gris claro para diferenciarlo del blanco activo */
     border: 2px solid rgb(153, 153, 153);    /* Borde más apagado */
     color: rgb(91, 91, 91);  
 }
 
+QSpinBox::up-button:disabled,
+QSpinBox::down-button:disabled,
+QDoubleSpinBox::up-button:disabled,
+QDoubleSpinBox::down-button:disabled
 QTimeEdit::up-button:disabled,
 QTimeEdit::down-button:disabled{
 	background-color: rgb(168, 168, 168);    
