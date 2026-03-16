@@ -1804,11 +1804,11 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
 
             # (1, 1, 1.42, 56.9, 'M', 30, 36)
             info_medidas = medidas_alumno_servicio.obtener_medidas_alumno_por_id(alumno_id)
-            self.doubleSpinBox_estatura.setValue(0 if not info_medidas[2] else str(info_medidas[2]))
-            self.doubleSpinBox_peso.setValue(0 if not info_medidas[3] else str(info_medidas[3]))
+            self.doubleSpinBox_estatura.setValue(0 if not info_medidas[2] else info_medidas[2])
+            self.doubleSpinBox_peso.setValue(0 if not info_medidas[3] else info_medidas[3])
             self.comboBox_talla_camisa.setCurrentText("" if not info_medidas[4] else str(info_medidas[4]))
-            self.spinBox_talla_pantalon.setValue(0 if not info_medidas[5] else str(info_medidas[5]))
-            self.spinBox_talla_zapatos.setValue(0 if not info_medidas[6] else str(info_medidas[6]))
+            self.spinBox_talla_pantalon.setValue(0 if not info_medidas[5] else info_medidas[5])
+            self.spinBox_talla_zapatos.setValue(0 if not info_medidas[6] else info_medidas[6])
             
         except:
             
@@ -2317,7 +2317,7 @@ class PantallaDeFormularioNuevoRegistroAlumnos(QWidget, Ui_FormularioNuevoRegist
                                                 else:
                                                     num_telefono_adicional = None
                                                 
-                                                estado_civil = self.comboBox_estado_civil_civil.currentText()
+                                                estado_civil = self.comboBox_estado_civil.currentText()
                                                 carga_familiar = None
                                                 carga_familiar = self.spinBox_carga_familiar.value()
                                                 
