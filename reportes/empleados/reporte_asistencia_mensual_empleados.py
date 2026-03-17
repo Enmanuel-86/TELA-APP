@@ -1,5 +1,6 @@
 import calendar
 import datetime
+import os
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from typing import List, Tuple, Dict, Optional, Any
@@ -8,6 +9,7 @@ from reportes.reporte_base import ReporteBase
 from excepciones.base_datos_error import BaseDatosError
 from recursos_graficos_y_logicos.utilidades.funciones_sistema import FuncionSistema
 from recursos_graficos_y_logicos.utilidades.base_de_datos import asistencia_empleado_servicio
+from openpyxl.drawing.image import Image
 
 
 class ReporteAsistenciaMensualEmpleados(ReporteBase):
@@ -251,7 +253,7 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
     def cargar_configuraciones_excel(self):
         fuente_negrita = Font(bold = True)
         alineacion_centrada = Alignment(horizontal = "center", vertical = "center")
-        fuente_titulo = Font(size = 20, bold = True)
+        fuente_titulo = Font(size = 15, bold = True)
         relleno_encabezados = PatternFill(start_color = "92D050", end_color = "92D050", fill_type = "solid")
         relleno_fines_semana = PatternFill(start_color = "FFFF00", end_color = "FFFF00", fill_type = "solid")
 
@@ -265,63 +267,70 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
         
         return fuente_negrita, alineacion_centrada, fuente_titulo, relleno_encabezados, relleno_fines_semana, borde_celda
     
-    def cargar_encabezados_asistencia_mensual(self, hoja, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada):
-        hoja["B1"] = "ASISTENCIA GENERAL DE EMPLEADOS"
-        hoja["A3"] = "Fecha"
-        hoja["B3"] = "Día"
-        hoja["C3"] = "Asistencia"
-        hoja["F3"] = "Inasistencia"
+    def cargar_encabezados_asistencia_mensual(self, hoja, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada, mes, anio):
+        hoja["B2"] = f"ASISTENCIA GENERAL DE EMPLEADOS ({mes.upper()}-{anio})"
+        
+        hoja["A4"] = "Fecha"
+        hoja["B4"] = "Día"
+        hoja["C4"] = "Asistencia"
+        hoja["F4"] = "Inasistencia"
 
-        hoja["B1"].border = borde_celda
-        hoja["A3"].border = borde_celda
-        hoja["B3"].border = borde_celda
-        hoja["C3"].border = borde_celda
-        hoja["F3"].border = borde_celda
-
-        hoja["B1"].fill = relleno_encabezados
-        hoja["A3"].fill = relleno_encabezados
-        hoja["B3"].fill = relleno_encabezados
-        hoja["C3"].fill = relleno_encabezados
-        hoja["F3"].fill = relleno_encabezados
-
-        hoja.merge_cells("B1:G1")
-        hoja.merge_cells("A3:A4")
-        hoja.merge_cells("B3:B4")
-        hoja.merge_cells("C3:E3")
-        hoja.merge_cells("F3:H3")
-
-        hoja["C4"] = "V"
-        hoja["D4"] = "H"
-        hoja["E4"] = "T"
-
+        hoja["B2"].border = borde_celda
+        hoja["A4"].border = borde_celda
+        hoja["B4"].border = borde_celda
         hoja["C4"].border = borde_celda
-        hoja["D4"].border = borde_celda
-        hoja["E4"].border = borde_celda
-
-        hoja["F4"] = "V"
-        hoja["G4"] = "H"
-        hoja["H4"] = "T"
-
         hoja["F4"].border = borde_celda
-        hoja["G4"].border = borde_celda
-        hoja["H4"].border = borde_celda
+
+        hoja["B2"].fill = relleno_encabezados
+        hoja["A4"].fill = relleno_encabezados
+        hoja["B4"].fill = relleno_encabezados
+        hoja["C4"].fill = relleno_encabezados
+        hoja["F4"].fill = relleno_encabezados
+
+        hoja.merge_cells("B2:G2")
+        hoja.merge_cells("A4:A5")
+        hoja.merge_cells("B4:B5")
+        hoja.merge_cells("C4:E4")
+        hoja.merge_cells("F4:H4")
+        
+        FuncionSistema.aplicar_borde_a_rango(hoja, "B2:G2", borde_celda)
+        FuncionSistema.aplicar_borde_a_rango(hoja, "A4:A5", borde_celda)
+        FuncionSistema.aplicar_borde_a_rango(hoja, "B4:B5", borde_celda)
+        FuncionSistema.aplicar_borde_a_rango(hoja, "C4:E4", borde_celda)
+        FuncionSistema.aplicar_borde_a_rango(hoja, "F4:H4", borde_celda)
+
+        hoja["C5"] = "V"
+        hoja["D5"] = "H"
+        hoja["E5"] = "T"
+
+        hoja["C5"].border = borde_celda
+        hoja["D5"].border = borde_celda
+        hoja["E5"].border = borde_celda
+
+        hoja["F5"] = "V"
+        hoja["G5"] = "H"
+        hoja["H5"] = "T"
+
+        hoja["F5"].border = borde_celda
+        hoja["G5"].border = borde_celda
+        hoja["H5"].border = borde_celda
 
 
-        for num_fila in range(1, 5):
+        for num_fila in range(1, 6):
             for num_columna in range(1, 9):
                 celda = hoja.cell(row = num_fila, column = num_columna)
                 
                 celda.font = fuente_negrita
                 celda.alignment = alineacion_centrada
                 
-        hoja["B1"].font = fuente_titulo
-        hoja["B1"].border = borde_celda
+        hoja["B2"].font = fuente_titulo
+        hoja["B2"].border = borde_celda
 
         for columna in ["A", "B", "C", "D", "E", "F", "G", "H"]:
             hoja.column_dimensions[columna].width = 12
     
     def cargar_datos_asistencia_inasistencia_empleados(self, hoja, lista_dict_asistencia_mensual_empleados: List[Dict], borde_celda, alineacion_centrada, relleno_fines_semana):
-        fila_actual = 5
+        fila_actual = 6
 
         for fila_data in lista_dict_asistencia_mensual_empleados:
             # Escribimos el número de día
@@ -421,6 +430,7 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
         hoja["J22"].fill = relleno_encabezados
 
         hoja.merge_cells("J22:K22")
+        FuncionSistema.aplicar_borde_a_rango(hoja, "J22:K22", borde_celda)
 
         hoja["L22"] = dias_habiles
         hoja["L22"].alignment = alineacion_centrada
@@ -582,7 +592,18 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
             nombre_archivo = f"REPORTE_ASISTENCIA_GENERAL_EMPLEADOS_{mes_especifico.upper()}-{anio_especifico}"
             ruta_archivo = f"{self.RUTA_REPORTES_ASISTENCIA}/{nombre_archivo}.xlsx"
             
-            self.cargar_encabezados_asistencia_mensual(hoja, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada)
+            RUTA_CINTILLO = (os.path.join(os.path.dirname(__file__), "..", "imagenes", "CINTILLO_TELA.png"))
+            try:
+                CINTILLO = Image(RUTA_CINTILLO)
+                CINTILLO.width = 850
+                CINTILLO.height = 80
+                hoja.add_image(CINTILLO, "A1")
+            except Exception as error:
+                raise error
+            
+            hoja.row_dimensions[1].height = 100
+            
+            self.cargar_encabezados_asistencia_mensual(hoja, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada, mes_especifico, anio_especifico)
             self.cargar_datos_asistencia_inasistencia_empleados(hoja, lista_dict_asistencia_mensual_empleados, borde_celda, alineacion_centrada, relleno_fines_semana)
             self.cargar_datos_sumatoria_asistencia_inasistencia_empleados(hoja, lista_dict_sumatoria_asistencia_inasistencia_empleados, alineacion_centrada, borde_celda)
             self.cargar_datos_dias_habiles(hoja, dias_habiles, fuente_negrita, alineacion_centrada, borde_celda, relleno_encabezados)
