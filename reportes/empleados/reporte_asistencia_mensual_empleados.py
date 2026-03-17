@@ -253,7 +253,7 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
     def cargar_configuraciones_excel(self):
         fuente_negrita = Font(bold = True)
         alineacion_centrada = Alignment(horizontal = "center", vertical = "center")
-        fuente_titulo = Font(size = 15, bold = True)
+        fuente_titulo = Font(size = 10, bold = True)
         relleno_encabezados = PatternFill(start_color = "92D050", end_color = "92D050", fill_type = "solid")
         relleno_fines_semana = PatternFill(start_color = "FFFF00", end_color = "FFFF00", fill_type = "solid")
 
@@ -268,32 +268,32 @@ class ReporteAsistenciaMensualEmpleados(ReporteBase):
         return fuente_negrita, alineacion_centrada, fuente_titulo, relleno_encabezados, relleno_fines_semana, borde_celda
     
     def cargar_encabezados_asistencia_mensual(self, hoja, borde_celda, relleno_encabezados, fuente_negrita, fuente_titulo, alineacion_centrada, mes, anio):
-        hoja["B2"] = f"ASISTENCIA GENERAL DE EMPLEADOS ({mes.upper()}-{anio})"
+        hoja["A2"] = f"REPORTE DE ASISTENCIA MENSUAL GENERAL DE EMPLEADOS ({mes.upper()}-{anio})"
         
         hoja["A4"] = "Fecha"
         hoja["B4"] = "Día"
         hoja["C4"] = "Asistencia"
         hoja["F4"] = "Inasistencia"
 
-        hoja["B2"].border = borde_celda
+        hoja["A2"].border = borde_celda
         hoja["A4"].border = borde_celda
         hoja["B4"].border = borde_celda
         hoja["C4"].border = borde_celda
         hoja["F4"].border = borde_celda
 
-        hoja["B2"].fill = relleno_encabezados
+        hoja["A2"].fill = relleno_encabezados
         hoja["A4"].fill = relleno_encabezados
         hoja["B4"].fill = relleno_encabezados
         hoja["C4"].fill = relleno_encabezados
         hoja["F4"].fill = relleno_encabezados
 
-        hoja.merge_cells("B2:G2")
+        hoja.merge_cells("A2:H2")
         hoja.merge_cells("A4:A5")
         hoja.merge_cells("B4:B5")
         hoja.merge_cells("C4:E4")
         hoja.merge_cells("F4:H4")
         
-        FuncionSistema.aplicar_borde_a_rango(hoja, "B2:G2", borde_celda)
+        FuncionSistema.aplicar_borde_a_rango(hoja, "A2:H2", borde_celda)
         FuncionSistema.aplicar_borde_a_rango(hoja, "A4:A5", borde_celda)
         FuncionSistema.aplicar_borde_a_rango(hoja, "B4:B5", borde_celda)
         FuncionSistema.aplicar_borde_a_rango(hoja, "C4:E4", borde_celda)
