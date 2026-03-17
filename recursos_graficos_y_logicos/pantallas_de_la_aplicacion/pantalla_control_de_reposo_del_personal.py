@@ -161,7 +161,7 @@ class PantallaControlRepososPersonal(QWidget, Ui_VistaGeneralReposoEmpleados):
             # MENSAJE PARA CONFIRMAR LA ACCIÓN
             self.msg_box.setIcon(QMessageBox.Information)
             self.msg_box.setWindowTitle("Confirmar acción")
-            self.msg_box.setText("¿Seguro que quiere editar este reposo?")
+            self.msg_box.setText("¿Seguro que quiere registrar este reposo?")
             QApplication.beep()
             self.msg_box.exec_()
             
