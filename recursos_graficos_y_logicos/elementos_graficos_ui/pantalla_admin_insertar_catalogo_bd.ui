@@ -1705,6 +1705,57 @@
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <widget class="QLabel" name="label_tipo_cargo_empleado_2">
+                       <property name="font">
+                        <font>
+                         <family>Segoe UI</family>
+                         <pointsize>11</pointsize>
+                         <weight>75</weight>
+                         <italic>false</italic>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Hora de llegada</string>
+                       </property>
+                       <property name="tipo" stdset="0">
+                        <string>titulo_qlineedit</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QTimeEdit" name="input_hora_cargo_empleado">
+                       <property name="minimumSize">
+                        <size>
+                         <width>150</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>150</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="displayFormat">
+                        <string>h:mm</string>
+                       </property>
+                       <property name="currentSectionIndex">
+                        <number>0</number>
+                       </property>
+                       <property name="time">
+                        <time>
+                         <hour>8</hour>
+                         <minute>0</minute>
+                         <second>0</second>
+                        </time>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </item>
                    <item>
