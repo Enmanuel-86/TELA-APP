@@ -1098,118 +1098,161 @@
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout">
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_3">
-                         <item>
-                          <widget class="QLabel" name="label_filtro_fecha_asistencia">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>143</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <pointsize>15</pointsize>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QLabel{font-size:15pt;}</string>
-                           </property>
-                           <property name="text">
-                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Fecha de asistencia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                           <property name="alignment">
-                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                           </property>
-                           <property name="tipo" stdset="0">
-                            <string>titulo_form</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QDateEdit" name="dateedit_filtro_fecha_asistencia">
-                           <property name="enabled">
-                            <bool>true</bool>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>160</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>160</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Segoe UI</family>
-                             <weight>75</weight>
-                             <italic>false</italic>
-                             <bold>true</bold>
-                            </font>
-                           </property>
-                           <property name="toolTip">
-                            <string>Año/Mes/Dia</string>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="wrapping">
-                            <bool>false</bool>
-                           </property>
-                           <property name="frame">
-                            <bool>true</bool>
-                           </property>
-                           <property name="readOnly">
-                            <bool>false</bool>
-                           </property>
-                           <property name="buttonSymbols">
-                            <enum>QAbstractSpinBox::UpDownArrows</enum>
-                           </property>
-                           <property name="accelerated">
-                            <bool>true</bool>
-                           </property>
-                           <property name="keyboardTracking">
-                            <bool>true</bool>
-                           </property>
-                           <property name="showGroupSeparator" stdset="0">
-                            <bool>true</bool>
-                           </property>
-                           <property name="currentSection">
-                            <enum>QDateTimeEdit::YearSection</enum>
-                           </property>
-                           <property name="displayFormat">
-                            <string>yyyy / MM / dd</string>
-                           </property>
-                           <property name="calendarPopup">
-                            <bool>true</bool>
-                           </property>
-                           <property name="currentSectionIndex">
-                            <number>0</number>
-                           </property>
-                           <property name="date">
-                            <date>
-                             <year>2000</year>
-                             <month>1</month>
-                             <day>26</day>
-                            </date>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
+                        <widget class="QFrame" name="">
+                         <property name="minimumSize">
+                          <size>
+                           <width>162</width>
+                           <height>73</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>162</width>
+                           <height>73</height>
+                          </size>
+                         </property>
+                         <widget class="QLabel" name="label_filtro_fecha_asistencia">
+                          <property name="geometry">
+                           <rect>
+                            <x>1</x>
+                            <y>1</y>
+                            <width>133</width>
+                            <height>20</height>
+                           </rect>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>143</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>15</pointsize>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLabel{font-size:15pt;}</string>
+                          </property>
+                          <property name="text">
+                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Fecha de asistencia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_form</string>
+                          </property>
+                         </widget>
+                         <widget class="QDateEdit" name="dateedit_filtro_fecha_asistencia">
+                          <property name="enabled">
+                           <bool>true</bool>
+                          </property>
+                          <property name="geometry">
+                           <rect>
+                            <x>1</x>
+                            <y>32</y>
+                            <width>160</width>
+                            <height>40</height>
+                           </rect>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>160</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>160</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <weight>75</weight>
+                            <italic>false</italic>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="toolTip">
+                           <string>Año/Mes/Dia</string>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="wrapping">
+                           <bool>false</bool>
+                          </property>
+                          <property name="frame">
+                           <bool>true</bool>
+                          </property>
+                          <property name="readOnly">
+                           <bool>false</bool>
+                          </property>
+                          <property name="buttonSymbols">
+                           <enum>QAbstractSpinBox::UpDownArrows</enum>
+                          </property>
+                          <property name="accelerated">
+                           <bool>true</bool>
+                          </property>
+                          <property name="keyboardTracking">
+                           <bool>true</bool>
+                          </property>
+                          <property name="showGroupSeparator" stdset="0">
+                           <bool>true</bool>
+                          </property>
+                          <property name="currentSection">
+                           <enum>QDateTimeEdit::YearSection</enum>
+                          </property>
+                          <property name="displayFormat">
+                           <string>yyyy / MM / dd</string>
+                          </property>
+                          <property name="calendarPopup">
+                           <bool>true</bool>
+                          </property>
+                          <property name="currentSectionIndex">
+                           <number>0</number>
+                          </property>
+                          <property name="date">
+                           <date>
+                            <year>2000</year>
+                            <month>1</month>
+                            <day>26</day>
+                           </date>
+                          </property>
+                         </widget>
+                         <widget class="QLabel" name="label_6">
+                          <property name="geometry">
+                           <rect>
+                            <x>13</x>
+                            <y>30</y>
+                            <width>101</width>
+                            <height>16</height>
+                           </rect>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="text">
+                           <string>Año    / Mes / Dia</string>
+                          </property>
+                          <property name="tipo" stdset="0">
+                           <string>titulo_qdateedit</string>
+                          </property>
+                         </widget>
+                        </widget>
                        </item>
                        <item>
                         <spacer name="horizontalSpacer_8">

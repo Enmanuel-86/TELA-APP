@@ -569,7 +569,7 @@
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="layoutWidget_3">
+                 <widget class="QWidget" name="widget_3" native="true">
                   <property name="geometry">
                    <rect>
                     <x>840</x>
@@ -578,63 +578,104 @@
                     <height>68</height>
                    </rect>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_5">
-                   <item>
-                    <widget class="QLabel" name="label_fecha_reingreso">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>11</pointsize>
-                       <weight>75</weight>
-                       <italic>false</italic>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Fecha hasta</string>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>false</bool>
-                     </property>
-                     <property name="tipo" stdset="0">
-                      <string>titulo_qlineedit</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDateEdit" name="dateEdit_fecha_reingreso">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>220</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>220</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="toolTip">
-                      <string>Dia/Mes/Año</string>
-                     </property>
-                     <property name="displayFormat">
-                      <string>dd/MM/yyyy</string>
-                     </property>
-                     <property name="calendarPopup">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <property name="minimumSize">
+                   <size>
+                    <width>222</width>
+                    <height>68</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>222</width>
+                    <height>68</height>
+                   </size>
+                  </property>
+                  <widget class="QLabel" name="label_fecha_reingreso">
+                   <property name="geometry">
+                    <rect>
+                     <x>1</x>
+                     <y>1</y>
+                     <width>80</width>
+                     <height>20</height>
+                    </rect>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Fecha hasta</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qlineedit</string>
+                   </property>
+                  </widget>
+                  <widget class="QDateEdit" name="dateEdit_fecha_reingreso">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="geometry">
+                    <rect>
+                     <x>1</x>
+                     <y>27</y>
+                     <width>220</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>220</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>220</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>Dia/Mes/Año</string>
+                   </property>
+                   <property name="displayFormat">
+                    <string>yyyy / MM / dd</string>
+                   </property>
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>25</x>
+                     <y>30</y>
+                     <width>110</width>
+                     <height>10</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Año / Mes / Dia</string>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qdateedit</string>
+                   </property>
+                  </widget>
                  </widget>
-                 <widget class="QWidget" name="layoutWidget_4">
+                 <widget class="QFrame" name="frame_4">
                   <property name="geometry">
                    <rect>
                     <x>600</x>
@@ -643,61 +684,108 @@
                     <height>68</height>
                    </rect>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
-                   <item>
-                    <widget class="QLabel" name="label_fecha_solicitud">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>11</pointsize>
-                       <weight>75</weight>
-                       <italic>false</italic>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Fecha desde</string>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>false</bool>
-                     </property>
-                     <property name="tipo" stdset="0">
-                      <string>titulo_qlineedit</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QDateEdit" name="dateEdit_fecha_solicitud">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>220</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>220</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="toolTip">
-                      <string>Dia/Mes/Año</string>
-                     </property>
-                     <property name="displayFormat">
-                      <string>dd/MM/yyyy</string>
-                     </property>
-                     <property name="calendarPopup">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
+                  <property name="minimumSize">
+                   <size>
+                    <width>222</width>
+                    <height>68</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>222</width>
+                    <height>68</height>
+                   </size>
+                  </property>
+                  <widget class="QLabel" name="label_fecha_solicitud">
+                   <property name="geometry">
+                    <rect>
+                     <x>1</x>
+                     <y>1</y>
+                     <width>220</width>
+                     <height>20</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>220</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>11</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Fecha desde</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qlineedit</string>
+                   </property>
+                  </widget>
+                  <widget class="QDateEdit" name="dateEdit_fecha_solicitud">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="geometry">
+                    <rect>
+                     <x>1</x>
+                     <y>27</y>
+                     <width>220</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>220</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>220</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="toolTip">
+                    <string>Dia/Mes/Año</string>
+                   </property>
+                   <property name="displayFormat">
+                    <string>yyyy / MM / dd</string>
+                   </property>
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_6">
+                   <property name="geometry">
+                    <rect>
+                     <x>26</x>
+                     <y>26</y>
+                     <width>101</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="text">
+                    <string>Año / Mes / Dia</string>
+                   </property>
+                   <property name="tipo" stdset="0">
+                    <string>titulo_qdateedit</string>
+                   </property>
+                  </widget>
                  </widget>
                  <widget class="QWidget" name="layoutWidget_7">
                   <property name="geometry">
