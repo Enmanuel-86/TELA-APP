@@ -30,8 +30,8 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
         self.boton_no = self.msg_box.addButton("No", QMessageBox.NoRole)
         
         # Tupla para agrupar los campos para deshabilitarlo o limpiarlos
-        self.tupla_de_campos = (self.input_mostrar_nombre, self.input_mostrar_apellido, self.input_mostrar_carga_familiar,
-                                self.input_mostrar_direccion_residencial, self.input_mostrar_cedula_representante, self.input_mostrar_estado_civil,
+        self.tupla_de_campos = (self.input_mostrar_nombre, self.input_mostrar_apellido, self.spinBox_carga_familiar,
+                                self.input_mostrar_direccion_residencial, self.input_mostrar_cedula_representante,
                                 self.input_mostrar_numero_telefono, self.input_mostrar_numero_telefono_adicional, self.label_foto_representante)
         
         self.boton_editar.clicked.connect(self.editar_informacion_representante)
@@ -89,8 +89,8 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
             else:
                 self.input_mostrar_numero_telefono_adicional.setText(str(datos_representante[6]))
             
-            self.input_mostrar_carga_familiar.setText(str(datos_representante[7]))   
-            self.input_mostrar_estado_civil.setText(datos_representante[8])
+            self.spinBox_carga_familiar.setValue(datos_representante[7])   
+            self.comboBox_estado_civil.setCurrentText(datos_representante[8])
             
             
             if datos_representante[9] == None:
@@ -138,8 +138,8 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                 direccion_residencia = self.input_mostrar_direccion_residencial.text().strip()
                 num_telefono = self.input_mostrar_numero_telefono.text().strip()
                 num_telefono_adicional = self.input_mostrar_numero_telefono_adicional.text() if not self.input_mostrar_numero_telefono_adicional.text() == "" else None 
-                carga_familiar = int(self.input_mostrar_carga_familiar.text())
-                estado_civil = self.input_mostrar_estado_civil.text().strip().capitalize()
+                carga_familiar = self.spinBox_carga_familiar.value()
+                estado_civil = self.comboBox_estado_civil.currentText()
                 
                 campos_representante = {
                 "cedula": cedula,
@@ -226,6 +226,7 @@ class VentanaEditarRepresentante(QWidget, Ui_VentanaEditarRepresentante):
                 self.representante_id = None
                 FuncionSistema.limpiar_inputs_de_qt(self.tupla_de_campos)
                 self.filtrar_por_ente_seleccionado = None
+                self.comboBox_estado_civil.setCurrentIndex(0)
                 self.close()
                 event.accept()  # Cierra el widget
                 
