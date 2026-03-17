@@ -787,7 +787,7 @@ QTimeEdit:disabled{
 QSpinBox::up-button:disabled,
 QSpinBox::down-button:disabled,
 QDoubleSpinBox::up-button:disabled,
-QDoubleSpinBox::down-button:disabled
+QDoubleSpinBox::down-button:disabled,
 QTimeEdit::up-button:disabled,
 QTimeEdit::down-button:disabled{
     background-color: rgb(168, 168, 168);    
