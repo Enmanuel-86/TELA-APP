@@ -119,7 +119,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>  MENU</string>
+           <string>  MENÚ</string>
           </property>
           <property name="icon">
            <iconset resource="../recursos_de_imagenes_tela_app.qrc">
@@ -502,8 +502,8 @@
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
             <widget class="QLabel" name="label">
              <property name="text">
               <string>Temas</string>
@@ -513,34 +513,34 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QRadioButton" name="radioButton_claro_verde">
-             <property name="text">
-              <string>Claro Verde</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
+           <item>
             <widget class="QRadioButton" name="radioButton_oscuro_verde">
              <property name="text">
               <string>Oscuro Verde</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item>
+            <widget class="QRadioButton" name="radioButton_claro_verde">
+             <property name="text">
+              <string>Claro Verde</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_oscuro_azul">
+             <property name="text">
+              <string>Oscuro Azul</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QRadioButton" name="radioButton_claro_azul">
              <property name="enabled">
               <bool>false</bool>
              </property>
              <property name="text">
               <string>Claro Azul</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QRadioButton" name="radioButton_oscuro_azul">
-             <property name="text">
-              <string>Oscuro Azul</string>
              </property>
             </widget>
            </item>
@@ -561,7 +561,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>  salir</string>
+           <string>  Salir</string>
           </property>
           <property name="icon">
            <iconset resource="../recursos_de_imagenes_tela_app.qrc">
