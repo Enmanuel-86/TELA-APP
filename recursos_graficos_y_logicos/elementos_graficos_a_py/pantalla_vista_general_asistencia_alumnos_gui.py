@@ -23,7 +23,7 @@ class Ui_VistaGeneralAsistenciaAlumnos(object):
         self.area_scroll.setWidgetResizable(True)
         self.area_scroll.setObjectName("area_scroll")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1235, 1097))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(-162, -180, 1235, 1097))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
@@ -576,7 +576,7 @@ class Ui_VistaGeneralAsistenciaAlumnos(object):
         self.pagina_asistencias_en_cola = QtWidgets.QWidget()
         self.pagina_asistencias_en_cola.setObjectName("pagina_asistencias_en_cola")
         self.boton_suministrar = QtWidgets.QPushButton(self.pagina_asistencias_en_cola)
-        self.boton_suministrar.setGeometry(QtCore.QRect(500, 350, 131, 40))
+        self.boton_suministrar.setGeometry(QtCore.QRect(500, 520, 131, 40))
         self.boton_suministrar.setMinimumSize(QtCore.QSize(131, 40))
         self.boton_suministrar.setMaximumSize(QtCore.QSize(131, 40))
         font = QtGui.QFont()
@@ -651,7 +651,7 @@ class Ui_VistaGeneralAsistenciaAlumnos(object):
 
         self.retranslateUi(VistaGeneralAsistenciaAlumnos)
         self.boton_especialidades.setCurrentIndex(-1)
-        self.ventanas_registro_asistencia.setCurrentIndex(0)
+        self.ventanas_registro_asistencia.setCurrentIndex(1)
         self.boton_filtro_especialidades.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(VistaGeneralAsistenciaAlumnos)
 
