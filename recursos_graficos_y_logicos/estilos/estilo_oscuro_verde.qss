@@ -126,11 +126,11 @@ QPushButton[tipo="boton_limpiar"]:hover{
 }
 
 QPushButton[tipo="boton_importar"]{
-	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-up-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-down-white.png);
 }
 
 QPushButton[tipo="boton_exportar"]{
-	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-down-white.png);
+	icon:url(:/iconos/recursos_de_imagenes/iconos_de_interfaz/file-up-white.png);
 }
 
 QPushButton[tipo="boton_generar_reporte"]{
