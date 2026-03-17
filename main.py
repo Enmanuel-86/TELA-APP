@@ -108,8 +108,8 @@ class Login(QWidget, Ui_Login):
 
         self.mensajes_usuario()
         
-        self.input_usuario.setText("douglas345")
-        self.input_contrasena.setText("1234")
+        #self.input_usuario.setText("douglas345")
+        #self.input_contrasena.setText("1234")
         
 
         self.boton_ver_contrasena.toggled.connect(lambda senal: self.cambiar_ver_contrasena(senal))
