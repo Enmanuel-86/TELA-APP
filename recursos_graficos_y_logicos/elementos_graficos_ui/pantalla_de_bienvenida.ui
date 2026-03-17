@@ -369,21 +369,7 @@
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QPushButton{
-
-	background-color: rgb(0, 183, 72);
-	
-	color: rgb(255, 255, 255);
-	border-radius:12px;
-
-}
-
-QPushButton:hover{
-
-	
-	background-color: rgb(0, 56, 10);
-
-}</string>
+                  <string notr="true"/>
                  </property>
                  <property name="text">
                   <string>Abrir PDF</string>

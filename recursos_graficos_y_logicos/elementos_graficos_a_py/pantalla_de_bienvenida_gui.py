@@ -156,21 +156,7 @@ class Ui_PantallaBienvenidaUsuario(object):
         font.setItalic(False)
         font.setWeight(50)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton{\n"
-"\n"
-"    background-color: rgb(0, 183, 72);\n"
-"    \n"
-"    color: rgb(255, 255, 255);\n"
-"    border-radius:12px;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"\n"
-"    \n"
-"    background-color: rgb(0, 56, 10);\n"
-"\n"
-"}")
+        self.pushButton.setStyleSheet("")
         self.pushButton.setIconSize(QtCore.QSize(20, 20))
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout_4.addWidget(self.pushButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
